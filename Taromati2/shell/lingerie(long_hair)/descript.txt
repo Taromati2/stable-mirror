@@ -1,0 +1,43 @@
+charset,UTF-8
+craftman,8　シェル改変zutsu
+name,下着（ロングヘアー）
+type,shell
+sakura.balloon.alignment,none
+kero.balloon.alignment,none
+shiori.logo.x,0
+shiori.logo.y,0
+sakura.balloon.offsetx,20
+sakura.balloon.offsety,24
+kero.balloon.offsetx,0
+kero.balloon.offsety,10
+menu.background.bitmap.filename,background.png
+menu.foreground.bitmap.filename,foreground.png
+menu.sidebar.bitmap.filename,sidebar.png
+menu.background.font.color.r,0
+menu.background.font.color.g,0
+menu.background.font.color.b,0
+menu.foreground.font.color.r,180
+menu.foreground.font.color.g,180
+menu.foreground.font.color.b,255
+menu.disable.font.color.r,220
+menu.disable.font.color.g,220
+menu.disable.font.color.b,255
+menu.separator.color.r,255
+menu.separator.color.g,255
+menu.separator.color.b,255
+menu.background.alignment,leftbottom
+menu.foreground.alignment,leftbottom
+menu.sidebar.alignment,bottom
+
+//-----着せ替え定義----------------------------------
+sakura.bindgroup50.name,眼鏡, 黒縁眼鏡,
+sakura.bindgroup50.default,1
+
+sakura.menuitem50,50
+
+
+kero.bindgroup50.name,眼鏡, 黒縁眼鏡,
+kero.bindgroup50.default,1
+
+kero.menuitem50,50
+//---------------------------------------------------

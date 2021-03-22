@@ -1,0 +1,5 @@
+charset,UTF-8
+type,shell
+name,ナース
+accept,橘花
+directory,nurse

@@ -1,0 +1,42 @@
+//by steve02081504
+GetConfingFromGhostDescript{//GetConfingFromGhostDescript('Taromati2','icon')
+	_descript="BASE_PATH\..\\..\\..\\%(_argv[0])\\ghost\\master\\descript.txt"
+	void FOPEN(_descript,'r')
+	while (_t=FREAD(_descript))!=-1{
+		if CUTSPACE(_t)[0]==_argv[1]{
+			void FCLOSE(_descript)
+			_t=CUTSPACE(_t)
+			_t[0]=IARRAY
+			_t
+			return
+		}
+	}
+	void FCLOSE(_descript)
+}
+GetIconNameFromGhostDir{//GetIconNameFromGhostDir('Taromati2')
+	_t="BASE_PATH\..\\..\\..\\%(_argv[0])\\ghost\\master\\"
+	_t=_t+GetConfingFromGhostDescript(_argv[0],'icon')
+	_t=REPLACE(_t,'/','\')
+	_t=REPLACE(_t,'\\','\')
+	_t
+}
+IsGhostExist{//IsGhostExist('ssper')
+	_ghostname='\'+_argv[0]
+	_ghostlist=installedghostlist
+	_ghostexist=0
+	foreach _ghostlist;_i{
+		if _ghostname==_i
+			_ghostexist=1
+	}
+	_ghostexist
+}
+IsSakuraExist{
+	_ghostname='\'+_argv[0]
+	_ghostlist=installedsakuralist
+	_ghostexist=0
+	foreach _ghostlist;_i{
+		if _ghostname==_i
+			_ghostexist=1
+	}
+	_ghostexist
+}

@@ -1,0 +1,82 @@
+//by steve02081504
+ISDIR{
+	FATTRIB(_argv[0])[2]
+}
+FILEEXIST{
+	FATTRIB(_argv[0])!=-1
+}
+FWRITE_WITH_{
+	FWRITE2(_argv[1],_argv[2]+_argv[0])
+}
+FWRITE_WITH_LF{
+	FWRITE2(_argv[0],_argv[1]+C_LF)
+}
+FWRITE_WITH_CR{
+	FWRITE2(_argv[0],_argv[1]+C_CR)
+}
+DELDIR{
+	_attrib=FATTRIB(_argv[0])
+	if _attrib!=-1{
+		if _attrib[2]{
+			_d=FENUM(_argv[0])
+			foreach _d;_i{
+				void DELDIR(_argv[0]+'\'+_i)
+			}
+			void RMDIR(_argv[0])
+		}else{
+			void FDEL(_argv[0])
+		}
+		1
+	}else{
+		0
+	}
+}
+DIRCOPY{
+	MKDIR(_argv[1])
+	RUNCMD('XCOPY "'+_argv[0]+'" "'+_argv[1]+'" /Q /H /R /Y /J /K /V /I /E')
+	if FATTRIB(_argv[0])[3]
+		void FHIDDEN(_argv[1])
+	if FATTRIB(_argv[1])==-1
+		0
+	else
+		1
+}
+FHIDDEN{
+	RUNCMD('attrib +H "'+_argv[0]+'"')
+}
+FUNHIDDEN{
+	RUNCMD('attrib -H "'+_argv[0]+'"')
+}
+FULLNAMEFCOPY{
+	_h=FATTRIB(_argv[0])[3]
+	if _h
+		void FUNHIDDEN(_argv[0])
+	void RUNCMD('COPY /B "'+_argv[0]+'" "'+_argv[1]+'"')
+	if _h{
+		void FHIDDEN(_argv[0])
+		void FHIDDEN(_argv[1])
+	}
+	if FATTRIB(_argv[1])==-1
+		0
+	else
+		1
+}
+ISFILEEND{
+	FTELL(_argv[0])==FSIZE(_argv[0])
+}
+ISNOTFILEEND{
+	FTELL(_argv[0])!=FSIZE(_argv[0])
+}
+//mklink
+MAKEFILELINK{//MAKEFILELINK('a.txt','aya.txt')
+	RUNCMD('mklink /h "'+_argv[0]+'" "'+_argv[1]+'"')
+}
+MAKEDIRLINK{
+	RUNCMD('mklink /j "'+_argv[0]+'" "'+_argv[1]+'"')
+}
+MAKELINK{
+	if ISDIR(_argv[1])
+		MAKEDIRLINK(_argv)
+	else
+		MAKEFILELINK(_argv)
+}

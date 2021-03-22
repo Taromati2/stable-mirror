@@ -1,0 +1,5 @@
+charset,UTF-8
+type,shell
+name,黒ワンピ
+accept,橘花
+directory,black_one_piece

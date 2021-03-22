@@ -1,0 +1,9 @@
+[submodule "ghost"]
+	url = git@github.com:Taromati2/ghost.git
+	path = ghost
+[submodule "shell"]
+	url = git@github.com:Taromati2/shell.git
+	path = shell
+[submodule "balloon"]
+	url = git@github.com:Taromati2/balloon.git
+	path = balloon
