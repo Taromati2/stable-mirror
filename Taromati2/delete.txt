@@ -1,4 +1,6 @@
-﻿ghost/master/data/box.bmp
+﻿
+ghost/master/aya/
+ghost/master/data/box.bmp
 ghost/master/updates2.dau
 updates2.dau
 wiz/
@@ -82,14 +84,10 @@ ghost/master/pic/
 ghost/master/data2/
 ghost/master/mydata/
 ghost/master/aya5/
-ghost/master/aya/mydicjp/
-ghost/master/aya/saori/
+ghost/master/bakeup/
 ghost/master/data/BombGoldFlower/
 shell/home/
 shell/Ninni/
-ghost/master/aya/aya_sysex.dic
-ghost/master/aya/yaya_compatible.dic
-ghost/master/aya/yaya_shiori3.dic
 ghost/master/aya_string.dic
 ghost/master/aya_sysex.dic
 ghost/master/BG-2.png
@@ -581,7 +579,6 @@ ghost/master/yaya_jp.dll
 ghost/master/yaya_jp.txt
 ghost/master/yaya_jp_variable.cfg
 ghost/master/yaya_shiori3.dic
-delete.txt
 ghost/master/data/Game/GoldenFlower/0.bmp
 ghost/master/data/Game/GoldenFlower/1.bmp
 ghost/master/data/Game/GoldenFlower/10.bmp

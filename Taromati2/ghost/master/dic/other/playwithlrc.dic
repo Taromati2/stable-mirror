@@ -430,7 +430,15 @@ OnMusicLrc{
 //---------------------------------------------------
 OnMusicSetLrc{
 	musiclrcenable = !musiclrcenable
-	'\0'+('\s[0]',"\s[25]%(OnMusicLrc)")[musiclrcenable]+OnMusicPlayer
+	OnSurfaceRestore
+	--
+	if musiclrcenable{
+		if specialmode != 'mealtime'
+			'\s[25]'
+		OnMusicLrc
+	}
+	--
+	OnMusicPlayer
 }
 IsSelectList{
 	_id=_argv[0]
@@ -1245,7 +1253,7 @@ OnMusicPlayerCmd{
 		_txt += PlayWithLyric('play',musiclrcenable,musicfile[2])
 	}
 	elseif reference0 == 'pause' {
-		_txt += '\s[0]' + PlayWithLyric('pause')
+		_txt += OnSurfaceRestore.base + PlayWithLyric('pause')
 	}
 	elseif reference0 == 'resume' {
 		musicplayinfo=_temp
@@ -1254,7 +1262,7 @@ OnMusicPlayerCmd{
 		_txt += PlayWithLyric('resume',musiclrcenable)
 	}
 	elseif reference0 == 'stop' {
-		_txt += '\s[0]' + PlayWithLyric('stop')
+		_txt += OnSurfaceRestore.base + PlayWithLyric('stop')
 		_txt+=OnStopSpVoice.vbs//仅在tts语音开启时使用
 	}
 	_txt += OnMusicPlayer
@@ -1433,7 +1441,7 @@ MusicFileDrop{
 		_fileext = TOLOWER(SPLITPATH(_ref)[3])
 		if FATTRIB(_ref)[2] == 1 {
 			_n=STRLEN(_ref)
-			_t=SUBSTR(_ref,0,_n-1);t=_t
+			_t=SUBSTR(_ref,0,_n-1)
 			DialogMusicAddList(SPLITPATH(_t)[2])
 			MusicLoadFolder(_ref)
 		}

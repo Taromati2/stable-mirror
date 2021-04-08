@@ -139,7 +139,6 @@ write01{
 	}
 }
 OnoverTeach{
-	ERASvalueex
 	"\![close,inputbox,%(reference0)]"
 	--
 	'\0\s[0]好的。'
@@ -180,7 +179,15 @@ KikkaTalkToUser{
 					'\n[200]\![set,choicetimeout,0]\![*]\q[我来教你吧,Teaching]\n\![*]\q[取消,MenuCancel]\n\e'
 					talkfound=0
 				}else{
-					'\0\s[0]嗯、是啊～'
+					{
+						'\0\s[0]嗯'
+						--
+						'呐'
+						'、是啊'
+						--
+						'～'
+						''
+					}
 					''
 					''
 				}

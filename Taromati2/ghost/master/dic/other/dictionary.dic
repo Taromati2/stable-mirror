@@ -10,7 +10,6 @@ Select.dictionary{
 	"\0\s[0]\_q请输入需要查询的词语!  橘花知道8万词条哦~\n可以是英文也可以是中文!(使用模糊查询)\n[150]提示: 小写数字会被忽略，当存在中文时忽略英文！\n[150]\![*]\q[返回上一层,OnOpenMenu,1]\n\![*]\q[取消,Onoverdic,Ondict]\![open,inputbox,Ondict,-1,%(Dicword[0])]"
 }
 Onoverdic{
-	ERASvalueex
 	"好的...\![close,inputbox,%(reference0)]"
 }
 Ondict{

@@ -326,9 +326,6 @@ AyaTest.Eval {
 //OnRequestを活性化します
 //------------------------------------------------------------------------------
 request {
-	//For TEST
-	//test(_argv[0])
-	//return
 	if SUBSTR(_argv[0],0,3) == '?? ' {//玉でのテスト用
 		'!! ' + JOIN(AyaTest.Eval(ERASE(_argv[0],0,3)),',')
 		return
@@ -538,7 +535,7 @@ SHIORI_FW.MakeResponse{
 		}
 		others
 			//未知のリクエスト
-		"SHIORI/3.0 400 Bad Request%(C_CRLF2)"
+			"SHIORI/3.0 400 Bad Request%(C_CRLF2)"
 	}
 }
 

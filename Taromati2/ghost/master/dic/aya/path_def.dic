@@ -1,7 +1,7 @@
 //by steve02081504
 //
 #globaldefine SHIORI_NAME			aya
-#globaldefine _DIC_DIRS_			'aya,dic'
+#globaldefine _DIC_DIRS_			'dic'
 //
 #globaldefine DATA_PATH				BASE_PATH\_DATA_path
 #globaldefine IMG_PATH				BASE_PATH\_IMG_path

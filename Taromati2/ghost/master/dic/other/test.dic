@@ -591,7 +591,6 @@ LoadExamTest{
 		//_testbegin='第1题：'
 		//_testend="第%(testbuffnum)题："
 	}
-	t=_allmode
 	_n=0
 	_m=0
 	FCHARSET(1)

@@ -38,7 +38,7 @@ ghost/master/saori/Speech_Recognition/config.ini,nonar,noupdate
 ghost/master/saori/Speech_Recognition/.gitignore,nonar,noupdate
 
 
-ghost/master/data/japvoice/readme.txt,nonar,noupdate
+ghost/master/data/LearnJapanese/sonido/readme.txt,nonar,noupdate
 
 ghost/master/data/fg/fg.ini,nonar,noupdate
 ghost/master/data/fg/ftmp,nonar,noupdate

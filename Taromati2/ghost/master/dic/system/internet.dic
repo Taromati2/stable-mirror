@@ -637,7 +637,7 @@ OnAstroSubMenu{
 	OnAstrofate(reference0,reference1,reference2)
 }
 OnAstroFoundAuto{
-	if ISVAR('birthday')==1{
+	if ISVAR('birthday'){
 		date='day'
 		astro=GetAstroName(birthday[1],birthday[2])
 		submenu=0

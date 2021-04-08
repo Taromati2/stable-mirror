@@ -1,53 +1,42 @@
-
-Dim CommandDictionary 'ÃüÁî×Öµä¶ÔÏó
-Dim WshShell   'WshShell¶ÔÏóÌá¹©¶Ô±¾µØWindows³ÌĞòµÄ·ÃÎÊ¡£
-Dim ScriptComplete '³ÌĞò½áÊø±êÖ¾
-Dim SR   'ÓïÒôÊ¶±ğ(Speech Recognition)¶ÔÏó
-Dim Grammar 'ÓïÒôÊ¶±ğµÄÃüÁîÓï·¨¶ÔÏó
-'³õÊ¼»¯ÃüÁî×Öµä¶ÔÏó,¿É¸ù¾İ×Ô¼ºµÄĞèÒªÌí¼ÓÃüÁî
+ï»¿
+Dim CommandDictionary 'å‘½ä»¤å­—å…¸å¯¹è±¡
+Dim WshShell   'WshShellå¯¹è±¡æä¾›å¯¹æœ¬åœ°Windowsç¨‹åºçš„è®¿é—®ã€‚
+Dim ScriptComplete 'ç¨‹åºç»“æŸæ ‡å¿—
+Dim SR   'è¯­éŸ³è¯†åˆ«(Speech Recognition)å¯¹è±¡
+Dim Grammar 'è¯­éŸ³è¯†åˆ«çš„å‘½ä»¤è¯­æ³•å¯¹è±¡
+'åˆå§‹åŒ–å‘½ä»¤å­—å…¸å¯¹è±¡,å¯æ ¹æ®è‡ªå·±çš„éœ€è¦æ·»åŠ å‘½ä»¤
 Set CommandDictionary = CreateObject("Scripting.Dictionary")
-CommandDictionary.Add "¼ÆËãÆ÷",   "calc"
-CommandDictionary.Add "¼ÇÊÂ±¾",   "notepad"
-CommandDictionary.Add "´ò¿ª¼üÅÌ", "osk"
 
-Set WshShell = CreateObject("WScript.Shell") '´´½¨WshShell¶ÔÏó
-ScriptComplete = False '³õÊ¼»¯³ÌĞò½áÊø±êÖ¾
-'´´½¨ÓïÒôÊ¶±ğ¶ÔÏó,µ÷ÓÃÓÉ"Command.XML"Ëù¶¨ÒåµÄÓï·¨,²¢Æô¶¯ÓïÒôÊ¶±ğÒıÇæ
+Set WshShell = CreateObject("WScript.Shell") 'åˆ›å»ºWshShellå¯¹è±¡
+ScriptComplete = False 'åˆå§‹åŒ–ç¨‹åºç»“æŸæ ‡å¿—
+'åˆ›å»ºè¯­éŸ³è¯†åˆ«å¯¹è±¡,è°ƒç”¨ç”±"Command.XML"æ‰€å®šä¹‰çš„è¯­æ³•,å¹¶å¯åŠ¨è¯­éŸ³è¯†åˆ«å¼•æ“
 Set SR = WScript.CreateObject("SAPI.SpSharedRecoContext", "RecoContext_")
 Set Grammar = SR.CreateGrammar
 Grammar.CmdLoadFromFile "COMMAND.XML", SLODynamic
 Grammar.CmdSetRuleIdState 0, 1
 Set objTTS = CreateObject( "SAPI.SpVoice" )
-msgbox "ÓïÒôÊ¶±ğÏµÍ³²âÊÔ"
-
+msgbox "è¯­éŸ³è¯†åˆ«ç³»ç»Ÿæµ‹è¯•"
 
 Do
 WScript.Sleep 0
 Loop Until ScriptComplete
 
-objTTS.Speak "ÃüÁî½áÊø,ÔÙ¼û!", 0
+objTTS.Speak "å‘½ä»¤ç»“æŸ,å†è§!", 0
 Set objTTS = Nothing
 
-'ÄãµÄÓïÒôÃüÁî±»Ê¶±ğ
+'ä½ çš„è¯­éŸ³å‘½ä»¤è¢«è¯†åˆ«
 Sub RecoContext_Recognition(ByVal StreamNumber, ByVal StreamPosition, ByVal RecognitionType, ByVal Result )
-Text = Result.PhraseInfo.GetText     '»ñÈ¡ÓïÒôÊ¶±ğÒıÇæËùÊ¶±ğµÄÃüÁî
+Text = Result.PhraseInfo.GetText 'è·å–è¯­éŸ³è¯†åˆ«å¼•æ“æ‰€è¯†åˆ«çš„å‘½ä»¤
 
 MySec = Second(Now)
 If (MySec Mod 2) = 1 Then
 WScript.Sleep 1000
 End If
+
+WshShell.Run CommandDictionary.Item(Text)
 set fso=createobject("scripting.filesystemobject").opentextfile(".\\text.txt",2)
-fso.write Text  & vbcrlf & "Text"
-'If Text = "¼ÆËãÆ÷" Then
-'    objTTS.Speak "ÕıÔÚ´ò¿ª" + Text, 0
-'    WshShell.Run CommandDictionary.Item(Text)
-'Elseif Text = "¼ÇÊÂ±¾" Then
-'    objTTS.Speak "ÕıÔÚ´ò¿ª" + Text, 0
-'    WshShell.Run CommandDictionary.Item(Text)
-'Elseif Text = "´ò¿ª¼üÅÌ" Then
-'    objTTS.Speak "ÕıÔÚ´ò¿ª" + Text, 0
-'    WshShell.Run CommandDictionary.Item(Text)
-'Elseif Text = "ÃüÁî½áÊø" Then
-'    ScriptComplete = true      '³ÌĞò½áÊø±êÖ¾
-'End If
+fso.write Text & vbcrlf
+If Text = "å‘½ä»¤ç»“æŸ" Then
+ScriptComplete = true 'ç¨‹åºç»“æŸæ ‡å¿—
+End If
 End Sub

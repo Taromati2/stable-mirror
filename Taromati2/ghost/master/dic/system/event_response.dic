@@ -33,7 +33,7 @@ OnBasewareUpdating{
 	--
 	"/
 	基础平台“%Baseware”\n/
-	当前版本%Baseware.Version\n\w9\w9/
+	当前版本%Baseware.Version\w9\w9\n/
 	开始更新\n/
 	"
 	--
@@ -66,8 +66,8 @@ OnNotifySelfInfo:void{
 	selfname=reference1
 	keroname=reference2
 }
-//缺省信息补全by steve02081504
-OnNotifyUserInfo:void{
+//缺省信息补全&同步信息更新 by steve02081504
+OnNotifyUserInfo{
 	if (!username) && reference0{
 		case reference0{
 			when 'Administrator','User','Guest','SYSTEM','admin','管理员','root'{
@@ -79,8 +79,63 @@ OnNotifyUserInfo:void{
 		}
 	}
 	if (!birthday) && reference2{
-		OnBirthdayInput(reference2)
+		void OnBirthdayInput(reference2)
 	}
+	_name_changed = 0
+	_username = ''
+	if GetPhase > 1{
+		_name_changed=username != reference0 && Baseware.Config.username != reference0 && reference0
+		_username=reference0
+	}else{
+		_name_changed=username != reference1 && Baseware.Config.username != reference1 && reference1
+		_username=reference1
+	}
+	_birthday_changed=birthday != reference2 && Baseware.Config.birthday != reference2
+	if _name_changed || _birthday_changed{
+		'同步ssp设定中的'
+		--
+		if _name_changed
+			"用户名『%(_username)』"
+		--
+		if _birthday_changed{
+			if _name_changed
+				'和'
+			--
+			"生日“%(reference2)”"
+		}
+		--
+		'?\n/
+		\q[◇同步,'
+		--
+		if _name_changed&&_birthday_changed
+			'OnNotifyUserInfo.bothUpdate'
+		elseif _name_changed
+			'OnUserNameInput'
+		elseif _birthday_changed
+			'OnBirthdayInput'
+		--
+		if _name_changed
+			",%(SakuraScriptArgConverter(_username))"
+		--
+		if _birthday_changed
+			",%(SakuraScriptArgConverter(reference2))"
+		--
+		"]\n/
+		\q[◇无用,Cancel]\n/
+		"
+	}
+	--
+	if GetPhase > 1
+		Baseware.Config.username = reference0
+	else
+		Baseware.Config.username = reference1
+	Baseware.Config.birthday = reference2
+}
+OnNotifyUserInfo.bothUpdate{
+	void OnBirthdayInput(reference1)
+	'生日已更新\w9\w9\n'
+	--
+	OnUserNameInput
 }
 //硬件接入by steve02081504
 OneDeviceChange.GetDeviceUuid{
@@ -287,6 +342,8 @@ OnInstallComplete{
 		'追加档案'
 	elseif reference0 == 'headline'
 		'在线新闻'
+	elseif reference0 == 'language'
+		'语言包'
 	elseif 'with' _in_ reference0
 		'复合物'
 	else
@@ -311,24 +368,22 @@ OnInstallComplete{
 	--
 	'\n'
 	--
-	if reference0 == 'shell'{
-		"/
-		\q[◇切换,OnSilentChangeShell,%(reference1)]\n/
-		\q[◇无用,Cancel]\n"
-	}
-	elseif reference0 == 'ghost'{
+	if 'ghost' _in_ reference0 {
 		"/
 		\q[◇切换,OnChangeGhost,%(reference1)]\n/
 		\q[◇呼叫,OnCallGhost,%(reference1)]\n/
 		\q[◇无用,Cancel]\n"
 	}
-	elseif reference0 == 'balloon'{
+	elseif 'shell' _in_ reference0{
+		"/
+		\q[◇切换,OnSilentChangeShell,%(reference1)]\n/
+		\q[◇无用,Cancel]\n"
+	}
+	elseif 'balloon' _in_ reference0{
 		"/
 		\q[◇切换,OnChangeBalloon,%(reference1)]\n/
 		\q[◇无用,Cancel]\n"
 	}
-	--
-	''
 }
 //---- インストール失败 -----------------------------------------------------------------------------------------------
 OnInstallFailure{
@@ -353,9 +408,9 @@ OnInstallFailure{
 		\w9\w9\0\s[8]那是什么？'
 	}
 	elseif 'invalid' _in_ reference0{
-		'\1\s[10]安装包的格式有误\n/
+		"\1\s[10]安装包的格式有误（%(reference0)）\n/
 		\s[13]真是怠惰\n/
-		\w9\w9\0\s[8]不管怎样\w9，试图创作什么已经是很了不起的举动了呢'
+		\w9\w9\0\s[8]不管怎样\w9，试图创作什么已经是很了不起的举动了呢"
 	}
 	else
 		"\1\s[10]原因是：%(reference0)。"
@@ -503,7 +558,7 @@ OnUpdateCheckFailure{
 	--
 	'\n\n/
 	\q[◇切换更新源,MirrorChange]\n/
-	\q[◇尝试人工更新,OnUrlOpen,https://github.com/Taromati2/Taromati2/blob/master/md/points_for_attention.md#%E4%B8%80%E5%88%9D%E6%AC%A1%E5%90%AF%E5%8A%A8%E6%9B%B4%E6%96%B0]\n/
+	\q[◇尝试人工更新,OnUrlOpen,https://github.com/Taromati2/Taromati2/blob/master/docs/points_for_attention.md#%E4%B8%80%E5%88%9D%E6%AC%A1%E5%90%AF%E5%8A%A8%E6%9B%B4%E6%96%B0]\n/
 	\q[◇反馈问题,OnUrlOpen,https://github.com/Taromati2/Taromati2#bug%E5%8F%8D%E9%A6%88]\n/
 	\q[◇终了,Cancel]\n/
 	'
@@ -614,7 +669,7 @@ OnUpdateFailure{
 		--
 		'\n\n/
 		\q[◇切换更新源,MirrorChange]\n/
-		\q[◇尝试人工更新,OnUrlOpen,https://github.com/Taromati2/Taromati2/blob/master/md/points_for_attention.md#%E4%B8%80%E5%88%9D%E6%AC%A1%E5%90%AF%E5%8A%A8%E6%9B%B4%E6%96%B0]\n/
+		\q[◇尝试人工更新,OnUrlOpen,https://github.com/Taromati2/Taromati2/blob/master/docs/points_for_attention.md#%E4%B8%80%E5%88%9D%E6%AC%A1%E5%90%AF%E5%8A%A8%E6%9B%B4%E6%96%B0]\n/
 		\q[◇反馈问题,OnUrlOpen,https://github.com/Taromati2/Taromati2#bug%E5%8F%8D%E9%A6%88]\n/
 		\q[◇终了,Cancel]\n/
 		'

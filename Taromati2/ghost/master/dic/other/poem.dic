@@ -12,7 +12,6 @@ OnResearchPoesy{
 	\n[half]\q[◇返回,OnOpenMenu,1]\n\q[◇结束,OnverPoesy]"
 }
 OnverPoesy{
-	ERASvalueex
 	"好的,橘花知道了...\![close,inputbox,%(reference0)]"
 	"好的...\![close,inputbox,%(reference0)]"
 }

@@ -86,18 +86,20 @@ KikkaMenu{
 		--
 		"\_l[82]\![*]\q[购买物品  ,OnKikkaItemList,0]\![*]\q[日程安排  ,OnKikkaClass,%(weekday)]\![*]\q[礼物盒子,Ongiftbox]\n"
 		--
-		//'\_l[176,347]\q[◇Reset,OnKikkaReset]'
-		--
 		infomode=0
 		KikkaStatus
+		--
+		if SHIORI_FW.DebugMode
+			'\_l[176,347]\q[◇Reset,OnCalculateVar,OnKikkaReset]'
 	}
 	elseif showkikka==2 {
 		'\c\![set,choicetimeout,0]\_l[0,0]' + ColorText('\__q[OnKikkaMenu,0]\f[cursorstyle,none]\f[cursorfontcolor,65,203,214]─────────橘花养成系统↓────────\f[cursorstyle,default]\f[cursorfontcolor,default]\__q\n[140]','color=160,160,200')
 		--
-		//'\_l[176,347]\q[◇Reset,OnKikkaReset]'
-		--
 		infomode=0
 		KikkaStatusMain
+		--
+		if SHIORI_FW.DebugMode
+			'\_l[220]\q[◇Reset,OnCalculateVar,OnKikkaReset]'
 	}
 	else {
 		'\_l[0,342]' + ColorText('\__q[OnKikkaMenu,1]\f[cursorstyle,none]\f[cursorfontcolor,65,203,214]─────────橘花养成系统↑────────\f[cursorstyle,default]\f[cursorfontcolor,default]\__q\n','color=160,160,200')
@@ -112,7 +114,7 @@ OnKikkaMenu{
 }
 KikkaStatusChange{
 	_ref = _argv[0]
-	if ISVAR('kikkaexp') <= 0 {
+	if !ISVAR('kikkaexp') {
 		OnKikkaReset
 	}
 	if 'exp=' _in_ _ref {
@@ -259,7 +261,7 @@ KikkaStatusMain{
 	_txt =''
 	_txt += '\_l[0,-]'
 	_txt += ColorText("\q[◇头衔：%(KikkaTitle),OnKikkaTitle]","bold,height=16,name=Arial,color=%(ColorIdx(6))")
-	_txt+=ColorText("\n[20]\_l[160,-]总经验：%(KikkaTotleExp(kikkalvl))","bold,color=%(ColorIdx(6))")
+	_txt += ColorText("\n[20]\_l[160,-]总经验：%(KikkaTotleExp(kikkalvl))","bold,color=%(ColorIdx(6))")
 	_txt += ColorText("\n等级：%(kikkalvl)","bold,height=16,name=Arial,color=%(ColorIdx(6))")
 	_txt += ColorText('\n[20]\_l[130,-]经验：',"bold,color=%(ColorIdx(3))") + ColorBar(3,175,kikkaexp,kikkaexpmax,,'colortxt=178')
 	_txt += ColorText("\n[half]\n\_l[0,-]生命值：%(hp0)/%(hpmax0)\_l[240]\q[◇任务,OnRpgGame,5]","bold,color=%(ColorIdx(6))") + ColorBar(6,130,hp0,hpmax0)
@@ -449,7 +451,8 @@ OnKikkaItemList{
 }
 KikkaItemTalk{
 	_tmp = _argv[0]
-	('\0\s[40]\b[2]\要买什么东西给橘花呢？',/
+	(/
+	'\0\s[40]\b[2]\要买什么东西给橘花呢？',/
 	'\0\s[8]\b[2]哎……钱不够呀！！\w9',/
 	'\0\s[3]\b[2]嗯……\w9嗯，好难吃啊……\w9\1要不要喝水啊？\0',/
 	'\0\s[5]\b[2]嗯……\w9好好吃哦~~\w9\1真的么？\w9难道是肯德基？\0',/
@@ -458,7 +461,7 @@ KikkaItemTalk{
 	'\0\s[27]\b[2]好沉……\w9\1\s[11]喂喂，别乱挥呀！\0',/
 	'\0\s[22]\b[2]新玩具？\w9给我的吗？\w9我保证……\1\s[13]不要用XT002的口气说话= =\0',/
 	'\0\s[2]\b[2]好贵的钢笔……\w9',/
-	"\0\s[5]\b[2]电脑正好需要升级了，\w9谢谢%(username)^^\w9\1才刚用过没多久吧……\0",/
+	"\0\s[5]\b[2]电脑正好需要升级了，\w9谢谢%(username)^_^\w9\1才刚用过没多久吧……\0",/
 	'\0\s[26]\b[2]哇……\w9是我喜欢的香味呢……\w9',/
 	'\0\s[28]\b[2]好漂亮……\w9那个…\w9谢谢你……\w9',/
 	)[_tmp]

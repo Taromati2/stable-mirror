@@ -29,11 +29,6 @@ OnGoldenFlower{
 	towapass=0//斗和弃牌
 	kikkapass=0//橘花弃牌
 	circle=0//单局回合数
-	if bombdayoff!=day{
-		bombdayoff=day
-		kikkacoin=10000
-		towacoin=10000
-	}
 	kikkaflowermoney=kikkacoin
 	towaflowermoney=towacoin
 	cardwin=-1
@@ -561,6 +556,7 @@ OnCardGameOver{
 	_txt
 }
 ClearGoldenFlowerVar{
+	ERASEVAR('bombdayoff')
 	ERASEVAR('playGoldenFlower')
 	ERASEVAR('cardX')
 	ERASEVAR('cardY')

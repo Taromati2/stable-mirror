@@ -156,7 +156,7 @@ Onupdatenotebook{
 	}
 	elseif state=='update.Title'{
 		if STRLEN(reference0)>0{
-			_temp=SQLite("UPDATE notes SET title='%(reference0)' WHERE title='%(ID)'")
+			void SQLite("UPDATE notes SET title='%(reference0)' WHERE title='%(ID)'")
 			_txt+='更改已完成\n'
 		}
 		else
@@ -167,8 +167,8 @@ Onupdatenotebook{
 	elseif state=='update.Content'{
 		_c=SQLite('-j',"SELECT content FROM notes WHERE title='%(ID)'")
 		if STRLEN(reference0)>0{
-			_temp=SQLite("UPDATE notes SET content='%(reference0)' WHERE title='%(ID)'")
-			_temp=SQLite("UPDATE notes SET date='%(year)-%(month)-%(day)' WHERE title='%(ID)'")
+			void SQLite("UPDATE notes SET content='%(reference0)' WHERE title='%(ID)'")
+			void SQLite("UPDATE notes SET date='%(year)-%(month)-%(day)' WHERE title='%(ID)'")
 			_txt+='更改已完成\n'
 		}
 		else
@@ -1481,7 +1481,7 @@ OnJapaneseWordLoad{
 		}
 		elseif _booknum==7{
 			if _j==1{
-				_buff = FREAD(_file);tt=_file
+				_buff = FREAD(_file)
 				_buff=REPLACE(_buff,'	','|')
 				if '-----' !_in_ _buff &&('〔' _in_ _buff || '|' _in_ _buff)&&'汉字  假名' !_in_ _buff{
 					_txt += "\__q[OnJapaneseWordLoadset,addhardword,%(_a),%(_booknum),%(_buff)]"+_n+'.'+_buff + '\__q\n'
@@ -2055,7 +2055,6 @@ JapWordDay{
 						_misword+=_buff+'$'
 					_temp++
 				}
-				t=_temp
 			}
 		}
 		FCLOSE(_file)

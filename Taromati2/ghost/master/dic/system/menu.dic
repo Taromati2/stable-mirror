@@ -90,7 +90,7 @@ SubMenu{
 					\q[◇其它服务,otherserv]			\_l[100,-]\q[◇橘花知识库,OnKikkaKnowl]			\_l[200,-]%(Onclosetouch)\n"
 				}
 				when 1{
-					"\q[◇大头贴5连拍,OnSnap]			\_l[168,-]\q[◇橘花表情秀,Onkikkaface]\n/
+					"/
 					\q[◇斗和与橘花爱的选择,Kikkaortowa]	\_l[168,-]\q[◇橘花的忧郁,melancholy]\n/
 					\q[◇%(username)被欺负了,bully]		\_l[168,-]\q[◇准备晚餐,Cookingtonight]\n/
 					"
@@ -596,7 +596,7 @@ Select.System{
 		_color = '238,50,95'
 	}
 	_sysname=CALLSAORI('cpuid','os.name')
-	"\*\0\s[0]\b[2]像这个样子。\n\n\_q/
+	"\*\0\s[0]\b[2]像这个样子。\n\_q\n/
 	%(year)年%(month)月%(day)日  \f[color,%(_color)]星期%(lunardata[3])\f[color,default]   %(_ampm)%(_hour)点%(minute)分\n/
 	农历 %(lunardata[4])年 %(lunardata[5])月%(lunardata[6])    \f[color,238,50,95]%(lunardata[10])\f[color,default]\n[150]/
 	\n[half]/
@@ -636,6 +636,9 @@ TheDefaultValue:void{
 	if !ISVAR(_argv[0])
 		EVAL(_argv[0]+'='+_argv[1])
 }
+OnOptionSet:void{
+	Select.Option
+}
 Select.Option{
 	'\_q\b[2]'
 	--
@@ -671,7 +674,7 @@ Select.Option{
 	'■其他设定■\n'
 	--
 	TheDefaultValue('AllowInternetIPShowing','0')
-	"显示外网IP		\_l[120]\q[%(_t[TOINT(AllowInternetIPShowing)]) ON,Onusage,AllowInternetIPShowing,1]  ・  \_l[180]\q[%(_t[1 - TOINT(talkSwitch.story)]) OFF,Onusage,AllowInternetIPShowing,0]\n"
+	"显示外网IP		\_l[120]\q[%(_t[TOINT(AllowInternetIPShowing)]) ON,Onusage,AllowInternetIPShowing,1]  ・  \_l[180]\q[%(_t[1 - TOINT(AllowInternetIPShowing)]) OFF,Onusage,AllowInternetIPShowing,0]\n"
 	--
 	TheDefaultValue('kikkacareonherself','0')
 	"自我照顾		\_l[120]\q[%(_t[TOINT(kikkacareonherself)]) ON,Onusage,kikkacareonherself,1]  ・  \_l[180]\q[%(_t[1 - TOINT(kikkacareonherself)]) OFF,Onusage,kikkacareonherself,0]\n"
@@ -695,7 +698,7 @@ Select.Option{
 	"重叠反应		\_l[120]\q[%(_t[TOINT(kasanariswitch)]) ON,Onusage,kasanariswitch,1]  ・  \_l[180]\q[%(_t[1 - TOINT(kasanariswitch)]) OFF,Onusage,kasanariswitch,0]\n"
 	--
 	TheDefaultValue('silent','0')
-	"效果音			\_l[120]\q[%(_t[TOINT(silent)]) ON,Onusage,silent,1]  ・  \_l[180]\q[%(_t[1 - TOINT(silent)]) OFF,Onusage,silent,0]\n"
+	"效果音			\_l[120]\q[%(_t[1 - TOINT(silent)]) ON,Onusage,silent,0]  ・  \_l[180]\q[%(_t[TOINT(silent)]) OFF,Onusage,silent,1]\n"
 	--
 	TheDefaultValue('timerm','1')
 	"整点报时		\_l[120]\q[%(_t[1 - TOINT(timerm)]) ON,Onusage,timerm,0]  ・  \_l[180]\q[%(_t[TOINT(timerm)]) OFF,Onusage,timerm,1]\n"
@@ -1055,7 +1058,7 @@ Select.Exit{
 }
 //----------------------称呼-----------------------------------------
 OnUserNameChange{
-	if reference0 == 1 {
+	if reference0 {
 		"\0\s[26]那么、该怎么称呼呢？\![open,inputbox,OnUserNameInput,-1,%(username)]"
 	}
 	else {
@@ -1072,7 +1075,8 @@ OnUserNameInput{
 		\q[◇终了,OptionEnd]'
 	}
 	elseif reference0 == ''	{
-		"\0\s[6]好的。\w9\s[0]\n那么、往后就用\w9\s[26]\n『无名氏』\w9来称呼喔。\w9\w9\n\n[half]…\w9开玩笑的。/
+		"\0\s[6]好的。\w9\s[0]\n那么、往后就用\w9\s[26]\n『无名氏』\w9来称呼喔。\w9\w9\n\n[half]/
+		…\w9开玩笑的。\n/
 		\w9\n继续称呼『%(username)』就可以了吗\w9？\n[150]/
 		\q[◇返回上一层,OnOpenMenu,4]\n/
 		\q[◇终了,OptionEnd]"
@@ -1555,77 +1559,6 @@ Select.Nekoganzume{
 }
 Select.Matatabi{
 	"\0\s[0]\1\s[10]喔？\w9好啊好啊，\w9我很久没吃了呢。\n\w9\w9\0\s[0]%(username)...\w9斗和是猫，\w9不能灌醉后偷袭她喔...\n\w9\w9\1\s[10]没关系，\w9有木天蓼怎样都无所谓，\w9\n\0\s[23]...\n\1\s[10]何况我才不会让他...\0我先来教训一下因食欲而失去理智、\w9胡说八道的斗和。\n\w9\w9\1\s[10]咦！？\n\w9\w9\0\s[27]%(username)是下一个喔～\w9\w9\1\s[12]咦咦？！\w9还愣着干吗？\w9快逃啊～！\s[-1]"
-}
-//大头贴五连拍
-//-------------------------------------------------------------------
-OnSnap{
-	"\0\s[5]%(username)想看我大头贴5连拍啊？可以啊！！\w8/
-	\1\s[10]我来当摄影师吧～喵！！\n\n/
-	\q[◇请按下拍照键,STOPSUN]\n"
-}
-Select.STOPSUN{
-	Snap.A1
-	Snap.A2
-	Snap.A3
-	Snap.A4
-	Snap.A5
-}
-Snap.A1{
-	"\0\s[5]准备好了吗……？？\w8\w8\s[40]那我要开始咯！！/
-	\w8\w8\1\快开始吧，%(username)等好久了……/
-	\w8\w8\w8\w8\w8\0\n\s[0] (1...)/
-	\w8\w8\w8\w8\w8\0\n\s[2] (2...)/
-	\w8\w8\w8\w8\w8\0\n\s[1] (3...)/
-	\w8\w8\w8\w8\w8\0\n\s[5] (4...)/
-	\w8\w8\w8\w8\w8\0\n\s[25] (5...)/
-	\w8\w8\1\OK拍完了……！！/
-	\w8\w8\0\n\s[33]好害羞喔…%(username)喜欢拍拍的橘花吗？"
-}
-Snap.A2{
-	"\0\s[5]准备好了吗……？？\w8\w8\s[40]那我要开始咯！！/
-	\w8\w8\1\快开始吧，%(username)等好久了……/
-	\w8\w8\w8\w8\w8\0\n\s[5] (1...)/
-	\w8\w8\w8\w8\w8\0\n\s[9] (2...)/
-	\w8\w8\w8\w8\w8\0\n\s[5] (3...)/
-	\w8\w8\w8\w8\w8\0\n\s[20] (4...)/
-	\w8\w8\w8\w8\w8\0\n\s[23] (5...)/
-	\w8\w8\1\OK拍完了……！！/
-	\w8\w8\0\n\s[33]好害羞喔…%(username)喜欢拍拍的橘花吗？"
-}
-Snap.A3{
-	"\0\s[5]准备好了吗……？？\w8\w8\s[40]那我要开始咯！！/
-	\w8\w8\1\快开始吧，%(username)等好久了……/
-	\w8\w8\w8\w8\w8\0\n\s[21] (1...)/
-	\w8\w8\w8\w8\w8\w8\0\n\s[117] (2变身)\w8\w8\1\s[11]……你觉得很好玩是吗？/
-	\w8\w8\0\n\s[8]对不起啦……我继续喔！/
-	\w8\w8\w8\w8\w8\0\n\s[22] (3...)/
-	\w8\w8\w8\w8\w8\0\n\s[5] (4...)/
-	\w8\w8\w8\w8\w8\0\n\s[27] (5...)/
-	\w8\w8\1\OK拍完了……！！/
-	\w8\w8\0\n\s[33]好害羞喔…%(username)喜欢拍拍的橘花吗？"
-}
-Snap.A4{
-	"\0\s[5]准备好了吗……？？\w8\w8\s[40]那我要开始咯！！/
-	\w8\w8\1\快开始吧，%(username)等好久了……/
-	\w8\w8\w8\w8\w8\0\n\s[100] (1...)/
-	\w8\w8\w8\w8\w8\0\n\s[34] (2...)/
-	\w8\w8\w8\w8\w8\0\n\s[40] (3...)/
-	\w8\w8\w8\w8\w8\0\n\s[33] (4...)/
-	\w8\w8\w8\w8\w8\0\n\s[28] (5...)/
-	\w8\w8\1\OK拍完了……！！/
-	\w8\w8\0\n\s[33]好害羞喔…%(username)喜欢拍拍的橘花吗？"
-}
-Snap.A5{
-	"\0\s[5]准备好了吗……？？\w8\w8\s[40]那我要开始咯！！/
-	\w8\w8\1\快开始吧，%(username)等好久了……/
-	\w8\w8\w8\w8\w8\0\n\s[250] (1...)/
-	\w8\w8\w8\w8\w8\w8\0\n\s[111] (2变身)\w8\w8\1\s[11]……你觉得很好玩是吗？/
-	\w8\w8\0\n\s[8]对不起啦……我继续喔！/
-	\w8\w8\w8\w8\w8\0\n\s[35] (3...)/
-	\w8\w8\w8\w8\w8\0\n\s[27] (4...)/
-	\w8\w8\w8\w8\w8\0\n\s[51] (5...)/
-	\w8\w8\1\OK拍完了……！！/
-	\w8\w8\0\n\s[33]好害羞喔…%(username)喜欢拍拍的橘花吗？"
 }
 //---- メニュー选択タイムアウト ---------------------------------------------------------------------------------------
 //-----寝室(开始)-----

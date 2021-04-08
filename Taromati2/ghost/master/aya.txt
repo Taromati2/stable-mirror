@@ -10,18 +10,18 @@ charset.extension, default
 //---- 読み込む辞書 ---------------------------------------------------------------------
 
 //aya基础函数
-dic, aya\path_def.dic		//文 ver.3 形式辞書設定辞書
-dic, aya\config.dic			//文 ver.3 形式辞書設定辞書
-dic, aya\shiori.dic			//文 ver.3 形式辞書制御辞書
-dic, aya\compatible.dic		//AYAに移行用
-dic, aya\sysex.dic			//shiori.dicから分離した
-dic, aya\string.dic			//文字列リソース辞書
-dic, aya\ghost.dic			//by steve02081504
-dic, aya\baseware.dic		//by steve02081504
-dic, aya\file.dic			//by steve02081504
-dic, aya\url.dic			//by steve02081504
-dic, aya\cmd.dic			//by steve02081504
-dic, aya\LOADVAR.dic		//by steve02081504
+dic, dic\aya\path_def.dic		//文 ver.3 形式辞書設定辞書
+dic, dic\aya\config.dic			//文 ver.3 形式辞書設定辞書
+dic, dic\aya\shiori.dic			//文 ver.3 形式辞書制御辞書
+dic, dic\aya\compatible.dic		//AYAに移行用
+dic, dic\aya\sysex.dic			//shiori.dicから分離した
+dic, dic\aya\string.dic			//文字列リソース辞書
+dic, dic\aya\ghost.dic			//by steve02081504
+dic, dic\aya\baseware.dic		//by steve02081504
+dic, dic\aya\file.dic			//by steve02081504
+dic, dic\aya\url.dic			//by steve02081504
+dic, dic\aya\cmd.dic			//by steve02081504
+dic, dic\aya\LOADVAR.dic		//by steve02081504
 
 //系统部分
 //基础
@@ -55,15 +55,15 @@ dic, dic\system\StateGraph.dic		//最近的ssp的AI属性图绘制支持
 
 //交流
 //触碰反应
-dic, dic\communicate\touch\touch.dic		//マウス入力関連辞書
+dic, dic\communicate\touch\touch.dic			//マウス入力関連辞書
 //对话
-dic, dic\communicate\talk\pseudoAI.dic		//伪AI数据库
-dic, dic\communicate\talk\learn.dic			//学习、手动教学
-dic, dic\communicate\talk\talk.dic			//ランダムトーク辞書//使仆对话
-dic, dic\communicate\talk\talk_t.dic		//使魔对话
-dic, dic\communicate\talk\other_ghost.dic	//人格间交流
+dic, dic\communicate\talk\pseudoAI.dic			//伪AI数据库
+dic, dic\communicate\talk\learn.dic				//学习、手动教学
+dic, dic\communicate\talk\talk.dic				//ランダムトーク辞書//使仆对话
+dic, dic\communicate\talk\talk_t.dic			//使魔对话
+dic, dic\communicate\talk\other_ghost.dic		//人格间交流
 //H
-dic, dic\communicate\H\H.dic				// 由在蹲局子的steve02081503编写
+dic, dic\communicate\H\H.dic					// 由在蹲局子的steve02081503编写
 
 //养成部分
 dic, dic\nurturance\nurturance.dic		//养成系统

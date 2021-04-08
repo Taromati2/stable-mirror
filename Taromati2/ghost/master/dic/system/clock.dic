@@ -82,7 +82,7 @@ OnMinuteChange{
 			elseif hour == 23 && minute == 30{
 				"\0\s[5]现在是%(hour)点%(minute)分，\w9\w4要不要考虑吃个宵夜呢。\n%(Onlatesupper)"
 			}
-			elseif (_boottime % 3600 <= 60) && _boottime >= 60{//每启动满一小时时开头一分钟，第一小时除外
+			elseif (_boottime % 3600 <= 60) && _boottime >= 3600{//每启动满一小时时开头一分钟，第一小时除外
 				{
 					_worktime = _boottime / 3600
 					"\1\s[10]我们连续工作了%_worktime小时啊。\w9\s[12]\n把薪水交出来。\w9\w9\0\s[30]不是什么都没做吗。"
@@ -779,7 +779,7 @@ AgendaMonitor{
 		_eventasakura=_event[17,'	']
 		_eventsound=_event[18,'	']
 		_event[25,'	']=REPLACE(_event[25,'	'],'/','\\')
-		_eventapp=_event[25,'	'];tt=_eventapp
+		_eventapp=_event[25,'	']
 		_w=''
 		_w+='日程提醒：\n'
 		_w+='事件种类：'+_eventsort+'\n'
@@ -848,26 +848,25 @@ EventRemindCheck{
 			_tt=(_x,GETSECCOUNT(_eventbegindate[0]+1,_eventbegindate[1],_eventbegindate[2],0,hour,minute,0))[_eventrepeat-4]
 			_Ta=_tc+_tt-_t-(_tc-_TA)%(_tt-_t)
 		}
-		(_start,_Ta,_Tb);t=(_start,_Ta,_Tb)
+		(_start,_Ta,_Tb)
 		return
 	}
 	if _eventremind<=_Tflag&&_eventrepeat<4&&(_tc-_ta)%(_t*24*60*60)==0&&_tc-_ta>=0&&_tc<=_td{//提醒时间小于1天前重复模式在每月前
 		_Ta=_TA+_tc-_ta
-		_Tb=_TB+_tc-_ta;t=(_Ta,_TC+_T[_eventremind],1)
+		_Tb=_TB+_tc-_ta
 	}
 	elseif _eventrepeat<4&&(_tc-_ta+_T[_eventremind])%(_t*24*60*60)==0&&_tc-_ta>=0&&_tc<=_td{//提醒时间大于等于1天前
 		_Ta=_TA+_tc-_ta+_T[_eventremind]
-		_Tb=_TB+_tc-_ta+_T[_eventremind];;t=(_Ta,_TC+_T[_eventremind],2,_Th)
+		_Tb=_TB+_tc-_ta+_T[_eventremind]
 	}
 	else{//重复模式在每月后
 		if _eventremind<=_Tflag&&_tc>=_ta&&(_tc==_t)&&_tc<=_td{//提醒时间小于1天前
 			_Ta=_TA+_tc-_ta
-			_Tb=_TB+_tc-_ta;t=5
+			_Tb=_TB+_tc-_ta
 		}
 		elseif _tc>_ta&&(_tc+_T[_eventremind]==_t)&&_tc<=_td{//提醒时间大于1天前
 			_Ta=_TA+_tc-_ta+_T[_eventremind]
 			_Tb=_TB+_tc-_ta+_T[_eventremind]
-			t=(_TC+_T[_eventremind],_TA)
 		}
 	}
 	if _eventremind
@@ -895,7 +894,7 @@ EventRemindCheck{
 		}
 	}
 	if _eventseremind{
-		_Tt=_TC+_T[_eventseremind]+_Th;tt=(_ta,_Tt)
+		_Tt=_TC+_T[_eventseremind]+_Th
 	}
 	if _Ta==_Tt{
 		agendastart=1

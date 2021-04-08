@@ -383,6 +383,10 @@ OnCalculateVar{
 		reference0 = _argv[0]
 	if _argv[1]
 		reference1 = _argv[1]
+	if !reference0{
+		'\![open,inputbox,OnCalculateVar]'
+		return
+	}
 	if reference1 != 'warning_func_run' && reference1 != 'force_run' && reference1 != 'no_convert' && ('，' _in_ reference0 || '（' _in_ reference0 || '）' _in_ reference0 || '‘' _in_ reference0 || '’' _in_ reference0 || '“' _in_ reference0 || '”' _in_ reference0 || '！' _in_ reference0 || '、' _in_ reference0 || '？' _in_ reference0 || '。' _in_ reference0 || '【' _in_ reference0 || '】' _in_ reference0){
 		if mode == '1'
 			"\1\s[%(specialmode != 'mealtime')11]全角 -> 半角？\n"
@@ -404,6 +408,7 @@ OnCalculateVar{
 		--
 		'/
 		\q[◇仍然执行,OnCalculateVar,'+SakuraScriptArgConverter(reference0)+',force_run]\n/
+		\q[◇改作Sakura Script執行,OnSakuraScript,'+SakuraScriptArgConverter(reference0)+']\n/
 		\q[◇算了,Cancel]/
 		'
 		return
@@ -442,21 +447,23 @@ OnCalculateVar{
 		--
 		__t=TOSTR(EVAL(reference0))
 		_t=REPLACE(__t,'\','\\')
+		'\_q'
+		--
 		if __t == ''
 			'什么都没有'
-		else{
-			'\_q'
-			--
+		else
 			_t
-			--
-			'\_q\n/
-			\q[◇复制结果,OnCopy,'+SakuraScriptArgConverter(__t)+']\n/
-			\q[◇复制表达式,OnCopy,'+SakuraScriptArgConverter(reference0)+']\n/
-			\q[◇结果作Sakura Script執行,OnSakuraScript,'+SakuraScriptArgConverter(__t)+']\n/
-			'
-			--
-			'\n\q[◇无用,Cancel]\n'
-		}
+		--
+		'\_q\n/
+		\q[◇复制结果,OnCopy,'+SakuraScriptArgConverter(__t)+']\n/
+		\q[◇复制表达式,OnCopy,'+SakuraScriptArgConverter(reference0)+']\n/
+		\q[◇结果作Sakura Script執行,OnSakuraScript,'+SakuraScriptArgConverter(__t)+']\n/
+		'
+		--
+		'\n/
+		\q[◇求值下一个,OnCalculateVar]\n/
+		\q[◇无用,Cancel]\n/
+		'
 	}
 }
 OnCalculateVar.CharConverter{
