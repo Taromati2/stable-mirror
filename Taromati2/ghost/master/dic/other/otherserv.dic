@@ -1311,7 +1311,7 @@ Select.abouttowa{
 	"\0\s[5]%(username)要和橘花聊聊斗和啊，关于斗和的事情橘花可是知道得一清二楚哦。\n\q[◇关于斗和的身世,at_1]\n\q[◇关于斗和的职业,at_2]\n\q[◇斗和为什么会变身成女王样,at_3]\n\q[◇斗和变身后头发为什么不是黑色的,at_4]\n\q[◇你和斗和是怎么认识的,at_5]\n\q[◇斗和吸的烟是什么牌子的,at_6]\n\q[◇关于斗和的秘密,at_7]\_l[0,130]\q[◇返回,talkwithkikka]　　\q[◇取消,Cancel]\![set,choicetimeout,0]"
 }
 Select.aboutus{
-	"\0\s[1]关于橘花和%(username)的事情啊，\w9关于橘花和%(username)相处的点点滴滴，橘花都记在心里哦。\n\q[◇我们相遇的那一天,au_1]\n\q[◇第一次和橘花说话，不知道说什么好,au_2]\n\q[◇和橘花玩21点，骗了橘花很多钱,au_3]\n\q[◇关于进寝室,au_4]\n\q[◇橘花好感度的增加,au_5]\n\q[◇为了%(username)，橘花开始打工,au_6]\n\q[◇想要更多的了解橘花,au_7]\_l[0,130]\q[◇返回,talkwithkikka]　　\q[◇取消,Cancel]\![set,choicetimeout,0]"
+	"\0\s[1]关于橘花和%(username)的事情啊，\w9关于橘花和%(username)相处的点点滴滴，橘花都记在心里哦。\n\q[◇我们相遇的那一天,au_1]\n\q[◇第一次和橘花说话，不知道说什么好,au_2]\n\q[◇和橘花玩21点，骗了橘花很多钱,au_3]\n\q[◇关于进寝室,au_4]\n\q[◇橘花好感度的增加,au_5]\n\q[◇想要更多的了解橘花,au_6]\_l[0,130]\q[◇返回,talkwithkikka]　　\q[◇取消,Cancel]\![set,choicetimeout,0]"
 }
 Select.ak_1{
 	"\0\s[0]关于身世这个问题，\w9\w9橘花一直都没有告诉%(username)呢，\w9\w9\s[3]橘花出生的年代，\w9\w9正是动荡不安的战乱年代，\w9\w9橘花最初的记忆画面，\w9\w9是一片昏暗与硝烟弥漫的战场上。\w9\w9\w9充满鼻腔的生腥血味，\w9\w9赤红的水面，\w9\w9及被鲜血染红叶片不断掉落的橘子花树，\w9\w9橘花自出生以来，\w9\w9就从没见过双亲的模样，\w9\w9是斗和在橘子花树旁的摇篮里，\w9发现了我，\w9\w9并给我取名叫做橘花，\w9\w9从此橘花和斗和就开始一人一猫相依为命的生活。\_l[0,130]\q[◇返回,aboutkikka]　　\q[◇取消,Cancel]\![set,choicetimeout,0]"
@@ -1364,7 +1364,6 @@ Select.at_7{
 }
 at_7s{
 	"\0\s[5]那天，\w9\w9斗和趁%(username)睡熟了，\w9\w9就睡在%(username)的被子上面，\w9\w9被橘花发现"
-	'\0\s[41]嘻嘻，\w9\w9其实啊，\w9\w9斗和她是\w9……\w9……双性恋'
 	"\0\s[5]斗和那天喝醉了酒，\w9\w9%(username)知道她说了些什么吗？\w9\w9她说呀，\w9她最喜欢的人是%(username)。"
 }
 Select.au_1{
@@ -1407,52 +1406,40 @@ Select.au_5{
 	"\0\s[21]随着和%(username)相处日子的增加，\w9\w9%(username)在橘花心中变得越来越重要了呢，\w9\w9%(username)也为橘花做了很多事情，\w9\w9让橘花感动。\n\q[◇是啊，为了增加好感，我花费了不少时间和精力呢。,au5_1]\_l[0,130]\q[◇返回,aboutus]　　\q[◇取消,Cancel]\![set,choicetimeout,0]"
 }
 Select.au5_1{
-	"\0\s[5]呵呵，\w9\w9说起来，\w9\w9%(username)一直反复刷橘花的好感，\w9\w9这一点，\w9也让橘花不知道该说什么好呢。\n\q[◇那么你能总结出我刷好感的方法吗？,au5_2]\_l[0,130]\q[◇返回,aboutus]　　\q[◇取消,Cancel]\![set,choicetimeout,0]"
-}
-Select.au5_2{
-	"\0\b[2]\![quicksession,true]\s[3]好，刷好感快速有效的方法，\w9\w9\s[27]当当当闪亮登场！\n\s[40]最常规的方法是在休闲面板选择话题，出现选项时即可增加橘花对%(username)的好感\n第二个方法是使用设定的帮助，选关于橘花的生日，再选知道，最后选是%(username)和橘花相遇的日子，能增加2的好感值。\n第三个方法是选择帮助的额外的聊天->有些事情想问你->对我的感情，增加的好感呈阶递性增长。\n第四个方法是选择帮助的橘花的告白，随选项和待机时间有最大值100好感的增加哦。\n第五个方法就是平常多和橘花说话啦，特别是当%(username)说“抱抱”的时候，橘花不知道有多高兴。\n\s[5]最后一个方法有点变态，需要%(username)挂机时间96小时及超过800的好感后，在休闲面板出现的亲密接触的五个动作中不停的点，点一下好感度加1，怎么样，够变态吧。\n\q[◇返回,aboutus]　　\q[◇取消,Cancel]\![set,choicetimeout,0]"
+	"\0\s[5]呵呵，\w9\w9说起来，\w9\w9%(username)一直反复刷橘花的好感，\w9\w9这一点，\w9也让橘花不知道该说什么好呢。\n\_l[0,130]\q[◇返回,aboutus]　　\q[◇取消,Cancel]\![set,choicetimeout,0]"
 }
 Select.au_6{
-	'\0\s[1]快乐的日子过后，\w9\w9随后而至的就是不幸的经历呢。\n\q[◇如果不是那样的话，你就不用打工挣钱了,au6_1]\_l[0,130]\q[◇返回,aboutus]　　\q[◇取消,Cancel]\![set,choicetimeout,0]'
+	"\0\s[20]不知%(username)对橘花的了解到达何种程度了呢?\n\q[◇大致上基本了解了吧,au6_a]\n\q[◇还有不太了解的地方,au6_b]\n\q[◇一点也不了解,au6_c]\_l[0,130]\q[◇返回,aboutus]　　\q[◇取消,Cancel]\![set,choicetimeout,0]"
 }
-Select.au6_1{
-	"\0\s[1]%(username)的父亲做生意被人骗得一无所有，\w9\w9如果橘花不挣钱补贴家用的话，\w9\w9日子就很难过。\w9\w9不过之前%(username)让橘花学习的课程，\w9\w9\s[22]终于能派上用场啦。\n\q[◇橘花，这段时间，辛苦你了,au6_2]\_l[0,130]\q[◇返回,aboutus]　　\q[◇取消,Cancel]\![set,choicetimeout,0]"
+Select.au6_a{
+	"\0\s[2]真的吗，那么橘花出个题考考%(username)吧。\n\q[◇好啊,au6_a1]\_l[0,130]\q[◇返回,aboutus]　　\q[◇取消,Cancel]\![set,choicetimeout,0]"
 }
-Select.au6_2{
-	'\0\s[21]嘿嘿，\w9\w9知道就好，\w9\w9以后要多给橘花买礼物哦，\w9\b[20]例如P90，\w9电脑，\w9钻戒什么的。\_l[0,130]\q[◇返回,aboutus]　　\q[◇取消,Cancel]\![set,choicetimeout,0]'
-}
-Select.au_7{
-	"\0\s[20]不知%(username)对橘花的了解到达何种程度了呢?\n\q[◇大致上基本了解了吧,au7_a]\n\q[◇还有不太了解的地方,au7_b]\n\q[◇一点也不了解,au7_c]\_l[0,130]\q[◇返回,aboutus]　　\q[◇取消,Cancel]\![set,choicetimeout,0]"
-}
-Select.au7_a{
-	"\0\s[2]真的吗，那么橘花出个题考考%(username)吧。\n\q[◇好啊,au7_a1]\_l[0,130]\q[◇返回,aboutus]　　\q[◇取消,Cancel]\![set,choicetimeout,0]"
-}
-Select.au7_a1{
+Select.au6_a1{
 	points = 0
-	'\0\s[7]橘花最喜欢的花是什么花？\n\q[◇樱花,au7_a2]\n\q[◇红玫瑰,answer1]\n\q[◇白牡丹,au7_a2]\_l[0,130]\q[◇返回,aboutus]　　\q[◇取消,Cancel]\![set,choicetimeout,0]'
-	'\0\s[7]橘花爱看的书？\n\q[◇莎士比亚全集,au7_a2]\n\q[◇福尔摩斯探案集,au7_a2]\n\q[◇圣经,answer1]\_l[0,130]\q[◇返回,aboutus]　　\q[◇取消,Cancel]\![set,choicetimeout,0]'
+	'\0\s[7]橘花最喜欢的花是什么花？\n\q[◇樱花,au6_a2]\n\q[◇红玫瑰,answer1]\n\q[◇白牡丹,au6_a2]\_l[0,130]\q[◇返回,aboutus]　　\q[◇取消,Cancel]\![set,choicetimeout,0]'
+	'\0\s[7]橘花爱看的书？\n\q[◇莎士比亚全集,au6_a2]\n\q[◇福尔摩斯探案集,au6_a2]\n\q[◇圣经,answer1]\_l[0,130]\q[◇返回,aboutus]　　\q[◇取消,Cancel]\![set,choicetimeout,0]'
 }
 Select.answer1{
 	points += 1
-	Select.au7_a2
+	Select.au6_a2
 }
-Select.au7_a2{
-	'\0\s[7]橘花爱喝的饮料是？\n\q[◇加糖的咖啡,au7_a3]\n\q[◇加血的红茶,answer2]\n\q[◇加辣椒的芥末茶,au7_a3]\_l[0,130]\q[◇返回,aboutus]　　\q[◇取消,Cancel]\![set,choicetimeout,0]'
-	'\0\s[7]橘花爱玩的游戏类型？\n\q[◇飞行射击类,answer2]\n\q[◇动作过关类,au7_a3]\n\q[◇角色扮演类,au7_a3]\_l[0,130]\q[◇返回,aboutus]　　\q[◇取消,Cancel]\![set,choicetimeout,0]'
+Select.au6_a2{
+	'\0\s[7]橘花爱喝的饮料是？\n\q[◇加糖的咖啡,au6_a3]\n\q[◇加血的红茶,answer2]\n\q[◇加辣椒的芥末茶,au6_a3]\_l[0,130]\q[◇返回,aboutus]　　\q[◇取消,Cancel]\![set,choicetimeout,0]'
+	'\0\s[7]橘花爱玩的游戏类型？\n\q[◇飞行射击类,answer2]\n\q[◇动作过关类,au6_a3]\n\q[◇角色扮演类,au6_a3]\_l[0,130]\q[◇返回,aboutus]　　\q[◇取消,Cancel]\![set,choicetimeout,0]'
 }
 Select.answer2{
 	points += 1
-	Select.au7_a3
+	Select.au6_a3
 }
-Select.au7_a3{
-	'下面哪一个不是橘花的称呼？\n\q[◇腹黑loli,au7_a4]\n\q[◇小公主,au7_a4]\n\q[◇傲娇女,answer3]\n\q[◇杀人鬼,au7_a4]\_l[0,130]\q[◇返回,aboutus]　　\q[◇取消,Cancel]\![set,choicetimeout,0]'
-	'\0\s[7]橘花使用的武器中，没有下面哪一样?\n\q[◇激光剑,au7_a4]\n\q[◇AK-47,answer3]\n\q[◇葱,au7_a4]\n\q[◇剪刀,au7_a4]\n\q[◇以上皆无,au7_a4]\_l[0,130]\q[◇返回,aboutus]　　\q[◇取消,Cancel]\![set,choicetimeout,0]'
+Select.au6_a3{
+	'下面哪一个不是橘花的称呼？\n\q[◇腹黑loli,au6_a4]\n\q[◇小公主,au6_a4]\n\q[◇傲娇女,answer3]\n\q[◇杀人鬼,au6_a4]\_l[0,130]\q[◇返回,aboutus]　　\q[◇取消,Cancel]\![set,choicetimeout,0]'
+	'\0\s[7]橘花使用的武器中，没有下面哪一样?\n\q[◇激光剑,au6_a4]\n\q[◇AK-47,answer3]\n\q[◇葱,au6_a4]\n\q[◇剪刀,au6_a4]\n\q[◇以上皆无,au6_a4]\_l[0,130]\q[◇返回,aboutus]　　\q[◇取消,Cancel]\![set,choicetimeout,0]'
 }
 Select.answer3{
 	points += 1
-	Select.au7_a4
+	Select.au6_a4
 }
-Select.au7_a4{
+Select.au6_a4{
 	if points == 0{
 		"\0\s[25]看来%(username)对橘花一点也不了解呢\_l[0,130]\q[◇返回,aboutus]　　\q[◇取消,Cancel]\![set,choicetimeout,0]"
 	}
@@ -1467,12 +1454,12 @@ Select.au7_a4{
 	}
 	ERASEVAR('points')
 }
-Select.au7_b{
-	"\0\s[0]是吗，可能橘花和%(username)相处时间不长吧，\w9\w9\s[1]橘花有一个心愿\n\q[◇什么心愿,au7_b1]\_l[0,130]\q[◇返回,aboutus]　　\q[◇取消,Cancel]\![set,choicetimeout,0]"
+Select.au6_b{
+	"\0\s[0]是吗，可能橘花和%(username)相处时间不长吧，\w9\w9\s[1]橘花有一个心愿\n\q[◇什么心愿,au6_b1]\_l[0,130]\q[◇返回,aboutus]　　\q[◇取消,Cancel]\![set,choicetimeout,0]"
 }
-Select.au7_b1{
+Select.au6_b1{
 	"\0\s[1]橘花希望，\w9%(username)能够一直记得橘花，\w9\w9即使有一天，\w9橘花不在%(username)的身边，\w9或者%(username)有了女朋友，\w9也不要把橘花忘掉\_l[0,130]\q[◇返回,aboutus]　　\q[◇取消,Cancel]\![set,choicetimeout,0]"
 }
-Select.au7_c{
+Select.au6_c{
 	"\0\s[2]%(username)真的对橘花一点也不了解吗，\w9%(username)是初次和橘花见面吧，\w9要不要橘花作个自我介绍呢？\n\q[◇好啊,Introduction]\_l[0,130]\q[◇返回,aboutus]　　\q[◇取消,Cancel]\![set,choicetimeout,0]"
 }
