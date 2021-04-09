@@ -67,7 +67,7 @@ OnMinuteChange{
 			_boottime = ghostuptime
 			if minute == 0{
 				if timerm == 0{
-					整点报时()
+					整点报时
 				}
 			}
 			elseif hour == 7 && minute == 30{
@@ -150,7 +150,7 @@ OnMinuteChange{
 	}
 }
 ClassMonitor{
-	_classrm=OnClassDetailTimeCheck()
+	_classrm=OnClassDetailTimeCheck
 	if _classrm!=''{
 		_classrm+"\![set,trayballoon,--icon=info,--timeout=10,--title=课程提醒,--text=%(_classrm),--text=（点击气泡关闭提醒）]"
 	}
@@ -320,11 +320,11 @@ OnPlayRm{
 	_k = CALLSAORI('mciaudior', 'play')
 }
 对话框报时{
-	整点报时特殊()
-	整点报时公式()
+	整点报时特殊
+	整点报时公式
 }
 整点报时公式{
-	ANY('', '', '', "%(username).", 打招呼() + '..' )
+	ANY('', '', '', "%(username).", 打招呼 + '..' )
 	--
 	"现在时间%(Timejud)%(hour12)点喔"
 	"现在时间已经%(hour)点了喔"
@@ -401,7 +401,7 @@ Seasonjud{
 	}
 }
 //---- 启动天数[2009-3_by KikkaAIdb]★ ---------------------------------------------------------------------------------------------
-//其实用GETSECCOUNT()来做的话更容易,不过那样存的参数就不能一目了然了...
+//其实用GETSECCOUNT来做的话更容易,不过那样存的参数就不能一目了然了...
 daysfromfirstboot{
 	_days=0
 	_mon=(31,28,31,30,31,30,31,31,30,31,30,31)

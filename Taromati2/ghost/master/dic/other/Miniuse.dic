@@ -1614,11 +1614,10 @@ OnPasteToExp{
 	CalculatorShow
 }
 OnCopy{
-
 	_txt=reference0
 	if _argc
 		_txt=_argv
-	CALLSAORI('textcopy',_txt)
+	void CALLSAORI('textcopy',_txt)
 	_txt=REPLACE(REPLACE(_txt,C_CR+C_LF,C_LF),C_CR,C_LF)
 	'\0\s[0]'
 	--

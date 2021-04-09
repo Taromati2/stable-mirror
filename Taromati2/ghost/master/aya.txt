@@ -44,6 +44,7 @@ dic, dic\system\Calendar.dic		//日历
 dic, dic\system\lunar.dic			//农历
 dic, dic\system\menu.dic			//主目录
 dic, dic\system\changeshell.dic		//shell变更反应
+dic, dic\system\username.dic		//用户名变更反应
 dic, dic\system\hotkey.dic			//热键
 dic, dic\system\clock.dic			//时间相关
 dic, dic\system\internet.dic		//网络，天气预报，邮件，RSS

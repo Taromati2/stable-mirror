@@ -1056,78 +1056,6 @@ Select.Intimacytest2{
 Select.Exit{
 	"\1\s[10]\0\s[8]是这样吗？\w9\w9\1\s[12]总感觉你很失望的样子。\n\w9\w9其实你想多和%(username)聊聊吧。"
 }
-//----------------------称呼-----------------------------------------
-OnUserNameChange{
-	if reference0 {
-		"\0\s[26]那么、该怎么称呼呢？\![open,inputbox,OnUserNameInput,-1,%(username)]"
-	}
-	else {
-		"\0\s[6]好的。\w9\s[0]\n那么、就跟目前一样用\w9\s[26]\n『%(username)』\w9来称呼喔。\n[150]"
-		--
-		'\q[◇返回上一层,OnOpenMenu,4]\n/
-		\q[◇终了,OptionEnd]'
-	}
-}
-OnUserNameInput{
-	if reference0 == username {
-		'\0\s[0]………？\s[26]\n不用改变也可以吗？\n\n[half]/
-		\q[◇返回上一层,OnOpenMenu,4]\n/
-		\q[◇终了,OptionEnd]'
-	}
-	elseif reference0 == ''	{
-		"\0\s[6]好的。\w9\s[0]\n那么、往后就用\w9\s[26]\n『无名氏』\w9来称呼喔。\w9\w9\n\n[half]/
-		…\w9开玩笑的。\n/
-		\w9\n继续称呼『%(username)』就可以了吗\w9？\n[150]/
-		\q[◇返回上一层,OnOpenMenu,4]\n/
-		\q[◇终了,OptionEnd]"
-	}
-	else {
-		"\0\s[26]『%(reference0)君』\w4这样可以吗？\n\n/
-		\q[◇可以,OnUserNameConfirmed,%(reference0)君]\n/
-		\q[◇『%(reference0)』就行了,OnUserNameConfirmed,%(reference0)]\n\n[half]/
-		\q[◇还是算了,OnUserNameCancel]"
-	}
-}
-OnUserNameCancel{
-	"\0\s[0]那么、一样叫『%(username)』…\n[150]"
-	--
-	'\q[◇返回上一层,OnOpenMenu,4]\n/
-	\q[◇终了,OptionEnd]'
-}
-OnUserNameConfirmed{
-	username = reference0
-	"\0\s[6]好的。\w9\s[0]\n\n[half]那么、往后就用\w9\s[26]\n『%(username)』\w9来称呼喔。\n[150]"
-	--
-	'\q[◇返回上一层,OnOpenMenu,4]\n/
-	\q[◇终了,OptionEnd]'
-}
-OnGetUsernameFirst{
-	if reference0 == ''{
-		if usermane==''
-			'\0\s[6]这样啊…\w9\w9\s[100]\n那请您想说时再告诉我喔。'
-		else
-			"那么日后日后就称呼为“%(username)”了哦。"
-		--
-		OnGetUsernameFirst.End
-	}
-	else{
-		username = reference0
-		"\0\s[0]『%(username)君』\w4这样可以吗？\n\n\q[◇可以,OnGetUsernameFirst.Addkeigo]\n\q[◇『%(username)』就行了,OnGetUsernameFirst.Fin]"
-	}
-}
-OnGetUsernameFirst.Addkeigo{
-	username = "%(username)君"
-	--
-	OnGetUsernameFirst.Fin
-}
-OnGetUsernameFirst.Fin{
-	"\0\s[0]『%(username)』是吗。"
-	--
-	OnGetUsernameFirst.End
-}
-OnGetUsernameFirst.End{
-	'\w9\w9\w9\n\n[half]\0\s[6]那么再一次…\w9\s[26]\n\n[half]橘花和斗和、以后请多多指教。\1\s[10]多指教啦。\w9\0\s[30]\n\n[half]…终于开口了。\w9\w9\c'
-}
 //--- 选择“关于快捷键” ----
 Select.shortcutkey{
 	'/
@@ -1323,7 +1251,7 @@ OnAnc{
 }
 DH : nonoverlap{
 	'\0\s[26]热血系：火影、海贼王、高达系列、穿越宇宙的少女、钢之炼金术师FA、犬夜叉、死神、圣剑之刀锻冶\n某科学的超电磁炮、妖精的尾巴、真姬恋无双、战斗司书、女王之刃、薄暮传说、名侦探柯南、魔法禁书目录、关-saki、银魂、Needless.  '
-	'\0\s[26]治疗系：百变小樱、翼·年代记、小鸠、我家有个狐仙大人、轻音少女、冬季恋歌、夏之岚、信蜂、向阳素描×365、甜甜私房猫、军曹.  '
+	'\0\s[26]治疗系：百变小樱、翼・年代记、小鸠、我家有个狐仙大人、轻音少女、冬季恋歌、夏之岚、信蜂、向阳素描×365、甜甜私房猫、军曹.  '
 	"\0\s[26]后宫系：Clannad after story、kanon（雪之少女）、AIR、CLANNAD、灼眼的夏娜、fate stay night、龙与虎、学生会的一己之见、凉宫春日的忧郁（凉宫系列）、请别忧伤了二之宫君、狼与香辛料、我的狐仙女友、机械女仆、乃木板春香的秘密、猫怨三角恋、好想告诉你、动物侦探、天降之物、梦色蛋糕师、11eyes、浪漫追星社、公主恋人、濑户的花嫁、南家三姐妹、零之使魔、旋风管家、草莓棉花糖、萝莉的时间、绝望先生系列、守护猫娘绯鞠、School Day、纯情房东俏房客、化物语、草莓100%、吸血鬼骑士、ef-a、叛逆的鲁鲁修、愿此刻永恒、妖精的旋律 \n急速5厘米、全金属狂潮、真实之泪、h20夏日阳光、神剃、十字架与吸血鬼、君吻、to love、D.C.、心跳回忆onlylove、魔法老师、妹妹公主、I’s pure、蔷薇少女、犬神、happiness、这美丽又丑陋的世界、魔力女管家、健姬物语、ufo圆盘女皇、凉风、樱兰高校公关部、彩云国物语、我的女神、金色的琴弦、守护甜心、伊里野的天空、校园迷糊大王、魔法使借贷公司、樱花大战、蓝兰岛飘流记、乱马、真月潭月姬、超时空要塞fa、史上最强弟子兼、人型电脑天使心、鹦鹉女神、sola、飞轮少年、完美小姐进化论、水果篮子、不可思议的游戏、遥远是看重、伯爵与妖精、恶作剧之吻、乙女爱声姐姐、双恋、情出于蓝、龙鸣、拜托了老师、shuffle、phantom、旋风管家、天地无用系列、传颂之物、kissXsis、to heart2、月咏、机巧魔神、白色相簿\n花右京女佣队、夏色的砂时计、欢乐课程、阴守忍者、暗夜的魔法使、prism ark、东月西阳、地上最强的新娘、漫画同仁会革命、曾血鬼果林、魂链、下级生、纯爱物语、扑杀天使、诗片、风心灵之息、我的主人爱作怪、恋恋七人组、公主的时间、快餐店之恋、拜托了，双子杏、小女神花铃、出云战记、成惠的世界、七彩的素描、爱丽斯学院、永不消失的彩虹、女生万岁、今日的5年2班、怪物女王、神样家族、寻找满月、健康又用社、混兽、梦物语、袖珍女佣晓梅、明日的与一、空罐少女、我们的仙境、机械女神、机动战舰、不要撒娇哦、僵尸借贷、晴空下的约定、娇蛮之吻、波子汽水、女生爱女生、魔法美少女、神曲奏界、魔力充电娘、提亚拉之泪、lovelove、染红的街道、魔法校园ma、四娘物语、爱情泡泡糖、爱的模范、美女尽林、钟之音学院、赐予护女神的祝福、绝对可怜少女、钢铁新娘、武装机甲、浑沌头、魔侦探洛基、dears、甜蜜偶像、summer season、mouse、新白雪姬、手机少女、异世界的圣机师物语、管家后宫学院、笨蛋测试召唤兽、吸血鬼同盟、神隐、圣痕炼金术士.  "
 	'\0\s[26]诡异血腥剧：海猫鸣泣之时、新世纪福音战士、黑之契约者、怪谈餐馆、空之境界、寒蚕鸣泣之时.  '
 	'\0\s[26]其他系：天体战士sunted、笨蛋姐弟、东之伊甸、猫语少女、东京地震8.0、幸运星、初恋限定、潘多拉之心、狼神隐、刀语、圣剑炼金术师. '

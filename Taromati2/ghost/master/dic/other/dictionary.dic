@@ -97,6 +97,6 @@ Ondicsp{//选页
 	}
 }
 OnCopydic{
-	_t=OnCopy(reference0)
+	void OnCopy(reference0)
 	"\0\s[0]\b[2]已成功复制单词 『%(reference0)』 到剪贴板了喔♪\n%(Ondict(reference1,reference0))"
 }

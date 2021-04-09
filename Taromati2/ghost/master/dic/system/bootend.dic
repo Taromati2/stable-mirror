@@ -11,7 +11,7 @@ BaseGhostStart{//改动于2020 by steve02081504
 	lastTalk = '\0\s[20]咦？分明才刚启动的說…\1\s[10]喵，刚才什么都没说'
 	lastboottime = "%(systemuptime)"
 	_laststart = SlowTime
-	SlowTime = GETSECCOUNT()
+	SlowTime = GETSECCOUNT
 	elapsetime = SlowTime - _laststart
 	playingmusic = 0
 	OnSQLLoad
@@ -120,13 +120,11 @@ OnBoot{
 		return
 	}
 	if mode == '1'{
-		if elapsetime > 300
-			specialmode = ''
-		if specialmode == 'mealtime'{
+		if elapsetime > 300 && specialmode == 'mealtime'{
 			void Onmealfin
 		}
 		else{
-			'\0\s[-1]\1\s[110]呦。'
+			"\0\s[-1]\1\s[%(specialmode != 'mealtime')10]呦。"
 			return
 		}
 	}
@@ -683,7 +681,7 @@ ClearVar{
 }
 //**** 终了 ***********************************************************************************************************
 ClearTempVar:void{
-	_L= GETFUNCLIST()
+	_L= GETFUNCLIST
 	_t= REQ.COMMAND
 	foreach _L;_V{
 		if RE_GREP(_V,'^Clear\S*Var$')&& _V != 'ClearTempVar'
@@ -693,7 +691,7 @@ ClearTempVar:void{
 	S_CHARSET = GETSETTING('charset.output')
 }
 OnClose{
-	SlowTime = GETSECCOUNT()
+	SlowTime = GETSECCOUNT
 	--
 	ClearTempVar
 	--

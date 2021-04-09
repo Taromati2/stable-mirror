@@ -89,14 +89,14 @@ CALLALLFUNCTIONBEGINAS {
 	}
 }
 CALLALLFUNCTIONINRE {
-	_L= GETFUNCLIST()
+	_L= GETFUNCLIST
 	foreach _L;_V {
 		if RE_GREP(_V,_argv[0])
 			EVAL(_V)
 	}
 }
 ERASEALLVARINRE {
-	_L= GETVARLIST()
+	_L= GETVARLIST
 	foreach _L;_V {
 		if RE_GREP(_V,_argv[0])
 			ERASEVAR(_V)
@@ -222,9 +222,9 @@ load {
 	}
 
 	//毎回起動時の初期化
-	SHIORI_FW.ResetAITalkInterval()
+	SHIORI_FW.ResetAITalkInterval
 
-	_sec = GETSECCOUNT()
+	_sec = GETSECCOUNT
 
 	SHIORI_FW.SaveVarCount	= 0
 	SHIORI_FW.LastTalk		= ''
@@ -248,7 +248,7 @@ load {
 	basewarenameex		 = ''
 	sender				 = ''
 	ghostboottime		 = systemuptime
-	ghostbootmin		 = GETSECCOUNT() / 60
+	ghostbootmin		 = GETSECCOUNT / 60
 
 	S_CHARSET = GETSETTING('charset.output')
 
@@ -288,7 +288,7 @@ unload {
 	var.req.value	 = IARRAY
 	var.req.rawvalue = IARRAY
 
-	ghostupmin_last = MAX(ghostupmin_total(),elapsedtimetotal)
+	ghostupmin_last = MAX(ghostupmin_total,elapsedtimetotal)
 
 	CALLALLFUNCTIONBEGINAS('Fin.')
 
@@ -624,10 +624,10 @@ SHIORI_FW.RaiseIDEvent {
 		}
 	}
 
-	_can_talk = SHIORI_FW.CanTalk()
+	_can_talk = SHIORI_FW.CanTalk
 	if _can_talk != SHIORI_FW.CanTalkFlag {
 		if _can_talk {
-			SHIORI_FW.TalkEndTime = GETSECCOUNT()
+			SHIORI_FW.TalkEndTime = GETSECCOUNT
 		}
 		SHIORI_FW.CanTalkFlag = _can_talk
 	}
@@ -680,11 +680,11 @@ SHIORI_FW.RaiseIDEvent {
 			SHIORI_FW.LastTalk = _talk[0]
 			if _event == 'OnAITalk' {
 				SHIORI_FW.LastAITalk = _talk[0]
-				SHIORI_FW.ResetAITalkInterval()
+				SHIORI_FW.ResetAITalkInterval
 			}
 			if 'Surface' !_in_ _event {
 				if SHIORI_FW.RemoveAllTags(_talk[0]) != '' {
-					SHIORI_FW.LastTalkTime = GETSECCOUNT()
+					SHIORI_FW.LastTalkTime = GETSECCOUNT
 				}
 			}
 			_talk[0]
@@ -722,7 +722,7 @@ SHIORI_FW.MakeEmptyResponse {
 //機能　：AIトーク発動処理カウンタのリセット
 //------------------------------------------------------------------------------
 SHIORI_FW.ResetAITalkInterval {
-	SHIORI_FW.LastAITalkTime = GETSECCOUNT()
+	SHIORI_FW.LastAITalkTime = GETSECCOUNT
 }
 
 //------------------------------------------------------------------------------
@@ -745,9 +745,9 @@ SHIORI_FW.ControlAITalk {
 			}
 		}
 		if aitalkinterval > 0 {//トーク間隔が非0
-			_diff = GETSECCOUNT() - SHIORI_FW.LastAITalkTime
+			_diff = GETSECCOUNT - SHIORI_FW.LastAITalkTime
 			if _diff >= aitalkinterval {//トーク間隔の設定時間を越えた
-				if SHIORI_FW.CanTalk() {
+				if SHIORI_FW.CanTalk {
 					_return_value = 'OnAITalk'
 				}
 			}
@@ -850,7 +850,7 @@ SHIORI_FW.StartChainTalk {
 		CHAIN.IDName = _argv[0]
 		CHAIN.Script = ''
 		CHAIN.Index = 0
-		CHAIN.StartTime = GETSECCOUNT()
+		CHAIN.StartTime = GETSECCOUNT
 	}
 }
 
@@ -869,7 +869,7 @@ SHIORI_FW.StartChainTalkScriptDirect {
 		CHAIN.IDName = ''
 		CHAIN.Script = _argv[0]
 		CHAIN.Index = 0
-		CHAIN.StartTime = GETSECCOUNT()
+		CHAIN.StartTime = GETSECCOUNT
 	}
 }
 
@@ -930,7 +930,7 @@ SHIORI_FW.EndChainTalk {
 //------------------------------------------------------------------------------
 SHIORI_FW.ChainTime {
 	if CHAIN.StartTime {
-		GETSECCOUNT() - TOINT(CHAIN.StartTime)
+		GETSECCOUNT - TOINT(CHAIN.StartTime)
 	}
 	else {
 		0
@@ -1619,10 +1619,10 @@ ghostuptime {
 	systemuptime - ghostboottime
 }
 ghostupmin {
-	(GETSECCOUNT() / 60) - ghostbootmin
+	(GETSECCOUNT / 60) - ghostbootmin
 }
 ghostupmin_total {
-	ghostupmin_last + ghostupmin()
+	ghostupmin_last + ghostupmin
 }
 
 //******************************************************************************

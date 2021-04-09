@@ -67,35 +67,53 @@ OnNotifySelfInfo:void{
 	keroname=reference2
 }
 //缺省信息补全&同步信息更新 by steve02081504
-OnNotifyUserInfo{
-	if (!username) && reference0{
-		case reference0{
+OnNotifyUserInfo.WhenEmpty.username:void{
+	if _argv[0]{
+		case _argv[0]{
 			when 'Administrator','User','Guest','SYSTEM','admin','管理员','root'{
 				do_nothing
 			}
 			others{
-				username=reference0
+				OnUserName.Set(_argv[0])
 			}
 		}
 	}
-	if (!birthday) && reference2{
-		void OnBirthdayInput(reference2)
+}
+OnNotifyUserInfo.WhenEmpty.birthday:void{
+	if _argv[0]{
+		void OnBirthdayInput(_argv[0])
 	}
+}
+OnNotifyUserInfo{
+	if !username{
+		if GetPhase > 1 || !reference1
+			OnNotifyUserInfo.WhenEmpty.username(reference0)
+		else
+			OnNotifyUserInfo.WhenEmpty.username(reference1)
+	}
+	if !birthday
+		OnNotifyUserInfo.WhenEmpty.birthday(reference2)
 	_name_changed = 0
 	_username = ''
 	if GetPhase > 1{
-		_name_changed=username != reference0 && Baseware.Config.username != reference0 && reference0
+		_name_changed=username != reference0 && Baseware.Config.nickname != reference0 && reference0
 		_username=reference0
 	}else{
 		_name_changed=username != reference1 && Baseware.Config.username != reference1 && reference1
 		_username=reference1
 	}
-	_birthday_changed=birthday != reference2 && Baseware.Config.birthday != reference2
+	_birthday_changed=birthday != reference2 && Baseware.Config.birthday != reference2 && reference2
 	if _name_changed || _birthday_changed{
 		'同步ssp设定中的'
 		--
-		if _name_changed
-			"用户名『%(_username)』"
+		if _name_changed{
+			if GetPhase > 1
+				'昵称'
+			else
+				'用户名'
+			--
+			"『%(_username)』"
+		}
 		--
 		if _birthday_changed{
 			if _name_changed
@@ -125,10 +143,8 @@ OnNotifyUserInfo{
 		"
 	}
 	--
-	if GetPhase > 1
-		Baseware.Config.username = reference0
-	else
-		Baseware.Config.username = reference1
+	Baseware.Config.nickname = reference0
+	Baseware.Config.username = reference1
 	Baseware.Config.birthday = reference2
 }
 OnNotifyUserInfo.bothUpdate{
@@ -422,7 +438,7 @@ OnShioriReloadedbyself{
 	}
 	'\0\s[0]重载成功，没有语法错误'
 	'\0\s[0]重载完成'
-	if GetPhase() == 2{
+	if GetPhase == 2{
 		'\0\s[5]重载成功，没有卡死哦'
 		"\0\s[0].\w9.\w9.\w9.\w9.\w9.\w9.\w9.\w9.\w9.\w9.\w9.\w9.\n\_s\w9.\w9.\w9.\w9.\w9\n\_s\1\s[11]别假装卡死了啊\w9，%(username)又不是看不出来\w9\w9\0\s[8]欸"
 	}

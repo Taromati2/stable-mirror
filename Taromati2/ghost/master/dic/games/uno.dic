@@ -22,7 +22,7 @@ OnWannaPlay{
 	//"\0\s[16]那真是太好了……\s[28]啊，現在似乎沒有湊齊一副牌的樣子，對不起！\s[15]不過，我會記得這件事的，謝謝%(username)。\![raiseplugin,スタンプ帳,OnStampAdd,ghost\master\wdf.png,Wild Draw Four,%(username)能對UNO感興趣真是太好了。<br>有機會的話和朋友們一起玩吧。]"
 	stamp1 = 0
 	stamp0 = 1
-	UnoUserInit()
+	UnoUserInit
 }
 OnUNOR1{
 	'\_q\0\s[8]\b[2]UNO牌共有 108 張牌，UNO的牌面……花色分紅黃藍綠四種，其中基本牌分別從0到9。每種顏色的0祗有一張，而其他的數字有兩張。共计76张。\n[150]然後呢，是功能牌，有著可以強制讓下家從牌堆拿出兩張新牌的draw two，每種顏色各有兩張。\n[150]还有skip和reverse。skip可以讓下家失去一次出牌的機會，而reverse是讓出牌的順序發生改變，從順時針方向變成逆時針，反之亦然。\n這兩種牌每個顏色有兩張。功能牌共计24张。\n[150]強制牌wild，能接任何牌并能夠改變接下來出牌顏色的牌。\n而wild draw four，不僅可以改變顏色，還可以強制下家抓四張牌，並且失去本回合的出牌權。一副當中的wild和wild draw 4各有四張。共计8张\x[noclear]\n[150]\s[30]總之wild draw 4是最強的呢。\x\_q'
@@ -137,7 +137,7 @@ UnoUserInit{//用户界面
 			cardpoint.user[1]=TOINT(cardpoint.user[1])+GetUnoCardPoints("%(unocard.com)")
 			unocard.playnum[0]=TOINT(unocard.playnum[0])+1
 			unocard.win[0]=TOINT(unocard.win[0])+1
-			_txt+=UnoUserInit()
+			_txt+=UnoUserInit
 			_txt+='\_l[0,0]' + messpre + mess
 			if cardpoint.user[0]>=500{
 				unocard.playnum[1]=TOINT(unocard.playnum[1])+1
@@ -145,7 +145,7 @@ UnoUserInit{//用户界面
 				cardpoint.user[0]=0
 				cardpoint.com[0]=0
 				_txt+="\0%(username)达到500分，赢得一场比赛\x"
-				_txt+=UnoUserInit()
+				_txt+=UnoUserInit
 			}
 		}
 		elseif _whowin==1{
@@ -156,7 +156,7 @@ UnoUserInit{//用户界面
 			cardpoint.com[1]=TOINT(cardpoint.com[1])+GetUnoCardPoints("%(unocard.user)")
 			unocard.playnum[0]=TOINT(unocard.playnum[0])+1
 			unocard.lose[0]=TOINT(unocard.lose[0])+1
-			_txt+=UnoUserInit()
+			_txt+=UnoUserInit
 			_txt+='\_l[0,0]' + messpre + mess
 			if cardpoint.com[0]>=500{
 				unocard.playnum[1]=TOINT(unocard.playnum[1])+1
@@ -164,7 +164,7 @@ UnoUserInit{//用户界面
 				cardpoint.user[0]=0
 				cardpoint.com[0]=0
 				_txt+="\0%(selfname)达到500分，赢得一场比赛\x"
-				_txt+=UnoUserInit()
+				_txt+=UnoUserInit
 			}
 		}
 		elseif _whowin==2{
@@ -172,7 +172,7 @@ UnoUserInit{//用户界面
 			unomode=0
 			unocard.banker=RAND(2)
 			unocard.playnum[0]=TOINT(unocard.playnum[0])+1
-			_txt+=UnoUserInit()
+			_txt+=UnoUserInit
 			_txt+='\_l[0,0]' + messpre + mess
 		}
 		elseif _whowin==-1{
@@ -229,7 +229,7 @@ OnUnoResult{
 	输掉比赛场数：%(unocard.lose[1])（负率：%(100*unocard.lose[1]/unocard.playnum[1])%）\n/
 	获胜速率：%(100*unocard.win[1]/unocard.playnum[0])%\_q\x\n/
 	"
-	_txt+=UnoUserInit()
+	_txt+=UnoUserInit
 	_txt
 }
 OnWildSortColor{//指定王牌颜色
@@ -246,13 +246,13 @@ OnWildSortColor{//指定王牌颜色
 	if unocall==2
 		unocall=1
 	_txt+=UnoCardUseAge
-	_txt+=UnoUserInit()
+	_txt+=UnoUserInit
 	_txt
 }
 OnUnoCall{//UNO
 	messpre='UNO!!!'
 	unocall=0
-	UnoUserInit()
+	UnoUserInit
 }
 CheckUnoCard{//检查UNO牌型
 	_unocard=_argv[0]
@@ -288,7 +288,7 @@ OnUnoCardfollow{//用户跟牌
 			unocard.currentemp=unocard.current
 			messpre="引牌%(unocard.current)，Color:%(_color)。"
 			_txt+=UnoCardUseAge
-			_txt+=UnoUserInit()
+			_txt+=UnoUserInit
 			_txt
 			return
 		}
@@ -307,7 +307,7 @@ OnUnoCardfollow{//用户跟牌
 			if GetUnoCardColor(unocard.current)=='W'{
 				usewildsort=1
 				unocard.id=_unocard.id
-				_txt+=UnoUserInit()
+				_txt+=UnoUserInit
 				_txt
 				return
 			}
@@ -330,12 +330,12 @@ OnUnoCardfollow{//用户跟牌
 				unocall=1
 			usergetunocard=0
 			_txt+=UnoCardUseAge
-			_txt+=UnoUserInit()
+			_txt+=UnoUserInit
 			_txt
 			return
 		}
 	}
-	_txt+=UnoUserInit()
+	_txt+=UnoUserInit
 	_txt
 }
 GetUnoColorName{//得到牌色名
@@ -398,7 +398,7 @@ UnoCardComFollow{//电脑跟牌
 				_txt+=ImpeachWild(1,'no')
 			else
 				_txt+=ImpeachWild(1,'yes')
-			_txt+=UnoUserInit()
+			_txt+=UnoUserInit
 			_txt
 			retrun
 		}
@@ -436,7 +436,7 @@ UnoCardComFollow{//电脑跟牌
 	unocall=-1
 	//unocarduse=0
 	_txt+=UnoCardUseAge
-	_txt+=UnoUserInit()
+	_txt+=UnoUserInit
 	_txt
 }
 UnoCardComPare{//电脑思考
@@ -694,7 +694,7 @@ UnoCardSend{//发牌
 OnUserGetUnoCard{//用户摸牌
 	usergetunocard=1
 	unocall=-1
-	OnUnoCardGet(0)+UnoUserInit()
+	OnUnoCardGet(0)+UnoUserInit
 }
 OnUnoCardGet{//摸牌并整理牌序
 	_unocard.turn=reference0

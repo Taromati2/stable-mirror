@@ -123,7 +123,7 @@ GoldenFlowerInit{//用户界面
 		openkikka=0
 		kikkapass=0
 		towapass=0
-		_txt+=GoldenFlowerInit()
+		_txt+=GoldenFlowerInit
 	}
 	elseif _argv[0]=='wager'{
 		wager=_argv[1]
@@ -171,7 +171,7 @@ GoldenFlowerInit{//用户界面
 		kikkapass=0
 		towapass=0
 		usercoin+=TOINT(deskmoney)
-		_txt+=GoldenFlowerInit()
+		_txt+=GoldenFlowerInit
 		_txt+=ShowCard
 	}
 	elseif cardwin==1{
@@ -185,7 +185,7 @@ GoldenFlowerInit{//用户界面
 		kikkapass=0
 		towapass=0
 		towacoin+=TOINT(deskmoney)
-		_txt+=GoldenFlowerInit()
+		_txt+=GoldenFlowerInit
 		_txt+=ShowCard
 	}
 	elseif cardwin==0{
@@ -199,7 +199,7 @@ GoldenFlowerInit{//用户界面
 		kikkapass=0
 		towapass=0
 		kikkacoin+=TOINT(deskmoney)
-		_txt+=GoldenFlowerInit()
+		_txt+=GoldenFlowerInit
 		_txt+=ShowCard
 	}
 	if cardturn==(banker+1)%3
@@ -261,7 +261,7 @@ OnOpenKikka{//开橘花牌
 		cardturn=(cardturn+2)%3
 	else
 		cardturn=(cardturn+1)%3
-	_txt+=GoldenFlowerInit()
+	_txt+=GoldenFlowerInit
 	_txt
 }
 OnOpenTowa{//开斗和牌
@@ -300,7 +300,7 @@ OnOpenTowa{//开斗和牌
 		cardturn=(cardturn+2)%3
 	else
 		cardturn=(cardturn+1)%3
-	_txt+=GoldenFlowerInit()
+	_txt+=GoldenFlowerInit
 	_txt
 }
 TowaFollow{//斗和跟牌
@@ -370,7 +370,7 @@ TowaFollow{//斗和跟牌
 		cardturn=(cardturn+2)%3
 	else
 		cardturn=(cardturn+1)%3
-	_txt+=GoldenFlowerInit()
+	_txt+=GoldenFlowerInit
 	_txt
 }
 TowaCardDrop{
@@ -451,7 +451,7 @@ KikkaFollow{//橘花跟牌
 		}
 	}
 	cardturn=(cardturn+1)%3
-	_txt+=GoldenFlowerInit()
+	_txt+=GoldenFlowerInit
 	_txt
 }
 CardAICheck{
