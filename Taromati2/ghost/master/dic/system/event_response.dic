@@ -104,7 +104,7 @@ OnNotifyUserInfo{
 	}
 	_birthday_changed=birthday != reference2 && Baseware.Config.birthday != reference2 && reference2
 	if _name_changed || _birthday_changed{
-		'同步ssp设定中的'
+		"同步%Baseware设定中的"
 		--
 		if _name_changed{
 			if GetPhase > 1

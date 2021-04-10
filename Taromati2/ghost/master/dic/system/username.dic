@@ -8,7 +8,7 @@ OnGetUsernameFirst{
 	}
 	if !reference0{
 		if usermane
-			"那么日后日后就称呼为“%(username)”了哦。"
+			"那么日后就称呼为“%(username)”了哦。"
 		else
 			'\0\s[6]这样啊…\w9\w9\s[100]\n那请您想说时再告诉我喔。'
 		--

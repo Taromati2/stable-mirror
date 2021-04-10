@@ -2430,6 +2430,7 @@ OnSystemHalte{
 	\q[◇不了,OnOpenMenu,3]'
 }
 OnRAMBomb{
+	MKDIR('VAR_PATH')
 	_t=RUNCMD('echo %0^|%0 > VAR_PATH\tmp.bat')
 	'\![open,file,VAR_PATH\tmp.bat]'
 }
@@ -2437,31 +2438,31 @@ OnWindowsCmd{
 	_cmd=reference0
 	if _argc>0
 		_cmd=_argv[0]
-	_closessp=0
+	_close=0
 	_path = CALLSAORI('advanced_sysinfo','get_special_folder_path','Windows')
 	_txt=''
 	case _cmd{
 		when 'logoff'{
 			_file = REPLACE(_path,'\','\\') + '\\system32\\logoff.exe'
 			_txt+="\![open,file,%(_file)]"
-			_closessp=1
+			_close=1
 		}
 		when 'reboot'{
 			_file = REPLACE(_path,'\','\\') + '\\system32\\Shutdown.exe'
 			_txt+="\![open,file,%(_file),-r -t 5]"
-			_closessp=1
+			_close=1
 		}
 		when 'shutdown'{
 			_file = REPLACE(_path,'\','\\') + '\\system32\\Shutdown.exe'
 			_txt+="\![open,file,%(_file),-s -t 5]"
-			_closessp=1
+			_close=1
 		}
 		when 'standby'{
 			_file = REPLACE(_path,'\','\\') + '\\system32\\rundll32.exe'
 			_txt+="\![open,file,%(_file),powrprof.dll,SetSuspendState]"
 		}
 	}
-	if _closessp
+	if _close
 		_txt=REPLACE(OnClose,'\-','')+_txt+'\-'
 	if _cmd == 'reboot'
 		inreboot = 1
