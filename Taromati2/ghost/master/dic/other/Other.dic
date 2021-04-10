@@ -565,7 +565,7 @@ OnShortCutMenuCreat{
 OnICOMode{
 	if ICOMode==',--option=opaque' {
 		ICOMode=',null'
-		"\t所有图标设置为透明模式，\w5此模式下的图标适合颜色深的对话框！\n\w5话虽如此，\w3但效果还是有待提高啊……\_w[1200]\c%(OnShortcutMenu)"
+		"\t所有图标设置为透明模式，\w5此模式下的图标适合颜色深的对话框！\n\w5\1话虽如此，\w3但效果还是有待提高啊……\0\_w[1200]\c%(OnShortcutMenu)"
 	}
 	elseif ICOMode==',null' || ICOMode==null {
 		ICOMode=',--option=opaque'
