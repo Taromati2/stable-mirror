@@ -4,7 +4,7 @@
 ///////////////////////////////////////////
 //******* 主菜单 ************************************************
 OnOpenMenu{
-	click=null
+	click=NULL
 	if reference0 != '' {
 		OpenMenu(reference0,reference1)
 	}
@@ -48,7 +48,7 @@ OpenMenu{
 	}
 }
 OnSubMenu{
-	click=null
+	click=NULL
 	OpenMenu(reference0,reference1)
 }
 SubMenu{
@@ -175,9 +175,9 @@ OpenMenuTalk{
 		elseif 腹黑度>=250
 			"\0\s[27]%(username)要让橘花消灭谁呢"
 		if click>10{
-			"\0\s[21]讨厌，%(username)点这么快，当橘花是傻瓜吗\e:click=null"
+			"\0\s[21]讨厌，%(username)点这么快，当橘花是傻瓜吗\e:click=NULL"
 			if 腹黑度>依赖度
-				"\0\s[27]讨厌，%(username)想被锯上一锯吗？\e:click=null"
+				"\0\s[27]讨厌，%(username)想被锯上一锯吗？\e:click=NULL"
 		}
 	}
 	elseif _phase == 0 {
@@ -307,10 +307,9 @@ RunningReset{
 	shortcut=NULL
 	mode='0'
 	running=''
-	option=null
+	option=NULL
 	read=-1
-	temp=null
-	musicplayer=null
+	temp=NULL
 	//Speech_Recognition=NULL
 }
 OnChoiceTimeout{
@@ -862,8 +861,7 @@ Select.ReturnMenu{
 	OpenMenu
 }
 OnLanguage{
-	_txt='\_q'
-	_txt+="请%(username)选择语言\n[150]"
+	_txt="\_q请%(username)选择语言\n[150]"
 	_language='简体中文,繁体中文,日文,英文'
 	_lang='Chinese,Chinese_T,Japanese,English'
 	_t = '○,◎'

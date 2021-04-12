@@ -17,12 +17,12 @@ On_sakura.recommendsites{
 	弾幕型%ASC(1)/http://arcader.nobody.jp/danmaku/ %ASC(2)/
 	"
 	--
-	_txt=''
 	SETDELIM(recommendsites,'*')
 	_count=ARRAYSIZE(recommendsites)-1
 	if recommendsites
 		"%ASC(1)%ASC(2)/"
 	--
+	_txt=''
 	for _i=0;_i<_count;_i++{
 		_txt+=recommendsites[_i][0,'|']+"%ASC(1)"+recommendsites[_i][1,'|']+"%ASC(2)"
 	}

@@ -43,7 +43,7 @@ formattemp{//输出显示时如有同义词句则把同义词句括起来
 	/* SETDELIM(_a,'|')
 	_x=''
 	_y=0
-	while _a[_y+1]!=null {
+	while _a[_y+1]!=NULL {
 		if _y==0 {
 			_x=_a[0]+'（'
 		}
@@ -86,14 +86,14 @@ OnTeach{
 			else {//输入的句子中是否包含有数据库'提问'字段的词语,有的话取出符合的答案,将ID保存在数组_g
 				_g=Talksearch(_a)
 			}
-			if _g[0]==null {
+			if _g[0]==NULL {
 				temp01='橘花这时要回答的'
 				Teach00
 			}
 			else {
 				_i=0
 				_m=''
-				while _g[_i]!=null {
+				while _g[_i]!=NULL {
 					_b=SQLite('-j',"SELECT * FROM KikkaAIdb WHERE ID='%(_g[_i])' AND scope!=-1")
 					_i++
 					_b=REPLACE(_b,'\1','斗和：')
@@ -169,7 +169,7 @@ KikkaTalkToUser{
 		else {
 			_g=Talksearchleng(_a)
 		}
-		if _g[0]==null {
+		if _g[0]==NULL {
 			if SQLite('-f',"SELECT 回答 FROM KikkaAIdb WHERE 提问 LIKE'%%(_a)%' AND scope!=-1")<=0 {
 				if !InAIGhostReply{
 					'\0\s[0]这个...橘花不懂哦'
@@ -225,7 +225,7 @@ Talksearch{//在教学、修改、删除查询时用
 		_f=SQLite('-j',"SELECT 提问 FROM KikkaAIdb WHERE ID='%(_d)' AND scope!=-1")
 		SETDELIM(_f,'|')
 		_y=0
-		while _f[_y]!=null {
+		while _f[_y]!=NULL {
 			_m=0
 			if '&' _in_ _f[_y] {//判断'提问'中有&时,各个关键字是否都存在于_a中
 				_j=_f[_y]
@@ -260,7 +260,7 @@ Talksearchleng{
 		_f=SQLite('-j',"SELECT 提问 FROM KikkaAIdb WHERE ID='%(_d)' AND scope!=-1")
 		SETDELIM(_f,'|')
 		_y=0
-		while _f[_y]!=null {
+		while _f[_y]!=NULL {
 			_m=0
 			if '&' _in_ _f[_y] {
 				_j=_f[_y]
@@ -344,7 +344,7 @@ OnTalksearch{
 		else {
 			_g=Talksearch(_a)
 		}
-		if _g[0]==null {
+		if _g[0]==NULL {
 			'\0\s[0]\![set,choicetimeout,0]没有符合的记录!\n\n\![*]\q[返回,OnUserDatabase,,Return]           \![*]\q[取消,OnoverTeach]'
 		}
 		else {
@@ -385,7 +385,7 @@ UPDateshow{
 			_x=_b[2]
 			_y=_b[3]
 			_z=_b[0]
-			if _b!=null {
+			if _b!=NULL {
 				_m +='ID:'+_z+"\_l[150,-]\![*]\q[%(temp01),OnAIdbUpdate,%(_z)]"+'\n提问: '+formattemp(_x)+'\n回答: '+formattemp(_y)+'\n[150]'
 			}
 		}
@@ -393,7 +393,7 @@ UPDateshow{
 	else {
 		_g=_argv
 		_i=0
-		while _g[_i]!=null {
+		while _g[_i]!=NULL {
 			_b=SQLite('-j',"SELECT * FROM KikkaAIdb WHERE ID='%(_g[_i])' AND scope!=-1")
 			_i++
 			_b=REPLACE(_b,'\,','，')
@@ -420,8 +420,8 @@ Onselepag{
 }
 Onsp{//选页
 	_a=CUTSPACE(reference0)
-	_b = RE_REPLACE(_a,'[0123456789]',null)
-	if _b!=null || _a==null {
+	_b = RE_REPLACE(_a,'[0123456789]',NULL)
+	if _b!=NULL || _a==NULL {
 		Onselepag
 	}
 	else {
@@ -447,7 +447,7 @@ OnAIdbUpdate{
 			BUGNow
 	}
 	elseif temp01=='修改该词条' {
-		temp01=null
+		temp01=NULL
 		_b=SQLite('-j',"SELECT * FROM KikkaAIdb WHERE ID=%(reference0)")
 		_b=REPLACE(_b,'\1','斗和：')
 		_b=REPLACE(_b,'\w','[等待]')

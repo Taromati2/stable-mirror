@@ -463,7 +463,7 @@ OnBoot{
 		}
 	}
 	--
-	if HolidayRemindFlag != 1 && rmswitch == 0 && (lunartime[9] != null || lunartime[10] != null ){
+	if HolidayRemindFlag != 1 && rmswitch == 0 && (lunartime[9] != NULL || lunartime[10] != NULL ){
 		"\1\s[10]\0\s[40]\![raise,OnPlayRm]今天是%(lunartime[9]) %(lunartime[10])\n/
 		\q[◇10小时内不再提醒,stoprm]\n\x"
 	}

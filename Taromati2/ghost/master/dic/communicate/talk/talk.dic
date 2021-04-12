@@ -47,13 +47,18 @@ OnTranslate{
 	_temp=0
 	if running==''
 		_temp=TOINT(voice)
-	if _temp{
-		_t=SakuraToTxt(_txt)
-		if running!='chatroom'&&'引擎 (' !_in_ _t&&CheckProcess('wscript.exe')==0//&&running!='readbook'&&read!='stop'
-			_txt=TxtToVoice(_t,voicename)+_txt
+	if _txt{
+		if _temp{
+			_t=SakuraToTxt(_txt)
+			if running!='chatroom'&&'引擎 (' !_in_ _t&&CheckProcess('wscript.exe')==0//&&running!='readbook'&&read!='stop'
+				_txt=TxtToVoice(_t,voicename)+_txt
+		}
+		if musicplayer == 1 && reference2 != 'OnMusicPlayer' && reference2 != 'OnSurfaceRestore.Music'{
+			if '\_w' _in_ _txt || '\w' _in_ _txt
+				_txt+='\_w[1000]'
+			_txt+="\![raise,OnMusicPlayer,%(',NoSurfaceRestore'['\q' _in_ _txt || '\__q' _in_ _txt])]"
+		}
 	}
-	if playingmusic == 1
-		_txt+='\_w[1000]\![raise,OnMusicPlayer]'
 	_txt
 }
 OnLastTalkToChatroom{
@@ -238,6 +243,7 @@ RandomTalk : nonoverlap{
 	'\0\s[8]就说了…\w9\n请不要对猛兽传教。\w9\w9\1\s[10]…\w9此时、\w9狮子突然向天仰望\w9开始祷告。\w9\w9\n『啊啊、\w9感谢主、\w9\w9赐与我今日的美食。』'
 	'\0\s[6]地球是蓝的。\w9\w9\n而且、\w9在这天空下并没有上帝。'
 	'\1\s[10]像宗教那些由人创造出来的有何可信?\w9\w9\w9\0\s[6]？？\w9\w9\w9\1\n当一个人信仰不同被视为异教徒\w9\w9\w9\w9\w9\w9\1\s[11]\n当异教徒被处死时，\w9\w9他们的神在哪?\w9\w9\w9\w9\1\s[10]\n当异教徒复仇的时候，那些自认为正义的信徒\w9\w9\w9\w8\1\s[12]\n临死前他们的神又在哪?\w9\w9\w9\n人只有到临死前才会觉悟\w9\w9\w9\w9\0\s[2]\n所以你的意思是...？\w9\w9\w9\w9\w9\1\s[13]\n这世界上根本没有神....\w9\w9\w9\w9\0\s[8]\n形式谬论是不行的呀'
+	'\1\s[11]\0\s[6]耶稣回到世间\w9\w9\n\1？\n\0对世人说：\w9\w9\n\s[2]\1\s[10]『所以我就回到了世间然后看到到处都摆满了十字架然后就在想这他妈在搞哪出\w9\n\0欸？\w9\w9\n\1你们觉得约翰・肯尼迪复活了他会想看到街上满是狙击枪吗？』\n\0\s[30]\w9.\w9.\w9.\w9\1\s[13]怎么，\w9不是这样吗。\_w[1000]'
 	//---- 军事 -----------------------------------------------------------------------------------------------------------
 	{
 		'\0\s[6]请把地对空飞弹'
@@ -466,7 +472,7 @@ RandomTalk : nonoverlap{
 	'\0\s[0]要用空手杀人时、\w9身体的哪部位是弱点\n必须牢牢记在心里。\w9\w9\1\s[10]别记啊。\w9\w9\0\s[0]\n\n[half]不过、\w9若情况允许请尽量使用道具。\w9\1\s[10]\n\n[half]好好听人说话。'
 	'\0\s[0]喉头腔的皮肤非常的薄、\w9\w9\n即使用指甲也能轻易撕裂。\w9\1\s[10]…\w9…\w9…\w9\w9\0\s[21]\n\n[half]像塑胶袋一样、\w9这样做…\1\s[10]\n\n[half]别做危险的妄想。'
 	'\0\s[6]说到晴天娃娃\w9\w9\n是一种悬挂在屋檐上祈求晴天的布偶\w9\w9\w9\w9\w9\1\s[10]就是那个白色的方型手帕包裹棉团，\w9\n再在圆团上绘画五官，\w9然后吊在窗户旁的布娃娃嘛\w9\w9\w9\w9\w9\0\s[5]\n把人头给用白布包起来然后吊在窗户旁....\w9\w9\w9\1\s[13]\n别开玩笑啊...\w9\w9\0\s[7]\n我哪有开玩笑\n\w9\w9\w9明天好像会下雨的样子\w9\w9\w9\w9\n斗和....晴天娃娃就由你来当啰\n\1\s[11]\4\1\s[11]\4\n\w9.\w9.\w9.\w9为什么？\w9\w9\0\s[23]为了明天的晴天\w9\w9\1\s[-1]救命啊～～！\w9\w9\w9\w9\w9\w9\w9\b[-1]\5\1\s[10]\c\n很遗憾，猫有九条命'
-	"\0\s[0]一般来说手枪的子弹在10米以外击中头部的机率大概是37.1%左右\n\w9\w9\w9\w9\1\s[10]那也要看枪手吧...\w9\w9\w9\w9\0\s[5]\n在10米以内还不能爆头\w9\w9\w9\1\s[11]\n嗯?菜鸟?!\w9\w9\w9\0\s[6]\n不!　先打断他的腿让他不能行动\w8\w8\n\0\s[5]是为了让他尝到恐惧感\n\w9\w9\w8\1\s[12]\n呃...\w9\w9\w9\0\s[5]让他彻底的感受到死亡的绝望\w9\w9\n\w9\0\s[34]打断\w9....\n分解\w9...\w9\w9\1\s[13](装作没听到)\n\0\n支解..."
+	'\0\s[0]一般来说手枪的子弹在10米以外击中头部的机率大概是37.1%左右\n\w9\w9\w9\w9\1\s[10]那也要看枪手吧...\w9\w9\w9\w9\0\s[5]\n在10米以内还不能爆头\w9\w9\w9\1\s[11]\n嗯?菜鸟?!\w9\w9\w9\0\s[6]\n不!　先打断他的腿让他不能行动\w8\w8\n\0\s[5]是为了让他尝到恐惧感\n\w9\w9\w8\1\s[12]\n呃...\w9\w9\w9\0\s[5]让他彻底的感受到死亡的绝望\w9\w9\n\w9\0\s[34]打断\w9....\n分解\w9...\w9\w9\1\s[13](装作没听到)\n\0\n支解...'
 	'\0\s[0]咬住脖子的话、\w9\n即使是人也能咬断颈动脉。\w9\1\s[10]…\w9…\w9…\w9\w9\0\s[5]\n\n[half]虽然会溅的满脸是血。\w9\w9\1\s[10]\n\n[half]别说的一脸高兴的模样啊…'
 	'\0\s[0]勒住脖子的话、大约5秒后会无力化、\w9\n20秒后失神、\w9 3分以上会造成死亡。\1\s[10]又在说那种话…\w9\w9\w9\0\s[0]\n\n[half]虽然个体间也会有差别、\w9\n万一有必要的时候…\1\s[10]\n\n[half]别照做啊。'
 	'\0\s[0]会反对死刑的人…\w9\w9\n\n[half]是因为和自己同样是人类的罪犯\w9如果被抹杀了、\w9\w5\n表示和罪犯同等水准的\w9\n自己的生命可能也会有危险…\w9\w9\s[6]\n\n[half]是因为讨厌这样吧。\w9\w9\1\s[10]并且、根本不把被害者的人权当一回事。\w9\w9\n比起被害者、\w9自己更可能成为加害者\w9\n是这样在想的吧。\w9\w9\0\s[0]\n\n[half]虽然说被害者、\w9并不是想当\n就能够当上的。'
@@ -1458,7 +1464,7 @@ TWO{
 		'
 	}
 	elseif '节日' _in_ reference1{
-		if lunartime[9]!=null || lunartime[10]!=null
+		if lunartime[9]!=NULL || lunartime[10]!=NULL
 			"今天是今天是%(lunartime[9]) %(lunartime[10])\n/
 			\q[◇知道了,End]\n"
 		else
@@ -2469,6 +2475,13 @@ OnSurfaceRestore{
 	'\w9\w9\w9'//进行延时以免对话结束后表情立刻复原
 	--
 	OnSurfaceRestore.base
+}
+OnSurfaceRestore.Music{
+	'\1\c\0\c'
+	--
+	OnSurfaceRestore.base
+	--
+	'\![raise,OnMusicPlayer,NoSurfaceRestore]'
 }
 OnSurfaceRestore.base{
 	if mode == '1'{

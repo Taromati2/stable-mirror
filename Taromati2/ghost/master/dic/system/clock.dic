@@ -129,7 +129,7 @@ OnMinuteChange{
 				AutoShellChangeflag[5]=1
 			}
 			if AutoShellChangeflag[5]==1{
-				if tshellid==null{
+				if tshellid==NULL{
 					OnAutoChangeShell
 					tshellid=shellid
 				}
@@ -139,8 +139,8 @@ OnMinuteChange{
 					OnChangeShell(tshellid)
 				}
 				else{
-					tshellid=null
-					AutoShellChangeflag[5]=null
+					tshellid=NULL
+					AutoShellChangeflag[5]=NULL
 				}
 			}
 		}
@@ -203,7 +203,7 @@ OnTrayBalloonClick{
 	}
 	elseif reference0 == '日程提醒' {
 		agendastart = 0
-		eventtemp=null
+		eventtemp=NULL
 	}
 	elseif reference0 == '整点报时'{
 		if minute>=5 {
@@ -216,7 +216,7 @@ OnTrayBalloonClick{
 			'好的～'
 		}
 	}
-	else{
+	elseif SHIORI_FW.DebugMode{
 		"未注册的气泡标题“%(reference0)”被触发了"
 	}
 }
@@ -224,8 +224,6 @@ OnAlarmMenu{
 	AlarmMenu
 }
 AlarmMenu{
-	_txt = '\_q\f[bold,true]\0闹钟功能\f[bold,default]\n\n[half]'
-	_txt='\![quicksession,1]\![set,choicetimeout,0]'
 	if ISVAR('alarmset') == 0 {
 		alarmset = IARRAY
 		alarmset[0] = 'OFF'
@@ -235,28 +233,35 @@ AlarmMenu{
 		alarmmin = 0
 		alarmfile = 'SOUND_PATH\Ring.mp3'
 	}
-	_txt += "\n[50]闹钟时间：\f[color,34,100,200]%(alarmhour)点%(alarmmin)分\f[color,default]\_l[128]\q[◇设定闹钟,OnAlarmSetTime]\n[150]"
+	'\f[bold,true]\0闹钟功能\f[bold,default]\n\n[half]/
+	\![quicksession,1]\![set,choicetimeout,0]'
+	--
+	"\n[50]闹钟时间：\f[color,34,100,200]%(alarmhour)点%(alarmmin)分\f[color,default]\_l[128]\q[◇设定闹钟,OnAlarmSetTime]\n[150]"
+	--
 	if alarmset[0] == 'ON' {
-		_txt += '闹钟开关：\q[◎ON,OnAlarmSet,0,ON]   \q[○OFF,OnAlarmSet,0,OFF]\n'
+		'闹钟开关：\q[◎ON,OnAlarmSet,0,ON]   \q[○OFF,OnAlarmSet,0,OFF]\n'
 	}
 	else {
-		_txt += '闹钟开关：\q[○ON,OnAlarmSet,0,ON]   \q[◎OFF,OnAlarmSet,0,OFF]\n'
+		'闹钟开关：\q[○ON,OnAlarmSet,0,ON]   \q[◎OFF,OnAlarmSet,0,OFF]\n'
 	}
+	--
 	if alarmset[1] == '当天' {
-		_txt += '提醒频率：\q[◎当天提醒,OnAlarmSet,1,当天]   \q[○每天提醒,OnAlarmSet,1,每天]\n'
+		'提醒频率：\q[◎当天提醒,OnAlarmSet,1,当天]   \q[○每天提醒,OnAlarmSet,1,每天]\n'
 	}
 	else {
-		_txt += '提醒频率：\q[○当天提醒,OnAlarmSet,1,当天]   \q[◎每天提醒,OnAlarmSet,1,每天]\n'
+		'提醒频率：\q[○当天提醒,OnAlarmSet,1,当天]   \q[◎每天提醒,OnAlarmSet,1,每天]\n'
 	}
+	--
 	if alarmset[2] == '声音' {
-		_txt += '提醒模式：\q[◎播放声音,OnAlarmSet,2,声音]   \q[○任务栏气泡,OnAlarmSet,2,气泡]\n'
+		'提醒模式：\q[◎播放声音,OnAlarmSet,2,声音]   \q[○任务栏气泡,OnAlarmSet,2,气泡]\n'
 	}
 	else {
-		_txt += '提醒模式：\q[○播放声音,OnAlarmSet,2,声音]   \q[◎任务栏气泡,OnAlarmSet,2,气泡]\n'
+		'提醒模式：\q[○播放声音,OnAlarmSet,2,声音]   \q[◎任务栏气泡,OnAlarmSet,2,气泡]\n'
 	}
-	_txt += "闹钟铃声：\__q[OnSetAlarmFile]%(SPLITPATH(alarmfile)[2])%(SPLITPATH(alarmfile)[3])\__q"
-	_txt += '\n[150]\q[◇返回上一层,OnOpenMenu]    \q[◇终了,OnAlarmEnd]'
-	_txt
+	--
+	"闹钟铃声：\__q[OnSetAlarmFile]%(SPLITPATH(alarmfile)[2])%(SPLITPATH(alarmfile)[3])\__q"
+	--
+	'\n[150]\q[◇返回上一层,OnOpenMenu]    \q[◇终了,OnAlarmEnd]'
 }
 OnSetAlarmFile{
 	'\![open,dialog,open,--id=alarmfile,--title=请选择音乐文件,--dir=__system_mymusic__,--filter=音乐文件(mid;wav;mp3;au;ogg;wma)|*.mid;*.wav;*.mp3;*.au;*.ogg;*.wma]'
@@ -277,14 +282,13 @@ OnAlarmSetTime{
 	"\![open,timeinput,OnAlarmSetComplete,60000,%(hour),%(minute),%(second)]"
 }
 OnAlarmSetComplete{
-	_txt = '在'
-	if alarmset[1] == '每天' {
-		_txt += '每天的'
-	}
-	_tmp = reference0
-	_txt += "\f[color,34,100,200]%(_tmp[0])点%(_tmp[1])分\f[color,default]\w9以%(alarmset[2])的方式提醒。\n\w9这样可以吗？"
-	_txt += "\_q\n[200]\q[◆确定,OnAlarmSetConfirmed,1,%(_tmp)]    \q[◇取消,OnAlarmSetConfirmed,0]\_q\n"
-	_txt
+	'在'
+	--
+	if alarmset[1] == '每天'
+		'每天的'
+	--
+	"\f[color,34,100,200]%(reference0[0])点%(reference0[1])分\f[color,default]\w9以%(alarmset[2])的方式提醒。\n\w9这样可以吗？\n[200]/
+	\_q\q[◆确定,OnAlarmSetConfirmed,1,%(reference0)]    \q[◇取消,OnAlarmSetConfirmed,0]\_q\n"
 }
 OnAlarmSetConfirmed{
 	if reference0 == 1 {
@@ -614,8 +618,6 @@ OnClockClose{
 }
 //**** 设定关机时间 ***********************************************************************************
 OnSetShutdownMenu{
-	_txt='\![quicksession,1]\![set,choicetimeout,0]'
-	_txt += '\f[bold,true]\0自动关机\f[bold,default]\n\n[half]'
 	if ISVAR('shutdownset') == 0{
 		shutdownset = IARRAY
 		shutdownset[0] = 'OFF'
@@ -623,25 +625,28 @@ OnSetShutdownMenu{
 		shutdowntime=(0,0)
 		shutdowndata=(0,0,0,0,0)
 	}
-	_txt+="自动关机时间：\f[color,34,100,200]%(shutdowntime[0])点%(shutdowntime[1])分\f[color,default]\_l[180]\q[◇设定自动关机时间,OnSetShutdown]\n"
-	_txt+="计划关机时间：\f[color,34,100,200]%(shutdowndata[0])年%(shutdowndata[1])月%(shutdowndata[2])日%(shutdowndata[3])点%(shutdowndata[4])分\f[color,default]\n"
-	_txt+='\q[◇设定计划关机时间,OnShutdownPlan]\n'
-	_txt+='\q[◇关闭关机对话框,OnCancelSetShutdown]\n'
-	_txt+='\q[◇倒计时关机,OnCountShutdown]\n'
+	"\![quicksession,1]\![set,choicetimeout,0]\f[bold,true]\0自动关机\f[bold,default]\n\n[half]/
+	自动关机时间：\f[color,34,100,200]%(shutdowntime[0])点%(shutdowntime[1])分\f[color,default]\_l[180]\q[◇设定自动关机时间,OnSetShutdown]\n/
+	计划关机时间：\f[color,34,100,200]%(shutdowndata[0])年%(shutdowndata[1])月%(shutdowndata[2])日%(shutdowndata[3])点%(shutdowndata[4])分\f[color,default]\n/
+	\q[◇设定计划关机时间,OnShutdownPlan]\n/
+	\q[◇关闭关机对话框,OnCancelSetShutdown]\n/
+	\q[◇倒计时关机,OnCountShutdown]\n"
+	--
 	if shutdownset[0] == 'ON' {
 		_txt += '自动关机开关：\q[◎ON,OnShutdownSet,0,ON]\_l[180]\q[○OFF,OnShutdownSet,0,OFF]\n'
 	}
 	else {
 		_txt += '自动关机开关：\q[○ON,OnShutdownSet,0,ON]\_l[180]\q[◎OFF,OnShutdownSet,0,OFF]\n'
 	}
+	--
 	if shutdownset[1] == '当天' {
 		_txt += '自动关机频率：\q[◎当天自动关机,OnShutdownSet,1,当天]\_l[180]\q[○每天自动关机,OnShutdownSet,1,每天]\n'
 	}
 	else {
 		_txt += '自动关机频率：\q[○当天自动关机,OnShutdownSet,1,当天]\_l[180]\q[◎每天自动关机,OnShutdownSet,1,每天]\n'
 	}
-	_txt += '\n[half]\q[◇返回上一层,OnOpenMenu,3]    \q[◇终了,cancel]'
-	_txt
+	--
+	'\n[half]\q[◇返回上一层,OnOpenMenu,3]    \q[◇终了,cancel]'
 }
 OnShutdownSet{
 	shutdownset[reference0] = reference1
@@ -707,8 +712,7 @@ ShutdownMonitor{
 	--
 	if shutdownstart > 0{
 		_txt="即将自动关机，请%(username)保存资料"
-		_tmp="即将自动关机，请%(username)保存资料"
-		_txt+="\![set,trayballoon,--icon=info,--timeout=10,--title=关机提醒,--text=现在是%(hour)点%(minute)分,--text=%(_tmp)！,--text=（点击气泡关闭提醒）]"
+		_txt+="\![set,trayballoon,--icon=info,--timeout=10,--title=关机提醒,--text=现在是%(hour)点%(minute)分,--text=%(_txt)！,--text=（点击气泡关闭提醒）]"
 		--
 		_path = CALLSAORI('advanced_sysinfo','get_special_folder_path','Windows')
 		_file = REPLACE(_path,'\','\\') + '\\system32\\Shutdown.exe'

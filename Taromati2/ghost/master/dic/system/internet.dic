@@ -308,7 +308,7 @@ Weatherremind{
 	_txt+='\_q\x'
 	if TOINT(autoastro)==0&&temp=='autoastro';{
 		_txt+=OnAstroFoundAuto
-		temp=null
+		temp=NULL
 	}
 	_txt
 }
@@ -563,9 +563,7 @@ SendTweet{
 	_password = '111111'
 	_message = 'http://aaa.bbb.ccc'
 	_url = "http://%(_username):%(_password)@twitter.com/statuses/update.xml"
-	_txt = ''
-	_txt += "\_q%(_url)\![execute,http-post,%(_url),--param=status=%(_message),--param-charset=UTF-8,--file=twitter.xml,--timeout=200,--async=twitterpost]"
-	_txt
+	"\_q%(_url)\![execute,http-post,%(_url),--param=status=%(_message),--param-charset=UTF-8,--file=twitter.xml,--timeout=200,--async=twitterpost]"
 }
 */
 OnAstrofate{
@@ -785,12 +783,13 @@ ShowAstroFate{
 	_txt
 }
 OnWikiPedia{
-	_txt='\C\![quicksession,true]\c\0\b[2]\![set,choicetimeout,0]'
-	_txt+='■维基百科■\n[150]'
-	_txt+='\q[◇搜索词条,OnInputPediaWord]\n'
-	_txt+=ShowBaiduBaike
-	_txt+='\n\q[◇返回,OnOpenMenu,0]'
-	_txt
+	'\C\![quicksession,true]\c\0\b[2]\![set,choicetimeout,0]/
+	■维基百科■\n[150]/
+	\q[◇搜索词条,OnInputPediaWord]\n'
+	--
+	ShowBaiduBaike
+	--
+	'\n\q[◇返回,OnOpenMenu,0]'
 }
 OnInputPediaWord{
 	"\C\![open,inputbox,OnDownLoadWikiPedia,-1,%(word)]"

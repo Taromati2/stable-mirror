@@ -17,19 +17,19 @@ OnverPoesy{
 }
 //---- 查找诗歌 ------------------------------------------------------------------------------------
 OnResP_1{
-	if _argv[0]==null
+	if _argv[0]==NULL
 		Poesyscope=reference0
 	"\0\s[9]请输入%(Poesyscope)关键字!(阿拉伯数字和英文字母将被忽略)\![set,choicetimeout,0]\![open,inputbox,OnResP,-1]\n[180]\![*]\q[取消,OnverPoesy,OnResP]"
 }
 OnResP{
 	_str=CUTSPACE(reference0)
-	_str=RE_REPLACE(_str,'[abcdefghijklmnopqrstuvwxyz1234567890-]',null)
+	_str=RE_REPLACE(_str,'[abcdefghijklmnopqrstuvwxyz1234567890-]',NULL)
 	_w=''
 	_page=''
 	_p=1
 	_d=0
 	_Acount=0
-	if _argv[0]!=null
+	if _argv[0]!=NULL
 		_p=TOINT(_argv[0])
 	if reference1=='eras〓'
 		ERASEVAR('Poesyscope')
@@ -53,7 +53,7 @@ OnResP{
 	else{
 		if reference0=='全_标题〓'
 			_d=SQLite('-f','SELECT TA FROM Poesy')
-		elseif Poesyscope!=null
+		elseif Poesyscope!=NULL
 			_d=ResSQL(_str,Poesyscope)
 		else
 			_d=ResSQL(_str,'作者')
@@ -76,7 +76,7 @@ OnResP{
 		else
 			_page="\_l[20,-]\q[<<上一页,OnPoesyPage,%(_str),%(_p-1)]\_l[93,-]第%(FontCPage(_p))页    共%(_tola)页\_l[200,-]\q[下一页>>,OnPoesyPage,%(_str),%(_p+1)]"
 	}
-	if _str==null
+	if _str==NULL
 		OnResP_1(Poesyscope)
 	else{
 		_a="共找到诗歌%(_d)首:\_q"
@@ -109,7 +109,7 @@ ShowPoesySQL{
 //---- 谈话中显示诗歌 ------------------------------------------------------------------------------
 TalkPoesyShow{
 	_w=IARRAY
-	while _w[0]==null || _w[1]==null {
+	while _w[0]==NULL || _w[1]==NULL {
 		_r=RAND(310)+1
 		_w=SQLite('-j',"SELECT 正文 FROM Poesy WHERE ID='%(_r)'")
 		SETDELIM(_w,'\n')
@@ -127,21 +127,21 @@ TalkPoesy{
 }
 //---- 诗歌默写 ------------------------------------------------------------------------------------
 OnPoesywrite{
-	if Poesywritedegree==null
+	if Poesywritedegree==NULL
 		_t=TalkPoesyShow('〓')
 	Poesywritedegree+=1
 	_a=Poesywrite[0]
 	_b=Poesywrite[1]
-	_b=REPLACE(_b,'。',null)
+	_b=REPLACE(_b,'。',NULL)
 	_w="________________，%(_b)。〓〓%(_a)，________________。"
-	if Poesywritemode==null
+	if Poesywritemode==NULL
 		Poesywritemode=ANY(1,2)
 	_w=_w[Poesywritemode-1,'〓〓']
 	"\0\s[26]请%(username)在空白处填上正确诗句哦~\n[150]问题：\_q%(_w)\n[200]第%(Poesywritedegree)次回答本题。\![set,choicetimeout,0]\![open,inputbox,OnPoesywrite_1,-1]\n[180]\![*]\q[以后回答,OnlatPoesywrite]\n\![*]\q[放弃本题,OnverPoesywrite]"
 }
 OnPoesywrite_1{
 	_str=CUTSPACE(reference0)
-	_a=REPLACE(Poesywrite[Poesywritemode-1],'。',null)
+	_a=REPLACE(Poesywrite[Poesywritemode-1],'。',NULL)
 	if _str==_a {
 		ERASEVAR('Poesywrite')
 		ERASEVAR('Poesywritedegree')

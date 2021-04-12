@@ -1208,7 +1208,7 @@ OnHanoihelp{
 }
 OnHanoiRecordClear{
 	if reference0=='yes'{
-		hanoi_best=null
+		hanoi_best=NULL
 		'\0\s[5]清空完毕\x'
 		--
 		OnHanoiRecord

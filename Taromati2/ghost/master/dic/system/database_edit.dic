@@ -288,8 +288,8 @@ OnUserDatabase.PageIndex{
 }
 OnUserDatabase.PageST{
 	_a=CUTSPACE(reference0)
-	_b = RE_REPLACE(_a,'[0123456789]',null)
-	if _b!=null || _a==null {
+	_b = RE_REPLACE(_a,'[0123456789]',NULL)
+	if _b!=NULL || _a==NULL {
 		OnUserDatabase.PageIndex
 	}
 	else {

@@ -21,11 +21,11 @@ Onjap_v{
 	_kana=('あ,い,う,え,お,か,き,く,け,こ,さ,し,す,せ,そ,た,ち,つ,て,と,な,に,ぬ,ね,の,は,ひ,ふ,へ,ほ,ま,み,む,め,も,や,　,ゆ,　,よ,ら,り,る,れ,ろ,わ')
 	_w="\b[2]\![quicksession,true]\![set,choicetimeout,0]\c\0\s[26]%(username)要学习日语五十音吗，点击下面的假名就可以了哦~\n[150]"
 	_b='';_v='';_j=1
-	if reference1!=null
+	if reference1!=NULL
 		_j=reference1+1
 	_mt="\f[color,110,110,110] ◢ 只播放点击(当前状态)\_l[155,-]\f[color,100,10,220]\q[◥ 顺序播放,Onjap_X,%(_j)]\_l[240,-]\f[color,250,0,0]\q[■ 停止,Onjap_s]\f[default] \n[150] "
 	_b=reference0
-	if _argv[0]!=null {
+	if _argv[0]!=NULL {
 		_b=_kana[_argv[0]-1]
 		_v='\![sound,wait]'
 		_mt=' \f[color,100,10,220]\q[◢ 只播放点击,Onjap_s]\_l[100,-]\f[color,110,110,110]◥ 顺序播放(当前状态)\_l[240,-]\f[color,250,0,0]\q[■ 停止,Onjap_s]\f[default] \n[150] '
@@ -57,7 +57,7 @@ Onjap_v{
 Onjap_X{
 	_w='\![sound,stop]'
 	_i=reference0
-	if _argv[0]!=null
+	if _argv[0]!=NULL
 		_i=_argv[0]
 	while _i<47 {
 		_w+=Onjap_v(_i)
@@ -192,13 +192,13 @@ Onclicknotebook{
 }
 Onaddnotebook{
 	if _argv[0]=='Title' {
-		if addnotebook_T!=null
+		if addnotebook_T!=NULL
 			'\0\s[26]请输入内容!\![open,inputbox,Onaddnotebook_C,-1]\n[300]\![set,choicetimeout,0]\q[◇退出,Onovernotebook,Onaddnotebook_C]'
 		else
 			Onaddnotebook
 	}
 	elseif _argv[0]=='Content' {
-		if addnotebook_C!=null {
+		if addnotebook_C!=NULL {
 			_T=addnotebook_T
 			_C=addnotebook_C
 			_D="%(year)-%(month)-%(day)"
@@ -564,10 +564,10 @@ OnShortCutMenuCreat{
 }
 OnICOMode{
 	if ICOMode==',--option=opaque' {
-		ICOMode=',null'
+		ICOMode=',NULL'
 		"\t所有图标设置为透明模式，\w5此模式下的图标适合颜色深的对话框！\n\w5\1话虽如此，\w3但效果还是有待提高啊……\0\_w[1200]\c%(OnShortcutMenu)"
 	}
-	elseif ICOMode==',null' || ICOMode==null {
+	elseif ICOMode==',NULL' || ICOMode==NULL {
 		ICOMode=',--option=opaque'
 		"\t所有图标设置为不透明模式，\n\w5此模式下图标比较漂亮，\w5适合颜色浅的对话框！\_w[1200]\c%(OnShortcutMenu)"
 	}
@@ -789,7 +789,7 @@ OnAllShortcutAdd{
 	foreach reference0; _s {
 		_p=_s[2,'|']
 		_N=_s[0,'|']
-		if _N!=null
+		if _N!=NULL
 			_w+="\_l[%(_x),%(_y)]\_b[%(CHR(34))%(_p),0%(CHR(34)),inline%(ICOMode)]\_l[%(_x+35),%(_y)]软件：【%(_N)】\_l[%(_x+35),%(_y+20)]路径为：%(_p)"
 		_y+=45
 	}
@@ -828,7 +828,7 @@ OnShortcutFileDrop{
 				"\_q\0\s[0]如果%(username)要设置该软件的快捷，\n路径和名称中请不要带有符号“]”哦！\n[150]\_l[5,-]\_b[%(CHR(34))%(_path2),0%(CHR(34)),inline%(ICOMode)] \n软件名称：%(_filename)%(_fileext)\n[150] 软件路径：%(_path2)"
 		}
 		when ''{
-			if _filename==null {
+			if _filename==NULL {
 				_Ico='2'
 				"\_q需要橘花设置该文件夹到橘花的快捷菜单吗？\n[150]　\![*]\q[好的,OnShortcut,━文件夹━,%(_path2),2]　\![*]\q[不了,OnShortcutOver]\n[120]\_l[5,-]\_b[%(CHR(34))SAORI_PATH\Process.dll,%(_Ico)%(CHR(34)),inline%(ICOMode)] \n名称：等下%(username)自己可以设置名称！━文件夹━\n[150]路径：%(_path2)"
 			}
@@ -2239,18 +2239,18 @@ On100SentencesInJapanese{
 	_v=''
 	_file = 'DATA_PATH\vocabulary\Japanese\日本语100句.txt'
 	_w='\C\![quicksession,true]\c\0\s[26]\b[2]\![set,choicetimeout,0]正在学习日语一百句，点击试听可以听到语句哦\n'
-	if reference0!=null
+	if reference0!=NULL
 		_i=reference0
-	if reference1!=null
+	if reference1!=NULL
 		_j=reference1
-	if _argv[1]!=null
+	if _argv[1]!=NULL
 		_j=_argv[1]
 	_mt = "\f[color,110,110,110] ◢ 只播放点击(当前状态)\_l[155,-]\f[color,100,10,220]\q[◥ 顺序播放,On100SentencesInJapanese_X,%(_i),%(_j)]\_l[240,-]\f[color,250,0,0]\q[■ 停止,On100SentencesInJapanese_s,,%(_j)]\f[default] \n[150] "
-	if reference0!=null {
+	if reference0!=NULL {
 		_v='\![sound,wait]'
 		_b=reference0
 	}
-	if _argv[0]!=null {
+	if _argv[0]!=NULL {
 		_v='\![sound,wait]'
 		_b=_argv[0]
 		_mt= "\f[color,100,10,220]\q[◢ 只播放点击,On100SentencesInJapanese_s]\_l[100,-]\f[color,110,110,110]◥ 顺序播放(当前状态)\_l[240,-]\f[color,250,0,0]\q[■ 停止,On100SentencesInJapanese_s,,%(_j)]\f[default] \n[150] "
@@ -2295,9 +2295,9 @@ On100SentencesInJapanese_X{
 	_w='\![sound,stop]'
 	_i=reference0
 	_j=reference1
-	if _argv[0]!=null
+	if _argv[0]!=NULL
 		_i=_argv[0]
-	if _argv[1]!=null
+	if _argv[1]!=NULL
 		_j=_argv[1]
 	while _i<=65{
 		if _i>=_j+5

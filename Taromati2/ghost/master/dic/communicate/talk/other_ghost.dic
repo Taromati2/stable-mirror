@@ -91,9 +91,7 @@ ReplyToGhost{
 	}
 	if _t{
 		//'\0\s[0]嗯、是啊～。'
-		_txt=OnAIGhostReply
-		_txt=REPLACE(_txt,username,'你')
-		_txt
+		REPLACE(OnAIGhostReply,username,'你')
 	}
 }
 OnOtherGreetings{

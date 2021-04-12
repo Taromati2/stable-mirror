@@ -221,7 +221,7 @@ OnPlayCmd{
 		return
 	}
 	reference1=PlayReplace(reference1)
-	"\C\![sound,%(reference0),%(reference1)]"
+	"\0\C\![sound,%(reference0),%(reference1)]"
 	--
 	_path = SPLITPATH(reference1)
 	_filelrc = _path[0] + _path[1] + _path[2] + '.lrc'
@@ -339,12 +339,12 @@ OnMusicPlayer{
 	_mode = ('普通','顺序播放','单曲循环','列表循环','乱序')[musicplaymode]
 	_lrcenable = ('OFF',' ON')[musiclrcenable]
 	_name = SPLITPATH(musicfile[2])
-	if musicplayinfo!=null{
+	if musicplayinfo!=NULL{
 		_name=IARRAY
 		_name[2]=musicplayinfo
-		musicplayinfo=null
+		musicplayinfo=NULL
 	}
-	_txt = "\![quicksession,true]\![set,choicetimeout,0]\1\c\s[12]\f[bold,1]Mini音乐播放器\f[bold,default]\_l[145]\q[◇打开路径,OnMusicPathOpen]\_l[215]\q[◇关闭,OnMusicPlayerClose]\n%(_name[2] + _name[3])\n"
+	_txt = "\C\![quicksession,true]\![set,choicetimeout,0]\1\c\s[12]\f[bold,1]Mini音乐播放器\f[bold,default]\_l[145]\q[◇打开路径,OnMusicPathOpen]\_l[215]\q[◇关闭,OnMusicPlayerClose]\n%(_name[2] + _name[3])\n"
 	_now=TOINT(musicfile[1])+1+'/'
 	_totol=musicfile[0]
 	if musicplaymode==4||musicplayerrange{
@@ -366,6 +366,8 @@ OnMusicPlayer{
 	_txt += '\s[10]\0'
 	if musicplayerlist
 		_txt+=OnMusicPlayerList
+	if reference0 != 'NoSurfaceRestore'
+		_txt+='\_w[1000]\![raise,OnSurfaceRestore.Music]'
 	_txt
 }
 OnMusicPathOpen{
@@ -582,7 +584,7 @@ OnMusicListPage{
 	if temp=='input'{
 		if music_listpage[_id]>0
 			music_listpage[_id]--
-		temp=null
+		temp=NULL
 	}
 	if music_listpage[_id]<0
 		music_listpage[_id]=0
@@ -948,7 +950,7 @@ OnMusicPlayListClose{
 GetRandList{
 	if _argc>0
 		musicfile[1]=_argv[0]
-	if _argv[1]!=null
+	if _argv[1]!=NULL
 		musicfile[4]=TOINT(_argv[1])
 	_m3u = M3U8PATH
 	_file=_m3u+musicfile[4]+'.m3u8'
@@ -986,7 +988,7 @@ GetRandList{
 GetRangeList{
 	if _argc>0
 		musicfile[1]=_argv[0]
-	if _argv[1]!=null
+	if _argv[1]!=NULL
 		musicfile[4]=TOINT(_argv[1])
 	if musicplaymode == 4{
 		_music=IARRAY
@@ -1039,7 +1041,7 @@ GetRangeList{
 		//musicfile[4]=musiclistfile[1]
 		musicfile[3]=0
 		musicfile[2] = musicrandlist[0][0,'|']
-		musicfilecount=null
+		musicfilecount=NULL
 		_txt+=DialogMusicSaveList
 		_txt
 	}else{
@@ -1066,7 +1068,7 @@ GetRangeList{
 		}
 		musicfile[3]+=musicfile[1]
 		musicfile[2] = musicrandlist[_id][0,'|']
-		musicfilecount=null
+		musicfilecount=NULL
 		_txt+=DialogMusicSaveList
 		_txt
 	}
@@ -1241,7 +1243,7 @@ OnSoundStop{
 //播放器面板的選項按鈕動作
 //---------------------------------------------------
 OnMusicPlayerCmd{
-	_temp=null
+	_temp=NULL
 	if FATTRIB(musicfile[2])[0]==-1{
 		_temp='文件无效或不存在'
 	}

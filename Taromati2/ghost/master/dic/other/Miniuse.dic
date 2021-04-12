@@ -989,7 +989,7 @@ inputkey{
 		m_res=0
 		m_carry=0
 	}
-	elseif m_exp == null || m_exp == '0'
+	elseif m_exp == NULL || m_exp == '0'
 		m_exp += _key
 	else
 		m_exp += _key
@@ -2079,8 +2079,8 @@ OnRenameText{
 	}
 	EVAL("%(rename_var)=%(CHR(34))%(reference0)%(CHR(34))")
 	OnFilesRename(submenu)
-	submenu=null
-	rename_var=null
+	submenu=NULL
+	rename_var=NULL
 }
 RenameCheck{
 	_str=_argv[0]
@@ -2162,7 +2162,7 @@ OnRenameGloble{
 		i=0
 	i++
 	if i%2==1
-		option=null
+		option=NULL
 	_txt+=OnFilesRename(_submenu)
 	_txt
 }
@@ -2312,7 +2312,7 @@ OnFileRenameDrop{
 		}
 	}
 	if ARRAYSIZE(temp)==0
-		rename_folder=null
+		rename_folder=NULL
 	if rename_order{
 		_total=ARRAYSIZE(filerenamelist)
 		for _i=0;_i<_total;_i++{
@@ -2518,19 +2518,19 @@ OnReadBook{
 	_read=CheckProcess('wscript.exe')
 	if autoread//&&TOINT(voice)
 		_txt+='\![set,choicetimeout,2000]'
-	if read=='stop'{//||voice==null
+	if read=='stop'{//||voice==NULL
 		_txt
 		return
 	}
 	elseif autoread&&_read&&read==-1{
-		read=null
+		read=NULL
 		_txt+=OnStopSpVoice.vbs
 	}
 	elseif autoread&&_read{
 		read=book_dexid
 	}
 	elseif autoread&&!_read&&read==-1{
-		read=null
+		read=NULL
 	}
 	elseif autoread&&!_read&&book_dexid+1==book_dexnum{
 		_txt+='\![set,choicetimeout,0]'
@@ -2598,7 +2598,7 @@ OnReadBookPage{
 	if temp=='input'{
 		if book_dexid>0
 			book_dexid--
-		temp=null
+		temp=NULL
 	}
 	if book_dexid<0
 		book_dexid=0
@@ -2722,7 +2722,7 @@ OnBookChapter{
 	if temp=='input'{
 		if _j>0
 			_j--
-		temp=null
+		temp=NULL
 	}
 	if _j<0
 		_j=0
@@ -3147,7 +3147,7 @@ OnKikkaKnowl{
 	_path='pseudoAI'
 	_files = FENUM(_path)
 	_totle=ARRAYSIZE(_files)
-	if reference0!=null{
+	if reference0!=NULL{
 		_j=TOINT(reference0)
 	}
 	if _argc>0
@@ -3202,7 +3202,7 @@ OnKikkaKnowl.SelectFile{
 	FCHARSET(1)
 	if FOPEN(_inf,'r'){
 		_buff=''
-		if reference1!=null
+		if reference1!=NULL
 			_j=TOINT(reference1)
 		if _argc>1
 			_j=_argv[1]
@@ -3277,7 +3277,7 @@ OnKnowlPage{
 	_n=TOINT(temp[2])
 	_p=TOINT(reference0)
 	_j=_p*20-20
-	if reference1!=null{
+	if reference1!=NULL{
 		_file=reference0
 		_j=reference1
 		_n=reference2
