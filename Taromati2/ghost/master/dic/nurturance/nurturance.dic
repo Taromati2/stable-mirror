@@ -82,7 +82,7 @@ popUseritem{
 }
 KikkaMenu{
 	if showkikka==1 {
-		'\_l[0,210]' + ColorText('\__q[OnKikkaMenu,2]\f[cursorstyle,none]\f[cursorfontcolor,65,203,214]─────────橘花养成系统↓────────\f[cursorstyle,default]\f[cursorfontcolor,default]\__q\n[140]','color=160,160,200')
+		'\_l[0,207]' + ColorText('\__q[OnKikkaMenu,2]\f[cursorstyle,none]\f[cursorfontcolor,65,203,214]─────────橘花养成系统↓────────\f[cursorstyle,default]\f[cursorfontcolor,default]\__q\n[140]','color=160,160,200')
 		--
 		"\_l[82]\![*]\q[购买物品  ,OnKikkaItemList,0]\![*]\q[日程安排  ,OnKikkaClass,%(weekday)]\![*]\q[礼物盒子,Ongiftbox]\n"
 		--
@@ -90,7 +90,7 @@ KikkaMenu{
 		KikkaStatus
 		--
 		if SHIORI_FW.DebugMode
-			'\_l[176,347]\q[◇Reset,OnCalculateVar,OnKikkaReset]'
+			'\_l[176,343]\q[◇Reset,OnCalculateVar,OnKikkaReset]'
 	}
 	elseif showkikka==2 {
 		'\c\![set,choicetimeout,0]\_l[0,0]' + ColorText('\__q[OnKikkaMenu,0]\f[cursorstyle,none]\f[cursorfontcolor,65,203,214]─────────橘花养成系统↓────────\f[cursorstyle,default]\f[cursorfontcolor,default]\__q\n[140]','color=160,160,200')

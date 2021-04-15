@@ -32,7 +32,8 @@ OpenMenu{
 		_message=OpenMenuTalk
 	}
 	_sub = '◆,◇,◇,◇,◇,◆,◇,◇,◇,◇,◆,◇,◇,◇,◇,◆,◇,◇,◇,◇,◆'
-	'\C\![quicksession,true]\1\b[-1]\c\0\c'+_message+"\b[2]\_l[0,28]\q[%(_sub[_submenu])常用功能,OnSubMenu,0,%(_submenuex)]/
+	'\C\![quicksession,true]\1\b[-1]\c\0\c'+_message+"\b[2]/
+	\_l[0,26]\q[%(_sub[_submenu])常用功能,OnSubMenu,0,%(_submenuex)]/
 	\_l[68]\q[%(_sub[_submenu + 4])休闲,OnSubMenu,1,%(_submenuex)]/
 	\_l[112]\q[%(_sub[_submenu + 8])游戏,OnSubMenu,2,%(_submenuex)]/
 	\_l[156]\q[%(_sub[_submenu + 12])便利功能,OnSubMenu,3,%(_submenuex)]/
@@ -44,7 +45,7 @@ OpenMenu{
 	KikkaMenu
 	--
 	if _submenu == 0&&showkikka!=2{
-		NotePadShow(178,56,4)//坐标x，坐标y，显示条数
+		NotePadShow(178,54,4)//坐标x，坐标y，显示条数
 	}
 }
 OnSubMenu{
@@ -55,7 +56,7 @@ SubMenu{
 	_submenu = _argv[0]
 	_submenuex=_argv[1]
 	_sub = '◆,◇,◇,◇,◇,◆,◇,◇,◇,◇,◆,◇,◇,◇,◇,◆,◇,◇,◇,◇,◆'
-	'\C\![set,choicetimeout,30000]\_l[0,42]--------------------------------------------\n'
+	'\C\![set,choicetimeout,30000]\_l[0,40]--------------------------------------------\n'
 	--
 	case _submenu {
 		when 0 {
@@ -265,7 +266,7 @@ TopModeChanged{
 }
 //---- 无用 -----------------------------------------------------------------------------------------------------------
 Select.MenuCancel{
-	'\C\0\c\b[0]'
+	'\0\b[0]'
 	--
 	infomode=0
 	_phase = GetPhase
@@ -313,7 +314,6 @@ RunningReset{
 	//Speech_Recognition=NULL
 }
 OnChoiceTimeout{
-	//talkmemo = 'e_0'
 	if playingtetris&&running=='playingtetris'
 		OnTimer1Timer
 	elseif playingGobang&&running=='playingGobang'{
@@ -341,6 +341,7 @@ OnChoiceTimeout{
 	elseif mode == '1'
 		"\1\s[%(specialmode != 'mealtime')10]…啧。"
 	else{
+		talkmemo = 'e_0'
 		'\0\s[7]…无视吗？'
 		'\0\s[0]…好的'
 		if 萌度>依赖度{

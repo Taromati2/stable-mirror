@@ -366,7 +366,7 @@ file,ghost/master/dic/games/RetroSnaker.dic310c54c3ac3dc73a1c80a0041032c6dbsiz
 file,ghost/master/dic/games/rpggame.dicf6e85d5416b6aba5004c857befee7f94size=137164
 file,ghost/master/dic/games/tetrisgame.dicee806c8185af52264c8e604aa6c07a51size=10935
 file,ghost/master/dic/games/uno.dice3e59893024141ed0890a4d3ba2bbfc2size=26147
-file,ghost/master/dic/nurturance/nurturance.dic72ca9608b3abde19d8c77df24956308bsize=24636
+file,ghost/master/dic/nurturance/nurturance.dicca63b4e08bfe8d1ca5eccf218a5d2f07size=24636
 file,ghost/master/dic/other/AccessInternet.dic9475c1683b5af352c872c82d5faa3a57size=1408
 file,ghost/master/dic/other/classtable.dicb0e48f7bdce8abd50284853ad11171a1size=7032
 file,ghost/master/dic/other/dictionary.dicf6765f4587d659992a59194032ed83ebsize=3670
@@ -401,7 +401,7 @@ file,ghost/master/dic/system/hotkey.dic6328b5afaa69c140f21014932d4d55a6size=13
 file,ghost/master/dic/system/internet.dic085e3a92dfc58ba29a3bb2c5c2856b02size=30088
 file,ghost/master/dic/system/lunar.dic478edec535cca9cfaa36a3b01be7cf03size=7453
 file,ghost/master/dic/system/MAGIC.dic617991bbb23a229dd827369574b5e042size=294
-file,ghost/master/dic/system/menu.dicb8404fa0b3e56f5daa5361531e33d1dbsize=98917
+file,ghost/master/dic/system/menu.dic5a6edb7f56809a65a0a98e74669ce3basize=98915
 file,ghost/master/dic/system/mirror.dicb5901a90a30f7eb336507149071eb745size=877
 file,ghost/master/dic/system/password.dic8169e2404956b8c969d85187c01480ffsize=2598
 file,ghost/master/dic/system/QuickStart.dic3f4bc0add7708d546d4d79785131de85size=251
