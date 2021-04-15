@@ -372,14 +372,15 @@ OnBlackjackRule{
 	_rule + _menu
 }
 Blackjack{
-	kikkascard = (2,1,0,0,0,poker[0],poker[1])
-	yourcard = (2,0,0,0,0,poker[2],poker[3])
+	kikkascard = (2,1,0,0,0,poker[0],poker[2])
+	yourcard = (2,0,0,0,0,poker[1],poker[3])
 	BlackjackCal
 	BlackjackShow
 }
 BlackjackShow{
-	_txt = '\_q'
-	_txt += "橘花的牌：(%(kikkascard[3])点)\n"
+	_txt = '\_q'+BlackjackJudge
+	_txt += '\n[150]\q[◇新游戏,OnBlackjack]    \q[◇游戏规则,OnBlackjackRule]\n\q[◇返回上一层,OnOpenMenu,2]\n\q[◇终了,OnBlackjackEnd]'
+	_txt += "\_l[0,0]橘花的牌：(%(kikkascard[3])点)\n"
 	for _i = 0; _i < kikkascard[0]; _i ++ {
 		if kikkascard[1] == 1 && _i == 0 {
 			_txt += '暗牌   '
@@ -397,8 +398,6 @@ BlackjackShow{
 			_txt += "\_l[%(_i * 36)]" + Poker.Show(yourcard[_i + 5],'cs')
 		}
 	}
-	_txt += BlackjackJudge
-	_txt += '\n[150]\q[◇新游戏,OnBlackjack]    \q[◇游戏规则,OnBlackjackRule]\n\q[◇返回上一层,OnOpenMenu,2]\n\q[◇终了,OnBlackjackEnd]'
 	_txt += ShowMoney(120,0)
 	_txt
 }
@@ -406,7 +405,17 @@ BlackjackJudge{
 	'\_l[0,77]'
 	--
 	if kikkascard[1] > 0 {
-		if yourcard[2] <= 21 && yourcard[0] == 5 {
+		if kikkascard[2] <= 21 && kikkascard[0] == 5 {
+			money -= 3 * 50
+			kikkascard[1] = 0
+			'\0\s[40]耶！橘花五龙了！！'
+		}
+		elseif kikkascard[2] == 21 && kikkascard[0] == 2 {
+			money -= 2 * 50
+			kikkascard[1] = 0
+			'\0\s[40]BlackJack！橘花获胜了！'
+		}
+		elseif yourcard[2] <= 21 && yourcard[0] == 5 {
 			money += 3 * 50
 			"\0\s[9]五龙！%(username)获胜了。"
 		}
