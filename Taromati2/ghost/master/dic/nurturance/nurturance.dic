@@ -90,7 +90,7 @@ KikkaMenu{
 		KikkaStatus
 		--
 		if SHIORI_FW.DebugMode
-			'\_l[176,343]\q[◇Reset,OnCalculateVar,OnKikkaReset]'
+			'\_l[176,348]\q[◇Reset,OnCalculateVar,OnKikkaReset]'
 	}
 	elseif showkikka==2 {
 		'\c\![set,choicetimeout,0]\_l[0,0]' + ColorText('\__q[OnKikkaMenu,0]\f[cursorstyle,none]\f[cursorfontcolor,65,203,214]─────────橘花养成系统↓────────\f[cursorstyle,default]\f[cursorfontcolor,default]\__q\n[140]','color=160,160,200')

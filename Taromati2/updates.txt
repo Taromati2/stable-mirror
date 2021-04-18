@@ -352,7 +352,7 @@ file,ghost/master/dic/communicate/talk/talk.dicf856ce0d9c406fcc7256e8d9c064a0ec
 file,ghost/master/dic/communicate/talk/talk_t.dic6175f863f253060e5c520bf4246ec734size=8901
 file,ghost/master/dic/communicate/touch/touch.dic7a34b7d2123637e2cfb56b380d167ac4size=14008
 file,ghost/master/dic/dev/dicforma.dica35022c2315f171b54bc11326c8e79fbsize=7302
-file,ghost/master/dic/dev/md5_linker.dic36c847526f8293f1411adaa7d28dc514size=2029
+file,ghost/master/dic/dev/md5_linker.dic6c86ad1bdb56f7579e685897d6768271size=2046
 file,ghost/master/dic/games/boxgame.dic88e3373b7efeba931986fe67a035563csize=5243
 file,ghost/master/dic/games/Gobang/Gobang.dica542b3d3efe231e18b64a0f978d66f5asize=44851
 file,ghost/master/dic/games/Gobang/GobangData.dicdabd4d6991556b11465d06b14f93741dsize=33588
@@ -366,7 +366,7 @@ file,ghost/master/dic/games/RetroSnaker.dic310c54c3ac3dc73a1c80a0041032c6dbsiz
 file,ghost/master/dic/games/rpggame.dicf6e85d5416b6aba5004c857befee7f94size=137164
 file,ghost/master/dic/games/tetrisgame.dicee806c8185af52264c8e604aa6c07a51size=10935
 file,ghost/master/dic/games/uno.dice3e59893024141ed0890a4d3ba2bbfc2size=26147
-file,ghost/master/dic/nurturance/nurturance.dicca63b4e08bfe8d1ca5eccf218a5d2f07size=24636
+file,ghost/master/dic/nurturance/nurturance.dic9aeb9316d03c207301b3d3987e1b7e69size=24636
 file,ghost/master/dic/other/AccessInternet.dic9475c1683b5af352c872c82d5faa3a57size=1408
 file,ghost/master/dic/other/classtable.dicb0e48f7bdce8abd50284853ad11171a1size=7032
 file,ghost/master/dic/other/dictionary.dicf6765f4587d659992a59194032ed83ebsize=3670
@@ -397,7 +397,7 @@ file,ghost/master/dic/system/change_part.dic4f88bcdb3c772e0e66c3e3bba91f8557si
 file,ghost/master/dic/system/clock.dic6f3ffe37d58a184aa50d7dc843710be2size=26503
 file,ghost/master/dic/system/database_edit.dica86fc88406c888ebb6235577e20cab51size=21303
 file,ghost/master/dic/system/event_response.dic7922be6455a43793fdb715da66026187size=29556
-file,ghost/master/dic/system/hotkey.dic6328b5afaa69c140f21014932d4d55a6size=13297
+file,ghost/master/dic/system/hotkey.dic53c22c3f44997a3eae7e16bc8986d7d3size=13297
 file,ghost/master/dic/system/internet.dic085e3a92dfc58ba29a3bb2c5c2856b02size=30088
 file,ghost/master/dic/system/lunar.dic478edec535cca9cfaa36a3b01be7cf03size=7453
 file,ghost/master/dic/system/MAGIC.dic617991bbb23a229dd827369574b5e042size=294

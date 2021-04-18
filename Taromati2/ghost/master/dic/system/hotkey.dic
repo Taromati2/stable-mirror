@@ -98,7 +98,7 @@ OnKeyPress{
 		else
 			'\0\s[0]'
 		--
-		'重新讀取SHELL……\![reload,shell]'
+		'\![reload,shell]重新讀取SHELL……'
 	}
 	elseif reference0 == 'f5' {
 		//---- shiori重新載入
@@ -107,7 +107,7 @@ OnKeyPress{
 		else
 			'\0\s[0]'
 		--
-		'重新讀取SHIORI……\![reload,shiori]'
+		'\![reload,shiori]重新讀取SHIORI……'
 	}
 	elseif reference0 == 'f6' {
 		if SHIORI_FW.DebugMode

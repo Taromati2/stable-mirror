@@ -69,7 +69,7 @@ md5linker.file_checker:void{
 md5linker.mapper:void{
 	_t=FENUM(_argv[0])
 	foreach _t;_i{
-		if ISDIR(_argv[0]+'\'+_i)
+		if ISDIR(_argv[0]+'\'+_i) && _i != '\.git'
 			md5linker.mapper(_argv[0]+'\'+_i)
 		else{
 			md5linker.file_checker(_argv[0]+'\'+_i)
