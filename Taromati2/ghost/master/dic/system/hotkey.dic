@@ -120,7 +120,7 @@ OnKeyPress{
 	}
 	elseif reference0 == 'f12' {
 		//截屏
-		UnFinished
+		void RUNCMD('explorer ms-screenclip:')
 	}
 	elseif reference0 == 'm' {
 		showkikka=1
