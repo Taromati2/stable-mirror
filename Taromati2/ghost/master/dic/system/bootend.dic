@@ -194,7 +194,7 @@ OnBoot{
 	if year - 1 == nextbirthday[0]{
 		nextbirthday=NextBirthDay(birthday[0],birthday[1],birthday[2])
 	}
-	if year == nextbirthday[0] && month == nextbirthday[1] && day == nextbirthday[2] && birthdaygiftmode != 1{
+	if nextbirthday && year == nextbirthday[0] && month == nextbirthday[1] && day == nextbirthday[2] && birthdaygiftmode != 1{
 		"\0\s[28]今天是%(username)%(TOINT(nextbirthday[0]) - birthday[0])岁生日，橘花给%(username)准备了礼物\n\n\n\q[◇打开看看,birthdaygift]"
 		--
 		'\n\x'
