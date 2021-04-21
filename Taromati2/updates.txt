@@ -396,7 +396,7 @@ file,ghost/master/dic/system/changeshell.dic25da184d9e8add9d8002025451fd2eb5si
 file,ghost/master/dic/system/change_part.dic4f88bcdb3c772e0e66c3e3bba91f8557size=478
 file,ghost/master/dic/system/clock.dic6f3ffe37d58a184aa50d7dc843710be2size=26503
 file,ghost/master/dic/system/database_edit.dica86fc88406c888ebb6235577e20cab51size=21303
-file,ghost/master/dic/system/event_response.dic7922be6455a43793fdb715da66026187size=29556
+file,ghost/master/dic/system/event_response.dic245c22735cfe1dd7f0e521e964e2b7afsize=29556
 file,ghost/master/dic/system/hotkey.dic456c0dd7cdaf8818509ca4377cb3171dsize=13325
 file,ghost/master/dic/system/internet.dic085e3a92dfc58ba29a3bb2c5c2856b02size=30088
 file,ghost/master/dic/system/lunar.dic478edec535cca9cfaa36a3b01be7cf03size=7453

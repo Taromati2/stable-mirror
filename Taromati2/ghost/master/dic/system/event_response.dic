@@ -138,9 +138,9 @@ OnNotifyUserInfo{
 		if _birthday_changed
 			",%(SakuraScriptArgConverter(reference2))"
 		--
-		"]\n/
+		']\n/
 		\q[◇无用,Cancel]\n/
-		"
+		'
 	}
 	--
 	Baseware.Config.nickname = reference0
