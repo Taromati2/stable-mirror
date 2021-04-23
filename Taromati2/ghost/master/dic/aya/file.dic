@@ -1,4 +1,34 @@
 //by steve02081504
+GETCHARSETINDEX{
+	case _argv[0]{
+		when 'Shift_JIS'
+			0
+		when 'UTF-8'
+			1
+		when 'EUC_JP'
+			2
+		when 'BIG-5'
+			3
+		when 'GB-2312'
+			4
+		when 'EUC_KR'
+			5
+		when 'ISO-2022-JP'
+			6
+		when 'binary'
+			126
+		when 'OSNative'
+			127
+		others
+			127
+	}
+}
+FREOPEN{
+	_tmp = FTELL(_argv[0])
+	FCLOSE(_argv[0])
+	void FOPEN(_argv[0],_argv[1])
+	FSEEK(_argv[0],_tmp,'start')
+}
 ISDIR{
 	FATTRIB(_argv[0])[2]
 }

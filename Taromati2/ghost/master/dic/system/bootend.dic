@@ -781,7 +781,14 @@ GetPhase_bedroom{
 }
 //**** 最小化 *********************************************************************************************************
 OnWindowStateMinimize{
-	minimizestarttime = "%(systemuptime)"
+	minimizestarttime = systemuptime
+	if mode != '1'{
+		'\0\s[3]……'
+		'\0\s[6]……知道了。'
+		if 依赖度 > 50
+			'\0\s[9]请不要把我忘了哦？'
+	}
+	'\1又要被隐藏了么？'
 }
 OnWindowStateRestore{
 	if mode == '1'{
@@ -804,6 +811,8 @@ OnWindowStateRestore{
 	}
 	--
 	"\_w[%(MAX(MIN(MinimizeTime/60*1000,9000),500))]"
+	--
+	ERASEVAR('minimizestarttime')
 }
 MinimizeTime{
 	TOINT(systemuptime) - TOINT(minimizestarttime)

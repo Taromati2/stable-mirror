@@ -250,9 +250,8 @@ Select.AlwaysOnTop{
 }
 Select.Trayicon{
 	topmode=2
-	'\1又要被隐藏了么？\n'
-	--
 	TopModeChanged
+	//反馈见OnWindowStateMinimize
 }
 TopModeChanged{
 	case topmode{

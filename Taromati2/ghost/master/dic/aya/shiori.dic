@@ -140,6 +140,7 @@ ClearAyaTempVar {
 	ERASEVAR('basewarenameex')
 	ERASEVAR('sender')
 	ERASEVAR('S_CHARSET')
+	ERASEVAR('ghostpathlist')
 	ERASEVAR('installedghostlist')
 	ERASEVAR('installedsakuralist')
 	ERASEVAR('installedkerolist')
@@ -990,6 +991,10 @@ SHIORI_FW.ExecuteDl2ToDll {
 //******************************************************************************
 //インストール済ゴーストリストの構築
 //******************************************************************************
+On_ghostpathlist{
+	if basewarename == 'embryo' || !SHIORI_FW.IGLIST_ACCEL
+		ghostpathlist = reference.raw
+}
 //------------------------------------------------------------------------------
 //関数名：On_installedghostname
 //機能　：インストール済ゴースト名通知イベント
@@ -1016,34 +1021,27 @@ On_installedghostname {
 SHIORI_FW.StructInstalledGhostList {
 	if !SHIORI_FW.IGLIST_MAX; return
 
+	if !ISVAR('ghostpathlist')
+		ghostpathlist=('BASE_PATH\..\..\..\')
+	foreach ghostpathlist;_ghostpath{
+		SHIORI_FW.StructInstalledGhostListFromGhostPath(_ghostpath)
+	}
+}
+SHIORI_FW.StructInstalledGhostListFromGhostPath{
 	//ghostディレクトリ配下のディレクトリを抽出
-	_filelist = FENUM('BASE_PATH\..\..\..')
+	_filelist = FENUM(_argv[0])
 	_dirlist = IARRAY
 	foreach _filelist; _file {
 		if '\' _in_ _file; _dirlist ,= _file
 	}
 	_dirnum = ARRAYSIZE(_dirlist)
 
-	//取得開始位置と取得数を求める
-	_num = 0
-	if SHIORI_FW.IGLIST_MAX == -1 {
-		_index	 = 0
-		_num	 = _dirnum
-	} else {
-		_index = 0
-		_num = SHIORI_FW.IGLIST_MAX
-		if _num > _dirnum; _num = _dirnum
-	}
-
 	//リスト作成主処理
-	for _i = 0; _i < _num; _i++ {
-		//取得位置の更新
-		_index++
-
-		if _index >= _dirnum; _index = 0
-
+	for _i = 0; _i < _dirnum; _i++ {
+		if SHIORI_FW.IGLIST_MAX != -1 && ARRAYSIZE(installedghostlist) >= SHIORI_FW.IGLIST_MAX
+			return
 		//descript.txtから情報取得
-		_ghostnames = SHIORI_FW.GetGhostNameFromDescriptTxt('BASE_PATH\..\..\..' + _dirlist[_index])
+		_ghostnames = SHIORI_FW.GetGhostNameFromDir(_argv[0] + _dirlist[_i])
 		//リストへ追加
 		if ARRAYSIZE(_ghostnames) {
 			installedghostlist	,= _ghostnames[0]
@@ -1052,22 +1050,29 @@ SHIORI_FW.StructInstalledGhostList {
 		}
 	}
 }
-
 //------------------------------------------------------------------------------
-//関数名：SHIORI_FW.GetGhostNameFromDescriptTxt
+//関数名：SHIORI_FW.GetGhostNameFromDir
 //機能　：descript.txtからname/sakura.name/kero.nameを取得します
 //引数　：_argv[0] 取得対象のゴーストディレクトリ
 //------------------------------------------------------------------------------
-SHIORI_FW.GetGhostNameFromDescriptTxt {
+SHIORI_FW.GetGhostNameFromDir {
 	if !FOPEN(_filename = "%(_argv[0])\ghost\master\descript.txt", 'r')
 		return
 
 	_ghostnames = IARRAY
-	_flag	 = 0
+	_flag = 0
+	_Charset_geted =0//防止freopen时ftell失败
 	while _flag != 7 {
 		if (_line = FREAD(_filename)) == -1; break
 
 		case CUTSPACE(_line[0]) {
+			when 'charset'{
+				if !_Charset_geted{
+					FCHARSET(GETCHARSETINDEX(CUTSPACE(_line[1])))
+					void FREOPEN(_filename,'r')
+					_Charset_geted = 1
+				}
+			}
 			when 'name' {
 				_ghostnames[0] = CUTSPACE(_line[1])
 				_flag++
@@ -1084,6 +1089,7 @@ SHIORI_FW.GetGhostNameFromDescriptTxt {
 	}
 
 	FCLOSE(_filename)
+	FCHARSET(GETCHARSETINDEX(GETSETTING('charset.output')))
 	_ghostnames
 }
 

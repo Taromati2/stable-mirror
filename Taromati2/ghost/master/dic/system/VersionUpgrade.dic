@@ -78,3 +78,10 @@ VERSION_UPGRADE_2:void{
 	ERASEVAR('游戏界面')
 	RENAME_VAR('DrawHuanRongBG','HuaRongDao.BackGroundConfing')
 }
+VERSION_UPGRADE_3:void{//BUILDING
+	ERASEVAR('SHIORI_FW.NotifyResults')
+	ERASEVAR('ontest')
+	ERASEVAR('page')
+	ERASEVAR('IN')
+	ERASEVAR('Gobang.player.baseparam.rank')
+}
