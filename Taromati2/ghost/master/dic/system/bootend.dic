@@ -791,22 +791,29 @@ OnWindowStateMinimize{
 	'\1又要被隐藏了么？'
 }
 OnWindowStateRestore{
+	OnSurfaceRestore.base
+	--
 	if mode == '1'{
 		OnWindowStateRestore1
 	}
 	else{
+		if MinimizeTime >= 60*60*24{
+			"\0\s[9]\w9.\w9.\w9.\w9\w9\w9我可是等了你整整%(TOINT(MinimizeTime/(60*60*24)))天哦？"
+		}
 		if MinimizeTime >= 60*60*5{
-			'\1\s[10]\0\s[9]\w9.\w9.\w9.\w9\w9\w9\s[6]\n把我忘掉了吧?\w9\w9\w9\w9\n\s[35]绝对\w9.\w9.\w9.'
+			'\0\s[9]\w9.\w9.\w9.\w9\w9\w9\s[6]\n把我忘掉了吧?\w9\w9\w9\w9\n\s[35]绝对\w9.\w9.\w9.'
+			"\0\s[9]\w9.\w9.\w9.\w9\w9\w9我可是等了你整整%(TOINT(MinimizeTime/(60*60)))小时哦？"
 		}
 		elseif MinimizeTime >= 60*60*2{
-			'\1\s[10]\0\s[7]\w9.\w9.\w9.\w9\w9\w9\s[0]\n我还以为被忘掉了呢…'
+			'\0\s[7]\w9.\w9.\w9.\w9\w9\w9\s[0]\n我还以为被忘掉了呢…'
 		}
 		elseif MinimizeTime >= 60{
-			'\1\s[10]\0\s[6]幸好。\w9\w9\w9\s[0]\n我还以为被忘掉了呢…'
+			'\0\s[6]幸好。\w9\w9\w9\s[0]\n我还以为被忘掉了呢…'
 		}
 		else{
-			'\1\s[10]\0\s[0]…嗯。\w9\w9\w9\n有需要我的地方吗？'
-			'\0\s[0]\1\s[10]呼。\w9\w9\n在做些什么啊？'
+			'\0…嗯。\w9\w9\w9\n有需要我的地方吗？'
+			if specialmode != 'smoking'
+				'\1\s[10]呼。\w9\w9\n在做些什么啊？'
 		}
 	}
 	--

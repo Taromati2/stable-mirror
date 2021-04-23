@@ -772,7 +772,7 @@ AgendaMonitor{
 		_n++
 	}
 	if agendastart{
-		_txt+='\0\![quicksession,true]\![set,choicetimeout,0]'//加再这里，否则人物表情无法复原
+		_txt+='\0\![quicksession,true]\![set,choicetimeout,0]'//加在这里，否则人物表情无法复原
 		_event=eventtemp
 		_eventsort=_event[0,'	']
 		_eventtitle=_event[12,'	']

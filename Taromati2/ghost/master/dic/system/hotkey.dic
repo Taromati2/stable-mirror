@@ -392,6 +392,7 @@ OnCalculateVar{
 			"\1\s[%(specialmode != 'mealtime')11]全角 -> 半角？\n"
 		else
 			'\0\s[20]转换表达式中的全角符号为半角？\n'
+		--
 		'\q[◇好,OnCalculateVar.CharConverter,'+SakuraScriptArgConverter(reference0)+']\n/
 		\q[◇直接执行,OnCalculateVar,'+SakuraScriptArgConverter(reference0)+',no_convert]\n/
 		\q[◇算了,Cancel]\n/

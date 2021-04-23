@@ -390,14 +390,14 @@ file,ghost/master/dic/system/backdoor/backdoor.dic6ee8f0b6a90099f84342579ebb4a2
 file,ghost/master/dic/system/backdoor/backdoor.dic.base6ee8f0b6a90099f84342579ebb4a28d2size=35
 file,ghost/master/dic/system/backdoor/backdoorloader.dic478ecd5d62dddc62df4591d5bd21b1ddsize=452
 file,ghost/master/dic/system/base.dice974fc4e5fed8863fa4eadf13781590esize=893
-file,ghost/master/dic/system/bootend.dicac2afd3bfb0813551a6b86de435f7054size=59941
+file,ghost/master/dic/system/bootend.dic48e00402b848cc481fa093debe7ad213size=60191
 file,ghost/master/dic/system/Calendar.dic5b009b90da7a6648ec8ed2475d76298bsize=40096
 file,ghost/master/dic/system/changeshell.dic25da184d9e8add9d8002025451fd2eb5size=16530
 file,ghost/master/dic/system/change_part.dic4f88bcdb3c772e0e66c3e3bba91f8557size=478
-file,ghost/master/dic/system/clock.dic6f3ffe37d58a184aa50d7dc843710be2size=26503
+file,ghost/master/dic/system/clock.dic54aba83dbe9db74bb7f879f2ee6a4eadsize=26503
 file,ghost/master/dic/system/database_edit.dica86fc88406c888ebb6235577e20cab51size=21303
 file,ghost/master/dic/system/event_response.dic245c22735cfe1dd7f0e521e964e2b7afsize=29556
-file,ghost/master/dic/system/hotkey.dic456c0dd7cdaf8818509ca4377cb3171dsize=13325
+file,ghost/master/dic/system/hotkey.dicbe0fe334e131de15bb9d74ff6df5d0bbsize=13330
 file,ghost/master/dic/system/internet.dic085e3a92dfc58ba29a3bb2c5c2856b02size=30088
 file,ghost/master/dic/system/lunar.dic478edec535cca9cfaa36a3b01be7cf03size=7453
 file,ghost/master/dic/system/MAGIC.dic617991bbb23a229dd827369574b5e042size=294
