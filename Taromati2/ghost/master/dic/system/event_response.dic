@@ -20,6 +20,19 @@ OnDebugModeChange{
 	--
 	if mode == '1'
 		'了。'
+	--
+	'\n'
+	--
+	if SHIORI_FW.DebugMode && AutoUpdate
+		'/
+		\q[◇禁用自动更新,Onset,AutoUpdate,0]\n/
+		\q[◇无用,Cancel]\n/
+		'
+	if !SHIORI_FW.DebugMode && !AutoUpdate
+		'/
+		\q[◇开启自动更新,Onset,AutoUpdate,1]\n/
+		\q[◇无用,Cancel]\n/
+		'
 }
 OnLogModeChange{
 	if SHIORI_FW.LogMode

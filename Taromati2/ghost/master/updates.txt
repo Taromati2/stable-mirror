@@ -396,12 +396,12 @@ file,ghost/master/dic/system/changeshell.dic25da184d9e8add9d8002025451fd2eb5si
 file,ghost/master/dic/system/change_part.dic4f88bcdb3c772e0e66c3e3bba91f8557size=478
 file,ghost/master/dic/system/clock.dic31d7720ecabdec21a90c751bdfe77950size=26485
 file,ghost/master/dic/system/database_edit.dica86fc88406c888ebb6235577e20cab51size=21303
-file,ghost/master/dic/system/event_response.dic4b0b70fc75bc3399daa9b5f9865b4869size=29568
+file,ghost/master/dic/system/event_response.dice277480e2356cd515e4d6a093ad388ecsize=29830
 file,ghost/master/dic/system/hotkey.dicce2237507d42ef74294a46854214a957size=13381
 file,ghost/master/dic/system/internet.dic085e3a92dfc58ba29a3bb2c5c2856b02size=30088
 file,ghost/master/dic/system/lunar.dic478edec535cca9cfaa36a3b01be7cf03size=7453
 file,ghost/master/dic/system/MAGIC.dic617991bbb23a229dd827369574b5e042size=294
-file,ghost/master/dic/system/menu.dicbe1c8e59560deb7a5badac89788a4e7csize=98645
+file,ghost/master/dic/system/menu.dic2fb1931215cf8ffaaede93b556882fedsize=98709
 file,ghost/master/dic/system/mirror.dicb5901a90a30f7eb336507149071eb745size=877
 file,ghost/master/dic/system/password.dic8169e2404956b8c969d85187c01480ffsize=2598
 file,ghost/master/dic/system/QuickStart.dic3f4bc0add7708d546d4d79785131de85size=251
