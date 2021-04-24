@@ -231,7 +231,7 @@ Select.help{
 	%(OnIntimacy)/
 	%(OnLoveGo)/
 	\q[◇关于快捷键,shortcutkey]				\_l[120,-]\q[◇自优化,self_tuning]\n/
-	\q[◇伪春菜贴吧,OpenUkagakaTieBa]		\_l[120,-]\q[◇master目录,mastermenu]\n/
+	\q[◇伪春菜贴吧,OpenUkagakaTieBa]		\_l[120,-]\q[◇master目录,OnOpenMasterMenu]\n/
 	\q[◇伪春菜后援会,OpenUkagakaFanClub]	\_l[120,-]\q[◇伪春菜wiki,OpenUkagakaWiki]\n/
 	%(Onaccounting)/
 	\q[◇返回上一层,OnOpenMenu,4]\_l[120,-]\q[◇退出,OptionEnd]"
@@ -1066,13 +1066,14 @@ Select.shortcutkey{
 		'
 	--
 	'/
+	F8	\_l[23]打开master目录\n/
 	F12	\_l[23]截屏功能\n/
 	W	\_l[23]天气预报（小窗口）\n/
 	A	\_l[23]星座运势（小窗口）\n/
 	M	\_l[23]打开菜单\n/
 	'
 }
-Select.mastermenu{
+OnOpenMasterMenu{
 	MAGICUNLOCK
 	'\0\s[5]打开master目录\![open,file,ghost\master]'
 }

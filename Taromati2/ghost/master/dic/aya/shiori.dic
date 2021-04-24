@@ -706,15 +706,15 @@ SHIORI_FW.MakeEmptyResponse {
 	case _argv[0] {
 		when 'OnFirstBoot', 'OnBoot', 'OnWindowStateRestore', 'OnGhostChanged'
 			//スコープ0/1の基本サーフィスを出す必要があるイベント
-		"SHIORI/3.0 200 OK%(C_CRLF)Sender: AYA%(C_CRLF)Charset: %(S_CHARSET)%(C_CRLF)/
-		Value: \0\s[0]\1\s[10]\e%(C_CRLF2)"
+			"SHIORI/3.0 200 OK%(C_CRLF)Sender: AYA%(C_CRLF)Charset: %(S_CHARSET)%(C_CRLF)/
+			Value: \0\s[0]\1\s[10]\e%(C_CRLF2)"
 		when 'OnClose'
 			//終了指示を出す必要があるイベント
-		"SHIORI/3.0 200 OK%(C_CRLF)Sender: AYA%(C_CRLF)Charset: %(S_CHARSET)%(C_CRLF)/
-		Value: \0\-\e%(C_CRLF2)"
+			"SHIORI/3.0 200 OK%(C_CRLF)Sender: AYA%(C_CRLF)Charset: %(S_CHARSET)%(C_CRLF)/
+			Value: \0\-\e%(C_CRLF2)"
 		others
 			//上記以外では204を返送して良い
-		"SHIORI/3.0 204 No Content%(C_CRLF)Charset: %(S_CHARSET)%(C_CRLF2)"
+			"SHIORI/3.0 204 No Content%(C_CRLF)Charset: %(S_CHARSET)%(C_CRLF2)"
 	}
 }
 

@@ -118,6 +118,9 @@ OnKeyPress{
 		if SHIORI_FW.DebugMode
 			'\![open,inputbox,OnCalculateVar]'
 	}
+	elseif reference0 == 'f8' {
+		OnOpenMasterMenu
+	}
 	elseif reference0 == 'f12' {
 		//截屏
 		void RUNCMD('explorer ms-screenclip:')

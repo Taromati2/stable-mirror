@@ -44,7 +44,10 @@ Select.dicforma.file_drop.run{
 	if FENUM('VAR_PATH\dicforma_error')
 		'\s[8]很抱歉，出错了\![open,file,VAR_PATH\dicforma_error]'
 	else
-		"好的\w9\w9\s[100]，完成了\n\![open,file,%(_files)]"
+		'好的\w9\w9\s[100]，完成了\n/
+		\q[◇打开,OnOpenDirOrFile,'+SakuraScriptArgConverter(_files)+']\n/
+		\q[◇无用,Cancel]\n/
+		'
 	--
 	ERASEVAR('dicforma.radical')
 }
@@ -117,18 +120,18 @@ dicforma.clearvar:void{
 	dicforma.radical = _t
 }
 dicforma.tabnum_change:void{
-	_before.morpheme_extraction=dicforma.morpheme_extraction(dicforma.line.before)
-	_now.morpheme_extraction=dicforma.morpheme_extraction(dicforma.line.now)
-	if RE_GREP(_before.morpheme_extraction,'^\s*#')
+	dicforma.before.morpheme_extraction=dicforma.morpheme_extraction(dicforma.line.before)
+	dicforma.now.morpheme_extraction=dicforma.morpheme_extraction(dicforma.line.now)
+	if RE_GREP(dicforma.before.morpheme_extraction,'^\s*#')
 		return
-	if '{' _in_ _before.morpheme_extraction
+	if '{' _in_ dicforma.before.morpheme_extraction
 		dicforma.tabnum++
-	if '}' _in_ _before.morpheme_extraction
+	if '}' _in_ dicforma.before.morpheme_extraction
 		dicforma.tabnum--
-	if RE_GREP(_now.morpheme_extraction,'^\s*}'){
+	if RE_GREP(dicforma.now.morpheme_extraction,'^\s*}'){
 		dicforma.oneline_tab += -1
 	}
-	if RE_GREP(_before.morpheme_extraction,'^}*(if|for|while|else|elseif|case|when|other)') && (!RE_GREP(_before.morpheme_extraction,'(\{|blockmorpheme)$') && ';' !_in_ _before.morpheme_extraction)
+	if RE_GREP(dicforma.before.morpheme_extraction,'^}*(if|for|while|else|elseif|case|when|others)') && (!RE_GREP(dicforma.before.morpheme_extraction,'(\{|blockmorpheme)$') && ';' !_in_ dicforma.before.morpheme_extraction)
 		dicforma.oneline_tab += 1
 }
 dicforma.morpheme_extraction{
@@ -138,7 +141,9 @@ dicforma.morpheme_extraction{
 	_t=RE_REPLACE(_t,'/\*'+dicforma.RE.everychar+'*?\*/',' morpheme ')
 	_t=RE_REPLACE(_t,'\"'+dicforma.RE.everychar+'*?\"',' morpheme ')
 	_t=RE_REPLACE(_t,"\'"+dicforma.RE.everychar+"*?\'",' morpheme ')
-	_t=RE_REPLACE(_t,'\{'+dicforma.RE.everychar+'*?\}',' blockmorpheme ')
+	while RE_GREP(_t,'\{[^\{\}]*?\}'){
+		_t=RE_REPLACE(_t,'\{[^\{\}]*?\}',' blockmorpheme ')
+	}
 	_t=RE_REPLACE(_t,'\('+dicforma.RE.everychar+'*?\)',' morpheme ')
 	_t=RE_REPLACE(_t,'//'+dicforma.RE.everychar+'*?$','')
 	_t=RE_REPLACE(_t,'^\s+','')
@@ -165,7 +170,7 @@ dicforma.readline.base{
 		dicforma.readline.base
 		return
 	}
-	if RE_GREP(_t,'(?<!//[\s\S]+|\*)/$')
+	if RE_GREP(_t,'(?<!(?<!((https|http|ftp):|^))//[\s\S]+|\*)/$')
 		_t="%_t%(CHR(1))%(dicforma.readline.base)"
 	_t
 }
@@ -174,23 +179,34 @@ dicforma.readline:void{
 	dicforma.line.next=dicforma.readline.base
 	if dicforma.line.next=='dicforma.endflag'
 		return
-	_next.morpheme_extraction=dicforma.morpheme_extraction(dicforma.line.next)
-	_now.morpheme_extraction=dicforma.morpheme_extraction(dicforma.line.now)
-	if '*/' _in_ _next.morpheme_extraction
-		dicforma.in_block_commit=0
-	if '/*' _in_ _next.morpheme_extraction
-		dicforma.in_block_commit=1
-	if RE_GREP(_now.morpheme_extraction,'^\s*#')
+	dicforma.next.morpheme_extraction=dicforma.morpheme_extraction(dicforma.line.next)
+	dicforma.now.morpheme_extraction=dicforma.morpheme_extraction(dicforma.line.now)
+	//
+	//if '*/' _in_ dicforma.next.morpheme_extraction
+	//	dicforma.in_block_commit=0
+	//if '/*' _in_ dicforma.next.morpheme_extraction
+	//	dicforma.in_block_commit=1
+	//
+	if RE_GREP(dicforma.now.morpheme_extraction,'^\s*#')
 		return
-	if RE_GREP(_now.morpheme_extraction,'^}*(if|for|while|else|elseif|case|when|other)') && (!RE_GREP(_now.morpheme_extraction,'\{$')) && RE_GREP(_next.morpheme_extraction,'^\{'){
+	if RE_GREP(dicforma.now.morpheme_extraction,'^}*(if|for|while|else|elseif|case|when|others)') && (!RE_GREP(dicforma.now.morpheme_extraction,'\{$')) && RE_GREP(dicforma.next.morpheme_extraction,'^\{'){
 		dicforma.line.now+='{'
 		dicforma.line.next=RE_REPLACE(dicforma.line.next,'^\{\s*','')
 	}
 	dicforma.reverse_bracenum=0
-	while RE_GREP(dicforma.morpheme_extraction(dicforma.line.now),dicforma.RE.everychar+'+\}$'){
+	while RE_GREP(dicforma.morpheme_extraction(dicforma.line.now),dicforma.RE.everychar+'+(?<!;)\}$'){
 		dicforma.reverse_bracenum++
 		dicforma.line.now=RE_REPLACE(dicforma.line.now,'\s*\}$','')
 	}
+}
+dicforma.line.now.iscodecommit{
+	RE_GREP(dicforma.line.now,'[\=\+\-\[\]\{\}]|//(return|if|for|while|case|when|others)')||('morpheme' _in_ dicforma.now.morpheme_extraction)
+}
+dicforma.line.now.iscommit{
+	RE_GREP(dicforma.line.now,'^//')
+}
+dicforma.line.now.isayacommit{
+	dicforma.line.now.iscommit&&!dicforma.line.now.iscodecommit
 }
 dicforma.writeline:void{
 	if _argv[0]=='dicforma.beginflag'
@@ -219,7 +235,7 @@ dicforma.writeline:void{
 	}else{
 		FWRITE_WITH_LF(dicforma.tfname,_t)
 	}
-	if dicforma.oneline_tab
+	if dicforma.oneline_tab && !dicforma.line.now.isayacommit && !(RE_GREP(dicforma.before.morpheme_extraction,'^}*(if|for|while|else|elseif|case|when|others)')&&dicforma.now.morpheme_extraction == '*/')
 		dicforma.oneline_tab=0
 	while dicforma.reverse_bracenum{
 		dicforma.reverse_bracenum--

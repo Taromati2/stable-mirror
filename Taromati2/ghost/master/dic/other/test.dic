@@ -713,7 +713,8 @@ LoadExamTest{
 							//if '题：' _in_ _buff
 								//_n++
 						//}
-						_buff=FREAD(_file)//_temp++
+						_buff=FREAD(_file)
+						//_temp++
 					}
 					while _buff != -1&&'D:' !_in_ _buff&&_n/2<SELECTNUM &&_n<testbuffnum{
 						//if _mode

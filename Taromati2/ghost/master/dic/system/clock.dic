@@ -711,14 +711,16 @@ ShutdownMonitor{
 	}
 	--
 	if shutdownstart > 0{
-		_txt="即将自动关机，请%(username)保存资料"
-		_txt+="\![set,trayballoon,--icon=info,--timeout=10,--title=关机提醒,--text=现在是%(hour)点%(minute)分,--text=%(_txt)！,--text=（点击气泡关闭提醒）]"
+		"/
+		即将自动关机，请%(username)保存资料/
+		\![set,trayballoon,--icon=info,--timeout=10,--title=关机提醒,--text=现在是%(hour)点%(minute)分,--text=%(_txt)！,--text=（点击气泡关闭提醒）]/
+		"
 		--
 		_path = CALLSAORI('advanced_sysinfo','get_special_folder_path','Windows')
 		_file = REPLACE(_path,'\','\\') + '\\system32\\Shutdown.exe'
-		_txt+="\![open,file,%(_file),-s]"
-		_txt+='\w9\w9\w9\w9\w9'+OnClose
-		_txt
+		"\![open,file,%(_file),-s]"
+		--
+		'\w9\w9\w9\w9\w9'+OnClose
 	}
 }
 OnCancelSetShutdown{

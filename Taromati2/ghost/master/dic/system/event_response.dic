@@ -200,7 +200,7 @@ OneDeviceChange{
 	'\q[◇点此复制硬件uuid,OnCopy,'+SakuraScriptArgConverter(OneDeviceChange.GetDeviceUuid(_argv[0]))+']\n'
 	--
 	if OnDeviceChangeNow=='Arrival'&&OneDeviceChange.GetDeviceType(_argv[0])=='LogicalVolume'
-		'\q[◇打开,OnOpenDir,'+SakuraScriptArgConverter(OneDeviceChange.GetDeviceFile(_argv[0])+'\')+']\n'
+		'\q[◇打开,OnOpenDirOrFile,'+SakuraScriptArgConverter(OneDeviceChange.GetDeviceFile(_argv[0])+'\')+']\n'
 }
 OnDeviceChange.Head{
 	if mode == '1'
@@ -244,7 +244,7 @@ OnDeviceRemove{
 		ERASEVAR('OnDeviceChangeNow')
 	}
 }
-OnOpenDir{
+OnOpenDirOrFile{
 	if _argv[0]
 		reference0 = _argv[0]
 	'\![open,file,'+SakuraScriptArgConverter(reference0)+']'

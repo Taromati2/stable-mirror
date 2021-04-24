@@ -855,13 +855,11 @@ Onremind{//提醒
 			rm_Y=hint[3]
 			if linkwndmusic!=2
 				_txt+=PlayLinkWndMusic('play','PATH\select.wav')//避免连连看禁用背景音乐导致游戏稍卡顿的问题的关键
-				//_txt+='\![sound,play,PATH\select.wav]'
 		}
 		elseif rm_x==hint[0]&&rm_y==hint[1]&&rm_X==hint[2]&&rm_Y==hint[3]{
 			_txt+=ClearTwo(hint[0],hint[1],hint[2],hint[3])
 			if linkwndmusic!=2
 				_txt+=PlayLinkWndMusic('play','PATH\match.wav')
-				//_txt+='\![sound,play,PATH\match.wav]'
 			_rm=''
 		}
 	}
@@ -913,7 +911,6 @@ OnLButtonDown{//鼠标操作
 					link_timemax+=3000
 				if linkwndmusic!=2
 					_txt+=PlayLinkWndMusic('play','PATH\match.wav')
-					//_txt+='\![sound,play,PATH\match.wav]'
 				m_nY1 = -1
 				m_nX1 = -1
 				select=-1
@@ -925,7 +922,6 @@ OnLButtonDown{//鼠标操作
 				select=m_nY1*m_nCol+m_nX1
 				if linkwndmusic!=2
 					_txt+=PlayLinkWndMusic('play','PATH\select.wav')
-					//_txt+='\![sound,play,PATH\select.wav]'
 			}
 		}
 		else{
@@ -935,7 +931,6 @@ OnLButtonDown{//鼠标操作
 			select=m_nY1*m_nCol+m_nX1
 			if linkwndmusic!=2
 				_txt+=PlayLinkWndMusic('play','PATH\select.wav')
-				//_txt+='\![sound,play,PATH\select.wav]'
 		}
 	}
 	else{
@@ -944,7 +939,6 @@ OnLButtonDown{//鼠标操作
 		select=m_nY1*m_nCol+m_nX1
 		if linkwndmusic!=2
 			_txt+=PlayLinkWndMusic('play','PATH\select.wav')
-			//_txt+='\![sound,play,PATH\select.wav]'
 	}
 	_txt+=WinCheck
 	_txt+=OnDrawLinkWnd
