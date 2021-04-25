@@ -138,7 +138,7 @@ OnTuLingFound{
 		tulingfound=1
 	}
 	FCLOSE(_file)
-	FCHARSET(1)
+	FCHARSET.default
 	txt=_txt
 	if chatroom{
 		OnChatRoom(j)+WriteChatroom
@@ -167,7 +167,7 @@ IsReadyTuLingFile{
 		}
 	}
 	FCLOSE(_file)
-	FCHARSET(1)
+	FCHARSET.default
 	txt=_txt
 	_r
 }
@@ -240,7 +240,7 @@ OnWeatherFound{
 		_txt += '对不起，您搜索的城市天气信息不存在，请改变后重新尝试！\n'
 	}
 	FCLOSE(_file)
-	FCHARSET(1)
+	FCHARSET.default
 	_txt += '\n\q[◇返回,OnCheckWeather]    \q[◇终了,OnWeatherEnd]'
 	_txt
 }
@@ -380,7 +380,7 @@ WeatherFoundAuto{
 		}
 	}
 	FCLOSE(_file)
-	FCHARSET(1)
+	FCHARSET.default
 	Weatherremind
 	//_found
 }
@@ -416,7 +416,7 @@ OnWeatherFound2{
 		}
 	}
 	FCLOSE(_file)
-	FCHARSET(1)
+	FCHARSET.default
 	if _found == 0 {
 		_txt += '\n没有查到这个城市的天气情况……\n'
 	}
@@ -479,7 +479,7 @@ OnGoogleCalFound{
 		}
 	}
 	FCLOSE(_file)
-	FCHARSET(1)
+	FCHARSET.default
 	if _found == 0 {
 		_txt += 'Google无法计算您给的表达式，请检查输入是否正确……'
 	}

@@ -4,14 +4,14 @@ GetConfingFromGhostDescript{//GetConfingFromGhostDescript('Taromati2','icon')
 	void FOPEN(_descript,'r')
 	while (_t=FREAD(_descript))!=-1{
 		if CUTSPACE(_t)[0]==_argv[1]{
-			void FCLOSE(_descript)
+			FCLOSE(_descript)
 			_t=CUTSPACE(_t)
 			_t[0]=IARRAY
 			_t
 			return
 		}
 	}
-	void FCLOSE(_descript)
+	FCLOSE(_descript)
 }
 GetIconNameFromGhostDir{//GetIconNameFromGhostDir('Taromati2')
 	_t="BASE_PATH\..\\..\\..\\%(_argv[0])\\ghost\\master\\"

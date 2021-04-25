@@ -1010,15 +1010,9 @@ OnLoadUrlTitle{
 		}
 		_charset=TextBetween(_buff,'charset=','>')
 		_charset=REPLACE(_charset,'"','')
-		_charset=TOLOWER(_charset)
 	}
 	FCLOSE(_file)
-	if 'utf-8' _in_ _charset || 'utf8' _in_ _charset  {
-		FCHARSET(1)
-	}
-	else {
-		FCHARSET(127)
-	}
+	FCHARSET.string(_charset)
 	if FOPEN(_file,'r'){
 		_buff=''
 		for _tmp = FREAD(_file);  _tmp != -1; _tmp = FREAD(_file){
@@ -1027,7 +1021,7 @@ OnLoadUrlTitle{
 		_title=TextBetween(_buff,'<title>','</title>')
 	}
 	FCLOSE(_file)
-	FCHARSET(1)
+	FCHARSET.default
 	OnShortcutFileDrop(_url,'url',_title)
 }
 //电池部分

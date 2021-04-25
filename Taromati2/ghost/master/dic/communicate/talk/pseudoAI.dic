@@ -574,7 +574,7 @@ AILoad.InfFile{//AILoad.InfFile('PSEUDO_AI_PATH\common.ai','你好')
 		void FWRITE(_inf,_buff2)
 	}
 	FCLOSE(_inf)
-	FCHARSET(1)
+	FCHARSET.default
 	e=_E
 	_dexori
 	if _filename=='COMMON'
@@ -933,7 +933,7 @@ AILoad.AIFile{
 		num=ARRAYSIZE(_dexori)
 	}
 	FCLOSE(_file)
-	FCHARSET(1)
+	FCHARSET.default
 	if _found{
 		if '<srai>' _in_ _txt&&'记住' !_in_ _str{
 			if '<think>' _in_ _txt
@@ -1217,7 +1217,7 @@ AILoad.AImlInfFile{
 		void FWRITE(_inf,_buff2)
 	}
 	FCLOSE(_inf)
-	FCHARSET(1)
+	FCHARSET.default
 	e=_E
 	_dexori
 }
@@ -1362,7 +1362,7 @@ AILoad.AImlFile{
 		FCLOSE(_inf)
 	}
 	FCLOSE(_file)
-	FCHARSET(1)
+	FCHARSET.default
 	if _found{
 		if '<srai>' _in_ _txt{
 			string,=TextBetween(_txt,'<srai>','</srai>')
@@ -1526,7 +1526,7 @@ AILoad.AddLearn{
 		}
 	}
 	FCLOSE(_file)
-	FCHARSET(1)
+	FCHARSET.default
 }
 AILoad.AnswerTxt{
 	_str=_argv[0]
@@ -2006,11 +2006,11 @@ ExcelTxtToAI{
 			_temp=''
 			FWRITE(_file2,_temp)
 		}
-		void FCLOSE(_file2)
-		FCHARSET(1)
+		FCLOSE(_file2)
+		FCHARSET.default
 	}
-	void FCLOSE(_file)
-	FCHARSET(1)
+	FCLOSE(_file)
+	FCHARSET.default
 }
 AIToTxt{
 }
@@ -2033,9 +2033,9 @@ AITalkAdd{//('PSEUDO_AI_PATH\user.ai','你好*你也好','write')
 		void FOPEN(_file,'w')
 	}
 	FCLOSE(_file)
-	FCHARSET(1)
 	_temp=''
 	_table=0
+	FCHARSET(1)
 	if FOPEN(_file,'r'){
 		for _buff = FREAD(_file); _buff != -1; _buff = FREAD(_file){
 			_Q=TextBetween(_buff,'<Q>','</Q>')
@@ -2113,7 +2113,7 @@ AITalkAdd{//('PSEUDO_AI_PATH\user.ai','你好*你也好','write')
 		}
 	}
 	FCLOSE(_file)
-	FCHARSET(1)
+	FCHARSET.default
 }
 ARRTOSTR{
 	_arr=_argv[0]
@@ -2542,7 +2542,7 @@ WriteChatroom{
 		}
 	}
 	FCLOSE(_file)
-	FCHARSET(1)
+	FCHARSET.default
 }
 RandAITalk{
 	if !QuickStartVersion
@@ -2713,11 +2713,11 @@ MealName{
 	if TOINT(_argv[0])!=0
 		_num=TOINT(_argv[0])
 	_file='PSEUDO_AI_PATH\meal.inf'
-	FCHARSET(1)
 	_name=IARRAY
 	_totel=6500
 	_n=_totel/_num
 	_i=0
+	FCHARSET(1)
 	if FOPEN(_file,'r'){
 		for _buff=FREAD(_file);_buff!=-1;_buff=FREAD(_file){
 			if _i/_num==RAND(_n) && '|' _in_ _buff && '(' !_in_ _buff{
@@ -2727,6 +2727,7 @@ MealName{
 		}
 	}
 	FCLOSE(_file)
+	FCHARSET.default
 	_name
 }
 ArrArr{
@@ -2818,12 +2819,12 @@ LoadSQL{
 				void FWRITE(_file3,_buff3)
 			}
 		}
-		void FCLOSE(_file2)
-		void FCLOSE(_file3)
-		FCHARSET(1)
+		FCLOSE(_file2)
+		FCLOSE(_file3)
+		FCHARSET.default
 	}
-	void FCLOSE(_file)
-	FCHARSET(1)
+	FCLOSE(_file)
+	FCHARSET.default
 }
 HtmlToAI{//HtmlToAI('D:\CHM','meal')
 	_path=_argv[0]
@@ -2872,12 +2873,12 @@ HtmlToAI{//HtmlToAI('D:\CHM','meal')
 					}
 				}
 				FCLOSE(_file)
-				FCHARSET(1)
+				FCHARSET.default
 			}
 		}
 	}
 	FCLOSE(_file2)
-	FCHARSET(1)
+	FCHARSET.default
 }
 ChaToLetter{
 	_character=_argv[0]
@@ -2895,8 +2896,8 @@ ChaToLetter{
 			}
 		}
 	}
-	FCHARSET(1)
 	FCLOSE(_file)
+	FCHARSET.default
 }
 TxtToVoice{
 	WriteSpVoice.vbs(_argv[0],_argv[1])
@@ -2934,7 +2935,7 @@ WriteSpVoiceName.vbs{
 	_buff='txt.write s'
 	void FWRITE(_file,_buff)
 	FCLOSE(_file)
-	FCHARSET(1)
+	FCHARSET.default
 }
 OnSpeechRecognition.Inter{
 	_txt=OnSpeechRecognition.BeginVoiceToTxt.vbs
@@ -2962,7 +2963,7 @@ OnSpeechRecognition.BeginVoiceToTxt.vbs{
 	}
 	else
 		OnSpeechRecognition.WriteTxtToXML
-	void FCLOSE(_file)
+	FCLOSE(_file)
 }
 OnSpeechRecognition.LoadSpeech_Recognition.vbs{
 	if FATTRIB('SAORI_PATH/WScript.exe')[0]==-1{
@@ -2991,15 +2992,15 @@ OnSpeechRecognition.WriteTxtToXML{
 		void FWRITE(_file,_temp)
 		_temp='</L></RULE></GRAMMAR>'
 		void FWRITE(_file,_temp)
-		void FCLOSE(_file)
+		FCLOSE(_file)
 		FCHARSET(1)
 		_file='SAORI_PATH\Speech_Recognition\COMMAND.XML'
 		_md5='md5='+FDIGEST(_file,'MD5')+'|'+FSIZE(_file)
 		_tfile='SAORI_PATH\Speech_Recognition\config.ini'
 		void FOPEN(_tfile,'w')
 		void FWRITE(_tfile,_md5)
-		void FCLOSE(_tfile)
-		FCHARSET(1)
+		FCLOSE(_tfile)
+		FCHARSET.default
 	}
 	else
 		0
@@ -3037,7 +3038,7 @@ OnSpeechRecognition.LoadInfFileQ{//OnSpeechRecognition.LoadInfFileQ('PSEUDO_AI_P
 		}
 	}
 	FCLOSE(_file)
-	FCHARSET(1)
+	FCHARSET.default
 	_txt
 }
 LoadSpVoiceName.vbs{
@@ -3058,7 +3059,7 @@ GetSpVoiceName{
 		}
 	}
 	FCLOSE(_file)
-	FCHARSET(1)
+	FCHARSET.default
 	void FDEL(_file)
 	_name
 }
@@ -3104,7 +3105,7 @@ WriteStopProcess.vbs{
 	_buff='Close_Process("'+_process+'")'
 	void FWRITE(_file,_buff)
 	FCLOSE(_file)
-	FCHARSET(1)
+	FCHARSET.default
 }
 WriteSpVoice.vbs{
 	_file='PROFILE_PATH\\voice.vbs'
@@ -3127,7 +3128,7 @@ WriteSpVoice.vbs{
 	_buff='objVoice.Speak("'+_txt+'")'
 	void FWRITE(_file,_buff)
 	FCLOSE(_file)
-	FCHARSET(1)
+	FCHARSET.default
 }
 CheckProcess{//CheckProcess('wscript.exe')
 	_processname=TOLOWER(_argv[0])
@@ -3149,7 +3150,7 @@ LoadVoiceToTxt.vbs{
 			_buff
 	}
 	FCLOSE(_file)
-	FCHARSET(127)
+	FCHARSET.default
 }
 SakuraToTxt{
 	_txt=_argv[0]

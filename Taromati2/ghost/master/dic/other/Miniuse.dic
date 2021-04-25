@@ -2248,7 +2248,7 @@ DialogFilesRenameSaveCon{
 		_t = FWRITE(_rncfg,_i[0])
 	}
 	FCLOSE(_rncfg)
-	FCHARSET(1)
+	FCHARSET.default
 }
 FileRenameLoadFile{
 	filerenamelist ,= REPLACE(_argv[0],'/','\')
@@ -3012,8 +3012,7 @@ OnReadBookLoad{
 		_txt
 		return
 	}
-	_id=CharsetToId(_charset)
-	FCHARSET(_id)
+	FCHARSET.string(_charset)
 	if FOPEN(_file,'r'){
 		_filesize=FSIZE(_file)
 		FCHARSET(1)
@@ -3068,7 +3067,7 @@ OnReadBookLoad{
 	FCLOSE(_file)
 	FCLOSE(_file2)
 	FCLOSE(_file3)
-	FCHARSET(1)
+	FCHARSET.default
 	_txt=REPLACE(_txt,'\','\\')
 	_txt=REPLACE(_txt,'\\n','\n')
 	_txt
@@ -3091,7 +3090,7 @@ GetTxtCharset{
 		_txt=SUBSTR(_txt,0,9)
 	}
 	FCLOSE(_file)
-	FCHARSET(1)
+	FCHARSET.default
 	_txt=TOLOWER(_txt)
 	if '%ef%bb%bf' _in_ _txt
 		_txt='UTF-8'

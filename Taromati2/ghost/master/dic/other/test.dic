@@ -444,8 +444,8 @@ LoadExamTestNum{
 	}
 	_test+='-1◆'
 	FCLOSE(_file)
+	FCHARSET.default
 	testnum=_testnum
-	FCHARSET(1)
 	_test
 }
 LoadExamNum{
@@ -510,7 +510,7 @@ LoadExamNumEx{
 		}
 	}
 	FCLOSE(_file)
-	FCHARSET(1)
+	FCHARSET.default
 	_num
 }
 LoadExamTest{
@@ -802,7 +802,7 @@ LoadExamTest{
 		}
 	}
 	FCLOSE(_file)
-	FCHARSET(1)
+	FCHARSET.default
 	testitemnum=_n
 	allmodenum=_m
 	_test
@@ -906,8 +906,7 @@ TransformTest{//自定义项
 		_strend=_argv[2]
 	}
 	_charset=GetTxtCharset(_file)
-	_id=CharsetToId(_charset)
-	FCHARSET(_id)
+	FCHARSET.string(_charset)
 	_buff=''
 	_tbuff=''
 	_txt=''
@@ -1001,10 +1000,10 @@ TransformTest{//自定义项
 			}
 		}
 		FCLOSE(_tfile)
-		FCHARSET(1)
+		FCHARSET.default
 	}
 	FCLOSE(_file)
-	FCHARSET(1)
+	FCHARSET.default
 	_txt
 }
 ClearTestVar{

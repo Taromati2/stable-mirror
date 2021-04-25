@@ -331,7 +331,7 @@ OnKikkaStockFile.Read{
 		}
 	}
 	FCLOSE(_file)
-	FCHARSET(1)
+	FCHARSET.default
 	_txt
 }
 OnKikkaStockList.Read{
@@ -344,7 +344,7 @@ OnKikkaStockList.Read{
 		}
 	}
 	FCLOSE(_file)
-	FCHARSET(1)
+	FCHARSET.default
 	_txt
 }
 OnKikkaStockList.Write{
@@ -359,5 +359,5 @@ OnKikkaStockList.Write{
 			FWRITE(_file,_buff)
 	}
 	FCLOSE(_file)
-	FCHARSET(1)
+	FCHARSET.default
 }

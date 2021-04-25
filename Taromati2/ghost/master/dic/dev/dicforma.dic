@@ -141,10 +141,12 @@ dicforma.morpheme_extraction{
 	_t=RE_REPLACE(_t,'/\*'+dicforma.RE.everychar+'*?\*/',' morpheme ')
 	_t=RE_REPLACE(_t,'\"'+dicforma.RE.everychar+'*?\"',' morpheme ')
 	_t=RE_REPLACE(_t,"\'"+dicforma.RE.everychar+"*?\'",' morpheme ')
-	while RE_GREP(_t,'\{[^\{\}]*?\}'){
-		_t=RE_REPLACE(_t,'\{[^\{\}]*?\}',' blockmorpheme ')
+	while RE_GREP(_t,'\{'+dicforma.RE.everychar+'*?\}'){
+		_t=RE_REPLACE(_t,'\{'+dicforma.RE.everychar+'*?\}',' blockmorpheme ')
 	}
-	_t=RE_REPLACE(_t,'\('+dicforma.RE.everychar+'*?\)',' morpheme ')
+	while RE_GREP(_t,'\('+dicforma.RE.everychar+'*?\)'){
+		_t=RE_REPLACE(_t,'\('+dicforma.RE.everychar+'*?\)',' morpheme ')
+	}
 	_t=RE_REPLACE(_t,'//'+dicforma.RE.everychar+'*?$','')
 	_t=RE_REPLACE(_t,'^\s+','')
 	_t=RE_REPLACE(_t,'\s+$','')
@@ -181,12 +183,6 @@ dicforma.readline:void{
 		return
 	dicforma.next.morpheme_extraction=dicforma.morpheme_extraction(dicforma.line.next)
 	dicforma.now.morpheme_extraction=dicforma.morpheme_extraction(dicforma.line.now)
-	//
-	//if '*/' _in_ dicforma.next.morpheme_extraction
-	//	dicforma.in_block_commit=0
-	//if '/*' _in_ dicforma.next.morpheme_extraction
-	//	dicforma.in_block_commit=1
-	//
 	if RE_GREP(dicforma.now.morpheme_extraction,'^\s*#')
 		return
 	if RE_GREP(dicforma.now.morpheme_extraction,'^}*(if|for|while|else|elseif|case|when|others)') && (!RE_GREP(dicforma.now.morpheme_extraction,'\{$')) && RE_GREP(dicforma.next.morpheme_extraction,'^\{'){
@@ -230,12 +226,14 @@ dicforma.writeline:void{
 		//_t=RE_REPLACE(_t,CHR(1)+'+',CHR(1))
 		FWRITE_WITH_LF(dicforma.tfname,_t[0,CHR(1)])
 		_t[0,CHR(1)]=IARRAY
-		if _t
+		if _t{
 			dicforma.writeline(_t)
+			return
+		}
 	}else{
 		FWRITE_WITH_LF(dicforma.tfname,_t)
 	}
-	if dicforma.oneline_tab && !dicforma.line.now.isayacommit && !(RE_GREP(dicforma.before.morpheme_extraction,'^}*(if|for|while|else|elseif|case|when|others)')&&dicforma.now.morpheme_extraction == '*/')
+	if dicforma.oneline_tab && !dicforma.line.now.isayacommit && !(dicforma.now.morpheme_extraction == '*/'&&RE_GREP(dicforma.before.morpheme_extraction,'^}*(if|for|while|else|elseif|case|when|others)'))
 		dicforma.oneline_tab=0
 	while dicforma.reverse_bracenum{
 		dicforma.reverse_bracenum--

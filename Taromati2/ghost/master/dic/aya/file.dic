@@ -1,27 +1,37 @@
 //by steve02081504
 GETCHARSETINDEX{
-	case _argv[0]{
-		when 'Shift_JIS'
+	case TOLOWER(_argv[0]){
+		when 'shift_jis'
 			0
-		when 'UTF-8'
+		when 'utf-8'
 			1
-		when 'EUC_JP'
+		when 'euc_jp'
 			2
-		when 'BIG-5'
+		when 'big-5'
 			3
-		when 'GB-2312'
+		when 'gb-2312'
 			4
-		when 'EUC_KR'
+		when 'euc_kr'
 			5
-		when 'ISO-2022-JP'
+		when 'iso-2022-jp'
 			6
 		when 'binary'
 			126
-		when 'OSNative'
+		when 'osnative'
 			127
-		others
-			127
+		others{
+			if ISINTSTR(_argv[0])
+				TOINT(_argv[0])
+			else
+				127
+		}
 	}
+}
+FCHARSET.string:void{
+	FCHARSET(GETCHARSETINDEX(_argv[0]))
+}
+FCHARSET.default:void{
+	FCHARSET.string(GETSETTING('charset.output'))
 }
 FREOPEN{
 	_tmp = FTELL(_argv[0])

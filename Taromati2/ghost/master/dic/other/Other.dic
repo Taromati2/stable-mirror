@@ -921,7 +921,7 @@ LoadShortCutCfg{
 		}
 	}
 	FCLOSE(_file)
-	FCHARSET(1)
+	FCHARSET.default
 	if ARRAYSIZE(shortcutlistname)==0{
 		shortcutlistname[0]='常用列表'
 		shortcutlistdat=0
@@ -987,7 +987,7 @@ SaveShortCutCfg{
 		}
 	}
 	FCLOSE(_file)
-	FCHARSET(1)
+	FCHARSET.default
 }
 LoadShortCutDat{
 	_dat=DATPATH
@@ -1035,7 +1035,7 @@ LoadShortCutDat{
 		}
 	}
 	FCLOSE(_file)
-	FCHARSET(1)
+	FCHARSET.default
 	ReloadShortCutDat
 	SaveShortCutCfg
 }
@@ -1091,7 +1091,7 @@ SaveShortCutDat{
 		_t = FWRITE(_file,'')
 	}
 	FCLOSE(_file)
-	FCHARSET(1)
+	FCHARSET.default
 }
 //------------------------外语学习---------------------------------
 Select.japanesestudy{
@@ -1527,7 +1527,7 @@ OnJapaneseWordLoad{
 		}
 	}
 	FCLOSE(_file)
-	FCHARSET(1)
+	FCHARSET.default
 	_Page=''
 	_Page+="\_l[130]%(_j/_wordnum+1)/%(_num/_wordnum)"
 	if _num<=_wordnum
@@ -1865,9 +1865,9 @@ OnJapHardWord{
 			japhardword,=_buff
 			_buff=FREAD(_file)
 		}
-		FCHARSET(1)
+		FCLOSE(_file)
+		FCHARSET.default
 	}
-	FCLOSE(_file)
 	if reference1=='save'{
 		if FOPEN(_file,'w'){
 			foreach japhardword;_i{
@@ -1875,8 +1875,8 @@ OnJapHardWord{
 				_t = FWRITE(_file,_i)
 			}
 			FCLOSE(_file)
+			FCHARSET.default
 		}
-		FCHARSET(1)
 	}
 	if FOPEN(_file,'r')&&!japhardwordsave{
 		_buff=FREAD(_file)
@@ -1887,8 +1887,8 @@ OnJapHardWord{
 			_buff=FREAD(_file)
 		}
 		FCLOSE(_file)
+		FCHARSET.default
 	}
-	FCHARSET(1)
 	_total=ARRAYSIZE(japhardword)
 	_txt+="■%(username)的难错字本■\n"
 	if _total>0{
@@ -2059,7 +2059,7 @@ JapWordDay{
 		}
 		FCLOSE(_file)
 	}
-	FCHARSET(1)
+	FCHARSET.default
 	if _argv[0]=='misword'{
 		_misword
 		return

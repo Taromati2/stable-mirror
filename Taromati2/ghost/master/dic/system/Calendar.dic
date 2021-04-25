@@ -1095,7 +1095,7 @@ OnEventWrite{
 			_t=FWRITE(_file,_j)
 	}
 	FCLOSE(_file)
-	FCHARSET(1)
+	FCHARSET.default
 }
 OnDateToSecond{
 	_year=TOINT(_argv[0])

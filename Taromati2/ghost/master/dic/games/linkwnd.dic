@@ -2372,7 +2372,7 @@ OnLinkMapSave{//地图保存
 		_t=FCOPY(_mapfile2,'PROFILE_PATH')
 		OnLinkWndOption
 	}
-	FCHARSET(1)
+	FCHARSET.default
 }
 LinkBar{
 	_maxlen = 100

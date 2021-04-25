@@ -1068,7 +1068,7 @@ SHIORI_FW.GetGhostNameFromDir {
 		case CUTSPACE(_line[0]) {
 			when 'charset'{
 				if !_Charset_geted{
-					FCHARSET(GETCHARSETINDEX(CUTSPACE(_line[1])))
+					FCHARSET.string(CUTSPACE(_line[1]))
 					void FREOPEN(_filename,'r')
 					_Charset_geted = 1
 				}
@@ -1089,7 +1089,7 @@ SHIORI_FW.GetGhostNameFromDir {
 	}
 
 	FCLOSE(_filename)
-	FCHARSET(GETCHARSETINDEX(GETSETTING('charset.output')))
+	FCHARSET.default
 	_ghostnames
 }
 
