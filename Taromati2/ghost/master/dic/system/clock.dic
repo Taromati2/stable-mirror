@@ -308,20 +308,20 @@ OnTrayBalloonTimeout{
 	"%(username)？"
 	"%(username)在做别的事吗？"
 }
-OnPlayBell{
-	_i = CALLSAORI('mciaudior', 'stop')
-	_j = CALLSAORI('mciaudior', 'load', 'SOUND_PATH\bell.wav')
-	_k = CALLSAORI('mciaudior', 'play')
+OnPlayBell:void{
+	CALLSAORI('mciaudior', 'stop')
+	CALLSAORI('mciaudior', 'load', 'SOUND_PATH\bell.wav')
+	CALLSAORI('mciaudior', 'play')
 }
-OnPlayRing{
-	_i = CALLSAORI('mciaudior', 'stop')
-	_j = CALLSAORI('mciaudior', 'load', 'SOUND_PATH\Ring.mp3')
-	_k = CALLSAORI('mciaudior', 'play')
+OnPlayRing:void{
+	CALLSAORI('mciaudior', 'stop')
+	CALLSAORI('mciaudior', 'load', 'SOUND_PATH\Ring.mp3')
+	CALLSAORI('mciaudior', 'play')
 }
-OnPlayRm{
-	_i = CALLSAORI('mciaudior', 'stop')
-	_j = CALLSAORI('mciaudior', 'load', 'SOUND_PATH\tinkle.wav')
-	_k = CALLSAORI('mciaudior', 'play')
+OnPlayRm:void{
+	CALLSAORI('mciaudior', 'stop')
+	CALLSAORI('mciaudior', 'load', 'SOUND_PATH\tinkle.wav')
+	CALLSAORI('mciaudior', 'play')
 }
 对话框报时{
 	整点报时特殊

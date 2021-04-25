@@ -331,10 +331,9 @@ OnMouseDoubleClick0{
 OnPlaySound:void{
 	if silent
 		return
-	_sound = reference0
-	_i = CALLSAORI('mciaudior', 'stop')
-	_j = CALLSAORI('mciaudior', 'load', 'SOUND_PATH\'+_sound)
-	_k = CALLSAORI('mciaudior', 'play')
+	CALLSAORI('mciaudior', 'stop')
+	CALLSAORI('mciaudior', 'load', 'SOUND_PATH\'+reference0)
+	CALLSAORI('mciaudior', 'play')
 }
 TalkSakuraHeadClick.0{
 	'\0\![raise,OnPlaySound,se_03.wav]\s[3]呜…'

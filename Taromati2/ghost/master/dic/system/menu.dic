@@ -578,7 +578,6 @@ Select.TaromatiCancel{
 //---------- 系统环境 ----------------------------------------------------
 Select.System{
 	Lunar
-	_i = CALLSAORI('KI','Platforms')
 	_ampm = TimeName
 	_hour=hour12
 	if TOINT(timehour[0])==0{
