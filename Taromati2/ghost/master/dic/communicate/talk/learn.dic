@@ -480,7 +480,7 @@ OnAIdbUpdate{
 		reference0=REPLACE(reference0,')','>')
 		reference0=REPLACE(reference0,'<','(')
 		reference0=REPLACE(reference0,'>',')')
-		reference0=REPLACE(reference0,'[表情]','\s',)
+		reference0=REPLACE(reference0,'[表情]','\s')
 		reference0=REPLACE(reference0,'[等待]','\w')
 		_c=0
 		_a=0

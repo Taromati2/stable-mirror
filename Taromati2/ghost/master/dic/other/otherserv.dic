@@ -425,8 +425,7 @@ Select.notgoodjob{
 }
 //**************************亲密动作**********************************************************************
 Onclosetouch{
-	_phase = GetPhase
-	if _phase >= 2{
+	if GetPhase >= 3{
 		'\q[◇亲密接触,closetouch]'
 		closetouchmode=1
 	}

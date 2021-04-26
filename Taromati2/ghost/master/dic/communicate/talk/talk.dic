@@ -784,7 +784,7 @@ RandomTalk : nonoverlap{
 		}
 		//---- 夏 -------------------------------------------------------------------------------------------------------------
 		elseif month >= 6 && month <= 8{
-			'\0\s[6]虽然很理所当然…\w9\w9\1\s[10]唔？\w9\w9\0\s[0]\n\n[half]少年(Littleboy)和胖子(Fatman)\n是不同种类的炸弹。\w9\w9\1\s[10]\n\n[half]为什么、\w5会理所当然啊？\w9\w9\0\s[30]\n\n[half]名字不一样、\w9\s[0]\n如果是同样的东西的话应该就没有必要投下两次。'
+			'\0\s[6]虽然很理所当然…\w9\w9\1\s[10]唔？\w9\w9\0\s[0]\n\n[half]小男孩(Littleboy)和胖子(Fatman)\n是不同种类的炸弹。\w9\w9\1\s[10]\n\n[half]为什么、\w5会理所当然啊？\w9\w9\0\s[30]\n\n[half]名字不一样、\w9\s[0]\n如果是同样的东西的话应该就没有必要投下两次。'
 			"\0\s[3]外头很热呢。\w9\w9\1\s[10]嗯。\w9\w9\0\s[26]\n\n[half]%(username)、\w9出门的时候\w9\n请做好市街战的对策喔。\w9\w9\1\s[11]\n\n[half]…\w9这跟热不热没关系吧。"
 		}
 		//---- 秋 -------------------------------------------------------------------------------------------------------------
@@ -1407,7 +1407,6 @@ ONE{
 //**** TWO *************************************************
 TWO{
 	tulingfound=0
-	_phase = GetPhase
 	_timeslot = GetTimeSlot
 	if KikkaAILogic != 0 && !InAIGhostReply
 		_aitalk=AIGet(reference1)
@@ -1864,7 +1863,7 @@ TWO{
 				if _phase == 0{
 					'\0\s[2]啊…\w9\w9\s[3]那个…\w9对不起。\w9\w9\w9\s[35]\n是我太任性了。'
 				}
-				elseif _phase == 2{
+				elseif _phase >= 2{
 					"\0\s[2]啊…\w9\w9\s[1]不…\w9\w9\s[29]\n能够待在这里\w9是我的荣幸。\w9\w9\n\n[half]所以、\w9\w9\s[26]请%(username)不要这么说。"
 				}
 				else{
@@ -1894,8 +1893,7 @@ TWO{
 	}
 	elseif ('爱' _in_ reference1 || '喜欢' _in_ reference1) && '我' _in_ reference1 && '吗' _in_ reference1{
 		if scope == '0'{
-			_phase = GetPhase
-			if _phase == 2{
+			if GetPhase >= 3{
 				"\0\s[21]讨厌，\w9\w9%(username)何必明知故问呢？"
 				"\0\s[29]橘花喜欢%(username)……"
 				"\0\s[29]%(username)是橘花最爱的人"
@@ -1928,8 +1926,7 @@ TWO{
 	}
 	elseif '么么' _in_ reference1{
 		if scope == '0'{
-			_phase = GetPhase
-			if _phase == 2{
+			if GetPhase >= 3{
 				intimacy += 2
 				'\0\s[2]…\w9\w9\s[29]嗯……\w9\w9\s[41]\么么哒！'
 			}
@@ -1976,7 +1973,7 @@ TWO{
 					'\0\s[0]馒头'
 				else
 					'\0\s[9]橘花喜欢吃的东西，不大好说'
-				if _phase==2
+				if GetPhase>=2
 					"\0\s[1]%(username)做的，\w9橘花都喜欢。"
 			}
 			elseif scope=='1'{
@@ -2008,7 +2005,7 @@ TWO{
 					'\0\s[21]电锯运转的声音'
 					'\0\s[21]枪声、\w9爆破声'
 				}
-				if _phase==2
+				if GetPhase>=2
 					"\0\s[1]卡农钢琴曲，\w9\w9%(username)要弹给橘花听吗"
 			}
 			elseif scope=='1'{
@@ -2019,7 +2016,7 @@ TWO{
 		elseif '人' _in_ reference1 || '的人' _in_ reference1 || '谁' _in_ reference1||'哪个' _in_ reference1{
 			if scope == '0'{
 				'\0\s[29]橘花喜欢有爱心、\w9\w9责任感、\w9\w9懂得包容的人'
-				if _phase==2
+				if GetPhase>=3
 					"\0\s[1]橘花喜欢……\w9\w9%(username)这样的人"
 			}
 			elseif scope=='1'{
@@ -2323,7 +2320,7 @@ TWO{
 		if scope == '0'{
 			'\0\s[3]果真是开玩笑吗？\w9\w9哼。'
 			"\0\s[33]讨厌，\w9\w9%(username)欺负人。"
-			if _phase==2
+			if GetPhase>=2
 				"\0\s[25]讨厌，\w9\w9%(username)我要生气了，\w9\w9这种事怎么能开玩笑呢"
 			else
 				'\0\s[3]…\w9…\w9…'
@@ -2414,8 +2411,7 @@ CallTowa{
 	'\1\s[10]嗯、\w5我吗？\w9\w5\n怎么了？'
 }
 LoveKikka{
-	_phase = GetPhase
-	if _phase == 2{
+	if GetPhase >= 3{
 		'\0\s[2]…\w9…\w9…\w9\n啊、\w9那个…\w9耶？\n\n/
 		\q[◇我爱你,Usercomm0_yes]\n/
 		\q[◇没事,Usercomm0_no]'

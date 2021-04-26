@@ -2547,7 +2547,7 @@ WriteChatroom{
 RandAITalk{
 	if !QuickStartVersion
 		"%(username)好，橘花会六千多种菜的做法及四百多种常用食物的性味及功效说明哦，请输入“麻婆豆腐”或“核桃”，橘花就会告诉你答案哦"
-	if GetPhase > 2
+	if GetPhase > 3
 		"%(username)，最喜欢你了，要和%(selfname)聊什么呢？"
 	"%(username)今天也要好好加油啊"
 	'输入“\teach”指令可以进入教学模式、输入“\talk”指令返回对话模式'

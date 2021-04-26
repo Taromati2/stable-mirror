@@ -87,8 +87,7 @@ story1 : nonoverlap{
 	"\w9\w9\w9\0\n\s[5]%(username),你觉得很好笑嘛?\n\n\q[◇恩XD,gs]\n\q[◇很冷…,ns]\n\q[◇试试下一则,Onstoryok]"
 }
 story2 : nonoverlap{
-	_phase = GetPhase
-	if _phase == 2{
+	if GetPhase >= 2{
 		'\0\s[0]'
 		--
 		'公园里的长凳上，依偎着一对恋人。\w9\w9\n男问：“我能吻你一下吗？”\w9\w9\n女没回答。\w9\w9\n男又问：“你能让我吻一下吗？”\w9\w9\n女还是不答。\w9\w9\n男火了：”咦，你聋了吗？”\w9\w9\n女嚷道：“你死了吗？”'
@@ -125,7 +124,7 @@ story2 : nonoverlap{
 	}
 }
 story3 : nonoverlap{
-	_phase = GetPhase_bedroom
+	_phase = GetPhase
 	if _phase == 5 && 亲密度>=100 && 腹黑度>=100 && 亲密度>腹黑度{
 		'\0\s[0]'
 		--
@@ -161,7 +160,7 @@ story3 : nonoverlap{
 	}
 }
 story4 : nonoverlap{
-	_phase = GetPhase_bedroom
+	_phase = GetPhase
 	if _phase>=2{
 		'\0\s[0]'
 		--

@@ -82,7 +82,7 @@ popUseritem{
 }
 KikkaMenu{
 	if showkikka==1 {
-		'\_l[0,207]' + ColorText('\__q[OnKikkaMenu,2]\f[cursorstyle,none]\f[cursorfontcolor,65,203,214]─────────橘花养成系统↓────────\f[cursorstyle,default]\f[cursorfontcolor,default]\__q\n[140]','color=160,160,200')
+		'\_l[0,200]' + ColorText('\__q[OnKikkaMenu,2]\f[cursorstyle,none]\f[cursorfontcolor,65,203,214]─────────橘花养成系统↓────────\f[cursorstyle,default]\f[cursorfontcolor,default]\__q\n[140]','color=160,160,200')
 		--
 		"\_l[82]\![*]\q[购买物品  ,OnKikkaItemList,0]\![*]\q[日程安排  ,OnKikkaClass,%(weekday)]\![*]\q[礼物盒子,Ongiftbox]\n"
 		--
@@ -90,7 +90,7 @@ KikkaMenu{
 		KikkaStatus
 		--
 		if SHIORI_FW.DebugMode
-			'\_l[176,348]\q[◇Reset,OnCalculateVar,OnKikkaReset]'
+			'\_l[176,341]\q[◇Reset,OnCalculateVar,OnKikkaReset]'
 	}
 	elseif showkikka==2 {
 		'\c\![set,choicetimeout,0]\_l[0,0]' + ColorText('\__q[OnKikkaMenu,0]\f[cursorstyle,none]\f[cursorfontcolor,65,203,214]─────────橘花养成系统↓────────\f[cursorstyle,default]\f[cursorfontcolor,default]\__q\n[140]','color=160,160,200')
@@ -222,7 +222,7 @@ Cpuusage{
 KikkaStatus{
 	KikkaVar
 	_txt =''
-	_txt += '\_l[0,226]'
+	_txt += '\_l[0,219]'
 	_txt += ColorText("等级：%(kikkalvl)","bold,height=16,name=Arial,color=%(ColorIdx(6))")
 	if QuickStartVersion{
 		_txt += '\n[150]属性查看功能在线上更新后可用'
@@ -236,7 +236,7 @@ KikkaStatus{
 		_txt += ColorText("\n好感度：%(intimacy)","bold,color=%(ColorIdx(6))")
 		anti_cheat('intimacy')
 		_heart = '\_l[103]'
-		for _i = TOINT(log(1.584893,intimacy,)) / 3; _i > 0; _i -- {//POW(intimacy,0.39208)
+		for _i = TOINT(log(1.584893,intimacy)) / 3; _i > 0; _i -- {//POW(intimacy,0.39208)
 			_heart += '\_b[RPGPATH\heart2.gif,inline]'
 		}
 		for _i = TOINT(log(1.584893,intimacy)) % 3; _i > 0; _i -- {

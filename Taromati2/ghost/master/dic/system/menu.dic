@@ -32,20 +32,20 @@ OpenMenu{
 		_message=OpenMenuTalk
 	}
 	_sub = '◆,◇,◇,◇,◇,◆,◇,◇,◇,◇,◆,◇,◇,◇,◇,◆,◇,◇,◇,◇,◆'
-	'\C\![quicksession,true]\1\b[-1]\c\0\c'+_message+"\b[2]/
-	\_l[0,26]\q[%(_sub[_submenu])常用功能,OnSubMenu,0,%(_submenuex)]/
+	'\![quicksession,true]\0'+_message+"\b[2]/
+	\_l[0,22]\q[%(_sub[_submenu])常用功能,OnSubMenu,0,%(_submenuex)]/
 	\_l[68]\q[%(_sub[_submenu + 4])休闲,OnSubMenu,1,%(_submenuex)]/
 	\_l[112]\q[%(_sub[_submenu + 8])游戏,OnSubMenu,2,%(_submenuex)]/
 	\_l[156]\q[%(_sub[_submenu + 12])便利功能,OnSubMenu,3,%(_submenuex)]/
 	\_l[224]\q[%(_sub[_submenu + 16])设定,OnSubMenu,4,%(_submenuex)]/
-	\_l[0,189]\q[◇没什么事,MenuCancel]\_l[200,189]\q[◇任务管理,Multitask]"
+	\_l[0,180]\q[◇没什么事,MenuCancel]\_l[200]\q[◇任务管理,Multitask]"
 	--
 	SubMenu(_submenu,_submenuex)
 	--
 	KikkaMenu
 	--
 	if _submenu == 0&&showkikka!=2{
-		NotePadShow(178,54,4)//坐标x，坐标y，显示条数
+		NotePadShow(178,44,4)//坐标x，坐标y，显示条数
 	}
 }
 OnSubMenu{
@@ -56,7 +56,7 @@ SubMenu{
 	_submenu = _argv[0]
 	_submenuex=_argv[1]
 	_sub = '◆,◇,◇,◇,◇,◆,◇,◇,◇,◇,◆,◇,◇,◇,◇,◆,◇,◇,◇,◇,◆'
-	'\C\![set,choicetimeout,30000]\_l[0,40]--------------------------------------------\n'
+	'\C\![set,choicetimeout,30000]\_l[0,30]--------------------------------------------\n'
 	--
 	case _submenu {
 		when 0 {
@@ -98,7 +98,7 @@ SubMenu{
 				}
 			}
 			--
-			"\_l[90,189]\q[%(_sub[_submenuex])1,OnSubMenu,%(_submenu),0]    \q[%(_sub[_submenuex + 4])2,OnSubMenu,%(_submenu),1]"
+			"\_l[90,180]\q[%(_sub[_submenuex])1,OnSubMenu,%(_submenu),0]    \q[%(_sub[_submenuex + 4])2,OnSubMenu,%(_submenu),1]"
 		}
 		when 2 {
 			'\q[◇猜拳,OnHandGame]			\_l[80,-]扑克游戏：						\_l[168,-]\q[◇外出冒险,OnRpgGame] \n/
@@ -140,7 +140,7 @@ SubMenu{
 				}
 			}
 			--
-			"\_l[90,189]\q[%(_sub[_submenuex])1,OnSubMenu,%(_submenu),0]    \q[%(_sub[_submenuex + 4])2,OnSubMenu,%(_submenu),1]"
+			"\_l[90,180]\q[%(_sub[_submenuex])1,OnSubMenu,%(_submenu),0]    \q[%(_sub[_submenuex + 4])2,OnSubMenu,%(_submenu),1]"
 		}
 		when 4 {
 			"\q[◇系统环境,System]				\_l[138,-]\q[◇我的电脑,OnMenuExplorer,mycomputer]\n/
@@ -158,10 +158,10 @@ SubMenu{
 //---------- 打开菜单时的对话 ------------------------------------------
 OpenMenuTalk{
 	_phase = GetPhase
-	if intimacy>1000 && _phase == 2 {
+	if _phase >= 2 {
 		click=TOINT(click)+1
 		"\0\s[5]\b[2]%(username)%(Timejud)好，什么事呢"
-		if 亲密度>=200
+		if _phase >= 3
 			"\0\s[5]\b[2]最喜欢%(username)了，什么事呢"
 		"\0\s[26]\b[2]什么事呢、%(username)？"
 		'\0\s[41]\b[2]啊…好的。'
@@ -182,15 +182,10 @@ OpenMenuTalk{
 		}
 	}
 	elseif _phase == 0 {
-		'\0\s[0]\b[2]好的。'
+		'\0\s[0]\b[2]？'
 		'\0\s[6]\b[2]干嘛'
 		'\0\s[7]\b[2]什么事。'
 		'\0\s[25]\b[2]有何贵干。'
-	}
-	elseif _phase == 2 {
-		"\0\s[40]\b[2]什么事呢、%(username)？"
-		'\0\s[41]\b[2]啊…好的。'
-		'\0\s[5]\b[2]要做什么呢？\s[40]'
 	}
 	else {
 		'\0\s[26]\b[2]好的、什么事呢？'
@@ -270,9 +265,9 @@ Select.MenuCancel{
 	infomode=0
 	_phase = GetPhase
 	if _phase == 0{
-		'\0\s[0]好的。'
+		'\0\s[0]嗯。'
 	}
-	elseif _phase == 2{
+	elseif _phase >= 2{
 		talkmemo = 'e_0'
 		'\0\s[3]啊、好的。'
 		'\0\s[3]…是这样啊。'
@@ -1078,7 +1073,10 @@ Select.shortcutkey{
 }
 OnOpenMasterMenu{
 	MAGICUNLOCK
-	'\0\s[5]打开master目录\![open,file,ghost\master]'
+	if mode=='0'
+		'\0\s[5]打开master目录'
+	--
+	'\![open,file,ghost\master]'
 }
 //---- ごみ箱を空に ---------------------------------------------------------------------------------------------------
 Select.TrashClean{
@@ -1167,11 +1165,10 @@ OnSetWallpaper{
 }
 //---------- 沟通 ------------------------------------------------------
 Select.Communicate{
-	_phase = GetPhase
 	'\![open,communicatebox]\0'
 	--
-	if _phase == 0 {
-		'\s[0]想说什么呢？'
+	if GetPhase == 0 {
+		'\s[0]想说什么？'
 	}
 	else {
 		"\s[26]嗯？\w9想聊点什么呢，%(username)？"
@@ -1491,21 +1488,17 @@ Select.Bedroom{
 	"\0\s[26]%(username),您要休息了吗？\w9\w9有什么需要呢？\n\n\q[◇橘花...等等你来我房间...,Comemyroom]\n\q[◇那个...等等请斗和来我房间...,Catcomemyroom]\n\q[◇我还不想休息,Nosleep]\x"
 }
 Select.Comemyroom{
-	_phase = GetPhase_bedroom
+	_phase = GetPhase
 	if _phase == 0{
 		"\1\s[10]\0\s[25]橘花才不要呢，\w9\w9%(username)是个大坏蛋！！\1\s[12]%(username)啊，橘花对你的好感太低了\x"
 	}
 	elseif _phase == 1{
 		'\1\s[10]\0\s[2]啊，您是说我吗...\w9\w9\w9\0\s[1]\w9......\n\n\q[◇是的,Choice1]\n\q[◇没事,Choice2]\x'
 		'\1\s[10]\0\s[101]唔…………\w9\w9这…………\w9不\w9太\w9好\w9吧。\n\n\q[◇我只是想请你帮我泡杯茶…,Choice3]\n\q[◇你应该知道怎么做…,Choice4]\n\q[◇我只是想知道一些事…,Choice5]\1\s[12]你想干嘛啊……\x'
-		'\1\s[10]\0\s[9]唔……\w9\w9橘花\w9\w9……觉得好害羞喔……\1\s[12]你在诱拐良家妇女吗……\x'
-		'\1\s[10]\0\s[29]唔……\w9\w9橘花\w9\w9……觉得心跳得好快喔……\1\s[12]喂！进展太快了吧……\x'
 	}
 	elseif _phase == 2{
 		'\1\s[10]\0\s[2]啊，您是说我吗...\w9\w9\w9\0\s[1]\w9......\n\n\q[◇是的,Choice1]\n\q[◇没事,Choice2]\x'
 		'\1\s[10]\0\s[101]唔…………\w9\w9这…………\w9不\w9太\w9好\w9吧。\n\n\q[◇我只是想请你帮我泡杯茶…,Choice3]\n\q[◇你应该知道怎么做…,Choice4]\n\q[◇我只是想知道一些事…,Choice5]\1\s[12]你想干嘛啊……\x'
-		'\1\s[10]\0\s[9]唔……\w9\w9橘花\w9\w9……觉得好害羞喔……\1\s[12]你在诱拐良家妇女吗……\x'
-		'\1\s[10]\0\s[29]唔……\w9\w9橘花\w9\w9……觉得心跳得好快喔……\1\s[12]喂！进展太快了吧……\x'
 		"\1\s[10]\0\s[0]虽然不明白怎么回事，\w9\w9\w9%(username)有什么吩付呢？\n\n\q[◇我想和橘花聊聊天,Choice6]\n\q[◇没事,Choice2]\x"
 	}
 	elseif _phase == 3{

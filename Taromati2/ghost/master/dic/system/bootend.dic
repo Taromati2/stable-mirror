@@ -381,7 +381,7 @@ OnBoot{
 	}
 	//---- 早朝 -----------------------------------------------------------------------------------------------------------
 	elseif _timeslot == 'Earlymorning'{
-		if _phase == 2{
+		if _phase >= 2{
 			talkmemo = 'b_0'
 			"\1\s[10]\0\s[0]啊…\w9\w9\s[40]早安、\w9%(username)。\w9\w9\1\s[10]…\w9…\w9…\w9\w9\w9\0\s[0]\n\n[half]这么早是怎么了呢？\x"
 			"\1\s[10]\0\s[0]啊…\w9\w9\s[40]早安、\w9%(username)。\w9\w9\1\s[10]…\w9…\w9…\w9\w9\w9\0\s[26]\n\n[half]今天很早呢。\x"
@@ -396,7 +396,7 @@ OnBoot{
 	}
 	//---- 朝 -------------------------------------------------------------------------------------------------------------
 	elseif _timeslot == 'Morning'{
-		if _phase == 2{
+		if _phase >= 2{
 			"\1\s[10]\0\s[26]早安、\w9%(username)。\x"
 			"\1\s[10]\0\s[40]早安、\w9%(username)。\w9\w9\w9\w9\s[26]\n今天一天也好好加油吧。\x"
 			"\1\s[10]\0\s[26]%(username)、\w9早安。\w9\w9\1\s[10]哟。\x"
@@ -411,7 +411,7 @@ OnBoot{
 	}
 	//---- 昼 -------------------------------------------------------------------------------------------------------------
 	elseif _timeslot == 'Day'{
-		if _phase == 2{
+		if _phase >= 2{
 			if weekday == '0'
 				'\0\s[26]早安。\w9\w9\n…\w9嗯、\w9\s[8]已經中午了喔。\w9\w9\1\s[10]反正是禮拜天嘛。\w9\w9\n有好好休息嗎？\x'
 			else{
@@ -749,33 +749,22 @@ OnClose0{
 }
 //**** フェーズ *******************************************************************************************************
 GetPhase{
-	if intimacy >= 50{
-		2
-	}
-	elseif intimacy <= -10{
-		0
-	}
-	else{
-		1
-	}
-}
-GetPhase_bedroom{
-	if intimacy >= 3600 && elapsedtime >= 691200{
+	if intimacy >= 3600 && elapsedtime >= 691200{//彻底信任
 		5
 	}
-	elseif intimacy >= 800  && elapsedtime >= 345600{
+	elseif intimacy >= 800  && elapsedtime >= 345600{//可h
 		4
 	}
-	elseif intimacy >= 200 && elapsedtime >= 172800{
+	elseif intimacy >= 200 && elapsedtime >= 172800{//好感
 		3
 	}
-	elseif intimacy >= 50 && elapsedtime >= 86400{
+	elseif intimacy >= 50 && elapsedtime >= 86400{//些微好感
 		2
 	}
-	elseif intimacy <= -10{
+	elseif intimacy <= -10{//厌恶
 		0
 	}
-	else{
+	else{//普通
 		1
 	}
 }
@@ -836,9 +825,8 @@ OnGhostChanging{
 	}
 }
 OnGhostChanging0{
-	_phase = GetPhase
 	if reference1 == 'manual'{
-		if _phase == 0{
+		if GetPhase == 0{
 			'\0\s[6]好的。\w9\s[0]\n那么再见了。\w9\w9\1\s[10]再见啦。'
 		}
 		//---- Taromati -------------------------------------------------------------------------------------------------------

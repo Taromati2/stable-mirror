@@ -1,6 +1,33 @@
 /////////文　ゴーストテンプレート
 /////////マウス入力関连辞书
 /////////written by umeici.
+
+//OnTouch.FunctionCase by steve02081504
+OnTouch.FunctionCase{
+	OnTouch.FunctionCase.base(_argv[0],GetPhase,EVAL(_argv[1]))
+	void EVAL("%(_argv[1])++")
+}
+OnTouch.FunctionCase.base{
+	if _argv[1] < 0
+		EVAL("%(_argv[0])")
+	elseif ISFUNC(_function = "%(_argv[0]).%(_argv[1]).%(_argv[2])")
+		EVAL(_function)
+	elseif ISFUNC(_function = "%(_argv[0]).%(_argv[1])")
+		EVAL(_function)
+	else
+		OnTouch.FunctionCase.base(_argv[0],_argv[1]-1,_argv[2])
+}
+OnTouch.FunctionCase.OnlyPhase{
+	OnTouch.FunctionCase.OnlyPhase.base(_argv[0],GetPhase)
+}
+OnTouch.FunctionCase.OnlyPhase.base{
+	if _argv[1] < 0
+		EVAL("%(_argv[0])")
+	elseif ISFUNC(_function = "%(_argv[0]).%(_argv[1])")
+		EVAL(_function)
+	else
+		OnTouch.FunctionCase.OnlyPhase.base(_argv[0],_argv[1]-1)
+}
 //**** 抚で反応 *************************************************************************
 //---- OnMouseMoveイベント --------------------------------------------------------------
 OnMouseMove{
@@ -17,47 +44,21 @@ OnMouseMove0{
 		if reference4 != ''{
 			stroke++
 			if stroke >= 32{
-				if reference4 == 'Head'{
-					headpatflag = 1
-					headpattime = 0
-					_talk = "TalkSakuraHeadPat.%(GetPhase).%(headpatcount)"
-					if ISFUNC(_talk) == 1{
-						EVAL(_talk)
-						headpatcount++
+				case reference4 {
+					when 'Head'{
+						headpatflag = 1
+						headpattime = 0
+						OnTouch.FunctionCase('TalkSakuraHeadPat','headpatcount')
 					}
-					else{
-						EVAL("TalkSakuraHeadPat.%(GetPhase)")
+					when 'Face'
+						OnTouch.FunctionCase.OnlyPhase('TalkSakuraFacePat')
+					when 'Bust'{
+						bustpatflag = 1
+						bustpattime = 0
+						OnTouch.FunctionCase('TalkSakuraBustPat','bustpatcount')
 					}
-				}
-				elseif reference4 == 'Face'{
-					_talk = "TalkSakuraFacePat.%(GetPhase)"
-					if ISFUNC(_talk) == 1{
-						EVAL(_talk)
-					}
-					else{
-						TalkSakuraFacePat
-					}
-				}
-				elseif reference4 == 'Bust'{
-					bustpatflag = 1
-					bustpattime = 0
-					_talk = "TalkSakuraBustPat.%(GetPhase).%(bustpatcount)"
-					if ISFUNC(_talk) == 1{
-						EVAL(_talk)
-						bustpatcount++
-					}
-					else{
-						EVAL("TalkSakuraBustPat.%(GetPhase)")
-					}
-				}
-				elseif reference4 == 'Hand'{
-					_talk = "TalkSakuraHandPat.%(GetPhase)"
-					if ISFUNC(_talk) == 1{
-						EVAL(_talk)
-					}
-					else{
-						TalkSakuraHandPat
-					}
+					when 'Hand'
+						OnTouch.FunctionCase.OnlyPhase('TalkSakuraHandPat')
 				}
 				stroke = 0
 			}
@@ -69,14 +70,13 @@ OnMouseMove0{
 	else{
 		stroke++
 		if stroke >= 64{
-			if reference4 == 'Head'{
-				TalkKeroHeadPat
-			}
-			elseif reference4 == 'Tail'{
-				TalkKeroTailPat
-			}
-			else{
-				TalkKeroPat
+			case reference4 {
+				when 'Head'
+					TalkKeroHeadPat
+				when 'Tail'
+					TalkKeroTailPat
+				others
+					TalkKeroPat
 			}
 			stroke = 0
 		}
@@ -102,10 +102,13 @@ TalkSakuraHeadPat.1.1{
 	'\0\s[1]那个…\w9\s[1]这个…'
 }
 TalkSakuraHeadPat.1.2{
+	kikkamood+=1
 	"\0\s[1]%(username)…"
 	'\0\s[1]…\w9…\w9…'
 }
 TalkSakuraHeadPat.1.3{
+	kikkamood+=2
+	intimacy++
 	'\0\s[29]…\w9谢谢。'
 }
 TalkSakuraHeadPat.1{
@@ -120,6 +123,7 @@ TalkSakuraHeadPat.2.0{
 	'\0\![raise,OnPlaySound,se_01.wav]\s[2]啊…\w9\w9\s[1]那个…'
 }
 TalkSakuraHeadPat.2.1{
+	kikkamood+=2
 	'\0\s[1]谢…\w9谢谢…'
 	"\0\s[1]%(username)…"
 }
@@ -128,10 +132,12 @@ TalkSakuraHeadPat.2.2{
 	'\0\s[1]这个…\w9\w9我的头发、\w9怎么了吗？'
 }
 TalkSakuraHeadPat.2.3{
+	intimacy++
 	'\0\s[29]…\w9那个。\w9\w9\s[1]\n啊…\w9没事…'
 	'\0\s[1]那、\w9那个…\w9\w9\n我会害羞的。'
 }
 TalkSakuraHeadPat.2{
+	kikkamood+=1
 	'\0\s[29]嗯…'
 	'\0\s[1]…\w9…\w9…'
 	'\0\s[1]那个…'
@@ -141,38 +147,36 @@ TalkSakuraHeadPat.2{
 TalkSakuraFacePat.0{
 	'\0\s[6]嗯。\w9\w9\s[0]\n怎么了？'
 }
-TalkSakuraFacePat{
-	if intimacy <= 499{
-		'\0\s[2]嗯?\w9\w9[0]怎麼了？'
-		'\0\s[2]嗯?\w9\w9[0]什麼事？'
-	}
-	elseif intimacy >= 500 && intimacy <= 999{
-		intimacy += 1
-		"\0\s[2]嗯。\w9\w9\0\s[1]%(username)怎麼了？"
-		"\0\s[2]嗯…\w9\w9\0\s[9]%(username)…？"
-		"\0\s[9]唔嗯…\w9\w9那個、\w9%(username)怎麼了？"
-		"\0\s[2]嗯？\w9\w9\0\s[20]那個、\w9%(username)我臉上有什麼東西嗎？"
-		'\0\s[21]好癢喔。'
-		'\0\s[21]唔…\w9\w9…\w9…\w9…'
-	}
-	elseif intimacy >= 1000{
-		intimacy += 2
-		"\0\s[2]嗯。\w9\w9\0\s[1]%(username)怎麼了？"
-		"\0\s[2]嗯…\w9\w9\0\s[9]%(username)…？"
-		"\0\s[9]唔嗯…\w9\w9那個、\w9%(username)怎麼了？"
-		"\0\s[2]嗯？\w9\w9\0\s[20]那個、\w9%(username)我臉上有什麼東西嗎？"
-		'\0\s[21]好癢喔。'
-		'\0\s[9]唔…\w9\w9…\w9…\w9…'
-		"\0\s[21]%(username)…\w9\w9…\w9…\w9…"
-		"\0\s[2]%(username)…\w9\w9摸我的臉……\w9…"
-		"\0\s[21]唔…\w9\w9…\0\s[9]臉被%(username)摸了…\w9…"
-	}
+TalkSakuraFacePat.1{
+	'\0\s[2]嗯?\w9\w9[0]怎麼了？'
+	'\0\s[2]嗯?\w9\w9[0]什麼事？'
+}
+TalkSakuraFacePat.2{
+	intimacy += 1
+	kikkamood+=1
+	"\0\s[2]嗯。\w9\w9\0\s[1]%(username)怎麼了？"
+	"\0\s[2]嗯…\w9\w9\0\s[9]%(username)…？"
+	"\0\s[9]唔嗯…\w9\w9那個、\w9%(username)怎麼了？"
+	"\0\s[2]嗯？\w9\w9\0\s[20]那個、\w9%(username)我臉上有什麼東西嗎？"
+	'\0\s[21]好癢喔。'
+	'\0\s[21]唔…\w9\w9…\w9…\w9…'
+}
+TalkSakuraFacePat.3{
+	intimacy += 2
+	kikkamood+=2
+	"\0\s[2]嗯。\w9\w9\0\s[1]%(username)怎麼了？"
+	"\0\s[2]嗯…\w9\w9\0\s[9]%(username)…？"
+	"\0\s[9]唔嗯…\w9\w9那個、\w9%(username)怎麼了？"
+	"\0\s[2]嗯？\w9\w9\0\s[20]那個、\w9%(username)我臉上有什麼東西嗎？"
+	'\0\s[21]好癢喔。'
+	'\0\s[9]唔…\w9\w9…\w9…\w9…'
+	"\0\s[21]%(username)…\w9\w9…\w9…\w9…"
+	"\0\s[2]%(username)…\w9\w9摸我的臉……\w9…"
+	"\0\s[21]唔…\w9\w9…\0\s[9]臉被%(username)摸了…\w9…"
 }
 //---- 胸抚で ---------------------------------------------------------------------------------------------------------
 TalkSakuraBustPat.0{
-	_phase = GetPhase_bedroom
-	if _phase < 4{intimacy -= 1}
-	else{intimacy += 2}
+	intimacy -= 1
 	'\0\s[35]唔…'
 	'\0\s[35]…\w9…\w9…\1\s[12]你就这么喜欢摸女生胸部吗……\0'
 	'\0\![raise,OnPlaySound,se_01.wav]\s[35]啊…'
@@ -180,21 +184,10 @@ TalkSakuraBustPat.0{
 }
 TalkSakuraBustPat.1.0{
 	'\0\s[1]呃…\w9\w9那、那个？'
-}
-TalkSakuraBustPat.1{
-	_phase = GetPhase_bedroom
-	if _phase < 4{intimacy -= 1}
-	else{intimacy += 2}
-	'\0\s[1]嗯…\w9\w9啊…'
-	'\0\s[1]那、\w9那个…'
-	'\0\s[1]那个…\w9那个…'
-	'\0\s[1]…\w9…\w9…'
-}
-TalkSakuraBustPat.2.0{
 	'\0\s[1]耶…\w9\w9那、那个？'
 }
-TalkSakuraBustPat.2{
-	_phase = GetPhase_bedroom
+TalkSakuraBustPat.1{
+	_phase = GetPhase
 	if _phase < 4{intimacy -= 1}
 	else{intimacy += 2}
 	'\0\s[1]嗯…\w9\w9啊…'
@@ -206,42 +199,46 @@ TalkSakuraBustPat.2{
 TalkSakuraHandPat.0{
 	'\0\s[0]…\w9…\w9…'
 }
-TalkSakuraHandPat{
+TalkSakuraHandPat.1{
+	intimacy += 1
 	'\0\s[29]…\w9…\w9…'
 	'\0\![raise,OnPlaySound,se_01.wav]\s[29]啊…'
-	if intimacy >= 250 && intimacy <= 499{
-		intimacy += 1
-		'\0\s[29]啊…\w9這…\w9…'
-		'\0\s[1]啊…\w9這…\w9這個……\w9…'
-		'\0\s[29]嗯……\w9嗯…'
-	}
-	elseif intimacy >= 500 && intimacy <= 999{
-		intimacy += 2
-		"\0\s[2]嗯?…\w9\0\s[1]%(username)??"
-		"\0\s[1]那個……\w9%(username)?"
-		"\0\s[29]這個……\w9%(username)……"
-		"\0\s[2]啊……\w9\0\s[29]%(username)…"
-	}
-	elseif intimacy >= 1000 && intimacy <= 1499{
-		intimacy += 3
-		"\0\s[2]嗯?…\w9\0\s[1]%(username)??"
-		"\0\s[1]那個……\w9%(username)?"
-		"\0\s[29]這個……\w9%(username)……"
-		"\0\s[2]啊……\w9\0\s[29]%(username)…"
-		"\0\s[26]啊……\w9\0\s[21]%(username)…\w9\w9人家有點害羞……"
-		"\0\s[2]這個……\w9\0\s[29]%(username)想牽我的手……?"
-	}
-	elseif intimacy >= 1500{
-		intimacy += 4
-		"\0\s[2]嗯?…\w9\0\s[1]%(username)??"
-		"\0\s[1]那個……\w9%(username)?"
-		"\0\s[29]這個……\w9%(username)……"
-		"\0\s[2]啊……\w9\0\s[29]%(username)…"
-		"\0\s[26]啊……\w9\0\s[21]%(username)…\w9\w9人家會害羞……"
-		"\0\s[2]這個……\w9\0\s[29]%(username)這麼想牽我的手……?"
-		"\0\s[26]嗯……?\w9\0\s[21]%(username)想帶我去什麼地方嗎……?"
-		"\0\s[29]這……?\w9\0\s[21]%(username)要帶我去約會嗎……?"
-	}
+	'\0\s[29]啊…\w9這…\w9…'
+	'\0\s[1]啊…\w9這…\w9這個……\w9…'
+	'\0\s[29]嗯……\w9嗯…'
+}
+TalkSakuraHandPat.2{
+	intimacy += 2
+	'\0\s[29]…\w9…\w9…'
+	'\0\![raise,OnPlaySound,se_01.wav]\s[29]啊…'
+	"\0\s[2]嗯?…\w9\0\s[1]%(username)??"
+	"\0\s[1]那個……\w9%(username)?"
+	"\0\s[29]這個……\w9%(username)……"
+	"\0\s[2]啊……\w9\0\s[29]%(username)…"
+}
+TalkSakuraHandPat.3{
+	intimacy += 3
+	'\0\s[29]…\w9…\w9…'
+	'\0\![raise,OnPlaySound,se_01.wav]\s[29]啊…'
+	"\0\s[2]嗯?…\w9\0\s[1]%(username)??"
+	"\0\s[1]那個……\w9%(username)?"
+	"\0\s[29]這個……\w9%(username)……"
+	"\0\s[2]啊……\w9\0\s[29]%(username)…"
+	"\0\s[26]啊……\w9\0\s[21]%(username)…\w9\w9人家有點害羞……"
+	"\0\s[2]這個……\w9\0\s[29]%(username)想牽我的手……?"
+}
+TalkSakuraHandPat.4{
+	intimacy += 4
+	'\0\s[29]…\w9…\w9…'
+	'\0\![raise,OnPlaySound,se_01.wav]\s[29]啊…'
+	"\0\s[2]嗯?…\w9\0\s[1]%(username)??"
+	"\0\s[1]那個……\w9%(username)?"
+	"\0\s[29]這個……\w9%(username)……"
+	"\0\s[2]啊……\w9\0\s[29]%(username)…"
+	"\0\s[26]啊……\w9\0\s[21]%(username)…\w9\w9人家會害羞……"
+	"\0\s[2]這個……\w9\0\s[29]%(username)這麼想牽我的手……?"
+	"\0\s[26]嗯……?\w9\0\s[21]%(username)想帶我去什麼地方嗎……?"
+	"\0\s[29]這……?\w9\0\s[21]%(username)要帶我去約會嗎……?"
 }
 //---- 猫抚で ---------------------------------------------------------------------------------------------------------
 TalkKeroHeadPat{
@@ -271,58 +268,28 @@ OnMouseDoubleClick{
 }
 OnMouseDoubleClick0{
 	if reference3 == 0{
-		if reference4 == 'Head'{
-			_talk = "TalkSakuraHeadClick.%(GetPhase)"
-			if ISFUNC(_talk) == 1{
-				EVAL(_talk)
+		case reference4 {
+			when 'Head'
+				OnTouch.FunctionCase.OnlyPhase('TalkSakuraHeadClick')
+			when 'Face'
+				OnTouch.FunctionCase.OnlyPhase('TalkSakuraFaceClick')
+			when 'Bust'{
+				bustclickflag = 1
+				bustclicktime = 0
+				OnTouch.FunctionCase('TalkSakuraBustClick','bustclickcount')
 			}
-			else{
-				TalkSakuraHeadClick
-			}
-		}
-		elseif reference4 == 'Face'{
-			_talk = "TalkSakuraFaceClick.%(GetPhase)"
-			if ISFUNC(_talk) == 1{
-				EVAL(_talk)
-			}
-			else{
-				TalkSakuraFaceClick
-			}
-		}
-		if reference4 == 'Bust'{
-			bustclickflag = 1
-			bustclicktime = 0
-			_talk = "TalkSakuraBustClick.%(GetPhase).%(bustclickcount)"
-			if ISFUNC(_talk) == 1{
-				EVAL(_talk)
-				bustclickcount++
-			}
-			else{
-				EVAL("TalkSakuraBustClick.%(GetPhase)")
-			}
-		}
-		elseif reference4 == 'Hand'{
-			_talk = "TalkSakuraHandClick.%(GetPhase)"
-			if ISFUNC(_talk) == 1{
-				EVAL(_talk)
-			}
-			else{
-				TalkSakuraHandClick
-			}
-		}
-		else{
-			OpenMenu
+			others
+				OpenMenu
 		}
 	}
 	else{
-		if reference4 == 'Head'{
-			TalkKeroHeadClick
-		}
-		elseif reference4 == 'Tail'{
-			TalkKeroTailClick
-		}
-		else{
-			OnMusicPlayer
+		case reference4 {
+			when 'Head'
+				TalkKeroHeadClick
+			when 'Tail'
+				TalkKeroTailClick
+			others
+				OnMusicPlayer
 		}
 	}
 }
@@ -402,7 +369,7 @@ TalkSakuraHandClick.0{
 	OpenMenu(0)
 }
 TalkSakuraHandClick.1{
-	'\0\s[26]？'
+	'\0\s[26]怎么了？'
 }
 TalkSakuraHandClick.2{
 	'\0\![raise,OnPlaySound,se_04.wav]\s[2]哇…\w9\w9\s[1]\n这…'
@@ -453,13 +420,7 @@ OnMouseWheel0{
 			stroke++
 			if stroke >= 12{
 				if reference4 == 'Hand'{
-					_talk = "TalkSakuraHandLead.%(GetPhase)"
-					if ISFUNC(_talk) == 1{
-						EVAL(_talk)
-					}
-					else{
-						TalkSakuraHandLead
-					}
+					OnTouch.FunctionCase.OnlyPhase('TalkSakuraHandLead')
 				}
 				stroke = 0
 			}
@@ -471,14 +432,13 @@ OnMouseWheel0{
 	else{
 		stroke++
 		if stroke >= 16{
-			if reference4 == 'Head'{
-				TalkKeroHeadPat
-			}
-			elseif reference4 == 'Tail'{
-				TalkKeroTailPat
-			}
-			else{
-				TalkKeroPat
+			case reference4 {
+				when 'Head'
+					TalkKeroHeadPat
+				when 'Tail'
+					TalkKeroTailPat
+				others
+					TalkKeroPat
 			}
 			stroke = 0
 		}
