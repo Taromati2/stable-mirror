@@ -731,7 +731,6 @@ OnCancelSetShutdown{
 }
 AgendaMonitor{
 	_eventtemp=''
-	_txt=''
 	_events=OnEventRead(,,,'all')
 	SETDELIM(_events,'|')
 	foreach _events;_event{
@@ -774,7 +773,6 @@ AgendaMonitor{
 		_n++
 	}
 	if agendastart{
-		_txt+='\0\![quicksession,true]\![set,choicetimeout,0]'//加在这里，否则人物表情无法复原
 		_event=eventtemp
 		_eventsort=_event[0,'	']
 		_eventtitle=_event[12,'	']
@@ -795,15 +793,15 @@ AgendaMonitor{
 		_w+='地点：'+_eventplace+'\n'
 		_w+='备忘：'+_eventagenda+'\n'
 		_w+=_eventasakura+'\n'
-		_txt+=_w
-		_txt+="\q[◇查看日程,OnEventCheck,%(_eventbegindate[0]),%(_eventbegindate[1]),%(_eventbegindate[2])]\n"
-		_txt+='\q[◇知道了，不再提醒,OnEventOver]\n'
-		_txt+="\![set,trayballoon,--icon=info,--timeout=10,--title=日程提醒,--text=%(_eventasakura),--text=（点击气泡关闭提醒）]"
-		_txt=CALLSAORI('ChConverter', 'traditional', _txt)
-		_txt+="\![open,file,%(_eventapp)]"
-		_txt+="\![sound,play,%(_eventsound)]"
+		'\0\![quicksession,true]\![set,choicetimeout,0]'//加在这里，否则人物表情无法复原
+		--
+		_w
+		--
+		"\q[◇查看日程,OnEventCheck,%(_eventbegindate[0]),%(_eventbegindate[1]),%(_eventbegindate[2])]\n/
+		\q[◇知道了，不再提醒,OnEventOver]\n/
+		\![set,trayballoon,--icon=info,--timeout=10,--title=日程提醒,--text=%(_eventasakura),--text=（点击气泡关闭提醒）]/
+		\![open,file,%(_eventapp)]\![sound,play,%(_eventsound)]"
 	}
-	_txt
 }
 EventRemindCheck{
 	_start=0
