@@ -128,6 +128,8 @@ OnTuLingFound{
 					_txt+=TextBetween(_temp,'"name":','","',0)+TextBetween(_temp,'count":"','","',0)+"\_a[OnUrl,"+TextBetween(_temp,'"icon":','","',0)+"]"+TextBetween(_temp,'"icon":','","',0)+"\_a"+"\_a[OnUrl,"+TextBetween(_temp,'detailurl":"','"}',0)+"]"+TextBetween(_temp,'detailurl":"','"}',0)+"\_a"+'\n'
 				}
 			}
+			when '40004'
+				_txt=NULL
 			others
 				_txt+=TextBetween(_buff,'":"','"}',0)
 		}
@@ -140,6 +142,8 @@ OnTuLingFound{
 		AITalkAdd('PROFILE_PATH\tuling.ai',tulingapi.in+'*'+_txt+'§')
 		void FCOPY('PROFILE_PATH\tuling.ai','pseudoAI')
 	}
+	if chatroom
+		_txt=KikkaTalkToUser(tulingapi.in)
 	ERASEVAR('tulingapi.in')
 	if chatroom{
 		chatroomtxt+="%(_txt)#"

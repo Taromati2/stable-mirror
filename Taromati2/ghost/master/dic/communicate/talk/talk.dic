@@ -1468,11 +1468,11 @@ TWO{
 	elseif RE_GREP(reference1,'被\S*?欺负'){
 		_name=RE_REPLACEEX(reference1,'被(\S*?)欺负','$1')
 		_name = TOLOWER(TOSIMPLIFIED(_name))
-		if 'towa' || '斗和' _in_ _name
+		if 'towa' _in_ _name || '斗和' _in_ _name
 			Select.towabully
 		elseif '老师' _in_ _name
 			Select.teacherbully
-		elseif '友人' || '朋友' || '网友' || '损友' || '宅友' _in_ _name//nmd，直接'友' _in_ _name又会有这种叫张学友的人
+		elseif '友人' _in_ _name || '朋友' _in_ _name || '网友' _in_ _name || '损友' _in_ _name || '宅友' _in_ _name//nmd，直接'友' _in_ _name又会有这种叫张学友的人
 			Select.friendsbully
 		else
 			Select.bully

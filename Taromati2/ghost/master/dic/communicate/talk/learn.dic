@@ -178,6 +178,8 @@ KikkaTalkToUser{
 					--
 					if !chatroom
 						'\n[200]\![set,choicetimeout,0]'
+					else
+						'\n'
 					--
 					'\![*]\q[我来教你吧,Teaching]\n'
 					--
