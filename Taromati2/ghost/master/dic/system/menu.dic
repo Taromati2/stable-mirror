@@ -68,8 +68,8 @@ SubMenu{
 			\q[◇天气预报,OnCheckWeather]	\_l[100,-]\q[◇日程提醒,OnAgenda]\n/
 			\q[◇IP查询,OnCheckIp]			\_l[100,-]\q[◇计算器,OnCalculator]\n/
 			\q[◇放大镜,OnMagnify]			\_l[100,-]\q[◇录音机,OnRecorder]\n/
-			\q[◇星座运势,OnAstrofate]		\_l[100,-]\q[◇橘花行情,OnKikkaStockMenu]/
-			\n'
+			\q[◇星座运势,OnAstrofate]		\_l[100,-]\q[◇橘花行情,OnKikkaStockMenu]\n/
+			'
 		}
 		when 1 {
 			case _submenuex{
@@ -81,7 +81,7 @@ SubMenu{
 					\q[◇花语,OnFlowers]				\_l[100,-]\q[◇诞生花,OnBirthdayFlowerList]		\_l[200,-]\q[◇塔罗占卜,OnFUT]\n/
 					\q[◇趣味测试,Onjumptest]		\_l[100,-]\q[◇橘花题库,OnExamTest]				\_l[200,-]\q[◇和橘花谈心,talktoheart]\n/
 					\q[◇查找诗歌,OnResearchPoesy]	\_l[100,-]\q[◇唐诗默写♪,OnPoesywrite]			\_l[200,-]\q[◇剧情故事,Opera]\n/
-					\q[◇动漫列表,OnDHs]				\_l[100,-]\q[◇咖啡厅,melancholy_tea]			\_l[200,-]%(Onmeal)\n/
+					\q[◇动漫列表,OnDHs]				\_l[100,-]\q[◇咖啡厅,get_some_tea]			\_l[200,-]%(Onmeal)\n/
 					"
 					--
 					if towaflag != '0'
@@ -91,10 +91,9 @@ SubMenu{
 					\q[◇其它服务,otherserv]			\_l[100,-]\q[◇橘花知识库,OnKikkaKnowl]			\_l[200,-]%(Onclosetouch)\n"
 				}
 				when 1{
-					"/
-					\q[◇斗和与橘花爱的选择,Kikkaortowa]	\_l[168,-]\q[◇橘花的忧郁,melancholy]\n/
-					\q[◇%(username)被欺负了,bully]		\_l[168,-]\q[◇准备晚餐,Cookingtonight]\n/
-					"
+					'/
+					\q[◇准备晚餐,Cookingtonight]\n/
+					'
 				}
 			}
 			--
@@ -223,8 +222,8 @@ Select.help{
 	"\0\s0啊、\w9有需要帮忙吗?\s[40]\n[150]/
 	\q[◇关于好感度,lovech]\n/
 	\q[◇关于橘花的生日,birthdaykikka]		\_l[120,-]\q[◇修改更新源,MirrorChange]\n/
-	%(OnIntimacy)/
-	%(OnLoveGo)/
+	\n/
+	\n/
 	\q[◇关于快捷键,shortcutkey]				\_l[120,-]\q[◇自优化,self_tuning]\n/
 	\q[◇伪春菜贴吧,OpenUkagakaTieBa]		\_l[120,-]\q[◇master目录,OnOpenMasterMenu]\n/
 	\q[◇伪春菜后援会,OpenUkagakaFanClub]	\_l[120,-]\q[◇伪春菜wiki,OpenUkagakaWiki]\n/
@@ -938,13 +937,7 @@ birthdayso{
 	"\0\s[40]%(username)是%(firstboottime[0])年%(firstboottime[1])月%(firstboottime[2])日和橘花相遇的哦,\w9\w5\n距离现在已经%(daysfromfirstboot)天了哦,\w9\n橘花陪伴在%(username)身边的时间超过%(elapsedtimetotal/60)小时了呢,\w9\n橘花希望可以一直陪伴着%(username)呢,\w9以后也请多多指教~\x"
 }
 //====================告白(开始)====================
-OnLoveGo{
-	if LoveGomode == 1{
-		'\q[◇橘花爱的告白,LoveGo]\n'
-	}
-}
 Select.LoveGo{
-	LoveGomode = 1
 	"\0\s[1]%(username)...\w9\w9\n/
 	橘花想知道你对我的感觉是怎样!?\w9\n\n[half]/
 	\q[◇喜欢,loveup]\n/
@@ -986,66 +979,6 @@ Select.lovedn2{
 Select.lovedn3{
 	intimacy -= 20
 	'\0\s[34]笨蛋!!\w9找死!?\w9\n就算我跑出来也不理你了!.....\w9\n哼哼哼!!w9\w9\1\s[12]......!?'
-}
-//----------额外的聊天---------------------------------------------------------------------------------------------------
-OnIntimacy{
-	if Intimacymode == 1{
-		'\q[◇额外的聊天,Intimacy]\n'
-	}
-}
-Select.Intimacy{
-	Intimacymode = 1
-	"\1\s[10]\0\s[0]%(username)，\w9\w9想要聊什么呢？\n\n\q[◇有些事情想问你,Knowintimacy]\n\q[◇没事了,Exit]"
-}
-Select.Knowintimacy{
-	"\1\s[12]\0\s[20]那么，\w9\w9%(username)想要知道什么？\n\n\q[◇对我的感觉,Intimacytest1]\n\q[◇对我的感情,Intimacytest2]\n\q[◇没事了,Exit]"
-}
-Select.Intimacytest1{
-	//大于等于0小于等于79
-	if intimacy >= 0 && intimacy <= 79{
-		"\1\s[12]\0\s[35]对不起…\w9\w9\w9橘花对%(username)没有特别的感情…\n\w9\w9\w9\0\s[26]但是，\w9\w9橘花很感谢%(username)可以让我们待在这里。\w9\w9\1\s[11]简单的说，\w9\w9你被甩了。"
-	}
-	//大于等于79小于等于99
-	elseif intimacy >= 80 && intimacy <= 129{
-		"\1\s[10]\0\s[2]咦？\w9\w9\w9\0\s[1]怎么突然这么问…\n\w9\w9\w9\1我是不是该先离开一下…\w9\w9\w9\1\s[-1]\0\s[29]真的离开了…\w9\w9\n那个…\w9\w9我喜欢%(username)…\w9\w9\w9吧…\w9\w9\1\s[12]卡！\w9\w9要说：\n\w9\w9“我很喜欢%(username)喔♡！”"
-	}
-	//大于等于100小于等于499
-	elseif intimacy >= 130 && intimacy <= 499{
-		"\0\s[29]\1\s[11]这个…\w9…\w9\w9我稍微离席吧…\1\s[-1]\w9\w9\0\s[29]啊…\w9\w9\w9斗和好过份…\w9\w9\n\0\s[101]那…那个…\w9\w9\w9我真的很喜欢…\w9\w9\w9\s[-1]啊…啊！\n\w9\w9…\w9\w9…\w9\w9…\w9\w9\n\0\s[40]好了！\w9\w9现在橘花要大声说…\n\w9\w9\0\s[41]我很喜欢，%(username)！！"
-	}
-	//大于等于500
-	elseif intimacy >= 500{
-		"\0\s[29]\1\s[11]这个…\w9\w9我先离…\0\s[32]先听我说完…\w9\w9\w9\1\s[13]\n……知道了。\n\w9\w9\0\s[6]那么，\w9\w9请%(username)听听我的感情吧…\w9\w9\w9\n我…很希望能够到%(username)的身边…\w9\w9\w9\n\0\s[35]而不是永远的待在这里声援…\w9\w9\w9\n未来，要是%(username)有了女朋友，\w9\w9\w9或是一些原因导致我们不能见面，\w9\w9\w9\n我希望%(username)能够记得…\w9\w9…\w9\w9\0\s[41]橘花永远爱着您！\w9\w9\w9\1\s[-1]我真的受不了啦！"
-	}
-}
-Select.Intimacytest2{
-	if intimacy >= 30 && intimacy <= 79{
-		intimacy +=1
-		'\0\s[2]咦！\w9\w9\w9\n\0\s[3]对不起，\w9\w9橘花只有出自于尊重的感情…\w9\w9\w9\1\s[11]简单的说，\w9\w9现在只有朋友再高一点点的阶段。'
-	}
-	elseif intimacy >= 80 && intimacy <= 129{
-		intimacy +=2
-		"\0\s[2]咦！\w9\w9\w9\n\0\s[1]那个…\w9\w9橘花不好意思说…\w9\w9\1\s[11]现在的感情指标，\w9\w9拥有喜欢的感情。\w9\w9\w9\n%(username)您该感到高兴才对。"
-	}
-	elseif intimacy >= 130 && intimacy <= 499{
-		intimacy +=5
-		"\0\s[2]咦！\w9\w9\w9\0\s[1]…\w9\w9…\w9\w9\n%(username)可以接受橘花吗？\w9\w9\w9\1\s[12]您不是木头吧？\w9\w9所以应该知道是什么意思。\w9\w9\0\s[9]斗和真失礼，\w9\w9相信%(username)会知道的，\w9\w9\w9\0\s[40]对吧！"
-	}
-	elseif intimacy >= 500 && intimacy <= 999{
-		intimacy +=10
-		"\0\s[29]\1\s[10]这个嘛…\w9\w9相信%(username)在平常就…\w9\w9\n\0\s[29]我喜欢%(usermane)。\w9\w9\w9\1\s[11]啊？\w9\w9\w9\0\s[29]我喜欢%(usermane)…\w9\w9\w9\w9我喜欢%(usermane)…\w9\w9\w9\w9我喜欢%(usermane)………\w9\w9\w9\w9\n\0\s[41]我最爱%(username)了！\w9\w9\w9\w9\w9\1\s[13]表达够白了吧…\w9\w9\w9我受不了了…"
-	}
-	elseif intimacy >= 1000 && intimacy <2000{
-		intimacy +=20
-		"\1\s[10]\0\s[1]这个…\w9\w9我已经不知道要说什么了…\1\s[13]%(username)…\w9\w9您让橘花无言了…"
-	}
-	elseif intimacy >= 2000{
-		intimacy +=30
-		"\0\s[29]橘花对%(username)的感情有什么让%(username)怀疑的地方吗，\w9\w9橘花是真的…\w9真的…\w9非常…\w9非常喜欢%(username)，\w9\w9如果喜欢一个人的程度可以用一把P90来表示的话，\w9\w9那么橘花对%(username)的爱，\w9\w9可以把全球70亿人都枪毙\w9\w9\1\s[10]这是什么怪比喻。"
-	}
-}
-Select.Exit{
-	"\1\s[10]\0\s[8]是这样吗？\w9\w9\1\s[12]总感觉你很失望的样子。\n\w9\w9其实你想多和%(username)聊聊吧。"
 }
 //--- 选择“关于快捷键” ----
 Select.shortcutkey{
@@ -1253,37 +1186,8 @@ DH : nonoverlap{
 	'\0\s[26]游戏：秋之回忆系列、命运长夜系列、最终幻想系列、key社三大催泪弹、心跳回忆系列、beatmaniallDX、Steins；Gate（命运石之门）、水瓶世纪后篇、eden*、428被封锁的涩谷（动画就是Canaan）、犬神附身与谎言、I/O Revision Ⅱ、撕裂重罪.  '
 	'同人游戏：vampire、地底战记、super moon fighterX、东方系列.  '
 }
-//---------橘花的忧郁-----------------
-Select.melancholy{
-	'\1\s[10]\0\s[6]风吹竹林的剪影\w9\w9\w9\w9\n月光中渗透无尽的情\w9\w9\w9\w9\n摇摇欲坠在这深夜里\w9\w9\w9\w9\n诉说生命\w9\w9\w9\w9\n\n\1\s[10]嗯…？\0\q[◇怎么了？,melancholy_what]\n\q[◇不语,melancholy_no_talk]\n\q[◇斗和，她怎么了？,melancholy_talk_to_towa]\n'
-}
-Select.melancholy_what{
-	"\1\s[10]\0\s[0]嗯？\w9\w9\s[26]没…没什么。\w9\w9\n\s[0]%(username)想喝茶吗？\w9\w9\n\q[◇喔…好…,melancholy_tea]\n\q[◇不用了…,MenuCancel]"
-}
-Select.melancholy_no_talk{
-	'\1\s[10]…\w9…\w9…\w9…'
-}
-Select.melancholy_talk_to_towa{
-	"\1\s[10]%(username)静静的听下去吧…\w9\w9\n\0\s[6]可怜夜下云和月，\w9\w9\w9\w9\n清冷寂静孤独难眠，\w9\w9\w9\w9\n谁愿化作一只蝴蝶，\w9\w9\w9\w9\n在黑夜翩跹。\w9\w9\w9\w9\n我的心在跳，\w9\w9\w9\w9\n跳在无底的深渊，\w9\w9\w9\w9\n蓝色的心灵为谁追，\w9\w9\w9\w9\n素来听说过心灵的传说不悔，\w9\w9\w9\w9\n可是谁又懂得体会。\w9\w9\w9\w9\n\n\1\s[10]小公主…\w9\w9你又想起那个人了？\w9\w9\n\0\s[3]嗯…\w9\w9\n\n\q[◇这首歌是？,melancholy_song]\n\q[◇斗和，那个人是谁？,melancholy_talk_to_towa_who]\n\q[◇(紧抱住她),melancholy_hold_kikka]\n"
-	"\1\s[10]%(username)静静的听下去吧…\w9\w9\n\0\s[6]可怜夜下云和月，\w9\w9\w9\w9\n清冷寂静孤独难眠，\w9\w9\w9\w9\n谁愿化作一只蝴蝶，\w9\w9\w9\w9\n在黑夜翩跹。\w9\w9\w9\w9\n我的心在跳，\w9\w9\w9\w9\n跳在无底的深渊，\w9\w9\w9\w9\n蓝色的心灵为谁追，\w9\w9\w9\w9\n素来听说过心灵的传说不悔，\w9\w9\w9\w9\n可是谁又懂得体会。\w9\w9\w9\w9\n\n\1\s[10]小公主…\w9\w9你又想起那个人了？\w9\w9\n\0\s[3]嗯…\w9\w9\n\n\q[◇(紧抱住她),melancholy_hold_kikka]\n\q[◇橘花…,melancholy_talk_to_kikka]\n\q[◇妈妈放心好了…我会好好照顾橘花的…！,melancholy_take_care_of_kikka]\n"
-}
-Select.melancholy_song{
-	'\0\s[35]这首歌是妈妈常常唱给我听的…\w9\w9\n\1\s[10]嗯…当初我看到小公主，\w9\w9\n小公主独自一人在废墟中看着月光唱着这首歌…\w9\w9\n\0\s[35]斗和...'
-}
-Select.melancholy_talk_to_towa_who{
-	"\1\s[10]是小公主小时候妈妈常常唱的…\w9\w9\n\0\s[35]妈妈…\w9…\w9\n\1\s[11]这不太像你唷小公主。\w9\w9\n\0\s[32]要你管…\w9\w9\n\1\s[10]呵呵…\w9\w9小公主就是这样才像小公主嘛…\w9\w9\0\s[9]斗和欺负我…%(username)你也说句话嘛…"
-}
-Select.melancholy_hold_kikka{
-	"\0\s[2]咦？！\w9\w9\n\s[1]嗯…\w9\w9…\w9\w9我没事的…\w9\n%(username)让你担心了…\w9\w9\n\s[0]想喝茶吗？\w9我去泡…\n\n\q[◇喔…好…,melancholy_tea]\n\q[◇不用了…,MenuCancel]"
-}
-Select.melancholy_talk_to_kikka{
-	'\0\s[35]…\w9…\w9…\w9…\w9…\w9\w9\n\1\s[11]小公主…\w9…\w9\w9\n\0\s[29]没事…\w9\w9\s[41]没事了…'
-}
-Select.melancholy_take_care_of_kikka{
-	"\0\s[8]噗吱…\w9\w9呵呵…\w9\w9哈哈哈哈…\w9…\w9\w9\n\s[26]%(username)让你担心了…\w9\w9\n\1\s[10]嘛…\w9\w9过去的事就让它过去吧！\w9\w9\0\s[0]想喝茶吗？\w9我去泡…\n\n\q[◇喔…好…,melancholy_tea]\n\q[◇不用了…,MenuCancel]"
-}
 //---------------------咖啡厅-----------------------------------
-Select.melancholy_tea{
+Select.get_some_tea{
 	"\0\s[20]那么…\w9\w9%(username)想要喝什么呢\w9\w9\n\n[half]/
 	\q[%(Tea)茶,TIRE3]\n/
 	\q[%(Coffee),TIRE2]\n/
@@ -1361,7 +1265,6 @@ Ohpos{
 //by 翔￡无我
 Select.Kikkaortowa{
 	if QuickStartVersion{
-		NeedUpdate
 		return
 	}
 	"\1\s[10]\0\s[1]%(username).\w9.\w9.\w9我跟斗和.\w9.\w9.\w9你比较喜欢哪个呢？\1\s[12]提示(如果%(username)还想活你知道怎么做吧！？)\0\n\n\q[◇当然可爱的你啊！！,LoveKikka]\n\q[◇我...比较喜欢...斗和耶...,LoveTowa]\n\q[◇一定是两个都喜欢啦...,LoveKikkaandtowa]\n\q[◇沉默...,Donottalk]"

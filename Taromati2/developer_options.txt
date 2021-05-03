@@ -52,6 +52,7 @@ ghost/master/pseudoAI/readme.txt,nonar,noupdate
 ghost/master/pseudoAI/user.ai,nonar,noupdate
 ghost/master/pseudoAI/logiclearn.ai,nonar,noupdate
 ghost/master/pseudoAI/userteach.ai,nonar,noupdate
+ghost/master/pseudoAI/tuling.ai,nonar,noupdate
 
 shell/.gitignore,nonar,noupdate
 shell/Entire bare/,nonar,noupdate

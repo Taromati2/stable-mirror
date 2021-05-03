@@ -86,12 +86,9 @@ OnChangeCityComplete{
 	OnCheckWeather
 }
 OntulingApi{
-	tulingapi=1
-	//翻译
-	//'正在连接网站，请稍等……\![excute,http-get,http://fanyi.youdao.com/openapi.do?keyfrom=Taromati2Enh&key=356558176&type=data&doctype=text&version=1.0&q=你好,--param-charset=UTF-8,--file=hello.html,--timeout=200,--async=testapi]'
-	//图灵机器人
-	temp05="\![excute,http-get,http://www.tuling123.com/openapi/api?key=5b56e59d852489bb6c40289223619a28&info=%(temp04),--param-charset=UTF-8,--file=tulingapi.html,--timeout=200,--async=tulingapi]"
-	temp05
+	callingtulingapi=1
+	tulingapi.in=_argv[0]
+	"\![excute,http-get,http://www.tuling123.com/openapi/api?key=5b56e59d852489bb6c40289223619a28&info=%(tulingapi.in),--param-charset=UTF-8,--file=tulingapi.html,--timeout=200,--async=tulingapi]"
 }
 /*
 code  说明
@@ -110,7 +107,6 @@ code  说明
 312000  餐厅
 */
 OnTuLingFound{
-	reference1=temp04
 	_code=''
 	_txt='\b[2]\_q'
 	_file = 'VAR_PATH\\tulingapi.html'
@@ -139,8 +135,14 @@ OnTuLingFound{
 	}
 	FCLOSE(_file)
 	FCHARSET.default
-	txt=_txt
+	if _txt && tulingapi.in{
+		_txt=REPLACE(_txt,'\b[2]\_q','')
+		AITalkAdd('PROFILE_PATH\tuling.ai',tulingapi.in+'*'+_txt+'§')
+		void FCOPY('PROFILE_PATH\tuling.ai','pseudoAI')
+	}
+	ERASEVAR('tulingapi.in')
 	if chatroom{
+		chatroomtxt+="%(_txt)#"
 		OnChatRoom(j)+WriteChatroom
 		return
 	}

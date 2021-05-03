@@ -84,4 +84,7 @@ VERSION_UPGRADE_3:void{//BUILDING
 	ERASEVAR('page')
 	ERASEVAR('IN')
 	ERASEVAR('Gobang.player.baseparam.rank')
+	ERASEVAR('LoveGomode')
+	ERASEVAR('Intimacymode')
+	ERASEVAR('tulingapi')
 }

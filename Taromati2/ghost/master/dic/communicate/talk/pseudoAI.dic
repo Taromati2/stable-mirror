@@ -2349,10 +2349,12 @@ CopySQL{
 	AITalkAdd(_file,_buff,'write')
 }
 OnChatRoom{
-	_j=reference1
+	if ISINTSTR(reference1)
+		_j=reference1
 	if _argc>0
 		_j=_argv[0]
 	_j=TOINT(_j)
+
 	chatroom=1
 	running='chatroom'
 	if ISVAR('chatroomtxt')==0{
@@ -2383,9 +2385,6 @@ OnChatRoom{
 		_l=_n
 	for _i=_j;_i<_l;_i++{
 		_temp=chatroomtxt[_i]
-		if txt!=''{
-			chatroomtxt[_i]=REPLACE(chatroomtxt[_i],temp05,txt)//替换图灵代码为下载好的内容，否则会不停的解析KEY。
-		}
 		_t=chatroomtxt[_i]
 		_t=REPLACE(_t,"%(username)","\f[color,%(ColorIdx(3))]%(username)\f[color,default]")
 		_txt+=_t[0,'|']
@@ -2405,6 +2404,7 @@ OnChatRoom{
 			_txt=RE_REPLACE(_txt,'\\j\[(.*?)\]','')//删除最后一句以前的打开网址
 			_txt=RE_REPLACE(_txt,'\\_a\[(.*?)\]','')
 		}
+		_txt+='\n'
 	}
 	//_txt=RE_REPLACE(_txt,'\!\[excute(.*?)\]','')
 	_txt+='\n'
@@ -2424,11 +2424,6 @@ OnChatRoom{
 	_txt=REPLACE(_txt,'[cqname]','%(selfname)')
 	_txt=REPLACE(_txt,'[name]','%(username)')
 	//_txt=RE_REPLACE(_txt,'\\_l\[(.*?)\]','')
-	if txt!=''{
-		txt=REPLACE(txt,'\b[2]\_q','')
-		AITalkAdd('PROFILE_PATH\tuling.ai',temp04+'*'+txt+'§')
-		void FCOPY('PROFILE_PATH\tuling.ai','pseudoAI')
-	}
 	_Page=''
 	_Page+="\_l[130]%(_j/_talknum+1)/%(_n/_talknum+1)"
 	j=_n-1
@@ -2468,7 +2463,7 @@ OnChatRoomTxt{
 	'\C\![open,file,PROFILE_PATH\\chatroom.txt]'
 }
 OnChatRoomOver{
-	OnChatRoomClear
+	ClearAIVar
 	chatroom=0
 	--
 	OnOpenMenu(1)
@@ -2477,9 +2472,7 @@ OnChatRoomClear{
 	ClearAIVar
 	'\1\c'+OnChatRoom(j)
 }
-ClearAIVar{
-	void FDEL('PROFILE_PATH\tuling.ai')
-	void FDEL('PSEUDO_AI_PATH\tuling.ai')
+ClearAIVar:void{
 	ERASEVAR('chatroom')
 	ERASEVAR('chatroomtxt')
 	ERASEVAR('topic')

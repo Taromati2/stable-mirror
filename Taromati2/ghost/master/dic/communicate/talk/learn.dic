@@ -176,7 +176,13 @@ KikkaTalkToUser{
 					'\0\s[0]这个...橘花不明白喔'
 					'\0\s[0]这个...\1\s[10]被问住了啊...\0'
 					--
-					'\n[200]\![set,choicetimeout,0]\![*]\q[我来教你吧,Teaching]\n\![*]\q[取消,MenuCancel]\n\e'
+					if !chatroom
+						'\n[200]\![set,choicetimeout,0]'
+					--
+					'\![*]\q[我来教你吧,Teaching]\n'
+					--
+					if !chatroom
+						'\![*]\q[取消,MenuCancel]\n\e'
 					talkfound=0
 				}else{
 					{
@@ -199,9 +205,22 @@ KikkaTalkToUser{
 				_b=ANY(_b)
 				"\0\s[0]\b[2]%(_b)"
 				--
-				if !InAIGhostReply
-					"\0\_q\n\n\n\n\n这是橘花试着回答的,如果不恰当,\n请%(username)告诉橘花怎么回答哦~\n[150]/
-					\![set,choicetimeout,0]\![*]\q[我来教你吧,Teaching]            \![*]\q[不用,MenuCancel]\n\e"
+				if !InAIGhostReply{
+					if !chatroom
+						'\0\_q\n\n\n\n\n'
+					--
+					"这是橘花试着回答的,如果不恰当,\n请%(username)告诉橘花怎么回答哦~"
+					--
+					if !chatroom
+						'\n[150]\![set,choicetimeout,0]'
+					else
+						'\n'
+					--
+					'\![*]\q[我来教你吧,Teaching]'
+					--
+					if !chatroom
+						'            \![*]\q[不用,MenuCancel]\n\e'
+				}
 				talkfound=2
 			}
 		} else {

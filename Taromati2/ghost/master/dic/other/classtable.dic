@@ -90,7 +90,7 @@ ClassTable{
 	_outform
 }
 OnClassEnd{
-	'\0<微笑>好的。那么…学习上、也请多多加油喔。'
+	'\0\s[5]好的。那么…学习上、也请多多加油喔。'
 }
 OnCheckFullWeek{
 	classfullweek = reference0

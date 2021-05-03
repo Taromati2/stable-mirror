@@ -1124,6 +1124,12 @@ ForcedTalk0{
 		\q[◇是,ForcedTalk_b1_yes]\n/
 		\q[◇不是,ForcedTalk_b1_no]'
 	}
+	elseif !RAND(30){
+		if GetPhase >= 2{
+			Select.LoveGo
+			Select.Kikkaortowa
+		}
+	}
 }
 Select.ForcedTalk_c0_0{
 	intimacy += 1
@@ -1294,9 +1300,8 @@ ForcedTalk1{
 //**** 人格被动对话 *******************************************************************************
 //---- OnCommunicate事件 ----------------------------------------------------------------
 OnCommunicate{
+	reference1=TOSIMPLIFIED(reference1)
 	txt=''
-	temp04=reference1
-	temp05=''
 	if reference0 == 'user' || reference0 == 'User'{
 		//与user对话
 		lastTalk = ReplyToUser
@@ -1323,31 +1328,34 @@ ReplyToUser{
 		reference1=REPLACE(reference1,'|','CHR(124)')
 		_usertime="%(hour):%(minute):%(second)"
 		lastTalk = TalkToUser
-		lastTalk=REPLACE(lastTalk,'|','CHR(124)')
+		_lastTalk=REPLACE(lastTalk,'|','CHR(124)')
 		_selftime="%(hour):%(minute):%(second)"
-		if '\1' !_in_ lastTalk{
-			_lastTalk=RE_REPLACE(lastTalk,'\.*','')
+		if '\1' !_in_ _lastTalk{
+			_lastTalk=RE_REPLACE(_lastTalk,'\.*','')
 			chatroomtxt+="\0%(username) %(_usertime)\n%(reference1)\n|"
-			chatroomtxt+="\0%(selfname) %(_selftime)\n%(_lastTalk)#"
+			chatroomtxt+="\0%(selfname) %(_selftime)\n"
 		}
 		else{
-			if '\0' _in_ lastTalk{
+			if '\0' _in_ _lastTalk{
 				chatroomtxt+="\0%(username) %(_usertime)\n%(reference1)\n|"
 				chatroomtxt+="\0%(selfname) %(_selftime)\n"
 			}
 			else
 				chatroomtxt+="\1%(username) %(_usertime)\n%(reference1)\n|"
-			_lastTalk=REPLACE(lastTalk,'\1',"\1%keroname %(_selftime)\n")
-			_lastTalk=RE_REPLACE(lastTalk,'\.*','')
-			chatroomtxt+="%(_lastTalk)#"
+			_lastTalk=REPLACE(_lastTalk,'\1',"\1%keroname %(_selftime)\n")
+			_lastTalk=RE_REPLACE(_lastTalk,'\.*','')
 		}
-		if temp05==''
-			OnChatRoom(j)+WriteChatroom
-		else
+		if callingtulingapi{
+			ERASEVAR('callingtulingapi')
 			lastTalk
-		--
-		if voice
-			TxtToVoice(lastTalk,voicename)
+		}
+		else{
+			chatroomtxt+="%(_lastTalk)#"
+			OnChatRoom(j)+WriteChatroom
+			--
+			if voice
+				TxtToVoice(lastTalk,voicename)
+		}
 	}
 	else{
 		lastTalk = TalkToUser
@@ -1456,6 +1464,18 @@ TWO{
 		_t=reference1[1,'说菜名']
 		_t=_t[0,'道']
 		TellMealName(_t,1)+''
+	}
+	elseif RE_GREP(reference1,'被\S*?欺负'){
+		_name=RE_REPLACEEX(reference1,'被(\S*?)欺负','$1')
+		_name = TOLOWER(TOSIMPLIFIED(_name))
+		if 'towa' || '斗和' _in_ _name
+			Select.towabully
+		elseif '老师' _in_ _name
+			Select.teacherbully
+		elseif '友人' || '朋友' || '网友' || '损友' || '宅友' _in_ _name//nmd，直接'友' _in_ _name又会有这种叫张学友的人
+			Select.friendsbully
+		else
+			Select.bully
 	}
 	//--------------------------------橘花AI对话系统--------------------------------
 	elseif '多少句' _in_ reference1 || '多少对话' _in_ reference1 || '对话' _in_ reference1
@@ -2081,7 +2101,7 @@ TWO{
 		"那橘花告诉%(username)，\w9不要让斗和知道是橘花说的哦。\w9\w9%(at_7s)"
 	}
 	elseif '渴' _in_ reference1 || '喝' _in_ reference1{
-		"%(Select.melancholy_tea)"
+		"%(Select.get_some_tea)"
 	}
 	elseif '饿' _in_ reference1 || '吃' _in_ reference1 && ('什么' _in_ reference1||'饭' _in_ reference1){
 		if '吗' _in_ reference1{
@@ -2383,9 +2403,8 @@ TWO{
 		_aitalk
 	elseif talkfound==1
 		KikkaTalkToUser
-	elseif Tulingapi[0]==NULL&&(_t=OntulingApi(reference1))!=''&&tulingfound {
-		_t
-	}
+	elseif !Tulingapi[0]
+		OntulingApi(reference1)
 	else
 		KikkaTalkToUser
 }
