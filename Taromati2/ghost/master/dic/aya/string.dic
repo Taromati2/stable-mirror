@@ -1,6 +1,12 @@
 /////////文　ゴーストテンプレート
 /////////文字列リソース辞书
 /////////written by umeici.
+TOSIMPLIFIED{
+	CALLSAORI('ChConverter','simplified',_argv[0])
+}
+TOTRADITIONAL{
+	CALLSAORI('ChConverter','traditional',_argv[0])
+}
 //ユーザー名
 On_username{
 	username

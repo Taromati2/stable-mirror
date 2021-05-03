@@ -1302,7 +1302,7 @@ Select.TIRE3{
 	"%(Job)\s[250]%(Jab)"
 }
 Select.TIRE4{
-	"%(Job)\0\s[150]\n\n[half]久等了。\w9\w9\c\w9\w9\1\s[11]怎么有种刺鼻的味道\w9\0\s[150]橘花新研发的果汁！！\w9\w9%(Ohpos)！！\w9\w9\n\n[half]请喝吧！\w9\w9\1\s[13]\n\n[half]愿保佑你\w9…\w9…"
+	"%(Job)\0\s[150]\n\n[half]久等了。\w9\w9\c\w9\w9\1\s[11]怎么有种刺鼻的味道\w9\0\s[150]橘花新研发的果汁！！\w9\w9%(Ohpos)！！\w9\w9\n\n[half]请喝吧！\w9\w9\1\s[13]\n\n[half]愿神保佑你\w9…\w9…"
 }
 Job{
 	'\0\w9\w9\s[26]\n请稍微等一下。\w9\w9\w9\s[-1]\n\n[half]\_v[SOUND_PATH\tea.mp3]…\w9\w9…\w9\w9…\w9\w9…\w9\w9…\w9\w9…\w9\w9'

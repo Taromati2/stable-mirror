@@ -120,7 +120,7 @@ OnUserName.Set:void{
 	username = REPLACE(_argv[0],'\','\\')
 }
 OnUserName.IsMazo{
-	_simplified_name = CALLSAORI('ChConverter','simplified',reference0)
+	_simplified_name = TOLOWER(TOSIMPLIFIED(reference0))
 	case _simplified_name {
 		when '垃圾','豚','猪','垃圾虫','クズ','クソムシ','笨蛋','白痴','呆子','蠢猪','傻逼','废物','蠢货','阳痿','阳痿男','丑男','猪头男','猪头'{
 			1
@@ -130,9 +130,9 @@ OnUserName.IsMazo{
 	0
 }
 OnUserName.IsTooClose{
-	_simplified_name = CALLSAORI('ChConverter','simplified',reference0)
+	_simplified_name = TOLOWER(TOSIMPLIFIED(reference0))
 	case _simplified_name {
-		when '亲爱的','老公','老公大人','相公','宝贝','爸爸','父','父亲','爸','マスター','主人大人','主人','ごしゅじんさま','Honey','honey','だぁりん','宝宝','小宝宝','baby','little baby','Baby','Little Baby'{
+		when '亲爱的','老公','老公大人','相公','宝贝','爸爸','父','父亲','爸','マスター','主人大人','主人','ごしゅじんさま','honey','だぁりん','宝宝','小宝宝','baby','little baby','darling'{
 			1
 			return
 		}
@@ -149,7 +149,7 @@ OnUserName.SpecialCheck{
 	}
 }
 OnUserName.SpecialCheck.base{
-	_simplified_name = CALLSAORI('ChConverter','simplified',reference0)
+	_simplified_name = TOLOWER(TOSIMPLIFIED(reference0))
 	case _simplified_name {
 		when '哥哥','大哥哥','哥','兄长大人','欧尼酱','にぃに','にぃ','兄さま','兄様','あに様'
 			"\s[3]\w9我、\w9虽然没有陪我长大的兄弟姐妹。\w9\s[6]\w9但是你能像疼爱妹妹一样疼爱我，\w9真的很开心。\w9\w9\n/
@@ -174,13 +174,13 @@ OnUserName.SpecialCheck.base{
 			'\s[8]…偶像？\1\s[12]？\0很抱歉、我不是很清楚这些'
 		when '爷爷','爷','大爷'
 			'\s[8]感觉把你称呼地这么老是不是不太好呢…。'
-		when 'Honey','honey','だぁりん'
+		when 'honey','だぁりん','darling'
 			'\s[1]爱人…\w9\1在街上的话，\w9叫的出来吗。'
 		when '博士','教授','はかせ','きょうじゅ'
 			'\s[2]…做什么研究的吗？'
-		when '队长'
+		when '队长','captain'
 			'\s[20]难道、曾经在军队里呆过什么的…？'
-		when '宝宝','小宝宝','baby','little baby','Baby','Little Baby'
+		when '宝宝','小宝宝','baby','little baby'
 			'\1意外的，\w9最近流行母性萝莉这种存在啊。\w9\w9\n/
 			\0\s[8]欸？\w9\w9\n/
 			\1\s[11]你有母性吗？\w9\w9\w9\n/
