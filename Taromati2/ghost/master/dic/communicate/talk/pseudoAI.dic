@@ -59,22 +59,6 @@ AITextReplace{
 	_str=REPLACE(_str,'>',']')
 	_str
 }
-LoveTalk{
-	if intimacy>3600{
-		"\0\s[1]有一句话，%(selfname)说不出口，那就是：我爱你，%(username)"
-		"\0\s[29]嗯嗯，%(selfname)一直都爱着啊"
-	}
-	elseif intimacy>800
-		'这，能算是爱吗？'
-	elseif intimacy>200
-		'非常喜欢啊'
-	elseif intimacy>50
-		"唔，%(selfname)喜欢%(username)"
-	elseif intimacy>0
-		'不喜欢'
-	else
-		'你说什么，我听不见'
-}
 Teach{
 	aimode='teach'
 	temp01='提问'
@@ -111,7 +95,7 @@ AITeach{
 			_tmp01='|'
 			_tmp02='\\'
 		}
-		"提示:如果需要设置多种回答方案,\n请使用“%(_tmp01)”符号分隔开来！提问时会随机输出喔~\n表情和延时可以用代码如\_?\s[22]\w9\_?（表情请在右键-便利机能-开发专用介面-表情测试选取surface前的代号，\_?\s[22]\_?代表选surface22(橘花P90)，%(_tmp02)w9代表等待延时9毫秒，大于9无效，但可重复使用），也可以用“<表情><序号>”，“<等待>时间”\n，如需加声音可将声音文件如sound.wav放在\_?master\sounds\kikkavoice\内，然后增加%(_tmp02)![sound,play,sounds\kikkavoice\sound.wav]\_?"
+		"提示:如果需要设置多种回答方案,\n请使用“%(_tmp01)”符号分隔开来！提问时会随机输出喔~\n表情和延时可以用代码如\_?\s[22]\w9\_?（表情请在右键-便利机能-开发专用介面-表情测试选取surface前的代号，\_?\s[22]\_?代表选surface22(橘花P90)，%(_tmp02)w9代表等待延时9*50毫秒，大于9无效，但可重复使用），也可以用“<表情><序号>”，“<等待>时间”\n，如需加声音可将声音文件如sound.wav放在\_?ghost\master\_SOUND_path\内，然后增加%(_tmp02)![sound,play,SOUND_PATH\sound.wav]\_?"
 		--
 		'\![set,choicetimeout,0]\![open,communicatebox]\n[150]\![*]\q[返回对话模式,OnBackToTalk]'
 	}
@@ -414,7 +398,7 @@ AILoad.InfFile{//AILoad.InfFile('PSEUDO_AI_PATH\common.ai','你好')
 				}
 			}
 			elseif _filename!='FOOD'&&_filename!='USER'{
-				if '|' _in_ _buff2&&ExFilename(_filename)==0
+				if '|' _in_ _buff2
 					qnum++
 				if '<topic' _in_ _buff2{
 					_t=_buff2
@@ -433,7 +417,7 @@ AILoad.InfFile{//AILoad.InfFile('PSEUDO_AI_PATH\common.ai','你好')
 							TflagTxt+='|'+_answer+'。|'
 							_dexori,=_Ttemp
 							dexnum++
-							Tflag=3;t8=e+','+_E+','+TflagTxt+'1'
+							Tflag=3
 						}
 						elseif e>_E{
 							_dexori=IARRAY
@@ -442,7 +426,7 @@ AILoad.InfFile{//AILoad.InfFile('PSEUDO_AI_PATH\common.ai','你好')
 							dexnum++
 							Tflag=3
 							_lastm=1
-							_E=e;	t8=e+','+_E+','+TflagTxt
+							_E=e
 						}
 					}
 				}
@@ -498,18 +482,17 @@ AILoad.InfFile{//AILoad.InfFile('PSEUDO_AI_PATH\common.ai','你好')
 					}
 					elseif _m==1&& '*' _in_ _Q&&STRLEN(_Q)>_ql{
 						_laststar=1
-						_ql=STRLEN(_Q);t4=_Q+','+_k+','+_E
+						_ql=STRLEN(_Q)
 					}
 					*/
 					if _m==1 && _k==_E && _lastm==1{
 						_dexori,=_buff2[1,'|']
-						t4=_E+','+_k+','+_Q+'1'
 						dexnum++
 						//anum+=_Anum-1
 					}
 					elseif _m==1 && _k>_E{
 						_lastm=1
-						_E=_k;t7=_E+','+_k+','+_Q
+						_E=_k
 						dexnum=1
 						_dexori=IARRAY
 						_dexori=_buff2[1,'|']
@@ -518,12 +501,11 @@ AILoad.InfFile{//AILoad.InfFile('PSEUDO_AI_PATH\common.ai','你好')
 				}
 				if _Q _in_ _str && STRLEN(_Q)==_E && _lastm==0{
 					_dexori,=_buff2[1,'|']
-					t5=_E+','+_k+','+_Q+'2'
 					dexnum++
 					//anum+=_Anum-1
 				}
 				elseif _Q _in_ _str && STRLEN(_Q)>=_E{//当上次最大长度匹配＞这次,不管是何种保留都放弃
-					_lastm=0;t5=_E+','+_k+','+_Q+'3'
+					_lastm=0
 					_E=STRLEN(_Q)
 					dexnum=1
 					_dexori=IARRAY
@@ -534,31 +516,26 @@ AILoad.InfFile{//AILoad.InfFile('PSEUDO_AI_PATH\common.ai','你好')
 		}
 		FCLOSE(_inf)
 		if _md5!=_newmd5&&_filename!='USER'{
-			//if _filename=='ZLOGIC'
-				t2=1
 			dexnum=0
 			infmode=1
 			void FOPEN(_inf,'w')
 			_buff2='md5='+_md5
 			void FWRITE(_inf,_buff2)
 		}
-		elseif Tflag==2{//if _filename=='ZLOGIC'
-			t2=2
+		elseif Tflag==2{
 			_dexori,=_Ttemp
 			dexnum++
 		}
 		elseif dexnum==0{
-			t2=3
 			if Tflag==1{
-				_dexori,=_Ttemp;  t2= 3
+				_dexori,=_Ttemp
 				dexnum++
 			}
 			elseif _filename!='FOOD'{
 				_dexori=-1
 			}
 		}
-		elseif dexnum!=0&&TOINT(_dexori)==0{//if _filename=='ZLOGIC'
-			t2=4
+		elseif dexnum!=0&&TOINT(_dexori)==0{
 			dexnum=0
 			infmode=1
 			void FOPEN(_inf,'w')
@@ -566,8 +543,7 @@ AILoad.InfFile{//AILoad.InfFile('PSEUDO_AI_PATH\common.ai','你好')
 			void FWRITE(_inf,_buff2)
 		}
 	}
-	elseif _filename!='USER'{//if _filename=='ZLOGIC'
-		t2=5
+	elseif _filename!='USER'{
 		infmode=1
 		void FOPEN(_inf,'w')
 		_buff2='md5='+_md5
@@ -577,8 +553,6 @@ AILoad.InfFile{//AILoad.InfFile('PSEUDO_AI_PATH\common.ai','你好')
 	FCHARSET.default
 	e=_E
 	_dexori
-	if _filename=='COMMON'
-		t3=_dexori
 }
 AILoad.AIFile{
 	_file=_argv[0]
@@ -592,8 +566,6 @@ AILoad.AIFile{
 	infmode=0
 	dexnum=0
 	_dexori=AILoad.InfFile(_file,_str,_E)
-	if _filename=='LOGIC'
-		t1=_dexori
 	if _dexori==-1{
 		_dexori
 		return
@@ -603,7 +575,7 @@ AILoad.AIFile{
 		_table=0
 		_buff=''
 		dexid=0
-		_dexre=11
+		_dexre=10
 		_dexmode=0
 		_strtxt=''
 		FCHARSET(1)
@@ -768,7 +740,7 @@ AILoad.AIFile{
 				_answer=TextBetween(_buff,'<answer>','</answer>')
 				if TflagTxt!=''
 					_answer=TflagTxt
-				_answer=REPLACE(_answer,'。','');t11=_answer
+				_answer=REPLACE(_answer,'。','')
 				if aimode!='return'&&'记住' !_in_ _str
 					_t=AILoad.AnswerTxt(_str,_answer)
 				if _t!=''
@@ -837,7 +809,7 @@ AILoad.AIFile{
 						*/
 						_A+=_t+'|'
 						if (_filename=='FOOD'&&_foodnum<TOINT(chatroom_num)&&_str _in_ _t)||(_dexmode &&_filename=='MEAL'&&(_str _in_ _Q||_Q _in_ _str)){
-							_strtxt+=_t+'\n\n';t0=_strtxt
+							_strtxt+=_t+'\n\n'
 							_foodnum++
 							_re='\f[color,255,0,0]'+_str+'\f[color,default]'
 							_strtxt=REPLACE(_strtxt,_str,_re)
@@ -945,20 +917,6 @@ AILoad.AIFile{
 	}
 	e=_E
 	_txt
-}
-ExFilename{
-	_filename=_argv[0]
-	if _argv[1]=='qnum'
-		_exfilename='数学,物理,生物,地理,化学,工业控制,综合词库人性化版,酷Q懒人词库'
-	else
-		_exfilename='数学,物理,生物,地理,化学,工业控制'
-	foreach _exfilename;_i{
-		if _filename==_i{
-			1
-			return
-		}
-	}
-	0
 }
 AILoad.AnswerMatch{//AILoad.AnswerMatch('爸爸的爸爸','B是C的爸爸',_E)
 	_str=_argv[0]
@@ -1264,7 +1222,7 @@ AILoad.AImlFile{
 		_table=0
 		_buff=''
 		dexid=0
-		_dexre=12
+		_dexre=11
 		_strtxt=''
 		FCHARSET(1)
 		void FOPEN(_inf,'a')
@@ -1542,8 +1500,8 @@ AILoad.AnswerTxt{
 	foreach _tanswer;_answer{
 		if aimode=='return'
 			break
-		if AILoad.AnswerMatch(_str,_answer)&&'记住' !_in_ _str{t11=_answer+','+_str
-				if _answer _in_ _str || _answer _in_ talkmemo{
+		if AILoad.AnswerMatch(_str,_answer)&&'记住' !_in_ _str{
+			if _answer _in_ _str || _answer _in_ talkmemo{
 				_txt='是的'
 				if '吗' _in_ talkmemo{
 					_subject=talkflag[0]
@@ -1585,7 +1543,7 @@ AILoad.AnswerTxt{
 				elseif talkflag!=''{
 					_subject=talkflag[0]
 					_object=talkflag[1]
-					_state=_answer[1,_object];t10=_state!=''&&_object!=''
+					_state=_answer[1,_object]
 					if _state!=''&&_object!=''&&talkflag[2] _in_ _state{
 						_txt=_subject+'是'+_object+'，所以'+_state
 						aimode='return'
@@ -1603,12 +1561,13 @@ AILoad.AnswerTxt{
 						_subject=_answer[0,'是']
 						_state=_answer[1,'是']
 						_state=REPLACE(_state,'。','')
-						_object=_str;t12=_object
+						_object=_str
 						_object=_answer[1,_object]
 						_object=_object[1,'是']
-						_object=_object[0,'的']//t12=_object
-						if TextToEnd(_state,'的',1)!=''{	talkflag=REPLACE(talkflag,_subject,_state)
-							}
+						_object=_object[0,'的']
+						if TextToEnd(_state,'的',1)!=''{
+							talkflag=REPLACE(talkflag,_subject,_state)
+						}
 						else{
 							talkflag=REPLACE(talkflag,_subject,_state)
 							_txt=talkflag
@@ -1619,10 +1578,10 @@ AILoad.AnswerTxt{
 							aimode='return'
 							talkfound=1
 							talkflag=''
-							anum++//t12=_answer
+							anum++
 						}
 						_object=_str
-						_object=_answer[1,_object];t12=_object
+						_object=_answer[1,_object]
 						_object=_object[0,'的']
 						_tobject=TextToEnd(talkflag,'的',1)
 						if TextToEnd(talkflag,'的',2)!=''&&talkflagid<RE_GREP(talkflag,'的'){
@@ -1639,23 +1598,23 @@ AILoad.AnswerTxt{
 				}
 			}
 			elseif _str[0,'什么'] _in_ _answer||_str _in_ _answer{
-				_txt=_answer+'|';t11=_answer+'OK'
+				_txt=_answer+'|'
 				if _tmode&&STRLEN(_str)==e
 					_txt=TflagTxt
 				if talkflag!=''{
-					_txt=_answer+'|';t11=_answer+'OK1'
+					_txt=_answer+'|'
 					_subject=talkflag[0]
 					_object=talkflag[1]
-					_state=_answer[1,_object];t10=_state+','+_state!=''&&_object!=''
+					_state=_answer[1,_object]
 					if _state!=''&&_object!=''&&talkflag[2] _in_ _state{
-						_txt=_subject+'是'+_object+'，所以'+_state;t10=_txt
+						_txt=_subject+'是'+_object+'，所以'+_state
 						aimode='return'
 						talkfound=1
 						//talkflag=''
 						anum++
 					}
 					elseif _subject!=''&&_object!=''&&_object _in_ _answer&&talkflag[2]=='是什么'{
-						_txt=_answer+'，所以'+talkflag[1]+'的'+_subject+'是'+_answer[0,_object];t10=_txt
+						_txt=_answer+'，所以'+talkflag[1]+'的'+_subject+'是'+_answer[0,_object]
 						aimode='return'
 						talkfound=1
 						//talkflag=''
@@ -1664,7 +1623,7 @@ AILoad.AnswerTxt{
 					else{
 						_subject=_answer[0,'是']
 						_state=_answer[1,'是']
-						_state=REPLACE(_state,'。','');t11= TextToEnd(_state,'的',1)+','+2
+						_state=REPLACE(_state,'。','')
 						if TextToEnd(_state,'的',1)!=''
 							talkflag=REPLACE(talkflag,_subject,_state)
 						else{
@@ -1708,22 +1667,22 @@ AILoad.AnswerTxt{
 					anum++
 				}
 			}
-			elseif '是' _in_ _answer{ t12=_answer[0,'是']+','+talkmemo[0,'不是']
-					if inference!=''{t13=1
-						_subject=_str[0,'是']
+			elseif '是' _in_ _answer{
+				if inference!=''{
+					_subject=_str[0,'是']
 					string,=_subject
 					strnum=ARRAYSIZE(string)
-					//talkflag=_str+_answer[1,_str];t6=_answer+','+_str
+					//talkflag=_str+_answer[1,_str]
 					inference=''
 				}
-				elseif _answer[0,'是']==_str[0,'是']&&'是怎' !_in_ _str{t13=2
-						_txt=_answer
+				elseif _answer[0,'是']==_str[0,'是']&&'是怎' !_in_ _str{
+					_txt=_answer
 					aimode='return'
 					talkfound=1
 					anum++
 				}
-				elseif _answer[0,'是']==talkmemo[0,'不是']{t12=3
-						if AILoad.AnswerMatch(talkmemo[1,'不是'],_answer[1,'是'])
+				elseif _answer[0,'是']==talkmemo[0,'不是']{
+					if AILoad.AnswerMatch(talkmemo[1,'不是'],_answer[1,'是'])
 						_txt='不，'+_answer
 					else
 						_txt='不是，'+_answer
@@ -1731,8 +1690,8 @@ AILoad.AnswerTxt{
 					talkfound=1
 					anum++
 				}
-				elseif talkflag!=''&&ARRAYSIZE(talkflag)<2{t13=4
-						_txt=talkflag
+				elseif talkflag!=''&&ARRAYSIZE(talkflag)<2{
+					_txt=talkflag
 					if _txt _in_ talkmemo
 						_txt='是的，'+_txt
 					elseif '吗' _in_ talkmemo
@@ -1742,8 +1701,8 @@ AILoad.AnswerTxt{
 					//talkflag=''
 					anum++
 				}
-				elseif talkflag==''&&talkfound!=1{t13=6
-						_subject=_answer[0,'是']
+				elseif talkflag==''&&talkfound!=1{
+					_subject=_answer[0,'是']
 					_object=_answer[1,'是']
 					_state=''
 					if '什么' _in_ _str{
@@ -1755,7 +1714,7 @@ AILoad.AnswerTxt{
 						_state=_state[0,'什么']
 					}
 					if '吗' _in_ talkmemo{
-						_state=_str[1,_subject];t111=_state
+						_state=_str[1,_subject]
 						_state=_state[0,'吗']
 					}
 					string,=_object+_state
@@ -1764,18 +1723,17 @@ AILoad.AnswerTxt{
 					_object+=_str[1,_subject]
 					aimode='break'
 				}
-				elseif '吗' _in_ talkmemo&&anum<=1{t13=5
-						_txt='这个，%(selfname)不知道啊。'
+				elseif '吗' _in_ talkmemo&&anum<=1{
+					_txt='这个，%(selfname)不知道啊。'
 					if talkmemo[1,'是']!=''&&_answer[0,'是']!=talkmemo[0,'是']
 						_txt+=talkmemo[0,'是']+'是什么啊'
 				}
 				else{
-					t13=7
 					_subject=talkflag[0]
 					_object=talkflag[1]
 					_state=_answer[1,_object]
 					if _state!=''&&_object!=''&&talkflag[2] _in_ _state{
-						_txt=_subject+'是'+_object+'，所以'+_state;t10=_txt
+						_txt=_subject+'是'+_object+'，所以'+_state
 						aimode='return'
 						talkfound=1
 						anum++
@@ -1979,11 +1937,12 @@ AImlSearch{
 	}
 }
 ExcelTxtToAI{
-	_file='PSEUDO_AI_PATH\\综合词库人性化版.txt'
-	_file2='PSEUDO_AI_PATH\\综合词库人性化版.ai'
-	if _argc>0{
+	if _argc=2{
 		_file=_argv[0]
-		_file2=_argv[2]
+		_file2=_argv[1]
+	}
+	else{
+		return
 	}
 	FCHARSET(1)
 	_txt=''
@@ -2011,8 +1970,6 @@ ExcelTxtToAI{
 	}
 	FCLOSE(_file)
 	FCHARSET.default
-}
-AIToTxt{
 }
 AITalkAdd{//('PSEUDO_AI_PATH\user.ai','你好*你也好','write')
 	_file='PSEUDO_AI_PATH\aitalk.ai'

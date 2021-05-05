@@ -87,4 +87,5 @@ VERSION_UPGRADE_3:void{//BUILDING
 	ERASEVAR('LoveGomode')
 	ERASEVAR('Intimacymode')
 	ERASEVAR('tulingapi')
+	ERASEVAR('tulingfound')
 }

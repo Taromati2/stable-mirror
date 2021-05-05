@@ -1056,22 +1056,22 @@ SHIORI_FW.StructInstalledGhostListFromGhostPath{
 //引数　：_argv[0] 取得対象のゴーストディレクトリ
 //------------------------------------------------------------------------------
 SHIORI_FW.GetGhostNameFromDir {
-	if !FOPEN(_filename = "%(_argv[0])\ghost\master\descript.txt", 'r')
+	if !FOPEN(_filename = "%(_argv[0])\ghost\master\descript.txt", 'rb')
 		return
 
 	_ghostnames = IARRAY
 	_flag = 0
-	_Charset_geted =0//防止freopen时ftell失败
+	//_Charset_geted =0//防止freopen时ftell失败
 	while _flag != 7 {
 		if (_line = FREAD(_filename)) == -1; break
 
 		case CUTSPACE(_line[0]) {
 			when 'charset'{
-				if !_Charset_geted{
+				//if !_Charset_geted{
 					FCHARSET.string(CUTSPACE(_line[1]))
-					void FREOPEN(_filename,'r')
-					_Charset_geted = 1
-				}
+					void FREOPEN(_filename,'rb')
+					//_Charset_geted = 1
+				//}
 			}
 			when 'name' {
 				_ghostnames[0] = CUTSPACE(_line[1])
@@ -1645,4 +1645,7 @@ OnFileDrop2{//多文件拖拽支持
 }
 On_getaistateex{
 	On_GetAIStateEX
+}
+ISSTR{
+	GETTYPE(_argv[0])==3
 }

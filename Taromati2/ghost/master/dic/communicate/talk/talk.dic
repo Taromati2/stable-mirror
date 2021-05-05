@@ -1414,7 +1414,6 @@ ONE{
 }
 //**** TWO *************************************************
 TWO{
-	tulingfound=0
 	_timeslot = GetTimeSlot
 	if KikkaAILogic != 0 && !InAIGhostReply
 		_aitalk=AIGet(reference1)

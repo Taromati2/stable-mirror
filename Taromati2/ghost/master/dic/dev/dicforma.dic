@@ -32,7 +32,7 @@ OnSelfTuning{
 Select.dicforma.file_drop.run{
 	void MKDIR('VAR_PATH')
 	void DELDIR('VAR_PATH\dicforma_error')
-	if reference0 == 'radical'
+	if _argv[0] == 'radical'
 		dicforma.radical=1
 	_files=dicforma.file_drop
 	'\0\s[0]'

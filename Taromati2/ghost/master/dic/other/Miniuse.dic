@@ -3143,9 +3143,9 @@ OnKikkaKnowl{
 	_txt+='■橘花知识库 - 文件列表■\n[150]'
 	_j=1
 	_n=1
-	_path='pseudoAI'
+	_path='PSEUDO_AI_PATH'
 	_files = FENUM(_path)
-	_totle=ARRAYSIZE(_files)
+	_totle=0
 	if reference0!=NULL{
 		_j=TOINT(reference0)
 	}
@@ -3158,6 +3158,7 @@ OnKikkaKnowl{
 		case _fileext{
 			when '.ai'{
 				_t,=_i
+				_totle++
 			}
 		}
 	}

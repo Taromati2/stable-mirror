@@ -14,6 +14,7 @@ TextBetween{
 	_d = _d[0,_end]
 	_d
 }
+/*
 TextBetween2{
 	_s = _argv[0]
 	_begin = _argv[1]
@@ -26,6 +27,7 @@ TextBetween2{
 	_d = _d[1,_begin]
 	_d
 }
+*/
 TextToEnd{//TextToEnd('a=b=1234','=',0)=='b=1234'得到字符串'a=b=1234'中从第1个'='到字符串结束的文本'b=1234'
 	_s=_argv[0]
 	_begin=_argv[1]
@@ -106,6 +108,16 @@ code  说明
 311000  价格
 312000  餐厅
 */
+OnTuLingFound.Failure{
+	_txt=KikkaTalkToUser(tulingapi.in)
+	ERASEVAR('tulingapi.in')
+	if chatroom{
+		chatroomtxt+="%(_txt)#"
+		OnChatRoom(j)+WriteChatroom
+		return
+	}
+	_txt
+}
 OnTuLingFound{
 	_code=''
 	_txt='\b[2]\_q'
@@ -129,11 +141,13 @@ OnTuLingFound{
 				}
 			}
 			when '40004'
-				_txt=NULL
+				_txt=''
 			others
 				_txt+=TextBetween(_buff,'":"','"}',0)
 		}
-		tulingfound=1
+	}
+	else{
+		_txt=''
 	}
 	FCLOSE(_file)
 	FCHARSET.default
@@ -142,7 +156,7 @@ OnTuLingFound{
 		AITalkAdd('PROFILE_PATH\tuling.ai',tulingapi.in+'*'+_txt+'§')
 		void FCOPY('PROFILE_PATH\tuling.ai','pseudoAI')
 	}
-	if chatroom
+	if !_txt
 		_txt=KikkaTalkToUser(tulingapi.in)
 	ERASEVAR('tulingapi.in')
 	if chatroom{
@@ -152,32 +166,6 @@ OnTuLingFound{
 	}
 	_txt
 }
-/*
-IsReadyTuLingFile{
-	_r=0
-	_file = 'VAR_PATH\\tulingapi.html'
-	_file_ = 'VAR_PATH\\cache\\tulingapi.html'
-	FCHARSET(1)
-	_md5=FDIGEST(_file,'MD5')
-	_md5_=FDIGEST(_file_,'MD5')
-	_buff = ''
-	_txt=''
-	if _md5==_md5_
-		_r=1
-	if FOPEN(_file_,'r'){
-		for _buff = FREAD(_file_); _buff != -1; _buff = FREAD(_file_){
-			_code=TextBetween(_buff_,':',',',0)
-			_txt+=TextBetween(_buff_,'':'','"}',0)
-			if _code==100000
-				tulingfound=1
-		}
-	}
-	FCLOSE(_file)
-	FCHARSET.default
-	txt=_txt
-	_r
-}
-*/
 OnDownLoadWeather{
 	"正在连接网站，请稍等……\![excute,http-post,http://php.weather.sina.com.cn/search.php,--param=city=%(city),--param-charset=UTF-8,--file=weather-sina.html,--timeout=200,--async=weathersina]"
 }
@@ -866,11 +854,12 @@ OnExecuteHTTPFailure{
 		}
 		elseif reference1=='weathersina'
 			"\0\s[3]连线失败了……\nError：%(reference4)\n要查看本地信息吗？\n\q[◇确定,OnWeatherFound]"
-		/*
+		elseif reference1 == 'tulingapi' {
+			OnTuLingFound.Failure
+		}
 		else{
 			"\0\s[3]连线失败了……\nError：%(reference4)"
 		}
-		*/
 
 	}
 }
