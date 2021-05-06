@@ -120,16 +120,14 @@ OnAISave:void{
 }
 OnAILoad:void{
 	if FILEEXIST('PROFILE_PATH\userteach.ai')
-		FCOPY('PROFILE_PATH\userteach.ai','pseudoAI')
+		FCOPY('PROFILE_PATH\userteach.ai','PSEUDO_AI_PATH')
 	else{
 		FULLNAMEFCOPY('PSEUDO_AI_PATH\userteach.ai.base','PROFILE_PATH\userteach.ai')
-		OnSQLLoad
 	}
 	if FILEEXIST('PROFILE_PATH\logiclearn.ai')
-		FCOPY('PROFILE_PATH\logiclearn.ai','pseudoAI')
+		FCOPY('PROFILE_PATH\logiclearn.ai','PSEUDO_AI_PATH')
 	else{
 		FULLNAMEFCOPY('PSEUDO_AI_PATH\logiclearn.ai.base','PROFILE_PATH\logiclearn.ai')
-		OnSQLLoad
 	}
 }
 OnTeachCancel{
@@ -149,7 +147,7 @@ OnBackToTalk{
 		OnChatRoom(j)
 }
 AILoad{//AILoad('你好','aiml')  AILoad('你好，喜欢什么')
-	_path='pseudoAI'
+	_path='PSEUDO_AI_PATH'
 	_str=reference0
 	if _argc>0
 		_str=_argv[0]
@@ -175,6 +173,8 @@ AILoad{//AILoad('你好','aiml')  AILoad('你好，喜欢什么')
 	_tfiles=_files
 	_tfiles=REPLACE(_tfiles,'logiclearn.ai','')
 	_tfiles=REPLACE(_tfiles,'logic.ai','')
+	//_tfiles=REPLACE(_tfiles,'other.ai','')//others放最后查询
+	//_tfiles='other.ai,'+_tfiles
 	for _a=0;_a<strnum;_a++{
 		_str=string[_a]
 		_g=IARRAY
@@ -2679,102 +2679,6 @@ MealName{
 	FCHARSET.default
 	_name
 }
-ArrArr{
-	_arr=_argv[0]
-	_a=_arr
-	_b=_arr
-	_b=IARRAY
-	_n=ARRAYSIZE(_a)
-	_m=0
-	for _i=0;_i<_n;_i++{
-		_b,="%(_a[_i])"
-		for _j=0;_j<_m;_j++{
-			_b,="%(_b[_j])，%(_a[_i])"
-		}
-		_m=ARRAYSIZE(_b)
-	}
-	_b
-}
-LoadSQL{
-	_file='PSEUDO_AI_PATH\\food1.ai'
-	_file2='PSEUDO_AI_PATH\\newfood.ai'
-	_file3='PSEUDO_AI_PATH\\food.ai'
-	FCHARSET(1)
-	_disposition='寒,凉,平,温,热'
-	_disposition=(,ArrArr(_disposition))
-	_flavour='酸,苦,甘,辛,咸'
-	_flavour=(,ArrArr(_flavour))
-	_meridian='肺,大肠,胃,脾,心,小肠,膀胱,肾,心包,三焦,胆,肝'
-	_meridian=(,ArrArr(_meridian))
-	if FOPEN(_file,'r'){
-		FCHARSET(1)
-		void FOPEN(_file2,'w')
-		void FOPEN(_file3,'w')
-		for _buff=FREAD(_file);_buff!=-1;_buff=FREAD(_file){
-			_i=0
-			_buff2=''
-			while _buff[_i,',']!=''{
-				_txt=_buff[_i,',']
-				if _i==2{
-					_d=TOINT(_buff[_i,','][1,'"'])
-					_D=_disposition[_d]
-					_txt=REPLACE(_txt,_d,_D)
-				}
-				elseif _i==3{
-					_f=TOINT(_buff[_i,','][1,'"'])
-					_F=_flavour[_f]
-					_txt=REPLACE(_txt,_f,_F)
-				}
-				elseif _i==4{
-					_m=TOINT(_buff[_i,','][1,'"'])
-					_M=_meridian[_m]
-					_txt=REPLACE(_txt,_m,_M)
-				}
-				_buff2+=_txt+','
-				_i++
-			}
-			void FWRITE(_file2,_buff2)
-			if ''name'' !_in_ _buff2{
-				_buff3='<SESSION>'
-				void FWRITE(_file3,_buff3)
-				_Q=_buff2[1,','][1,'"']
-				_buff3='<Q>'+_Q+'</Q>'
-				void FWRITE(_file3,_buff3)
-				_buff3='<A>名称：\n'
-				void FWRITE(_file3,_buff3)
-				_buff3=_Q+'\n'
-				void FWRITE(_file3,_buff3)
-				_buff3='性味\n'
-				void FWRITE(_file3,_buff3)
-				_buff3='性'+_buff2[2,','][1,'"']+'、味'+_buff2[3,','][1,'"']+'\n'
-				void FWRITE(_file3,_buff3)
-				_buff3='归经\n'
-				void FWRITE(_file3,_buff3)
-				_buff3=_buff2[4,','][1,'"']+'\n'
-				void FWRITE(_file3,_buff3)
-				_buff3='功效\n'
-				void FWRITE(_file3,_buff3)
-				_buff3=_buff2[5,','][1,'"']+'\n'
-				void FWRITE(_file3,_buff3)
-				_buff3='食疗\n'
-				void FWRITE(_file3,_buff3)
-				_buff3=_buff2[6,','][1,'"']+'\n'
-				void FWRITE(_file3,_buff3)
-				_buff3='</A>'
-				void FWRITE(_file3,_buff3)
-				_buff3='</SESSION>'
-				void FWRITE(_file3,_buff3)
-				_buff3=''
-				void FWRITE(_file3,_buff3)
-			}
-		}
-		FCLOSE(_file2)
-		FCLOSE(_file3)
-		FCHARSET.default
-	}
-	FCLOSE(_file)
-	FCHARSET.default
-}
 HtmlToAI{//HtmlToAI('D:\CHM','meal')
 	_path=_argv[0]
 	_filename2=_argv[1]
@@ -2827,25 +2731,6 @@ HtmlToAI{//HtmlToAI('D:\CHM','meal')
 		}
 	}
 	FCLOSE(_file2)
-	FCHARSET.default
-}
-ChaToLetter{
-	_character=_argv[0]
-	_file='PSEUDO_AI_PATH\\character.ai'
-	_letter=''
-	FCHARSET(1)
-	if FOPEN(_file,'r'){
-		_buff=''
-		while _buff!=-1{
-			_buff=FREAD(_file)
-			if '=>' _in_ _buff&&_character _in_ _buff{
-				_letter=_buff[0,'=>']
-				_letter
-				return
-			}
-		}
-	}
-	FCLOSE(_file)
 	FCHARSET.default
 }
 TxtToVoice{
@@ -2955,7 +2840,7 @@ OnSpeechRecognition.WriteTxtToXML{
 		0
 }
 OnSpeechRecognition.AIInfFileLoad{
-	_path='pseudoAI'
+	_path='PSEUDO_AI_PATH'
 	_files = FENUM(_path)
 	_tfiles=_files
 	_tfiles=REPLACE(_tfiles,'logiclearn.ai','')
@@ -3136,7 +3021,6 @@ SakuraToTxt{
 	_txt=RE_REPLACE(_txt,'--------------.*','')
 	_txt=RE_REPLACE(_txt,'　　　　　  .*\\','')
 	_txt=RE_REPLACE(_txt,'■.*','')
-	_txt=RE_REPLACE(_txt,'\\_n软件.*','')
 	_txt
 }
 CHAREPLACE{
