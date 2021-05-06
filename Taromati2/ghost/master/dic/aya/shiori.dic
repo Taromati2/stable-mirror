@@ -61,10 +61,7 @@ OnSHIORI_FW.ChangeSelfInfo
 //------------------------------------------------------------------------------
 
 //文字/文字列定数
-#define			C_CRLF2		C_CRLF+C_CRLF					/*改行コードx2		*/
-#globaldefine	C_CRLF		C_CR+C_LF						/*改行コード		*/
-#globaldefine	C_LF		CHR(0xa)						/*linux换行			*/
-#globaldefine	C_CR		CHR(0xd)						/*mac换行			*/
+#define			C_2CRLF		C_CRLF+C_CRLF					/*改行コードx2		*/
 #define			C_BYTE1		CHR(0x1)						/*バイト値1			*/
 //チェイン
 #globaldefine	CHAIN{{		{{CHAIN	/* どうも誤記される場合があるようなので */
@@ -338,7 +335,7 @@ request {
 
 	if _lineend <= 0 {
 		//1行目すらない！
-		"SHIORI/3.0 400 Bad Request%(C_CRLF)Charset: %(S_CHARSET)%(C_CRLF2)"
+		SHIORI_FW.MakeBadResponse
 		return
 	}
 	_lin = SUBSTR(_reqdata,_linestart,(_lineend - _linestart))
@@ -405,7 +402,7 @@ request {
 
 			//ハンドラが無い場合は即返る
 			if !ISFUNC(SHIORI_FW.EventidTranslate) && !SHIORI_FW.IsImportantEvent {
-				SHIORI_FW.MakeEmptyResponse(SHIORI_FW.Eventid)
+				SHIORI_FW.MakeEmptyResponse
 				return
 			}
 			_idparsed = 1
@@ -413,7 +410,7 @@ request {
 		//セキュリティレベル='External'なら即返る
 		elseif _key == 'SecurityLevel' {
 			if _value == 'External' {
-				"SHIORI/3.0 204 No Content%(C_CRLF)Charset: %(S_CHARSET)%(C_CRLF2)"
+				"SHIORI/3.0 204 No Content%(C_CRLF)Charset: %(S_CHARSET)%(C_2CRLF)"
 				return
 			}
 		}
@@ -512,7 +509,7 @@ SHIORI_FW.MakeResponse{
 				--
 				C_CRLF
 			}else{
-				"SHIORI/3.0 200 OK%(C_CRLF)Charset: %(S_CHARSET)%(C_CRLF2)"
+				"SHIORI/3.0 200 OK%(C_CRLF)Charset: %(S_CHARSET)%(C_2CRLF)"
 			}
 		}
 		when 'GET' {
@@ -530,13 +527,13 @@ SHIORI_FW.MakeResponse{
 					SHIORI_FW.DelayNotifyResults[0] = IARRAY
 					SHIORI_FW.MakeResponse(_result)
 				}else{
-					SHIORI_FW.MakeEmptyResponse(SHIORI_FW.Eventid)
+					SHIORI_FW.MakeEmptyResponse
 				}
 			}
 		}
 		others
 			//未知のリクエスト
-			"SHIORI/3.0 400 Bad Request%(C_CRLF2)"
+			SHIORI_FW.MakeBadResponse
 	}
 }
 
@@ -702,19 +699,22 @@ SHIORI_FW.RaiseIDEvent {
 //適正な応答文字列を作成します
 //引数　：_argv[0] イベント名
 //------------------------------------------------------------------------------
+SHIORI_FW.MakeBadResponse{
+	"SHIORI/3.0 400 Bad Request%(C_2CRLF)"
+}
 SHIORI_FW.MakeEmptyResponse {
-	case _argv[0] {
+	case SHIORI_FW.Eventid {
 		when 'OnFirstBoot', 'OnBoot', 'OnWindowStateRestore', 'OnGhostChanged'
 			//スコープ0/1の基本サーフィスを出す必要があるイベント
 			"SHIORI/3.0 200 OK%(C_CRLF)Sender: AYA%(C_CRLF)Charset: %(S_CHARSET)%(C_CRLF)/
-			Value: \0\s[0]\1\s[10]\e%(C_CRLF2)"
+			Value: \0\s[0]\1\s[10]\e%(C_2CRLF)"
 		when 'OnClose'
 			//終了指示を出す必要があるイベント
 			"SHIORI/3.0 200 OK%(C_CRLF)Sender: AYA%(C_CRLF)Charset: %(S_CHARSET)%(C_CRLF)/
-			Value: \0\-\e%(C_CRLF2)"
+			Value: \0\-\e%(C_2CRLF)"
 		others
 			//上記以外では204を返送して良い
-			"SHIORI/3.0 204 No Content%(C_CRLF)Charset: %(S_CHARSET)%(C_CRLF2)"
+			"SHIORI/3.0 204 No Content%(C_CRLF)Charset: %(S_CHARSET)%(C_2CRLF)"
 	}
 }
 
@@ -1154,7 +1154,7 @@ FUNCTIONEX {
 //引数　：_argv[0] SAORIファイル名
 //------------------------------------------------------------------------------
 SHIORI_FW.SendGETVersion {
-	SHIORI_FW.RequestLib(_argv[0], "GET Version SAORI/1.0%(C_CRLF)Charset: %(CHARSETLIBEX(_argv[0]))%(C_CRLF)Sender: AYA%(C_CRLF2)")
+	SHIORI_FW.RequestLib(_argv[0], "GET Version SAORI/1.0%(C_CRLF)Charset: %(CHARSETLIBEX(_argv[0]))%(C_CRLF)Sender: AYA%(C_2CRLF)")
 
 	LIB.STATUSCODE
 }
@@ -1640,7 +1640,7 @@ memoryavailphys { GETMEMINFO[2] }
 memorytotalvirtual { GETMEMINFO[3] }
 memoryavailvirtual { GETMEMINFO[4] }
 
-OnFileDrop2{//多文件拖拽支持
+OnFileDropEx{//多文件拖拽支持
 	OnFileDrop
 }
 On_getaistateex{

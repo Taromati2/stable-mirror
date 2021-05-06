@@ -1662,42 +1662,57 @@ OnFileEatDrop{
 		'\0\s[26]确定要橘花吃掉所选文件（夹）？\n\q[◇确定,OnFileEatDrop,yes]\n\q[◇不了,OnFileEatDrop,no]\n'
 		temp = _argv[0]
 	}
-	if reference0=='yes'{
-		_buff = temp
-		ERASEVAR('temp')
-		all_file_size = 0
-		foreach _buff; _ref{
-			if FATTRIB(_ref)[2]==1
-				OnFileEatFolder(_ref)
-			else
+	else{
+		if reference0=='yes'{
+			_buff = temp
+			ERASEVAR('temp')
+			all_file_size = 0
+			foreach _buff; _ref{
 				OnFileEat(_ref)
+			}
+			--
+			OnFileEatEnd
 		}
-		--
-		OnFileEatEnd
+		elseif reference0=='no'
+			ERASEVAR('temp')
+		else
+			OnFileEatDrop(reference0)
 	}
-	elseif reference0=='no'
-		do_nothing
 }
-OnFileEatFolder{
+OnFileEat{
+	if ISDIR(_argv[0])
+		OnFileEat.Folder(_argv[0])
+	else
+		OnFileEat.File(_argv[0])
+}
+OnFileEat.Folder{
 	_path = _argv[0]
 	_file = FENUM(_path)
 	foreach _file; _f {
 		_f = _path +'/'+ _f
-		if FATTRIB(_f)[2]==1
-			OnFileEatFolder(_f)
-		else
-			OnFileEat(_f)
+		OnFileEat(_f)
 	}
-	_t=RMDIR(_path)
+	if !RMDIR(_path){
+		_path=REPLACE(_path,'\','\\')
+		if FENUM(_path)
+			SHIORI_FW.PushNotifyResult("\0\s[8]文件夹：%(_path) \n未空\x")
+		else
+			SHIORI_FW.PushNotifyResult("\0\s[20]好像出了什么问题？\n文件夹：%(_path) \x")
+	}
 	all_file_size+=8192
 }
-OnFileEat{
+OnFileEat.File{
 	_file=reference0
 	if _argc>0
 		_file=_argv[0]
 	all_file_size+=FSIZE(_file)
-	if !FDEL(_file)
-		"\s[20]好像出了什么问题？\n%(reference0)\e"
+	if !FDEL(_file){
+		_file=REPLACE(_file,'\','\\')
+		if FILEEXIST(_file)
+			SHIORI_FW.PushNotifyResult("\0\s[20]好像出了什么问题？\n文件名：%(_file) \x")
+		else
+			SHIORI_FW.PushNotifyResult("\0\s[8]文件：%(_file) \n不存在\x")
+	}
 }
 OnFileEatEnd{
 	if kikkastm<kikkastmmax

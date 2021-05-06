@@ -1415,10 +1415,9 @@ ONE{
 //**** TWO *************************************************
 TWO{
 	_timeslot = GetTimeSlot
+	_aitalk=''
 	if KikkaAILogic != 0 && !InAIGhostReply
 		_aitalk=AIGet(reference1)
-	else
-		_aitalk=''
 	reference1 = RE_REPLACE(reference1,'\\\s*teach\s*$','\teach')
 	reference1 = RE_REPLACE(reference1,'\\\s*talk\s*$','\talk')
 	if '\teach' == reference1{
@@ -2400,12 +2399,13 @@ TWO{
 	}
 	elseif _aitalk!=''
 		_aitalk
-	elseif talkfound==1
-		KikkaTalkToUser
-	elseif !Tulingapi[0]
-		OntulingApi(reference1)
-	else
-		KikkaTalkToUser
+	else{
+		_t=KikkaTalkToUser
+		if !talkfound&&!Tulingapi[0]
+			OntulingApi(reference1)
+		else
+			_t
+	}
 }
 //---- 上面沟通用到的 ------------
 RestStart{

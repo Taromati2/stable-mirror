@@ -830,7 +830,9 @@ OnShortcutFileDrop{
 		when ''{
 			if _filename==NULL {
 				_Ico='2'
-				"\_q需要橘花设置该文件夹到橘花的快捷菜单吗？\n[150]　\![*]\q[好的,OnShortcut,━文件夹━,%(_path2),2]　\![*]\q[不了,OnShortcutOver]\n[120]\_l[5,-]\_b[%(CHR(34))SAORI_PATH\Process.dll,%(_Ico)%(CHR(34)),inline%(ICOMode)] \n名称：等下%(username)自己可以设置名称！━文件夹━\n[150]路径：%(_path2)"
+				"\_q需要橘花设置该文件夹到橘花的快捷菜单吗？\n[150]/
+				　\![*]\q[好的,OnShortcut,━文件夹━,%(_path2),2]　\![*]\q[不了,OnShortcutOver]　\![*]\q[直接吃掉,OnFileEatDrop,%(SakuraScriptArgConverter(reference0))]\n[150]/
+				\_l[5,-]\_b[%(CHR(34))SAORI_PATH\Process.dll,%(_Ico)%(CHR(34)),inline%(ICOMode)] \n名称：等下%(username)自己可以设置名称！━文件夹━\n[150]路径：%(_path2)"
 			}
 			else
 				"\_q\0\s[0]%(_filename)%(_fileext)\n\n%(_path2)"

@@ -7,7 +7,12 @@ OnChoiceSelectEx{
 		if ISSTR(_arglist[_i])
 			_arglist[_i]="'"+_arglist[_i]+"'"
 	}
-	EVAL("Select.%(reference1)(%_arglist)")
+	if ISFUNC("Select.%(reference1)")
+		EVAL("Select.%(reference1)(%_arglist)")
+	elseif ISFUNC("%(reference1)")
+		do_nothing
+	else
+		BUGNow
 }
 OnAITalk{
 	if specialmode == 'rest'//休息事件中随机谈话禁止

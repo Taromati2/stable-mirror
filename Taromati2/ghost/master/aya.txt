@@ -12,13 +12,13 @@ charset.extension, default
 //aya基础函数
 dic, dic\aya\path_def.dic		//文 ver.3 形式辞書設定辞書
 dic, dic\aya\config.dic			//文 ver.3 形式辞書設定辞書
+dic, dic\aya\file.dic			//by steve02081504
 dic, dic\aya\shiori.dic			//文 ver.3 形式辞書制御辞書
 dic, dic\aya\compatible.dic		//AYAに移行用
 dic, dic\aya\sysex.dic			//shiori.dicから分離した
 dic, dic\aya\string.dic			//文字列リソース辞書
 dic, dic\aya\ghost.dic			//by steve02081504
 dic, dic\aya\baseware.dic		//by steve02081504
-dic, dic\aya\file.dic			//by steve02081504
 dic, dic\aya\url.dic			//by steve02081504
 dic, dic\aya\cmd.dic			//by steve02081504
 dic, dic\aya\LOADVAR.dic		//by steve02081504

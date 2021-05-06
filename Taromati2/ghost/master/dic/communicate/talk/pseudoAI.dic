@@ -571,11 +571,11 @@ AILoad.AIFile{
 		return
 	}
 	FCHARSET(1)
-	if FOPEN(_file,'r'){
+	if FOPEN(_file,'rb'){
 		_table=0
 		_buff=''
 		dexid=0
-		_dexre=10
+		_dexre=STRLEN('<SESSION>'+GET_ENDLINE.file_was_opened(_file))
 		_dexmode=0
 		_strtxt=''
 		FCHARSET(1)
@@ -1218,11 +1218,11 @@ AILoad.AImlFile{
 		FCHARSET(1)
 	else
 		FCHARSET(127)
-	if FOPEN(_file,'r'){
+	if FOPEN(_file,'rb'){
 		_table=0
 		_buff=''
 		dexid=0
-		_dexre=11
+		_dexre=STRLEN('<category>'+GET_ENDLINE.file_was_opened(_file))
 		_strtxt=''
 		FCHARSET(1)
 		void FOPEN(_inf,'a')
@@ -2306,8 +2306,7 @@ CopySQL{
 	AITalkAdd(_file,_buff,'write')
 }
 OnChatRoom{
-	if ISINTSTR(reference1)
-		_j=reference1
+	_j=reference1
 	if _argc>0
 		_j=_argv[0]
 	_j=TOINT(_j)
