@@ -1414,24 +1414,45 @@ ONE{
 }
 //**** TWO *************************************************
 TWO{
-	_timeslot = GetTimeSlot
-	_aitalk=''
-	if KikkaAILogic != 0 && !InAIGhostReply
-		_aitalk=AIGet(reference1)
-	reference1 = RE_REPLACE(reference1,'\\\s*teach\s*$','\teach')
-	reference1 = RE_REPLACE(reference1,'\\\s*talk\s*$','\talk')
-	if '\teach' == reference1{
+	_t = ''
+	if _t = TWO.commnd
+		_t
+	elseif KikkaAImode==0{
+		if _t = TWO.aitalk
+			_t
+	}
+	if !_t{
+		if _t = TWO.dicpart
+			_t
+		elseif KikkaAImode!=0{
+			if _t = TWO.aitalk
+				_t
+		}
+		if !_t
+			TWO.others
+	}
+}
+TWO.commnd{
+	reference1 = RE_REPLACE(reference1,'/\s*teach\s*$','/teach')
+	reference1 = RE_REPLACE(reference1,'/\s*talk\s*$','/talk')
+	if '/teach' == reference1{
 		Teach
 	}
-	elseif '\talk' == reference1{
+	elseif '/talk' == reference1{
 		aimode=''
 		'\0\s[5]进入正常模式'
 	}
 	elseif aimode=='teach'{
 		AITeach(reference1)
 	}
+}
+TWO.aitalk{
+	AIGet(reference1)
+}
+TWO.dicpart{
+	_timeslot = GetTimeSlot
 	//----------------------------------------橘花自动------------------------------------------------------------------
-	elseif TOINT(Tulingapi[0])==0&&TOINT(Tulingapi[1])==1||'查一下' _in_ reference1||'查一查' _in_ reference1||'查查' _in_ reference1
+	if TOINT(Tulingapi[0])==0&&TOINT(Tulingapi[1])==1||'查一下' _in_ reference1||'查一查' _in_ reference1||'查查' _in_ reference1
 		OntulingApi(reference1)
 	elseif '日历' _in_ reference1{
 		"\![open,calendar]\w9\w9\0\s[6]今天是%(year)年%(month)月%(day)日."
@@ -1484,8 +1505,6 @@ TWO{
 	elseif '说' _in_ reference1 && '什么' _in_ reference1 || '再说' _in_ reference1 && ( '一次' _in_ reference1 || '一遍' _in_ reference1){
 		lastTalk
 	}
-	elseif _aitalk!=''&&KikkaAImode==0
-		_aitalk
 	elseif '玩' _in_ reference1 && '游戏' _in_ reference1{
 		"\0\s[2]%(username)想和橘花玩游戏吗?"
 		'\0\s[5]好啊,正好橘花刚学会一些游戏的玩法呢.'
@@ -2391,15 +2410,13 @@ TWO{
 			'\1\s[10]我和橘花以前的组合，\w9\w9算不算是一个家呢？'
 		}
 	}
-	elseif _aitalk!=''
-		_aitalk
-	else{
-		_t=KikkaTalkToUser
-		if !talkfound&&!Tulingapi[0]
-			OntulingApi(reference1)
-		else
-			_t
-	}
+}
+TWO.others{
+	_t=KikkaTalkToUser
+	if NetworkStatus=='online' && (!talkfound&&!Tulingapi[0])
+		OntulingApi(reference1)
+	else
+		_t
 }
 //---- 上面沟通用到的 ------------
 RestStart{

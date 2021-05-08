@@ -2366,8 +2366,6 @@ OnChatRoom{
 	_txt+='\n'
 	_txt=REPLACE(_txt,'\x','')
 	_txt=RE_REPLACE(_txt,'\\w.','')//删除等待延时
-	_txt=REPLACE(_txt,'\teach','\\teach')
-	_txt=REPLACE(_txt,'\talk','\\talk')
 	_txt=REPLACE(_txt,'\e','')//删除结束标记
 	_txt=REPLACE(_txt,'\_q','')//删除速读标记
 	_txt=REPLACE(_txt,'\\n','\n')
@@ -2499,7 +2497,7 @@ RandAITalk{
 	if GetPhase > 3
 		"%(username)，最喜欢你了，要和%(selfname)聊什么呢？"
 	"%(username)今天也要好好加油啊"
-	'输入“\teach”指令可以进入教学模式、输入“\talk”指令返回对话模式'
+	'输入“/teach”指令可以进入教学模式、输入“/talk”指令返回对话模式'
 	Greetings
 }
 MealJudge{
