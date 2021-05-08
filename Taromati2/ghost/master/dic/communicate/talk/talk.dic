@@ -1513,12 +1513,6 @@ TWO{
 		"\0\s[20]唔…%(username)Byebye哦～\w9\w9\-"
 		'\0\s[20]那个，我们回去了哦..\-'
 	}
-	elseif '对我的感觉' _in_ reference1{
-		Select.Intimacytest1
-	}
-	elseif '对我的感情' _in_ reference1{
-		Select.Intimacytest2
-	}
 	//----------------------------------------橘花问候------------------------------------------------------------------
 	elseif '你好' _in_ reference1{
 		if scope == '0'{
