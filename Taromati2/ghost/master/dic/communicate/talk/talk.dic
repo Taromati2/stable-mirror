@@ -802,6 +802,36 @@ RandomTalk : nonoverlap{
 			}
 		}
 	}
+	'……'
+	//特殊会话
+	if GetPhase > 1
+		'\0\s[6]我不会老\w9\w9，\s[0]也不会死\w9\w9，你死去了我也不会消失\w9\w9，\s[3]不用担心\w9，斗和会陪着我\w9，\0\s[35]我只是担心\w9…\w9…\w9没有人陪着你了。'
+	if GetPhase > 2{
+		if FirstBootCount >= 0
+			'\0\s[3]可能的话\w9…\w9…\w9\n一直在一起\w9吧。'
+		if FirstBootCount >= 1{
+			'\0\s[6]哪怕是欺骗也好，'
+			--
+			'\c\s[3]不，\w9什么都没有。'
+			'\s[35]对我说些温柔的话吧。'
+		}
+		if FirstBootCount >= 2
+			"\0\s[35]%(username)讨厌我吗\w9…\w9…\w9\n\s[5]没关系，\w9那我就连着%(username)的份一起喜欢%(username)好了"
+		if FirstBootCount >= 3{
+			_t='\s[7]\_w[10]\s[8]\_w[10]\s[21]\_w[10]\s[9]\_w[10]\s[35]\_w[10]喜\s[7]\_w[10]\s[8]\_w[10]\s[21]\_w[10]\s[9]\_w[10]\s[35]\_w[10]欢'
+			_n=MAX(RAND(7),4)
+			__n=_n
+			while (_n--){
+				_t+=_t
+			}
+			_t+'\n\s[21]\w9…\w9…\w9喜欢的要坏掉了……'
+			--
+			if !RAND(MAX(0,TOINT(intimacy/1000)-__n))//这人运气真好是吧
+				'\![vanishbymyself]'//自毁，但是不更新FirstBootCount，重装就行，自作自受
+		}
+	}
+	if GetPhase > 3
+		"\s[6]%(username)。\w9\w9\n没事，\w9只是想这么叫叫看而已……"
 	//---- チェイン用 -----------------------------------------------------------------------------------------------------
 	'\0\s[0]Ten little nigger boys went out to dine.\w9\w9\w9\n\n[half]One choked his little self,\w9\w9\n and then there were nine.:chain=Chain1'
 	'\0\s[30]…\w9…\w9…\w9\w9\1\s[10]怎么了？\w9\w9\w9\0\s[30]\n\n[half]伪春菜圈子里、\w9黑猫真多呢。\w9\w9\1\s[10]\n\n[half]？\w9\n是啊。:chain=Chain2'
