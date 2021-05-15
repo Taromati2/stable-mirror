@@ -13,6 +13,8 @@
 #globaldefine VAR_PATH				BASE_PATH\_VAR_path
 #globaldefine SHIORI_BACKUP_PATH	BASE_PATH\_SHIORI_BACKUP_path
 //
+#globaldefine UN_SAORI_path			..
+//
 #globaldefine _DATA_path			data
 #globaldefine _IMG_path				img
 #globaldefine _SOUND_path			sound

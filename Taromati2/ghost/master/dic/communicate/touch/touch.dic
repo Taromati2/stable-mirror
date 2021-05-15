@@ -299,7 +299,7 @@ OnPlaySound:void{
 	if silent
 		return
 	CALLSAORI('mciaudior', 'stop')
-	CALLSAORI('mciaudior', 'load', 'SOUND_PATH\'+reference0)
+	CALLSAORI('mciaudior', 'load', 'UN_SAORI_path\SOUND_PATH\'+reference0)
 	CALLSAORI('mciaudior', 'play')
 }
 TalkSakuraHeadClick.0{
