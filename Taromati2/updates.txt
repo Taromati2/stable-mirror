@@ -341,7 +341,7 @@ file,ghost/master/dic/aya/ghost.dic9824659f29172162c189fb8cde1aee5dsize=946
 file,ghost/master/dic/aya/LOADVAR.dic62544362aac048c25f75cc62aa5e2e87size=49
 file,ghost/master/dic/aya/path_def.dic7f21f37029304e7a96b26526175842c4size=990
 file,ghost/master/dic/aya/shiori.dicff66b5b1e3145ae31020ba1b41d50fd0size=44535
-file,ghost/master/dic/aya/string.dicc684d9edab948764e591359fc1d2e060size=2681
+file,ghost/master/dic/aya/string.diceea4952809498083adfd749cf9ed148bsize=2669
 file,ghost/master/dic/aya/sysex.dic2df78bd7e6c83f59a0870ae8cf10ee57size=1088
 file,ghost/master/dic/aya/url.dicbf9b6c8a4ef71166d2f635a4d7cb44a6size=76
 file,ghost/master/dic/communicate/H/H.dic90919b917b1be45abcb2016252cb9450size=250
@@ -349,7 +349,7 @@ file,ghost/master/dic/communicate/talk/learn.dic8062a34e7974370e68e6013a7ea4bad
 file,ghost/master/dic/communicate/talk/other_ghost.dic6903fbb3979e153df142cef7c3189acbsize=3604
 file,ghost/master/dic/communicate/talk/pseudoAI.dic5b3f4280340ee3bdb936f6a377291e0fsize=72613
 file,ghost/master/dic/communicate/talk/talk.dic70e706cd79fb424045306a1f723decd8size=174147
-file,ghost/master/dic/communicate/talk/talk_t.dic6175f863f253060e5c520bf4246ec734size=8901
+file,ghost/master/dic/communicate/talk/talk_t.dica3b06ef4fbaa21338506654ebd4343dcsize=8901
 file,ghost/master/dic/communicate/touch/touch.dic15fa509a8e122f71cb2fd8cf07ab843bsize=13535
 file,ghost/master/dic/dev/dicforma.dic374d5b4044d815bc57b6ea3dced4a43bsize=8034
 file,ghost/master/dic/dev/md5_linker.dic6c86ad1bdb56f7579e685897d6768271size=2046

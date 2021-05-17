@@ -14,13 +14,13 @@ On_username{
 //本体侧おすすめサイトのリスト
 On_sakura.recommendsites{
 	"/
-	上海アリス幻乐団%ASC(1)http://www16.big.or.jp/~zun/ %ASC(2)/
-	面屋%ASC(1)http://lovelove.rabi-en-rose.net/ %ASC(2)/
-	犬丼帝国%ASC(1)http://wls.hp.infoseek.co.jp/ %ASC(2)/
-	吉田研究所%ASC(1)/http://www2.tky.3web.ne.jp/~yosshin/ %ASC(2)/
-	橙汁%ASC(1)/http://daidai.moo.jp/ %ASC(2)/
+	上海アリス幻乐団%ASC(1)http://www16.big.or.jp/~zun/%ASC(2)/
+	面屋%ASC(1)http://lovelove.rabi-en-rose.net/%ASC(2)/
+	犬丼帝国%ASC(1)http://wls.hp.infoseek.co.jp/%ASC(2)/
+	吉田研究所%ASC(1)/http://www2.tky.3web.ne.jp/~yosshin/%ASC(2)/
+	橙汁%ASC(1)/http://daidai.moo.jp/%ASC(2)/
 	%ASC(1)%ASC(2)/
-	弾幕型%ASC(1)/http://arcader.nobody.jp/danmaku/ %ASC(2)/
+	弾幕型%ASC(1)/http://arcader.nobody.jp/danmaku/%ASC(2)/
 	"
 	--
 	SETDELIM(recommendsites,'*')
@@ -73,10 +73,10 @@ On_hwnd{
 On_kero.recommendsites{
 	//使魔側推薦網址
 	"/
-	GitHub項目地址%ASC(1)https://github.com/Taromati2/Taromati2/ %ASC(2)/
+	GitHub項目地址%ASC(1)https://github.com/Taromati2/Taromati2/%ASC(2)/
 	%ASC(1)%ASC(2)/
-	作者主頁%ASC(1)http://unvollendet.web.fc2.com/ %ASC(2)/
-	維護者主頁%ASC(1)https://steve02081504.github.io/ %ASC(2)/
+	作者主頁%ASC(1)http://unvollendet.web.fc2.com/%ASC(2)/
+	維護者主頁%ASC(1)https://steve02081504.github.io/%ASC(2)/
 	"
 }
 On_sakura.portalsites{
@@ -85,14 +85,14 @@ On_sakura.portalsites{
 	--
 	"/
 	%ASC(1)%ASC(2)/
-	MATERIA%ASC(1)http://usada.sakura.vg/ %ASC(2)/
-	SSP%ASC(1)http://ssp.shillest.net %ASC(2)/
-	CROW%ASC(1)http://crow.aqrs.jp %ASC(2)/
+	MATERIA%ASC(1)http://usada.sakura.vg/%ASC(2)/
+	SSP%ASC(1)http://ssp.shillest.net/%ASC(2)/
+	CROW%ASC(1)http://crow.aqrs.jp/%ASC(2)/
 	%ASC(1)%ASC(2)/
-	Disc-2%ASC(1)http://disc2.s56.xrea.com %ASC(2)/
-	ゴーストセンター%ASC(1)http://www.aqrs.jp/ngc/ %ASC(2)/
-	GHOST TOWN%ASC(1)http://ghost.sakura.vg %ASC(2)/
-	噂と评判[改]%ASC(1)http://review.sakura.ne.jp/ %ASC(2)/
+	Disc-2%ASC(1)http://disc2.s56.xrea.com/%ASC(2)/
+	ゴーストセンター%ASC(1)http://www.aqrs.jp/ngc/%ASC(2)/
+	GHOST TOWN%ASC(1)http://ghost.sakura.vg/%ASC(2)/
+	噂と评判[改]%ASC(1)http://review.sakura.ne.jp/%ASC(2)/
 	"
 }
 //右鍵選單項目顯示/不顯示
