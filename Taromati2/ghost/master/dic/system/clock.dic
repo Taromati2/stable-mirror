@@ -310,17 +310,12 @@ OnTrayBalloonTimeout{
 }
 OnPlayBell:void{
 	CALLSAORI('mciaudior', 'stop')
-	CALLSAORI('mciaudior', 'load', 'SOUND_PATH\bell.wav')
+	CALLSAORI('mciaudior', 'load', 'UN_SAORI_path\SOUND_PATH\bell.wav')
 	CALLSAORI('mciaudior', 'play')
 }
 OnPlayRing:void{
 	CALLSAORI('mciaudior', 'stop')
-	CALLSAORI('mciaudior', 'load', 'SOUND_PATH\Ring.mp3')
-	CALLSAORI('mciaudior', 'play')
-}
-OnPlayRm:void{
-	CALLSAORI('mciaudior', 'stop')
-	CALLSAORI('mciaudior', 'load', 'SOUND_PATH\tinkle.wav')
+	CALLSAORI('mciaudior', 'load', 'UN_SAORI_path\SOUND_PATH\Ring.mp3')
 	CALLSAORI('mciaudior', 'play')
 }
 对话框报时{
