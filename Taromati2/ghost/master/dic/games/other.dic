@@ -1011,13 +1011,13 @@ SumUp{
 	_v=NULL
 	_s=NULL
 	for _i=0;_i<_n-1;_i++{
-		_ss=_ss+_s
-		_s=_s+_v
-		_v=_v+_a
-		_a=_a+_aa
-		_aa=_aa+_aaa
-		_aaa=_aaa+_aaaa
-		_aaaa=_aaaa+_aaaaa
+		_ss+=_s
+		_s+=_v
+		_v+=_a
+		_a+=_aa
+		_aa+=_aaa
+		_aaa+=_aaaa
+		_aaaa+=_aaaaa
 	}
 	if _n==0
 		_ss=0

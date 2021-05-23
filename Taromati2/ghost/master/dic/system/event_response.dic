@@ -527,10 +527,10 @@ OnBIFFBegin{
 }
 OnBIFFComplete{
 	if reference0 == 0{
-		'\0\s[20]嗯…\w9\w9\s[0]\n什么都没有的样子。\n需要打开默认邮箱吗？\n\q[◇打开,OPENMAILER]\n\q[◇算了,CANCEL]'
+		'\0\s[20]嗯…\w9\w9\s[0]\n什么都没有的样子。\n需要打开默认邮箱吗？\n\q[◇打开,OPENMAILER]\n\q[◇算了,Cancel]'
 	}
 	else{
-		"\0\s[0]来了%(reference0)通邮件喔。\n\n[half]\_q邮件的总容量：%(reference1) Bytes\_q\n需要打开默认邮箱吗？\n\q[◇打开,OPENMAILER]\n\q[◇算了,CANCEL]"
+		"\0\s[0]来了%(reference0)通邮件喔。\n\n[half]\_q邮件的总容量：%(reference1) Bytes\_q\n需要打开默认邮箱吗？\n\q[◇打开,OPENMAILER]\n\q[◇算了,Cancel]"
 	}
 }
 OnBIFFFailure{
@@ -851,9 +851,14 @@ OnNarCreating{
 //---- NAR作成完了 ----------------------------------------------------------------------
 OnNarCreated{
 	if mode == '1'
-		"\1\s[%(specialmode != 'mealtime')10]完成了。\n"
+		"\1\s[%(specialmode != 'mealtime')10]"
 	else
-		'\0\s[0]好的。\w9\w9\n完成了。'
+		'\0\s[0]嗯。\n\w9'
+	--
+	"「%(reference0)」的nar档\n/
+	\_q「%(reference1)」\_q"
+	--
+	'\w9\n完成了。'
 }
 //**** 时间同步处理 *******************************************************************************
 //**** みか (http://homepage2.nifty.com/ko-ki/) の辞书を参考にしました。感谢＞こーき氏
@@ -1030,17 +1035,29 @@ ClearBatteryVar{
 	ERASEVAR('BatteryLevel')
 }
 OnBatteryLow{
-	if reference0 < 80
-		'\0\s[6]\w9被系统提示了低电量\w9\n/
-		\1\s[11]不要紧么？\w9\n/
-		\0\s[3]如果需要的话，让我们先退场也没问题的'
+	if reference0 < 80{
+		if mode == '1'
+			"\1\s[%(specialmode != 'mealtime')10]%(username)，\w9电池快要没有电了。\w9不想丢东西就快点保存吧。"
+		else
+			'\0\s[6]\w9被系统提示了低电量\w9\n/
+			\1\s[11]不要紧么？\w9\n/
+			\0\s[3]如果需要的话，让我们先退场也没问题的'
+	}
+}
+OnBatteryCritical{
+	if lowpowerautoshutoff{
+		if mode == '1'
+			"\1\s[%(specialmode != 'mealtime')11]...\n我就先撤退了。\w9\w9\-"
+		else
+			'\0\s[3]很抱歉\w9，为了更长时间的续航\s[8]\w9，我们就先撤退了\n/
+			\1\s[10]再见啦\w9\w9\-'
+	}
 }
 OnBatteryNotify{
 	if !ISVAR('lowpowerautoshutoff')
 		lowpowerautoshutoff=1
 	if reference0 != -1 && reference0 < 10 && lowpowerautoshutoff{
-		'\0\s[3]很抱歉\w9，为了更长时间的续航\s[8]\w9，我们就先撤退了\n/
-		\1\s[10]再见啦\w9\w9\-'
+		OnBatteryCritical
 		return
 	}
 	if !ISVAR('BatteryState')
@@ -1116,3 +1133,15 @@ OnSysResume{
 	--
 	"\0\s[0]%(username)\w9\w9、欢迎回来。\n\x"
 }
+//资源不足
+OnSysResourceLow
+{
+	'\0\s[0]系统资源不足。'
+	'\0\s[8]那个……系统资源不足。'
+}
+//网卡
+OnNetworkHeavy
+{
+	'\0\s[3]似乎……\w9信号不太好呢……'
+}
+

@@ -405,10 +405,10 @@ OnPoemAnswer{//OnPoemAnswer('床前明月光')=='疑是地上霜'
 	FCLOSE(_file)
 	if ARRAYSIZE(_found)>1{
 		_found=ANY(_found)
-		_found=_found+'\n'
+		_found+='\n'
 	}
 	elseif ARRAYSIZE(_found)==1
-		_found=_found+'\n'
+		_found+='\n'
 	else
 		_found=''
 	_found

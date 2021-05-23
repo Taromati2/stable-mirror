@@ -109,7 +109,7 @@ OnTeachAdd{
 	_t=temp02+temp03
 	_txt=REPLACE(_t,'CHR(124)','|')
 	AITalkAdd(_file,_txt)
-	kikkamood=TOINT(kikkamood)+20
+	kikkamood+=20
 	'已经记录,记录文件在PSEUDO_AI_PATH\\userteach.ai中。\n[150]\![*]\q[继续添加,OnNewTeachAdd]\n\![*]\q[返回对话,OnBackToTalk]'
 }
 OnAISave:void{
@@ -1522,7 +1522,7 @@ AILoad.AnswerTxt{
 					_object=_answer[1,_subject]
 					_object=_object[1,'是']
 					_object=_object[0,'的']
-					_object=_object+'是'
+					_object+='是'
 					_state=_subject+'是'+inference
 					if _state _in_ _answer{
 						_txt=_answer

@@ -424,7 +424,7 @@ daysfromfirstboot{
 				_days+=_mon[_fm-1]
 				_fm++
 			}
-			_days=_days+day-_fd
+			_days+=day-_fd
 		}
 		elseif _fy==TOINT(firstboottime[0]) {
 			while _fm<=12 {
@@ -457,7 +457,7 @@ daysfromdate{
 				_days+=_mon[_fm-1]
 				_fm++
 			}
-			_days=_days+day-_fd
+			_days+=day-_fd
 		}
 		elseif _fy==year-1 {
 			while _fm<=12 {
@@ -556,7 +556,7 @@ daysbetweendate{
 				_days+=_mon[_fm-1]
 				_fm++
 			}
-			_days=_days+_FD-_fd
+			_days+=_FD-_fd
 		}
 		elseif _fy==_FY-1 {
 			while _fm<=12 {

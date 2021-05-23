@@ -1028,6 +1028,7 @@ OnTrashClean{
 		}
 	}
 	elseif _gomicheck > 0{
+		trashnum=_gomicheck
 		'\0\s[0]任务接受。\w9\s[-1]\b[-1]\w9\w9\w9'
 		'\0\s[0]好的。\n那么、请稍微等一下。\w9\s[-1]\b[-1]\w9\w9\w9'
 		--
@@ -1043,6 +1044,8 @@ OnTrashClean{
 OnTrashClean_s{
 	_gomisute = CALLSAORI('gomi', '-ef')
 	if _gomisute != 0{
+		kikkamood+=LOG(腹黑度*trashnum,2.718281)*kikkamood
+		kikkamood=MAX(MIN(kikkamoodmax,kikkamood),1)
 		if 萌度>200||腹黑度>200||萌度>腹黑度
 			'\w9\w9\0\s[22]嗯，久等了，所有的敌人已清理完毕'
 		else{
@@ -1059,6 +1062,8 @@ OnTrashClean_s{
 		'\w9\w9\0\s[3]抱歉、失败了。'
 		'\w9\w9\0\s[3]意料外的状况发生。\w9\n抱歉。'
 	}
+	--
+	ERASEVAR('trashnum')
 }
 //更换壁纸
 //----------------------------------------------------------------

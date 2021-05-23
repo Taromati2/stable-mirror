@@ -187,7 +187,7 @@ OnTarroAnswer{
 		_num++
 	_txt=REPLACE(_txt,'\x','')
 	_txt=REPLACE(_txt,'\e','')
-	_txt=_txt+'\x'
+	_txt+='\x'
 	_txt+=OnTarroTest(_id,_num)
 	_txt
 }

@@ -1865,7 +1865,7 @@ GetLevel{
 }
 OnCircleRecoverConfirm{
 	if circle0>0{
-		exptotal0=exptotal0+expcircletotal0+expcircle0
+		exptotal0+=expcircletotal0+expcircle0
 		lvl0=GetLevel(exptotal0)
 		expcircletotal0=0
 		exptotaltemp0=0
@@ -1878,7 +1878,7 @@ OnCircleRecoverConfirm{
 		'橘花转生等级为0，不能恢复\x'
 	--
 	if circle1>0{
-		exptotal1=exptotal1+expcircletotal1+expcircle1
+		exptotal1+=expcircletotal1+expcircle1
 		lvl1=GetLevel(exptotal1)
 		expcircletotal1=0
 		exptotaltemp1=0

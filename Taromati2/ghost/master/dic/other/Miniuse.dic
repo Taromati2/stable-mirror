@@ -1140,7 +1140,7 @@ evaluate{//表达式求值主函数
 			if SUBSTR(_expression,_i,2)=='\.'{
 				_i+=2
 				while IsNumber(SUBSTR(_expression,_i,1)){
-					_operand=_operand+(STRSTR(hexnum,SUBSTR(_expression,_i,1),0)+0.0)/_weight
+					_operand+=(STRSTR(hexnum,SUBSTR(_expression,_i,1),0)+0.0)/_weight
 					_weight*=carry
 					_i++
 				}
@@ -1157,7 +1157,7 @@ evaluate{//表达式求值主函数
 			if SUBSTR(_expression,_i,2)=='\.'{
 				_i+=2
 				while IsNumber(SUBSTR(_expression,_i,1)){
-					_operand=_operand+(STRSTR(hexnum,SUBSTR(_expression,_i,1),0)+0.0)/_weight
+					_operand+=(STRSTR(hexnum,SUBSTR(_expression,_i,1),0)+0.0)/_weight
 					_weight*=carry
 					_i++
 				}
@@ -1177,23 +1177,23 @@ evaluate{//表达式求值主函数
 		}
 		elseif _optr_i==0{
 			_f=SUBSTR(_expression,_i,1)+SUBSTR(_expression,_i+1,1)+SUBSTR(_expression,_i+2,1)+SUBSTR(_expression,_i+3,1)
-			if _f=='sin('{_optr[_optr_i]='i';_optr_i++;_optr[_optr_i]='(';_optr_i++;_i=_i+4;}
-			elseif _f=='asin'{_optr[_optr_i]='s';_optr_i++;_optr[_optr_i]='(';_optr_i++;_i=_i+5;}
-			elseif _f=='cos('{_optr[_optr_i]='o';_optr_i++;_optr[_optr_i]='(';_optr_i++;_i=_i+4;}
-			elseif _f=='acos'{_optr[_optr_i]='c';_optr_i++;_optr[_optr_i]='(';_optr_i++;_i=_i+5;}
-			elseif _f=='tan('{_optr[_optr_i]='a';_optr_i++;_optr[_optr_i]='(';_optr_i++;_i=_i+4;}
-			elseif _f=='atan'{_optr[_optr_i]='t';_optr_i++;_optr[_optr_i]='(';_optr_i++;_i=_i+5;}
-			elseif _f=='cot('{_optr[_optr_i]='p';_optr_i++;_optr[_optr_i]='(';_optr_i++;_i=_i+4;}
-			elseif _f=='acot'{_optr[_optr_i]='d';_optr_i++;_optr[_optr_i]='(';_optr_i++;_i=_i+5;}
-			elseif _f=='sqr('{_optr[_optr_i]='q';_optr_i++;_optr[_optr_i]='(';_optr_i++;_i=_i+4;}
-			elseif _f=='sqrt'{_optr[_optr_i]='q';_optr_i++;_optr[_optr_i]='(';_optr_i++;_i=_i+5;}
-			elseif _f=='sqn('{_optr[_optr_i]='n';_optr_i++;_optr[_optr_i]='(';_optr_i++;_i=_i+4;}
-			elseif _f=='sqnt'{_optr[_optr_i]='n';_optr_i++;_optr[_optr_i]='(';_optr_i++;_i=_i+5;}
-			elseif _f=='abs('{_optr[_optr_i]='b';_optr_i++;_optr[_optr_i]='(';_optr_i++;_i=_i+4;}
-			elseif _f=='log('{_optr[_optr_i]='l';_optr_i++;_optr[_optr_i]='(';_optr_i++;_i=_i+4;}
-			elseif _f=='∑ab('{_optr[_optr_i]='g';_optr_i++;_optr[_optr_i]='(';_optr_i++;_i=_i+4;}
-			elseif _f=='Anm('{_optr[_optr_i]='r';_optr_i++;_optr[_optr_i]='(';_optr_i++;_i=_i+4;}
-			elseif _f=='Cnm('{_optr[_optr_i]='m';_optr_i++;_optr[_optr_i]='(';_optr_i++;_i=_i+4;}
+			if _f=='sin('{_optr[_optr_i]='i';_optr_i++;_optr[_optr_i]='(';_optr_i++;_i+=4;}
+			elseif _f=='asin'{_optr[_optr_i]='s';_optr_i++;_optr[_optr_i]='(';_optr_i++;_i+=5;}
+			elseif _f=='cos('{_optr[_optr_i]='o';_optr_i++;_optr[_optr_i]='(';_optr_i++;_i+=4;}
+			elseif _f=='acos'{_optr[_optr_i]='c';_optr_i++;_optr[_optr_i]='(';_optr_i++;_i+=5;}
+			elseif _f=='tan('{_optr[_optr_i]='a';_optr_i++;_optr[_optr_i]='(';_optr_i++;_i+=4;}
+			elseif _f=='atan'{_optr[_optr_i]='t';_optr_i++;_optr[_optr_i]='(';_optr_i++;_i+=5;}
+			elseif _f=='cot('{_optr[_optr_i]='p';_optr_i++;_optr[_optr_i]='(';_optr_i++;_i+=4;}
+			elseif _f=='acot'{_optr[_optr_i]='d';_optr_i++;_optr[_optr_i]='(';_optr_i++;_i+=5;}
+			elseif _f=='sqr('{_optr[_optr_i]='q';_optr_i++;_optr[_optr_i]='(';_optr_i++;_i+=4;}
+			elseif _f=='sqrt'{_optr[_optr_i]='q';_optr_i++;_optr[_optr_i]='(';_optr_i++;_i+=5;}
+			elseif _f=='sqn('{_optr[_optr_i]='n';_optr_i++;_optr[_optr_i]='(';_optr_i++;_i+=4;}
+			elseif _f=='sqnt'{_optr[_optr_i]='n';_optr_i++;_optr[_optr_i]='(';_optr_i++;_i+=5;}
+			elseif _f=='abs('{_optr[_optr_i]='b';_optr_i++;_optr[_optr_i]='(';_optr_i++;_i+=4;}
+			elseif _f=='log('{_optr[_optr_i]='l';_optr_i++;_optr[_optr_i]='(';_optr_i++;_i+=4;}
+			elseif _f=='∑ab('{_optr[_optr_i]='g';_optr_i++;_optr[_optr_i]='(';_optr_i++;_i+=4;}
+			elseif _f=='Anm('{_optr[_optr_i]='r';_optr_i++;_optr[_optr_i]='(';_optr_i++;_i+=4;}
+			elseif _f=='Cnm('{_optr[_optr_i]='m';_optr_i++;_optr[_optr_i]='(';_optr_i++;_i+=4;}
 			else{
 				_optr[_optr_i]=SUBSTR(_expression,_i,1)
 				_optr_=_optr
@@ -1418,7 +1418,7 @@ DEG{//度分秒转换小数点
 			if SUBSTR(_expression,_i,2)=='\.'{
 				_i+=2
 				while IsNumber(SUBSTR(_expression,_i,1)){
-					_operand=_operand+(STRSTR(hexnum,SUBSTR(_expression,_i,1),0)+0.0)/_weight
+					_operand+=(STRSTR(hexnum,SUBSTR(_expression,_i,1),0)+0.0)/_weight
 					_weight*=carry
 					_i++
 				}
@@ -1835,7 +1835,7 @@ OnReNameGet{
 			_str=_replace
 		}
 	}
-	_replace=_replace+_ext
+	_replace+=_ext
 	_replace
 }
 TXTREPLACE{
@@ -1869,7 +1869,7 @@ POSREPLACE{
 	_l=STRLEN(_str)
 	if _l-_start-len+1>0{
 		_temp=SUBSTR(_str,0,_start-1)
-		_temp=_temp+_txt+SUBSTR(_str,_start+_len-1,_l)
+		_temp+=_txt+SUBSTR(_str,_start+_len-1,_l)
 	}
 	else
 		_temp=_str

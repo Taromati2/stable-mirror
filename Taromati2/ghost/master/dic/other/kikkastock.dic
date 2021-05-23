@@ -48,7 +48,7 @@ OnStockSearch{
 		for  _i=0;_i<_n;_i++{
 			_股票代码=SUBSTR(_name[_i],STRLEN(_name[_i])-8,8)
 			if _股票代码!=''{
-				stocklist=stocklist+','+_股票代码
+				stocklist+=','+_股票代码
 			}
 		}
 		//_n=ARRAYSIZE(stocklist)

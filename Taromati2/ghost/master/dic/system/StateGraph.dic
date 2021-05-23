@@ -31,7 +31,7 @@ On_GetAIStateEX{
 			%(kikkawiz),/
 			%(kikkachm),/
 			%(kikkastm),/
-			%(TOINT(kikkamood))/
+			%(kikkamood)/
 			%(CHR(1))/
 			身手,/
 			学识,/

@@ -1394,7 +1394,7 @@ ReplyToUser{
 }
 //---- user与人格对话 ----------------------------------------------------------------------
 TalkToUser{
-	kikkamood=TOINT(kikkamood)+5
+	kikkamood+=5
 	if KikkaTalkmode==1
 		KikkaTalkToUser
 	else {

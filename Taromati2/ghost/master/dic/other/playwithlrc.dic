@@ -1163,7 +1163,7 @@ OnSoundStop{
 	}
 	elseif playingmusic && reference0 == musicfile[2]{
 		_txt = '\0\C'
-		kikkamood=TOINT(kikkamood)+10
+		kikkamood+=10
 		if ISVAR('musicrandlist')==0&&musicplayerrange || ISVAR('musiclist')==0&&musicplayerrange==0
 			DialogMusicOpenList
 		SETDELIM(musiclist,'*')
