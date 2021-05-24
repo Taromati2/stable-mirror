@@ -55,6 +55,14 @@ KikkaVar{
 	popKikkaItem
 	popUseritem
 }
+KikkaVar.ToMax{
+	kikkamood = kikkamoodmax
+	KikkaVar
+	kikkapow = kikkapowmax
+	kikkawiz = kikkawizmax
+	kikkachm = kikkachmmax
+	kikkastm = kikkastmmax
+}
 popKikkaItem{
 	_array=IARRAY
 	if ARRAYSIZE(KikkaIteminfo)>=16{
@@ -91,7 +99,7 @@ KikkaMenu{
 		KikkaStatus
 		--
 		if SHIORI_FW.DebugMode
-			'\_l[176,341]\q[◇Reset,OnCalculateVar,OnKikkaReset]'
+			'\_l[176,341]\q[◇Reset,OnCalculateVar,OnKikkaReset]\_l[230]\q[◇ToMax,OnCalculateVar,KikkaVar.ToMax]'
 	}
 	elseif showkikka==2 {
 		'\c\![set,choicetimeout,0]\_l[0,0]' + ColorText('\__q[OnKikkaMenu,0]\f[cursorstyle,none]\f[cursorfontcolor,65,203,214]─────────橘花养成系统↓────────\f[cursorstyle,default]\f[cursorfontcolor,default]\__q\n[140]','color=160,160,200')
@@ -100,7 +108,7 @@ KikkaMenu{
 		KikkaStatusMain
 		--
 		if SHIORI_FW.DebugMode
-			'\_l[220]\q[◇Reset,OnCalculateVar,OnKikkaReset]'
+			'\_l[220]\q[◇Reset,OnCalculateVar,OnKikkaReset]\_l[220,323]\q[◇ToMax,OnCalculateVar,KikkaVar.ToMax]'
 	}
 	else {
 		'\_l[0,342]' + ColorText('\__q[OnKikkaMenu,1]\f[cursorstyle,none]\f[cursorfontcolor,65,203,214]─────────橘花养成系统↑────────\f[cursorstyle,default]\f[cursorfontcolor,default]\__q\n','color=160,160,200')

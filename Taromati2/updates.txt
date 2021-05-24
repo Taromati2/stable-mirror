@@ -366,7 +366,7 @@ file,ghost/master/dic/games/RetroSnaker.dic310c54c3ac3dc73a1c80a0041032c6dbsiz
 file,ghost/master/dic/games/rpggame.dic5090ed395ab515d7a817da3c3a528ad3size=137145
 file,ghost/master/dic/games/tetrisgame.dicee806c8185af52264c8e604aa6c07a51size=10935
 file,ghost/master/dic/games/uno.dice3e59893024141ed0890a4d3ba2bbfc2size=26147
-file,ghost/master/dic/nurturance/nurturance.dic3ab7d1426bee538f48477bb3b9faa550size=24649
+file,ghost/master/dic/nurturance/nurturance.dicbf719ca3b188a627515c0aa67b49f926size=24903
 file,ghost/master/dic/other/AccessInternet.dic9475c1683b5af352c872c82d5faa3a57size=1408
 file,ghost/master/dic/other/classtable.dica0abe2cd3fe92cc7fbea26a7a5b4dbd6size=7029
 file,ghost/master/dic/other/dictionary.dicf6765f4587d659992a59194032ed83ebsize=3670
