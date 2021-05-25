@@ -51,13 +51,6 @@ On_otherghostname{
 	}
 	ghostexcount = ARRAYSIZE(ghostexlist)
 }
-//SHIORI 関连情报
-On_version{
-	GETSETTING(AYAINFO_VERSION)
-}
-On_name{
-	'AYA'
-}
 //Owned SSTP 用 uniqueid 取得
 On_uniqueid{
 	uniqueid = reference0
@@ -96,18 +89,6 @@ On_sakura.portalsites{
 	"
 }
 //右鍵選單項目顯示/不顯示
-On_portalrootbutton.visible{
-	//門戶網站
-	1
-}
-On_recommendrootbutton.visible{
-	//使僕側的推薦網址
-	1
-}
-On_updatebutton.visible{
-	//在線更新
-	1
-}
 On_vanishbutton.visible{
 	//消滅表示
 	vanishbutton.visible
