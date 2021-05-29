@@ -243,17 +243,19 @@ Select.AlwaysOnTop{
 	TopModeChanged
 }
 Select.Trayicon{
-	topmode=2
+	topmode+=2
 	TopModeChanged
 	//反馈见OnWindowStateMinimize
 }
 TopModeChanged{
+	if topmode<0
+		topmode=0
 	case topmode{
 		when 0
 			'\![set,windowstate,!stayontop]'
 		when 1
 			'\![set,windowstate,stayontop]'
-		when 2
+		others
 			'\![set,windowstate,minimize]'
 	}
 }

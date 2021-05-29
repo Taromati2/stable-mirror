@@ -1020,7 +1020,7 @@ OnEventWrite{
 		}
 	}
 	FCLOSE(_file)
-	_t=FOPEN(_file,'w')
+	void FOPEN(_file,'w')
 	if _mode==1
 		_temp+=_eventname[_i]+'	'+_year+'	'+_m+'	'+_d+'	'+hour+'	'+minute+'	'+0+'	'+_year+'	'+_m+'	'+_d+'	'+TOINT(hour+1)+'	'+minute+'|'
 	elseif _mode==3{
@@ -1092,7 +1092,7 @@ OnEventWrite{
 	}
 	foreach _temp;_j{
 		if _j!=''
-			_t=FWRITE(_file,_j)
+			void FWRITE(_file,_j)
 	}
 	FCLOSE(_file)
 	FCHARSET.default
@@ -1165,7 +1165,7 @@ On_m_Calendar {
 //9(农历节日),10(公历节日)
 //11(输入日期的节气),12(下一个节气),13(下一个节气的公历月),14(下一个节气的公历日)
 //15(农历数型月),16(农历数型日),17(星期)
-Lunartime{
+Lunartime:void{
 	_y=year
 	_m=month
 	_d=day

@@ -151,3 +151,17 @@ MAKELINK{
 	else
 		MAKEFILELINK(_argv)
 }
+//git
+GHOST.INgit{
+	_dir='.'
+	while FILEEXIST(_dir){
+		if FILEEXIST(_dir+'/.git/config'){
+			1
+			return
+		}
+		else{
+			_dir+='/..'
+		}
+	}
+	0
+}

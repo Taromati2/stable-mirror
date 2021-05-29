@@ -2218,22 +2218,22 @@ OnLinkMapSave{//地图保存
 	_txt=''
 	FCHARSET(1)
 	if FOPEN(_mapfile,'r')==0{
-		_t = FOPEN(_mapfile,'w')
-		_t = FWRITE(_mapfile,'自建连连看地图文本')
+		void FOPEN(_mapfile,'w')
+		void FWRITE(_mapfile,'自建连连看地图文本')
 		FCLOSE(_mapfile)
 	}
 	FCLOSE(_mapfile)
 	if _save=='saveas'{
-		_t = FOPEN(_mapfile,'a')
-		_t=FWRITE(_mapfile,'')
+		void FOPEN(_mapfile,'a')
+		void FWRITE(_mapfile,'')
 		_buff="%(_mode),%(_num),%(m_nCol-2),%(m_nRow-2),"
-		_t = FWRITE(_mapfile,_buff)
+		void FWRITE(_mapfile,_buff)
 		for  _i=0; _i<m_nRow-2; _i++{
 			_buff=''
 			for _j=0; _j<m_nCol-2; _j++{
 				_buff+=TOINT(m_MapSeed.Seed[_i*(m_nCol-2)+_j])+','
 			}
-			_t = FWRITE(_mapfile,_buff)
+			void FWRITE(_mapfile,_buff)
 		}
 		FCLOSE(_mapfile)
 		'成功另存为新地图\x'
@@ -2241,12 +2241,12 @@ OnLinkMapSave{//地图保存
 		LinkMapEditorShow
 	}
 	elseif _save=='save'{
-		_t = FOPEN(_mapfile2,'w')
+		void FOPEN(_mapfile2,'w')
 		FCLOSE(_mapfile2)
-		_t=FOPEN(_mapfile,'r')
+		void FOPEN(_mapfile,'r')
 		_buff = FREAD(_mapfile)
 		FCLOSE(_mapfile)
-		_t = FOPEN(_mapfile2,'a')
+		void FOPEN(_mapfile2,'a')
 		FWRITE(_mapfile2,_buff)
 		for _k=0;_k<4;_k++{
 			if TOINT(reference1)==_k{
@@ -2257,28 +2257,28 @@ OnLinkMapSave{//地图保存
 						while _buff != -1 && (_buff[0] != _mode || _buff[1] != ''+_j){
 							_buff = FREAD(_mapfile)
 						}
-						_t = FWRITE(_mapfile2,_buff)
+						void FWRITE(_mapfile2,_buff)
 						if _buff!=-1{
 							for _buff = FREAD(_mapfile);_buff != -1&& _buff !='';_buff = FREAD(_mapfile){
-								_t = FWRITE(_mapfile2,_buff)
+								void FWRITE(_mapfile2,_buff)
 							}
 						}
-						_t=FWRITE(_mapfile2,'')
+						void FWRITE(_mapfile2,'')
 					}
 					FCLOSE(_mapfile)
 				}
 				if _buff=='off'
-					_t=FWRITE(_mapfile2,'')
+					void FWRITE(_mapfile2,'')
 				_buff="%(_mode),%(_num),%(m_nCol-2),%(m_nRow-2),"
-				_t = FWRITE(_mapfile2,_buff)
+				void FWRITE(_mapfile2,_buff)
 				for  _i=0; _i<m_nRow-2; _i++{
 					_buff=''
 					for _j=0; _j<m_nCol-2; _j++{
 						_buff+=TOINT(m_MapSeed.Seed[_i*(m_nCol-2)+_j])+','
 					}
-					_t = FWRITE(_mapfile2,_buff)
+					void FWRITE(_mapfile2,_buff)
 				}
-				_t=FWRITE(_mapfile2,'')
+				void FWRITE(_mapfile2,'')
 				_num =TOINT(reference2+1)
 				for _j=_num;_j<=TOINT(LinkWndMapNum[4+_k]);_j++{
 					if FOPEN(_mapfile,'r'){
@@ -2286,13 +2286,13 @@ OnLinkMapSave{//地图保存
 						while _buff != -1 && (_buff[0] != _mode || _buff[1] != ''+_j){
 							_buff = FREAD(_mapfile)
 						}
-						_t = FWRITE(_mapfile2,_buff)
+						void FWRITE(_mapfile2,_buff)
 						if _buff!=-1{
 							for _buff = FREAD(_mapfile);_buff != -1&& _buff !='';_buff = FREAD(_mapfile){
-								_t = FWRITE(_mapfile2,_buff)
+								void FWRITE(_mapfile2,_buff)
 							}
 						}
-						_t=FWRITE(_mapfile2,'')
+						void FWRITE(_mapfile2,'')
 					}
 					FCLOSE(_mapfile)
 				}
@@ -2304,13 +2304,13 @@ OnLinkMapSave{//地图保存
 						while _buff != -1 && (_buff[0] != '#'+_k || _buff[1] != ''+_j){
 							_buff = FREAD(_mapfile)
 						}
-						_t = FWRITE(_mapfile2,_buff)
+						void FWRITE(_mapfile2,_buff)
 						if _buff!=-1{
 							for _buff = FREAD(_mapfile);_buff != -1&& _buff !='';;_buff = FREAD(_mapfile){
-								_t = FWRITE(_mapfile2,_buff)
+								void FWRITE(_mapfile2,_buff)
 							}
 						}
-						_t=FWRITE(_mapfile2,'')
+						void FWRITE(_mapfile2,'')
 					}
 					FCLOSE(_mapfile)
 				}
@@ -2323,12 +2323,12 @@ OnLinkMapSave{//地图保存
 		LinkMapEditorShow
 	}
 	elseif _save=='del'{
-		_t = FOPEN(_mapfile2,'w')
+		void FOPEN(_mapfile2,'w')
 		FCLOSE(_mapfile2)
-		_t=FOPEN(_mapfile,'r')
+		void FOPEN(_mapfile,'r')
 		_buff = FREAD(_mapfile)
 		FCLOSE(_mapfile)
-		_t = FOPEN(_mapfile2,'a')
+		void FOPEN(_mapfile2,'a')
 		FWRITE(_mapfile2,_buff)
 		for _k=0;_k<4;_k++{
 			if TOINT(reference1)==_k{
@@ -2338,13 +2338,13 @@ OnLinkMapSave{//地图保存
 						while _buff != -1 && (_buff[0] != '#'+_k || _buff[1] != ''+_j){
 							_buff = FREAD(_mapfile)
 						}
-						_t = FWRITE(_mapfile2,_buff)
+						void FWRITE(_mapfile2,_buff)
 						if _buff!=-1{
 							for _buff = FREAD(_mapfile);_buff != -1&& _buff !='';;_buff = FREAD(_mapfile){
-								_t = FWRITE(_mapfile2,_buff)
+								void FWRITE(_mapfile2,_buff)
 							}
 						}
-						_t=FWRITE(_mapfile2,'')
+						void FWRITE(_mapfile2,'')
 					}
 					FCLOSE(_mapfile)
 				}
@@ -2356,20 +2356,20 @@ OnLinkMapSave{//地图保存
 						while _buff != -1 && (_buff[0] != '#'+_k || _buff[1] != ''+_j){
 							_buff = FREAD(_mapfile)
 						}
-						_t = FWRITE(_mapfile2,_buff)
+						void FWRITE(_mapfile2,_buff)
 						if _buff!=-1{
 							for _buff = FREAD(_mapfile);_buff != -1&& _buff !='';;_buff = FREAD(_mapfile){
-								_t = FWRITE(_mapfile2,_buff)
+								void FWRITE(_mapfile2,_buff)
 							}
 						}
-						_t=FWRITE(_mapfile2,'')
+						void FWRITE(_mapfile2,'')
 					}
 					FCLOSE(_mapfile)
 				}
 			}
 		}
 		FCLOSE(_mapfile2)
-		_t=FCOPY(_mapfile2,'PROFILE_PATH')
+		void FCOPY(_mapfile2,'PROFILE_PATH')
 		OnLinkWndOption
 	}
 	FCHARSET.default

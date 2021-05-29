@@ -953,7 +953,7 @@ TransformTest{//自定义项
 	_tfile=SPLITPATH(_file)[2]+'_new.txt'
 	if FOPEN(_file,'r'){
 		FCHARSET(1)
-		_t=FOPEN(_tfile,'w')
+		void FOPEN(_tfile,'w')
 		while _buff!=-1{
 			while _str !_in_ _buff &&_buff!=-1{
 				_buff=FREAD(_file)
@@ -978,7 +978,7 @@ TransformTest{//自定义项
 					_temp=REPLACE(_temp,'（）',_tanswer)
 					_txt+=_temp
 					if _id==TOINT(_answer[_id][1])&&_tr!=''{
-						_t=FWRITE(_tfile,_temp)
+						void FWRITE(_tfile,_temp)
 						_num++
 					}
 					_buff=FREAD(_file)
@@ -994,7 +994,7 @@ TransformTest{//自定义项
 					_tr=_answer[_id][0]
 					_tr=REPLACE(_tr,' ' ,'')
 					if _id==TOINT(_answer[_id][1])//&&_tr!=''
-						_t=FWRITE(_tfile,_buff)
+						void FWRITE(_tfile,_buff)
 					_buff=FREAD(_file)
 				}
 			}

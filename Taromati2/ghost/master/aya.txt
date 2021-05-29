@@ -13,6 +13,7 @@ charset.extension, default
 dic, dic\aya\path_def.dic		//文 ver.3 形式辞書設定辞書
 dic, dic\aya\config.dic			//文 ver.3 形式辞書設定辞書
 dic, dic\aya\file.dic			//by steve02081504
+dic, dic\aya\array.dic			//by steve02081504
 dic, dic\aya\shiori.dic			//文 ver.3 形式辞書制御辞書
 dic, dic\aya\compatible.dic		//AYAに移行用
 dic, dic\aya\sysex.dic			//shiori.dicから分離した
@@ -109,6 +110,7 @@ dic, dic\other\miniuse.dic			//便利功能
 //开发
 dic, dic\dev\dicforma.dic			//辞书优化
 dic, dic\dev\md5_linker.dic			//文件链接
+dic, dic\dev\ayccoder.ayc			//辞书加/解密
 
 
 //---- 実行ログ ------------------------------------

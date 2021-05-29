@@ -82,12 +82,14 @@ md5linker.varinit:void{
 	md5linker.file_num=0
 	md5linker.linked_num=0
 }
-md5linker.clearvar{
+md5linker.clearvar:void{
 	ERASEALLVARBEGINAS('md5linker')
 }
 md5linker.main{//md5linker.main('..\..\shell')
 	md5linker.varinit
-	md5linker.mapper(_argv[0])
+	foreach _t;_argv{
+		md5linker.mapper(_t)
+	}
 	md5linker.linked_num
 	--
 	md5linker.clearvar

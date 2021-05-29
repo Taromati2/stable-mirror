@@ -347,11 +347,11 @@ OnKikkaStockList.Read{
 	FCHARSET.default
 	_txt
 }
-OnKikkaStockList.Write{
+OnKikkaStockList.Write:void{
 	_file='VAR_PATH\kikkastock.lst'
 	_txt=_argv[0]
 	FCHARSET(1)
-	_t= FOPEN(_file,'w')
+	FOPEN(_file,'w')
 	SETDELIM(_txt,'*')
 	FWRITE(_file,_buff)
 	foreach _txt;_buff{

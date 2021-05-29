@@ -677,7 +677,7 @@ OnListNameMove{
 		_i=reference1
 		_t=musiclistname[_i][0,'|']
 		_file=_m3u+_t+'.m3u8'
-		_t=FDEL(_file)
+		void FDEL(_file)
 	}
 	DefaultListRename
 	OnMusicPlayerList
@@ -689,7 +689,7 @@ DefaultListName{
 	_temp=FENUM(_m3u)
 	_temp=ARRAYSIZE(_temp)
 	musiclistname=IARRAY
-	_t=MKDIR(_m3u)
+	void MKDIR(_m3u)
 	_j=0
 	for _i=0;_i<_temp;_i++{
 		_file=_m3u+_i+'.m3u8'
@@ -701,7 +701,7 @@ DefaultListName{
 				}
 			}
 		}
-		_t=FCLOSE(_file)
+		void FCLOSE(_file)
 	}
 	DefaultListRename
 	_temp=ARRAYSIZE(musiclistname)
@@ -719,19 +719,19 @@ DefaultListName{
 }
 //默认歌曲列表重命名
 //---------------------------------------------------
-DefaultListRename{
+DefaultListRename:void{
 	_m3u = M3U8PATH
 	_temp=ARRAYSIZE(musiclistname)
 	for _i=0;_i<_temp;_i++{
 		_name=musiclistname[_i][0,'|']
 		_file=_m3u+_name+'.m3u8'
 		_replace=_m3u+_i+' .m3u8'
-		_t=FRENAME(_file,_replace)
+		FRENAME(_file,_replace)
 	}
 	for _i=0;_i<_temp;_i++{
 		_file=_m3u+_i+' .m3u8'
 		_replace=_m3u+_i+'.m3u8'
-		_t=FRENAME(_file,_replace)
+		FRENAME(_file,_replace)
 	}
 }
 //读取歌曲列表
@@ -771,16 +771,16 @@ OnMusicListCreat{
 	_file=_m3u+_t+'.m3u8'
 	musiclistfile[0]=_file
 	FCHARSET(1)
-	_t = FOPEN(_file,'w')
+	void FOPEN(_file,'w')
 	_buff='#TITLE:'+musiclistfile[2]
-	_t = FWRITE(_file,_buff)
+	void FWRITE(_file,_buff)
 	FCLOSE(_file)
 	FCHARSET.default
 	OnMusicPlayerList
 }
 //歌曲列表重命名
 //---------------------------------------------------
-MusicListReName{
+MusicListReName:void{
 	_file=_argv[0]
 	_replace=_argv[1]
 	_musiclist=IARRAY
@@ -796,12 +796,12 @@ MusicListReName{
 		}
 	}
 	FCLOSE(_file)
-	_t = FOPEN(_file,'w')
+	FOPEN(_file,'w')
 	_buff='#TITLE:'+_replace
-	_t = FWRITE(_file,_buff)
-	_t = FWRITE(_file,'#EXTM3U')
+	FWRITE(_file,_buff)
+	FWRITE(_file,'#EXTM3U')
 	foreach _musiclist; _i {
-		_t = FWRITE(_file,_i)
+		FWRITE(_file,_i)
 	}
 	FCLOSE(_file)
 	FCHARSET.default
@@ -908,7 +908,7 @@ DialogMusicOpenList{
 }
 //保存列表操作
 //---------------------------------------------------
-DialogMusicSaveList{
+DialogMusicSaveList:void{
 	_m3u = M3UPATH
 	if _argc > 0 &&_argv[0]!=-1{
 		_m3u = _argv[0]
@@ -921,19 +921,19 @@ DialogMusicSaveList{
 		elseif _m3uext == '.m3u8' {
 			FCHARSET(1)
 		}
-		_t = FOPEN(_m3u,'w')
+		FOPEN(_m3u,'w')
 		if _argv[1]==1{
 			_buff='#TITLE:'+musiclistfile[2]
-			_t = FWRITE(_m3u,_buff)
+			FWRITE(_m3u,_buff)
 		}
-		_t = FWRITE(_m3u,'#EXTM3U')
+		FWRITE(_m3u,'#EXTM3U')
 		_musiclist=musiclist
 		if _argc==0&& (musicplaymode == 4||musicplayerrange){
 			_musiclist=musicrandlist
 		}
 		SETDELIM(_musiclist,'*')
 		foreach _musiclist; _i {
-			_t = FWRITE(_m3u,_i)
+			FWRITE(_m3u,_i)
 		}
 		FCLOSE(_m3u)
 		FCHARSET.default
@@ -1496,17 +1496,28 @@ OnFileDrop{
 			when '.scdat'{
 				OnShortCutMenuAdd(reference0)
 			}
-			when '.dic'{
+			when '.dic','.ayc'{
 				if SHIORI_FW.DebugMode{
-					dicforma.file_drop = reference0
+					temp = reference0
 					if mode=='0'
 						'\0\s[0]要怎么做？'
-					else
+					else{
 						'\1怎么做？'
+						--
+						if _fileext == '.dic'
+							'\b[2]'
+					}
 					--
-					'\n\q[◇dicforma格式化,dicforma.file_drop.run]\n/
-					\q[◇dicforma格式化（激进）,dicforma.file_drop.run,radical]\n/
-					\q[◇打开master目录,OnOpenMasterMenu]\n/
+					'\n'
+					--
+					if _fileext == '.dic'
+						'\q[◇dicforma格式化,dicforma.file_drop.run]\n/
+						\q[◇dicforma格式化（激进）,dicforma.file_drop.run,radical]\n/
+						\q[◇加密为ayc,ayccoder.file_drop,Encode]\n'
+					if _fileext == '.ayc' && kikkawiz>=500
+						'\q[◇解密为dic,ayccoder.file_drop,Decode]\n'
+					--
+					'\q[◇打开master目录,OnOpenMasterMenu]\n/
 					\q[◇无用,Cancel]\n/
 					'
 				}

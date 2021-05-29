@@ -578,7 +578,7 @@ OnShortcutAdd{
 	_y=65//初始
 	_w=''
 	_NA=''
-	_t=CALLSAORI('Process')
+	void CALLSAORI('Process')
 	_ProcessData=TOLOWER(valueex0)
 	SETDELIM(_ProcessData,'*')
 	_i=0
@@ -758,7 +758,7 @@ OnAutoShortcut{
 	_w=''
 	_FullData=''
 	_NoclueonN=''
-	_t=CALLSAORI('Process')
+	void CALLSAORI('Process')
 	_ProcessData=TOLOWER(valueex0)
 	SETDELIM(_ProcessData,'*')
 	SETDELIM(_InProcess,'*')
@@ -932,7 +932,7 @@ LoadShortCutCfg{
 	if _argc>0
 		SaveShortCutCfg
 }
-SaveShortCutCfg{
+SaveShortCutCfg:void{
 	_cfg=CFGPATH
 	if _argc>0&&_argv[0]!=-1
 		_cfg=_argv[0]
@@ -952,40 +952,40 @@ SaveShortCutCfg{
 			shortcutlist[_i]+="%(_Title)|%(_Target)|%(_Icon)|%(_Mode)*"
 		}
 	}
-	_t = FOPEN(_file,'w')
-	_t = FWRITE(_file,'[TabBar]')
+	FOPEN(_file,'w')
+	FWRITE(_file,'[TabBar]')
 	_TabItemCount=ARRAYSIZE(shortcutlistname)
 	_buff='TabItemCount='+_TabItemCount
-	_t = FWRITE(_file,_buff)
-	_t = FWRITE(_file,'')
+	FWRITE(_file,_buff)
+	FWRITE(_file,'')
 	for _i=0;_i<_TabItemCount;_i++{
 		_buff='[TabItem'+_i+']'
-		_t = FWRITE(_file,_buff)
+		FWRITE(_file,_buff)
 		_shortcutlist=shortcutlist[_i]
 		SETDELIM(_shortcutlist,'*')
 		_ShellItemCount=ARRAYSIZE(_shortcutlist)-1
 		_buff='ShellItemCount='+_ShellItemCount
-		_t = FWRITE(_file,_buff)
+		FWRITE(_file,_buff)
 		_TabItemTitle=shortcutlistname[_i]
 		_buff='TabItemTitle='+_TabItemTitle
-		_t = FWRITE(_file,_buff)
-		_t = FWRITE(_file,'')
+		FWRITE(_file,_buff)
+		FWRITE(_file,'')
 		for _j=0;_j<_ShellItemCount;_j++{
 			_buff="[ShellItem(%(_i)-%(_j))]"
-			_t = FWRITE(_file,_buff)
+			FWRITE(_file,_buff)
 			_Mode=_shortcutlist[_j][3,'|']
 			_buff='Mode='+_Mode
-			_t = FWRITE(_file,_buff)
+			FWRITE(_file,_buff)
 			_Icon=_shortcutlist[_j][2,'|']
 			_buff='IconMunuallySet='+_Icon
-			_t = FWRITE(_file,_buff)
+			FWRITE(_file,_buff)
 			_Target=_shortcutlist[_j][1,'|']
 			_buff='Target='+_Target
-			_t = FWRITE(_file,_buff)
+			FWRITE(_file,_buff)
 			_Title=_shortcutlist[_j][0,'|']
 			_buff='Title='+_Title
-			_t = FWRITE(_file,_buff)
-			_t = FWRITE(_file,'')
+			FWRITE(_file,_buff)
+			FWRITE(_file,'')
 		}
 	}
 	FCLOSE(_file)
@@ -1058,39 +1058,39 @@ ReloadShortCutDat{
 			shortcutdata+="%(_a)|%(_Name)|%(_Path)|%(_Icon)|%(_Mode)*"
 	}
 }
-SaveShortCutDat{
+SaveShortCutDat:void{
 	_dat=DATPATH
 	if _argc>0
 		_dat=_argv[0]
 	_file=_dat
 	FCHARSET(1)
-	_t = FOPEN(_dat,'w')
+	FOPEN(_dat,'w')
 	_i=shortcutlistdat
 	_shortcutlist=shortcutlist[_i]
 	SETDELIM(_shortcutlist,'*')
 	_ShellItemCount=ARRAYSIZE(_shortcutlist)-1
 	_buff='ShellItemCount='+_ShellItemCount
-	_t = FWRITE(_file,_buff)
+	FWRITE(_file,_buff)
 	_TabItemTitle=shortcutlistname[_i]
 	_buff='TabItemTitle='+_TabItemTitle
-	_t = FWRITE(_file,_buff)
-	_t = FWRITE(_file,'')
+	FWRITE(_file,_buff)
+	FWRITE(_file,'')
 	for _j=0;_j<_ShellItemCount;_j++{
 		_buff="[ShellItem(%(_j))]"
-		_t = FWRITE(_file,_buff)
+		FWRITE(_file,_buff)
 		_Mode=_shortcutlist[_j][3,'|']
 		_buff='Mode='+_Mode
-		_t = FWRITE(_file,_buff)
+		FWRITE(_file,_buff)
 		_Icon=_shortcutlist[_j][2,'|']
 		_buff='IconMunuallySet='+_Icon
-		_t = FWRITE(_file,_buff)
+		FWRITE(_file,_buff)
 		_Target=_shortcutlist[_j][1,'|']
 		_buff='Target='+_Target
-		_t = FWRITE(_file,_buff)
+		FWRITE(_file,_buff)
 		_Title=_shortcutlist[_j][0,'|']
 		_buff='Title='+_Title
-		_t = FWRITE(_file,_buff)
-		_t = FWRITE(_file,'')
+		FWRITE(_file,_buff)
+		FWRITE(_file,'')
 	}
 	FCLOSE(_file)
 	FCHARSET.default
@@ -1835,11 +1835,7 @@ OnJapWordAnswer{
 CheckRepeatHardword{
 	_newword=_argv[0]
 	_result=-1
-	foreach japhardword;_i{
-		if _i==_newword
-			_result=1
-	}
-	_result
+	INARRAY(japhardword,_newword)
 }
 OnJapHardWord{
 	_booknum=reference0
@@ -1847,7 +1843,6 @@ OnJapHardWord{
 		_booknum=_argv[0]
 	if reference1=='save'
 		japhardwordsave=1
-	_txt='\0\![quicksession,true]\![set,choicetimeout,0]\b[2]'
 	_file='PROFILE_PATH\japhardword.txt'
 	FCHARSET(1)
 	_total=ARRAYSIZE(japhardword)
@@ -1874,7 +1869,7 @@ OnJapHardWord{
 		if FOPEN(_file,'w'){
 			foreach japhardword;_i{
 				_i=REPLACE(_i,'|','	')
-				_t = FWRITE(_file,_i)
+				void FWRITE(_file,_i)
 			}
 			FCLOSE(_file)
 			FCHARSET.default
@@ -1892,18 +1887,22 @@ OnJapHardWord{
 		FCHARSET.default
 	}
 	_total=ARRAYSIZE(japhardword)
-	_txt+="■%(username)的难错字本■\n"
+	"\0\![quicksession,true]\![set,choicetimeout,0]\b[2]■%(username)的难错字本■\n"
+	--
 	if _total>0{
-		_txt+='点击单词将其删除\n'
-		_txt+="\![*]\q[清空全部,OnJapaneseWordLoadset,clearhardword,%(_booknum)]\n"
-		_txt+="\![*]\q[使用难错字本进行复习,OnJapaneseWordLoadset,learnhardword,%(_booknum)]\n"
-		_txt+="\![*]\q[保存难错字本,OnJapHardWord,%(_booknum),save]\n"
+		"点击单词将其删除\n/
+		\![*]\q[清空全部,OnJapaneseWordLoadset,clearhardword,%(_booknum)]\n/
+		\![*]\q[使用难错字本进行复习,OnJapaneseWordLoadset,learnhardword,%(_booknum)]\n/
+		\![*]\q[保存难错字本,OnJapHardWord,%(_booknum),save]\n"
 	}
+	--
+	_txt=''
 	for _i=0;_i<_total;_i++{
 		_txt+="\__q[OnJapaneseWordLoadset,delhardword,%(_i)]%(japhardword[_i])\__q\n"
 	}
-	_txt += "\n\q[◇返回,OnJapaneseWord,%(_booknum),%(_file)]\n\q[◇终了,OnOpenMenu,1]"
 	_txt
+	--
+	"\n\q[◇返回,OnJapaneseWord,%(_booknum),%(_file)]\n\q[◇终了,OnOpenMenu,1]"
 }
 JapWordDay{
 	_file = 'DATA_PATH\vocabulary\Japanese\japanese.txt'

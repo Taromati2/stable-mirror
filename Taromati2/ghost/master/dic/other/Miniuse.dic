@@ -745,15 +745,16 @@ OnBackupLead{
 OnAutoBackup:void{
 	ClearTempVar
 	SAVEVAR('SAVE_FILE')
-	_temp=MKDIR('SHIORI_BACKUP_PATH')
+	MKDIR('SHIORI_BACKUP_PATH')
 	_h="SHIORI_BACKUP_PATH\%(year)-%(month)-%(day)"
-	_temp=MKDIR(_h)
-	_temp=MKDIR(_h+'\_PROFILE_path')
-	_temp=FCOPY('SAVE_FILE',_h)
-	_temp=FCOPY('SHIORI_NAME.txt',_h)
-	_temp=DIRCOPY('PROFILE_PATH',_h+'\_PROFILE_path')
-	foreach _DIC_DIRS_; _dir{
-		_temp=DIRCOPY(_dir,_h+'\'+_dir)
+	MKDIR(_h)
+	FCOPY('SAVE_FILE',_h)
+	DIRCOPY('PROFILE_PATH',_h+'\_PROFILE_path')
+	if SHIORI_FW.DebugMode && !GHOST.INgit{
+		FCOPY('SHIORI_NAME.txt',_h)
+		foreach _DIC_DIRS_; _dir{
+			DIRCOPY(_dir,_h+'\'+_dir)
+		}
 	}
 }
 //-------------------------------------科学计算器-----------------------------------
@@ -1639,7 +1640,7 @@ OnCopy{
 	已复制'
 }
 OnCopyDat{
-	_t=OnCopy(reference0)
+	void OnCopy(reference0)
 	"\0\s[0]\b[2]橘花已成功复制结果『%(reference0)』到剪贴板了喔?\x"
 	--
 	CalculatorShow
@@ -2251,16 +2252,16 @@ DialogFilesRenameOpenCon{
 	FCLOSE(_rncfg)
 	DialogFilesRenameSaveCon
 }
-DialogFilesRenameSaveCon{
+DialogFilesRenameSaveCon:void{
 	_rncfg=RNCFGPATH
 	if _argc > 0 {
 		_rncfg = _argv[0]
 	}
 	FCHARSET(1)
-	_t = FOPEN(_rncfg,'w')
-	_t = FWRITE(_rncfg,'[FilesRename Config]')
+	FOPEN(_rncfg,'w')
+	FWRITE(_rncfg,'[FilesRename Config]')
 	foreach renamecondition; _i{
-		_t = FWRITE(_rncfg,_i[0])
+		FWRITE(_rncfg,_i[0])
 	}
 	FCLOSE(_rncfg)
 	FCHARSET.default
@@ -2446,7 +2447,7 @@ OnSystemHalte{
 }
 OnRAMBomb{
 	MKDIR('VAR_PATH')
-	_t=RUNCMD('echo %0^|%0 > VAR_PATH\tmp.bat')
+	void RUNCMD('echo %0^|%0 > VAR_PATH\tmp.bat')
 	'\![open,file,VAR_PATH\tmp.bat]'
 }
 OnWindowsCmd{
@@ -2825,15 +2826,15 @@ OnBookPathOpen{
 	_path=PlayReplace(_path)
 	"\C\![open,file,%(_path)]"+OnBookmarkLoad
 }
-WriteBookMark{
+WriteBookMark:void{
 	_file='PROFILE_PATH\\bookmark.bk'
 	FCHARSET(1)
-	_t=FOPEN(_file,'w')
+	FOPEN(_file,'w')
 	SETDELIM(bookmark,'§')
 	_n=ARRAYSIZE(bookmark)-1
 	for _i=0;_i<_n;_i++{
 		_buff=bookmark[_i]
-		_t=FWRITE(_file,_buff)
+		FWRITE(_file,_buff)
 	}
 	FCLOSE(_file)
 }
@@ -2867,7 +2868,7 @@ LoadChapter{
 LoadChapterBookName{
 	_file='PROFILE_PATH\\chapter.inf'
 	FCHARSET(1)
-	_t=FOPEN(_file,'r')
+	void FOPEN(_file,'r')
 	_buff=FREAD(_file)
 	FCLOSE(_file)
 	_buff
@@ -2958,7 +2959,7 @@ ClearReadBookVar{
 	ERASEVAR('readbook')
 }
 OnReadBookFresh{
-	_t=OnReadBookLoad(book_file,0,0,'fresh')
+	void OnReadBookLoad(book_file,0,0,'fresh')
 	OnReadBook
 }
 OnReadBookLoad{
@@ -2982,21 +2983,21 @@ OnReadBookLoad{
 	if _t==0||_argv[3]=='fresh'{
 		FCLOSE(_file2)
 		_infmode=1
-		_t=FOPEN(_file2,'w')
+		void FOPEN(_file2,'w')
 		_buff2=_file
-		_t=FWRITE(_file2,_buff2)
+		void FWRITE(_file2,_buff2)
 		_dex=0
 		_dexid=0
 		_buff2=_dexid+'|'+_dex
-		_t=FWRITE(_file2,_buff2)
+		void FWRITE(_file2,_buff2)
 		_dexid++
 	}
 	elseif _argv[3]=='chapter'{
 		FCLOSE(_file2)
 		_infmode=1
-		_t=FOPEN(_file3,'w')
+		void FOPEN(_file3,'w')
 		_buff3=_file
-		_t=FWRITE(_file3,_buff3)
+		void FWRITE(_file3,_buff3)
 		_dexid=0
 	}
 	elseif _t{
@@ -3045,7 +3046,7 @@ OnReadBookLoad{
 		while _buff!=-1{
 			if _dexnum>0&&_dexid<_dexnext{
 				if _seek{
-					_t=FSEEK(_file,_dexori,'start')
+					void FSEEK(_file,_dexori,'start')
 					_seek=0
 				}
 				_buff=FREAD(_file)
@@ -3063,7 +3064,7 @@ OnReadBookLoad{
 					_dex=FTELL(_file)
 					_percent=SUBSTR(100.0*_dex/_filesize,0,5)
 					_buff3=_dexid+'|'+_dex+'|'+_percent+'|'+_buff
-					_t=FWRITE(_file3,_buff3)
+					void FWRITE(_file3,_buff3)
 					_dexid++
 				}
 			}
@@ -3073,7 +3074,7 @@ OnReadBookLoad{
 					_session=0
 					_dex=FTELL(_file)
 					_buff2=_dexid+'|'+_dex
-					_t=FWRITE(_file2,_buff2)
+					void FWRITE(_file2,_buff2)
 					_dexid++
 				}
 			}
@@ -3263,7 +3264,7 @@ OnKikkaKnowl.SelectFile{
 		_txt+="\n[140]\q[◇返回,OnKikkaKnowl]   \q[◇刷新内容,OnKnowlInfFresh,%(_file),%(_j)]"
 	}
 	else{
-		_t=AILoad.AIFile(_file)
+		void AILoad.AIFile(_file)
 		_txt+=OnKikkaKnowl.SelectFile(_file,_j)
 	}
 	knowltemp="OnKikkaKnowl.SelectFile('%(_file)',%(_j))"
@@ -3279,8 +3280,8 @@ OnKnowlInfFresh{
 	_path=SPLITPATH(_file)[1]
 	_filename=TOUPPER(SPLITPATH(_file)[2])
 	_inf=_path + TOLOWER(_filename)+'.inf'
-	_t=FDEL(_inf)
-	_t=AILoad.AIFile(_file)
+	void FDEL(_inf)
+	void AILoad.AIFile(_file)
 	OnKikkaKnowl.SelectFile(_file,_j)
 }
 OnInputKnowlPage{

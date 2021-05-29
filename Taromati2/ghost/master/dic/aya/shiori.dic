@@ -983,8 +983,8 @@ SHIORI_FW.ExecuteDl2ToDll {
 	//拡張子dl2をdllへ名前変更する　旧dllは消去する
 	foreach _targets; _target {
 		_path = _argv[0] + '\' + _target
-		_dmy = FDEL(_path + '.dll')
-		_dmy = FRENAME(_path + '.dl2', _path + '.dll')
+		void FDEL(_path + '.dll')
+		void FRENAME(_path + '.dl2', _path + '.dll')
 	}
 }
 

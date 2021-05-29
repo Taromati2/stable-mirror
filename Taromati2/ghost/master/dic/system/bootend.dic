@@ -124,6 +124,7 @@ OnBoot{
 			void Onmealfin
 		}
 		else{
+			mealendtime=60
 			"\0\s[-1]\1\s[%(specialmode != 'mealtime')10]呦。"
 			return
 		}
@@ -229,9 +230,8 @@ OnBoot{
 		'\x'
 	}
 	--
-	Lunartime
-	--
 	//--------------------设置节日提醒--------------------
+	Lunartime
 	if lunardata[5] == '五' && lunardata[6] == '初五'{
 		if giftmode!=1{
 			"\1\s[10]\0\s[28]那个…\w9\w9\n我为%(username)买了点东西。\n\n\n\q[◇打开看看,Ongift,2]"
@@ -335,8 +335,8 @@ OnBoot{
 		'\n\x'
 	}
 	--
-	//小于140秒
-	if elapsetime <= 140{
+	//小于5min
+	if elapsetime <= 300{
 		if inreboot{
 			inreboot = 0
 			ERASEVAR('inreboot')
@@ -348,7 +348,7 @@ OnBoot{
 		}
 	}
 	//超过一周小于一月半
-	elseif elapsetime > 604800 /*&& elapsetime < 3628800*/{
+	elseif elapsetime > 604800 && elapsetime < 3628800{
 		intimacy--
 		HolidayRemindFlag = 0
 		birthdaygiftmode = 0
@@ -484,6 +484,9 @@ OnBoot{
 		OnAstroFoundAuto
 	*/
 	--
+	if GHOST.INgit && !SHIORI_FW.DebugMode
+		'\![open,browser,https://github.com/Taromati2/Taromati2/blob/master/docs/ghost_in_git_but_Debug_mode_not_open.md]'
+	--
 	if AutoUpdate{
 		InAutoUpdate=1
 		'\![updatebymyself]'
@@ -502,13 +505,8 @@ Select.Goodevening_2{
 	"\1\s[10]\0\s[100]我知道了。\w9\w9\n那么、\w9\s[26]%(Goodevening)、\w9%(username)。"
 }
 Select.Goodevening_3{
-	Goodevening = Goodevening0
+	Goodevening = ANY('午安','晚安','傍晚好')
 	"\1\s[10]\0\s[100]…\w9…\w9…\w9\w9\w9\w9\n那么、\w9\s[26]%(Goodevening)、\w9%(username)。"
-}
-Goodevening0{
-	'午安'
-	'晚安'
-	'傍晚好'
 }
 ClearVar{
 	ERASEVAR('id')
@@ -777,8 +775,12 @@ OnWindowStateMinimize{
 	}
 	'\1又要被隐藏了么？'
 }
+//**** 最小化から复帰 *************************************************************************************************
 OnWindowStateRestore{
 	OnSurfaceRestore.base
+	--
+	topmode-=2
+	TopModeChanged
 	--
 	if mode == '1'{
 		OnWindowStateRestore1

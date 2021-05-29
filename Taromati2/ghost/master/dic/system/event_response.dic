@@ -1143,5 +1143,6 @@ OnSysResourceLow
 OnNetworkHeavy
 {
 	'\0\s[3]似乎……\w9信号不太好呢……'
+	'\0\s[8]\w9…\w9…\n\w9\w9请耐心等候呢？'
 }
 

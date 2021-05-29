@@ -94,20 +94,20 @@ OnKeyPress{
 	elseif reference0 == 'f4' {
 		//---- shell重新載入
 		if mode == '1'
-			"\1\s[%(specialmode != 'mealtime')10]唔…\n\w9\w9"
+			"\1\s[%(specialmode != 'mealtime')10]唔"
 		else
-			'\0\s[0]'
+			'\0\s[0]嗯'
 		--
-		'\![reload,shell]重新讀取SHELL……'
+		'…\n\w9\w9\![reload,shell]重新讀取SHELL……'
 	}
 	elseif reference0 == 'f5' {
 		//---- shiori重新載入
 		if mode == '1'
-			"\1\s[%(specialmode != 'mealtime')10]唔…\n\w9\w9"
+			"\1\s[%(specialmode != 'mealtime')10]唔"
 		else
-			'\0\s[0]'
+			'\0\s[0]嗯'
 		--
-		'\![reload,shiori]重新讀取SHIORI……'
+		'…\n\w9\w9\![reload,shiori]重新讀取SHIORI……'
 	}
 	elseif reference0 == 'f6' {
 		if SHIORI_FW.DebugMode

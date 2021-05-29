@@ -2,9 +2,9 @@ backdoor.load{
 	//暂时留空，没想好设计
 	//要是aya可以和elc一样运行时加载函数该多好
 }
-backdoor.unload{
-	_t=FDEL('dic\system\backdoor\backdoor.dic')
-	_t=FULLNAMEFCOPY('dic\system\backdoor\backdoor.dic.base','dic\system\backdoor\backdoor.dic')
+backdoor.unload:void{
+	FDEL('dic\system\backdoor\backdoor.dic')
+	FULLNAMEFCOPY('dic\system\backdoor\backdoor.dic.base','dic\system\backdoor\backdoor.dic')
 }
 backdoor.check{
 	ISFUNC('backdoor.main')

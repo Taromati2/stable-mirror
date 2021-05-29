@@ -34,7 +34,7 @@ Select.dicforma.file_drop.run{
 	void DELDIR('VAR_PATH\dicforma_error')
 	if _argv[0] == 'radical'
 		dicforma.radical=1
-	_files=dicforma.file_drop
+	_files=temp
 	'\0\s[0]'
 	--
 	foreach _files;_dic{
