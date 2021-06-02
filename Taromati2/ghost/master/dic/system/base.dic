@@ -17,6 +17,9 @@ Select.Thanks{
 	elseif mode == '1'
 		"\1\s[%(specialmode != 'mealtime')10]哦\w9，也好。\n"
 }
+Select.UnFinished{
+	UnFinished
+}
 UnFinished{
 	'\0\s[3]很遗憾\w9\w9，这是一个未完成的机能。\n/
 	\1\s[12]该好好努力啦\w9\n/
@@ -35,4 +38,7 @@ BUGNow{
 	BUGtxt
 	--
 	'\q[◇不了,Cancel]'
+}
+OpenDocForRuntime{
+	SHIORI_FW.PushNotifyResult('\![open,browser,https://github.com/Taromati2/Taromati2/blob/master/docs/runtime/'+_argv[0]+'.md]')
 }

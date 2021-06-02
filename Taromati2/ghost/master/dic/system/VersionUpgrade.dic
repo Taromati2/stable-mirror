@@ -6,7 +6,7 @@ RENAME_VAR:void{
 		EVAL(_argv[1]+'='+_argv[0])
 	ERASEVAR(_argv[0])
 }
-#define VERSION_NOW 2
+#define VERSION_NOW 3
 
 VERSION_INIT:void{
 	VERSION = VERSION_NOW
@@ -78,7 +78,7 @@ VERSION_UPGRADE_2:void{
 	ERASEVAR('游戏界面')
 	RENAME_VAR('DrawHuanRongBG','HuaRongDao.BackGroundConfing')
 }
-VERSION_UPGRADE_3:void{//BUILDING
+VERSION_UPGRADE_3:void{
 	ERASEVAR('SHIORI_FW.NotifyResults')
 	ERASEVAR('ontest')
 	ERASEVAR('page')
@@ -88,4 +88,14 @@ VERSION_UPGRADE_3:void{//BUILDING
 	ERASEVAR('Intimacymode')
 	ERASEVAR('tulingapi')
 	ERASEVAR('tulingfound')
+	if !SHIORI_FW.DebugMode || GHOST.INgit{
+		_l=FENUM('SHIORI_BACKUP_PATH')
+		foreach _l;_i{
+			_i='SHIORI_BACKUP_PATH'+_i
+			DELDIR(_i+'/aya')
+			DELDIR(_i+'/dic')
+			FDEL(_i+'/SHIORI_NAME.txt')
+			FDEL(_i+'/yaya.txt')
+		}
+	}
 }

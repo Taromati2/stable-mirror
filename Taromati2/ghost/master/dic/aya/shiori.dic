@@ -402,7 +402,7 @@ request {
 
 			//ハンドラが無い場合は即返る
 			if !ISFUNC(SHIORI_FW.EventidTranslate) && !SHIORI_FW.IsImportantEvent {
-				SHIORI_FW.MakeEmptyResponse
+				SHIORI_FW.NoMatchingEvent
 				return
 			}
 			_idparsed = 1
@@ -451,7 +451,29 @@ request {
 
 	OnRequest
 }
-
+SHIORI_FW.GetResourceEventRealName{
+	if SUBSTR(_argv[0],0,3) == 'On_'
+		SUBSTR(_argv[0],3,STRLEN(_argv[0]))
+	else
+		_argv[0]
+}
+SHIORI_FW.IsResourceEvent{
+	if SUBSTR(_argv[0],0,3) != 'On_'{
+		0
+		return
+	}
+	case SUBSTR(_argv[0],3,STRLEN(_argv[0])){
+		when 'basewareversion','hwnd','uniqueid','capability','ownerghostname','otherghostname','installedghostname','installedshellname','installedballoonname','installedheadlinename','installedplugin','configuredbiffname','ghostpathlist','balloonpathlist','headlinepathlist','pluginpathlist','calendarskinpathlist','calendarpluginpathlist','rateofusegraph','inputbox.autocomplete'
+			0
+		others
+			1
+	}
+}
+SHIORI_FW.NoMatchingEvent{
+	if ISFUNC('OnNoMatchingEvent')
+		EVAL('SHIORI_FW.PushNotifyResult(OnNoMatchingEvent(SHIORI_FW.Eventid))')
+	SHIORI_FW.MakeEmptyResponse
+}
 TOAUTOEX {
 	_v = _argv[0]
 	if TOSTR(TOAUTO(_v)) == _v {
@@ -462,9 +484,12 @@ TOAUTOEX {
 }
 
 SHIORI_FW.PushNotifyResult:void{//Notify返回值积压
-	SHIORI_FW.DelayNotifyResults,=_argv[0]
+	if _argv[0]
+		SHIORI_FW.DelayNotifyResults,=_argv[0]
 }
-
+SHIORI_FW.ClearNotifyResult:void{
+	SHIORI_FW.DelayNotifyResults = IARRAY
+}
 SHIORI_FW.TranslateEvent {
 	_result = _argv[0]
 	_as = ARRAYSIZE(array_eventtranslate)

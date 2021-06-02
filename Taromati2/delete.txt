@@ -6,9 +6,11 @@ updates2.dau
 wiz/
 shell/taiwan(湾娘)/
 shell/miku(初音)/
+ghost/master/dic/other/AccessInternet.dic
 ghost/master/data/vocabulary/fanuc 0.txt
 ghost/master/data/vocabulary/fanuc 0i.txt
 ghost/master/pseudoAI/geo.ai
+ghost/master/data/fg/
 ghost/master/data/astro.txt
 ghost/master/data/astrobirth.txt
 ghost/master/data/astrobirth2.txt

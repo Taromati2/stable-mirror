@@ -165,3 +165,24 @@ GHOST.INgit{
 	}
 	0
 }
+GHOST.INtempDir{
+	'\AppData\Local\Temp\' _in_ GETSETTING('coreinfo.path')
+}
+//DUMP
+DUMP_to:void{
+	_file=_argv[0]
+	_argv[0]=IARRAY
+	FOPEN(_file,'ab')
+	FWRITE_WITH_LF(_file,_argv)
+	FCLOSE(_file)
+}
+DUMP_references_to:void{
+	_i=0
+	_file=_argv[0]
+	FOPEN(_file,'ab')
+	while ISVAR('reference'+_i){
+		FWRITE_WITH_LF(_file,"reference%_i : "+EVAL("reference%_i"))
+		_i++
+	}
+	FCLOSE(_file)
+}

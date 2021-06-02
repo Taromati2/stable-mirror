@@ -99,7 +99,6 @@ dic, dic\other\classtable.dic		//课程表
 dic, dic\other\poem.dic				//诗歌
 dic, dic\other\happyquest.dic		//开心问答
 dic, dic\other\Tarro.dic			//塔罗
-dic, dic\other\AccessInternet.dic	//翻墙
 dic, dic\other\Other.dic			//记事本，五十音，好感
 dic, dic\other\jumptest.dic			//心理测试
 dic, dic\other\test.dic				//橘花题库测试

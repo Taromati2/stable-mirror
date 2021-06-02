@@ -129,12 +129,7 @@ SubMenu{
 					'\n'
 				}
 				when 1{
-					'\q[◇键位码测试,OnKeyCodeTest]'
-					--
-					if 亲密度>=200 && kikkawiz>=500 && intimacy>=50
-						'\_l[138,-]\q[◇翻墙,AccessInternet]'
-					--
-					'\n/
+					'\q[◇键位码测试,OnKeyCodeTest]\n/
 					'
 				}
 			}
@@ -308,7 +303,12 @@ RunningReset{
 	temp=NULL
 	//Speech_Recognition=NULL
 }
+IgnoreChoiceTimeout{
+	'\eb25jZSBzbyBkaXNwb3NhYmxl'
+}
 OnChoiceTimeout{
+	if RE_GREP(reference0,"\%(IgnoreChoiceTimeout)$")
+		return
 	if playingtetris&&running=='playingtetris'
 		OnTimer1Timer
 	elseif playingGobang&&running=='playingGobang'{
@@ -632,6 +632,13 @@ Select.Option{
 	'\_q\b[2]'
 	--
 	_t = '○,◎'
+	--
+	if SHIORI_FW.DebugMode{
+		'■开发机能设定■\n'
+		--
+		TheDefaultValue('setting.OnNoMatchingEventAlarm','0')
+		"未定义事件警告		\_l[120]\q[%(_t[TOINT(setting.OnNoMatchingEventAlarm)]) ON,Onusage,setting.OnNoMatchingEventAlarm,1]  ・  \_l[180]\q[%(_t[1 - TOINT(setting.OnNoMatchingEventAlarm)]) OFF,Onusage,setting.OnNoMatchingEventAlarm,0]\n"
+	}
 	--
 	'■随机对话设定■\n'
 	--

@@ -21,6 +21,14 @@ BaseGhostStart{//改动于2020 by steve02081504
 	--
 	if topmode != 2
 		TopModeChanged
+	--
+	{
+		if GHOST.INgit && !SHIORI_FW.DebugMode
+			OpenDocForRuntime('ghost_in_git_but_Debug_mode_not_open')
+		--
+		if GHOST.INtempDir
+			OpenDocForRuntime('ghost_in_temp_dir')
+	}
 }
 //**** 初回起动 *******************************************************************************************************
 OnFirstBoot{//改动于2020 by steve02081504
@@ -483,9 +491,6 @@ OnBoot{
 	elseif TOINT(autoastro)==0
 		OnAstroFoundAuto
 	*/
-	--
-	if GHOST.INgit && !SHIORI_FW.DebugMode
-		'\![open,browser,https://github.com/Taromati2/Taromati2/blob/master/docs/ghost_in_git_but_Debug_mode_not_open.md]'
 	--
 	if AutoUpdate{
 		InAutoUpdate=1
