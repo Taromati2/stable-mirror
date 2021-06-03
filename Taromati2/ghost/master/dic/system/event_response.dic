@@ -25,7 +25,7 @@ OnDebugModeChange{
 	--
 	if SHIORI_FW.DebugMode{
 		if !FILEEXIST('VAR_PATH/NoMatchingEvent.txt')
-			OnNoMatchingEvent.DumpedList=INARRAY
+			OnNoMatchingEvent.DumpedList=IARRAY
 		void MKDIR('VAR_PATH')
 		if AutoUpdate
 			'/
@@ -87,7 +87,7 @@ OnNoMatchingEvent.Ignore{
 	while _index{
 		_index--
 		if reference0 _in_ SHIORI_FW.DelayNotifyResults[_index]
-			SHIORI_FW.DelayNotifyResults[_index]=INARRAY
+			SHIORI_FW.DelayNotifyResults[_index]=IARRAY
 	}
 }
 Get_UKADOC_ofEvent{
