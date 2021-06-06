@@ -437,7 +437,7 @@ request {
 				var.req.value ,= TOREAL(_value)
 			else {
 				case SHIORI_FW.Eventid {
-					when 'OnTextDrop','OnDeviceArrival','OnDeviceRemove','OnSakuraScript','OnSakuraScript.Forment','OnNetworkStatusChange'
+					when 'OnTextDrop','OnDeviceArrival','OnDeviceRemove','OnSakuraScript','OnSakuraScript.Forment','OnNetworkStatusChange','OnCopy','OnCopyTS'
 						var.req.value ,= _value
 					others
 						var.req.value ,= REPLACE(_value, C_BYTE1, ',')
@@ -1606,9 +1606,7 @@ SHIORI_EV.On_enable_debug : void {
 }
 
 SHIORI_EV.On_ShioriEcho {
-	if SHIORI_FW.DebugMode {
-		'\0Eval Result = ' + JOIN(EVAL(reference[0]),',')
-	}
+	OnCalculateVar
 }
 
 //******************************************************************************

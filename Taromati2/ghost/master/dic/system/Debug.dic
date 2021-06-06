@@ -1,0 +1,240 @@
+//by steve02081504
+SakuraScriptArgConverter{
+	'"'+REPLACE(_argv[0],'"','""')+'"'
+}
+OnSakuraScript{
+	if _argv[0]
+		reference0 = _argv[0]
+	if _argv[1]
+		reference1 = _argv[1]
+	if reference1 != 'force_run' && reference1 != 'no_convert' && ('\!' _in_ reference0 || '\-' _in_ reference0){
+		'\0\s[100]/
+		警告\w9\w9：此Sakura Script可能含有较危险操作\n/
+		\q[◇确认執行,OnSakuraScript,'+SakuraScriptArgConverter(reference0)+',force_run]\n/
+		\q[◇无用,Cancel]\n/
+		'
+		return
+	}
+	if reference1 != 'no_convert' && '%' _in_ reference0{
+		'\0\s[100]/
+		这段Sakura Script中似乎含有aya转义符\w9\n/
+		需要转义么？\w9\n/
+		\q[◇转义執行,OnSakuraScript.Forment,'+SakuraScriptArgConverter(reference0)+']\n/
+		\q[◇直接執行,OnSakuraScript,'+SakuraScriptArgConverter(reference0)+',no_convert]\n/
+		\q[◇无用,Cancel]\n/
+		'
+		return
+	}
+	reference0
+}
+OnSakuraScript.Forment{
+	OnSakuraScript(EVAL('"'+reference0+'"'),'no_convert')
+}
+OnCalculateVar{
+	if _argv[0]
+		reference0 = _argv[0]
+	if _argv[1]
+		reference1 = _argv[1]
+	if !reference0{
+		'\![open,inputbox,OnCalculateVar,1000-7]'//玩梗
+		return
+	}
+	if reference1 != 'warning_func_run' && reference1 != 'force_run' && reference1 != 'no_convert' && ('，' _in_ reference0 || '（' _in_ reference0 || '）' _in_ reference0 || '‘' _in_ reference0 || '’' _in_ reference0 || '“' _in_ reference0 || '”' _in_ reference0 || '！' _in_ reference0 || '、' _in_ reference0 || '？' _in_ reference0 || '。' _in_ reference0 || '【' _in_ reference0 || '】' _in_ reference0){
+		if mode == '1'
+			"\1\s[%(specialmode != 'mealtime')11]全角 -> 半角？\n"
+		else
+			'\0\s[20]转换表达式中的全角符号为半角？\n'
+		--
+		'\q[◇好,OnCalculateVar.CharConverter,'+SakuraScriptArgConverter(reference0)+']\n/
+		\q[◇直接执行,OnCalculateVar,'+SakuraScriptArgConverter(reference0)+',no_convert]\n/
+		\q[◇算了,Cancel]\n/
+		'
+		return
+	}
+	_var = RE_REPLACE(reference0,'\s*[\[,+=][\s\S]*$','')
+	_func = RE_REPLACE(reference0,'\s*\([\s\S]*$','')
+	if ISVAR(_var) == 0 && ISFUNC(_func) == 0 && reference1 != 'warning_func_run' && reference1 != 'force_run'{
+		if mode == '1'
+			"\1\s[%(specialmode != 'mealtime')10]没这个名字\n"
+		else
+			'\0\s[3]没有这个变量或函数……\n'
+		--
+		'/
+		\q[◇仍然执行,OnCalculateVar,'+SakuraScriptArgConverter(reference0)+',force_run]\n/
+		\q[◇改作Sakura Script執行,OnSakuraScript,'+SakuraScriptArgConverter(reference0)+']\n/
+		\q[◇算了,Cancel]/
+		'
+		return
+	}
+	if reference1 != 'warning_func_run' && (RE_GREP(_func,'^Reset') || _func == 'OnFirstBoot' || _func == 'MAGICLOAD' || _func == 'LOADVAR' || _func == 'RESTOREVAR' || _func == 'OnKikkaReset'){
+		if mode == '1'
+			"\1\s[%(specialmode != 'mealtime')11]\w9…\w9…\w9\n确认？\n"
+		else
+			'\0\s[7]这是一个危险函数\n\w9\w9\s[8]确认执行吗？\n'
+		--
+		'/
+		\q[◇仍然执行,OnCalculateVar,'+SakuraScriptArgConverter(reference0)+',warning_func_run]\n/
+		\q[◇算了,'
+		--
+		if _func == 'OnFirstBoot' || _func == 'MAGICLOAD' || RE_GREP(_func,'^Reset') || _func == 'OnKikkaReset'
+			'Thanks'
+		else
+			'Cancel'
+		--
+		']/
+		'
+		return
+	}
+	if reference1 == 'warning_func_run'{
+		if mode == '1'
+			"\1\s[%(specialmode != 'mealtime')10]哦。"
+		else
+			'\0\s[3]好的\w9…\w9…\w9…\n'
+	}
+	--
+	{
+		if mode == '1'
+			"\1\s[%(specialmode != 'mealtime')10]\b[2]『\_q%(REPLACE(reference0,'\','\\'))\_q』，结果是\n"
+		else
+			'\0\s[0]表达式『\_q'+REPLACE(reference0,'\','\\')+'\_q』的执行结果为：\n'
+		--
+		__t=TOSTR(EVAL(reference0))
+		_t=REPLACE(__t,'\','\\')
+		'\_q'
+		--
+		if __t == ''
+			'什么都没有'
+		else
+			_t
+		--
+		'\n/
+		类型：'+GETTYPE.to_string((_t))
+		--
+		'\_q\n/
+		\q[◇复制结果,OnCopy,'+SakuraScriptArgConverter(__t)+']\n/
+		\q[◇复制表达式,OnCopy,'+SakuraScriptArgConverter(reference0)+']\n/
+		\q[◇结果作Sakura Script執行,OnSakuraScript,'+SakuraScriptArgConverter(__t)+']\n/
+		'
+		--
+		'\n/
+		\q[◇求值下一个,OnCalculateVar]\n/
+		\q[◇无用,Cancel]\n/
+		'
+	}
+}
+OnCalculateVar.CharConverter{
+	reference0=REPLACE(reference0,'，',',')
+	reference0=REPLACE(reference0,'（','(')
+	reference0=REPLACE(reference0,'）',')')
+	reference0=REPLACE(reference0,'‘',"'")
+	reference0=REPLACE(reference0,'’',"'")
+	reference0=REPLACE(reference0,'“','"')
+	reference0=REPLACE(reference0,'”','"')
+	reference0=REPLACE(reference0,'！','!')
+	reference0=REPLACE(reference0,'、','\')
+	reference0=REPLACE(reference0,'？','?')
+	reference0=REPLACE(reference0,'。','.')
+	reference0=REPLACE(reference0,'【','[')
+	reference0=REPLACE(reference0,'】',']')
+	OnCalculateVar(reference0)
+}
+//调试反应by steve02081504
+OnDebugModeChange{
+	if mode == '1'
+		"\1\s[%(specialmode != 'mealtime')10]唔…\w9\w9\n"
+	else
+		'\0\s[6]嗯…\w9\w9\s[0]\n'
+	--
+	'shiori调试模式'
+	--
+	if mode == '0'
+		'已'
+	--
+	if SHIORI_FW.DebugMode
+		'打开'
+	else
+		'关闭'
+	--
+	if mode == '1'
+		'了。'
+	--
+	'\n'
+	--
+	if SHIORI_FW.DebugMode{
+		if !FILEEXIST('VAR_PATH/NoMatchingEvent.txt')
+			OnNoMatchingEvent.DumpedList=IARRAY
+		void MKDIR('VAR_PATH')
+		if AutoUpdate
+			'/
+			\q[◇禁用自动更新,Onset,AutoUpdate,0]\n/
+			\q[◇无用,Cancel]\n/
+			'
+	}
+	if !SHIORI_FW.DebugMode && !AutoUpdate
+		'/
+		\q[◇开启自动更新,Onset,AutoUpdate,1]\n/
+		\q[◇无用,Cancel]\n/
+		'
+}
+OnLogModeChange{
+	if SHIORI_FW.LogMode
+		'\0\s[100]警告：\w9\w9shiori log开启中'
+	else
+		'\0\s[100]shiori log已关闭'
+}
+//调试：无对应事件反应by steve02081504
+OnNoMatchingEvent{
+	if !SHIORI_FW.DebugMode || !setting.OnNoMatchingEventAlarm
+		return
+	_dumped=INARRAY(OnNoMatchingEvent.DumpedList,_argv[0])
+	_ignoring=INARRAY(OnNoMatchingEvent.IgnoreList,_argv[0])
+	if !(_dumped&&_ignoring){
+		"\![set,choicetimeout,1000]\%(mode)\s[%(mode)0]\b[%(mode+1)]"
+		--
+		if !_dumped{
+			DUMP_to('VAR_PATH/NoMatchingEvent.txt',_argv[0])
+			DUMP_references_to('VAR_PATH/NoMatchingEvent.txt')
+			OnNoMatchingEvent.DumpedList,=_argv[0]
+			--
+			"\_q未注册的事件“%(_argv[0])”已被写入“VAR_PATH/NoMatchingEvent.txt”\_q\n"
+		}
+		elseif !_ignoring{
+			"\_q未注册的事件“%(_argv[0])”被触发了\_q\n"
+		}
+		--
+		"/
+		\q[◇查看事件文档,OnUrlOpen,%(Get_UKADOC_ofEvent(_argv[0]))]\n/
+		\q[◇永久忽略此事件,OnNoMatchingEvent.Ignore,%(_argv[0])]\n/
+		\q[◇将此事件加入TODO并永久忽略,OnNoMatchingEvent.WrtieToTODOandIgnore,%(_argv[0])]\n/
+		\q[◇无用,Cancel]\n/
+		"
+		--
+		IgnoreChoiceTimeout
+	}
+}
+OnNoMatchingEvent.WrtieToTODOandIgnore{
+	OnNoMatchingEvent.Ignore(reference0)
+	DUMP_to('VAR_PATH/UnFinishedEvent.txt',reference0)
+	"\%(mode)\s[%(mode)0]\b[%(mode+1)]/
+	\_q事件“%(reference0)”已被写入“VAR_PATH/UnFinishedEvent.txt”\_q"
+}
+OnNoMatchingEvent.Ignore{
+	OnNoMatchingEvent.IgnoreList,=reference0
+	_index=ARRAYSIZE(SHIORI_FW.DelayNotifyResults)
+	while _index{
+		_index--
+		if reference0 _in_ SHIORI_FW.DelayNotifyResults[_index]
+			SHIORI_FW.DelayNotifyResults[_index]=IARRAY
+	}
+}
+Get_UKADOC_ofEvent{
+	'http://ssp.shillest.net/ukadoc/manual/'
+	--
+	if SHIORI_FW.IsResourceEvent(_argv[0])
+		'list_shiori_resource'
+	else
+		'list_shiori_event'
+	--
+	_argv[0]=SHIORI_FW.GetResourceEventRealName(_argv[0])
+	".html#%(_argv[0])"
+}

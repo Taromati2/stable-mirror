@@ -28,14 +28,16 @@ dic, dic\aya\LOADVAR.dic		//by steve02081504
 //基础
 dic, dic\system\MAGIC.dic			//magic_抛瓦by steve02081504
 dic, dic\system\base.dic			//由steve02081504编写
+dic, dic\system\Debug.dic			//由steve02081504编写
 
 dic, dic\system\QuickStart.dic		//快速启动包缩小一半的秘诀
 
 //构架
-dic, dic\system\mirror.dic			//换源功能
 dic, dic\system\VersionUpgrade.dic	//向后不兼容内容升级用
+dic, dic\system\mirror.dic			//换源功能
 dic, dic\system\bootend.dic			//起動/終了/切り替えトーク辞書
 dic, dic\system\anti_cheat.dic		//反作弊辞書
+dic, dic\system\FileDrop.dic		//文件拖拽
 dic, dic\system\change_part.dic		//由steve02081504整理、编写
 dic, dic\system\event_response.dic	//種々のイベント辞書
 dic, dic\system\SQL.dic				//由steve02081504整理、编写

@@ -1618,6 +1618,7 @@ OnCopy{
 	_txt=reference0
 	if _argc
 		_txt=_argv
+	_txt=REPLACE(_txt,CHR(1),C_LF)
 	void CALLSAORI('textcopy',_txt)
 	_txt=REPLACE(REPLACE(_txt,C_CR+C_LF,C_LF),C_CR,C_LF)
 	'\0\s[0]'
@@ -2939,6 +2940,8 @@ OnOpenBook{
 	_file=reference0
 	if _argc>0
 		_file=_argv[0]
+	if !_file
+		_file=temp
 	book_dexid=0
 	if ISVAR('booklength')==0
 		booklength=200
@@ -3431,9 +3434,6 @@ OnChangeChineseCode{
 	\q[◇返回上一层,OnOpenMenu,3,0]\n/
 	'
 }
-ChangeChineseCode{
-	CALLSAORI('ChConverter',_argv[0],_argv[1])
-}
 OnCopyTS{
 	_ts=reference0
 	_text=reference1
@@ -3443,5 +3443,5 @@ OnCopyTS{
 		_ts=_argv[0]
 	if !_text
 		_text=OnPaste
-	OnCopy(ChangeChineseCode(_ts,_text))
+	OnCopy(CALLSAORI('ChConverter',_ts,_text))
 }

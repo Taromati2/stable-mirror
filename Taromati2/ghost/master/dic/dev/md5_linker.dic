@@ -87,7 +87,7 @@ md5linker.clearvar:void{
 }
 md5linker.main{//md5linker.main('..\..\shell')
 	md5linker.varinit
-	foreach _t;_argv{
+	foreach _argv;_t{
 		md5linker.mapper(_t)
 	}
 	md5linker.linked_num

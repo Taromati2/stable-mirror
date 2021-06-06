@@ -827,7 +827,7 @@ RandomTalk : nonoverlap{
 			_t+'\n\s[21]\w9…\w9…\w9喜欢的要坏掉了……'
 			--
 			if !RAND(MAX(0,TOINT(intimacy/1000)-__n))//这人运气真好是吧
-				'\![vanishbymyself]'//自毁，但是不更新FirstBootCount，重装就行，自作自受
+				'\![vanishbymyself]'//自毁
 		}
 	}
 	if GetPhase > 3

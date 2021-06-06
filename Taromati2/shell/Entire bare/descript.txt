@@ -1,5 +1,5 @@
 charset,UTF-8
-craftman,8　シェル改変亞龍
+craftman,8　シェル改変zutsu
 name,全裸
 type,shell
 sakura.balloon.alignment,none

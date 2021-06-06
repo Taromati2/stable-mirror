@@ -1,106 +1,6 @@
 /////////文　ゴーストテンプレート
 /////////种々のイベント辞书
 /////////written by umeici.
-//调试反应by steve02081504
-OnDebugModeChange{
-	if mode == '1'
-		"\1\s[%(specialmode != 'mealtime')10]唔…\w9\w9\n"
-	else
-		'\0\s[6]嗯…\w9\w9\s[0]\n'
-	--
-	'shiori调试模式'
-	--
-	if mode == '0'
-		'已'
-	--
-	if SHIORI_FW.DebugMode
-		'打开'
-	else
-		'关闭'
-	--
-	if mode == '1'
-		'了。'
-	--
-	'\n'
-	--
-	if SHIORI_FW.DebugMode{
-		if !FILEEXIST('VAR_PATH/NoMatchingEvent.txt')
-			OnNoMatchingEvent.DumpedList=IARRAY
-		void MKDIR('VAR_PATH')
-		if AutoUpdate
-			'/
-			\q[◇禁用自动更新,Onset,AutoUpdate,0]\n/
-			\q[◇无用,Cancel]\n/
-			'
-	}
-	if !SHIORI_FW.DebugMode && !AutoUpdate
-		'/
-		\q[◇开启自动更新,Onset,AutoUpdate,1]\n/
-		\q[◇无用,Cancel]\n/
-		'
-}
-OnLogModeChange{
-	if SHIORI_FW.LogMode
-		'\0\s[100]警告：\w9\w9shiori log开启中'
-	else
-		'\0\s[100]shiori log已关闭'
-}
-//调试：无对应事件反应by steve02081504
-OnNoMatchingEvent{
-	if !SHIORI_FW.DebugMode || !setting.OnNoMatchingEventAlarm
-		return
-	_dumped=INARRAY(OnNoMatchingEvent.DumpedList,_argv[0])
-	_ignoring=INARRAY(OnNoMatchingEvent.IgnoreList,_argv[0])
-	if !(_dumped&&_ignoring){
-		"\![set,choicetimeout,1000]\%(mode)\s[%(mode)0]\b[%(mode+1)]"
-		--
-		if !_dumped{
-			DUMP_to('VAR_PATH/NoMatchingEvent.txt',_argv[0])
-			DUMP_references_to('VAR_PATH/NoMatchingEvent.txt')
-			OnNoMatchingEvent.DumpedList,=_argv[0]
-			--
-			"\_q未注册的事件“%(_argv[0])”已被写入“VAR_PATH/NoMatchingEvent.txt”\_q\n"
-		}
-		elseif !_ignoring{
-			"\_q未注册的事件“%(_argv[0])”被触发了\_q\n"
-		}
-		--
-		"/
-		\q[◇查看事件文档,OnUrlOpen,%(Get_UKADOC_ofEvent(_argv[0]))]\n/
-		\q[◇永久忽略此事件,OnNoMatchingEvent.Ignore,%(_argv[0])]\n/
-		\q[◇将此事件加入TODO并永久忽略,OnNoMatchingEvent.WrtieToTODOandIgnore,%(_argv[0])]\n/
-		\q[◇无用,Cancel]\n/
-		"
-	}
-	--
-	IgnoreChoiceTimeout
-}
-OnNoMatchingEvent.WrtieToTODOandIgnore{
-	OnNoMatchingEvent.Ignore(reference0)
-	DUMP_to('VAR_PATH/UnFinishedEvent.txt',reference0)
-	"\%(mode)\s[%(mode)0]\b[%(mode+1)]/
-	\_q事件“%(reference0)”已被写入“VAR_PATH/UnFinishedEvent.txt”\_q"
-}
-OnNoMatchingEvent.Ignore{
-	OnNoMatchingEvent.IgnoreList,=reference0
-	_index=ARRAYSIZE(SHIORI_FW.DelayNotifyResults)
-	while _index{
-		_index--
-		if reference0 _in_ SHIORI_FW.DelayNotifyResults[_index]
-			SHIORI_FW.DelayNotifyResults[_index]=IARRAY
-	}
-}
-Get_UKADOC_ofEvent{
-	'http://ssp.shillest.net/ukadoc/manual/'
-	--
-	if SHIORI_FW.IsResourceEvent(_argv[0])
-		'list_shiori_resource'
-	else
-		'list_shiori_event'
-	--
-	_argv[0]=SHIORI_FW.GetResourceEventRealName(_argv[0])
-	".html#%(_argv[0])"
-}
 //平台更新反应by steve02081504
 OnBasewareUpdating{
 	'\1\s[10]\0\s[6]嗯…\w9\w9\s[0]\n'
@@ -363,12 +263,10 @@ OnTextDrop{
 	\q[◇复制至粘贴板,OnCopy,'+_sakura_text+']\n/
 	'
 	--
-	_tmp=ChangeChineseCode('traditional',_text)
-	if _text!=_tmp
+	if _text!=TOTRADITIONAL(_text)
 		'\q[◇简->繁转换,OnCopyTS,traditional,'+_sakura_text+']\n'
 	--
-	_tmp=ChangeChineseCode('simplified',_text)
-	if _text!=_tmp
+	if _text!=TOSIMPLIFIED(_text)
 		'\q[◇繁->简转换,OnCopyTS,simplified,'+_sakura_text+']\n'
 	--
 	'/
@@ -377,19 +275,19 @@ OnTextDrop{
 }
 OnTextDrop.ayaEndlineDelete{
 	temp=RE_REPLACE(temp,"/%(CHR(1))\s*",'')
-	'已剔除\n'
+	"\%(mode)已剔除\n"
 	--
 	OnTextDrop
 }
 OnTextDrop.EndlineDelete{
 	temp=REPLACE(temp,CHR(1),'')
-	'已剔除\n'
+	"\%(mode)已剔除\n"
 	--
 	OnTextDrop
 }
 OnTextDrop.EndlineForma{
 	temp=REPLACE(temp,CHR(1),'\n')
-	'已转换\n'
+	"\%(mode)已转换\n"
 	--
 	OnTextDrop
 }
@@ -555,12 +453,6 @@ OnVanishSelected{
 			\s[8]不论怎样。\n/
 			\s[40]那么、请保重。\w9\w9\1保重啊"
 		elseif FirstBootCount == 3{//事不过三
-			{
-				void DELDIR('PROFILE_PATH')//清除用户数据
-				ERASEALLVARBEGINAS('')//清除所有变量
-				FirstBootCount=3//再也不见
-				MAGICSAVE//永久生效
-			}
 			'\1\s[10]\0\s[35]\w9.\w9.\w9.\w9\w9\w9\n/
 			\s[8]最后一次了。\w9\w9\w9\w9\n/
 			\s[40]那么、请保重。'
@@ -577,7 +469,12 @@ OnVanishCancel{
 		'\0\s[3]…\w9请不要吓我…'
 }
 OnVanishButtonHold{
-	'\0\s[3]…\w9继续待在这里也可以吗？'
+	if FirstBootCount >= 4
+		'\![vanishbymyself]'
+	else{
+		ERASEVAR('uninstall')
+		'\0\s[3]…\w9继续待在这里也可以吗？'
+	}
 }
 //**** メールチェック *************************************************************************************************
 Select.OPENMAILER{
