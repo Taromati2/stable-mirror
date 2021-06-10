@@ -390,7 +390,7 @@ file,ghost/master/dic/system/backdoor/backdoor.dic6ee8f0b6a90099f84342579ebb4a2
 file,ghost/master/dic/system/backdoor/backdoor.dic.base6ee8f0b6a90099f84342579ebb4a28d2size=35
 file,ghost/master/dic/system/backdoor/backdoorloader.dicd08c2754921151ba60a4461f607bc659size=451
 file,ghost/master/dic/system/base.dicf8fe92f03dcb7592e97aee2ab6544306size=1051
-file,ghost/master/dic/system/bootend.dic7aca07399c2bfef1219c53c1f7f633f8size=60504
+file,ghost/master/dic/system/bootend.dic0ab821e7bc479f44ee808b217ef4f94bsize=60546
 file,ghost/master/dic/system/Calendar.dic583432bcee37162378fd09aa5bd29557size=40110
 file,ghost/master/dic/system/changeshell.dic25da184d9e8add9d8002025451fd2eb5size=16530
 file,ghost/master/dic/system/change_part.dic4f88bcdb3c772e0e66c3e3bba91f8557size=478

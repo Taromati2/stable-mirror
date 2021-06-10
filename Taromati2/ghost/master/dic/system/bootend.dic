@@ -343,11 +343,13 @@ OnBoot{
 		'\n\x'
 	}
 	--
+	_inreboot=inreboot
+	_inshutdown=inshutdown
+	ERASEVAR('inreboot')
+	ERASEVAR('inshutdown')
 	//小于5min
 	if elapsetime <= 300{
-		if inreboot || inshutdown{
-			ERASEVAR('inreboot')
-			ERASEVAR('inshutdown')
+		if _inreboot || _inshutdown{
 			'\1\s[10]\0\s[0]欢迎回来\x'
 		}else{
 			'\1\s[10]\0\s[2]怎么了呢....？\x'
