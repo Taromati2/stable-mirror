@@ -7,9 +7,9 @@ TOSIMPLIFIED{
 TOTRADITIONAL{
 	CALLSAORI('ChConverter','traditional',_argv[0])
 }
-#globaldefine GETTYPE.to_string(( GETTYPE.to_string.base(GETTYPE(
+#globaldefine GETTYPE.string(( GETTYPE.to_string(GETTYPE(
 //))))
-GETTYPE.to_string.base{
+GETTYPE.to_string{
 	case _argv[0]{
 		when 1
 			'整数'

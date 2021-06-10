@@ -229,10 +229,25 @@ OnTextDrop{
 		temp = reference0
 	if RE_GREP(temp,"(?!%(CHR(1)))%(CHR(1))(?!%(CHR(1)))")==0
 		temp = REPLACE(temp,CHR(1)+CHR(1),CHR(1))
-	if mode == '0'
-		'\0\s[0]请选择处理方式\n'
-	elseif mode == '1'
+	if mode == '1'
 		"\1\s[%(specialmode != 'mealtime')11]\b[2]唔？\n"
+	else
+		'\0\s[0]'
+	--
+	if SHIORI_FW.DebugMode{
+		if ISFUNC(CUTSPACE(temp))
+			'这是一个函数\n'
+		elseif ISVAR(CUTSPACE(temp))
+			"变量“%(temp)”\n/
+			值：%(REPLACE(TOSTR(EVAL(temp)),'\','\\'))\n/
+			类型：%(GETTYPE.string((EVAL(temp))))\n/
+			"
+		elseif SUBSTR(CUTSPACE(temp),0,2) == 'On'
+			'这可能是一个还未定义的事件\n'
+	}
+	--
+	if mode == '0'
+		'请选择处理方式\n'
 	--
 	if CHR(1) _in_ temp{
 		if SHIORI_FW.DebugMode && RE_GREP(temp,"/%(CHR(1))\s*")

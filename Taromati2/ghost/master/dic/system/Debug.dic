@@ -1,6 +1,6 @@
 //by steve02081504
 SakuraScriptArgConverter{
-	'"'+REPLACE(_argv[0],'"','""')+'"'
+	'"'+REPLACE(TOSTR(_argv[0]),'"','""')+'"'
 }
 OnSakuraScript{
 	if _argv[0]
@@ -27,6 +27,34 @@ OnSakuraScript{
 	}
 	reference0
 }
+On_ShioriEcho.GetName:void {
+	SHIORI_FW.Make_X_SSTP_PassThru('GhostName',ghostname)
+	SHIORI_FW.Make_X_SSTP_PassThru('UserName',username)
+}
+
+On_ShioriEcho {
+	ClearShioriEchoVar
+	OnCalculateVar
+	--
+	IgnoreChoiceTimeout
+}
+
+On_ShioriEcho.GetResult:void {
+	if ShioriEcho.Canceled{
+		SHIORI_FW.Make_X_SSTP_PassThru('Special','已取消求值')
+	}
+	else{
+		if ShioriEcho.Result
+			SHIORI_FW.Make_X_SSTP_PassThru('Result',ShioriEcho.Result)
+		if ShioriEcho.Type
+			SHIORI_FW.Make_X_SSTP_PassThru('Type',ShioriEcho.Type)
+	}
+}
+ClearShioriEchoVar:void {
+	ERASEVAR('ShioriEcho.Canceled')
+	ERASEVAR('ShioriEcho.Result')
+	ERASEVAR('ShioriEcho.Type')
+}
 OnSakuraScript.Forment{
 	OnSakuraScript(EVAL('"'+reference0+'"'),'no_convert')
 }
@@ -35,36 +63,39 @@ OnCalculateVar{
 		reference0 = _argv[0]
 	if _argv[1]
 		reference1 = _argv[1]
-	if !reference0{
-		'\![open,inputbox,OnCalculateVar,1000-7]'//玩梗
+	reference0 = TOSTR(reference0)
+	if !CUTSPACE(reference0){
+		'\![open,inputbox,OnCalculateVar,0,1000-7]'//玩梗
 		return
 	}
-	if reference1 != 'warning_func_run' && reference1 != 'force_run' && reference1 != 'no_convert' && ('，' _in_ reference0 || '（' _in_ reference0 || '）' _in_ reference0 || '‘' _in_ reference0 || '’' _in_ reference0 || '“' _in_ reference0 || '”' _in_ reference0 || '！' _in_ reference0 || '、' _in_ reference0 || '？' _in_ reference0 || '。' _in_ reference0 || '【' _in_ reference0 || '】' _in_ reference0){
-		if mode == '1'
-			"\1\s[%(specialmode != 'mealtime')11]全角 -> 半角？\n"
-		else
-			'\0\s[20]转换表达式中的全角符号为半角？\n'
-		--
-		'\q[◇好,OnCalculateVar.CharConverter,'+SakuraScriptArgConverter(reference0)+']\n/
-		\q[◇直接执行,OnCalculateVar,'+SakuraScriptArgConverter(reference0)+',no_convert]\n/
-		\q[◇算了,Cancel]\n/
-		'
-		return
-	}
-	_var = RE_REPLACE(reference0,'\s*[\[,+=][\s\S]*$','')
-	_func = RE_REPLACE(reference0,'\s*\([\s\S]*$','')
-	if ISVAR(_var) == 0 && ISFUNC(_func) == 0 && reference1 != 'warning_func_run' && reference1 != 'force_run'{
-		if mode == '1'
-			"\1\s[%(specialmode != 'mealtime')10]没这个名字\n"
-		else
-			'\0\s[3]没有这个变量或函数……\n'
-		--
-		'/
-		\q[◇仍然执行,OnCalculateVar,'+SakuraScriptArgConverter(reference0)+',force_run]\n/
-		\q[◇改作Sakura Script執行,OnSakuraScript,'+SakuraScriptArgConverter(reference0)+']\n/
-		\q[◇算了,Cancel]/
-		'
-		return
+	if !ISFUNC(CUTSPACE(reference0)) && !ISVAR(CUTSPACE(reference0)){
+		if reference1 != 'warning_func_run' && reference1 != 'force_run' && reference1 != 'no_convert' && ('，' _in_ reference0 || '（' _in_ reference0 || '）' _in_ reference0 || '‘' _in_ reference0 || '’' _in_ reference0 || '“' _in_ reference0 || '”' _in_ reference0 || '！' _in_ reference0 || '、' _in_ reference0 || '？' _in_ reference0 || '。' _in_ reference0 || '【' _in_ reference0 || '】' _in_ reference0){
+			if mode == '1'
+				"\1\s[%(specialmode != 'mealtime')11]全角 -> 半角？\n"
+			else
+				'\0\s[20]转换表达式中的全角符号为半角？\n'
+			--
+			'\q[◇好,OnCalculateVar.CharConverter,'+SakuraScriptArgConverter(reference0)+']\n/
+			\q[◇直接执行,OnCalculateVar,'+SakuraScriptArgConverter(reference0)+',no_convert]\n/
+			\q[◇算了,Cancel]\n/
+			'
+			return
+		}
+		_var = RE_REPLACE(reference0,'\s*[\[,+=][\s\S]*$','')
+		_func = RE_REPLACE(reference0,'\s*\([\s\S]*$','')
+		if ISVAR(_var) == 0 && ISFUNC(_func) == 0 && reference1 != 'warning_func_run' && reference1 != 'force_run' && GETTYPE(TOAUTOEX(_var)) == 3{
+			if mode == '1'
+				"\1\s[%(specialmode != 'mealtime')10]没这个名字\n"
+			else
+				'\0\s[3]没有这个变量或函数……\n'
+			--
+			'/
+			\q[◇仍然执行,OnCalculateVar,'+SakuraScriptArgConverter(reference0)+',force_run]\n/
+			\q[◇改作Sakura Script執行,OnSakuraScript,'+SakuraScriptArgConverter(reference0)+']\n/
+			\q[◇算了,Cancel]/
+			'
+			return
+		}
 	}
 	if reference1 != 'warning_func_run' && (RE_GREP(_func,'^Reset') || _func == 'OnFirstBoot' || _func == 'MAGICLOAD' || _func == 'LOADVAR' || _func == 'RESTOREVAR' || _func == 'OnKikkaReset'){
 		if mode == '1'
@@ -98,28 +129,31 @@ OnCalculateVar{
 		else
 			'\0\s[0]表达式『\_q'+REPLACE(reference0,'\','\\')+'\_q』的执行结果为：\n'
 		--
-		__t=TOSTR(EVAL(reference0))
-		_t=REPLACE(__t,'\','\\')
+		_Result=EVAL(reference0)
 		'\_q'
 		--
-		if __t == ''
+		if _Result == ''
 			'什么都没有'
 		else
-			_t
+			REPLACE(TOSTR(_Result),'\','\\')
 		--
+		_Type=GETTYPE.string((_Result))
 		'\n/
-		类型：'+GETTYPE.to_string((_t))
+		类型：'+_Type
 		--
 		'\_q\n/
-		\q[◇复制结果,OnCopy,'+SakuraScriptArgConverter(__t)+']\n/
+		\q[◇复制结果,OnCopy,'+SakuraScriptArgConverter(_Result)+']\n/
 		\q[◇复制表达式,OnCopy,'+SakuraScriptArgConverter(reference0)+']\n/
-		\q[◇结果作Sakura Script執行,OnSakuraScript,'+SakuraScriptArgConverter(__t)+']\n/
+		\q[◇结果作Sakura Script執行,OnSakuraScript,'+SakuraScriptArgConverter(_Result)+']\n/
 		'
 		--
 		'\n/
 		\q[◇求值下一个,OnCalculateVar]\n/
 		\q[◇无用,Cancel]\n/
 		'
+		--
+		ShioriEcho.Result=_Result
+		ShioriEcho.Type=_Type
 	}
 }
 OnCalculateVar.CharConverter{

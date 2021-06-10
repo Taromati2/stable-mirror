@@ -345,9 +345,9 @@ OnBoot{
 	--
 	//小于5min
 	if elapsetime <= 300{
-		if inreboot{
-			inreboot = 0
+		if inreboot || inshutdown{
 			ERASEVAR('inreboot')
+			ERASEVAR('inshutdown')
 			'\1\s[10]\0\s[0]欢迎回来\x'
 		}else{
 			'\1\s[10]\0\s[2]怎么了呢....？\x'
@@ -705,6 +705,8 @@ OnClose{
 	--
 	MAGICLOCK
 	--
+	if reference0 == 'shutdown'
+		inshutdown=1
 	if mode == '1'{
 		OnClose1
 	}

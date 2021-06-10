@@ -2155,6 +2155,7 @@ autojeachday{
 	_file = 'DATA_PATH\vocabulary\Japanese\动漫日语每天一句.txt'
 	_buff = ''
 	_txt = '\1\s[10]\0\s[40]'
+	FCHARSET(1)
 	if FOPEN(_file, 'r') {
 		_buff = FREAD(_file)
 		while _buff != -1 && _str !_in_ _buff {
@@ -2168,6 +2169,7 @@ autojeachday{
 		}
 	}
 	FCLOSE(_file)
+	FCHARSET.default
 	_txt
 }
 Onacjeachday{
@@ -2185,6 +2187,7 @@ Onacjeachday{
 	_txt+='\q[◇今天的句子,Ondaysentence]\n'
 	_txt+=Onautojeachday
 	_txt+='\n\n\n'
+	FCHARSET(1)
 	if FOPEN(_file, 'r') {
 		_buff = FREAD(_file)
 		while _buff != -1 && _str !_in_ _buff {
@@ -2197,6 +2200,7 @@ Onacjeachday{
 		}
 	}
 	FCLOSE(_file)
+	FCHARSET.default
 	if dmry==1{
 		_txt += "\_l[-,250]\n\n\_l[120,-]\![*]\q[第%(dmry)句,Oninputsentence]\_l[240,-]\![*]\q[下一句,Onnextsentence]"
 	}
