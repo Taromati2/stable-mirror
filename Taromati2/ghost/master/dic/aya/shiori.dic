@@ -564,28 +564,23 @@ SHIORI_FW.MakeResponse{
 	C_CRLF
 }
 SHIORI_FW.Has_X_SSTP_PassThru{
-	SHIORI_FW.X_SSTP_PassThru.Indexs
+	SHIORI_FW.X_SSTP_PassThru.String
 }
 SHIORI_FW.Init_X_SSTP_PassThru_Function:void{
-	SHIORI_FW.X_SSTP_PassThru.Indexs = IARRAY
-	SHIORI_FW.X_SSTP_PassThru.Values = IARRAY
+	SHIORI_FW.X_SSTP_PassThru.String = ''
 }
 SHIORI_FW.Make_X_SSTP_PassThru:void{
-	SHIORI_FW.X_SSTP_PassThru.Indexs ,= _argv[0]
-	SHIORI_FW.X_SSTP_PassThru.Values ,= _argv[1]
+	_key="X-SSTP-PassThru-%(_argv[0]): "
+	_argv[0]=IARRAY
+	SHIORI_FW.X_SSTP_PassThru.String += _key+TOSTR(_argv)+C_CRLF
 }
 SHIORI_FW.Clear_X_SSTP_PassThru_Variable:void{
-	ERASEVAR('SHIORI_FW.X_SSTP_PassThru.Indexs')
-	ERASEVAR('SHIORI_FW.X_SSTP_PassThru.Values')
+	ERASEVAR('SHIORI_FW.X_SSTP_PassThru.String')
 }
 SHIORI_FW.Get_X_SSTP_PassThrus{
-	_txt = ''
-	while SHIORI_FW.X_SSTP_PassThru.Indexs[0]{
-		_txt+="X-SSTP-PassThru-%(SHIORI_FW.X_SSTP_PassThru.Indexs[0]): %(SHIORI_FW.X_SSTP_PassThru.Values[0])%(C_CRLF)"
-		SHIORI_FW.X_SSTP_PassThru.Indexs[0] = IARRAY
-		SHIORI_FW.X_SSTP_PassThru.Values[0] = IARRAY
-	}
-	_txt
+	_t=SHIORI_FW.X_SSTP_PassThru.String
+	SHIORI_FW.X_SSTP_PassThru.String = ''
+	_t
 }
 
 //------------------------------------------------------------------------------

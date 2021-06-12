@@ -238,9 +238,9 @@ OnTextDrop{
 		if ISFUNC(CUTSPACE(temp))
 			'这是一个函数\n'
 		elseif ISVAR(CUTSPACE(temp))
-			"变量“%(temp)”\n/
-			值：%(REPLACE(TOSTR(EVAL(temp)),'\','\\'))\n/
-			类型：%(GETTYPE.string((EVAL(temp))))\n/
+			"变量“%(CUTSPACE(temp))”\n/
+			值：%(GetVarValue.SakuraScript(temp))\n/
+			类型：%(GETTYPE.string((GetVarValue(temp))))\n/
 			"
 		elseif SUBSTR(CUTSPACE(temp),0,2) == 'On'
 			'这可能是一个还未定义的事件\n'

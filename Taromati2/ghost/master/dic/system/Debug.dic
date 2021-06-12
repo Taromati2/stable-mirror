@@ -2,6 +2,57 @@
 SakuraScriptArgConverter{
 	'"'+REPLACE(TOSTR(_argv[0]),'"','""')+'"'
 }
+
+#globaldefine GETTYPE.string(( GETTYPE.to_string(GETTYPE(
+//))))
+GETTYPE.to_string{
+	case _argv[0]{
+		when 1
+			'整数'
+		when 2
+			'实数'
+		when 3
+			'字串'
+		when 4
+			'泛用阵列'
+		others
+			'内部错误'
+	}
+}
+ValueTOstring{
+	if _argc > 1{
+		_t='('
+		foreach _argv;_i{
+			_t+=ValueTOstring(_i)+','
+		}
+		RE_REPLACE(_t,'\,$',')')
+	}
+	elseif ISSTR(_argv[0]){
+		if '"' !_in_ _argv[0]
+			'"'+_argv[0]+'"'
+		elseif "'" !_in_ _argv[0]
+			"'"+_argv[0]+"'"
+		else
+			REPLACE(RE_REPLACE(RE_REPLACE('"'+REPLACE(_argv[0],'"','"+'+"'"+'"'+"'"+'+"')+'"','^\"\"\+',''),'\+\"\"$',''),'"'+"'+'"+'"','')
+	}
+	elseif TOSTR(_argv[0])==''
+		'NULL'
+	else
+		TOSTR(_argv[0])
+}
+ValueTOstring.SakuraScript{
+	REPLACE(ValueTOstring(_argv),'\','\\')
+}
+GetVarValue{
+	EVAL(_argv[0])
+}
+GetVarValue.string{
+	ValueTOstring(GetVarValue(_argv[0]))
+}
+GetVarValue.SakuraScript{
+	REPLACE(GetVarValue.string(_argv[0]),'\','\\')
+}
+
 OnSakuraScript{
 	if _argv[0]
 		reference0 = _argv[0]
@@ -27,37 +78,47 @@ OnSakuraScript{
 	}
 	reference0
 }
+OnSakuraScript.Forment{
+	OnSakuraScript(EVAL('"'+reference0+'"'),'no_convert')
+}
+
 On_ShioriEcho.GetName:void {
 	SHIORI_FW.Make_X_SSTP_PassThru('GhostName',ghostname)
 	SHIORI_FW.Make_X_SSTP_PassThru('UserName',username)
 }
-
 On_ShioriEcho {
 	ClearShioriEchoVar
 	OnCalculateVar
 	--
 	IgnoreChoiceTimeout
 }
-
 On_ShioriEcho.GetResult:void {
 	if ShioriEcho.Canceled{
 		SHIORI_FW.Make_X_SSTP_PassThru('Special','已取消求值')
 	}
 	else{
-		if ShioriEcho.Result
-			SHIORI_FW.Make_X_SSTP_PassThru('Result',ShioriEcho.Result)
-		if ShioriEcho.Type
-			SHIORI_FW.Make_X_SSTP_PassThru('Type',ShioriEcho.Type)
+		if ISVAR('ShioriEcho.Result'){
+			SHIORI_FW.Make_X_SSTP_PassThru('Result',ValueTOstring(ShioriEcho.Result))
+			if ShioriEcho.Type
+				SHIORI_FW.Make_X_SSTP_PassThru('Type',ShioriEcho.Type)
+		}
 	}
+	ClearShioriEchoVar
 }
 ClearShioriEchoVar:void {
 	ERASEVAR('ShioriEcho.Canceled')
 	ERASEVAR('ShioriEcho.Result')
 	ERASEVAR('ShioriEcho.Type')
 }
-OnSakuraScript.Forment{
-	OnSakuraScript(EVAL('"'+reference0+'"'),'no_convert')
+OnCalculateVar.Cancel{
+	ShioriEcho.Canceled=1
+	EVAL('Select.'+reference0)
 }
+OnCalculateVar.ToSakuraScript{
+	ShioriEcho.Canceled=1
+	OnSakuraScript(reference0)
+}
+
 OnCalculateVar{
 	if _argv[0]
 		reference0 = _argv[0]
@@ -77,11 +138,11 @@ OnCalculateVar{
 			--
 			'\q[◇好,OnCalculateVar.CharConverter,'+SakuraScriptArgConverter(reference0)+']\n/
 			\q[◇直接执行,OnCalculateVar,'+SakuraScriptArgConverter(reference0)+',no_convert]\n/
-			\q[◇算了,Cancel]\n/
+			\q[◇算了,OnCalculateVar.Cancel,Cancel]\n/
 			'
 			return
 		}
-		_var = RE_REPLACE(reference0,'\s*[\[,+=][\s\S]*$','')
+		_var = RE_REPLACE(reference0,'\s*[\[,+=*-/%][\s\S]*$','')
 		_func = RE_REPLACE(reference0,'\s*\([\s\S]*$','')
 		if ISVAR(_var) == 0 && ISFUNC(_func) == 0 && reference1 != 'warning_func_run' && reference1 != 'force_run' && GETTYPE(TOAUTOEX(_var)) == 3{
 			if mode == '1'
@@ -91,8 +152,8 @@ OnCalculateVar{
 			--
 			'/
 			\q[◇仍然执行,OnCalculateVar,'+SakuraScriptArgConverter(reference0)+',force_run]\n/
-			\q[◇改作Sakura Script執行,OnSakuraScript,'+SakuraScriptArgConverter(reference0)+']\n/
-			\q[◇算了,Cancel]/
+			\q[◇改作Sakura Script執行,OnCalculateVar.ToSakuraScript,'+SakuraScriptArgConverter(reference0)+']\n/
+			\q[◇算了,OnCalculateVar.Cancel,Cancel]/
 			'
 			return
 		}
@@ -105,7 +166,7 @@ OnCalculateVar{
 		--
 		'/
 		\q[◇仍然执行,OnCalculateVar,'+SakuraScriptArgConverter(reference0)+',warning_func_run]\n/
-		\q[◇算了,'
+		\q[◇算了,OnCalculateVar.Cancel,'
 		--
 		if _func == 'OnFirstBoot' || _func == 'MAGICLOAD' || RE_GREP(_func,'^Reset') || _func == 'OnKikkaReset'
 			'Thanks'

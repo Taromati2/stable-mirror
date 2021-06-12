@@ -7,22 +7,6 @@ TOSIMPLIFIED{
 TOTRADITIONAL{
 	CALLSAORI('ChConverter','traditional',_argv[0])
 }
-#globaldefine GETTYPE.string(( GETTYPE.to_string(GETTYPE(
-//))))
-GETTYPE.to_string{
-	case _argv[0]{
-		when 1
-			'整数'
-		when 2
-			'实数'
-		when 3
-			'字串'
-		when 4
-			'泛用阵列'
-		others
-			'内部错误'
-	}
-}
 //ユーザー名
 On_username{
 	username
