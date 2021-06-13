@@ -115,8 +115,12 @@ OnKeyPress{
 	}
 	elseif reference0 == 'f7' {
 		//---- 表达式执行
-		if SHIORI_FW.DebugMode
-			'\![open,inputbox,OnCalculateVar]'
+		if SHIORI_FW.DebugMode{
+			if QuickStartVersion
+				'\![open,inputbox,OnCalculateVar]'
+			else
+				'\![open,file,SAORI_PATH/ghost_terminal.exe]'
+		}
 	}
 	elseif reference0 == 'f8' {
 		OnOpenMasterMenu

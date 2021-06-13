@@ -59,10 +59,6 @@ OnSHIORI_FW.ChangeSelfInfo
 //------------------------------------------------------------------------------
 //以下のdefineは基本的に弄らないで下さい
 //------------------------------------------------------------------------------
-
-//文字/文字列定数
-#define			C_2CRLF		C_CRLF+C_CRLF					/*改行コードx2		*/
-#define			C_BYTE1		CHR(0x1)						/*バイト値1			*/
 //チェイン
 #globaldefine	CHAIN{{		{{CHAIN	/* どうも誤記される場合があるようなので */
 #globaldefine	CHAIN}}		}}CHAIN	/* 同上 */
@@ -177,6 +173,11 @@ ClearAyaTempVar {
 	ERASEVAR('SHIORI_FW.GhostName')
 	ERASEVAR('SHIORI_FW.ShellNameOld')
 	ERASEVAR('SHIORI_FW.BalloonNameOld')
+	ERASEVAR('C_LF')
+	ERASEVAR('C_CR')
+	ERASEVAR('C_CRLF')
+	ERASEVAR('C_CRLF2')
+	ERASEVAR('C_BYTE1')
 
 
 	_n = ARRAYSIZE(tempvarname)
@@ -200,6 +201,13 @@ ClearAyaTempVar {
 //機能　：ロード時の処理
 //------------------------------------------------------------------------------
 load {
+	// 文字/文字列定数
+	C_LF = CHR(0xa)			/*lin换行*/
+	C_CR = CHR(0xd)			/*mac换行*/
+	C_CRLF = CHR(0xd,0xa)	/*win换行*/
+	C_CRLF2 = C_CRLF+C_CRLF
+	C_BYTE1 = CHR(0x1)
+
 	REQ.COMMAND		= 'LOAD'
 	REQ.PROTOCOL	= 'AYA/5.0'
 	var.req.key		= (IARRAY, 'Path')
@@ -412,7 +420,7 @@ request {
 		//セキュリティレベル='External'なら即返る
 		elseif _key == 'SecurityLevel' {
 			if _value == 'External' {
-				"SHIORI/3.0 204 No Content%(C_CRLF)Charset: %(S_CHARSET)%(C_2CRLF)"
+				"SHIORI/3.0 204 No Content%(C_CRLF)Charset: %(S_CHARSET)%(C_CRLF2)"
 				return
 			}
 		}
@@ -746,7 +754,7 @@ SHIORI_FW.RaiseIDEvent {
 //引数　：_argv[0] イベント名
 //------------------------------------------------------------------------------
 SHIORI_FW.MakeBadResponse{
-	"SHIORI/3.0 400 Bad Request%(C_2CRLF)"
+	"SHIORI/3.0 400 Bad Request%(C_CRLF2)"
 }
 SHIORI_FW.MakeEmptyResponse {
 	case SHIORI_FW.Eventid {
@@ -1207,7 +1215,7 @@ FUNCTIONEX {
 //引数　：_argv[0] SAORIファイル名
 //------------------------------------------------------------------------------
 SHIORI_FW.SendGETVersion {
-	SHIORI_FW.RequestLib(_argv[0], "GET Version SAORI/1.0%(C_CRLF)Charset: %(CHARSETLIBEX(_argv[0]))%(C_CRLF)Sender: AYA%(C_2CRLF)")
+	SHIORI_FW.RequestLib(_argv[0], "GET Version SAORI/1.0%(C_CRLF)Charset: %(CHARSETLIBEX(_argv[0]))%(C_CRLF)Sender: AYA%(C_CRLF2)")
 
 	LIB.STATUSCODE
 }

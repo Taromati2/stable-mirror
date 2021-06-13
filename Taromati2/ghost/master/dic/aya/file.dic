@@ -1,9 +1,5 @@
 //by steve02081504
 
-#globaldefine	C_CRLF		C_CR+C_LF		/*win换行*/
-#globaldefine	C_LF		CHR(0xa)		/*lin换行*/
-#globaldefine	C_CR		CHR(0xd)		/*mac换行*/
-
 GETCHARSETINDEX{
 	case TOLOWER(_argv[0]){
 		when 'shift_jis'

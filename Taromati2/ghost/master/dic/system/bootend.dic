@@ -85,6 +85,7 @@ GetPasswordFirst{
 }
 UpdateFirst{
 	ERASEVAR('HaveNotGetPassword')
+	OpenDocForRuntime('welcome')
 	--
 	'\w9\w9\0\s[6]\c/
 	现在开始初次启动时的自动更新\w9\n/
