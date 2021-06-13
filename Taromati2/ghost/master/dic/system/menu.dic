@@ -615,7 +615,7 @@ Select.System{
 	--
 	InternetIPShowing
 	--
-	'\n\n[half]\q[◇返回上一层,OnOpenMenu,4]    \q[◇终了,OnMenuCancel]\_q'
+	'\n\n[half]\q[◇返回上一层,OnOpenMenu,4]    \q[◇终了,Cancel]\_q'
 }
 DayofWeek_w{
 	('日','一','二','三','四','五','六')[weekday]

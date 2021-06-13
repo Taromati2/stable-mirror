@@ -93,7 +93,7 @@ KikkaMenu{
 	if showkikka==1 {
 		'\_l[0,200]' + ColorText('\__q[OnKikkaMenu,2]\f[cursorstyle,none]\f[cursorfontcolor,65,203,214]─────────橘花养成系统↓────────\f[cursorstyle,default]\f[cursorfontcolor,default]\__q\n[140]','color=160,160,200')
 		--
-		"\_l[82]\![*]\q[购买物品  ,OnKikkaItemList,0]\![*]\q[日程安排  ,OnKikkaClass,%(weekday)]\![*]\q[礼物盒子,Ongiftbox]\n"
+		"\_l[82]\![*]\q[购买物品,OnKikkaItemList,0]  \![*]\q[日程安排,OnKikkaClass,%(weekday)]  \![*]\q[礼物盒子,Ongiftbox]\n"
 		--
 		infomode=0
 		KikkaStatus
@@ -454,7 +454,7 @@ OnKikkaItemList{
 	\![*]\__q[OnKikkaItem,10,-1250,chm=4,love=1,g,4]香水 \_l[64]￥1250 \_l[118]魅力 4 \_l[168]好感 1 亲密度 2\__q\n/
 	\![*]\__q[OnKikkaItem,11,-6000,chm=20,love=5,g,5]钻戒 \_l[64]￥6000 \_l[118]魅力 20 \_l[168]好感 5 幸福度 5\__q\n'
 	--
-	'\n[half]\q[◇返回,OnKikkaMenu,1]    \q[◇终了,OnKikkaEnd]'
+	'\n[half]\q[◇返回,OnKikkaMenu,1]    \q[◇终了,Cancel]'
 	--
 	KikkaStatus
 }
@@ -522,7 +522,7 @@ OnKikkaClass{
 	\![*]\__q[OnKikkaClassSet,%(_day),广告]拍广告(lv.%(_lvl))\_l[86]魅力 %(0 - _lvl)\_l[134]薪水=魅力值\__q\n/
 	休息：\n/
 	\![*]\__q[OnKikkaClassSet,%(_day),休息]休息\_l[50]体力不会随时间下降\__q\n"
-	_txt += '\n[150]\q[◇返回,OnKikkaMenu,1]    \q[◇终了,OnKikkaEnd]'
+	_txt += '\n[150]\q[◇返回,OnKikkaMenu,1]    \q[◇终了,Cancel]'
 	_txt
 }
 OnKikkaClassSet{
