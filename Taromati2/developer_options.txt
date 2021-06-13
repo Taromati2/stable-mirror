@@ -22,6 +22,11 @@ ghost/master/profile/,nonar,noupdate
 ghost/master/aya_variable.cfg,nonar,noupdate
 ghost/master/shiori_backup/,nonar,noupdate
 
+ghost/master/.gitignore,nonar,noupdate
+
+ghost/master/tama.exe,nonar,noupdate
+ghost/master/tama.txt,nonar,noupdate
+
 ghost/master/aya.log,nonar,noupdate
 ghost/master/ssp_shiori_log.txt,nonar,noupdate
 

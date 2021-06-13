@@ -1,5 +1,4 @@
 file,delete.txt5805efe27cb071c4c6fe2954aa8eb724size=23677
-file,ghost/master/.gitignorec8e2084b6cbcc9078ae1bd1282d188c7size=96
 file,ghost/master/aya.dllcc6ac9bb5901156397451cfe9a07bcb0size=285696
 file,ghost/master/aya.txt71cb31ee30a802741abb1791d44e7792size=4796
 file,ghost/master/data/Game/BoxGame/box.txt4eb7bc822cf0d1cd24d14daa6ce16387size=33614
