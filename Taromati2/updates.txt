@@ -360,7 +360,7 @@ file,ghost/master/dic/games/GoldenFlower.dic2bb68ad20a1d1f9e545df0b87efd705dsi
 file,ghost/master/dic/games/HuaRongDao.dicd7742a9bac1c691b39ca776e2f6ee56fsize=17188
 file,ghost/master/dic/games/interactive.dicc91cc2ef708973140682a3b397a51cc5size=23937
 file,ghost/master/dic/games/linkwnd.dic90033f136c8e4b1e689cb90297d374c1size=66696
-file,ghost/master/dic/games/other.dic0209411377b759117c11e62a5b624914size=75558
+file,ghost/master/dic/games/other.dic47d89a370a71108bf2b78006cc3a8041size=75552
 file,ghost/master/dic/games/puzzle.dic60e8ecae3c3b52ab5e4bb6384d6c6af5size=4650
 file,ghost/master/dic/games/RetroSnaker.dic310c54c3ac3dc73a1c80a0041032c6dbsize=8097
 file,ghost/master/dic/games/rpggame.dic5090ed395ab515d7a817da3c3a528ad3size=137145

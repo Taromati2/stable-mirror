@@ -555,9 +555,9 @@ OnBlackjackEnd{
 //--------------------------------------------------------------------------
 OnHandGame{
 	"\0\s[40]%(username)要跟橘花玩猜拳?\w9\w9...好啊!\w9\w9\c\w9\w9出拳吧!\n\n/
-	\q[◇剪刀,ShowHand(0)]\n/
-	\q[◇石头,ShowHand(1)]\n/
-	\q[◇布,ShowHand(2)]\n"
+	\q[◇剪刀,ShowHand,0]\n/
+	\q[◇石头,ShowHand,1]\n/
+	\q[◇布,ShowHand,2]\n"
 }
 Select.ShowHand{
 	_i=RAND(3)
@@ -594,9 +594,9 @@ Select.ShowHand{
 }
 Select.P1{
 	'\0\s[0]\w9\w9出拳吧!\n\n/
-	\q[◇剪刀,ShowHand(0)]\n/
-	\q[◇石头,ShowHand(1)]\n/
-	\q[◇布,ShowHand(2)]\n/
+	\q[◇剪刀,ShowHand,0]\n/
+	\q[◇石头,ShowHand,1]\n/
+	\q[◇布,ShowHand,2]\n/
 	\q[◇不用了,P2]'
 }
 Select.P2{
