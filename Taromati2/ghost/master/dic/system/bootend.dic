@@ -789,7 +789,8 @@ OnWindowStateMinimize{
 OnWindowStateRestore{
 	OnSurfaceRestore.base
 	--
-	topmode-=2
+	if topmode/2
+		topmode-=2
 	TopModeChanged
 	--
 	if mode == '1'{
