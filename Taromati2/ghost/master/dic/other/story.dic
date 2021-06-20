@@ -6,10 +6,14 @@ Onstorynook{
 	'\0\s[3]是嘛 那要听时要跟橘花说喔'
 }
 Onstoryok{
-	"%(story1)"
-	if story2 != NULL {"%(story2)"}
-	if story3 != NULL {"%(story3)"}
-	if story4 != NULL {"%(story4)"}
+	if _t=story1
+		_t
+	if _t=story2
+		_t
+	if _t=story3
+		_t
+	if _t=story4
+		_t
 }
 story1 : nonoverlap{
 	'\0\s[0]'

@@ -34,6 +34,9 @@ BUGNow{
 	\q[◇前往汇报,OnUrlOpen,https://github.com/Taromati2/Taromati2#bug%E5%8F%8D%E9%A6%88]\n/
 	\q[◇不了,Cancel]'
 }
+OpenDocForRuntime.string{
+	'\![open,browser,https://github.com/Taromati2/Taromati2/blob/master/docs/runtime/'+_argv[0]+'.md]'
+}
 OpenDocForRuntime{
-	SHIORI_FW.PushNotifyResult('\![open,browser,https://github.com/Taromati2/Taromati2/blob/master/docs/runtime/'+_argv[0]+'.md]')
+	SHIORI_FW.PushNotifyResult(OpenDocForRuntime.string(_argv[0]))
 }

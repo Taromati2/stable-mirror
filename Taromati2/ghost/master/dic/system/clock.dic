@@ -62,6 +62,8 @@ OnMinuteChange{
 	--
 	ShutdownMonitor
 	--
+	if REQ.COMMAND!='GET'
+		return
 	if mode == '0'{
 		if specialmode == ''{
 			_boottime = ghostuptime
@@ -151,7 +153,9 @@ OnMinuteChange{
 }
 ClassMonitor{
 	_classrm=OnClassDetailTimeCheck
-	if _classrm!=''{
+	if _classrm{
+		if REQ.COMMAND!='GET'
+			OnPlayAlarm
 		_classrm+"\![set,trayballoon,--icon=info,--timeout=10,--title=课程提醒,--text=%(_classrm),--text=（点击气泡关闭提醒）]"
 	}
 }
@@ -164,14 +168,17 @@ AlarmMonitor{
 	}
 	if alarmstart > 0 {
 		if alarmset[2] == '声音' {
+			OnPlayAlarm(alarmfile)
 			_tmp = "%(username)设定的时间到了"
 			if alarmstart > 1 {
 				_tmp = "已经超过%(username)设定的时间%(alarmstart - 1)分钟了"
 			}
 			alarmstart ++
-			"\c\![sound,play,%(REPLACE(alarmfile,'/','\\'))]\f[bold,true]闹钟提醒\f[bold,default]\n[150]现在是%(hour)点%(minute)分\n%(_tmp)！\n（点击对话框关闭提醒）"
+			"\c\f[bold,true]闹钟提醒\f[bold,default]\n[150]现在是%(hour)点%(minute)分\n%(_tmp)！\n（点击对话框关闭提醒）"
 		}
 		elseif alarmset[2] == '气泡' {
+			if REQ.COMMAND!='GET'
+				OnPlayAlarm
 			_tmp = "%(username)设定的时间到了"
 			if alarmstart > 1 {
 				_tmp = "已经超过%(username)设定的时间%(alarmstart - 1)分钟了"
@@ -231,7 +238,7 @@ AlarmMenu{
 		alarmset[2] = '声音'
 		alarmhour = 0
 		alarmmin = 0
-		alarmfile = 'SOUND_PATH\Ring.mp3'
+		alarmfile = 'UN_SAORI_path\SOUND_PATH\Ring.mp3'
 	}
 	'\f[bold,true]\0闹钟功能\f[bold,default]\n\n[half]/
 	\![quicksession,1]\![set,choicetimeout,0]'
@@ -269,6 +276,14 @@ OnSetAlarmFile{
 DialogSetAlarmFile{
 	alarmfile = _argv[0]
 	AlarmMenu
+}
+OnPlayAlarm:void{
+	_argv[0]=_argv[0]
+	if !_argv[0]
+		_argv[0]='UN_SAORI_path\SOUND_PATH\Ring.mp3'
+	CALLSAORI('mciaudior', 'stop')
+	CALLSAORI('mciaudior', 'load',_argv[0])
+	CALLSAORI('mciaudior', 'play')
 }
 OnAlarmEnd{
 }
@@ -720,11 +735,9 @@ ShutdownMonitor{
 		\![set,trayballoon,--icon=info,--timeout=10,--title=关机提醒,--text=现在是%(hour)点%(minute)分,--text=%(_txt)！,--text=（点击气泡关闭提醒）]/
 		"
 		--
-		_path = CALLSAORI('advanced_sysinfo','get_special_folder_path','Windows')
-		_file = REPLACE(_path,'\','\\') + '\\system32\\Shutdown.exe'
-		"\![open,file,%(_file),-s]"
-		--
 		'\w9\w9\w9\w9\w9'+OnClose
+		--
+		RUNCMD('Shutdown -s')
 	}
 }
 OnCancelSetShutdown{
