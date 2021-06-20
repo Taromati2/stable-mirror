@@ -173,11 +173,6 @@ ClearAyaTempVar {
 	ERASEVAR('SHIORI_FW.GhostName')
 	ERASEVAR('SHIORI_FW.ShellNameOld')
 	ERASEVAR('SHIORI_FW.BalloonNameOld')
-	ERASEVAR('C_LF')
-	ERASEVAR('C_CR')
-	ERASEVAR('C_CRLF')
-	ERASEVAR('C_CRLF2')
-	ERASEVAR('C_BYTE1')
 
 
 	_n = ARRAYSIZE(tempvarname)
@@ -306,6 +301,12 @@ unload {
 	SHIORI_FW.ClearChainVariable
 	SHIORI_FW.ClearReferenceVariable
 	SHIORI_FW.ClearValueexVariable
+
+	ERASEVAR('C_LF')
+	ERASEVAR('C_CR')
+	ERASEVAR('C_CRLF')
+	ERASEVAR('C_CRLF2')
+	ERASEVAR('C_BYTE1')
 }
 
 //------------------------------------------------------------------------------
