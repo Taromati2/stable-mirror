@@ -143,7 +143,7 @@ OnCalculateVar{
 			return
 		}
 		_var = RE_REPLACE(reference0,'\s*[\[,+=*-/%][\s\S]*$','')
-		_func = RE_REPLACE(reference0,'\s*\([\s\S]*$','')
+		_func = RE_REPLACE(reference0,'\s*[\(\[][\s\S]*$','')
 		if ISVAR(_var) == 0 && ISFUNC(_func) == 0 && reference1 != 'warning_func_run' && reference1 != 'force_run' && GETTYPE(TOAUTOEX(_var)) == 3{
 			if mode == '1'
 				"\1\s[%(specialmode != 'mealtime')10]没这个名字\n"

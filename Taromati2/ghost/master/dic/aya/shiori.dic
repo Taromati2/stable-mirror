@@ -185,7 +185,7 @@ ClearAyaTempVar {
 	SHIORI_FW.ClearChainVariable
 	SHIORI_FW.ClearReferenceVariable
 	SHIORI_FW.ClearValueexVariable
-	SHIORI_FW.Clear_X_SSTP_PassThru_Variable
+	SHIORI_FW.ClearAdditionalReturnVariable
 }
 //******************************************************************************
 //load
@@ -269,7 +269,7 @@ load {
 	}
 
 	SHIORI_FW.InitChain
-	SHIORI_FW.Init_X_SSTP_PassThru_Function
+	SHIORI_FW.InitAdditionalReturnFunction
 
 	SHIORI_FW.SetDelayEvent('',0)
 
@@ -309,23 +309,6 @@ unload {
 	ERASEVAR('C_BYTE1')
 }
 
-//------------------------------------------------------------------------------
-//関数名：AyaTest.Eval
-//機能　：受け取った文字列をEVALして返す
-//------------------------------------------------------------------------------
-AyaTest.Eval {
-	_array = SPLIT(_argv[0],C_CRLF)
-	_result = ''
-	_n = ARRAYSIZE(_array)
-
-	for _i = 0 ; _i < _n ; _i++ {
-		if _array[_i] {
-			_result += EVAL(_array[_i])
-		}
-	}
-	_result
-}
-
 //******************************************************************************
 //request
 //******************************************************************************
@@ -335,11 +318,6 @@ AyaTest.Eval {
 //OnRequestを活性化します
 //------------------------------------------------------------------------------
 request {
-	if SUBSTR(_argv[0],0,3) == '?? ' {//玉でのテスト用
-		'!! ' + JOIN(AyaTest.Eval(ERASE(_argv[0],0,3)),',')
-		return
-	}
-
 	_reqdata = _argv[0]
 	_linestart = 0
 	_lineend = STRSTR(_reqdata, C_CRLF, _linestart)
@@ -530,7 +508,7 @@ SHIORI_FW.MakeResponse{
 		}
 		when 'GET' {
 			//GETリクエスト
-			if _result || SHIORI_FW.Has_X_SSTP_PassThru{
+			if _result || SHIORI_FW.HasAdditionalReturn{
 				"SHIORI/3.0 200 OK%(C_CRLF)Sender: AYA%(C_CRLF)Charset: %(S_CHARSET)%(C_CRLF)/
 				Value: %(_result)%(C_CRLF)"
 				--
@@ -550,27 +528,31 @@ SHIORI_FW.MakeResponse{
 			SHIORI_FW.MakeBadResponse
 	}
 	--
-	SHIORI_FW.Get_X_SSTP_PassThrus
+	SHIORI_FW.GetAdditionalReturns
 	--
 	C_CRLF
 }
-SHIORI_FW.Has_X_SSTP_PassThru{
-	SHIORI_FW.X_SSTP_PassThru.String
-}
-SHIORI_FW.Init_X_SSTP_PassThru_Function:void{
-	SHIORI_FW.X_SSTP_PassThru.String = ''
-}
 SHIORI_FW.Make_X_SSTP_PassThru:void{
-	_key="X-SSTP-PassThru-%(_argv[0]): "
+	_argv[0]='X-SSTP-PassThru-'+_argv[0]
+	SHIORI_FW.MakeAdditionalReturn(_argv)
+}
+SHIORI_FW.HasAdditionalReturn{
+	SHIORI_FW.AdditionalReturn.String
+}
+SHIORI_FW.InitAdditionalReturnFunction:void{
+	SHIORI_FW.AdditionalReturn.String = ''
+}
+SHIORI_FW.MakeAdditionalReturn:void{
+	_key=_argv[0]+': '
 	_argv[0]=IARRAY
-	SHIORI_FW.X_SSTP_PassThru.String += _key+TOSTR(_argv)+C_CRLF
+	SHIORI_FW.AdditionalReturn.String += _key+TOSTR(_argv)+C_CRLF
 }
-SHIORI_FW.Clear_X_SSTP_PassThru_Variable:void{
-	ERASEVAR('SHIORI_FW.X_SSTP_PassThru.String')
+SHIORI_FW.ClearAdditionalReturnVariable:void{
+	ERASEVAR('SHIORI_FW.AdditionalReturn.String')
 }
-SHIORI_FW.Get_X_SSTP_PassThrus{
-	_t=SHIORI_FW.X_SSTP_PassThru.String
-	SHIORI_FW.X_SSTP_PassThru.String = ''
+SHIORI_FW.GetAdditionalReturns{
+	_t=SHIORI_FW.AdditionalReturn.String
+	SHIORI_FW.AdditionalReturn.String = ''
 	_t
 }
 
@@ -1620,7 +1602,7 @@ SHIORI_EV.On_log_path {
 
 SHIORI_EV.On_enable_debug : void {
 	if !ISVAR('SHIORI_FW.DebugMode')
-		DebugMode = TOINT(reference[0])
+		SHIORI_FW.DebugMode = TOINT(reference[0])
 	if SHIORI_FW.DebugMode != TOINT(reference[0]){
 		SHIORI_FW.DebugMode = TOINT(reference[0])
 		if ISFUNC('OnDebugModeChange')
