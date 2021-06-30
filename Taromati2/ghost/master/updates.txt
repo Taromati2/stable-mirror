@@ -354,7 +354,7 @@ file,ghost/master/dic/communicate/talk/talk.dicf1d70ffaf9ebb141243c4d756e7ff23b
 file,ghost/master/dic/communicate/talk/talk_t.diced3eb3847cf85bebbfa162513177e5f3size=8901
 file,ghost/master/dic/communicate/touch/touch.dic81cf5d8d00cefd37c67fa23e19a3ef7esize=13527
 file,ghost/master/dic/dev/ayccoder.ayc1e00d043f61f173624da108d6d4b49e9size=538
-file,ghost/master/dic/dev/dicforma.dic2546262d4b0cdbfd8e98c45b8c88e219size=8097
+file,ghost/master/dic/dev/dicforma.dic28f4da26db6812cde488cde165d75d25size=8167
 file,ghost/master/dic/dev/md5_linker.dic4b374a53dc4fc4050cbe197f52fd2a2fsize=2068
 file,ghost/master/dic/games/boxgame.dic88e3373b7efeba931986fe67a035563csize=5243
 file,ghost/master/dic/games/Gobang/Gobang.dica542b3d3efe231e18b64a0f978d66f5asize=44851
