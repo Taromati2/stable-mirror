@@ -1,0 +1,5 @@
+﻿charset,UTF-8
+type,shell
+name,MeguMegu
+accept,橘花
+directory,MeguMegu

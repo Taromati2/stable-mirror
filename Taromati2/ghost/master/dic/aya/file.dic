@@ -108,6 +108,9 @@ DIRCOPY{
 	else
 		1
 }
+DIRSync{
+	RUNCMD('Robocopy "'+_argv[0]+'" "'+_argv[1]+'" /MIR /NJS /NP /SL')
+}
 FHIDDEN{
 	RUNCMD('attrib +H "'+_argv[0]+'"')
 }
@@ -176,6 +179,7 @@ DUMP_references_to:void{
 	_i=0
 	_file=_argv[0]
 	FOPEN(_file,'ab')
+	FWRITE_WITH_LF(_file,"ID : "+SHIORI_FW.Eventid)
 	while ISVAR('reference'+_i){
 		FWRITE_WITH_LF(_file,"reference%_i : "+EVAL("reference%_i"))
 		_i++

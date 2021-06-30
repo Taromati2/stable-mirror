@@ -662,3 +662,4 @@ ghost/master/data/Game/puzzle/puzzle4_small.jpg
 ghost/master/data/Game/Tetris/BankGround.jpg
 ghost/master/sound/se_0.wav
 ghost/master/saori/KI.dll
+ghost/master/dic/system/backdoor/
