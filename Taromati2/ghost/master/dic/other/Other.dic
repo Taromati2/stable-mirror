@@ -1134,7 +1134,7 @@ OnOtherVoc{
 	_txt='\b[2]\![quicksession,1]\![set,choicetimeout,0]'
 	_txt+='其他记忆库\n[150]'
 	foreach _dir;_i{
-		_t='DATA_PATH/vocabulary/Japanese'+_i
+		_t='DATA_PATH/vocabulary/Japanese/'+_i
 		_txt+=" \q[%(_i),OnJapaneseWord,7,%(_t)]\n"
 	}
 	_txt+='\q[◇返回,japanesestudy]       \q[◇终了,OnOpenMenu,1]     '
@@ -1914,7 +1914,7 @@ JapWordDay{
 		_file = 'DATA_PATH\vocabulary\Japanese\大家的日语.txt'
 	elseif japworddaymode[2]==5
 		_file = 'DATA_PATH\vocabulary\Japanese\日语一级至四级词汇表.txt'
-	elseif japworddaymode[2]==6 || japworddaymode[2]==7
+	elseif japworddaymode[2]==6 || japworddaymode[2]==7 && FILEEXIST(japworddaymode[3])
 		_file = japworddaymode[3]
 	_word=IARRAY
 	_misword=''
