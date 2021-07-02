@@ -1914,7 +1914,7 @@ JapWordDay{
 		_file = 'DATA_PATH\vocabulary\Japanese\大家的日语.txt'
 	elseif japworddaymode[2]==5
 		_file = 'DATA_PATH\vocabulary\Japanese\日语一级至四级词汇表.txt'
-	elseif japworddaymode[2]==6 || japworddaymode[2]==7 && FILEEXIST(japworddaymode[3])
+	elseif (japworddaymode[2]==6 || japworddaymode[2]==7) && FILEEXIST(japworddaymode[3])
 		_file = japworddaymode[3]
 	_word=IARRAY
 	_misword=''
