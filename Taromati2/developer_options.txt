@@ -27,6 +27,8 @@ ghost/master/.gitignore,nonar,noupdate
 ghost/master/tama.exe,nonar,noupdate
 ghost/master/tama.txt,nonar,noupdate
 
+ghost/master/update_aya.bat,nonar,noupdate
+
 ghost/master/aya.log,nonar,noupdate
 ghost/master/ssp_shiori_log.txt,nonar,noupdate
 

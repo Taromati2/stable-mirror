@@ -1586,6 +1586,8 @@ OnJapWordDay{
 JapWordShuffle{
 	_word=IARRAY
 	_n=ARRAYSIZE(japword)
+	if !_n
+		return
 	_temp=japword
 	_num=RAND(_n)
 	_j=0
