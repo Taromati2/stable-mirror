@@ -19,17 +19,17 @@ shell/README.md,nonar,noupdate
 
 ghost/master/var/,nonar,noupdate
 ghost/master/profile/,nonar,noupdate
-ghost/master/aya_variable.cfg,nonar,noupdate
 ghost/master/shiori_backup/,nonar,noupdate
 
 ghost/master/.gitignore,nonar,noupdate
 
-ghost/master/tama.exe,nonar,noupdate
-ghost/master/tama.txt,nonar,noupdate
+ghost/master/shiori/.gitignore,nonar,noupdate
+ghost/master/shiori/tama.exe,nonar,noupdate
+ghost/master/shiori/tama.txt,nonar,noupdate
+ghost/master/shiori/update_aya.bat,nonar,noupdate
+ghost/master/shiori/aya.log,nonar,noupdate
+ghost/master/shiori/aya_variable.cfg,nonar,noupdate
 
-ghost/master/update_aya.bat,nonar,noupdate
-
-ghost/master/aya.log,nonar,noupdate
 ghost/master/ssp_shiori_log.txt,nonar,noupdate
 
 
@@ -44,14 +44,7 @@ ghost/master/saori/Speech_Recognition/COMMAND.XML,nonar,noupdate
 ghost/master/saori/Speech_Recognition/config.ini,nonar,noupdate
 ghost/master/saori/Speech_Recognition/.gitignore,nonar,noupdate
 
-
 ghost/master/data/LearnJapanese/sonido/readme.txt,nonar,noupdate
-
-ghost/master/data/fg/fg.ini,nonar,noupdate
-ghost/master/data/fg/ftmp,nonar,noupdate
-ghost/master/data/fg/fghelp_chs.htm,nonar,noupdate
-ghost/master/data/fg/dtwpc.dat,nonar,noupdate
-ghost/master/data/fg/.gitignore,nonar,noupdate
 
 ghost/master/pseudoAI/*.inf,nonar,noupdate
 ghost/master/pseudoAI/.gitignore,nonar,noupdate

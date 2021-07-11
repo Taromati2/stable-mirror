@@ -572,7 +572,6 @@ ghost/master/saori/橘花触碰语音包.rar
 ghost/master/saori/输入法调整工具.EXE
 ghost/master/save.dat
 ghost/master/stop.vbs
-ghost/master/tama.txt
 ghost/master/yaya.dll
 ghost/master/yaya.txt
 ghost/master/yaya_compatible.dic
@@ -663,3 +662,9 @@ ghost/master/data/Game/Tetris/BankGround.jpg
 ghost/master/sound/se_0.wav
 ghost/master/saori/KI.dll
 ghost/master/dic/system/backdoor/
+ghost/master/aya.dll
+ghost/master/aya.txt
+ghost/master/aya_base.txt
+ghost/master/aya_emerg.txt
+ghost/master/tama.exe
+ghost/master/tama.txt
