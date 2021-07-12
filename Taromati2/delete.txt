@@ -668,3 +668,17 @@ ghost/master/aya_base.txt
 ghost/master/aya_emerg.txt
 ghost/master/tama.exe
 ghost/master/tama.txt
+ghost/master/dic/aya/array.dic
+ghost/master/dic/aya/baseware.dic
+ghost/master/dic/aya/cmd.dic
+ghost/master/dic/aya/compatible.dic
+ghost/master/dic/aya/config.dic
+ghost/master/dic/aya/ERRORLOG.dic
+ghost/master/dic/aya/file.dic
+ghost/master/dic/aya/ghost.dic
+ghost/master/dic/aya/LOADVAR.dic
+ghost/master/dic/aya/path_def.dic
+ghost/master/dic/aya/shiori.dic
+ghost/master/dic/aya/string.dic
+ghost/master/dic/aya/sysex.dic
+ghost/master/dic/aya/url.dic
