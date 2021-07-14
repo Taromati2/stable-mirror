@@ -392,7 +392,7 @@ file,ghost/master/dic/system/changeshell.dic6f48d5c9c9091eac9a3b3bcbc9be37e2si
 file,ghost/master/dic/system/change_part.dicbc60c6305fb994764be3027ec43633fdsize=568
 file,ghost/master/dic/system/clock.dic5fac3e29eb1a2b8576dc0a12675d9246size=26477
 file,ghost/master/dic/system/database_edit.dica86fc88406c888ebb6235577e20cab51size=21303
-file,ghost/master/dic/system/Debug.dic657e6e7bd4a5deb431d713301e793059size=35150
+file,ghost/master/dic/system/Debug.dicc2289dc76074ada606bc90931c3e85fbsize=35402
 file,ghost/master/dic/system/event_response.dicfce107062bdee133656644ba9fe583absize=30759
 file,ghost/master/dic/system/FileDrop.dic231331e58389742ee9f6393cd5bd7d83size=4360
 file,ghost/master/dic/system/hotkey.dic15b6c8a2f383de704c42e8ce05ced3b9size=8758
@@ -464,7 +464,7 @@ file,ghost/master/saori/Speech_Recognition/Speech_Recognition.vbs72cb564fac4a93
 file,ghost/master/saori/textcopy.dllb985beb7de58ae316ce03da9e260416asize=25600
 file,ghost/master/saori/tl.lock6cc375438fb76385e58c69193046dd19size=63
 file,ghost/master/saori/txtpaste.dlld26df18e46cf845ed073e26be17b3125size=25088
-file,ghost/master/shiori/aya.dllcf15f67c64eb14561c34a9c9953d6f7esize=937984
+file,ghost/master/shiori/aya.dll4dfebefa40803635222cbc6fcb4f1d72size=937984
 file,ghost/master/shiori/aya.txt60e8c47a3dd03166c03a79039acad441size=24
 file,ghost/master/shiori/aya_base.txtc446edec5929285f09e06f2169ebcf60size=245
 file,ghost/master/shiori/aya_common.txt79d2b07e7b7c1de1ed6635973ada515csize=59
