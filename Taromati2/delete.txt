@@ -682,3 +682,5 @@ ghost/master/dic/aya/shiori.dic
 ghost/master/dic/aya/string.dic
 ghost/master/dic/aya/sysex.dic
 ghost/master/dic/aya/url.dic
+ghost/master/pseudoAI/meal.ai
+ghost/master/pseudoAI/food.ai
