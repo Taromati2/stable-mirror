@@ -684,3 +684,5 @@ ghost/master/dic/aya/sysex.dic
 ghost/master/dic/aya/url.dic
 ghost/master/pseudoAI/meal.ai
 ghost/master/pseudoAI/food.ai
+ghost/master/pseudoAI/meal.inf
+ghost/master/pseudoAI/food.inf

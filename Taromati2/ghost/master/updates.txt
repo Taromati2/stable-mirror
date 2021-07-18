@@ -1,4 +1,4 @@
-file,delete.txt307cc7f057de8e39f70d95f14aad01ddsize=24336
+file,delete.txteca462c64e6e56a57242b3abd7743cccsize=24398
 file,ghost/master/data/Game/BoxGame/box.txt4eb7bc822cf0d1cd24d14daa6ce16387size=33614
 file,ghost/master/data/Game/BoxGame/boxpng.png11dba3badd0ebfcfd727e21b710e87edsize=3932
 file,ghost/master/data/Game/Gobang/blackStone_1.png18d80968d0b66ad74eb9e70568c5045csize=860
