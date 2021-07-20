@@ -373,7 +373,7 @@ file,ghost/master/dic/other/flower.dicb419854c8217ae9c6cc415c45e677bfbsize=163
 file,ghost/master/dic/other/happyquest.dic2eec0863445715807498ffb95eb532d4size=3722
 file,ghost/master/dic/other/jumptest.dic31f65f1749a48ce507a63e3284788836size=166008
 file,ghost/master/dic/other/kikkastock.dic3ae5365ac2dd8ef2959cd5aa24845197size=9490
-file,ghost/master/dic/other/Miniuse.dic0adee253fe0415b8614194ea6dd05d93size=98279
+file,ghost/master/dic/other/Miniuse.dic804240dc3257dd692d4b134412a66590size=97731
 file,ghost/master/dic/other/Other.dic849b5cba4ba8d57689bbf888ee331840size=76496
 file,ghost/master/dic/other/otherserv.dic0a41bd2820af2fa6f2c5666a01663a8esize=134329
 file,ghost/master/dic/other/playwithlrc.dicc713c309f2ee15ac41f9f398e61f7165size=40742
@@ -386,7 +386,7 @@ file,ghost/master/dic/story/amusement_park/develop.dicf76bfff32ea3ecab217501ffd
 file,ghost/master/dic/story/opera.dic65a6d890bad0fd0395c15e1ca3163749size=30050
 file,ghost/master/dic/system/anti_cheat.dic16f4f172c4bf08a2601b3b2e596b5404size=253
 file,ghost/master/dic/system/base.dic51734302450ece2b3d40ea6a3942a5f6size=1184
-file,ghost/master/dic/system/bootend.dic6e9d5b13c5f0ff28aacb61fbb57daec3size=60332
+file,ghost/master/dic/system/bootend.dic22bf9c27831baaf52658166872c36289size=60315
 file,ghost/master/dic/system/Calendar.dic67bd8a73638c07b91fd438b21c2b08f1size=40076
 file,ghost/master/dic/system/changeshell.dic6f48d5c9c9091eac9a3b3bcbc9be37e2size=16620
 file,ghost/master/dic/system/change_part.dicbc60c6305fb994764be3027ec43633fdsize=568
