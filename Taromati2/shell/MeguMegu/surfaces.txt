@@ -399,18 +399,6 @@ surface22
 2interval,sometimes
 2pattern0,0,0,alternativestart,[0.1]
 
-3interval,never
-3pattern0,1223,0,overlay,245,79
-3pattern1,-1,10,overlay,245,79
-
-4interval,never
-4pattern0,1224,0,overlay,245,79
-4pattern1,-1,10,overlay,245,79
-
-5interval,talk,4
-5pattern0,0,0,alternativestart,[3.4]
-
-
 collision0,214,4,310,51,Head
 collision1,236,77,278,92,Face
 

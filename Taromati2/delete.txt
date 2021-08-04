@@ -686,3 +686,5 @@ ghost/master/pseudoAI/meal.ai
 ghost/master/pseudoAI/food.ai
 ghost/master/pseudoAI/meal.inf
 ghost/master/pseudoAI/food.inf
+shell/MeguMegu/surface1223.png
+shell/MeguMegu/surface1224.png
