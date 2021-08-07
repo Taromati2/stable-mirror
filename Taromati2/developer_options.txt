@@ -57,6 +57,7 @@ ghost/master/pseudoAI/tuling.ai,nonar,noupdate
 shell/.gitignore,nonar,noupdate
 shell/Entire bare/,nonar,noupdate
 shell/*/*.pna.png,nonar,noupdate
-shell/pna_swap_png.bat,nonar,noupdate
 shell/pna_link_maker.bat,nonar,noupdate
 shell/pna_link_maker_profile_var.bat,nonar,noupdate
+shell/pna_renamer.bat,nonar,noupdate
+shell/pna_renamer_undo.bat,nonar,noupdate
