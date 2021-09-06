@@ -1,4 +1,5 @@
 ﻿
+ghost/master/dic/dev/ERBconver.dic
 ghost/master/dic/system/QuickStart.dic
 ghost/master/dic/dev/md5_linker.dic
 shell/MeguMegu/surface1223.png
