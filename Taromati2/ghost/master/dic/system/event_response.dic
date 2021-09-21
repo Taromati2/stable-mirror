@@ -501,11 +501,12 @@ OnEmergencyMode{
 	}
 	else{
 		if EmergencyBoot == 1{
-			OnSelfRecovery
 			if mode == '1'
 				"\1\s[%(specialmode != 'mealtime')10]唔…\n辞书出错了啊。"
 			else
 				'\0\s[3]辞书出错了哦？'
+			--
+			OnSelfRecovery
 		}
 		elseif InSelfRecovery{
 			SelfRecoveryFailed
@@ -646,6 +647,8 @@ OnSilentUpdate{
 OnSelfRecovery{
 	InSelfRecovery=1
 	InSilentUpdate=1
+	'\'+mode+'开始自我修复'
+	--
 	'\![updatebymyself,recovery]'
 }
 GetUpdateFailureReason{
