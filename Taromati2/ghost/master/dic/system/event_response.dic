@@ -522,6 +522,7 @@ OnEmergencyMode{
 	}
 }
 OnEmergencyModeEnd{
+	ERASEVAR('EmergencyBoot')
 	if SHIORI_FW.DebugMode{
 		if mode == '1'
 			"\1\s[%(specialmode != 'mealtime')10]嗯，\n问题修好了。"
