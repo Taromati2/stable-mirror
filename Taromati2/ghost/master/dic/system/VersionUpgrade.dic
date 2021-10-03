@@ -19,10 +19,15 @@ VERSION_UPGRADE{
 		VERSION++
 		void EVAL('VERSION_UPGRADE_'+VERSION)
 	}
+	--
+	if VERSION_UPGRADE.NeedRec{
+		ERASEVAR('VERSION_UPGRADE.NeedRec')
+		OnRecoveryUpdate.Silent
+	}
 }
 VERSION_UPGRADE_0:void{
 	FirstBootCount = 1
-
+	mirror_url=default_mirror_url
 	DELDIR('PROFILE_PATH')
 
 	ERASEALLVARBEGINAS('SHIORI3FW')
@@ -72,10 +77,11 @@ VERSION_UPGRADE_0:void{
 	}
 	ClearTempVar
 	MAGICSAVE
+	VERSION_UPGRADE.NeedRec=1
 }
 VERSION_UPGRADE_1:void{
 	DELDIR('pseudoAI')
-	SHIORI_FW.PushNotifyResult(OnUpdate)
+	VERSION_UPGRADE.NeedRec=1
 
 	RENAME_VAR('rmmode','HolidayRemindFlag')
 	RENAME_VAR('Birthdayrmmode','BirthdayMode')

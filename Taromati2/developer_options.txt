@@ -9,7 +9,7 @@ developer_options.txt,nonar,noupdate
 .gitmodules,nonar,noupdate
 
 balloon/,nonar,noupdate
-
+shell/,noupdate
 
 ghost/.gitignore,nonar,noupdate
 shell/.gitignore,nonar,noupdate
