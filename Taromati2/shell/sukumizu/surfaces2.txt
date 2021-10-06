@@ -468,6 +468,21 @@ animation16.interval,bind
 animation16.pattern0,replace,16051,0,105,93
 }
 
+surface72,
+{
+animation13.interval,bind
+animation13.pattern0,replace,13000,0,105,93
+
+animation14.interval,bind
+animation14.pattern0,replace,14000,0,105,93
+
+animation15.interval,bind
+animation15.pattern0,replace,15000,0,105,93
+
+animation16.interval,bind
+animation16.pattern0,replace,16000,0,105,93
+}
+
 surface100,
 {
 animation13.interval,bind

@@ -332,6 +332,18 @@ animation19.pattern0,replace,19050,0,105,93
 animation19.pattern1,replace,19060,0,145,111
 }
 
+surface72,
+{
+animation17.interval,bind
+animation17.pattern0,replace,17000,0,105,93
+
+animation18.interval,bind
+animation18.pattern0,replace,18000,0,105,93
+
+animation19.interval,bind
+animation19.pattern0,replace,19000,0,105,93
+}
+
 surface150,
 {
 animation17.interval,bind

@@ -245,6 +245,15 @@ animation17.interval,bind
 animation17.pattern0,replace,17050,0,90,90
 }
 
+surface72,
+{
+animation11.interval,bind
+animation11.pattern0,replace,11000,0,84,150
+
+animation17.interval,bind
+animation17.pattern0,replace,17000,0,90,90
+}
+
 surface150,
 {
 animation11.interval,bind

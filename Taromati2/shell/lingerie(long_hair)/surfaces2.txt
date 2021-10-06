@@ -180,6 +180,12 @@ animation50.interval,bind
 animation50.pattern0,overlay,5000,0,105,70
 }
 
+surface72,
+{
+animation50.interval,bind
+animation50.pattern0,overlay,5000,0,105,70
+}
+
 surface100,
 {
 animation50.interval,bind

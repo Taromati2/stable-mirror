@@ -995,7 +995,6 @@ point.kinoko.centerx,143
 point.kinoko.centery,7
 }
 
-
 surface51
 {
 0interval,never
@@ -1013,6 +1012,42 @@ surface51
 2interval,sometimes
 2pattern0,0,0,alternativestart,[0.1]
 
+
+point.centerx,132
+point.centery,153
+
+point.kinoko.centerx,143
+point.kinoko.centery,7
+}
+
+surface72
+{
+element0,overlay,surface0000.png,0,0
+
+0interval,always
+0pattern5,-1,14,overlay,116,55
+0pattern0,72002,4,overlay,116,55
+0pattern1,72003,22,overlay,116,55
+0pattern2,72002,4,overlay,116,55
+0pattern3,72004,8,overlay,116,55
+0pattern5,-1,22,overlay,116,55
+
+3interval,never
+3pattern0,1003,0,overlay,136,81
+3pattern1,-1,10,overlay,136,81
+
+4interval,never
+4pattern0,1004,0,overlay,136,81
+4pattern1,-1,10,overlay,136,81
+
+5interval,talk,4
+5pattern0,0,0,alternativestart,[3.4]
+
+
+collision0,94,4,197,46,Head
+collision1,125,75,165,91,Face
+collision2,124,109,151,130,Bust
+collision3,104,168,141,190,Hand
 
 point.centerx,132
 point.centery,153

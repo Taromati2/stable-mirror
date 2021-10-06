@@ -175,6 +175,12 @@ animation60.interval,bind
 animation60.pattern0,overlay,6000,0,88,0
 }
 
+surface72,
+{
+animation60.interval,bind
+animation60.pattern0,overlay,6000,0,88,0
+}
+
 surface100,
 {
 animation60.interval,bind

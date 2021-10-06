@@ -230,6 +230,15 @@ animation99.interval,bind
 animation99.pattern0,overlay,9900,0,45,-40
 }
 
+surface72,
+{
+animation98.interval,bind
+animation98.pattern0,overlay,9800,0,70,0
+
+animation99.interval,bind
+animation99.pattern0,overlay,9900,0,45,-40
+}
+
 surface150,
 {
 animation98.interval,bind

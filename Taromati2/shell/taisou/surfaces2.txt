@@ -180,6 +180,12 @@ animation12.interval,bind
 animation12.pattern0,replace,12051,0,90,160
 }
 
+surface72,
+{
+animation12.interval,bind
+animation12.pattern0,replace,12000,0,90,160
+}
+
 surface100,
 {
 animation12.interval,bind
