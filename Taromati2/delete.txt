@@ -37,6 +37,13 @@ updates2.dau
 wiz/
 shell/taiwan(湾娘)/
 shell/miku(初音)/
+ghost/master/file/
+ghost/master/japvoice/
+ghost/master/shiori.dll
+ghost/master/sounds/
+ghost/master/yaya - 副本.dll
+ghost/master/复制图标文件.bat
+ghost/master/重建对话索引.bat
 ghost/master/dic/other/AccessInternet.dic
 ghost/master/data/vocabulary/fanuc 0.txt
 ghost/master/data/vocabulary/fanuc 0i.txt
@@ -562,6 +569,7 @@ ghost/master/saori/02.mp3
 ghost/master/saori/03.mp3
 ghost/master/saori/04.mp3
 ghost/master/saori/Amusement.Park.mp3
+ghost/master/saori/AnalogClock.dll
 ghost/master/saori/bell.wav
 ghost/master/saori/blood.png
 ghost/master/saori/CameraDll.DLL
@@ -574,9 +582,11 @@ ghost/master/saori/icon.dll
 ghost/master/saori/IE不能打开新链接修复.cmd
 ghost/master/saori/kernel32.dll
 ghost/master/saori/Knife.wav
+ghost/master/saori/mydic/
 ghost/master/saori/Ring.mp3
 ghost/master/saori/rundll32.exe
 ghost/master/saori/rundll32.tlg
+ghost/master/saori/saori/
 ghost/master/saori/saori_cpuid.dll
 ghost/master/saori/saori_ip.dll
 ghost/master/saori/screencatch.dll
@@ -596,6 +606,7 @@ ghost/master/saori/textcopy2.dll
 ghost/master/saori/tinkle.wav
 ghost/master/saori/tts.dll
 ghost/master/saori/yuyin/
+ghost/master/saori/无标题.mp3
 ghost/master/saori/世纪前线网络质量测试工具.exe
 ghost/master/saori/倒茶.mp3
 ghost/master/saori/打喷嚏.wav
