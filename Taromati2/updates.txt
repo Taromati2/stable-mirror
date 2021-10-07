@@ -403,13 +403,13 @@ file,ghost/master/dic/system/internet.dic358ded9656d0acedb128f47fc33ffea2size=
 file,ghost/master/dic/system/lunar.dic990b2952c3a610122816e766a75a769csize=7445date=2021-08-12T16:49:56
 file,ghost/master/dic/system/MAGIC.aycfd9d25b5b295e2821954d162df9b788esize=964date=2021-10-06T18:58:20
 file,ghost/master/dic/system/MAGIC.dic617991bbb23a229dd827369574b5e042size=294date=2021-10-04T08:56:54
-file,ghost/master/dic/system/menu.dic3fa58106f0c78f826fbccced3a10b6e2size=91410date=2021-09-24T11:11:10
+file,ghost/master/dic/system/menu.dicf6f34d3d12088654b022c7d7b17c432bsize=91406date=2021-10-07T09:21:59
 file,ghost/master/dic/system/mirror.dicaa593476f98b78fb695ea33c22c44121size=1572date=2021-10-04T00:56:30
 file,ghost/master/dic/system/password.dic1b927bdd55415a5eb0cffab67c857ea6size=2594date=2021-08-12T16:49:56
-file,ghost/master/dic/system/SQL.dic3b66933097f1beaa68a990d5c39b857asize=9348date=2021-08-05T15:49:53
+file,ghost/master/dic/system/SQL.dic10a4f332d62b7f438dc6d6001f2b7b1asize=9343date=2021-10-06T23:26:11
 file,ghost/master/dic/system/StateGraph.dicb99e8080467d8a0e93b578091ed753d9size=1552date=2021-08-05T15:49:53
 file,ghost/master/dic/system/ukagaka_link.dic18c9f8102fc92a825beb01e921042cdcsize=903date=2021-08-18T12:19:56
-file,ghost/master/dic/system/username.dicc4c4949ac269d6be9e376ce6ada2696esize=6964date=2021-08-05T15:49:53
+file,ghost/master/dic/system/username.dic23871bc9a38718310a3b256302db6decsize=6949date=2021-10-07T09:35:54
 file,ghost/master/dic/system/VersionUpgrade.dicf76aa81d5685004529426e4c5ca0f1c1size=3036date=2021-10-06T21:50:17
 file,ghost/master/dic/_loading_order.txt365d87523f53b6094161fb8010b8289fsize=142date=2021-07-12T20:07:04
 file,ghost/master/img/AI_state.png03025fb265f08e664dabc74eccfd8e8dsize=50712date=2021-03-21T14:33:28
