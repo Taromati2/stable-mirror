@@ -409,7 +409,7 @@ file,ghost/master/dic/system/password.dic1b927bdd55415a5eb0cffab67c857ea6size=
 file,ghost/master/dic/system/SQL.dic10a4f332d62b7f438dc6d6001f2b7b1asize=9343date=2021-10-06T23:26:11
 file,ghost/master/dic/system/StateGraph.dicb99e8080467d8a0e93b578091ed753d9size=1552date=2021-08-05T15:49:53
 file,ghost/master/dic/system/ukagaka_link.dic18c9f8102fc92a825beb01e921042cdcsize=903date=2021-08-18T12:19:56
-file,ghost/master/dic/system/username.dic23871bc9a38718310a3b256302db6decsize=6949date=2021-10-07T09:35:54
+file,ghost/master/dic/system/username.dicf8f6a112d91d13a567cb606dc1cb62f4size=6949date=2021-10-07T09:41:56
 file,ghost/master/dic/system/VersionUpgrade.dicf76aa81d5685004529426e4c5ca0f1c1size=3036date=2021-10-06T21:50:17
 file,ghost/master/dic/_loading_order.txt365d87523f53b6094161fb8010b8289fsize=142date=2021-07-12T20:07:04
 file,ghost/master/img/AI_state.png03025fb265f08e664dabc74eccfd8e8dsize=50712date=2021-03-21T14:33:28
