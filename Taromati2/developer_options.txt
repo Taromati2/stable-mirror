@@ -16,6 +16,7 @@ shell/.gitignore,nonar,noupdate
 ghost/README.md,nonar,noupdate
 shell/README.md,nonar,noupdate
 
+ghost/.github/,nonar,noupdate
 
 ghost/master/var/,nonar,noupdate
 ghost/master/profile/,nonar,noupdate
