@@ -144,10 +144,7 @@ ClearAyaTempVar {
 	ERASEVAR('ghostboottime')
 	ERASEVAR('ghostbootmin')
 	ERASEVAR('status')
-	ERASEVAR('res_securitylevel')
 	ERASEVAR('res_reference')
-	ERASEVAR('res_marker')
-	ERASEVAR('res_valuenotify')
 	ERASEVAR('sakurahwnd')
 	ERASEVAR('kerohwnd')
 	ERASEVAR('sakurablnhwnd')
@@ -511,7 +508,7 @@ SHIORI_FW.MakeResponse{
 				SHIORI_FW.DelayNotifyResults,=_result//Notify返回值积压
 			if SHIORI_FW.DebugMode && _result{
 				"SHIORI/3.0 200 OK%(C_CRLF)Charset: %(S_CHARSET)%(C_CRLF)/
-				Value: %(_result)%(C_CRLF)"
+				ValueForDebug: %(_result)%(C_CRLF)"
 				--
 				SHIORI_FW.AssembleReferenceHeader
 			}else{
@@ -578,6 +575,14 @@ SHIORI_FW.MakeAdditionalReturn:void{
 	_key=_argv[0]+': '
 	_argv[0]=IARRAY
 	SHIORI_FW.AdditionalReturn.String += _key+TOSTR(_argv)+C_CRLF
+}
+//------------------------------------------------------------------------------
+//関数名：SHIORI_FW.MakeValueNotify
+//機能　：ヘッダをValueNotify追加します (設定はリクエストごとにリセットされます)
+//引数　：_argv[0~inf] 値
+//------------------------------------------------------------------------------
+SHIORI_FW.MakeValueNotify:void{
+	SHIORI_FW.MakeAdditionalReturn('ValueNotify',_argv)
 }
 //------------------------------------------------------------------------------
 //関数名：SHIORI_FW.ClearAdditionalReturnVariable
@@ -653,14 +658,6 @@ SHIORI_FW.AssembleReferenceHeader {
 				if _before == ''; break
 			}
 		}
-	}
-	if res_marker != "" {
-		_result += "Marker: %(res_marker)%(C_CRLF)"
-		ERASEVAR('res_marker')
-	}
-	if res_valuenotify != "" {
-		_result += "ValueNotify: %(res_valuenotify)"
-		ERASEVAR('res_valuenotify')
 	}
 
 	_result
@@ -1747,6 +1744,9 @@ ISSTR{
 }
 INEVENT{
 	_argv[0]==SHIORI_FW.Eventid
+}
+InNotify{
+	REQ.COMMAND == 'NOTIFY'
 }
 RENAME_VAR:void{
 	if ISVAR(_argv[0])
