@@ -28,10 +28,8 @@ surface0
 
 //----帽子-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+9interval,bind
 9pattern0,5000,0,overlay,80,-10
 
 //---------------------------------------------------
@@ -78,10 +76,9 @@ surface1
 
 //----帽子-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+9interval,bind
 9pattern0,5003,0,overlay,80,-10
 
 //---------------------------------------------------
@@ -127,10 +124,9 @@ surface2
 
 //----帽子-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+9interval,bind
 9pattern0,5004,0,overlay,80,-10
 
 //---------------------------------------------------
@@ -163,10 +159,9 @@ surface3
 
 //----帽子-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+9interval,bind
 9pattern0,5000,0,overlay,80,-10
 
 //---------------------------------------------------
@@ -197,10 +192,9 @@ surface5
 
 //----帽子-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+9interval,bind
 9pattern0,5004,0,overlay,80,-10
 
 //---------------------------------------------------
@@ -234,10 +228,9 @@ element1,overlay,surface1002.png,110,50
 
 //----帽子-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+9interval,bind
 9pattern0,5000,0,overlay,80,-10
 
 //---------------------------------------------------
@@ -284,10 +277,9 @@ surface7
 
 //----帽子-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+9interval,bind
 9pattern0,5000,0,overlay,80,-10
 
 //---------------------------------------------------
@@ -326,10 +318,9 @@ element1,overlay,surface0008.png,105,43
 
 //----帽子-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+9interval,bind
 9pattern0,5000,0,overlay,80,-10
 
 //---------------------------------------------------
@@ -375,10 +366,9 @@ surface9
 
 //----帽子-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+9interval,bind
 9pattern0,5001,0,overlay,80,-10
 
 //---------------------------------------------------
@@ -425,10 +415,9 @@ surface20
 
 //----帽子-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+9interval,bind
 9pattern0,5005,0,overlay,80,-10
 
 //---------------------------------------------------
@@ -461,10 +450,9 @@ surface21
 
 //----帽子-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+9interval,bind
 9pattern0,5004,0,overlay,80,-10
 
 //---------------------------------------------------
@@ -511,10 +499,9 @@ surface22
 
 //----帽子-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+9interval,bind
 9pattern0,5001,0,overlay,80,-10
 
 //---------------------------------------------------
@@ -548,10 +535,9 @@ surface23
 
 //----帽子-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+9interval,bind
 9pattern0,5002,0,overlay,80,-10
 
 //---------------------------------------------------
@@ -581,10 +567,9 @@ surface25
 
 //----帽子-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+9interval,bind
 9pattern0,5001,0,overlay,80,-10
 
 //---------------------------------------------------
@@ -632,10 +617,9 @@ surface26
 
 //----帽子-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+9interval,bind
 9pattern0,5004,0,overlay,80,-10
 
 //---------------------------------------------------
@@ -722,10 +706,9 @@ surface28
 
 //----帽子-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+9interval,bind
 9pattern0,5004,0,overlay,80,-10
 
 //---------------------------------------------------
@@ -771,10 +754,9 @@ surface29
 
 //----帽子-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+9interval,bind
 9pattern0,5004,0,overlay,80,-10
 
 //---------------------------------------------------
@@ -820,10 +802,9 @@ surface30
 
 //----帽子-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+9interval,bind
 9pattern0,5002,0,overlay,80,-10
 
 //---------------------------------------------------
@@ -856,10 +837,9 @@ surface32
 
 //----帽子-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+9interval,bind
 9pattern0,5002,0,overlay,80,-10
 
 //---------------------------------------------------
@@ -893,10 +873,9 @@ element1,overlay,surface0033.png,108,39
 
 //----帽子-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+9interval,bind
 9pattern0,5004,0,overlay,80,-10
 
 //---------------------------------------------------
@@ -944,10 +923,9 @@ surface34
 
 //----帽子-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+9interval,bind
 9pattern0,5001,0,overlay,80,-10
 
 //---------------------------------------------------
@@ -992,10 +970,9 @@ surface35
 
 //----帽子-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+9interval,bind
 9pattern0,5001,0,overlay,80,-10
 
 //---------------------------------------------------
@@ -1043,10 +1020,9 @@ surface40
 
 //----帽子-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+9interval,bind
 9pattern0,5006,0,overlay,80,-10
 
 //---------------------------------------------------
@@ -1080,10 +1056,9 @@ element1,overlay,surface0041.png,105,51
 
 //----帽子-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+9interval,bind
 9pattern0,5006,0,overlay,80,-10
 
 //---------------------------------------------------
@@ -1129,10 +1104,9 @@ surface50
 
 //----帽子-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+9interval,bind
 9pattern0,5000,0,overlay,80,-10
 
 //---------------------------------------------------
@@ -1169,10 +1143,9 @@ element0,overlay,surface0000.png,0,0
 
 //----帽子-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+9interval,bind
 9pattern0,5000,0,overlay,80,-10
 
 //---------------------------------------------------
@@ -1222,10 +1195,9 @@ element1,overlay,surface0150.png,100,118
 
 //----帽子-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+9interval,bind
 9pattern0,5000,0,overlay,80,-10
 
 //---------------------------------------------------
@@ -1270,10 +1242,9 @@ element1,overlay,surface0250.png,100,118
 
 //----帽子-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+9interval,bind
 9pattern0,5000,0,overlay,80,-10
 
 //---------------------------------------------------
@@ -1305,10 +1276,9 @@ surface51
 
 //----帽子-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+9interval,bind
 9pattern0,5000,0,overlay,80,-10
 
 //---------------------------------------------------
@@ -1350,10 +1320,9 @@ surface100
 
 //----帽子-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+9interval,bind
 9pattern0,5000,0,overlay,80,-10
 
 //---------------------------------------------------
@@ -1401,10 +1370,9 @@ surface101
 
 //----帽子-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+9interval,bind
 9pattern0,5003,0,overlay,80,-10
 
 //---------------------------------------------------

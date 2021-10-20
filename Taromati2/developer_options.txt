@@ -5,6 +5,7 @@ shell/.git/,nonar,noupdate
 README.md,nonar,noupdate
 updates.dau,nonar,noupdate
 developer_options.txt,nonar,noupdate
+md5buildignore.txt,nonar,noupdate
 .gitignore,nonar,noupdate
 .gitmodules,nonar,noupdate
 
@@ -58,7 +59,4 @@ ghost/master/pseudoAI/tuling.ai,nonar,noupdate
 shell/.gitignore,nonar,noupdate
 shell/Entire bare/,nonar,noupdate
 shell/*/*.pna.png,nonar,noupdate
-shell/pna_link_maker.bat,nonar,noupdate
-shell/pna_link_maker_profile_var.bat,nonar,noupdate
-shell/pna_renamer.bat,nonar,noupdate
-shell/pna_renamer_undo.bat,nonar,noupdate
+shell/*.bat,nonar,noupdate

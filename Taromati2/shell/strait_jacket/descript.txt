@@ -28,3 +28,6 @@ menu.separator.color.b,255
 menu.background.alignment,leftbottom
 menu.foreground.alignment,leftbottom
 menu.sidebar.alignment,bottom
+
+sakura.bindgroup9.name,飾品,眼镜
+sakura.bindgroup9.default,0

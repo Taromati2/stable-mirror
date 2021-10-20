@@ -28,10 +28,10 @@ surface0
 
 //----眼鏡-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+
+9interval,bind
 9pattern0,6000,0,overlay,85,0
 
 //---------------------------------------------------
@@ -76,10 +76,10 @@ surface1
 
 //----眼鏡-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+
+9interval,bind
 9pattern0,6003,0,overlay,85,0
 
 //---------------------------------------------------
@@ -124,10 +124,10 @@ surface2
 
 //----眼鏡-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+
+9interval,bind
 9pattern0,6004,0,overlay,85,0
 
 //---------------------------------------------------
@@ -157,10 +157,10 @@ surface3
 
 //----眼鏡-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+
+9interval,bind
 9pattern0,6000,0,overlay,85,0
 
 //---------------------------------------------------
@@ -190,10 +190,10 @@ surface5
 
 //----眼鏡-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+
+9interval,bind
 9pattern0,6004,0,overlay,85,0
 
 //---------------------------------------------------
@@ -226,10 +226,10 @@ element1,overlay,surface1002.png,110,50
 
 //----眼鏡-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+
+9interval,bind
 9pattern0,6000,0,overlay,85,0
 
 //---------------------------------------------------
@@ -274,10 +274,10 @@ surface7
 
 //----眼鏡-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+
+9interval,bind
 9pattern0,6000,0,overlay,85,0
 
 //---------------------------------------------------
@@ -315,10 +315,10 @@ element1,overlay,surface0008.png,105,43
 
 //----眼鏡-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+
+9interval,bind
 9pattern0,6000,0,overlay,85,0
 
 //---------------------------------------------------
@@ -363,10 +363,10 @@ surface9
 
 //----眼鏡-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+
+9interval,bind
 9pattern0,6001,0,overlay,85,0
 
 //---------------------------------------------------
@@ -411,10 +411,10 @@ surface20
 
 //----眼鏡-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+
+9interval,bind
 9pattern0,6005,0,overlay,85,0
 
 //---------------------------------------------------
@@ -444,10 +444,10 @@ surface21
 
 //----眼鏡-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+
+9interval,bind
 9pattern0,6004,0,overlay,85,0
 
 //---------------------------------------------------
@@ -492,10 +492,10 @@ surface22
 
 //----眼鏡-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+
+9interval,bind
 9pattern0,6001,0,overlay,85,0
 
 //---------------------------------------------------
@@ -529,10 +529,10 @@ surface23
 
 //----眼鏡-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+
+9interval,bind
 9pattern0,6002,0,overlay,85,0
 
 //---------------------------------------------------
@@ -562,10 +562,10 @@ surface25
 
 //----眼鏡-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+
+9interval,bind
 9pattern0,6001,0,overlay,85,0
 
 //---------------------------------------------------
@@ -610,10 +610,10 @@ surface26
 
 //----眼鏡-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+
+9interval,bind
 9pattern0,6004,0,overlay,85,0
 
 //---------------------------------------------------
@@ -697,10 +697,10 @@ surface28
 
 //----眼鏡-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+
+9interval,bind
 9pattern0,6004,0,overlay,85,0
 
 //---------------------------------------------------
@@ -745,10 +745,10 @@ surface29
 
 //----眼鏡-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+
+9interval,bind
 9pattern0,6004,0,overlay,85,0
 
 //---------------------------------------------------
@@ -793,10 +793,10 @@ surface30
 
 //----眼鏡-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+
+9interval,bind
 9pattern0,6002,0,overlay,85,0
 
 //---------------------------------------------------
@@ -826,10 +826,10 @@ surface32
 
 //----眼鏡-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+
+9interval,bind
 9pattern0,6002,0,overlay,85,0
 
 //---------------------------------------------------
@@ -862,10 +862,10 @@ element1,overlay,surface0033.png,108,39
 
 //----眼鏡-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+
+9interval,bind
 9pattern0,6004,0,overlay,85,0
 
 //---------------------------------------------------
@@ -910,10 +910,10 @@ surface34
 
 //----眼鏡-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+
+9interval,bind
 9pattern0,6001,0,overlay,85,0
 
 //---------------------------------------------------
@@ -958,10 +958,10 @@ surface35
 
 //----眼鏡-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+
+9interval,bind
 9pattern0,6001,0,overlay,85,0
 
 //---------------------------------------------------
@@ -1006,10 +1006,10 @@ surface40
 
 //----眼鏡-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+
+9interval,bind
 9pattern0,6006,0,overlay,85,0
 
 //---------------------------------------------------
@@ -1042,10 +1042,10 @@ element1,overlay,surface0041.png,105,51
 
 //----眼鏡-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+
+9interval,bind
 9pattern0,6006,0,overlay,85,0
 
 //---------------------------------------------------
@@ -1090,10 +1090,10 @@ surface50
 
 //----眼鏡-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+
+9interval,bind
 9pattern0,6000,0,overlay,85,0
 
 //---------------------------------------------------
@@ -1130,10 +1130,10 @@ element0,overlay,surface0000.png,0,0
 
 //----眼鏡-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+
+9interval,bind
 9pattern0,6000,0,overlay,85,0
 
 //---------------------------------------------------
@@ -1180,10 +1180,10 @@ element0,overlay,surface0050.png,0,0
 
 //----眼鏡-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+
+9interval,bind
 9pattern0,6000,0,overlay,85,0
 
 //---------------------------------------------------
@@ -1227,10 +1227,10 @@ element0,overlay,surface0050.png,0,0
 
 //----眼鏡-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+
+9interval,bind
 9pattern0,6000,0,overlay,85,0
 
 //---------------------------------------------------
@@ -1262,10 +1262,10 @@ surface51
 
 //----眼鏡-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+
+9interval,bind
 9pattern0,6000,0,overlay,85,0
 
 //---------------------------------------------------
@@ -1307,10 +1307,10 @@ surface100
 
 //----眼鏡-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+
+9interval,bind
 9pattern0,6000,0,overlay,85,0
 
 //---------------------------------------------------
@@ -1355,10 +1355,10 @@ surface101
 
 //----眼鏡-------------------------------------------
 
-8interval,runonce
-8pattern0,0,0,start,9
 
-9interval,never
+
+
+9interval,bind
 9pattern0,6003,0,overlay,85,0
 
 //---------------------------------------------------

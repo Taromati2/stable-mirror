@@ -1156,8 +1156,8 @@ surface10
 2interval,rarely
 2pattern0,0,0,alternativestart,[0.1]
 
-collision0,30,15,55,27,Head
-collision1,17,120,81,133,Tail
+collision0,27,150,55,163,Head
+collision1,23,252,92,271,Tail
 
 point.centerx,51
 point.centery,88
@@ -1165,8 +1165,8 @@ point.centery,88
 
 surface11
 {
-collision0,30,15,55,27,Head
-collision1,17,120,81,133,Tail
+collision0,27,150,55,163,Head
+collision1,23,252,92,271,Tail
 
 point.centerx,51
 point.centery,88
@@ -1174,8 +1174,8 @@ point.centery,88
 
 surface12
 {
-collision0,30,15,55,27,Head
-collision1,17,120,81,133,Tail
+collision0,27,150,55,163,Head
+collision1,23,252,92,271,Tail
 
 point.centerx,51
 point.centery,88
@@ -1183,8 +1183,8 @@ point.centery,88
 
 surface13
 {
-collision0,30,15,55,27,Head
-collision1,17,120,81,133,Tail
+collision0,27,150,55,163,Head
+collision1,23,252,92,271,Tail
 
 point.centerx,51
 point.centery,88
