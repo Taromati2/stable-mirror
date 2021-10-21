@@ -410,7 +410,7 @@ file,ghost/master/dic/system/SQL.dic10a4f332d62b7f438dc6d6001f2b7b1asize=9343
 file,ghost/master/dic/system/StateGraph.dicb99e8080467d8a0e93b578091ed753d9size=1552date=2021-08-05T15:49:53
 file,ghost/master/dic/system/ukagaka_link.dic18c9f8102fc92a825beb01e921042cdcsize=903date=2021-08-18T12:19:56
 file,ghost/master/dic/system/username.dicebaaada0b26503db5ca379e6a6d9ed4csize=7030date=2021-10-07T09:59:46
-file,ghost/master/dic/system/VersionUpgrade.dicf76aa81d5685004529426e4c5ca0f1c1size=3036date=2021-10-06T21:50:17
+file,ghost/master/dic/system/VersionUpgrade.dic88fd8eec635d86197f48a7fef0fc8817size=3090date=2021-10-21T15:37:25
 file,ghost/master/dic/_loading_order.txt365d87523f53b6094161fb8010b8289fsize=142date=2021-07-12T20:07:04
 file,ghost/master/img/AI_state.png03025fb265f08e664dabc74eccfd8e8dsize=50712date=2021-03-21T14:33:28
 file,ghost/master/img/ico/kikka.ico0dd7ab873ae90cf9d7a9158b94c54930size=270398date=2021-03-21T14:33:28
@@ -446,7 +446,7 @@ file,ghost/master/saori/ChConverter.dlldef3363a63b685967bb1459c4e6b3208size=33
 file,ghost/master/saori/cmdrunner.dll76309282862201a6ad04cfbe752e3045size=45568date=2021-07-11T23:37:48
 file,ghost/master/saori/cpuid.dll552326006fa486ec8dd5d339caaa1cfasize=81920date=2021-03-21T14:33:28
 file,ghost/master/saori/cpuusage.dll737d6b1a5be08b58d5c6f32601f41495size=30720date=2021-03-21T14:33:28
-file,ghost/master/saori/debeso.db.basef7652c70bed7f3d032f59bf2c5c98e00size=4596736date=2021-08-05T19:25:21
+file,ghost/master/saori/debeso.db.basef7652c70bed7f3d032f59bf2c5c98e00size=4596736date=2021-10-21T14:16:16
 file,ghost/master/saori/debeso.dll197986583a59d6080c133bbd2af259a6size=339968date=2021-08-12T16:49:56
 file,ghost/master/saori/drivecleaner.bat519e510452baadfdea247aebd782c213size=704date=2021-02-17T23:01:42
 file,ghost/master/saori/ghost_terminal.exec00c10205648b84cc8197c63d51f2fbesize=22528date=2021-09-24T11:11:10
