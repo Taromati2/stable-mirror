@@ -52,6 +52,17 @@ OnSecondChange{
 OnHourChange{
 }
 OnMinuteChange{
+	if RAND(20160)==0{
+		if UsualUserName.InPush!=username
+			UsualUserName.InPush=username
+		else{ //连续一个月使用同一个用户名
+			UsualUserName,=UsualUserName.InPush
+			ERASEVAR('UsualUserName.InPush')
+			if ARRAYSIZE(UsualUserName) > 960 //记录近80年内的常用用户名
+				UsualUserName[TOINT(SQRT(1.0/RAND(960))*960)] = IARRAY
+		}
+	}
+	--
 	elapsedtimetotal += 1//计算人格起动总时间/单位分
 	elapsedtime = elapsedtimetotal * 60
 	KikkaGrow
