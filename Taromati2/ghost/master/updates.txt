@@ -329,7 +329,7 @@ file,ghost/master/data/weather/XiaoYu.png34c9e1fec47840a5ebdeab4839af6392size=
 file,ghost/master/data/weather/Yin.png69817e1105e92832041f3644741d3be0size=735date=2021-03-21T14:33:28
 file,ghost/master/data/weather/ZhongXue.png7bf25e51f7e88b30da92215221c787c9size=1214date=2021-03-21T14:33:28
 file,ghost/master/data/weather/ZhongYu.png9a3f8e927f57d8973cd928fbdc31c0adsize=943date=2021-03-21T14:33:28
-file,ghost/master/descript.txtb318a8f44d3eddd0a154ab0feadff811size=501date=2021-09-28T20:44:05
+file,ghost/master/descript.txtd8d020f5fad636b6d12fcb77299ed9f5size=530date=2021-10-29T22:10:05
 file,ghost/master/dic/aya/base/compatible.dic8676202368501602590037f39f0840cfsize=3668date=2021-08-05T15:49:41
 file,ghost/master/dic/aya/base/config.dicb4bcaf63d09eecf3236049c9f2a0d0a8size=2651date=2021-08-05T15:49:41
 file,ghost/master/dic/aya/base/other_defs.dicce2d16ee8f0f59140c8e8985856d4472size=87date=2021-08-19T13:49:32
@@ -414,6 +414,7 @@ file,ghost/master/dic/system/username.dicfc0056918f2d8bebab3f8655f9c0629asize=
 file,ghost/master/dic/system/VersionUpgrade.dic88fd8eec635d86197f48a7fef0fc8817size=3090date=2021-10-21T15:37:25
 file,ghost/master/dic/_loading_order.txt365d87523f53b6094161fb8010b8289fsize=142date=2021-07-12T20:07:04
 file,ghost/master/img/AI_state.png03025fb265f08e664dabc74eccfd8e8dsize=50712date=2021-03-21T14:33:28
+file,ghost/master/img/curs/common.anib95cff14a3a212ec6285c3b6f0948f9asize=27276date=2021-10-29T21:53:45
 file,ghost/master/img/ico/kikka.ico0dd7ab873ae90cf9d7a9158b94c54930size=270398date=2021-03-21T14:33:28
 file,ghost/master/img/ico/kikka_eye_close.ico2e099fb8195ac57d25989920b7c4c5b1size=270398date=2021-05-06T19:20:24
 file,ghost/master/pseudoAI/biology.ai4840b4eefe3bab74bc87ded17bc477basize=50927date=2021-07-10T16:49:04
