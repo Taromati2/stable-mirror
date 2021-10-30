@@ -351,7 +351,7 @@ file,ghost/master/dic/communicate/H/H.dic90919b917b1be45abcb2016252cb9450size=
 file,ghost/master/dic/communicate/talk/learn.dic8e3e721846bb08672fc6a6ef041991e2size=16499date=2021-08-12T16:49:56
 file,ghost/master/dic/communicate/talk/other_ghost.dic7cb41f66f5639bf95446fa6df7530999size=3591date=2021-08-12T16:49:56
 file,ghost/master/dic/communicate/talk/pseudoAI.dic6eac2aba5d266fb9d4ea1d807bdfed9esize=70444date=2021-09-11T08:49:15
-file,ghost/master/dic/communicate/talk/talk.dic562e9f7cd0148fd2a078f9287323261dsize=174121date=2021-10-28T23:07:18
+file,ghost/master/dic/communicate/talk/talk.dic556632752da1e7808f4c41acc5ce7e67size=174952date=2021-10-30T18:40:55
 file,ghost/master/dic/communicate/talk/talk_t.dic94d962eb3a1ccac4ed295f5965e1e765size=8965date=2021-10-27T22:58:54
 file,ghost/master/dic/communicate/touch/touch.dicdabd72d051bc9ea980ce481325b7ab9esize=13760date=2021-10-27T23:04:19
 file,ghost/master/dic/dev/ayccoder.aycd7df86b0547b9b3e98b581643b9cfd2bsize=595date=2021-09-25T09:08:54
@@ -466,7 +466,7 @@ file,ghost/master/saori/Speech_Recognition/Speech_Recognition.vbs72cb564fac4a93
 file,ghost/master/saori/textcopy.dllb985beb7de58ae316ce03da9e260416asize=25600date=2021-03-21T14:33:28
 file,ghost/master/saori/tl.lock6cc375438fb76385e58c69193046dd19size=63date=2021-03-13T16:37:46
 file,ghost/master/saori/txtpaste.dlld26df18e46cf845ed073e26be17b3125size=25088date=2021-03-21T14:33:28
-file,ghost/master/shiori/aya.dlla49aa6f0f41309806b94df7b6ca887d1size=961536date=2021-10-30T19:08:58
+file,ghost/master/shiori/aya.dll85ec3dc17b73cc9879470f91aecbb544size=961536date=2021-10-30T18:40:55
 file,ghost/master/shiori/aya.txt60e8c47a3dd03166c03a79039acad441size=24date=2021-07-12T20:07:04
 file,ghost/master/shiori/aya_base.txt3d97e6409a3f7b4bc1a606b6c2d7b4b4size=263date=2021-08-31T00:00:06
 file,ghost/master/shiori/aya_common.txt79d2b07e7b7c1de1ed6635973ada515csize=59date=2021-07-12T20:07:04

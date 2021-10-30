@@ -8,6 +8,7 @@ ReadMe.txt
 updates.dau
 
 /developer_options.txt
+/md5buildignore.txt
 
 *.log
 
