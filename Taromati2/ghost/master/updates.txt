@@ -314,7 +314,7 @@ file,ghost/master/data/vocabulary/Engilsh/计算机英语常用词汇.txt865e68
 file,ghost/master/data/vocabulary/Japanese/japanese.txt54006b7077028b4806dd429f6ada4862size=101603date=2021-03-21T14:33:28
 file,ghost/master/data/vocabulary/Japanese/japanese2.txt6921b2f87e6a4a10fa0f04f346cd93b5size=187009date=2021-03-21T14:33:28
 file,ghost/master/data/vocabulary/Japanese/japaneseword.txt544c49c143669a8a9106c7d927dd5585size=101759date=2021-03-21T14:33:28
-file,ghost/master/data/vocabulary/Japanese/动漫日语每天一句.txt493833e5bde5c6a8cc120dbb3c32fdd3size=20774date=2021-10-26T20:34:03
+file,ghost/master/data/vocabulary/Japanese/动漫日语每天一句.txt8c7d9bf5bad9687eb97ddf6d251ac9c3size=20771date=2021-10-30T23:40:10
 file,ghost/master/data/vocabulary/Japanese/大家的日语.txt70ed7fb6dc71caeb60b45fc90bdaf108size=81204date=2021-03-21T14:33:28
 file,ghost/master/data/vocabulary/Japanese/新版标准日本语初级.txtf8a5fb9971289ff6b87d7b32d8d7066csize=95265date=2021-03-21T14:33:28
 file,ghost/master/data/vocabulary/Japanese/日本语100句.txt1d7d483f7e34b159efd8e852161ed1e5size=5016date=2021-03-21T14:33:28
