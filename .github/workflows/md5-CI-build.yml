@@ -1,0 +1,19 @@
+name: md5-CI-build
+
+on:
+  push
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+    - name: shiori-check
+      uses: Taromati2/yaya-CI-check@v2
+      with:
+        shiori-path: .\Taromati2\ghost\master\shiori\aya.dll
+    - name: updates build
+      uses: Taromati2/ukagaka-mirror-md5-CI-build@v2
+      with:
+        dir-path: .\Taromati2
+        build-mode: ghost_dir

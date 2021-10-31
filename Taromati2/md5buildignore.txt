@@ -2,10 +2,24 @@
 .github
 .gitignore
 .gitmodules
+readme.md
+ReadMe.md
 README.md
-readme.txt
-ReadMe.txt
+updates.txt
 updates.dau
+
+desktop.ini
+thumbs.db
+folder.htt
+mscreate.dir
+.DS_Store
+_CATALOG.VIX
+
+profile/
+var/
+__MACOSX/
+XtraStuf.mac/
+
 
 /developer_options.txt
 /md5buildignore.txt
@@ -26,10 +40,15 @@ updates.dau
 
 /ghost/master/ssp_shiori_log.txt
 
+/ghost/master/data/LearnJapanese/sonido/readme.txt
+/ghost/master/pseudoAI/readme.txt
+/ghost/master/saori/AnalogClock2_0/ReadMe.txt
+
 /ghost/master/saori/debeso.db
 /ghost/master/saori/lunar.txt
 /ghost/master/saori/Process.txt
 /ghost/master/saori/AnalogClock2_0/clock_conf.dat
+/ghost/master/saori/AnalogClock2_0/clock.txt
 /ghost/master/saori/Speech_Recognition/COMMAND.XML
 /ghost/master/saori/Speech_Recognition/config.ini
 
