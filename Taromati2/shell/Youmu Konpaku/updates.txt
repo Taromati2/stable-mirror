@@ -1,8 +1,8 @@
 charset,UTF-8
 file,background.png77dddc2dfa49346bdd3cde9c3b156159size=30178date=1969-12-31T23:59:59
-file,descript.txt295787b3d5097c4cf480cefc7d1af1a3size=902date=1969-12-31T23:59:59
+file,descript.txtf2d78b78ac731d1574f9525ce6e93f2asize=872date=1969-12-31T23:59:59
 file,foreground.pngb0b25ba16c19b58b68d17fe5a26555b5size=53547date=1969-12-31T23:59:59
-file,install.txt48fe0db17e42e726ff017801ed808b0dsize=87date=1969-12-31T23:59:59
+file,install.txtb9f168067f579d26240712e279802316size=82date=1969-12-31T23:59:59
 file,readme.txtecee1d0f2f34e0f6733b5e73888eed15size=192date=1969-12-31T23:59:59
 file,sidebar.png3bff9047f2fe5dec9f645cafb3681e95size=7234date=1969-12-31T23:59:59
 file,surface0000.pnac5552a521248ada238a51572842e55ccsize=4816date=1969-12-31T23:59:59
@@ -177,5 +177,5 @@ file,surface2172.png9ef4ead9cf1aca0a669e0c4126acde2esize=3787date=1969-12-31T
 file,surface72002.pnge715d323e8f6ec5482a775be368e2365size=3117date=1969-12-31T23:59:59
 file,surface72003.png139926cb3843dd48e067a343138777c4size=3118date=1969-12-31T23:59:59
 file,surface72004.pngecd8e7ec5e9f30f2363b7fd74f2a4e01size=3114date=1969-12-31T23:59:59
-file,surfaces.txtb2673db2882e2a9c76bd00b1d8c43096size=24517date=1969-12-31T23:59:59
-file,surfacetable.txtdbf3e5c67e08146c8755bbb9db2b4c60size=641date=1969-12-31T23:59:59
+file,surfaces.txt7754a2c214771cb63943779b63db44ebsize=23252date=1969-12-31T23:59:59
+file,surfacetable.txt2af6466c50fb34e9b3af58aea133ae66size=596date=1969-12-31T23:59:59
