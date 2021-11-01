@@ -13,7 +13,7 @@ jobs:
       with:
         shiori-path: .\Taromati2\ghost\master\shiori\aya.dll
     - name: updates build
-      uses: Taromati2/ukagaka-mirror-md5-CI-build@v2
+      uses: Taromati2/ukagaka-mirror-md5-CI-build@v3
       with:
         dir-path: .\Taromati2
         build-mode: ghost_dir
