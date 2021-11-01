@@ -6,6 +6,10 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
+    - name: disable auto crlf
+      uses: steve02081504/disable-autocrlf@v1
+      with:
+        fuck-auto-CRLF: true
     - name: checkout
       uses: actions/checkout@v2
     - name: shiori-check
