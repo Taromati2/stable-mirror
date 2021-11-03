@@ -408,7 +408,7 @@ file,ghost/master/dic/system/event_response.dic69b1b8da7e4641ac20e8b48bdb7fe95e
 file,ghost/master/dic/system/hotkey.dic4dcb9b5847e27e1aee93e9420b21df2bsize=8815date=1969-12-31T23:59:59
 file,ghost/master/dic/system/internet.dic358ded9656d0acedb128f47fc33ffea2size=29885date=1969-12-31T23:59:59
 file,ghost/master/dic/system/lunar.dic990b2952c3a610122816e766a75a769csize=7445date=1969-12-31T23:59:59
-file,ghost/master/dic/system/menu.dicab6c7ace9d7c421e11fb85400db7aff4size=90936date=1969-12-31T23:59:59
+file,ghost/master/dic/system/menu.dicdbaa3bb6a162d92aefb07ae3f887984dsize=90936date=1969-12-31T23:59:59
 file,ghost/master/dic/system/mirror.dicaa593476f98b78fb695ea33c22c44121size=1572date=1969-12-31T23:59:59
 file,ghost/master/dic/system/password.dic1b927bdd55415a5eb0cffab67c857ea6size=2594date=1969-12-31T23:59:59
 file,ghost/master/dic/system/ukagaka_link.dic18c9f8102fc92a825beb01e921042cdcsize=903date=1969-12-31T23:59:59
@@ -465,7 +465,7 @@ file,ghost/master/saori/set_wall_paper.exec2a20ad3593959963c4d3ecfe4a1e646size
 file,ghost/master/saori/textcopy.dllb985beb7de58ae316ce03da9e260416asize=25600date=1969-12-31T23:59:59
 file,ghost/master/saori/tl.lock6cc375438fb76385e58c69193046dd19size=63date=1969-12-31T23:59:59
 file,ghost/master/saori/txtpaste.dlld26df18e46cf845ed073e26be17b3125size=25088date=1969-12-31T23:59:59
-file,ghost/master/shiori/aya.dlld57bdd1423e69ce4309270877b519373size=522240date=1969-12-31T23:59:59
+file,ghost/master/shiori/aya.dll7bbf2d00f2f6376938f037effd8792dbsize=522752date=1969-12-31T23:59:59
 file,ghost/master/shiori/aya.txt60e8c47a3dd03166c03a79039acad441size=24date=1969-12-31T23:59:59
 file,ghost/master/shiori/aya_base.txt3d97e6409a3f7b4bc1a606b6c2d7b4b4size=263date=1969-12-31T23:59:59
 file,ghost/master/shiori/aya_common.txt79d2b07e7b7c1de1ed6635973ada515csize=59date=1969-12-31T23:59:59
