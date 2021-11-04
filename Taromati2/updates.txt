@@ -380,7 +380,7 @@ file,ghost/master/dic/other/flower.dicadedfbab0677ec1efeba5fc13fc3bc74size=163
 file,ghost/master/dic/other/happyquest.dic2eec0863445715807498ffb95eb532d4size=3722date=1969-12-31T23:59:59
 file,ghost/master/dic/other/jumptest.dicc50dec84dec7a0c7884caee8a8075216size=1930date=1969-12-31T23:59:59
 file,ghost/master/dic/other/kikkastock.dic9211342a44518ca7f62677467b87dc97size=9488date=1969-12-31T23:59:59
-file,ghost/master/dic/other/otherserv.dic7f663bc5f4e79169fb9f3b236ea78380size=134448date=1969-12-31T23:59:59
+file,ghost/master/dic/other/otherserv.dic5c875b2acfbb3d53e9156e99358bfa9fsize=134459date=1969-12-31T23:59:59
 file,ghost/master/dic/other/playwithlrc.dic265cec76b2f19576638608577f2444b5size=40956date=1969-12-31T23:59:59
 file,ghost/master/dic/other/poem.dicc2b6944fdac2c8eba79808f5c64f4c6fsize=12590date=1969-12-31T23:59:59
 file,ghost/master/dic/other/story.dic532bcfe00f0b729658679b54be7f4f98size=66797date=1969-12-31T23:59:59
