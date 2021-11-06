@@ -393,7 +393,7 @@ file,ghost/master/dic/system/Debug.dic0b59a8c1fff68dfb927003e4b63e8d9dsize=164
 file,ghost/master/dic/system/FileDrop.dic94eee2257ecc7e37a12cfcdbde706b14size=4573date=1969-12-31T23:59:59
 file,ghost/master/dic/system/MAGIC.aycfd9d25b5b295e2821954d162df9b788esize=964date=1969-12-31T23:59:59
 file,ghost/master/dic/system/MAGIC.dic617991bbb23a229dd827369574b5e042size=294date=1969-12-31T23:59:59
-file,ghost/master/dic/system/SNTP.dicdebfec3be0bd4033b025b7641030c253size=2986date=1969-12-31T23:59:59
+file,ghost/master/dic/system/SNTP.dicb0752af0426c96eaaed9c8405e2c4728size=3071date=1969-12-31T23:59:59
 file,ghost/master/dic/system/SQL.dicbae9a3ef08a459f998b65ccecc205f37size=9445date=1969-12-31T23:59:59
 file,ghost/master/dic/system/StateGraph.dicb99e8080467d8a0e93b578091ed753d9size=1552date=1969-12-31T23:59:59
 file,ghost/master/dic/system/VersionUpgrade.dic88fd8eec635d86197f48a7fef0fc8817size=3090date=1969-12-31T23:59:59
