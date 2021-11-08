@@ -467,7 +467,7 @@ file,ghost/master/saori/set_wall_paper.exec2a20ad3593959963c4d3ecfe4a1e646size
 file,ghost/master/saori/textcopy.dllb985beb7de58ae316ce03da9e260416asize=25600date=1969-12-31T23:59:59
 file,ghost/master/saori/tl.lock6cc375438fb76385e58c69193046dd19size=63date=1969-12-31T23:59:59
 file,ghost/master/saori/txtpaste.dlld26df18e46cf845ed073e26be17b3125size=25088date=1969-12-31T23:59:59
-file,ghost/master/shiori/aya.dllcc96013f6075095e2ba0bfc77b568078size=528896date=1969-12-31T23:59:59
+file,ghost/master/shiori/aya.dllebe8cadaf743e0974545e878419eeb3bsize=529408date=1969-12-31T23:59:59
 file,ghost/master/shiori/aya.txt60e8c47a3dd03166c03a79039acad441size=24date=1969-12-31T23:59:59
 file,ghost/master/shiori/aya_base.txt3d97e6409a3f7b4bc1a606b6c2d7b4b4size=263date=1969-12-31T23:59:59
 file,ghost/master/shiori/aya_common.txt79d2b07e7b7c1de1ed6635973ada515csize=59date=1969-12-31T23:59:59
