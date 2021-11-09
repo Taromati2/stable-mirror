@@ -329,7 +329,7 @@ file,ghost/master/data/weather/XiaoYu.png34c9e1fec47840a5ebdeab4839af6392size=
 file,ghost/master/data/weather/Yin.png69817e1105e92832041f3644741d3be0size=735date=1969-12-31T23:59:59
 file,ghost/master/data/weather/ZhongXue.png7bf25e51f7e88b30da92215221c787c9size=1214date=1969-12-31T23:59:59
 file,ghost/master/data/weather/ZhongYu.png9a3f8e927f57d8973cd928fbdc31c0adsize=943date=1969-12-31T23:59:59
-file,ghost/master/descript.txt817bbf72e9aca29eef58418fa06b9ed7size=572date=1969-12-31T23:59:59
+file,ghost/master/descript.txtff9834334c1ff192018d53d4849b5ee6size=609date=1969-12-31T23:59:59
 file,ghost/master/dic/_loading_order.txt365d87523f53b6094161fb8010b8289fsize=142date=1969-12-31T23:59:59
 file,ghost/master/dic/aya/_loading_order.txt95e3fdd073b158a7479fca3eb50182basize=28date=1969-12-31T23:59:59
 file,ghost/master/dic/aya/base/QuickStart.dic3f4bc0add7708d546d4d79785131de85size=251date=1969-12-31T23:59:59
@@ -415,6 +415,7 @@ file,ghost/master/dic/system/password.dic1b927bdd55415a5eb0cffab67c857ea6size=
 file,ghost/master/dic/system/ukagaka_link.dic18c9f8102fc92a825beb01e921042cdcsize=903date=1969-12-31T23:59:59
 file,ghost/master/dic/system/username.dicfc0056918f2d8bebab3f8655f9c0629asize=8289date=1969-12-31T23:59:59
 file,ghost/master/img/AI_state.png03025fb265f08e664dabc74eccfd8e8dsize=50712date=1969-12-31T23:59:59
+file,ghost/master/img/curs/busy.anid59dfecc384e31f410475f14c33ee1fbsize=29118date=2012-12-21T00:00:00
 file,ghost/master/img/curs/common.ani54a78cfde95ab2e6f6c9e6b2be269dd2size=48474date=1969-12-31T23:59:59
 file,ghost/master/img/curs/text.ani817feb16204f5f073a1d4c819feb3703size=38796date=1969-12-31T23:59:59
 file,ghost/master/img/ico/kikka.ico0dd7ab873ae90cf9d7a9158b94c54930size=270398date=1969-12-31T23:59:59
