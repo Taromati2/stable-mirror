@@ -1,0 +1,25 @@
+name: md5-CI-build
+
+on:
+  push:
+    paths:
+      - 'Taromati2/**'
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - name: disable auto crlf
+      uses: steve02081504/disable-autocrlf@v1
+      with:
+        fuck-auto-CRLF: true
+    - name: checkout
+      uses: actions/checkout@v2
+    - name: shiori-check
+      uses: Taromati2/yaya-CI-check@v1
+      with:
+        shiori-path: .\Taromati2\ghost\master\shiori\aya.dll
+    - name: updates build
+      uses: Taromati2/ukagaka-mirror-md5-CI-build@v1
+      with:
+        dir-path: .\Taromati2
+        build-mode: ghost_dir

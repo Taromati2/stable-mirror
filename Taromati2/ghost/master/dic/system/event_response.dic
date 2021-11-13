@@ -43,8 +43,9 @@ OnNotifySelfInfo:void{
 //缺省信息补全&同步信息更新 by steve02081504
 OnNotifyUserInfo.WhenEmpty.username:void{
 	if _argv[0]{
-		case _argv[0]{
-			when 'Administrator','User','Guest','SYSTEM','admin','管理员','root'{
+		_simplified_name = TOLOWER(TOSIMPLIFIED(_argv[0]))
+		case _simplified_name{
+			when 'administrator','user','guest','system','admin','管理员','root','autobvt','microsoft','test'{
 				do_nothing
 			}
 			others{
@@ -761,7 +762,7 @@ OnUpdateCheckFailure{
 	'
 }
 OnUpdateCheckComplete{
-	'\0\s[0]检查终了\w9\w9\n'
+	"\0\s[0]%(reference3)的检查终了\w9\w9\n"
 	--
 	if reference0 == 'none'{
 		'\s[100]没有更新的必要\n'
@@ -789,6 +790,8 @@ OnUpdateCheckComplete{
 		\q[◇了解了,Cancel]\n/
 		'
 	}
+	--
+	'\x'
 }
 //---- ネットワーク更新开始 -------------------------------------------------------------
 OnUpdateBegin{
@@ -796,7 +799,7 @@ OnUpdateBegin{
 	--
 	InUpdate=1
 	if !InSilentUpdate
-		'\0\s[72]更新开始。'
+		"\0\s[72]%(reference3)的更新开始。"
 }
 //---- ネットワーク更新准备完了 ---------------------------------------------------------
 OnUpdateReady{
@@ -829,18 +832,18 @@ OnUpdateComplete{
 			if HasUpdate
 				'\0\s[3]因服务器回传虚假更新档\n\w9重新开始更新'
 			else
-				'\0\s[0]好像没有更新。\n/
-				\q[◇更新'+Baseware+',"script:\![update,platform]"]\n/
+				"\0\s[0]好像没有%(reference3)的更新。\n/
+				\q[◇更新%(Baseware),"+'"script:\![update,platform]"'+"]\n/
 				\q[◇查看更新日志,OnUrlOpen,https://github.com/Taromati2/Update-log]\n/
 				\q[◇无用,Cancel]\n/
-				'
+				\x"
 		}
 		else{
-			'\0\s[0]更新结束。\n/
-			\q[◇顺便更新'+Baseware+',"script:\![update,platform]"]\n/
+			"\0\s[0]%(reference3)的更新结束。\n/
+			\q[◇顺便更新%(Baseware),"+'"script:\![update,platform]"'+"]\n/
 			\q[◇查看更新日志,OnUrlOpen,https://github.com/Taromati2/Update-log]\n/
 			\q[◇无用,Cancel]\n/
-			'
+			\x"
 		}
 	}
 	--
@@ -1047,50 +1050,6 @@ OnNarCreated{
 	\_q「%(reference1)」\_q"
 	--
 	'\w9\n完成了。'
-}
-//**** 时间同步处理 *******************************************************************************
-//**** みか (http://homepage2.nifty.com/ko-ki/) の辞书を参考にしました。感谢＞こーき氏
-Select.SNTPTIME{
-	"\1\b[2]\s[15]\n现在的校准伺服器是\n\_q%(SNTPserver)\_q\n要更换伺服器吗？\n\n/
-	\![*]\q[更改伺服器,SNTPChange]\n/
-	\![*]\q[校准开始,SNTPStart]\n"
-}
-Select.SNTPChange{
-	'\1\s[11]请输入新的伺服器地址。\![open,inputbox,sntpserver,-1,stdtime.gov.hk]'
-}
-Select.SNTPStart{
-	'\![executesntp]'
-}
-//---- 时间同步处理开始 -----------------------------------------------------------------
-OnSNTPBegin{
-	DiscordCustomSet.CustomDetail('调制人生')
-	--
-	"\0\s[5]连线到\_q%(reference0)\_q伺服器了哦，时间同步开始。"
-}
-//---- 时刻取得成功、比较开始 -----------------------------------------------------------
-OnSNTPCompare{
-	'\0\s[6]'
-	if reference3 == 0{
-		DiscordCustomSet.CustomDetail('精确、精细、精致')
-		--
-		_nowtime = SPLIT(reference1,',')
-		"没有误差。\n现在时刻：%(_nowtime[0])年%(_nowtime[1])月%(_nowtime[2])日 %(_nowtime[3]):%(_nowtime[4])"
-	}
-	else{
-		DiscordCustomSet.CustomDetail('做了些小调整')
-		--
-		"误差%(reference3)秒。\n\n\n校准中......"
-	}
-}
-OnSNTPCorrect{
-	_nowtime = SPLIT(reference1,',')
-	"\0\s[5]同步完成了，很顺利呢。\n现在时刻：%(_nowtime[0])年%(_nowtime[1])月%(_nowtime[2])日%(_nowtime[3])：%(_nowtime[4])"
-}
-//---- 时间同步处理失败 -----------------------------------------------------------------
-OnSNTPFailure{
-	DiscordCustomSet.CustomDetail('被时间抛弃')
-	--
-	'\0\s[3]……失败了？？呜……'
 }
 //**** そのほか *************************************************************************
 //---- ディスプレイ解像度変更 -----------------------------------------------------------

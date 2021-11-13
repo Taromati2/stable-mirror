@@ -115,7 +115,7 @@ SubMenu{
 					'\q[◇软件快捷,OnShortcutMenu]			\_l[138,-]\q[◇计算器,OnCalculator] \n/
 					\q[◇倒数计时,count]						\_l[138,-]\q[◇秒表,OnSecondWatch,inter]\n/
 					\q[◇C盘垃圾文件清理,ClearC]				\_l[138,-]\q[◇股票,OnKikkaStockMenu]\n/
-					\q[◇简繁转换,OnChangeChineseCode]		\_l[138,-]\q[◇校准时间,SNTPTIME]\n/
+					\q[◇简繁转换,OnChangeChineseCode]		\_l[138,-]\q[◇校准时间,OnSNTPmenu]\n/
 					\q[◇收取邮件,ALLMAIL]					\_l[138,-]\q[◇开启邮箱,OPENMAILER]\n/
 					\q[◇RSS盒子,HEADLINE]					\_l[138,-]\q[◇数据备份,OnGhostBackup]\n/
 					\q[◇自动关机,OnSetShutdownMenu]			\_l[138,-]\q[◇吃货,OnReadyToEat]\n/
@@ -1276,7 +1276,7 @@ Tea{
 Coffee{
 	'拿铁'
 	'卡布奇诺'
-	'义式拿铁'
+	'意式拿铁'
 	'蓝山咖啡'
 	'土耳其咖啡'
 	'巴西咖啡'
@@ -1297,7 +1297,7 @@ Juice{
 Ohpos{
 	'辣椒芥末茶'
 	'韭菜芥末茶'
-	'义式酸牛奶'
+	'意式酸牛奶'
 	'永和酸豆浆'
 	'鱼露芹菜茶'
 	'奶烙泡菜汁'
@@ -1404,7 +1404,7 @@ Select.Cookbymyself{
 	"\0\s[0]%(username)真是固执...\w9\w9\s[26]谢谢。\w9\w9\n\n\q[◇别谢了，想吃什么？,Eatwhat]"
 }
 Select.Eatwhat{
-	"\0\s[6]嗯...\w9\w9\s[0]不知道耶...\w9\w9\n给%(username)决定吧。\w9\w9\n\1\s[10]不要做奇怪的东西。\w9\w9\0\n\q[◇蛋包饭,Omuraisu]\n\q[◇可乐饼,Korokke]\n\q[◇蕃茄义大利面,Pasuta]"
+	"\0\s[6]嗯...\w9\w9\s[0]不知道耶...\w9\w9\n给%(username)决定吧。\w9\w9\n\1\s[10]不要做奇怪的东西。\w9\w9\0\n\q[◇蛋包饭,Omuraisu]\n\q[◇可乐饼,Korokke]\n\q[◇蕃茄意大利面,Pasuta]"
 }
 Select.Omuraisu{
 	"\0\s[0]是吗？\w9\s[26]只要是%(username)做的我都喜欢吃喔...\w9\w9\n\1\s[10]如果哪天%(username)作炖猫肉怎么办？\w9你也会吃吗？\w9\w9\n\0\s[30]...\w9...\w9...\w9\n可以换菜色吗？\w9\w9\1\s[11]不要当真啊！"
