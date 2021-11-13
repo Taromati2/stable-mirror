@@ -311,7 +311,7 @@ file,ghost/master/data/vocabulary/Engilsh/不知哪来的两千词汇.txt78064e
 file,ghost/master/data/vocabulary/Engilsh/大学英语六级词汇表.txt605dcb2005eb6f22b66f78c0bffc1178size=76305date=2021-03-21T14:33:27
 file,ghost/master/data/vocabulary/Engilsh/大学英语四级词汇表.txt549044a1acee0852e9481091e1325962size=188222date=2021-03-21T14:33:27
 file,ghost/master/data/vocabulary/Engilsh/计算机英语常用词汇.txt865e689154335e4d9cc049b393552674size=151066date=2021-03-21T14:33:28
-file,ghost/master/data/vocabulary/Japanese/japanese.txt54006b7077028b4806dd429f6ada4862size=101603date=2021-03-21T14:33:28
+file,ghost/master/data/vocabulary/Japanese/japanese.txt82c7be89c20444583b1400ae6d285c03size=101694date=2021-03-21T14:33:28
 file,ghost/master/data/vocabulary/Japanese/japanese2.txt6921b2f87e6a4a10fa0f04f346cd93b5size=187009date=2021-03-21T14:33:28
 file,ghost/master/data/vocabulary/Japanese/japaneseword.txt544c49c143669a8a9106c7d927dd5585size=101759date=2021-03-21T14:33:28
 file,ghost/master/data/vocabulary/Japanese/动漫日语每天一句.txt8c7d9bf5bad9687eb97ddf6d251ac9c3size=20771date=2021-10-30T23:40:10
