@@ -393,13 +393,13 @@ file,ghost/master/dic/system/Debug.dic0b59a8c1fff68dfb927003e4b63e8d9dsize=164
 file,ghost/master/dic/system/FileDrop.dic94eee2257ecc7e37a12cfcdbde706b14size=4573date=2021-10-29T23:50:53
 file,ghost/master/dic/system/MAGIC.aycfd9d25b5b295e2821954d162df9b788esize=964date=2021-10-06T18:58:20
 file,ghost/master/dic/system/MAGIC.dic617991bbb23a229dd827369574b5e042size=294date=2021-11-12T17:39:38
-file,ghost/master/dic/system/SNTP.dicb6b7f3e52e89d177aad3f49802e9926dsize=3242date=2021-11-07T10:26:49
+file,ghost/master/dic/system/SNTP.dic616047354a5392bd704fcf89c920d922size=3302date=2021-11-07T10:26:49
 file,ghost/master/dic/system/SQL.diccd7fc7d5eb73d63556b72db445b3ba93size=9486date=2021-11-13T20:45:51
 file,ghost/master/dic/system/StateGraph.dicb99e8080467d8a0e93b578091ed753d9size=1552date=2021-08-05T15:49:53
 file,ghost/master/dic/system/VersionUpgrade.dic88fd8eec635d86197f48a7fef0fc8817size=3090date=2021-10-21T15:37:25
 file,ghost/master/dic/system/anti_cheat.dicd41d8cd98f00b204e9800998ecf8427esize=0date=2021-08-05T15:49:50
 file,ghost/master/dic/system/base.dic767a5033997e7a319c9aaa66a7f392c6size=1428date=2021-11-08T23:39:55
-file,ghost/master/dic/system/bootend.dic0ebba20d01c1c34753381458433b885bsize=59709date=2021-11-14T01:08:07
+file,ghost/master/dic/system/bootend.dic75722af6c1b1cf678bc01758e1b2aafesize=59709date=2021-11-14T01:08:07
 file,ghost/master/dic/system/change_part.dicbc60c6305fb994764be3027ec43633fdsize=568date=2021-08-05T15:49:51
 file,ghost/master/dic/system/changeshell.dic6bd39454567cb17349dd1af79694da84size=16455date=2021-11-07T21:33:02
 file,ghost/master/dic/system/clock.dica206c7bcfa2b12514c021040b929a77dsize=26919date=2021-11-13T20:45:51
