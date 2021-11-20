@@ -1,4 +1,13 @@
 ﻿
+ghost/master/dic/story/amusement_park/develop.dic
+ghost/master/data/other/opera.txt
+ghost/master/dic/story/opera.dic
+ghost/master/dic/story/
+ghost/master/sound/Amusement.Park.mp3
+ghost/master/sound/carousel.mid
+ghost/master/sound/nock.mp3
+ghost/master/sound/ocean.mp3
+ghost/master/sound/se_gost.mp3
 terms.txt
 ghost/master/dic/dev/ERBconver.dic
 ghost/master/dic/system/QuickStart.dic
