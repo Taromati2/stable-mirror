@@ -286,7 +286,7 @@ file,ghost/master/data/LearnJapanese/sonido/わ.mp34512fb2c8e61f0d196436a5b5cdb
 file,ghost/master/data/Nurturance/ColorBar.png9684dd1829fd30faaf47cad490593bf6size=554date=2021-03-21T14:33:27
 file,ghost/master/data/Nurturance/heart1.gif782641b13248ca2ef635564021dce860size=524date=2021-03-21T14:33:27
 file,ghost/master/data/Nurturance/heart2.gifc227bf2f7e3b9978b4e4f7d5ea1db571size=393date=2021-03-21T14:33:27
-file,ghost/master/data/debug/aya_func_info.txt52609166c0db9190a727df72befb3c51size=20923date=2021-10-06T19:04:14
+file,ghost/master/data/debug/aya_func_info.txtbbd5b4fdbb44bb09a50b9ee8d9cc61a9size=20918date=2021-10-06T19:04:14
 file,ghost/master/data/other/birthdayflower.txt92c328ee420f6017fef2b15014ddbea0size=139657date=2021-03-21T14:33:27
 file,ghost/master/data/other/happyquest.txt7cbc6c0476a7aa80a2d8769559c7248esize=105040date=2021-03-21T14:33:27
 file,ghost/master/data/other/jumptest.txtc005268cd3f5b874f4c625405ee7edf4size=177600date=2021-03-21T14:33:27
@@ -385,8 +385,8 @@ file,ghost/master/dic/other/poem.dicc2b6944fdac2c8eba79808f5c64f4c6fsize=12590
 file,ghost/master/dic/other/story.dic532bcfe00f0b729658679b54be7f4f98size=66797date=2021-08-17T17:50:10
 file,ghost/master/dic/other/test.diccdc9291d1695d1c67482a0614dd3ed6csize=27157date=2021-08-12T16:49:56
 file,ghost/master/dic/system/Calendar.dicd2edc114ffa5835a6449b34f88f9daabsize=39977date=2021-08-12T16:49:56
-file,ghost/master/dic/system/Debug.dic0b59a8c1fff68dfb927003e4b63e8d9dsize=16430date=2021-11-14T01:12:43
-file,ghost/master/dic/system/FileDrop.dic94eee2257ecc7e37a12cfcdbde706b14size=4573date=2021-10-29T23:50:53
+file,ghost/master/dic/system/Debug.dic66833e3348b1d076d4e714157c4b560csize=16421date=2021-11-14T01:12:43
+file,ghost/master/dic/system/FileDrop.dic1c3c130720f932ef6cd20f0fcd7d8938size=4587date=2021-10-29T23:50:53
 file,ghost/master/dic/system/MAGIC.aycfd9d25b5b295e2821954d162df9b788esize=964date=2021-10-06T18:58:20
 file,ghost/master/dic/system/MAGIC.dic617991bbb23a229dd827369574b5e042size=294date=2021-11-12T17:39:38
 file,ghost/master/dic/system/SNTP.dic616047354a5392bd704fcf89c920d922size=3302date=2021-11-07T10:26:49
