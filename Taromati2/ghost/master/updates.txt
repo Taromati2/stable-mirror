@@ -1,5 +1,5 @@
 charset,UTF-8
-file,delete.txtb8f8a9b27112789b59d891116f8745d1size=24890date=2021-10-06T21:45:18
+file,delete.txtc1e4ca2a3c22d8f9951cfa5be56bcfa0size=25189date=2021-10-06T21:45:18
 file,ghost/master/data/Game/BoxGame/box.txt4eb7bc822cf0d1cd24d14daa6ce16387size=33614date=2021-03-21T14:33:27
 file,ghost/master/data/Game/BoxGame/boxpng.png11dba3badd0ebfcfd727e21b710e87edsize=3932date=2021-03-21T14:33:27
 file,ghost/master/data/Game/Gobang/Stone.wav60f1c8457a19624892f1a0d45ab47ab4size=74156date=2021-03-21T14:33:27
@@ -290,7 +290,6 @@ file,ghost/master/data/debug/aya_func_info.txt52609166c0db9190a727df72befb3c51
 file,ghost/master/data/other/birthdayflower.txt92c328ee420f6017fef2b15014ddbea0size=139657date=2021-03-21T14:33:27
 file,ghost/master/data/other/happyquest.txt7cbc6c0476a7aa80a2d8769559c7248esize=105040date=2021-03-21T14:33:27
 file,ghost/master/data/other/jumptest.txtc005268cd3f5b874f4c625405ee7edf4size=177600date=2021-03-21T14:33:27
-file,ghost/master/data/other/opera.txt41da08ae0402ef2b7b14692e5d707358size=77851date=2021-05-06T19:20:24
 file,ghost/master/data/other/poem.txt6411b8be6fa1a0d258a92125f86a4597size=313252date=2021-03-21T14:33:27
 file,ghost/master/data/test/2015年一级建造师机电实务题及答案题库版.txt9842cdb914c462750f63507614dae12esize=43935date=2021-03-21T14:33:27
 file,ghost/master/data/test/会计题库.txtf9fc58baa86287ef64c44832a839951asize=263480date=2021-03-21T14:33:27
@@ -385,9 +384,6 @@ file,ghost/master/dic/other/playwithlrc.dic265cec76b2f19576638608577f2444b5siz
 file,ghost/master/dic/other/poem.dicc2b6944fdac2c8eba79808f5c64f4c6fsize=12590date=2021-11-07T21:33:02
 file,ghost/master/dic/other/story.dic532bcfe00f0b729658679b54be7f4f98size=66797date=2021-08-17T17:50:10
 file,ghost/master/dic/other/test.diccdc9291d1695d1c67482a0614dd3ed6csize=27157date=2021-08-12T16:49:56
-file,ghost/master/dic/story/amusement_park/amusement_park.dicccdaa41823c356d4ff7d21b54937c303size=15068date=2021-11-07T21:33:02
-file,ghost/master/dic/story/amusement_park/develop.dicd39719bd782d53125b83b5d313c9b367size=27043date=2021-11-07T21:33:02
-file,ghost/master/dic/story/opera.dice4b7810fc74cd0dd2a2fa074844477c5size=30050date=2021-11-07T21:33:02
 file,ghost/master/dic/system/Calendar.dicd2edc114ffa5835a6449b34f88f9daabsize=39977date=2021-08-12T16:49:56
 file,ghost/master/dic/system/Debug.dic0b59a8c1fff68dfb927003e4b63e8d9dsize=16430date=2021-11-14T01:12:43
 file,ghost/master/dic/system/FileDrop.dic94eee2257ecc7e37a12cfcdbde706b14size=4573date=2021-10-29T23:50:53
@@ -409,7 +405,7 @@ file,ghost/master/dic/system/event_response.dic075f559df82e9980c90cceca580ae199
 file,ghost/master/dic/system/hotkey.dic4dcb9b5847e27e1aee93e9420b21df2bsize=8815date=2021-09-24T11:11:10
 file,ghost/master/dic/system/internet.dic358ded9656d0acedb128f47fc33ffea2size=29885date=2021-08-12T16:49:56
 file,ghost/master/dic/system/lunar.dic990b2952c3a610122816e766a75a769csize=7445date=2021-08-12T16:49:56
-file,ghost/master/dic/system/menu.dic65202a8f6d01aac9cb639e0042e18172size=91266date=2021-11-07T21:33:02
+file,ghost/master/dic/system/menu.dic71890e7bd431d9f0139085b620eca971size=90605date=2021-11-07T21:33:02
 file,ghost/master/dic/system/mirror.dicaa593476f98b78fb695ea33c22c44121size=1572date=2021-10-04T00:56:30
 file,ghost/master/dic/system/password.dic1b927bdd55415a5eb0cffab67c857ea6size=2594date=2021-08-12T16:49:56
 file,ghost/master/dic/system/ukagaka_link.dic18c9f8102fc92a825beb01e921042cdcsize=903date=2021-08-18T12:19:56
@@ -476,21 +472,16 @@ file,ghost/master/shiori/aya_base.txt3d97e6409a3f7b4bc1a606b6c2d7b4b4size=263
 file,ghost/master/shiori/aya_common.txt79d2b07e7b7c1de1ed6635973ada515csize=59date=2021-07-12T20:07:04
 file,ghost/master/shiori/aya_emerg.txt924b0c9b0ea56b0c00e029fded29f6a1size=82date=2021-07-12T20:07:04
 file,ghost/master/shiori/simplified-chinese.txt6e3e7e50502ddb7e943cba4a45477ea5size=6356date=2021-08-31T11:15:50
-file,ghost/master/sound/Amusement.Park.mp3586fe826074441f7202ac5c00321efadsize=537583date=2021-07-17T21:51:07
 file,ghost/master/sound/Electricsaw.wava71b52b8064834aecb0becc6d294bdfasize=1695788date=2021-03-21T14:33:28
 file,ghost/master/sound/Gun.wav00a0849f7b9b9315f5da82c942c288fbsize=566562date=2021-03-21T14:33:28
 file,ghost/master/sound/Knife.wavd650a9ac01c0b7e5027deea7b627160fsize=13240date=2021-03-21T14:33:28
 file,ghost/master/sound/Ring.mp3c4ab3c9653e5ee9ffeae861970fb37d1size=159356date=2021-07-17T21:51:07
 file,ghost/master/sound/bell.wav451a68c7e089e9606e35c2cd8b9e2056size=57356date=2021-02-17T23:01:42
-file,ghost/master/sound/carousel.mida7cd03f7e83673b43a4b5d4535557cfesize=76667date=2021-03-21T14:33:28
-file,ghost/master/sound/nock.mp31527967bee52c1fc78e035c62fdd9855size=9910date=2021-07-17T21:51:07
-file,ghost/master/sound/ocean.mp36b63bd6c11d2636fa0a899242b048ffcsize=876327date=2021-07-17T21:51:07
 file,ghost/master/sound/se_01.wav96f6f0b5417ae9dab0df7e8f4fdcb400size=20240date=2021-02-17T23:01:42
 file,ghost/master/sound/se_02.wav970ba9a953f27e0c850515f33cb7e377size=21448date=2021-02-17T23:01:42
 file,ghost/master/sound/se_03.wav17d88aa3f1d064ef89690ffe4b17c904size=5804date=2021-02-17T23:01:42
 file,ghost/master/sound/se_04.wavd9d980bea7a1223fcc0b97ec3bde9510size=15808date=2021-02-17T23:01:42
 file,ghost/master/sound/se_05.wavf927ea3ea5fb4a93f4d821a6bf2c76desize=13428date=2021-02-17T23:01:42
-file,ghost/master/sound/se_gost.mp32b00c37e2abae08d511febf744fc4e82size=471035date=2021-07-17T21:51:07
 file,ghost/master/sound/shot.wav5e250057d71288d6ee0c7352ca885c5csize=55926date=2021-02-17T23:01:42
 file,ghost/master/sound/tea.mp333dc524916fdceeb55459374eca427a9size=80296date=2021-07-17T21:51:07
 file,ghost/master/sound/tinkle.wavf115303b37f10d103980434f5662f405size=123650date=2021-02-17T23:01:42
