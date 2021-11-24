@@ -1691,7 +1691,7 @@ On_getaistateex{
 	On_GetAIStateEX
 }
 ISSTR{
-	GETTYPE(_argv[0])==3
+	GETTYPE(_argv[0])==3&&_argc==1
 }
 INEVENT{
 	_argv[0]==SHIORI_FW.Eventid
