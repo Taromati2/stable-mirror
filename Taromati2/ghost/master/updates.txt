@@ -351,7 +351,7 @@ file,ghost/master/dic/communicate/H/H.dic90919b917b1be45abcb2016252cb9450size=
 file,ghost/master/dic/communicate/talk/learn.dic8e3e721846bb08672fc6a6ef041991e2size=16499date=2021-08-12T16:49:56
 file,ghost/master/dic/communicate/talk/other_ghost.dic7cb41f66f5639bf95446fa6df7530999size=3591date=2021-08-12T16:49:56
 file,ghost/master/dic/communicate/talk/pseudoAI.dic6eac2aba5d266fb9d4ea1d807bdfed9esize=70444date=2021-09-11T08:49:15
-file,ghost/master/dic/communicate/talk/talk.dic556632752da1e7808f4c41acc5ce7e67size=174952date=2021-11-07T21:33:02
+file,ghost/master/dic/communicate/talk/talk.dic5919565230f6e38f9ffc20ccbdb445a4size=174724date=2021-11-07T21:33:02
 file,ghost/master/dic/communicate/talk/talk_t.dic94d962eb3a1ccac4ed295f5965e1e765size=8965date=2021-11-07T21:33:02
 file,ghost/master/dic/communicate/touch/touch.dicfeef31ee4e5958ba94860614941219dbsize=13762date=2021-11-02T21:34:21
 file,ghost/master/dic/dev/ayccoder.aycd7df86b0547b9b3e98b581643b9cfd2bsize=595date=2021-09-25T09:08:54
