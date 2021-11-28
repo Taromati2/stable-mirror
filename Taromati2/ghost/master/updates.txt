@@ -346,7 +346,7 @@ file,ghost/master/dic/aya/master/ghost.dicb692e47f15c5ad1d102c525c4f280baasize
 file,ghost/master/dic/aya/master/shiori.dicd3908f49ab784909dda8c28c8829bcd1size=47675date=2021-11-14T01:15:10
 file,ghost/master/dic/aya/master/string.dicfd6775505a13a84e12604d9f2115f74fsize=2425date=2021-08-05T15:49:42
 file,ghost/master/dic/aya/master/sysex.dicc8ad6a861462a91af201140852cbe4bcsize=1201date=2021-09-24T11:20:14
-file,ghost/master/dic/aya/master/url.dic8d0f4a3109bbcc200ed2e36cfa86eb61size=101date=2021-08-20T00:05:12
+file,ghost/master/dic/aya/master/url.dic54a88b45e8b8d818b89e2283ab7f838fsize=156date=2021-08-20T00:05:12
 file,ghost/master/dic/communicate/H/H.dic90919b917b1be45abcb2016252cb9450size=250date=2021-09-25T09:17:09
 file,ghost/master/dic/communicate/talk/learn.dic8e3e721846bb08672fc6a6ef041991e2size=16499date=2021-08-12T16:49:56
 file,ghost/master/dic/communicate/talk/other_ghost.dic7cb41f66f5639bf95446fa6df7530999size=3591date=2021-08-12T16:49:56
@@ -394,7 +394,7 @@ file,ghost/master/dic/system/SQL.diccd7fc7d5eb73d63556b72db445b3ba93size=9486
 file,ghost/master/dic/system/StateGraph.dicb99e8080467d8a0e93b578091ed753d9size=1552date=2021-08-05T15:49:53
 file,ghost/master/dic/system/VersionUpgrade.dic88fd8eec635d86197f48a7fef0fc8817size=3090date=2021-10-21T15:37:25
 file,ghost/master/dic/system/anti_cheat.dicd41d8cd98f00b204e9800998ecf8427esize=0date=2021-08-05T15:49:50
-file,ghost/master/dic/system/base.dicc2e32f3b4abf2b795fd615a9c5a00c48size=1435date=2021-11-08T23:39:55
+file,ghost/master/dic/system/base.dic16c00a6bffffa956520cc48c5a919c51size=1776date=2021-11-08T23:39:55
 file,ghost/master/dic/system/bootend.dic75722af6c1b1cf678bc01758e1b2aafesize=59709date=2021-11-14T01:08:07
 file,ghost/master/dic/system/change_part.dicbc60c6305fb994764be3027ec43633fdsize=568date=2021-08-05T15:49:51
 file,ghost/master/dic/system/changeshell.dic6bd39454567cb17349dd1af79694da84size=16455date=2021-11-07T21:33:02
