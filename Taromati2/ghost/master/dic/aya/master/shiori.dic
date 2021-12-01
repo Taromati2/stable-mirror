@@ -1630,6 +1630,16 @@ SHIORI_EV.On_enable_debug : void {
 	}
 }
 
+shiori.OnLoopLimit:void{
+	SHIORI_FW.PushNotifyResult(OnshioriLimit('loop',_argv))
+}
+shiori.OnCallLimit:void{
+	SHIORI_FW.PushNotifyResult(OnshioriLimit('call',_argv))
+}
+shiori.OnMemoryLimit:void{
+	SHIORI_FW.PushNotifyResult(OnshioriLimit('memory',_argv))
+}
+
 //******************************************************************************
 //時刻系変数
 //******************************************************************************
