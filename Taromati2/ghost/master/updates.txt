@@ -343,7 +343,7 @@ file,ghost/master/dic/aya/master/baseware.dicf38ecf1ce37a91875f9a1b0e7608058cs
 file,ghost/master/dic/aya/master/cmd.dicde539fd2aff5d4da9d018ff0bb939eccsize=59date=2021-08-05T15:49:41
 file,ghost/master/dic/aya/master/file.dicebcd4b6b61b7136ae656ee7b125f742fsize=3514date=2021-10-04T00:56:30
 file,ghost/master/dic/aya/master/ghost.dicb692e47f15c5ad1d102c525c4f280baasize=834date=2021-08-20T00:18:49
-file,ghost/master/dic/aya/master/shiori.dicd3908f49ab784909dda8c28c8829bcd1size=47675date=2021-11-14T01:15:10
+file,ghost/master/dic/aya/master/shiori.dicfd6b8cd4ed8c64b5ed246358b705b8e6size=47932date=2021-11-14T01:15:10
 file,ghost/master/dic/aya/master/string.dicfd6775505a13a84e12604d9f2115f74fsize=2425date=2021-08-05T15:49:42
 file,ghost/master/dic/aya/master/sysex.dicc8ad6a861462a91af201140852cbe4bcsize=1201date=2021-09-24T11:20:14
 file,ghost/master/dic/aya/master/url.dic54a88b45e8b8d818b89e2283ab7f838fsize=156date=2021-08-20T00:05:12
@@ -367,7 +367,7 @@ file,ghost/master/dic/games/linkwnd.dicecddf99d12301d740e48bc3d06e01d93size=66
 file,ghost/master/dic/games/other.dice3bf2454fd7c8a0ed1c0cc9a1152b445size=75435date=2021-08-12T16:49:56
 file,ghost/master/dic/games/puzzle.dic0b37363e4ae64910c22b3e716c46caf8size=4695date=2021-10-28T12:27:07
 file,ghost/master/dic/games/rpggame.dic5ad3987eeaaa2d9d1edc1e60dc96b1d1size=136957date=2021-10-28T12:26:46
-file,ghost/master/dic/games/tetrisgame.dicd2cf465613651ee5d3dd6d5f628ef930size=11060date=2021-10-28T12:29:47
+file,ghost/master/dic/games/tetrisgame.dic40d6f56499782876e9e6eee804496674size=11012date=2021-10-28T12:29:47
 file,ghost/master/dic/games/uno.dic5c17478aee74bc41c6e7d74b6af62819size=26146date=2021-11-07T21:09:31
 file,ghost/master/dic/nurturance/nurturance.dicad7cdefc4a5d300e1c7b6408331c4250size=24951date=2021-10-28T01:15:31
 file,ghost/master/dic/other/Miniuse.dic9a32f6a7b364a700c7abbcae2f0089b4size=97341date=2021-10-29T00:46:38
@@ -385,7 +385,7 @@ file,ghost/master/dic/other/poem.dicc2b6944fdac2c8eba79808f5c64f4c6fsize=12590
 file,ghost/master/dic/other/story.dic532bcfe00f0b729658679b54be7f4f98size=66797date=2021-08-17T17:50:10
 file,ghost/master/dic/other/test.diccdc9291d1695d1c67482a0614dd3ed6csize=27157date=2021-08-12T16:49:56
 file,ghost/master/dic/system/Calendar.dicd2edc114ffa5835a6449b34f88f9daabsize=39977date=2021-08-12T16:49:56
-file,ghost/master/dic/system/Debug.dic66833e3348b1d076d4e714157c4b560csize=16421date=2021-11-14T01:12:43
+file,ghost/master/dic/system/Debug.dic93a73e4441abeba3f1cace99339febe9size=16954date=2021-11-14T01:12:43
 file,ghost/master/dic/system/FileDrop.dic1c3c130720f932ef6cd20f0fcd7d8938size=4587date=2021-10-29T23:50:53
 file,ghost/master/dic/system/MAGIC.ayc5d129d9db5a6c0bed7ceb3eb3af5a00fsize=993date=2021-10-06T18:58:20
 file,ghost/master/dic/system/MAGIC.dic617991bbb23a229dd827369574b5e042size=294date=2021-11-12T17:39:38
@@ -466,7 +466,7 @@ file,ghost/master/saori/set_wall_paper.exec2a20ad3593959963c4d3ecfe4a1e646size
 file,ghost/master/saori/textcopy.dllb985beb7de58ae316ce03da9e260416asize=25600date=2021-03-21T14:33:28
 file,ghost/master/saori/tl.lock6cc375438fb76385e58c69193046dd19size=63date=2021-03-13T16:37:46
 file,ghost/master/saori/txtpaste.dlld26df18e46cf845ed073e26be17b3125size=25088date=2021-03-21T14:33:28
-file,ghost/master/shiori/aya.dllafb9f27e596bfd70f6b660a4b69a0648size=527872date=2021-11-13T20:45:51
+file,ghost/master/shiori/aya.dll414a101785c7654dcc70463369f7b033size=531968date=2021-11-13T20:45:51
 file,ghost/master/shiori/aya.txt60e8c47a3dd03166c03a79039acad441size=24date=2021-07-12T20:07:04
 file,ghost/master/shiori/aya_base.txt68c43113e7faf2c5a5dd54ea3339b50fsize=262date=2021-08-31T00:00:06
 file,ghost/master/shiori/aya_common.txt79d2b07e7b7c1de1ed6635973ada515csize=59date=2021-07-12T20:07:04
