@@ -393,11 +393,11 @@ Select.birthdaygift{
 	giftcount += 1
 	gift
 	_N=ARRAYSIZE(Useritem)-1
-	G=RAND(_N)
-	UseritemNum[G]=TOINT(UseritemNum[G])+1
-	Useritemtime[G]="%(year)年%(month)月%(day)日%(username)%(TOINT(nextbirthday[0] - birthday[0]))岁生日礼物"
-	Useriteminfo=("%(year)年%(month)月%(day)日%(hour)时%(minute)分收到生日礼物%(Useritem[G][1])。" , Useriteminfo)
-	"\0\s[5]是%(Useritem[G][1])哦，%(username)喜欢吗？\n\n/
+	_G=RAND(_N)
+	UseritemNum[_G]=TOINT(UseritemNum[_G])+1
+	Useritemtime[_G]="%(year)年%(month)月%(day)日%(username)%(TOINT(nextbirthday[0] - birthday[0]))岁生日礼物"
+	Useriteminfo=("%(year)年%(month)月%(day)日%(hour)时%(minute)分收到生日礼物%(Useritem[_G][1])。" , Useriteminfo)
+	"\0\s[5]是%(Useritem[_G][1])哦，%(username)喜欢吗？\n\n/
 	\q[◇喜欢,likebirthdaygift]\n/
 	\q[◇不喜欢,dislikebirthdaygift]\n/
 	"
@@ -406,54 +406,54 @@ Ongift{
 	giftmode = 1
 	gift
 	_N=ARRAYSIZE(Useritem)-2
-	G=RAND(_N)
+	_G=RAND(_N)
 	_spitemflag=0
-	if G==19&&UserspitemNum[1]!=1{
+	if _G==19&&UserspitemNum[1]!=1{
 		UserspitemNum[1]=1
 		_spitemflag=1
 	}
 	else{
-		while G==19{
-			G=RAND(_N)
+		while _G==19{
+			_G=RAND(_N)
 		}
 	}
-	UseritemNum[G]=TOINT(UseritemNum[G])+1
+	UseritemNum[_G]=TOINT(UseritemNum[_G])+1
 	if reference0==0{
-		Useritemtime[G]="%(year)年%(month)月%(day)日橘花送的新年礼物"
-		Useriteminfo=("%(year)年%(month)月%(day)日%(hour)时%(minute)分收到新年礼物%(Useritem[G][1])。" , Useriteminfo)
+		Useritemtime[_G]="%(year)年%(month)月%(day)日橘花送的新年礼物"
+		Useriteminfo=("%(year)年%(month)月%(day)日%(hour)时%(minute)分收到新年礼物%(Useritem[_G][1])。" , Useriteminfo)
 	}
 	elseif reference0==1{
-		Useritemtime[G]="%(year)年%(month)月%(day)日橘花送的情人节礼物"
-		Useriteminfo=("%(year)年%(month)月%(day)日%(hour)时%(minute)分收到情人节礼物%(Useritem[G][1])。" , Useriteminfo)
+		Useritemtime[_G]="%(year)年%(month)月%(day)日橘花送的情人节礼物"
+		Useriteminfo=("%(year)年%(month)月%(day)日%(hour)时%(minute)分收到情人节礼物%(Useritem[_G][1])。" , Useriteminfo)
 	}
 	elseif reference0==2{
-		Useritemtime[G]="%(year)年%(month)月%(day)日橘花送的端午节礼物"
-		Useriteminfo=("%(year)年%(month)月%(day)日%(hour)时%(minute)分收到端午节礼物%(Useritem[G][1])。" , Useriteminfo)
+		Useritemtime[_G]="%(year)年%(month)月%(day)日橘花送的端午节礼物"
+		Useriteminfo=("%(year)年%(month)月%(day)日%(hour)时%(minute)分收到端午节礼物%(Useritem[_G][1])。" , Useriteminfo)
 	}
 	elseif reference0==3{
-		Useritemtime[G]="%(year)年%(month)月%(day)日橘花送的七夕礼物"
-		Useriteminfo=("%(year)年%(month)月%(day)日%(hour)时%(minute)分收到七夕礼物%(Useritem[G][1])。" , Useriteminfo)
+		Useritemtime[_G]="%(year)年%(month)月%(day)日橘花送的七夕礼物"
+		Useriteminfo=("%(year)年%(month)月%(day)日%(hour)时%(minute)分收到七夕礼物%(Useritem[_G][1])。" , Useriteminfo)
 	}
 	elseif reference0==4{
-		Useritemtime[G]="%(year)年%(month)月%(day)日橘花送的中秋节礼物"
-		Useriteminfo=("%(year)年%(month)月%(day)日%(hour)时%(minute)分收到中秋节礼物%(Useritem[G][1])。" , Useriteminfo)
+		Useritemtime[_G]="%(year)年%(month)月%(day)日橘花送的中秋节礼物"
+		Useriteminfo=("%(year)年%(month)月%(day)日%(hour)时%(minute)分收到中秋节礼物%(Useritem[_G][1])。" , Useriteminfo)
 	}
 	elseif reference0==5{
-		Useritemtime[G]="%(year)年%(month)月%(day)日橘花送的圣诞节礼物"
-		Useriteminfo=("%(year)年%(month)月%(day)日%(hour)时%(minute)分收到圣诞礼物%(Useritem[G][1])。" , Useriteminfo)
+		Useritemtime[_G]="%(year)年%(month)月%(day)日橘花送的圣诞节礼物"
+		Useriteminfo=("%(year)年%(month)月%(day)日%(hour)时%(minute)分收到圣诞礼物%(Useritem[_G][1])。" , Useriteminfo)
 	}
 	elseif reference0==6{
-		Useritemtime[G]="%(year)年%(month)月%(day)日橘花送的1111节礼物"
-		Useriteminfo=("%(year)年%(month)月%(day)日%(hour)时%(minute)分收到1111节礼物%(Useritem[G][1])。" , Useriteminfo)
+		Useritemtime[_G]="%(year)年%(month)月%(day)日橘花送的1111节礼物"
+		Useriteminfo=("%(year)年%(month)月%(day)日%(hour)时%(minute)分收到1111节礼物%(Useritem[_G][1])。" , Useriteminfo)
 	}
 	elseif reference0==7{
-		Useritemtime[G]="%(year)年%(month)月%(day)日橘花送的%(year-firstboottime[0])周年相遇礼物"
-		Useriteminfo=("%(year)年%(month)月%(day)日%(hour)时%(minute)分收到%(year-firstboottime[0])周年相遇%(Useritem[G][1])。" , Useriteminfo)
+		Useritemtime[_G]="%(year)年%(month)月%(day)日橘花送的%(year-firstboottime[0])周年相遇礼物"
+		Useriteminfo=("%(year)年%(month)月%(day)日%(hour)时%(minute)分收到%(year-firstboottime[0])周年相遇%(Useritem[_G][1])。" , Useriteminfo)
 	}
 	if _spitemflag==1
 		'红色水晶项链“绯红之眼”获得。'
 	--
-	"\0\s[5]是%(Useritem[G][1])哦，%(username)喜欢吗？\n\n/
+	"\0\s[5]是%(Useritem[_G][1])哦，%(username)喜欢吗？\n\n/
 	\q[◇喜欢,likegift]\n/
 	\q[◇不喜欢,dislikegift]\n/
 	"
@@ -479,7 +479,6 @@ gift{
 Onmoneyadd{
 	_num = TOINT(reference0)
 	money += _num
-	anti_cheat('money')
 }
 Select.likebirthdaygift{
 	intimacy += 200
@@ -1885,21 +1884,21 @@ FilesRenameMenu{
 	if _argc > 0 {
 		_submenu = TOINT(_argv[0])
 	}
-	_txt='\C\![quicksession,true]\c\![set,choicetimeout,0]\b[2]'
-	_txt+='■批量文件重命名■\n'
-	_txt+='\![*]\q[选择目录,OnFileRenameListAdd,folder]'
-	_txt+="\_l[70]\![*]\q[清空文件,OnFilesRenameSet,%(_submenu),clearfile]"
-	_txt+="\_l[140]\![*]\q[编辑列表,OnFilesRenameSet,%(_submenu),editlist]"
-	_txt+="\_l[210]\![*]\q[说明,OnFileRenameIntro,%(_submenu)]"
-	_txt+='\_l[255]\![*]\q[退出,OnExitFileRename]'
-	_txt+='\n'
 	_sub[_submenu]='\f[color,192,192,192]'
 	_subend[_submenu]='\f[color,default]'
-	_txt+="\__q[OnFilesRenameSub,0]%(_sub[0])替换内容%(_subend[0])\__q"
-	_txt+="\_l[55]\__q[OnFilesRenameSub,1]%(_sub[1])替换位置%(_subend[1])\__q"
-	_txt+="\_l[110]\__q[OnFilesRenameSub,2]%(_sub[2])替换扩展名%(_subend[2])\__q"
-	_txt+="\_l[175]\__q[OnFilesRenameSub,3]%(_sub[3])前后缀设置%(_subend[3])\__q"
-	_txt+="\_l[240]\__q[OnFilesRenameSub,4]%(_sub[4])全局配置%(_subend[4])\__q\n"
+	_txt="\C\![quicksession,true]\c\![set,choicetimeout,0]\b[2]/
+		■批量文件重命名■\n/
+		\![*]\q[选择目录,OnFileRenameListAdd,folder]/
+		\_l[70]\![*]\q[清空文件,OnFilesRenameSet,%(_submenu),clearfile]/
+		\_l[140]\![*]\q[编辑列表,OnFilesRenameSet,%(_submenu),editlist]/
+		\_l[210]\![*]\q[说明,OnFileRenameIntro,%(_submenu)]/
+		\_l[255]\![*]\q[退出,OnExitFileRename]/
+		\n/
+		\__q[OnFilesRenameSub,0]%(_sub[0])替换内容%(_subend[0])\__q/
+		\_l[55]\__q[OnFilesRenameSub,1]%(_sub[1])替换位置%(_subend[1])\__q/
+		\_l[110]\__q[OnFilesRenameSub,2]%(_sub[2])替换扩展名%(_subend[2])\__q/
+		\_l[175]\__q[OnFilesRenameSub,3]%(_sub[3])前后缀设置%(_subend[3])\__q/
+		\_l[240]\__q[OnFilesRenameSub,4]%(_sub[4])全局配置%(_subend[4])\__q\n"
 	_txt+=FilesRenameCondition(_submenu)
 	_txt
 }
@@ -2417,7 +2416,7 @@ OnStandby{
 }
 OnSystemHalte{
 	'\0\s[26]确定要死机吗？\n/
-	\q[◇是的,OnRAMBomb]\n/
+	\q[◇是的,OntriggerBSOD,0xc000007F]\n/
 	\q[◇不了,OnOpenMenu,3]'
 }
 OnRAMBomb{

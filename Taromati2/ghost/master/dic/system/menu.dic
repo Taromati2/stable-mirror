@@ -1,8 +1,8 @@
 ///////////////////////////////////////////
-//////////菜单相关辞书/メニュー関連辞書/Menu-related dictionaries
+//////////菜单相关辞书
 //////////written by forjane 2009.08.12
 ///////////////////////////////////////////
-//******* Main Menu ************************************************
+//******* 主菜单 ************************************************
 OnOpenMenu{
 	click=NULL
 	if reference0 != '' {
@@ -33,12 +33,12 @@ OpenMenu{
 	}
 	_sub = '◆,◇,◇,◇,◇,◆,◇,◇,◇,◇,◆,◇,◇,◇,◇,◆,◇,◇,◇,◇,◆'
 	'\![quicksession,true]\0'+_message+"\b[2]/
-	\_l[0,22]\q[%(_sub[_submenu])共通,OnSubMenu,0,%(_submenuex)]/
-	\_l[68]\q[%(_sub[_submenu + 4])娯楽,OnSubMenu,1,%(_submenuex)]/
-	\_l[112]\q[%(_sub[_submenu + 8])ゲーム,OnSubMenu,2,%(_submenuex)]/
-	\_l[156]\q[%(_sub[_submenu + 12])便利機能,OnSubMenu,3,%(_submenuex)]/
-	\_l[224]\q[%(_sub[_submenu + 16])設定,OnSubMenu,4,%(_submenuex)]/
-	\_l[0,180]\q[◇閉じる,MenuCancel]\_l[200]\q[◇タスク管理,Multitask]"
+	\_l[0,22]\q[%(_sub[_submenu])常用功能,OnSubMenu,0,%(_submenuex)]/
+	\_l[68]\q[%(_sub[_submenu + 4])休闲,OnSubMenu,1,%(_submenuex)]/
+	\_l[112]\q[%(_sub[_submenu + 8])游戏,OnSubMenu,2,%(_submenuex)]/
+	\_l[156]\q[%(_sub[_submenu + 12])便利功能,OnSubMenu,3,%(_submenuex)]/
+	\_l[224]\q[%(_sub[_submenu + 16])设定,OnSubMenu,4,%(_submenuex)]/
+	\_l[0,180]\q[◇没什么事,MenuCancel]\_l[200]\q[◇任务管理,Multitask]"
 	--
 	SubMenu(_submenu,_submenuex)
 	--
@@ -60,53 +60,42 @@ SubMenu{
 	--
 	case _submenu {
 		when 0 {
-			'\q[◇音楽を再生,OnMusicPlayer]	\_l[100,-]\q[◇魔法の時計,OnAnalogClock]\n/
-			\q[◇目覚まし,OnAlarmMenu]			\_l[100,-]\q[◇予定表,OnClassTable] \n/
-			\q[◇メモ帳,Onnotebook]			\_l[100,-]\q[◇スクショ,OnScreenShot]\n/
-			\q[◇壁紙変更,OnWallPaper]		\_l[100,-]\q[◇ゴミ箱を空に,TrashClean]\n/
-			\q[◇英語中国語辞書,dictionary]	\_l[100,-]\q[◇カレンダー,OnCalendar]\n/
-			\q[◇天気予報,OnCheckWeather]		\_l[100,-]\q[◇ｱｼﾞｪﾝﾀﾞ,OnAgenda]\n/
-			\q[◇IPチェック,OnCheckIp]			\_l[100,-]\q[◇電卓,OnCalculator]\n/
-			\q[◇拡大鏡,OnMagnify]			\_l[100,-]\q[◇録音機,OnRecorder]\n/
-			\q[◇ホロスコープ,OnAstrofate]		\_l[100,-]\q[◇橘花行情,OnKikkaStockMenu]\n/
+			'\q[◇播放音乐,OnMusicPlayer]	\_l[100,-]\q[◇魔法时钟,OnAnalogClock]\n/
+			\q[◇闹钟,OnAlarmMenu]			\_l[100,-]\q[◇课程表,OnClassTable] \n/
+			\q[◇记事本,Onnotebook]			\_l[100,-]\q[◇截屏,OnScreenShot]\n/
+			\q[◇更换壁纸,OnWallPaper]		\_l[100,-]\q[◇清空垃圾箱,TrashClean]\n/
+			\q[◇英汉互查字典,dictionary]	\_l[100,-]\q[◇日历,OnCalendar]\n/
+			\q[◇天气预报,OnCheckWeather]	\_l[100,-]\q[◇日程提醒,OnAgenda]\n/
+			\q[◇IP查询,OnCheckIp]			\_l[100,-]\q[◇计算器,OnCalculator]\n/
+			\q[◇放大镜,OnMagnify]			\_l[100,-]\q[◇录音机,OnRecorder]\n/
+			\q[◇星座运势,OnAstrofate]		\_l[100,-]\q[◇橘花行情,OnKikkaStockMenu]\n/
 			'
 		}
 		when 1 {
-			case _submenuex{
-				when 0{
-					_heart='\f[color,238,50,95]\&[hearts]\f[default]'
-					"\q[◇話して,ForcedTalk]			\_l[100,-]\q[◇自己紹介,Introduction]			\_l[200,-]\q[◇ジョークを言う,Story]\n/
-					\q[◇聞いて,Communicate]			\_l[100,-]\q[◇教える,Teaching]				\_l[200,-]\q[◇さっきの話,OnLastTalk]\n/
-					\q[◇五十音,Onjap_v]				\_l[100,-]\q[◇秘密,SecretService]%(_heart)	\_l[200,-]\q[◇日本語学習,japanesestudy]\n/
-					\q[◇花言葉,OnFlowers]			\_l[100,-]\q[◇誕生花,OnBirthdayFlowerList]	\_l[200,-]\q[◇タロット占い,OnFUT]\n/
-					\q[◇面白テスト,Ontestmenu]		\_l[100,-]\q[◇問題集,OnExamTest]			\_l[200,-]\q[◇お悩み相談,talktoheart]\n/
-					\q[◇詩を探す,OnResearchPoesy]	\_l[100,-]\q[◇文字当てクイズ,OnPoesywrite]		\_l[200,-]\q[◇二次創作,Opera]\n/
-					\q[◇アニメ一覧,OnDHs]				\_l[100,-]\q[◇お茶会,get_some_tea]			\_l[200,-]%(Onmeal)\n/
-					"
-					--
-					if towaflag != '0'
-						'\q[◇喫煙室,SmokingPlace]\_l[100,-]'
-					--
-					"\q[◇試着室,OnFittingRoom]		\_l[200,-]\q[◇寝室,Bedroom]\n/
-					\q[◇その他,otherserv]			\_l[100,-]\q[◇知識一覧,OnKikkaKnowl]			\_l[200,-]%(Onclosetouch)\n"
-				}
-				when 1{
-					'/
-					\q[◇夕飯の準備,Cookingtonight]\n/
-					'
-				}
-			}
+			_heart='\f[color,238,50,95]\&[hearts]\f[default]'
+			"\q[◇话题,ForcedTalk]			\_l[100,-]\q[◇自我介绍,Introduction]			\_l[200,-]\q[◇说笑话,Story]\n/
+			\q[◇与橘花说话,Communicate]		\_l[100,-]\q[◇教学,Teaching]					\_l[200,-]\q[◇刚才说了什么,OnLastTalk]\n/
+			\q[◇五十音,Onjap_v]				\_l[100,-]\q[◇秘密服务,SecretService]%(_heart)	\_l[200,-]\q[◇外语学习,japanesestudy]\n/
+			\q[◇花语,OnFlowers]				\_l[100,-]\q[◇诞生花,OnBirthdayFlowerList]		\_l[200,-]\q[◇塔罗占卜,OnFUT]\n/
+			\q[◇趣味测试,Ontestmenu]		\_l[100,-]\q[◇橘花题库,OnExamTest]				\_l[200,-]\q[◇和橘花谈心,talktoheart]\n/
+			\q[◇查找诗歌,OnResearchPoesy]	\_l[100,-]\q[◇唐诗默写♪,OnPoesywrite]			\_l[200,-]\q[◇准备晚餐,Cookingtonight]\n/
+			\q[◇动漫列表,OnDHs]				\_l[100,-]\q[◇咖啡厅,get_some_tea]			\_l[200,-]%(Onmeal)\n/
+			"
 			--
-			"\_l[90,180]\q[%(_sub[_submenuex])1,OnSubMenu,%(_submenu),0]    \q[%(_sub[_submenuex + 4])2,OnSubMenu,%(_submenu),1]"
+			if towaflag != '0'
+				'\q[◇吸烟室,SmokingPlace]\_l[100,-]'
+			--
+			"\q[◇试衣间,OnFittingRoom]		\_l[200,-]\q[◇进寝室,Bedroom]\n/
+			\q[◇其它服务,otherserv]			\_l[100,-]\q[◇橘花知识库,OnKikkaKnowl]			\_l[200,-]%(Onclosetouch)\n"
 		}
 		when 2 {
-			'\q[◇猜拳,OnHandGame]			\_l[80,-]カードゲーム：						\_l[168,-]\q[◇冒険に出る,OnRpgGame] \n/
-			\q[◇猜数字,OnGuessNumber]		\_l[80,-]\q[◇ﾌﾞﾗｯｸｼﾞｬｯｸ,OnBlackjack0]	\_l[168,-]\q[◇伪春菜人格大乱斗,On战斗开始]\n/
-			\q[◇开心问答,OnQuestBegin]		\_l[80,-]\q[◇スリーカード,OnGoldenFlower]	\_l[168,-]\q[◇华容道,OnHuaRongDao]\n/
+			'\q[◇猜拳,OnHandGame]			\_l[80,-]扑克游戏：						\_l[168,-]\q[◇外出冒险,OnRpgGame] \n/
+			\q[◇猜数字,OnGuessNumber]		\_l[80,-]\q[◇21点,OnBlackjack0]			\_l[168,-]\q[◇伪春菜人格大乱斗,On战斗开始]\n/
+			\q[◇开心问答,OnQuestBegin]		\_l[80,-]\q[◇扎金花,OnGoldenFlower]		\_l[168,-]\q[◇华容道,OnHuaRongDao]\n/
 			\q[◇井字棋,OnPlayOX]													\_l[168,-]\q[◇五子棋,OnGobangInIt]\n/
-			\q[◇ジグソーパズル,OnPuzzleList]											\_l[168,-]\q[◇连连看,OnLinkWnd] \n/
-			\q[◇テトリス,OnNewGame]													\_l[168,-]\q[◇数字汉诺塔,OnHanoi]\n/
-			\q[◇ヘビゲーム,OnRetroSnaker]												\_l[168,-]\q[◇橘花大乱斗,OnKikkaBattle] \n/
+			\q[◇拼图游戏,OnPuzzleList]												\_l[168,-]\q[◇连连看,OnLinkWnd] \n/
+			\q[◇俄罗斯方块,OnNewGame]												\_l[168,-]\q[◇数字汉诺塔,OnHanoi]\n/
+			\q[◇贪食蛇,OnRetroSnaker]												\_l[168,-]\q[◇橘花大乱斗,OnKikkaBattle] \n/
 			\q[◇双色球,OnDoubleColorBall]											\_l[168,-]\q[◇推箱子,OnBoxGame]\n[150]'
 		}
 		when 3 {
@@ -144,8 +133,12 @@ SubMenu{
 			\q[◇选择语言,OnLanguage]			\_l[138,-]\q[◇帮肋,help]\n/
 			\q[◇总在最前,AlwaysOnTop] ｜ \q[◇恢复默认,NotOnTop] | \q[◇最小化,Trayicon]\n/
 			\q[◇GhostExplorer,GhostExplorer]	\_l[138,-]\q[◇ShellExplorer,ShellExplorer]\n/
-			\q[◇BalloonExplorer,BalloonExplorer]\_l[138,-]\q[◇更新检查,OnUpdateCheck]\n/
-			"
+			\q[◇BalloonExplorer,BalloonExplorer]\_l[138,-]"
+			--
+			if AutoUpdate==0 && SHIORI_FW.DebugMode
+				"\q[◇更新%(Baseware),"+'"script:\![update,platform]"'+']\n'
+			else
+				'\q[◇更新检查,OnUpdateCheck]\n'
 		}
 	}
 }
@@ -181,6 +174,13 @@ OpenMenuTalk{
 		'\0\s[7]\b[2]什么事。'
 		'\0\s[25]\b[2]有何贵干。'
 	}
+	elseif _phase < 0 {
+		'\0\s[0]\b[2]？'
+		'\0\s[6]\b[2]干嘛'
+		'\0\s[7]\b[2]什么事。'
+		--
+		'\e'
+	}
 	else {
 		'\0\s[26]\b[2]好的、什么事呢？'
 		"\0\s[26]\b[2]什么事呢、%(username)？"
@@ -194,24 +194,6 @@ Select.otherserv{
 	\q[◇我身体不舒服,notsogood]\n/
 	\q[◇返回上一层,OnOpenMenu,1]\n/
 	\q[◇退出,OptionEnd]'
-}
-Select.Opera{
-	if QuickStartVersion{
-		NeedUpdate
-		return
-	}
-	'■橘花的情景剧■(欢迎提供剧本)\n[150]/
-	\q[◇来到此城市,city]\n/
-	\q[◇去海边,OnSummer]\n/
-	\q[◇去野餐,OnPicnic]\n/
-	'
-	--
-	OnOperaSelect
-	--
-	'/
-	\q[◇去游乐园,OnDoor]\n/
-	\q[◇游乐园剧情开发,开发确认]\n/
-	\n[half]\q[◇返回上一层,OnOpenMenu,1]       \q[◇退出,OptionEnd]'
 }
 Select.help{
 	"\0\s0啊、\w9有需要帮忙吗?\s[40]\n[150]/
@@ -260,7 +242,7 @@ Select.MenuCancel{
 	--
 	infomode=0
 	_phase = GetPhase
-	if _phase == 0{
+	if _phase <= 0{
 		'\0\s[0]嗯。'
 	}
 	elseif _phase >= 2{
@@ -856,9 +838,6 @@ Onusage{
 		Select.Option
 	}
 }
-Select.ReturnMenu{
-	OpenMenu
-}
 OnLanguage{
 	_txt="\_q请%(username)选择语言\n[150]"
 	_language='简体中文,繁体中文,日文,英文'
@@ -1145,17 +1124,20 @@ ClearWallpaperVar{
 }
 //---------- 沟通 ------------------------------------------------------
 Select.Communicate{
-	'\![open,communicatebox]\0'
+	'\0'
 	--
 	if GetPhase == 0 {
 		'\s[0]想说什么？'
+	}
+	elseif GetPhase < 0{
+		'\s[0]？\e'
 	}
 	else {
 		"\s[26]嗯？\w9想聊点什么呢，%(username)？"
 		"\s[26]%(username)想要和橘花说什么呢？"
 	}
 	--
-	'\n\q[◇聊天室,OnChatRoomClear]'
+	'\n\q[◇聊天室,OnChatRoomClear]\![open,communicatebox]'
 }
 //---------- 吸烟室 ----------------------------------------------------
 Select.SmokingPlace{
@@ -1434,7 +1416,10 @@ Select.Bedroom{
 }
 Select.Comemyroom{
 	_phase = GetPhase
-	if _phase == 0{
+	if _phase < 0{
+		'\0\s[8]。\w9\w9\n\s[6]你哪来的自信？\x'
+	}
+	elseif _phase == 0{
 		"\1\s[10]\0\s[25]橘花才不要呢，\w9\w9%(username)是个大坏蛋！！\1\s[12]%(username)啊，橘花对你的好感太低了\x"
 	}
 	elseif _phase == 1{
@@ -1659,7 +1644,6 @@ Select.whatisthis{
 }
 Select.openit{
 	money += 3000000
-	anti_cheat('money')
 	openmode = 1
 	"\1\s[-1]\0\s[40]￥3000000到达%(username)的帐户。\x"
 }

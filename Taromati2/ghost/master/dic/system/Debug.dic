@@ -2,13 +2,29 @@
 OnAnchorSelect{
 	BUGNow("AnchorSelect\_q“%(REPLACE(reference0,'\','\\'))”\_q被触发了\w9\w9\n但是目前Taromati并不支持任何AnchorSelect")
 }
-Init.OnShioriReloadedbyselfTrigger{
-	if ShioriReloading
-		SHIORI_FW.PushNotifyResult(OnShioriReloadedbyself)
-	ERASEVAR('ShioriReloading')
+OnshioriLimit{
+	_stack=GETCALLSTACK
+	_type=_argv[0]
+	_type_txt=''
+	_func=_argv[1]
+	_linenum=_argv[2]
+	_errorinfo_for_copy=''
+	case _argv[0]{
+		when 'call'
+			_type_txt='递归'
+		when 'loop'
+			_type_txt='循环'
+		when 'memory'{
+			_type_txt='内存'
+			_func=_stack[ARRAYSIZE(_stack)-2]
+		}
+	}
+	_errorinfo_header=_type_txt+'至限：函数'+_func+'所在文件第'+_linenum+'行'
+	_errorinfo_for_copy=_errorinfo_header+CHR(1)+'调用堆栈：'+REPLACE(TOSTR(_stack),',',CHR(1))
+	--
+	BUGNow(_errorinfo_header,_errorinfo_for_copy)
 }
 OnReloadShiori{
-	ShioriReloading=1
 	if mode == '1'
 		"\1\s[%(specialmode != 'mealtime')10]唔"
 	else
@@ -526,7 +542,6 @@ Get_AYA_Function_Info{
 			'文档未记录'
 	}
 }
-/*
 On_Get_AYA_Function_Info_Test{
 	_l=GETSYSTEMFUNCLIST()
 	_txt='文档未记录的aya底层函数有：\n'
@@ -536,8 +551,6 @@ On_Get_AYA_Function_Info_Test{
 	}
 	_txt
 }
-/*
-*/
 OnUpdateSHIORICore{
 	if FILEEXIST('SHIORI_PATH\update_aya.bat'){
 		'\![open,file,SHIORI_PATH\update_aya.bat,'+SakuraScriptArgConverter(reference0)+']'

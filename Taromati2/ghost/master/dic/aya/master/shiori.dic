@@ -1,61 +1,3 @@
-//******************************************************************************
-/*
-SHIORI/3.0制御スクリプト for AYA
-original written by umeici.
-履歴
-ver. date		note
-1.0  ?			aya向けに書き換え by C.Ponapalt
-1.1  20070428	config分離、READFMOを使ったルーチン追加
-1.2  20080323	構造変更（shiori3,config,compatible,optional)
-jb	 20210201	steve02081504整合自emily4
-
-使用可能な変数
-
-SHIORI_FW.Status
-　初期起動ステータス Runで初期化済み
-
-SHIORI_FW.Eventid
-　イベントID
-
-SHIORI_FW.LastTalk
-　直前のトーク（すべて）
-
-SHIORI_FW.LastAITalk
-　直前のランダムトーク
-
-SHIORI_FW.LastSurface
-　直前に表示していたサーフィス SHIORI_FW.LastSurface[0] がさくら側
-
-SHIORI_FW.IsVisible
-　現在サーフィスが表示されているかどうか(1/0) SHIORI_FW.IsVisible[0] がさくら側
-
-SHIORI_FW.HWnd
-SHIORI_FW.BalloonHWnd
-　キャラウインドウ・バルーンのHWND。 SHIORI_FW.HWnd[0] がさくら側
-
-SHIORI_FW.UniqueID
-　Auth.SSTPに使用するID
-
-SHIORI_FW.GhostName
-　ゴースト名★
-
-SHIORI_FW.ShellName
-SHIORI_FW.ShellPath
-　シェル名とパス★
-
-SHIORI_FW.BalloonName
-SHIORI_FW.BalloonPath
-　バルーン名とパス★
-
-使用可能な疑似イベント
-
-SHIORI_FW.OnChangeSelfInfo
-　上記★マークがついた変数が更新されたときに呼び出される
-
-*/
-//******************************************************************************
-
-
 //------------------------------------------------------------------------------
 //以下のdefineは基本的に弄らないで下さい
 //------------------------------------------------------------------------------
@@ -172,6 +114,7 @@ ClearAyaTempVar {
 	ERASEVAR('SHIORI_FW.GhostName')
 	ERASEVAR('SHIORI_FW.ShellNameOld')
 	ERASEVAR('SHIORI_FW.BalloonNameOld')
+	ERASEVAR('SHIORI_FW.LastBootInEmergencyMode')
 
 	_n = ARRAYSIZE(tempvarname)
 	for _i = 0 ; _i < _n ; _i++ {
@@ -201,7 +144,7 @@ load {
 	C_CRLF2 = C_CRLF+C_CRLF
 	C_BYTE1 = CHR(0x1)
 
-	_LastBootInEmergencyMode = SHIORI_FW.EmergencyMode
+	SHIORI_FW.LastBootInEmergencyMode = SHIORI_FW.EmergencyMode
 	SHIORI_FW.EmergencyMode = GETSETTING('coreinfo.mode') == 'emergency'
 
 	REQ.COMMAND		= 'LOAD'
@@ -275,6 +218,7 @@ load {
 
 	SHIORI_FW.SetDelayEvent('',0)
 
+	ERASEVAR('OnCloseCalled')
 	CALLALLFUNCTIONBEGINAS('Init.')
 
 	if SHIORI_FW.EmergencyMode
@@ -283,9 +227,13 @@ load {
 		foreach _DIC_DIRS_; _dir{
 			void DIRSync(_dir,'EMERGENCYMODEDICDIR'+'\'+_dir)
 		}
-		if _LastBootInEmergencyMode
+		if SHIORI_FW.LastBootInEmergencyMode
 			SHIORI_FW.PushNotifyResult(OnEmergencyModeEnd)
 	}
+
+	if ShioriReloading
+		SHIORI_FW.PushNotifyResult(OnShioriReloaded)
+	ERASEVAR('ShioriReloading')
 }
 
 //******************************************************************************
@@ -304,6 +252,9 @@ unload {
 	var.req.rawvalue = IARRAY
 
 	ghostupmin_last = MAX(ghostupmin_total,elapsedtimetotal)
+
+	if !OnCloseCalled && !BasewareUpdating
+		ShioriReloading=1
 
 	CALLALLFUNCTIONBEGINAS('Fin.')
 
@@ -1679,6 +1630,16 @@ SHIORI_EV.On_enable_debug : void {
 	}
 }
 
+shiori.OnLoopLimit:void{
+	SHIORI_FW.PushNotifyResult(OnshioriLimit('loop',_argv))
+}
+shiori.OnCallLimit:void{
+	SHIORI_FW.PushNotifyResult(OnshioriLimit('call',_argv))
+}
+shiori.OnMemoryLimit:void{
+	SHIORI_FW.PushNotifyResult(OnshioriLimit('memory',_argv))
+}
+
 //******************************************************************************
 //時刻系変数
 //******************************************************************************
@@ -1740,7 +1701,7 @@ On_getaistateex{
 	On_GetAIStateEX
 }
 ISSTR{
-	GETTYPE(_argv[0])==3
+	GETTYPE(_argv[0])==3&&_argc==1
 }
 INEVENT{
 	_argv[0]==SHIORI_FW.Eventid
@@ -1757,4 +1718,10 @@ SWAP_VAR:void{
 	_t=EVAL(_argv[1])
 	EVAL(_argv[1]+'='+_argv[0])
 	EVAL(_argv[0]+'=_t')
+}
+ABS{
+	if _argv[0] < 0
+		-_argv[0]
+	else
+		_argv[0]
 }
