@@ -2,7 +2,7 @@
 //////////菜单相关辞书
 //////////written by forjane 2009.08.12
 ///////////////////////////////////////////
-//******* 主菜单 ************************************************
+//******* MainMenu ************************************************
 OnOpenMenu{
 	click=NULL
 	if reference0 != '' {
@@ -60,42 +60,42 @@ SubMenu{
 	--
 	case _submenu {
 		when 0 {
-			'\q[◇播放音乐,OnMusicPlayer]	\_l[100,-]\q[◇魔法时钟,OnAnalogClock]\n/
-			\q[◇闹钟,OnAlarmMenu]			\_l[100,-]\q[◇课程表,OnClassTable] \n/
-			\q[◇记事本,Onnotebook]			\_l[100,-]\q[◇截屏,OnScreenShot]\n/
-			\q[◇更换壁纸,OnWallPaper]		\_l[100,-]\q[◇清空垃圾箱,TrashClean]\n/
-			\q[◇英汉互查字典,dictionary]	\_l[100,-]\q[◇日历,OnCalendar]\n/
-			\q[◇天气预报,OnCheckWeather]	\_l[100,-]\q[◇日程提醒,OnAgenda]\n/
-			\q[◇IP查询,OnCheckIp]			\_l[100,-]\q[◇计算器,OnCalculator]\n/
-			\q[◇放大镜,OnMagnify]			\_l[100,-]\q[◇录音机,OnRecorder]\n/
-			\q[◇星座运势,OnAstrofate]		\_l[100,-]\q[◇橘花行情,OnKikkaStockMenu]\n/
+			'\q[◇音楽を再生,OnMusicPlayer]	\_l[100,-]\q[◇魔法の時計,OnAnalogClock]\n/
+			\q[◇目覚まし,OnAlarmMenu]			\_l[100,-]\q[◇予定表,OnClassTable] \n/
+			\q[◇メモ帳,Onnotebook]			\_l[100,-]\q[◇スクショ,OnScreenShot]\n/
+			\q[◇壁紙変更,OnWallPaper]		\_l[100,-]\q[◇ゴミ箱を空に,TrashClean]\n/
+			\q[◇英中辞典,dictionary]			\_l[100,-]\q[◇カレンダー,OnCalendar]\n/
+			\q[◇天気予報,OnCheckWeather]		\_l[100,-]\q[◇ｱｼﾞｪﾝﾀﾞ,OnAgenda]\n/
+			\q[◇IPチェック,OnCheckIp]			\_l[100,-]\q[◇電卓,OnCalculator]\n/
+			\q[◇拡大鏡,OnMagnify]			\_l[100,-]\q[◇録音,OnRecorder]\n/
+			\q[◇ホロスコープ,OnAstrofate]		\_l[100,-]\q[◇株価,OnKikkaStockMenu]\n/
 			'
 		}
 		when 1 {
 			_heart='\f[color,238,50,95]\&[hearts]\f[default]'
-			"\q[◇话题,ForcedTalk]			\_l[100,-]\q[◇自我介绍,Introduction]			\_l[200,-]\q[◇说笑话,Story]\n/
-			\q[◇与橘花说话,Communicate]		\_l[100,-]\q[◇教学,Teaching]					\_l[200,-]\q[◇刚才说了什么,OnLastTalk]\n/
-			\q[◇五十音,Onjap_v]				\_l[100,-]\q[◇秘密服务,SecretService]%(_heart)	\_l[200,-]\q[◇外语学习,japanesestudy]\n/
-			\q[◇花语,OnFlowers]				\_l[100,-]\q[◇诞生花,OnBirthdayFlowerList]		\_l[200,-]\q[◇塔罗占卜,OnFUT]\n/
-			\q[◇趣味测试,Ontestmenu]		\_l[100,-]\q[◇橘花题库,OnExamTest]				\_l[200,-]\q[◇和橘花谈心,talktoheart]\n/
-			\q[◇查找诗歌,OnResearchPoesy]	\_l[100,-]\q[◇唐诗默写♪,OnPoesywrite]			\_l[200,-]\q[◇准备晚餐,Cookingtonight]\n/
-			\q[◇动漫列表,OnDHs]				\_l[100,-]\q[◇咖啡厅,get_some_tea]			\_l[200,-]%(Onmeal)\n/
+			"\q[◇話して,ForcedTalk]			\_l[100,-]\q[◇自己紹介,Introduction]			\_l[200,-]\q[◇ジョークを言う,Story]\n/
+			\q[◇聞いて,Communicate]		\_l[100,-]\q[◇教える,Teaching]					\_l[200,-]\q[◇さっきの話,OnLastTalk]\n/
+			\q[◇五十音,Onjap_v]				\_l[100,-]\q[◇秘密,SecretService]%(_heart)	\_l[200,-]\q[◇日本語を学ぶ,japanesestudy]\n/
+			\q[◇花言葉,OnFlowers]				\_l[100,-]\q[◇誕生花,OnBirthdayFlowerList]		\_l[200,-]\q[◇タロット占い,OnFUT]\n/
+			\q[◇面白テスト,Ontestmenu]		\_l[100,-]\q[◇問題集,OnExamTest]				\_l[200,-]\q[◇お悩み相談,talktoheart]\n/
+			\q[◇詩を探す,OnResearchPoesy]	\_l[100,-]\q[◇文字当てクイズ,OnPoesywrite]			\_l[200,-]\q[◇夕食の準備,Cookingtonight]\n/
+			\q[◇アニメ一覧,OnDHs]				\_l[100,-]\q[◇お茶会,get_some_tea]			\_l[200,-]%(Onmeal)\n/
 			"
 			--
 			if towaflag != '0'
-				'\q[◇吸烟室,SmokingPlace]\_l[100,-]'
+				'\q[◇喫煙室,SmokingPlace]\_l[100,-]'
 			--
-			"\q[◇试衣间,OnFittingRoom]		\_l[200,-]\q[◇进寝室,Bedroom]\n/
-			\q[◇其它服务,otherserv]			\_l[100,-]\q[◇橘花知识库,OnKikkaKnowl]			\_l[200,-]%(Onclosetouch)\n"
+			"\q[◇試着室,OnFittingRoom]		\_l[200,-]\q[◇寝室,Bedroom]\n/
+			\q[◇その他,otherserv]			\_l[100,-]\q[◇知識一覧,OnKikkaKnowl]			\_l[200,-]%(Onclosetouch)\n"
 		}
 		when 2 {
-			'\q[◇猜拳,OnHandGame]			\_l[80,-]扑克游戏：						\_l[168,-]\q[◇外出冒险,OnRpgGame] \n/
-			\q[◇猜数字,OnGuessNumber]		\_l[80,-]\q[◇21点,OnBlackjack0]			\_l[168,-]\q[◇伪春菜人格大乱斗,On战斗开始]\n/
+			'\q[◇猜拳,OnHandGame]			\_l[80,-]カードゲーム：						\_l[168,-]\q[◇冒険に出る,OnRpgGame] \n/
+			\q[◇猜数字,OnGuessNumber]		\_l[80,-]\q[◇ﾌﾞﾗｯｸｼﾞｬｯｸ,OnBlackjack0]			\_l[168,-]\q[◇伪春菜人格大乱斗,On战斗开始]\n/
 			\q[◇开心问答,OnQuestBegin]		\_l[80,-]\q[◇扎金花,OnGoldenFlower]		\_l[168,-]\q[◇华容道,OnHuaRongDao]\n/
 			\q[◇井字棋,OnPlayOX]													\_l[168,-]\q[◇五子棋,OnGobangInIt]\n/
 			\q[◇拼图游戏,OnPuzzleList]												\_l[168,-]\q[◇连连看,OnLinkWnd] \n/
-			\q[◇俄罗斯方块,OnNewGame]												\_l[168,-]\q[◇数字汉诺塔,OnHanoi]\n/
-			\q[◇贪食蛇,OnRetroSnaker]												\_l[168,-]\q[◇橘花大乱斗,OnKikkaBattle] \n/
+			\q[◇俄罗斯方块,OnNewGame]												\_l[168,-]\q[◇ハノイの塔,OnHanoi]\n/
+			\q[◇ヘビゲーム,OnRetroSnaker]												\_l[168,-]\q[◇橘花大乱斗,OnKikkaBattle] \n/
 			\q[◇双色球,OnDoubleColorBall]											\_l[168,-]\q[◇推箱子,OnBoxGame]\n[150]'
 		}
 		when 3 {
