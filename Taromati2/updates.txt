@@ -369,7 +369,7 @@ file,ghost/master/dic/games/puzzle.dic0b37363e4ae64910c22b3e716c46caf8size=469
 file,ghost/master/dic/games/rpggame.dic5ad3987eeaaa2d9d1edc1e60dc96b1d1size=136957date=2021-10-28T12:26:46
 file,ghost/master/dic/games/tetrisgame.dic40d6f56499782876e9e6eee804496674size=11012date=2021-10-28T12:29:47
 file,ghost/master/dic/games/uno.dic5c17478aee74bc41c6e7d74b6af62819size=26146date=2021-11-07T21:09:31
-file,ghost/master/dic/nurturance/nurturance.dicad7cdefc4a5d300e1c7b6408331c4250size=24951date=2021-10-28T01:15:31
+file,ghost/master/dic/nurturance/nurturance.dic5cec8eeb37a7cc7e4cdda336f58dcc33size=24960date=2021-10-28T01:15:31
 file,ghost/master/dic/other/Miniuse.dic0ee77050a9055470316cb4f72722bf82size=97370date=2021-10-29T00:46:38
 file,ghost/master/dic/other/Other.diced8afe3e5bafff7c680b53ffadb38347size=76194date=2021-09-11T14:53:22
 file,ghost/master/dic/other/Tarro.dice70846109858ef3b4fecd784b903b51dsize=25419date=2021-08-12T16:49:56
@@ -385,11 +385,11 @@ file,ghost/master/dic/other/poem.dicc2b6944fdac2c8eba79808f5c64f4c6fsize=12590
 file,ghost/master/dic/other/story.dic54012ea7b84969d5861514012603307asize=66924date=2021-08-17T17:50:10
 file,ghost/master/dic/other/test.diccdc9291d1695d1c67482a0614dd3ed6csize=27157date=2021-08-12T16:49:56
 file,ghost/master/dic/system/Calendar.dicd2edc114ffa5835a6449b34f88f9daabsize=39977date=2021-08-12T16:49:56
-file,ghost/master/dic/system/Debug.dic93a73e4441abeba3f1cace99339febe9size=16954date=2021-11-14T01:12:43
+file,ghost/master/dic/system/Debug.dicee942f5fcd918d6e84c26358c4734246size=16944date=2021-11-14T01:12:43
 file,ghost/master/dic/system/FileDrop.dic1c3c130720f932ef6cd20f0fcd7d8938size=4587date=2021-10-29T23:50:53
 file,ghost/master/dic/system/MAGIC.ayc5d129d9db5a6c0bed7ceb3eb3af5a00fsize=993date=2021-10-06T18:58:20
 file,ghost/master/dic/system/MAGIC.dic617991bbb23a229dd827369574b5e042size=294date=2021-11-12T17:39:38
-file,ghost/master/dic/system/SNTP.dic616047354a5392bd704fcf89c920d922size=3302date=2021-11-07T10:26:49
+file,ghost/master/dic/system/SNTP.dic382416306341b086ab5107c86ea02154size=3304date=2021-11-07T10:26:49
 file,ghost/master/dic/system/SQL.diccd7fc7d5eb73d63556b72db445b3ba93size=9486date=2021-11-13T20:45:51
 file,ghost/master/dic/system/StateGraph.dicb99e8080467d8a0e93b578091ed753d9size=1552date=2021-08-05T15:49:53
 file,ghost/master/dic/system/VersionUpgrade.dicacb57b65367968d7c18a8efda9c7bb33size=3127date=2021-10-21T15:37:25
@@ -401,7 +401,7 @@ file,ghost/master/dic/system/changeshell.dic6bd39454567cb17349dd1af79694da84si
 file,ghost/master/dic/system/clock.dica206c7bcfa2b12514c021040b929a77dsize=26919date=2021-11-13T20:45:51
 file,ghost/master/dic/system/database_edit.dic3aede4e7f5455c9333257617b21ab108size=20875date=2021-08-12T16:49:56
 file,ghost/master/dic/system/discord.dice21e2851d8a750cc91b14d565dac479csize=1802date=2021-11-14T01:05:28
-file,ghost/master/dic/system/event_response.dic075f559df82e9980c90cceca580ae199size=34303date=2021-11-14T01:15:09
+file,ghost/master/dic/system/event_response.dicc31595d7bbbcc08f77a699eb13b2fd20size=34399date=2021-11-14T01:15:09
 file,ghost/master/dic/system/hotkey.dic4dcb9b5847e27e1aee93e9420b21df2bsize=8815date=2021-09-24T11:11:10
 file,ghost/master/dic/system/internet.dic358ded9656d0acedb128f47fc33ffea2size=29885date=2021-08-12T16:49:56
 file,ghost/master/dic/system/lunar.dic990b2952c3a610122816e766a75a769csize=7445date=2021-08-12T16:49:56
@@ -455,7 +455,7 @@ file,ghost/master/saori/cpuusage.dll737d6b1a5be08b58d5c6f32601f41495size=30720
 file,ghost/master/saori/debeso.db.basef7652c70bed7f3d032f59bf2c5c98e00size=4596736date=2021-10-21T14:16:16
 file,ghost/master/saori/debeso.dll197986583a59d6080c133bbd2af259a6size=339968date=2021-08-12T16:49:56
 file,ghost/master/saori/drivecleaner.bat519e510452baadfdea247aebd782c213size=704date=2021-02-17T23:01:42
-file,ghost/master/saori/ghost_terminal.exec00c10205648b84cc8197c63d51f2fbesize=22528date=2021-09-24T11:11:10
+file,ghost/master/saori/ghost_terminal.exed855eb61ef80ada9cfd34a128850976dsize=22528date=2021-09-24T11:11:10
 file,ghost/master/saori/gift_for_hacker.bat6dd52fe2fe51550c38d9d53edecbe40esize=156date=2021-02-17T23:01:42
 file,ghost/master/saori/gomi.dlla4d6441fe18e4c889e7bccbad7cd9e9csize=7680date=2021-03-21T14:33:28
 file,ghost/master/saori/ip.dll2a500b5e805d49f8eb4cc1bea479fedbsize=34304date=2021-07-03T23:50:40
