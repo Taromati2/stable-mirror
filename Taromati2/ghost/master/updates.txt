@@ -385,7 +385,7 @@ file,ghost/master/dic/other/poem.dicc2b6944fdac2c8eba79808f5c64f4c6fsize=12590
 file,ghost/master/dic/other/story.dic54012ea7b84969d5861514012603307asize=66924date=2021-08-17T17:50:10
 file,ghost/master/dic/other/test.diccdc9291d1695d1c67482a0614dd3ed6csize=27157date=2021-08-12T16:49:56
 file,ghost/master/dic/system/Calendar.dicd2edc114ffa5835a6449b34f88f9daabsize=39977date=2021-08-12T16:49:56
-file,ghost/master/dic/system/Debug.dicee942f5fcd918d6e84c26358c4734246size=16944date=2021-11-14T01:12:43
+file,ghost/master/dic/system/Debug.dicbe4cf5e917745ece22582ec701e352f4size=17079date=2021-11-14T01:12:43
 file,ghost/master/dic/system/FileDrop.dic1c3c130720f932ef6cd20f0fcd7d8938size=4587date=2021-10-29T23:50:53
 file,ghost/master/dic/system/MAGIC.ayc5d129d9db5a6c0bed7ceb3eb3af5a00fsize=993date=2021-10-06T18:58:20
 file,ghost/master/dic/system/MAGIC.dic617991bbb23a229dd827369574b5e042size=294date=2021-11-12T17:39:38
@@ -401,7 +401,7 @@ file,ghost/master/dic/system/changeshell.dic6bd39454567cb17349dd1af79694da84si
 file,ghost/master/dic/system/clock.dica206c7bcfa2b12514c021040b929a77dsize=26919date=2021-11-13T20:45:51
 file,ghost/master/dic/system/database_edit.dic3aede4e7f5455c9333257617b21ab108size=20875date=2021-08-12T16:49:56
 file,ghost/master/dic/system/discord.dice21e2851d8a750cc91b14d565dac479csize=1802date=2021-11-14T01:05:28
-file,ghost/master/dic/system/event_response.dicc31595d7bbbcc08f77a699eb13b2fd20size=34399date=2021-11-14T01:15:09
+file,ghost/master/dic/system/event_response.dic56c4a4246f19878e7c5224a1e9df8fa3size=34475date=2021-11-14T01:15:09
 file,ghost/master/dic/system/hotkey.dic4dcb9b5847e27e1aee93e9420b21df2bsize=8815date=2021-09-24T11:11:10
 file,ghost/master/dic/system/internet.dic358ded9656d0acedb128f47fc33ffea2size=29885date=2021-08-12T16:49:56
 file,ghost/master/dic/system/lunar.dic990b2952c3a610122816e766a75a769csize=7445date=2021-08-12T16:49:56
