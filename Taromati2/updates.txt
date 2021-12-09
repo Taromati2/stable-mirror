@@ -385,7 +385,7 @@ file,ghost/master/dic/other/poem.dicc2b6944fdac2c8eba79808f5c64f4c6fsize=12590
 file,ghost/master/dic/other/story.dic54012ea7b84969d5861514012603307asize=66924date=2021-08-17T17:50:10
 file,ghost/master/dic/other/test.diccdc9291d1695d1c67482a0614dd3ed6csize=27157date=2021-08-12T16:49:56
 file,ghost/master/dic/system/Calendar.dic84d98e6843edf1758bc35e57786b7949size=39977date=2021-08-12T16:49:56
-file,ghost/master/dic/system/Debug.dicbe4cf5e917745ece22582ec701e352f4size=17079date=2021-11-14T01:12:43
+file,ghost/master/dic/system/Debug.dice3d4b4a39d8028566bfbc63240795aa1size=17189date=2021-11-14T01:12:43
 file,ghost/master/dic/system/FileDrop.dic1c3c130720f932ef6cd20f0fcd7d8938size=4587date=2021-10-29T23:50:53
 file,ghost/master/dic/system/MAGIC.ayc5d129d9db5a6c0bed7ceb3eb3af5a00fsize=993date=2021-10-06T18:58:20
 file,ghost/master/dic/system/MAGIC.dic617991bbb23a229dd827369574b5e042size=294date=2021-11-12T17:39:38
