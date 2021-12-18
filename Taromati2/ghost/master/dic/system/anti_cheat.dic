@@ -2,16 +2,19 @@
 AntiCheatWatcher{
 	_varname=_argv[0]
 	_var=_argv[1]
-	_CanaryValueName='CanaryValue.'+_varname
+	_CanaryValueName='CanaryValue.'+STRDIGEST(_varname)
 	_CanaryValue=EVAL(_CanaryValueName)+72
 	if _CanaryValue!=_var{
 		if ISVAR(_CanaryValueName){
-			void EVAL(_varname+'='+_CanaryValue)//触发OnValueCheatted
-			EVAL(_CanaryValueName)+72
+			if !EVAL('CheattedTrigging.'+_varname){
+				LETTONAME('CheattedTrigging.'+_varname,1)
+				SHIORI_FW.PushNotifyResult("\![raise,OnValueCheatted,%(_varname),%(_CanaryValue),%(_var)]")
+			}
+			_CanaryValue
 			return
 		}
 		else{
-			void EVAL(_CanaryValueName+'='+(_var-72))
+			LETTONAME(_CanaryValueName,(_var-72))
 			_var
 			return
 		}
@@ -22,24 +25,29 @@ AntiCheatSetter{
 	_varname=_argv[0]
 	_var=_argv[1]
 	_var_before=_argv[2]
-	_CanaryValueName='CanaryValue.'+_varname
+	_CanaryValueName='CanaryValue.'+STRDIGEST(_varname)
 	_CanaryValue=EVAL(_CanaryValueName)+72
 	if _CanaryValue!=_var_before{
 		if ISVAR(_CanaryValueName){
 			if !EVAL('CheattedTrigging.'+_varname){
-				EVAL('CheattedTrigging.'+_varname+'=1')
+				LETTONAME('CheattedTrigging.'+_varname,1)
 				SHIORI_FW.PushNotifyResult("\![raise,OnValueCheatted,%(_varname),%(_CanaryValue),%(_var_before)]")
 			}
-			EVAL(_CanaryValueName)+72//恢复值内容
+			_CanaryValue//恢复值内容
 			return
 		}
 	}
-	void EVAL(_CanaryValueName+'='+(_var-72))
+	LETTONAME(_CanaryValueName,(_var-72))
 	_var
 }
 AntiCheat{
-	FUNCDECL_READ(_argv[0],'AntiCheatWatcher')
-	FUNCDECL_WRITE(_argv[0],'AntiCheatSetter')
+	_varname=_argv[0]
+	FUNCDECL_READ(_varname,'AntiCheatWatcher')
+	FUNCDECL_WRITE(_varname,'AntiCheatSetter')
+	if ISVAR('CanaryValue.'+_varname){
+		LETTONAME('CanaryValue.'+STRDIGEST(_varname),EVAL('CanaryValue.'+_varname))
+		ERASEVAR('CanaryValue.'+_varname)
+	}
 }
 Init.AntiCheatIniter{
 	AntiCheat('money')
@@ -49,7 +57,6 @@ OnValueCheatted{
 	_varname=reference0
 	_var_should_have=reference1
 	_var_cheatting_to=reference2
-	ERASEVAR('CheattedTrigging.'+_varname)
 	case _varname{
 		when 'money'{
 			if _var_cheatting_to>_var_should_have{
@@ -121,4 +128,5 @@ OnValueCheatted{
 			}
 		}
 	}
+	ERASEVAR('CheattedTrigging.'+_varname)
 }
