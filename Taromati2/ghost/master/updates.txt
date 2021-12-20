@@ -343,7 +343,7 @@ file,ghost/master/dic/aya/master/baseware.dicf38ecf1ce37a91875f9a1b0e7608058cs
 file,ghost/master/dic/aya/master/cmd.dicde539fd2aff5d4da9d018ff0bb939eccsize=59date=2021-12-14T17:40:19
 file,ghost/master/dic/aya/master/file.dic63b3692741e0029278d6cf297a8c68afsize=3550date=2021-12-17T12:06:56
 file,ghost/master/dic/aya/master/ghost.dicb692e47f15c5ad1d102c525c4f280baasize=834date=2021-12-14T17:40:19
-file,ghost/master/dic/aya/master/shiori.dic1258b501a138a8d17060bcd06cad3356size=48220date=2021-12-19T00:32:04
+file,ghost/master/dic/aya/master/shiori.dicd4935c6bb39dd68f8a235804c98aa44bsize=48023date=2021-12-19T00:32:04
 file,ghost/master/dic/aya/master/string.dicfd6775505a13a84e12604d9f2115f74fsize=2425date=2021-12-14T17:40:21
 file,ghost/master/dic/aya/master/sysex.dic444816ae5c20677d42a897d33f223251size=1208date=2021-12-14T17:40:21
 file,ghost/master/dic/aya/master/url.dic54a88b45e8b8d818b89e2283ab7f838fsize=156date=2021-12-14T17:40:21
@@ -466,7 +466,7 @@ file,ghost/master/saori/set_wall_paper.exec2a20ad3593959963c4d3ecfe4a1e646size
 file,ghost/master/saori/textcopy.dllb985beb7de58ae316ce03da9e260416asize=25600date=2021-03-21T14:33:28
 file,ghost/master/saori/tl.lock6cc375438fb76385e58c69193046dd19size=63date=2021-03-13T16:37:46
 file,ghost/master/saori/txtpaste.dlld26df18e46cf845ed073e26be17b3125size=25088date=2021-03-21T14:33:28
-file,ghost/master/shiori/aya.dll63289e4db0d7142b54c695f2a5bb88a0size=556032date=2021-12-18T23:41:15
+file,ghost/master/shiori/aya.dlle538f264042227a5d641e5ee61acc91dsize=556032date=2021-12-18T23:41:15
 file,ghost/master/shiori/aya.txt60e8c47a3dd03166c03a79039acad441size=24date=2021-07-12T20:07:04
 file,ghost/master/shiori/aya_base.txt97584fb87df65e11018cc4449a6f0cc7size=289date=2021-12-12T10:38:27
 file,ghost/master/shiori/aya_common.txt79d2b07e7b7c1de1ed6635973ada515csize=59date=2021-07-12T20:07:04
