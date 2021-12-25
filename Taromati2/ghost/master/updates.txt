@@ -356,7 +356,6 @@ file,ghost/master/dic/communicate/talk/talk_t.dic94d962eb3a1ccac4ed295f5965e1e7
 file,ghost/master/dic/communicate/touch/touch.dicfeef31ee4e5958ba94860614941219dbsize=13762date=2021-12-24T15:52:23
 file,ghost/master/dic/dev/ayccoder.aycd7df86b0547b9b3e98b581643b9cfd2bsize=595date=2021-09-25T09:08:54
 file,ghost/master/dic/dev/dicforma.dicfc0876c6cfc131265cf98c7d80f4a38csize=8220date=2021-12-24T16:15:24
-file,ghost/master/dic/dev/lint.dic75b926e9d432afb66ca7d924208d337fsize=939date=2021-12-24T15:52:24
 file,ghost/master/dic/games/Gobang/Gobang.dic3f69aeef64f71f833d8c8ac085e64335size=44490date=2021-12-24T15:52:25
 file,ghost/master/dic/games/Gobang/GobangData.dicdabd4d6991556b11465d06b14f93741dsize=33588date=2021-12-24T15:52:26
 file,ghost/master/dic/games/GoldenFlower.dic9eccace87d6241c68fb65d7fb57f9209size=22657date=2021-12-24T15:52:27
