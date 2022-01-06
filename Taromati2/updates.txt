@@ -1,5 +1,5 @@
 charset,UTF-8
-file,delete.txtc1e4ca2a3c22d8f9951cfa5be56bcfa0size=25189date=2021-12-04T00:41:18
+file,delete.txteb748f3a0e041913b4ac6eb7e0b5b8b1size=25252date=2021-12-04T00:41:18
 file,ghost/master/data/Game/BoxGame/box.txt4eb7bc822cf0d1cd24d14daa6ce16387size=33614date=2021-03-21T14:33:27
 file,ghost/master/data/Game/BoxGame/boxpng.png11dba3badd0ebfcfd727e21b710e87edsize=3932date=2021-03-21T14:33:27
 file,ghost/master/data/Game/Gobang/Stone.wav60f1c8457a19624892f1a0d45ab47ab4size=74156date=2021-03-21T14:33:27
@@ -427,7 +427,6 @@ file,ghost/master/pseudoAI/language.aif5d3ec09c88a0ce37fda7a22c9635fa9size=186
 file,ghost/master/pseudoAI/logic.ai17268efee1114325796b7b86eb6db882size=1963date=2021-11-15T17:57:25
 file,ghost/master/pseudoAI/logiclearn.ai.base68b329da9893e34099c7d8ad5cb9c940size=1date=2021-11-15T17:57:25
 file,ghost/master/pseudoAI/math.aif658d2c284ef60ab322ab20c4adec78csize=25076date=2021-11-15T17:57:25
-file,ghost/master/pseudoAI/other.aibada0260b32eb3b30ca0db0038cd2f8dsize=918838date=2021-11-15T17:57:25
 file,ghost/master/pseudoAI/physics.ai51288564a9922cb3e7f07da54469819esize=18383date=2021-11-15T17:57:25
 file,ghost/master/pseudoAI/userteach.ai.base68b329da9893e34099c7d8ad5cb9c940size=1date=2021-11-15T17:57:25
 file,ghost/master/pseudoAI/wiki.ai5d885d8618f5ca453d3a5802a891cf4esize=445date=2021-11-15T17:57:25
