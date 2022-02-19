@@ -349,9 +349,9 @@ file,ghost/master/dic/aya/master/sysex.dic444816ae5c20677d42a897d33f223251size
 file,ghost/master/dic/aya/master/url.dic54a88b45e8b8d818b89e2283ab7f838fsize=156date=2022-01-03T08:51:53
 file,ghost/master/dic/communicate/H/H.dic90919b917b1be45abcb2016252cb9450size=250date=2022-01-06T23:16:08
 file,ghost/master/dic/communicate/talk/learn.dicd134dd4ea15b94c34bc124879bb114a1size=16534date=2022-01-03T08:51:53
-file,ghost/master/dic/communicate/talk/other_ghost.dica2a132f6e16126372b781443c5ea01b3size=2946date=2022-01-03T08:51:53
-file,ghost/master/dic/communicate/talk/pseudoAI.dicff9597d0425d7b12a207c45f9b053334size=61063date=2022-01-07T00:24:05
-file,ghost/master/dic/communicate/talk/talk.dic9ab47f9c79ad679b8aca391fdbf4da45size=174780date=2022-01-07T00:51:51
+file,ghost/master/dic/communicate/talk/other_ghost.dicb8daced27b2a42f810d22d32e7ddb62fsize=2819date=2022-01-03T08:51:53
+file,ghost/master/dic/communicate/talk/pseudoAI.dic3fc5f839617b7d0de6c875522416a9casize=61128date=2022-01-07T00:24:05
+file,ghost/master/dic/communicate/talk/talk.dicfb1c31d564637a4f59fb788e3c108d53size=174805date=2022-01-07T00:51:51
 file,ghost/master/dic/communicate/talk/talk_t.dic94d962eb3a1ccac4ed295f5965e1e765size=8965date=2022-01-03T08:51:53
 file,ghost/master/dic/communicate/touch/touch.dicfeef31ee4e5958ba94860614941219dbsize=13762date=2022-01-03T08:51:53
 file,ghost/master/dic/dev/ayccoder.aycd7df86b0547b9b3e98b581643b9cfd2bsize=595date=2021-09-25T09:08:54
