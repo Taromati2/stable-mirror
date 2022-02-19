@@ -385,7 +385,7 @@ file,ghost/master/dic/other/poem.dicc2b6944fdac2c8eba79808f5c64f4c6fsize=12590
 file,ghost/master/dic/other/story.dic54012ea7b84969d5861514012603307asize=66924date=2022-01-03T08:51:53
 file,ghost/master/dic/other/test.dic93e420f5bee65fa06614532ffb297a43size=21445date=2022-01-03T08:51:53
 file,ghost/master/dic/system/Calendar.dic0cde0119763e5b2baa8eb3cab41da2a1size=39853date=2022-01-03T08:51:53
-file,ghost/master/dic/system/Debug.dicc9a62ae865eec04709ba2594d50acbc5size=18226date=2022-01-12T12:17:11
+file,ghost/master/dic/system/Debug.dicc78cf8ed71253b27b28ea322c4b9efd2size=18912date=2022-01-12T12:17:11
 file,ghost/master/dic/system/FileDrop.dic1c3c130720f932ef6cd20f0fcd7d8938size=4587date=2022-01-03T08:51:53
 file,ghost/master/dic/system/MAGIC.ayc5d129d9db5a6c0bed7ceb3eb3af5a00fsize=993date=2022-01-03T08:51:53
 file,ghost/master/dic/system/MAGIC.dic617991bbb23a229dd827369574b5e042size=294date=2021-12-24T15:53:00
@@ -416,6 +416,7 @@ file,ghost/master/img/curs/common.ani54a78cfde95ab2e6f6c9e6b2be269dd2size=4847
 file,ghost/master/img/curs/text.ani817feb16204f5f073a1d4c819feb3703size=38796date=2022-01-03T08:51:53
 file,ghost/master/img/ico/kikka.ico0dd7ab873ae90cf9d7a9158b94c54930size=270398date=2021-03-21T14:33:28
 file,ghost/master/img/ico/kikka_eye_close.ico2e099fb8195ac57d25989920b7c4c5b1size=270398date=2021-05-06T19:20:24
+file,ghost/master/img/ico/tama.icocd5e0d01c146d21530d61eb61ef6f268size=1150date=2012-12-21T00:00:00
 file,ghost/master/pseudoAI/IT.ai8ce81d4610e0019b56c328c8b940287asize=214date=2021-11-15T17:57:25
 file,ghost/master/pseudoAI/Love.aiad350ca4844b398cc0e0d7a4b6fdf45dsize=193date=2021-11-15T17:57:25
 file,ghost/master/pseudoAI/NumericControl.ai51263f4a73756d91fa5eba3b6cdf4c48size=14483date=2021-11-15T17:57:25
@@ -465,7 +466,7 @@ file,ghost/master/saori/set_wall_paper.exec2a20ad3593959963c4d3ecfe4a1e646size
 file,ghost/master/saori/textcopy.dllb985beb7de58ae316ce03da9e260416asize=25600date=2021-03-21T14:33:28
 file,ghost/master/saori/tl.lock6cc375438fb76385e58c69193046dd19size=63date=2021-03-13T16:37:46
 file,ghost/master/saori/txtpaste.dlld26df18e46cf845ed073e26be17b3125size=25088date=2021-03-21T14:33:28
-file,ghost/master/shiori/aya.dlldb5dd49063a9b29016014e5fe7302ff5size=586752date=2022-01-12T15:12:09
+file,ghost/master/shiori/aya.dll59bade190a2678bc7bf6ed2a7b236b66size=586752date=2022-01-12T15:12:09
 file,ghost/master/shiori/aya.txt60e8c47a3dd03166c03a79039acad441size=24date=2021-07-12T20:07:04
 file,ghost/master/shiori/aya_base.txt97584fb87df65e11018cc4449a6f0cc7size=289date=2022-01-03T08:51:53
 file,ghost/master/shiori/aya_common.txt79d2b07e7b7c1de1ed6635973ada515csize=59date=2021-07-12T20:07:04
