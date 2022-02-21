@@ -349,7 +349,7 @@ file,ghost/master/dic/aya/master/sysex.dic444816ae5c20677d42a897d33f223251size
 file,ghost/master/dic/aya/master/url.dic54a88b45e8b8d818b89e2283ab7f838fsize=156date=2022-01-03T08:51:53
 file,ghost/master/dic/communicate/H/H.dic90919b917b1be45abcb2016252cb9450size=250date=2022-01-06T23:16:08
 file,ghost/master/dic/communicate/talk/learn.dicd134dd4ea15b94c34bc124879bb114a1size=16534date=2022-01-03T08:51:53
-file,ghost/master/dic/communicate/talk/other_ghost.dicb8daced27b2a42f810d22d32e7ddb62fsize=2819date=2022-01-03T08:51:53
+file,ghost/master/dic/communicate/talk/other_ghost.dic8f2eee86031deaad7fdadedda1370b40size=3239date=2022-01-03T08:51:53
 file,ghost/master/dic/communicate/talk/pseudoAI.dic3fc5f839617b7d0de6c875522416a9casize=61128date=2022-01-07T00:24:05
 file,ghost/master/dic/communicate/talk/talk.dicfb1c31d564637a4f59fb788e3c108d53size=174805date=2022-01-07T00:51:51
 file,ghost/master/dic/communicate/talk/talk_t.dic94d962eb3a1ccac4ed295f5965e1e765size=8965date=2022-01-03T08:51:53
