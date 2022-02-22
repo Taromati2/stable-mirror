@@ -331,7 +331,7 @@ file,ghost/master/data/weather/ZhongYu.png9a3f8e927f57d8973cd928fbdc31c0adsize
 file,ghost/master/descript.txtda05549b478ba7f870d745ebd4569641size=615date=2022-01-12T00:08:07
 file,ghost/master/dic/_loading_order.txt365d87523f53b6094161fb8010b8289fsize=142date=2021-07-12T20:07:04
 file,ghost/master/dic/aya/_loading_order.txt95e3fdd073b158a7479fca3eb50182basize=28date=2021-07-12T20:07:04
-file,ghost/master/dic/aya/base/QuickStart.dic3f4bc0add7708d546d4d79785131de85size=251date=2021-12-24T15:52:16
+file,ghost/master/dic/aya/base/QuickStart.dicf7a7a5c95bff70284ec5183c29ef3d67size=139date=2021-12-24T15:52:16
 file,ghost/master/dic/aya/base/compatible.dic8676202368501602590037f39f0840cfsize=3668date=2021-12-24T15:52:16
 file,ghost/master/dic/aya/base/config.dicb4bcaf63d09eecf3236049c9f2a0d0a8size=2651date=2021-12-24T15:52:16
 file,ghost/master/dic/aya/base/other_defs.dicce2d16ee8f0f59140c8e8985856d4472size=87date=2021-12-24T15:52:16
