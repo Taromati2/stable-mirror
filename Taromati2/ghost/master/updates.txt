@@ -328,7 +328,7 @@ file,ghost/master/data/weather/XiaoYu.png34c9e1fec47840a5ebdeab4839af6392size=
 file,ghost/master/data/weather/Yin.png69817e1105e92832041f3644741d3be0size=735date=2021-03-21T14:33:28
 file,ghost/master/data/weather/ZhongXue.png7bf25e51f7e88b30da92215221c787c9size=1214date=2021-03-21T14:33:28
 file,ghost/master/data/weather/ZhongYu.png9a3f8e927f57d8973cd928fbdc31c0adsize=943date=2021-03-21T14:33:28
-file,ghost/master/descript.txtda05549b478ba7f870d745ebd4569641size=615date=2022-01-12T00:08:07
+file,ghost/master/descript.txtfa596499422ef4110e24d2a8336d0b83size=615date=2022-01-12T00:08:07
 file,ghost/master/dic/_loading_order.txt365d87523f53b6094161fb8010b8289fsize=142date=2021-07-12T20:07:04
 file,ghost/master/dic/aya/_loading_order.txt95e3fdd073b158a7479fca3eb50182basize=28date=2021-07-12T20:07:04
 file,ghost/master/dic/aya/base/QuickStart.dicf7a7a5c95bff70284ec5183c29ef3d67size=139date=2021-12-24T15:52:16
