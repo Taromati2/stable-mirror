@@ -23,5 +23,5 @@ XtraStuf.mac/
 *.pna.png
 *.bat
 
-surface0000.apng
-surface0010.apng
+surface0.apng
+surface10.apng
