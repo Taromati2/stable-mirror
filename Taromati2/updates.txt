@@ -356,7 +356,6 @@ file,ghost/master/dic/communicate/talk/talk_t.dic94d962eb3a1ccac4ed295f5965e1e7
 file,ghost/master/dic/communicate/touch/touch.dicfeef31ee4e5958ba94860614941219dbsize=13762date=2022-01-03T08:51:53
 file,ghost/master/dic/dev/ayccoder.aycd7df86b0547b9b3e98b581643b9cfd2bsize=595date=2021-09-25T09:08:54
 file,ghost/master/dic/dev/dicforma.dicfc0876c6cfc131265cf98c7d80f4a38csize=8220date=2022-01-03T08:51:53
-file,ghost/master/dic/dev/lint.dic75b926e9d432afb66ca7d924208d337fsize=939date=2022-02-19T23:29:31
 file,ghost/master/dic/games/Gobang/Gobang.dic3f69aeef64f71f833d8c8ac085e64335size=44490date=2022-01-03T08:51:53
 file,ghost/master/dic/games/Gobang/GobangData.dicdabd4d6991556b11465d06b14f93741dsize=33588date=2021-12-24T15:52:26
 file,ghost/master/dic/games/GoldenFlower.dic9eccace87d6241c68fb65d7fb57f9209size=22657date=2022-01-03T08:51:53
@@ -417,10 +416,6 @@ file,ghost/master/img/curs/common.ani54a78cfde95ab2e6f6c9e6b2be269dd2size=4847
 file,ghost/master/img/curs/text.ani817feb16204f5f073a1d4c819feb3703size=38796date=2022-01-03T08:51:53
 file,ghost/master/img/ico/kikka.ico0dd7ab873ae90cf9d7a9158b94c54930size=270398date=2021-03-21T14:33:28
 file,ghost/master/img/ico/kikka_eye_close.ico2e099fb8195ac57d25989920b7c4c5b1size=270398date=2021-05-06T19:20:24
-file,ghost/master/img/ico/kikka_eye_wink/0.icofa52d30926a7a7fb03ccd94bd445235csize=270398date=2022-02-19T23:29:31
-file,ghost/master/img/ico/kikka_eye_wink/1.ico2e099fb8195ac57d25989920b7c4c5b1size=270398date=2022-02-19T23:29:31
-file,ghost/master/img/ico/kikka_eye_wink/2.icofa52d30926a7a7fb03ccd94bd445235csize=270398date=2022-02-19T23:29:31
-file,ghost/master/img/ico/kikka_eye_wink/3.ico0dd7ab873ae90cf9d7a9158b94c54930size=270398date=2022-02-19T23:29:31
 file,ghost/master/img/ico/tama.icocd5e0d01c146d21530d61eb61ef6f268size=1150date=2022-02-19T12:15:29
 file,ghost/master/pseudoAI/IT.ai8ce81d4610e0019b56c328c8b940287asize=214date=2021-11-15T17:57:25
 file,ghost/master/pseudoAI/Love.aiad350ca4844b398cc0e0d7a4b6fdf45dsize=193date=2021-11-15T17:57:25
