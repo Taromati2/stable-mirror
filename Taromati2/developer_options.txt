@@ -60,3 +60,6 @@ shell/.gitignore,nonar,noupdate
 shell/Entire bare/,nonar,noupdate
 shell/*/*.pna.png,nonar,noupdate
 shell/*.bat,nonar,noupdate
+
+shell/master/surface0000.apng,nonar,noupdate
+shell/master/surface0010.apng,nonar,noupdate
