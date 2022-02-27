@@ -52,7 +52,7 @@ OnSecondChange{
 OnHourChange{
 }
 OnMinuteChange{
-	if RAND(20160)==0{
+	if UsualUserName.Time<=GETSECCOUNT{
 		if UsualUserName.InPush!=username
 			UsualUserName.InPush=username
 		else{//连续一个月使用同一个用户名
@@ -61,7 +61,11 @@ OnMinuteChange{
 			if ARRAYSIZE(UsualUserName) > 960//记录近80年内的常用用户名
 				UsualUserName[TOINT(SQRT(1.0/RAND(990))*990-30)] = IARRAY//[1,960]，数值越低出现概率越大
 		}
+		UsualUserName.Time=GETSECCOUNT+1314871
 	}
+	--
+	if RAND(60)==0 || hitokoto==''
+		'\![execute,http-get,https://v1.hitokoto.cn/,encode=text,--file=hitokoto.txt,--async=hitokoto]'//更新一言
 	--
 	elapsedtimetotal += 1//计算人格起动总时间/单位分
 	elapsedtime = elapsedtimetotal * 60
