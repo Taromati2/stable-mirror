@@ -3,6 +3,7 @@ file,background.png249443448975a0b69fa6079724ec9d53size=46369date=2021-08-05T
 file,descript.txt0ea6d601fcb7dd741bd5a7e374838e47size=834date=2021-03-02T19:29:19
 file,foreground.pngb0b25ba16c19b58b68d17fe5a26555b5size=53547date=2021-03-22T11:06:59
 file,sidebar.pngc3a7bfb778ba74d007134dea78ff2f53size=7541date=2021-03-22T11:06:59
+file,surface0.apng5cb5bc9dbca735cb82dff4df28c10a8asize=38049date=2022-02-24T20:35:30
 file,surface0000.pnadaea89917f64d72a9190d951a70bd82bsize=5188date=2021-08-05T11:17:14
 file,surface0000.png07af7040a16c01c9850b490482d987d8size=38364date=2021-05-29T22:12:22
 file,surface0001.pna5dac296f68801157ffdb77d299824e9bsize=5254date=2021-08-05T11:17:14
@@ -74,6 +75,7 @@ file,surface0117.pna6c0841f1c252f8573f19fc3e0e57aa55size=6509date=2021-08-05T
 file,surface0117.png6d2300ce78bd631ce8dd4b9241fb1dcdsize=52526date=2021-03-22T11:06:59
 file,surface0150.pngab54de48fa06850bc85ca3111e1aff68size=2683date=2021-03-19T13:44:52
 file,surface0250.png4b999298d00bc9a1d8128aa4e7d8aa33size=2917date=2021-03-22T11:06:59
+file,surface10.apnge6e2dd29c7a5da27829426ecab185ec1size=11147date=2022-02-24T20:39:06
 file,surface1001.png10fc98a15cdeeaae48240e41af77802fsize=4999date=2021-08-05T01:16:12
 file,surface1002.png96534b9fd69cf904017f8c101e6026d8size=4658date=2021-03-22T11:06:59
 file,surface1003.png2ddc305aea6fa5dc76970d35874400f7size=494date=2021-03-19T14:02:02
@@ -175,5 +177,5 @@ file,surface2172.png9ef4ead9cf1aca0a669e0c4126acde2esize=3787date=2007-05-05T
 file,surface72002.pnge715d323e8f6ec5482a775be368e2365size=3117date=2021-10-06T18:58:20
 file,surface72003.png139926cb3843dd48e067a343138777c4size=3118date=2021-10-06T18:58:20
 file,surface72004.pngecd8e7ec5e9f30f2363b7fd74f2a4e01size=3114date=2021-10-06T18:58:20
-file,surfaces.txtc5adf993334cabf040ddde36434ddfe2size=23240date=2021-10-06T19:04:14
+file,surfaces.txtcb8fc788e3cd24e13480689fe993ef4esize=23240date=2022-03-01T23:55:16
 file,surfacetable.txt2af6466c50fb34e9b3af58aea133ae66size=596date=2021-03-17T23:55:45

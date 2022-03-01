@@ -1,4 +1,4 @@
-﻿charset,UTF-8
+charset,UTF-8
 type,shell
 name,MeguMegu
 accept,橘花
