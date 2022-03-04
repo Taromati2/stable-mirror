@@ -912,11 +912,11 @@ surface72
 element0,overlay,surface0000.png,0,0
 
 0interval,always
-0pattern5,-1,14,overlay,116,55
-0pattern0,72002,4,overlay,116,55
-0pattern1,72003,22,overlay,116,55
-0pattern2,72002,4,overlay,116,55
-0pattern3,72004,8,overlay,116,55
+0pattern0,-1,14,overlay,116,55
+0pattern1,72002,4,overlay,116,55
+0pattern2,72003,22,overlay,116,55
+0pattern3,72002,4,overlay,116,55
+0pattern4,72004,8,overlay,116,55
 0pattern5,-1,22,overlay,116,55
 
 3interval,never

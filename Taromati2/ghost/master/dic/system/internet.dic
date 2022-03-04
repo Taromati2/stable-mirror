@@ -29,7 +29,7 @@ TextBetween2{
 }
 */
 TextToEnd{//TextToEnd('a=b=1234','=',0)=='b=1234'得到字符串'a=b=1234'中从第1个'='到字符串结束的文本'b=1234'
-	_s=_argv[0]
+	_s=TOSTR(_argv[0])
 	_begin=_argv[1]
 	_idx = 0
 	if _argc > 2 {
@@ -90,7 +90,7 @@ OnChangeCityComplete{
 OntulingApi{
 	callingtulingapi=1
 	tulingapi.in=_argv[0]
-	"\![excute,http-get,http://www.tuling123.com/openapi/api?key=5b56e59d852489bb6c40289223619a28&info=%(tulingapi.in),--param-charset=UTF-8,--file=tulingapi.html,--timeout=200,--async=tulingapi]"
+	"\![excute,http-get,http://www.tuling123.com/openapi/api?key=5b56e59d852489bb6c40289223619a28&info=%(tulingapi.in),--param-charset=UTF-8,--nofile,--timeout=200,--async=tulingapi]"
 }
 /*
 code  说明
@@ -119,13 +119,9 @@ OnTuLingFound.Failure{
 	_txt
 }
 OnTuLingFound{
-	_code=''
 	_txt='\b[2]\_q'
-	_file = 'VAR_PATH\\tulingapi.html'
-	_buff = ''
-	FCHARSET(1)
-	if FOPEN(_file,'r'){
-		_buff = FREAD(_file)
+	{
+		_buff = reference3
 		_code=TextBetween(_buff,':',',',0)
 		case _code{
 			when '100000'
@@ -146,11 +142,6 @@ OnTuLingFound{
 				_txt+=TextBetween(_buff,'":"','"}',0)
 		}
 	}
-	else{
-		_txt=''
-	}
-	FCLOSE(_file)
-	FCHARSET.default
 	if _txt && tulingapi.in{
 		_txt=REPLACE(_txt,'\b[2]\_q','')
 		AITalkAdd('PSEUDO_AI_PATH\tuling.ai',tulingapi.in+'*'+_txt+'§')
@@ -455,7 +446,7 @@ OnGoogleCalInput{
 }
 OnGoogleCalFound{
 	_txt = '\_q'
-	_file = 'VAR_PATH\\googlecal.html'
+	_file = 'VAR_PATH/googlecal.html'
 	_buff = ''
 	_found = 0
 	FCHARSET(127)
@@ -471,8 +462,8 @@ OnGoogleCalFound{
 				break
 			}
 		}
+		FCLOSE(_file)
 	}
-	FCLOSE(_file)
 	FCHARSET.default
 	if !_found {
 		_txt += 'Google无法计算您给的表达式，请检查输入是否正确……'
@@ -482,6 +473,19 @@ OnGoogleCalFound{
 }
 OnGoogleCalEnd{
 	'\0\s[41]那个……橘花有帮到你吗？\w9'
+}
+OnHitokotoUpdate{
+	hitokoto=reference3
+	--
+	DiscordCustomSet.CustomDetail(hitokoto)
+	--
+	DiscordCustomSet.CustomState(' ')
+}
+OnHitokotoUpdate.Failure{
+	//hitokoto=''
+}
+ClearHitokotoVar{
+	ERASEVAR('hitokoto')
 }
 //RSS读取
 //////////////////////////////////////////////////////////////////////
@@ -837,8 +841,11 @@ OnExecuteHTTPComplete{
 		elseif kikkastock==3
 			OnKikkaStockFound
 	}
+	elseif reference1 == 'hitokoto' {
+		OnHitokotoUpdate
+	}
 	else {
-		BUGNow
+		BUGNow('OnExecuteHTTPComplete的未定义async id: '+reference1)
 	}
 }
 OnExecuteHTTPFailure{
@@ -856,6 +863,9 @@ OnExecuteHTTPFailure{
 			"\0\s[3]连线失败了……\nError：%(reference4)\n要查看本地信息吗？\n\q[◇确定,OnWeatherFound]"
 		elseif reference1 == 'tulingapi' {
 			OnTuLingFound.Failure
+		}
+		elseif reference1 == 'hitokoto' {
+			OnHitokotoUpdate.Failure
 		}
 		else{
 			"\0\s[3]连线失败了……\nError：%(reference4)"

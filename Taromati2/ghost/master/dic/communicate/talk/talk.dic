@@ -32,7 +32,7 @@ AITalk{
 	lastTalk
 }
 OnTranslate{
-	_txt = reference0
+	_txt = reference.raw[0]
 	_language=-1
 	if _argc>0{
 		_txt=_argv[0]
@@ -55,13 +55,15 @@ OnTranslate{
 	if _txt && !playingtetris && !playRetroSnaker{
 		if _temp{
 			_t=SakuraToTxt(_txt)
-			if running!='chatroom'&&'引擎 (' !_in_ _t&&!CheckProcess('wscript.exe') //&&running!='readbook'&&read!='stop'
+			if running!='chatroom'&&'引擎 (' !_in_ _t&&!CheckProcess('wscript.exe')//&&running!='readbook'&&read!='stop'
 				_txt=TxtToVoice(_t,voicename)+_txt
 		}
-		if musicplayer == 1 && reference2 != 'OnMusicPlayer' && reference2 != 'OnSurfaceRestore.Music' && mode=='0'{
-			if '\_w' _in_ _txt || '\w' _in_ _txt
-				_txt+='\_w[1000]'
-			_txt+="\![raise,OnMusicPlayer,%(',NoSurfaceRestore'['\q' _in_ _txt || '\__q' _in_ _txt])]"
+		if musicplayer == 1 && reference2 != 'OnSurfaceRestore.Music' && mode=='0'{
+			if 'OnMusicPlayerClose' !_in_ _txt{
+				if '\_w' _in_ _txt || '\w' _in_ _txt
+					_txt+='\_w[1000]'
+				_txt+="\![raise,OnMusicPlayer,%(',NoSurfaceRestore'['\q' _in_ _txt || '\__q' _in_ _txt])]"
+			}
 		}
 	}
 	_txt
@@ -464,29 +466,6 @@ RandomTalk.pool : nonoverlap_pool{
 			'不做到切断动脉的程度不行喔。'
 			--
 			'\w9\w9\w5\1\s[10]\n\n[half]为什么你在笑啊…'
-		}
-		{
-			'\0\s[3]暗巷总是危机四伏呢\w9\w9\w9\w9\1\s[10]的确,最好是两个人结伴才好\w9\w9\w9'
-			--
-			{
-				'\1\s[10]\0\s[41]\c要注意草丛边的Tenchu力丸呢\w9\w9\w9\w9\1\s[12]\c天诛啊?!'
-				'\1\s[10]\0\s[6]\c狙击手总是会找制高点来当狙击点\w9\w9\w9\1\s[10]\c那是当然的\w9\w9\w9\w9\0\s[21]\c其实太近反而会瞄不准呢'
-				{
-					'\1\s[10]\0\s[6]\c狙击手总是会找顶楼的窗口来当狙击点\w9\w9\w9\1\s[11]\c我们只是平民好吗...\w9\w9\w9\0\s[0]\c或许是这样,还是要提高警觉\w9\w9\w9\w9\1\s[13]我看会狙击的人只有你吧\w9\w9\w9\0\s[8]\c才不呢,我比较擅长短程射击跟近身搏斗\w9\w9\w9'
-					--
-					{
-						'\0\s[8]\1\s[12]\c退步了?\w9\w9\w9\0\s[3]\c我一直以来就是近身战斗比较多\w9\w9\w9\w9\1\s[10]\c是是是,小公主说的算'
-						{
-							'\0\s[0]\1\s[10]\c哪来的人会无聊到杀平民\w9\w9\w9\0\s[2]\cJohn Connor(约翰康纳)\w9\w9\w9'
-							--
-							{
-								'\1\s[13]\c不管你了...\0\s[8]\c呵呵'
-								'\1\s[13]\c小公主 那是魔鬼终结者的剧情\w9\w9\w9\0\s[40]\c包着红豆馅的车轮饼很好吃喔！\n\w9\w9\0\s[5]一口咬下像血一样喷出来\n这种滋味\w9\w9\w9\1\s[12]\c别转移话题!什...!麽!?'
-							}
-						}
-					}
-				}
-			}
 		}
 		{
 			'\0\s[0]经常见到、\w5\n凶杀案被害者的家人\w5在怨恨诅咒凶手…\w9\w9\1\s[10]唔、\w5这没什么不对吧？\w9\w9\0\s[0]\n\n[half]责怪自己没能保护好家人的人、\w5\n不太见的到呢。\w9\1\s[10]\n\n[half]'
@@ -1370,8 +1349,7 @@ ForcedTalk1{
 //**** 人格被动对话 *******************************************************************************
 //---- OnCommunicate事件 ----------------------------------------------------------------
 OnCommunicate{
-	reference1=TOSIMPLIFIED(reference1)
-	txt=''
+	reference1=TOSIMPLIFIED(reference.raw[1])
 	if reference0 == 'user' || reference0 == 'User'{
 		//与user对话
 		lastTalk = ReplyToUser
@@ -1485,7 +1463,7 @@ ONE{
 //**** TWO *************************************************
 TWO{
 	_t = ''
-	if _t = TWO.commnd
+	if _t = TWO.commnd && !InAIGhostReply
 		_t
 	elseif !KikkaAImode {
 		if _t = TWO.aitalk
@@ -1503,6 +1481,7 @@ TWO{
 	}
 }
 TWO.commnd{
+	reference1 = TOSIMPLIFIED(reference.raw[1])
 	reference1 = RE_REPLACE(reference1,'/\s*teach\s*$','/teach')
 	reference1 = RE_REPLACE(reference1,'/\s*talk\s*$','/talk')
 	if '/teach' == reference1{

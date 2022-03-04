@@ -44,7 +44,7 @@ OnKeyPress{
 	}
 	elseif playingtetris {
 		if ck!=2
-			FormKeyDown
+			OnTetris.KeyPress
 	}
 	elseif playingGobang {
 		OnGobangShow
@@ -114,13 +114,21 @@ OnKeyPress{
 			if QuickStartVersion
 				'\![open,inputbox,OnCalculateVar]'
 			else
-				'\![open,file,SAORI_PATH/ghost_terminal.exe]'
+				'\![open,file,SAORI_PATH/ghost_terminal.exe,-g Taromati2]'
 		}
 	}
 	elseif reference0 == 'f8' {
 		OnOpenMasterMenu
 	}
 	elseif reference0 == 'f9' {
+		if SHIORI_FW.DebugMode{
+			if FILEEXIST('SHIORI_PATH/tama.exe')
+				'\![open,file,SHIORI_PATH/tama.exe,-g Taromati2]'
+			else
+				'\0\s[0]未找到tama.exe，请前往github仓库补全开发文件'
+		}
+	}
+	elseif reference0 == 'f10' {
 		if SHIORI_FW.DebugMode{
 			'\![execute,createupdatedata]'
 		}
@@ -245,7 +253,7 @@ OnRuntime{
 		_running=_argv[0]
 	case _running{
 		when 'playingtetris'
-			OnTimer1Timer
+			OnTetris.Timer
 		when 'playRetroSnaker'
 			OnRetroSnakerTimer
 	}
@@ -284,9 +292,9 @@ OnMultitask{
 		}
 		when 'playingtetris'{
 			if ck!=2
-				FormKeyDown
+				OnTetris.KeyPress
 			else
-				OnTimer1Timer
+				OnTetris.Timer
 		}
 		when 'playingGobang'{
 			OnGobangShow

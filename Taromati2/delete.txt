@@ -1,4 +1,6 @@
 ﻿
+ghost/master/pseudoAI/other.ai
+ghost/master/pseudoAI/other.inf
 ghost/master/dic/story/amusement_park/develop.dic
 ghost/master/data/other/opera.txt
 ghost/master/dic/story/opera.dic

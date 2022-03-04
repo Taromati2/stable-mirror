@@ -29,7 +29,7 @@ BaseSelect.base{
 			_argv[0]=IARRAY
 			_fname=_argv[0]
 			_argv[0]=IARRAY
-			EVAL("Select.%(_fname)(%_argv)")
+			EVAL("%(_fname)(%_argv)")
 		}
 	}
 }
@@ -68,4 +68,12 @@ OpenDocForRuntime.string{
 }
 OpenDocForRuntime{
 	SHIORI_FW.PushNotifyResult(OpenDocForRuntime.string(_argv[0]))
+}
+OnEraseVar{
+	ERASEVAR(reference0)
+	'完成了'
+}
+OnSet{
+	LETTONAME(reference0,reference1)
+	'完成了'
 }

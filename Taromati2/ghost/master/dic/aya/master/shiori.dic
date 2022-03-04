@@ -23,6 +23,15 @@ CALLALLFUNCTIONBEGINAS {
 		EVAL(_V)
 	}
 }
+GETFUNCLISTINRE {
+	_L= GETFUNCLIST
+	_R=IARRAY
+	foreach _L;_V {
+		if RE_GREP(_V,_argv[0])
+			_R,=_V
+	}
+	_R
+}
 CALLALLFUNCTIONINRE {
 	_L= GETFUNCLIST
 	foreach _L;_V {
@@ -115,6 +124,7 @@ ClearAyaTempVar {
 	ERASEVAR('SHIORI_FW.ShellNameOld')
 	ERASEVAR('SHIORI_FW.BalloonNameOld')
 	ERASEVAR('SHIORI_FW.LastBootInEmergencyMode')
+	ERASEVAR('SHIORI_FW.InVarFileMiss')
 
 	_n = ARRAYSIZE(tempvarname)
 	for _i = 0 ; _i < _n ; _i++ {
@@ -137,7 +147,7 @@ ClearAyaTempVar {
 //機能　：ロード時の処理
 //------------------------------------------------------------------------------
 load {
-	// 文字/文字列定数
+	//文字/文字列定数
 	C_LF = CHR(0xa)			/*lin换行*/
 	C_CR = CHR(0xd)			/*mac换行*/
 	C_CRLF = CHR(0xd,0xa)	/*win换行*/
@@ -212,27 +222,28 @@ load {
 			}
 		}
 		SAVEVAR
+		if !username
+			SHIORI_FW.InVarFileMiss=1
 	}
 
 	SHIORI_FW.InitChain
 
 	SHIORI_FW.SetDelayEvent('',0)
 
-	ERASEVAR('OnCloseCalled')
 	CALLALLFUNCTIONBEGINAS('Init.')
 
 	if SHIORI_FW.EmergencyMode
-		SHIORI_FW.PushNotifyResult(OnEmergencyMode)
+		SHIORI_FW.PushNotifyResult('\![raise,OnEmergencyMode]')
 	elseif FILEEXIST('SHIORI_PATH\SHIORI_NAME_emerg.txt'){
 		foreach _DIC_DIRS_; _dir{
 			void DIRSync(_dir,'EMERGENCYMODEDICDIR'+'\'+_dir)
 		}
 		if SHIORI_FW.LastBootInEmergencyMode
-			SHIORI_FW.PushNotifyResult(OnEmergencyModeEnd)
+			SHIORI_FW.PushNotifyResult('\![raise,OnEmergencyModeEnd]')
 	}
 
 	if ShioriReloading
-		SHIORI_FW.PushNotifyResult(OnShioriReloaded)
+		SHIORI_FW.PushNotifyResult('\![raise,OnShioriReloaded]')
 	ERASEVAR('ShioriReloading')
 }
 
@@ -255,6 +266,7 @@ unload {
 
 	if !OnCloseCalled && !BasewareUpdating
 		ShioriReloading=1
+	ERASEVAR('OnCloseCalled')
 
 	CALLALLFUNCTIONBEGINAS('Fin.')
 
@@ -306,7 +318,7 @@ request {
 
 	status = ''
 	SHIORI_FW.Eventid=''
-	SHIORI_FW.SecurityLevel='Internal' //互換性のためデフォルトはInternal
+	SHIORI_FW.SecurityLevel='Internal'//互換性のためデフォルトはInternal
 
 	while _lineend > _linestart {
 		//行分割
@@ -460,8 +472,6 @@ SHIORI_FW.MakeResponse{
 			if SHIORI_FW.DebugMode && _result{
 				"SHIORI/3.0 200 OK%(C_CRLF)Charset: %(S_CHARSET)%(C_CRLF)/
 				ValueForDebug: %(_result)%(C_CRLF)"
-				--
-				SHIORI_FW.AssembleReferenceHeader
 			}else{
 				"SHIORI/3.0 204 No Content%(C_CRLF)Charset: %(S_CHARSET)%(C_CRLF)"
 			}
@@ -596,6 +606,7 @@ SHIORI_FW.AssembleReferenceHeader {
 		ERASEVAR('res_reference')
 	}
 	else {
+		_value = ''
 		for _i = 0; _i < SHIORI_FW.RES_REF_MAX; _i++ {
 			_before = _value
 
@@ -645,6 +656,7 @@ SHIORI_FW.RaiseIDEvent {
 	if SHIORI_FW.Eventid == 'OnSecondChange' {
 		//OnSecondChangeならランダムトーク関連処理
 		_event = SHIORI_FW.ControlAITalk(_event)
+		_event = SHIORI_FW.TranslateEvent(_event)
 	}
 
 	if _event != 'OnSecondChange' {
@@ -694,7 +706,7 @@ SHIORI_FW.RaiseIDEvent {
 		for _i = 0 ; _i < _n ; _i += 1 {
 			if _delim[_i] == EVAL_DELIM {
 				//遅延EVAL
-				_trash = EVAL(_talk[_i + 1])
+				void EVAL(_talk[_i + 1])
 			}
 			elseif _delim[_i] == CHAIN_DELIM {
 				//チェイン処理
@@ -839,7 +851,7 @@ SHIORI_FW.MakeReferenceAndPassThruInsVariable : void {
 
 			if !SHIORI_FW.REF_ACCEL {//1にすると高速化
 				_varname = 'reference'+_refnum
-				EVAL(_varname+' = _value')
+				LETTONAME(_varname, _value)
 				SHIORI_FW.ReferenceList ,= _varname
 			}
 		}
@@ -848,7 +860,7 @@ SHIORI_FW.MakeReferenceAndPassThruInsVariable : void {
 			_value = var.req.value[_i]
 
 			_varname = 'PassThru_Ins.'+_PassThru_Ins_Name
-			EVAL(_varname+' = _value')
+			LETTONAME(_varname, _value)
 			SHIORI_FW.PassThru_Ins_List ,= _varname
 		}
 	}
@@ -1272,13 +1284,13 @@ SHIORI_FW.RequestLib {
 //引数　：_argv[0] SAORIファイル名
 //　　　　_argv[1] リクエスト文字列
 //------------------------------------------------------------------------------
-SHIORI_FW.MakeValueexVariable {
+SHIORI_FW.MakeValueexVariable:void {
 	SHIORI_FW.ValueexList	= IARRAY
 	_sz						= ARRAYSIZE(var.lib.key)
 	for _i = 0; _i < _sz; _i++ {
 		if SUBSTR(_keyname = var.lib.key[_i], 0, 5) == 'Value' {
 			_varname = "valueex%(SUBSTR(_keyname, 5, 3))"
-			void EVAL("%(_varname) = var.lib.value[_i]")
+			LETTONAME(_varname, var.lib.value[_i])
 			SHIORI_FW.ValueexList ,= _varname
 			valueex[TOINT(SUBSTR(_keyname, 5, 3))] = var.lib.value[_i]
 		}
@@ -1381,23 +1393,6 @@ REVERSE {
 	}
 	_a
 }
-
-UNIQUE {
-	_v = _argv
-	_n = ARRAYSIZE(_v)
-
-	for _i = 0 ; _i < _n ; _i++ {
-		for _j = _i+1 ; _j < _n ; _j++ {
-			if _v[_i] == _v[_j] {
-				_v[_j] = IARRAY
-				_n -= 1
-				_j -= 1
-			}
-		}
-	}
-	_v
-}
-
 SPLITEX {
 	_a = SPLIT(_argv)
 	_n = ARRAYSIZE(_a)
@@ -1709,15 +1704,24 @@ INEVENT{
 InNotify{
 	REQ.COMMAND == 'NOTIFY'
 }
+ROUNDEX{
+	_num=_argv[0]
+	_to=_argv[1]
+	if !_to
+		_to=1
+	_num*=(1.0/_to)
+	_num=ROUND(_num)*_to
+	_num
+}
 RENAME_VAR:void{
 	if ISVAR(_argv[0])
-		EVAL(_argv[1]+'='+_argv[0])
+		LETTONAME(_argv[1],EVAL(_argv[0]))
 	ERASEVAR(_argv[0])
 }
 SWAP_VAR:void{
 	_t=EVAL(_argv[1])
-	EVAL(_argv[1]+'='+_argv[0])
-	EVAL(_argv[0]+'=_t')
+	LETTONAME(_argv[1],EVAL(_argv[0]))
+	LETTONAME(_argv[0],_t)
 }
 ABS{
 	if _argv[0] < 0

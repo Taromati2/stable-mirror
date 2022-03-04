@@ -241,7 +241,9 @@ OnTextDrop{
 	_t=CUTSPACE(temp)
 	if SHIORI_FW.DebugMode && RE_GREP(_t,'^[\w.]+$'){
 		if __t=Get_AYA_Function_Info(_t)
-			'aya自带底层函数\n'+__t+'\n'
+			'aya自带底层函数\n'+__t+'\n/
+			\q[◇打开在线文档,OnUrlOpen,'+Get_AYA_Function_Doc(_t)+']\n/
+			'
 		elseif ISVAR(_t)
 			"变量“%(_t)”\n/
 			值：%(GetVarValue.SakuraScript(_t))\n/
@@ -252,7 +254,10 @@ OnTextDrop{
 			内容：%(GetGlobalDefine.SakuraScript(_t))\n/
 			\q[◇复制定义内容,OnCopy,"+GetGlobalDefine.SakuraArg(_t)+']\n/
 			'
-		elseif ISFUNC(_t)||Is_Defened_Event(_t){
+		elseif Is_Defened_Event(_t)||Is_Defened_Event(_t+'Ex'){
+			_EXfunc=!Is_Defened_Event(_t)
+			if _EXfunc
+				_t=_t+'Ex'
 			_t=Get_Full_Defened_Event_Name(_t)
 			_info=GETFUNCINFO(_t)
 			_path=SPLITPATH(_info[0])
@@ -260,8 +265,12 @@ OnTextDrop{
 				_path=_path[2]+_path[3]
 			else
 				_path=_info[0]
-			"函数“%(_t)”\n/
-			起始于\q[◇%(_path) 第%(_info[1])行,OnOpenDicWithLineNum,%(SakuraScriptArgConverter(_info[0])),%(_info[1])]\n/
+			"函数“%(_t)”\n"
+			--
+			if _EXfunc
+				'（Ex版本事件）\n'
+			--
+			"起始于\q[◇%(_path) 第%(_info[1])行,OnOpenDicWithLineNum,%(SakuraScriptArgConverter(_info[0])),%(_info[1])]\n/
 			"
 		}
 		elseif SUBSTR(_t,0,2) == 'On'
@@ -478,6 +487,11 @@ OnInstallFailure{
 }
 OnShioriReloaded{
 	OnSQLLoad.Fixer//非中文环境编码问题再修复
+	SETTAMAHWND(TamaHwnd)
+	if ReloadFromTerminal{
+		ShioriEcho.Special='重载完成'
+		ERASEVAR('ReloadFromTerminal')
+	}
 	if SHIORI_FW.LastBootInEmergencyMode
 		return
 	if mode == '1'{
@@ -874,7 +888,11 @@ OnUpdateFailure{
 		return
 	}
 	elseif reference0 == 'executing'&&InSilentUpdate{
-		ERASEVAR('InSilentUpdate')
+		'\0\s[26]已在静默更新中。\n/
+		取消静默？\n/
+		\q[◇好的,OnEraseVar,InSilentUpdate]\n/
+		\q[◇不用了,Cancel]\n/
+		'
 		return
 	}
 	if !InSilentUpdate{
@@ -1289,7 +1307,8 @@ OnScreenSaverEnd{
 }
 //待机
 OnSysSuspend{
-	OnClose.base
+	if !TimeErrorCheck
+		CloseTime = GETSECCOUNT
 }
 //待机中恢复
 OnSysResume.base{
@@ -1311,8 +1330,11 @@ OnSysResume.base{
 	"\0\s[0]%(username)\w9\w9、欢迎回来。\n\x"
 }
 OnSysResume{
-	SHIORI_FW.PushNotifyResult(OnSysResume.base)
-	SHIORI_FW.PushNotifyResult(OnBoot)
+	BaseGhostStart.aboutTime
+	if !InMinimize{
+		SHIORI_FW.PushNotifyResult(OnSysResume.base)
+		SHIORI_FW.PushNotifyResult(OnBoot.aboutTime)
+	}
 }
 //资源不足
 OnSysResourceLow{

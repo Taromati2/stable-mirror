@@ -23,7 +23,7 @@ KikkaVar{
 	//依赖度=500
 	//亲密度=500
 	//幸福度=500
-	_能量=亲密度+依赖度+萌度+幸福度+腹黑度+0.0
+	_能量=TOREAL(亲密度+依赖度+萌度+幸福度+腹黑度)
 	_能量指数=TOINT(_能量)
 	力量=5*TOREAL(幸福度)*腹黑度*腹黑度/_能量/萌度-敏捷*(萌度/_能量)
 	智力=5*TOREAL(腹黑度)*亲密度*亲密度/_能量/幸福度-幸运*(幸福度/_能量)
@@ -35,11 +35,11 @@ KikkaVar{
 	//意志*=智力/力量
 	//敏捷*=意志/智力
 	//幸运*=敏捷/意志
-	//力量=abs(幸运*(力量)/敏捷)-敏捷*(萌度/_能量)
-	//智力=abs(力量*(智力)/幸运)-幸运*(幸福度/_能量)
-	//意志=abs(智力*(意志)/力量)-力量*(腹黑度/_能量)
-	//敏捷=abs(意志*(敏捷)/智力)-智力*(亲密度/_能量)
-	//幸运=abs(敏捷*(幸运)/意志)-意志*(依赖度/_能量)
+	//力量=ABS(幸运*(力量)/敏捷)-敏捷*(萌度/_能量)
+	//智力=ABS(力量*(智力)/幸运)-幸运*(幸福度/_能量)
+	//意志=ABS(智力*(意志)/力量)-力量*(腹黑度/_能量)
+	//敏捷=ABS(意志*(敏捷)/智力)-智力*(亲密度/_能量)
+	//幸运=ABS(敏捷*(幸运)/意志)-意志*(依赖度/_能量)
 	力量=TOINT(力量)
 	智力=TOINT(智力)
 	意志=TOINT(意志)
@@ -226,7 +226,8 @@ KikkaInfo{
 	InternetIPShowing
 }
 Cpuusage{
-	if _t=CALLSAORI('cpuusage','get')
+	_t=CALLSAORI('cpuusage','get')
+	if _t >= 0
 		"CPU使用：%(_t)%"
 }
 KikkaStatus{
@@ -281,7 +282,7 @@ KikkaStatusMain{
 	_txt += ColorText("\n\_l[0,-]魅力：%(kikkachm)/%(kikkachmmax) \_l[240]\q[◇礼物,Ongiftbox]","bold,color=%(ColorIdx(5))") + ColorBar(5,130,kikkachm,kikkachmmax)
 	_txt += ColorText("\n\_l[0,-]体力：%(kikkastm)/%(kikkastmmax) \_l[240]\q[◇说明,OnRPGintro]","bold,color=%(ColorIdx(1))") + ColorBar(1,130,kikkastm,kikkastmmax)
 	_txt += ColorText("\n\_l[0,-]心情：%(kikkamood)/%(kikkamoodmax)","bold,color=%(ColorIdx(8))") + ColorBar(8,130,kikkamood,kikkamoodmax)
-	_能量=亲密度+依赖度+萌度+幸福度+腹黑度+0.0
+	_能量=TOREAL(亲密度+依赖度+萌度+幸福度+腹黑度)
 	_txt += '\n[half]'
 	_txt += ColorText("\n\_l[0,-]物理攻击：%(str0)	\_l[130,-]武器：%(weapon0)","bold,color=%(ColorIdx(3))")
 	_txt += ColorText("\n\_l[0,-]物理防御：%(def0)	\_l[130,-]防具（体）：%(armor0)","bold,color=%(ColorIdx(3))")
@@ -474,14 +475,6 @@ KikkaItemTalk{
 	'\0\s[26]\b[2]哇……\w9是我喜欢的香味呢……\w9',/
 	'\0\s[28]\b[2]好漂亮……\w9那个…\w9谢谢你……\w9',/
 	)[_tmp]
-}
-POP{
-	array=_argv[0]
-	_s=ARRAYSIZE(_argv[0])
-	for _i=0;_i<_s-1;_i++{
-		array=(_argv[0][_i],_array)
-	}
-	array
 }
 OnKikkaItem{
 	if TOINT(reference1) + money < 0 {

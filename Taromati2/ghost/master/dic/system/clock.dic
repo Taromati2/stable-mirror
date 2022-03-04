@@ -52,16 +52,20 @@ OnSecondChange{
 OnHourChange{
 }
 OnMinuteChange{
-	if RAND(20160)==0{
+	if UsualUserName.Time<=GETSECCOUNT{
 		if UsualUserName.InPush!=username
 			UsualUserName.InPush=username
-		else{ //连续一个月使用同一个用户名
+		else{//连续一个月使用同一个用户名
 			UsualUserName,=UsualUserName.InPush
 			ERASEVAR('UsualUserName.InPush')
-			if ARRAYSIZE(UsualUserName) > 960 //记录近80年内的常用用户名
+			if ARRAYSIZE(UsualUserName) > 960//记录近80年内的常用用户名
 				UsualUserName[TOINT(SQRT(1.0/RAND(990))*990-30)] = IARRAY//[1,960]，数值越低出现概率越大
 		}
+		UsualUserName.Time=GETSECCOUNT+1314871
 	}
+	--
+	if RAND(60)==0 || hitokoto==''
+		'\![execute,http-get,https://v1.hitokoto.cn/,encode=text,--nofile,--async=hitokoto]'//更新一言
 	--
 	elapsedtimetotal += 1//计算人格起动总时间/单位分
 	elapsedtime = elapsedtimetotal * 60
@@ -80,6 +84,12 @@ OnMinuteChange{
 	--
 	if InNotify
 		return
+	if SHIORI_FW.DebugMode && !SHIORI_FW.EmergencyMode{
+		if GETERRORLOG{
+			OnErrorLog
+			return
+		}
+	}
 	if mode == '0'{
 		if !specialmode{
 			_boottime = ghostuptime
@@ -167,9 +177,12 @@ ClassMonitor{
 	if _classrm{
 		if InNotify
 			OnPlayAlarm
-		_classrm
+		_classrm+'\n/
+		\q[◇稍后提醒,Cancel]\n/
+		\q[◇我知道了,OnClassMonitorTempClose]\n/
+		'
 		--
-		_trayballoon="\![set,trayballoon,--icon=info,--timeout=10,--title=课程提醒,--text=%(_classrm),--text=（点击气泡关闭提醒）]"
+		_trayballoon="\![set,trayballoon,--icon=info,--timeout=10,--title=课程提醒,--text=%(_classrm),--text=（点击气泡稍后提醒）]"
 		if InNotify
 			SHIORI_FW.MakeValueNotify(_trayballoon)
 		else
@@ -210,7 +223,7 @@ AlarmMonitor{
 OnBalloonClose{
 	if alarmstart && '闹钟提醒' _in_ reference0 {
 		alarmstart = 0
-		'\![sound,stop]'
+		OnAlarmEnd
 	}
 }
 OnTrayBalloonClick{
@@ -226,7 +239,7 @@ OnTrayBalloonClick{
 		agendastart = 0
 		eventtemp=NULL
 	}
-	elseif reference0 == '整点报时'{
+	elseif reference0 == '整点报时' {
 		if minute>=5 {
 			username
 			--
@@ -242,8 +255,17 @@ OnTrayBalloonClick{
 			'好的～'
 		}
 	}
+	elseif reference0 == '课程提醒' {
+		OnAlarmEnd
+		'嗯嗯～'
+		'好的～'
+	}
 	elseif SHIORI_FW.DebugMode{
 		"未注册的气泡标题“%(reference0)”被触发了"
+	}
+	else{
+		'嗯嗯～'
+		'好的～'
 	}
 }
 OnAlarmMenu{
@@ -287,7 +309,7 @@ AlarmMenu{
 	--
 	"闹钟铃声：\__q[OnSetAlarmFile]%(SPLITPATH.roughly(alarmfile)[1])\__q"
 	--
-	'\n[150]\q[◇返回上一层,OnOpenMenu]    \q[◇终了,OnAlarmEnd]'
+	'\n[150]\q[◇返回上一层,OnOpenMenu]    \q[◇终了,Cancel]'
 }
 OnSetAlarmFile{
 	'\![open,dialog,open,--id=alarmfile,--title=请选择音乐文件,--dir=__system_mymusic__,--filter=音乐文件(mid;wav;mp3;au;ogg;wma)|*.mid;*.wav;*.mp3;*.au;*.ogg;*.wma]'
@@ -304,7 +326,8 @@ OnPlayAlarm:void{
 	CALLSAORI('mciaudior', 'load',_argv[0])
 	CALLSAORI('mciaudior', 'play')
 }
-OnAlarmEnd{
+OnAlarmEnd:void{
+	CALLSAORI('mciaudior', 'stop')
 }
 OnAlarmSet{
 	alarmset[reference0] = reference1
@@ -343,9 +366,14 @@ Hourlychime{
 		_trayballoon
 }
 OnTrayBalloonTimeout{
-	"%(username)不理橘花呢？"
-	"%(username)？"
-	"%(username)在做别的事吗？"
+	if reference0 == '课程提醒' {
+		do_nothing
+	}
+	else {
+		"%(username)不理橘花呢？"
+		"%(username)？"
+		"%(username)在做别的事吗？"
+	}
 }
 OnPlayBell:void{
 	CALLSAORI('mciaudior', 'stop')
@@ -388,8 +416,8 @@ Hourlychime.Special{
 		when 1-4{
 			"%(hour)点了.%(username)"
 			--
-			"还不睡吗？"
-			"不睡吗.熬夜会变笨的喔？"
+			'还不睡吗？'
+			'不睡吗.熬夜会变笨的喔？'
 		}
 		when 5-6{
 			"%(hour)点了..要去看日出吗？"
@@ -417,7 +445,7 @@ Hourlychime.Special{
 			"%(hour)点了.."
 			"晚上%(hour12)点了呢.."
 			--
-			"接下來该做什么事呢？"
+			'接下來该做什么事呢？'
 			"%(username)在做什么呢？"
 			"这个时间%(username)应该都在电脑前吧？"
 		}
