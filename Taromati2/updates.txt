@@ -343,7 +343,7 @@ file,ghost/master/dic/aya/master/baseware.dicf38ecf1ce37a91875f9a1b0e7608058cs
 file,ghost/master/dic/aya/master/cmd.dicde539fd2aff5d4da9d018ff0bb939eccsize=59date=2021-12-24T15:52:16
 file,ghost/master/dic/aya/master/file.dic63b3692741e0029278d6cf297a8c68afsize=3550date=2022-01-03T08:51:53
 file,ghost/master/dic/aya/master/ghost.dicb692e47f15c5ad1d102c525c4f280baasize=834date=2021-12-24T15:52:16
-file,ghost/master/dic/aya/master/shiori.dic2a9c14b2b15aad179e2a44ab92496730size=48086date=2022-01-03T08:51:53
+file,ghost/master/dic/aya/master/shiori.dic672b44ba3e56d91817e0e6c04dc245basize=48164date=2022-01-03T08:51:53
 file,ghost/master/dic/aya/master/string.dicfd6775505a13a84e12604d9f2115f74fsize=2425date=2021-12-24T15:52:17
 file,ghost/master/dic/aya/master/sysex.dic444816ae5c20677d42a897d33f223251size=1208date=2022-01-03T08:51:53
 file,ghost/master/dic/aya/master/url.dic54a88b45e8b8d818b89e2283ab7f838fsize=156date=2022-01-03T08:51:53
@@ -385,7 +385,7 @@ file,ghost/master/dic/other/poem.dicc2b6944fdac2c8eba79808f5c64f4c6fsize=12590
 file,ghost/master/dic/other/story.dic54012ea7b84969d5861514012603307asize=66924date=2022-01-03T08:51:53
 file,ghost/master/dic/other/test.dic93e420f5bee65fa06614532ffb297a43size=21445date=2022-01-03T08:51:53
 file,ghost/master/dic/system/Calendar.dic0cde0119763e5b2baa8eb3cab41da2a1size=39853date=2022-01-03T08:51:53
-file,ghost/master/dic/system/Debug.dicc79f7d7e95d52cc5892b3004b60a6bbasize=19641date=2022-02-22T17:37:06
+file,ghost/master/dic/system/Debug.dicf9c20fc7eac313efebec770a851f7cd6size=19640date=2022-02-22T17:37:06
 file,ghost/master/dic/system/FileDrop.dicee2ebe5ec65dce02813b81a31752113asize=4811date=2022-01-03T08:51:53
 file,ghost/master/dic/system/MAGIC.ayc5d129d9db5a6c0bed7ceb3eb3af5a00fsize=993date=2022-01-03T08:51:53
 file,ghost/master/dic/system/MAGIC.dic617991bbb23a229dd827369574b5e042size=294date=2021-12-24T15:53:00
