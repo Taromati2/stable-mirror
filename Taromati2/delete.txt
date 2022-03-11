@@ -124,7 +124,6 @@ ghost/master/data/新版标准日本语初级.txt
 marchofphantasma/
 marchofphantasma.txt
 readme.txt
-install.txt
 descript.txt
 ghost/master/myai/
 ghost/master/mydata/
