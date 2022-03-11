@@ -1,5 +1,5 @@
 charset,UTF-8
-file,delete.txteb748f3a0e041913b4ac6eb7e0b5b8b1size=25252date=2022-01-06T23:14:01
+file,delete.txte05dd467a4acc93d90d8b8a9a44458e3size=25240date=2022-01-06T23:14:01
 file,ghost/master/data/Game/BoxGame/box.txt4eb7bc822cf0d1cd24d14daa6ce16387size=33614date=2021-03-21T14:33:27
 file,ghost/master/data/Game/BoxGame/boxpng.png11dba3badd0ebfcfd727e21b710e87edsize=3932date=2021-03-21T14:33:27
 file,ghost/master/data/Game/Gobang/Stone.wav60f1c8457a19624892f1a0d45ab47ab4size=74156date=2021-03-21T14:33:27
