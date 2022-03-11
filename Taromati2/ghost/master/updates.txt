@@ -455,7 +455,7 @@ file,ghost/master/saori/cpuusage.dll737d6b1a5be08b58d5c6f32601f41495size=30720
 file,ghost/master/saori/debeso.db.basef7652c70bed7f3d032f59bf2c5c98e00size=4596736date=2021-10-21T14:16:16
 file,ghost/master/saori/debeso.dll197986583a59d6080c133bbd2af259a6size=339968date=2021-08-12T16:49:56
 file,ghost/master/saori/drivecleaner.bat519e510452baadfdea247aebd782c213size=704date=2021-02-17T23:01:42
-file,ghost/master/saori/ghost_terminal.exe1364b3e3e2a5b9d82c7edd8b6863c9a7size=25088date=2022-01-19T10:18:42
+file,ghost/master/saori/ghost_terminal.exe2d2ce0699921b50df2e00feebae360ddsize=25600date=2022-01-19T10:18:42
 file,ghost/master/saori/gift_for_hacker.bat6dd52fe2fe51550c38d9d53edecbe40esize=156date=2021-02-17T23:01:42
 file,ghost/master/saori/gomi.dlla4d6441fe18e4c889e7bccbad7cd9e9csize=7680date=2021-03-21T14:33:28
 file,ghost/master/saori/ip.dll2a500b5e805d49f8eb4cc1bea479fedbsize=34304date=2021-07-03T23:50:40
@@ -466,7 +466,7 @@ file,ghost/master/saori/set_wall_paper.exec2a20ad3593959963c4d3ecfe4a1e646size
 file,ghost/master/saori/textcopy.dllb985beb7de58ae316ce03da9e260416asize=25600date=2021-03-21T14:33:28
 file,ghost/master/saori/tl.lock6cc375438fb76385e58c69193046dd19size=63date=2021-03-13T16:37:46
 file,ghost/master/saori/txtpaste.dlld26df18e46cf845ed073e26be17b3125size=25088date=2021-03-21T14:33:28
-file,ghost/master/shiori/aya.dll4c16864af7498d1821d7f71fa58954b2size=558592date=2022-02-24T09:24:28
+file,ghost/master/shiori/aya.dll8ac68743bb346f7593444cbb85ca1095size=558592date=2022-02-24T09:24:28
 file,ghost/master/shiori/aya.txt60e8c47a3dd03166c03a79039acad441size=24date=2021-07-12T20:07:04
 file,ghost/master/shiori/aya_base.txt97584fb87df65e11018cc4449a6f0cc7size=289date=2022-01-03T08:51:53
 file,ghost/master/shiori/aya_common.txt79d2b07e7b7c1de1ed6635973ada515csize=59date=2021-07-12T20:07:04
