@@ -1639,3 +1639,7 @@ point.centery,160
 point.kinoko.centerx,80
 point.kinoko.centery,10
 }
+surface19{
+}
+surface99{
+}
