@@ -1,5 +1,6 @@
 charset,UTF-8
-file,delete.txte05dd467a4acc93d90d8b8a9a44458e3size=25240date=2022-01-06T23:14:01
+file,delete.txt661c9a14f0f81fed623984818742a148size=155date=2022-01-06T23:14:01
+file,delete0.txt564c86c31a8a4208c6c30bfe7f8e00e6size=25253date=2012-12-21T00:00:00
 file,ghost/master/data/Game/BoxGame/box.txt4eb7bc822cf0d1cd24d14daa6ce16387size=33614date=2021-03-21T14:33:27
 file,ghost/master/data/Game/BoxGame/boxpng.png11dba3badd0ebfcfd727e21b710e87edsize=3932date=2021-03-21T14:33:27
 file,ghost/master/data/Game/Gobang/Stone.wav60f1c8457a19624892f1a0d45ab47ab4size=74156date=2021-03-21T14:33:27
@@ -401,7 +402,7 @@ file,ghost/master/dic/system/changeshell.dic6bd39454567cb17349dd1af79694da84si
 file,ghost/master/dic/system/clock.dic56ceb310a728bbba65a1c0f7de914211size=27518date=2022-02-19T12:16:42
 file,ghost/master/dic/system/database_edit.dic3aede4e7f5455c9333257617b21ab108size=20875date=2021-12-24T15:52:57
 file,ghost/master/dic/system/discord.dice21e2851d8a750cc91b14d565dac479csize=1802date=2022-01-03T08:51:53
-file,ghost/master/dic/system/event_response.dicd864756bcdcd598eed4f1d875e6cdd49size=34830date=2022-02-22T17:37:36
+file,ghost/master/dic/system/event_response.dicea202faab2a1313b8c884d1fe35012b3size=35303date=2022-02-22T17:37:36
 file,ghost/master/dic/system/hotkey.dic7134e1a7e9c695864c965bf010975459size=9080date=2022-02-23T17:25:48
 file,ghost/master/dic/system/internet.dic6e63ede0affb74dbd60db66041f1e224size=30127date=2022-01-03T08:51:53
 file,ghost/master/dic/system/lunar.dica4b3284e2c9c7a75ef8a051793aa4965size=7093date=2022-01-03T08:51:53
@@ -485,6 +486,6 @@ file,ghost/master/sound/se_05.wavf927ea3ea5fb4a93f4d821a6bf2c76desize=13428da
 file,ghost/master/sound/shot.wav5e250057d71288d6ee0c7352ca885c5csize=55926date=2021-02-17T23:01:42
 file,ghost/master/sound/tea.mp333dc524916fdceeb55459374eca427a9size=80296date=2021-07-17T21:51:07
 file,ghost/master/sound/tinkle.wavf115303b37f10d103980434f5662f405size=123650date=2021-02-17T23:01:42
-file,ghost/master/terms.txtd4a07a057c46326527cb2f0a143ae41bsize=2111date=2022-01-03T08:51:53
 file,ghost/master/thumbnail.pngec04fc0441f18bd5f5e14b7826ce2254size=9014date=2021-05-23T10:40:45
 file,install.txte2f789a753a12026f59362e5c6856f48size=76date=2012-12-21T00:00:00
+file,terms.txtd4a07a057c46326527cb2f0a143ae41bsize=2111date=2012-12-21T00:00:00
