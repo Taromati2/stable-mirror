@@ -1,6 +1,15 @@
 //by steve02081504
 OnAnchorSelect{
-	BUGNow("AnchorSelect\_q“%(REPLACE(reference0,'\','\\'))”\_q被触发了\w9\w9\n但是目前Taromati并不支持任何AnchorSelect")
+	if IsUrl(reference0)
+		OnUrlOpen(reference0)
+	else
+		BUGNow("AnchorSelect\_q“%(REPLACE(reference0,'\','\\'))”\_q被触发了\w9\w9\n但是目前Taromati并不支持任何除过url外的AnchorSelect")
+}
+IsUrl{
+	if RE_GREP(_argv[0],'^http(s)?://')
+		1
+	else
+		0
 }
 OnShioriMemoryError{
 	_stack=GETCALLSTACK
@@ -631,7 +640,7 @@ OnErrorLog{
 	if mode == '1'
 		"\1\s[%(specialmode != 'mealtime')10]"
 	--
-	_txt='\![set,autoscroll,disable]'
+	_txt='\![set,autoscroll,false]'
 	if mode == '1'
 		_txt+='\b[2]喏，\w9这些：'
 	else
