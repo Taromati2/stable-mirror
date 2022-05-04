@@ -1,7 +1,7 @@
 charset,UTF-8
 file,background.png249443448975a0b69fa6079724ec9d53size=46369date=2021-08-05T01:53:56
 file,descript.txt48124f6acc3182fcbfb80cf88a60ad00size=1197date=2021-03-02T19:29:16
-file,foreground.pngf2acd059a3759edaa06231e51a2ebb1asize=50579date=2021-08-05T01:16:12
+file,foreground.png56a0bb6ffd0973ca8d18392750a7e2afsize=50579date=2021-08-05T01:16:12
 file,install.txtbf2b27c3ad1302b3f727703b5750aa41size=104date=2021-03-02T19:29:16
 file,readme.txt0deee8189b82cc8a77d14ff098fe4e46size=375date=2022-03-02T00:06:18
 file,sidebar.png788a05f68f6029ce3f6f84c59e38ba6esize=4275date=2021-03-22T11:06:59
