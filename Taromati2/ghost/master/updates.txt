@@ -388,7 +388,7 @@ file,ghost/master/dic/other/test.dic93e420f5bee65fa06614532ffb297a43size=21445
 file,ghost/master/dic/system/Calendar.dic0cde0119763e5b2baa8eb3cab41da2a1size=39853date=2022-01-03T08:51:53
 file,ghost/master/dic/system/Debug.dic5aa150b27d2b7b49cc480c577ee82913size=19508date=2022-02-22T17:37:06
 file,ghost/master/dic/system/FileDrop.dicee2ebe5ec65dce02813b81a31752113asize=4811date=2022-01-03T08:51:53
-file,ghost/master/dic/system/MAGIC.aycaf1174539095bb6a87a2bea58991fd6bsize=1445date=2022-01-03T08:51:53
+file,ghost/master/dic/system/MAGIC.ayc684a7eed935b3a21749172fd653c6760size=1411date=2022-01-03T08:51:53
 file,ghost/master/dic/system/MAGIC.dic617991bbb23a229dd827369574b5e042size=294date=2021-12-24T15:53:00
 file,ghost/master/dic/system/SNTP.dic8c680e4d38f65caa4d893f4a5b14ec39size=3303date=2022-01-03T08:51:53
 file,ghost/master/dic/system/SQL.diccd7fc7d5eb73d63556b72db445b3ba93size=9486date=2022-01-03T08:51:53
