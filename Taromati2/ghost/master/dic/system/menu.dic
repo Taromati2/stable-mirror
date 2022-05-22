@@ -21,19 +21,17 @@ OpenMenu{
 	RunningReset
 	_submenu = 0
 	_submenuex=0
-	_message=''
 	if _argc > 0 {
 		_submenu = _argv[0]
 		_submenuex=_argv[1]
-		menu=_submenu
-		menuex=_submenuex
-		_message=hitokoto
 	}
 	else {
-		_message=OpenMenuTalk
+		temp=OpenMenuTalk
 	}
+	menu=_submenu
+	menuex=_submenuex
 	_sub = '◆,◇,◇,◇,◇,◆,◇,◇,◇,◇,◆,◇,◇,◇,◇,◆,◇,◇,◇,◇,◆'
-	'\![quicksession,true]\0'+_message+"\b[2]/
+	'\![quicksession,true]\0'+temp+"\b[2]/
 	\_l[0,22]\q[%(_sub[_submenu])常用功能,OnSubMenu,0,%(_submenuex)]/
 	\_l[68]\q[%(_sub[_submenu + 4])休闲,OnSubMenu,1,%(_submenuex)]/
 	\_l[112]\q[%(_sub[_submenu + 8])游戏,OnSubMenu,2,%(_submenuex)]/
@@ -50,8 +48,14 @@ OpenMenu{
 	}
 }
 OnSubMenu{
+	temp=RandomMenuMessage
 	click=NULL
 	OpenMenu(reference0,reference1)
+}
+RandomMenuMessage{
+	hitokoto
+	if weather.lastcity
+		SHIORI_FW.RemoveAllTags(Weather.Talks)
 }
 SubMenu{
 	_submenu = _argv[0]
@@ -69,7 +73,7 @@ SubMenu{
 			\q[◇天气预报,OnCheckWeather]	\_l[100,-]\q[◇日程提醒,OnAgenda]\n/
 			\q[◇IP查询,OnCheckIp]			\_l[100,-]\q[◇计算器,OnCalculator]\n/
 			\q[◇放大镜,OnMagnify]			\_l[100,-]\q[◇录音机,OnRecorder]\n/
-			\q[◇星座运势,OnAstrofate]		\_l[100,-]\q[◇橘花行情,OnKikkaStockMenu]\n/
+			\q[◇橘花行情,OnKikkaStockMenu]	\n/
 			'
 		}
 		when 1 {
@@ -283,7 +287,6 @@ RunningReset{
 	running=''
 	option=NULL
 	read=-1
-	temp=NULL
 	//Speech_Recognition=NULL
 }
 IgnoreChoiceTimeout{
@@ -315,7 +318,7 @@ OnChoiceTimeout{
 	elseif playingplane
 		OnShowBackground
 	elseif infomode
-		OpenMenu(menu,menuex)
+		AntiFlicker(OpenMenu(menu,menuex))
 	elseif mode == '1'
 		"\1\s[%(specialmode != 'mealtime')10]…啧。"
 	else{
@@ -636,8 +639,8 @@ Select.Option{
 	--
 	'\n■提醒设定■\n'
 	--
-	TheDefaultValue('autoweather',1)
-	"天气提醒		\_l[120]\q[%(_t[1 - TOINT(autoweather)]) ON,Onusage,autoweather,0]  ・  \_l[180]\q[%(_t[TOINT(autoweather)]) OFF,Onusage,autoweather,1]\n"
+	TheDefaultValue('setting.WeatherReminder',1)
+	"天气提醒		\_l[120]\q[%(_t[1 - TOINT(setting.WeatherReminder)]) ON,Onusage,setting.WeatherReminder,1]  ・  \_l[180]\q[%(_t[TOINT(setting.WeatherReminder)]) OFF,Onusage,setting.WeatherReminder,0]\n"
 	--
 	TheDefaultValue('rmswitch',1)
 	"节日提醒		\_l[120]\q[%(_t[1 - TOINT(rmswitch)]) ON,Onusage,rmswitch,0]  ・  \_l[180]\q[%(_t[TOINT(rmswitch)]) OFF,Onusage,rmswitch,1]\n"
@@ -646,9 +649,6 @@ Select.Option{
 	"好友生日提醒	\_l[120]\q[%(_t[1 - TOINT(friendbirthdaymode)]) ON,Onusage,friendbirthdaymode,0]  ・  \_l[180]\q[%(_t[TOINT(friendbirthdaymode)]) OFF,Onusage,friendbirthdaymode,1]\n"
 	--
 	"\q[◇任务繁忙提醒,OnMemoryBusySet]	\_l[120]\q[%(_t[1 - TOINT(memorybusyrm[0])]) ON,Onusage,memorybusyrm[0\],0]  ・  \_l[180]\q[%(_t[TOINT(memorybusyrm[0])]) OFF,Onusage,memorybusyrm[0\],1]\n"
-	--
-	TheDefaultValue('autoastro',1)
-	"星座运势提醒	\_l[120]\q[%(_t[1 - TOINT(autoastro)]) ON,Onusage,autoastro,0]  ・  \q[%(_t[TOINT(autoastro)]) OFF,Onusage,autoastro,1]\n"
 	--
 	TheDefaultValue('autobackupclosealert',1)
 	"自动备份关闭时提醒	\_l[120]\q[%(_t[TOINT(autobackupclosealert)]) ON,Onusage,autobackupclosealert,1]  ・  \_l[180]\q[%(_t[1 - TOINT(autobackupclosealert)]) OFF,Onusage,autobackupclosealert,0]\n"
@@ -715,8 +715,7 @@ Select.Option{
 	"\q[◇互动对话,OnAutoComm]		\_l[120]\q[%(_t[TOINT(communicate[0])]) ON,Onusage,communicate[0\],1]    \_l[180]\q[%(_t[1-TOINT(communicate[0])]) OFF,Onusage,communicate[0\],0]\n"
 	--
 	'\n[half]'
-	if !ISVAR('voice.rate')
-		voice.rate=3
+	TheDefaultValue('voice.rate',3)
 	--
 	'\n\q[◇返回上一层,OnOpenMenu,4]\n/
 	\q[◇终了,OptionEnd]'
@@ -1018,8 +1017,7 @@ Select.shortcutkey{
 	--
 	'/
 	F12	\_l[23]截屏功能\n/
-	W	\_l[23]天气预报（小窗口）\n/
-	A	\_l[23]星座运势（小窗口）\n/
+	W	\_l[23]天气预报\n/
 	M	\_l[23]打开菜单\n/
 	'
 }
