@@ -403,7 +403,7 @@ file,ghost/master/dic/system/clock.dic476b36e2740de760b32412a3b519cfb7size=275
 file,ghost/master/dic/system/database_edit.dic6e830f3e8037f5ddac6ece24580e2c5esize=20847date=2021-12-24T15:52:57
 file,ghost/master/dic/system/discord.dicc85f2278fdd83a2d02b7cd9cc16b88fcsize=1800date=2022-01-03T08:51:53
 file,ghost/master/dic/system/event_response.dic8f7b628a3de0ad4fcc68605346b7d97fsize=35612date=2022-02-22T17:37:36
-file,ghost/master/dic/system/hotkey.dic252aaca7fe7139cb762039c1888d61fcsize=9026date=2022-02-23T17:25:48
+file,ghost/master/dic/system/hotkey.dic96ca3864197c1312c500f0041daf105dsize=9076date=2022-02-23T17:25:48
 file,ghost/master/dic/system/internet.dic2426500021d2b98d2faa2b2d0bd04376size=12126date=2022-01-03T08:51:53
 file,ghost/master/dic/system/lunar.dica4b3284e2c9c7a75ef8a051793aa4965size=7093date=2022-01-03T08:51:53
 file,ghost/master/dic/system/menu.dic002462c62aab6c335516889d44201cd5size=91303date=2022-02-23T17:24:23
