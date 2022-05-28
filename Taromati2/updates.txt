@@ -370,7 +370,7 @@ file,ghost/master/dic/games/puzzle.dic6dd5ca94f7c8e10573ee3d43819bad05size=469
 file,ghost/master/dic/games/rpggame.dicd0b4b672ffcd7459cb343ee7acb0976bsize=137398date=2022-01-03T08:51:53
 file,ghost/master/dic/games/tetrisgame.dic5cd3935e22e021fc0abfecb586f506f7size=11175date=2022-02-23T17:26:25
 file,ghost/master/dic/games/uno.dicb1c57e037f0da9bd5d1a3c70a293a05asize=26135date=2021-12-24T15:52:39
-file,ghost/master/dic/nurturance/nurturance.dicb4b91f0f8268dc1a197aac2db3cece2fsize=27140date=2022-01-03T08:51:53
+file,ghost/master/dic/nurturance/nurturance.dic83b3a790b951042c4cbeb4b331a6fa45size=27228date=2022-01-03T08:51:53
 file,ghost/master/dic/other/Miniuse.dic154fd9c7565c82dcf3d9728649621896size=96657date=2022-01-13T01:50:53
 file,ghost/master/dic/other/Other.dic5151eee1f8b6d793ddedd9ea2631b1aasize=76013date=2022-02-22T17:33:11
 file,ghost/master/dic/other/Tarro.dice70846109858ef3b4fecd784b903b51dsize=25419date=2021-12-24T15:52:50
@@ -386,7 +386,7 @@ file,ghost/master/dic/other/poem.dicffd1b758b1a356fbe6a40bc6b5a917cbsize=12586
 file,ghost/master/dic/other/story.dic9cea4204749f3587c4bd28a2298e6f65size=66966date=2022-01-03T08:51:53
 file,ghost/master/dic/other/test.dic93e420f5bee65fa06614532ffb297a43size=21445date=2022-01-03T08:51:53
 file,ghost/master/dic/system/Calendar.dica117b429336d7bbbdaf9e9ba53c01b55size=39864date=2022-01-03T08:51:53
-file,ghost/master/dic/system/Debug.dicc91390770659572cb09b7b31d32520afsize=19508date=2022-02-22T17:37:06
+file,ghost/master/dic/system/Debug.dic0679c5d794848680aeb5aaab3e7f1213size=19507date=2022-02-22T17:37:06
 file,ghost/master/dic/system/FileDrop.dicee2ebe5ec65dce02813b81a31752113asize=4811date=2022-01-03T08:51:53
 file,ghost/master/dic/system/MAGIC.ayc684a7eed935b3a21749172fd653c6760size=1411date=2022-01-03T08:51:53
 file,ghost/master/dic/system/MAGIC.dic617991bbb23a229dd827369574b5e042size=294date=2021-12-24T15:53:00
