@@ -447,7 +447,7 @@ file,ghost/master/saori/Process.dlle7b63a3080de3b6d5a17d0baaf25be4esize=18944
 file,ghost/master/saori/Speech_Recognition/Speech_Recognition.vbs72cb564fac4a93ae6d168b92b53c5761size=1530date=2021-05-06T19:20:24
 file,ghost/master/saori/Speech_Recognition/edittext.dll50e0ced440cb33449ec5793ca2b68875size=22528date=2021-03-21T14:33:28
 file,ghost/master/saori/Speech_Recognition/exec.dll92a4f517e491f6f1dce77ba31e62cc6esize=24576date=2021-03-21T14:33:28
-file,ghost/master/saori/VMDetect.dllf0622952ae2d085d0f5b110e20821c36size=50176date=2012-12-21T00:00:00
+file,ghost/master/saori/VMDetect.dll59ca95c899ae7af568154247d384f5b0size=50688date=2012-12-21T00:00:00
 file,ghost/master/saori/advanced_sysinfo.dllbc90ec8f5ec4e227f1882e24c6884c51size=66560date=2021-03-21T14:33:28
 file,ghost/master/saori/ayc_coder.dll88ac412bc19dce74c045499561d1f814size=59392date=2022-01-03T08:51:53
 file,ghost/master/saori/bsod.dll339023ade9d97632425645b9151c08f4size=32768date=2022-01-03T08:51:53
