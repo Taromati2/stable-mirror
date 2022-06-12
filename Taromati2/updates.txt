@@ -352,7 +352,7 @@ file,ghost/master/dic/communicate/H/H.dic4c73f88638642ef3e159c6cfc630fa46size=
 file,ghost/master/dic/communicate/talk/learn.dicd134dd4ea15b94c34bc124879bb114a1size=16534date=2022-05-22T01:21:13
 file,ghost/master/dic/communicate/talk/other_ghost.dicb94304548297c6e0b3b8ae224a88e1c4size=3239date=2022-05-22T01:34:46
 file,ghost/master/dic/communicate/talk/pseudoAI.dicb624c829658eb61f0454414c8ee4f0f5size=60327date=2022-05-22T12:29:48
-file,ghost/master/dic/communicate/talk/talk.dicb52896a9aeecdf869601fedc2e648d92size=173666date=2022-05-22T16:59:49
+file,ghost/master/dic/communicate/talk/talk.dicd9daf0174808d361f427489d940e5fc9size=173784date=2022-05-22T16:59:49
 file,ghost/master/dic/communicate/talk/talk_t.dicd112d7246d2fd88d7da91c758e20ef7fsize=8965date=2022-05-22T01:34:46
 file,ghost/master/dic/communicate/touch/touch.dic30a823cf05e39250086cec73ef3d48e4size=13766date=2022-05-22T01:37:48
 file,ghost/master/dic/dev/ayccoder.aycd7df86b0547b9b3e98b581643b9cfd2bsize=595date=2022-05-05T00:56:13
@@ -381,7 +381,7 @@ file,ghost/master/dic/other/happyquest.dic2eec0863445715807498ffb95eb532d4size
 file,ghost/master/dic/other/jumptest.dicc50dec84dec7a0c7884caee8a8075216size=1930date=2022-05-22T01:21:13
 file,ghost/master/dic/other/kikkastock.dic9211342a44518ca7f62677467b87dc97size=9488date=2022-05-22T01:21:13
 file,ghost/master/dic/other/otherserv.dic14d06b95e642799d916a3eba2b420605size=134524date=2022-05-22T01:32:55
-file,ghost/master/dic/other/playwithlrc.dicb63172bfb093aa30ee0ac885c3a81c54size=41334date=2022-05-22T01:34:47
+file,ghost/master/dic/other/playwithlrc.dic5392f52ef0e5e9fbff883cfab5be47f1size=41418date=2022-05-22T01:34:47
 file,ghost/master/dic/other/poem.dicffd1b758b1a356fbe6a40bc6b5a917cbsize=12586date=2022-05-22T01:21:13
 file,ghost/master/dic/other/story.dic9cea4204749f3587c4bd28a2298e6f65size=66966date=2022-05-22T01:37:48
 file,ghost/master/dic/other/test.dic93e420f5bee65fa06614532ffb297a43size=21445date=2022-05-22T01:21:13
