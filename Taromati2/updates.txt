@@ -330,7 +330,7 @@ file,ghost/master/data/weather/Yin.png69817e1105e92832041f3644741d3be0size=735
 file,ghost/master/data/weather/ZhongXue.png7bf25e51f7e88b30da92215221c787c9size=1214date=2022-05-05T01:12:15
 file,ghost/master/data/weather/ZhongYu.png9a3f8e927f57d8973cd928fbdc31c0adsize=943date=2022-05-05T01:12:15
 file,ghost/master/descript.txtfa596499422ef4110e24d2a8336d0b83size=615date=2022-05-05T01:12:15
-file,ghost/master/dic/_loading_order.txt365d87523f53b6094161fb8010b8289fsize=142date=2022-05-22T01:21:13
+file,ghost/master/dic/_loading_order.txt52a49be1bd5d20a27763908fee8d4e8asize=120date=2022-05-22T01:21:13
 file,ghost/master/dic/aya/_loading_order.txt95e3fdd073b158a7479fca3eb50182basize=28date=2022-05-22T01:21:13
 file,ghost/master/dic/aya/base/QuickStart.dicf7a7a5c95bff70284ec5183c29ef3d67size=139date=2022-05-22T01:21:13
 file,ghost/master/dic/aya/base/compatible.dic8676202368501602590037f39f0840cfsize=3668date=2022-05-22T01:27:02
@@ -381,7 +381,7 @@ file,ghost/master/dic/other/happyquest.dic2eec0863445715807498ffb95eb532d4size
 file,ghost/master/dic/other/jumptest.dicc50dec84dec7a0c7884caee8a8075216size=1930date=2022-05-22T01:21:13
 file,ghost/master/dic/other/kikkastock.dic9211342a44518ca7f62677467b87dc97size=9488date=2022-05-22T01:21:13
 file,ghost/master/dic/other/otherserv.dic14d06b95e642799d916a3eba2b420605size=134524date=2022-05-22T01:32:55
-file,ghost/master/dic/other/playwithlrc.dic5392f52ef0e5e9fbff883cfab5be47f1size=41418date=2022-05-22T01:34:47
+file,ghost/master/dic/other/playwithlrc.dic43ca488fb3217839c2d29ecfa261204fsize=41379date=2022-05-22T01:34:47
 file,ghost/master/dic/other/poem.dicffd1b758b1a356fbe6a40bc6b5a917cbsize=12586date=2022-05-22T01:21:13
 file,ghost/master/dic/other/story.dic9cea4204749f3587c4bd28a2298e6f65size=66966date=2022-05-22T01:37:48
 file,ghost/master/dic/other/test.dic93e420f5bee65fa06614532ffb297a43size=21445date=2022-05-22T01:21:13
@@ -468,11 +468,11 @@ file,ghost/master/saori/set_wall_paper.exec2a20ad3593959963c4d3ecfe4a1e646size
 file,ghost/master/saori/textcopy.dllb985beb7de58ae316ce03da9e260416asize=25600date=2022-05-05T00:56:13
 file,ghost/master/saori/tl.lock6cc375438fb76385e58c69193046dd19size=63date=2022-05-05T00:56:13
 file,ghost/master/saori/txtpaste.dlld26df18e46cf845ed073e26be17b3125size=25088date=2022-05-05T00:56:13
-file,ghost/master/shiori/aya.dll67e5eb18d38b2373fb67eca289eccb85size=586240date=2022-06-03T21:31:48
+file,ghost/master/shiori/aya.dll1360846ed3da3e75ef287829d9d93520size=600576date=2022-06-03T21:31:48
 file,ghost/master/shiori/aya.txt60e8c47a3dd03166c03a79039acad441size=24date=2022-05-05T00:56:13
 file,ghost/master/shiori/aya_base.txt97584fb87df65e11018cc4449a6f0cc7size=289date=2022-05-05T00:56:13
-file,ghost/master/shiori/aya_common.txt79d2b07e7b7c1de1ed6635973ada515csize=59date=2022-05-05T00:56:13
-file,ghost/master/shiori/aya_emerg.txt924b0c9b0ea56b0c00e029fded29f6a1size=82date=2022-05-05T00:56:13
+file,ghost/master/shiori/aya_common.txtb81fb67bb2aa395aed114de9320dc6f1size=37date=2022-05-05T00:56:13
+file,ghost/master/shiori/aya_emerg.txt740d5aa08e35b078011db5aa2915823esize=60date=2022-05-05T00:56:13
 file,ghost/master/shiori/simplified-chinese.txtf2bfaeb9d9d4f2cf764c71fbbeff3ca2size=6724date=2022-05-05T00:56:13
 file,ghost/master/sound/Electricsaw.wava71b52b8064834aecb0becc6d294bdfasize=1695788date=2022-05-05T00:56:13
 file,ghost/master/sound/Gun.wav00a0849f7b9b9315f5da82c942c288fbsize=566562date=2022-05-05T00:56:13
