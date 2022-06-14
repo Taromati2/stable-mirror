@@ -381,7 +381,7 @@ file,ghost/master/dic/other/happyquest.dic2eec0863445715807498ffb95eb532d4size
 file,ghost/master/dic/other/jumptest.dicc50dec84dec7a0c7884caee8a8075216size=1930date=2022-05-22T01:21:13
 file,ghost/master/dic/other/kikkastock.dic9211342a44518ca7f62677467b87dc97size=9488date=2022-05-22T01:21:13
 file,ghost/master/dic/other/otherserv.dic14d06b95e642799d916a3eba2b420605size=134524date=2022-05-22T01:32:55
-file,ghost/master/dic/other/playwithlrc.dic43ca488fb3217839c2d29ecfa261204fsize=41379date=2022-05-22T01:34:47
+file,ghost/master/dic/other/playwithlrc.dicb8dbdef966ecb11cdee333f06d64d12esize=41445date=2022-05-22T01:34:47
 file,ghost/master/dic/other/poem.dicffd1b758b1a356fbe6a40bc6b5a917cbsize=12586date=2022-05-22T01:21:13
 file,ghost/master/dic/other/story.dic9cea4204749f3587c4bd28a2298e6f65size=66966date=2022-05-22T01:37:48
 file,ghost/master/dic/other/test.dic93e420f5bee65fa06614532ffb297a43size=21445date=2022-05-22T01:21:13
@@ -468,7 +468,7 @@ file,ghost/master/saori/set_wall_paper.exec2a20ad3593959963c4d3ecfe4a1e646size
 file,ghost/master/saori/textcopy.dllb985beb7de58ae316ce03da9e260416asize=25600date=2022-05-05T00:56:13
 file,ghost/master/saori/tl.lock6cc375438fb76385e58c69193046dd19size=63date=2022-05-05T00:56:13
 file,ghost/master/saori/txtpaste.dlld26df18e46cf845ed073e26be17b3125size=25088date=2022-05-05T00:56:13
-file,ghost/master/shiori/aya.dll1360846ed3da3e75ef287829d9d93520size=600576date=2022-06-03T21:31:48
+file,ghost/master/shiori/aya.dll3b2e7fa18494c2effedbbc895a7228besize=600576date=2022-06-03T21:31:48
 file,ghost/master/shiori/aya.txt60e8c47a3dd03166c03a79039acad441size=24date=2022-05-05T00:56:13
 file,ghost/master/shiori/aya_base.txtd8f7b77993ac56cf17e3e9018a4eda3dsize=284date=2022-05-05T00:56:13
 file,ghost/master/shiori/aya_common.txtb81fb67bb2aa395aed114de9320dc6f1size=37date=2022-05-05T00:56:13
