@@ -344,7 +344,7 @@ file,ghost/master/dic/aya/master/baseware.dicf38ecf1ce37a91875f9a1b0e7608058cs
 file,ghost/master/dic/aya/master/cmd.dicde539fd2aff5d4da9d018ff0bb939eccsize=59date=2022-05-22T01:21:13
 file,ghost/master/dic/aya/master/file.dic1a26894bebb4afea74bdcf9e024ab650size=3633date=2022-05-22T01:21:13
 file,ghost/master/dic/aya/master/ghost.dicb692e47f15c5ad1d102c525c4f280baasize=834date=2022-05-22T01:21:13
-file,ghost/master/dic/aya/master/shiori.dic6a7028e3fb2f1c24c7579a4e5fd823besize=48344date=2022-05-30T22:04:00
+file,ghost/master/dic/aya/master/shiori.dicfd21421e6f78926c10df8f71ec5fd8d1size=48276date=2022-05-30T22:04:00
 file,ghost/master/dic/aya/master/string.dic94b78188422d9d86352f0361a083ff95size=2425date=2022-05-22T01:34:46
 file,ghost/master/dic/aya/master/sysex.dicd5823fc8c3d79651eafc584468938ea0size=1229date=2022-06-04T22:57:16
 file,ghost/master/dic/aya/master/url.dic54a88b45e8b8d818b89e2283ab7f838fsize=156date=2022-05-22T01:21:13
@@ -393,7 +393,7 @@ file,ghost/master/dic/system/MAGIC.dic617991bbb23a229dd827369574b5e042size=294
 file,ghost/master/dic/system/SNTP.dic8c680e4d38f65caa4d893f4a5b14ec39size=3303date=2022-05-22T01:21:13
 file,ghost/master/dic/system/SQL.dic71070341b632bed1634140e5d9ade99asize=9486date=2022-05-22T01:34:46
 file,ghost/master/dic/system/StateGraph.dice3f1ae25ede3df745a94c3512e269500size=1822date=2022-05-22T01:21:13
-file,ghost/master/dic/system/VersionUpgrade.dica97cc3dc413472f836bf6e951a52306bsize=4326date=2022-05-30T22:06:07
+file,ghost/master/dic/system/VersionUpgrade.dicf26c8f2eb54756c7d1a343f4d17109aesize=4359date=2022-05-30T22:06:07
 file,ghost/master/dic/system/anti_cheat.dic4244f1442f958cb82af65751724397c0size=4166date=2022-05-22T01:21:13
 file,ghost/master/dic/system/base.dicbd0c5d0740cd648a125e155dbd6b7a60size=1954date=2022-05-22T15:32:56
 file,ghost/master/dic/system/bootend.dicf744215beb292a5e1a64be9ce112cd39size=60261date=2022-06-05T20:35:04
@@ -468,7 +468,7 @@ file,ghost/master/saori/set_wall_paper.exec2a20ad3593959963c4d3ecfe4a1e646size
 file,ghost/master/saori/textcopy.dllb985beb7de58ae316ce03da9e260416asize=25600date=2022-05-05T00:56:13
 file,ghost/master/saori/tl.lock6cc375438fb76385e58c69193046dd19size=63date=2022-05-05T00:56:13
 file,ghost/master/saori/txtpaste.dlld26df18e46cf845ed073e26be17b3125size=25088date=2022-05-05T00:56:13
-file,ghost/master/shiori/aya.dll83be5a199ac125dd25c1f17ac3b14f82size=2589184date=2022-06-03T21:31:48
+file,ghost/master/shiori/aya.dllb60ee4218d56d08c4bf1d7fe62347e98size=609280date=2022-06-03T21:31:48
 file,ghost/master/shiori/aya.txt60e8c47a3dd03166c03a79039acad441size=24date=2022-05-05T00:56:13
 file,ghost/master/shiori/aya_base.txtd8f7b77993ac56cf17e3e9018a4eda3dsize=284date=2022-05-05T00:56:13
 file,ghost/master/shiori/aya_common.txtb81fb67bb2aa395aed114de9320dc6f1size=37date=2022-05-05T00:56:13
