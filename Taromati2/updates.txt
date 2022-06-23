@@ -344,7 +344,7 @@ file,ghost/master/dic/aya/master/baseware.dicf38ecf1ce37a91875f9a1b0e7608058cs
 file,ghost/master/dic/aya/master/cmd.dicde539fd2aff5d4da9d018ff0bb939eccsize=59date=2022-05-22T01:21:13
 file,ghost/master/dic/aya/master/file.dic1a26894bebb4afea74bdcf9e024ab650size=3633date=2022-05-22T01:21:13
 file,ghost/master/dic/aya/master/ghost.dicb692e47f15c5ad1d102c525c4f280baasize=834date=2022-05-22T01:21:13
-file,ghost/master/dic/aya/master/shiori.dic71c46c37fe55b0709ce7e6893521d8e8size=48303date=2022-05-30T22:04:00
+file,ghost/master/dic/aya/master/shiori.dic04476b245f7cbc5be440e7bb212474ffsize=48197date=2022-05-30T22:04:00
 file,ghost/master/dic/aya/master/string.dic94b78188422d9d86352f0361a083ff95size=2425date=2022-05-22T01:34:46
 file,ghost/master/dic/aya/master/sysex.dicd5823fc8c3d79651eafc584468938ea0size=1229date=2022-06-04T22:57:16
 file,ghost/master/dic/aya/master/url.dic54a88b45e8b8d818b89e2283ab7f838fsize=156date=2022-05-22T01:21:13
@@ -367,7 +367,7 @@ file,ghost/master/dic/games/interactive.dicc32b77b2f7d65c25a37d87f67f7bb037siz
 file,ghost/master/dic/games/linkwnd.dic749632caaa89c247d512cef8dbe67b83size=65219date=2022-05-22T01:21:13
 file,ghost/master/dic/games/other.dicf367134898c5f08c9db39b140172fc2dsize=75424date=2022-05-22T01:37:48
 file,ghost/master/dic/games/puzzle.dic6dd5ca94f7c8e10573ee3d43819bad05size=4691date=2022-05-22T01:34:46
-file,ghost/master/dic/games/rpggame.dicd0b4b672ffcd7459cb343ee7acb0976bsize=137398date=2022-05-23T13:26:15
+file,ghost/master/dic/games/rpggame.dic3a476d46b28c8e0fbfaba986ef913e62size=137398date=2022-05-23T13:26:15
 file,ghost/master/dic/games/tetrisgame.dic5cd3935e22e021fc0abfecb586f506f7size=11175date=2022-05-22T01:21:13
 file,ghost/master/dic/games/uno.dicb1c57e037f0da9bd5d1a3c70a293a05asize=26135date=2022-05-22T01:37:48
 file,ghost/master/dic/nurturance/nurturance.dicf2e791ab2218e49e3a1dee30d4346d86size=27652date=2022-05-28T10:55:11
