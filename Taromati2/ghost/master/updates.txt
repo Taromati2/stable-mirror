@@ -406,7 +406,7 @@ file,ghost/master/dic/system/event_response.dic152bffe90f44dce3b1884c3c9f2a635f
 file,ghost/master/dic/system/hotkey.dic96ca3864197c1312c500f0041daf105dsize=9076date=2022-05-28T17:53:03
 file,ghost/master/dic/system/internet.dic33f26b9284c4b08f896eba8a4bac0be8size=12080date=2022-06-09T11:48:26
 file,ghost/master/dic/system/lunar.dica4b3284e2c9c7a75ef8a051793aa4965size=7093date=2022-05-22T01:21:13
-file,ghost/master/dic/system/menu.dic3890c856500e20dfd629e34696ea9399size=91326date=2022-06-04T22:57:39
+file,ghost/master/dic/system/menu.dicc0b499c1a8d39ad53a589a56f1cb3d7asize=91169date=2022-06-04T22:57:39
 file,ghost/master/dic/system/mirror.dic5b679637ab4248d97be0dcd650ec8927size=1578date=2022-05-22T01:21:13
 file,ghost/master/dic/system/password.dic13e008d7c433df48a76cb3057bad3649size=2638date=2022-05-22T01:21:13
 file,ghost/master/dic/system/ukagaka_link.dic18c9f8102fc92a825beb01e921042cdcsize=903date=2022-05-22T01:21:13
@@ -463,8 +463,6 @@ file,ghost/master/saori/gomi.dlla4d6441fe18e4c889e7bccbad7cd9e9csize=7680date
 file,ghost/master/saori/ip.dll2a500b5e805d49f8eb4cc1bea479fedbsize=34304date=2022-05-05T00:56:13
 file,ghost/master/saori/lunar.dll02124e9ea308deb950e55619794546cbsize=26624date=2022-05-05T00:56:13
 file,ghost/master/saori/mciaudior.dllebe0f19e401c866fc419b3c2a729a0bfsize=90624date=2022-05-05T00:56:13
-file,ghost/master/saori/proxy.dll822a087a74e640103678fa5580905c29size=32256date=2022-05-05T00:56:13
-file,ghost/master/saori/set_wall_paper.exec2a20ad3593959963c4d3ecfe4a1e646size=156672date=2022-05-05T00:56:13
 file,ghost/master/saori/textcopy.dllb985beb7de58ae316ce03da9e260416asize=25600date=2022-05-05T00:56:13
 file,ghost/master/saori/tl.lock6cc375438fb76385e58c69193046dd19size=63date=2022-05-05T00:56:13
 file,ghost/master/saori/txtpaste.dlld26df18e46cf845ed073e26be17b3125size=25088date=2022-05-05T00:56:13
