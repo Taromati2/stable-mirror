@@ -386,7 +386,7 @@ file,ghost/master/dic/other/poem.dicffd1b758b1a356fbe6a40bc6b5a917cbsize=12586
 file,ghost/master/dic/other/story.dic9cea4204749f3587c4bd28a2298e6f65size=66966date=2022-05-22T01:37:48
 file,ghost/master/dic/other/test.dic93e420f5bee65fa06614532ffb297a43size=21445date=2022-05-22T01:21:13
 file,ghost/master/dic/system/Calendar.dica117b429336d7bbbdaf9e9ba53c01b55size=39864date=2022-05-22T01:25:00
-file,ghost/master/dic/system/Debug.dic9bd24fa10aae4c7e851b040f6f1cc102size=19598date=2022-06-03T21:44:58
+file,ghost/master/dic/system/Debug.dicf6dea90e4c1088a8cee0d8c6141dd044size=19822date=2022-06-03T21:44:58
 file,ghost/master/dic/system/FileDrop.dicee2ebe5ec65dce02813b81a31752113asize=4811date=2022-05-22T01:23:55
 file,ghost/master/dic/system/MAGIC.aycf947298c89c9dd7e174c5917ad3c8b39size=1522date=2022-05-10T10:45:37
 file,ghost/master/dic/system/MAGIC.dic617991bbb23a229dd827369574b5e042size=294date=2022-05-22T01:21:13
@@ -398,7 +398,7 @@ file,ghost/master/dic/system/anti_cheat.dic4244f1442f958cb82af65751724397c0siz
 file,ghost/master/dic/system/base.dicbd0c5d0740cd648a125e155dbd6b7a60size=1954date=2022-05-22T15:32:56
 file,ghost/master/dic/system/bootend.dicf744215beb292a5e1a64be9ce112cd39size=60261date=2022-06-05T20:35:04
 file,ghost/master/dic/system/change_part.dicbc60c6305fb994764be3027ec43633fdsize=568date=2022-05-22T01:21:13
-file,ghost/master/dic/system/changeshell.dicfa248c26df23425bff12f2a9595eae59size=15546date=2022-06-05T20:43:12
+file,ghost/master/dic/system/changeshell.dic7b09f906c81200b4f9f22567c8d4fa33size=15547date=2022-06-05T20:43:12
 file,ghost/master/dic/system/clock.dic476b36e2740de760b32412a3b519cfb7size=27530date=2022-05-22T17:18:10
 file,ghost/master/dic/system/database_edit.dic6e830f3e8037f5ddac6ece24580e2c5esize=20847date=2022-05-22T01:21:13
 file,ghost/master/dic/system/discord.dicc85f2278fdd83a2d02b7cd9cc16b88fcsize=1800date=2022-05-22T01:21:13
