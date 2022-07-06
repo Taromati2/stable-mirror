@@ -357,7 +357,7 @@ file,ghost/master/dic/communicate/talk/talk_t.dicd112d7246d2fd88d7da91c758e20ef
 file,ghost/master/dic/communicate/touch/touch.dic30a823cf05e39250086cec73ef3d48e4size=13766date=2022-05-22T01:37:48
 file,ghost/master/dic/dev/ayccoder.aycd7df86b0547b9b3e98b581643b9cfd2bsize=595date=2022-05-05T00:56:13
 file,ghost/master/dic/dev/dicforma.dicfc0876c6cfc131265cf98c7d80f4a38csize=8220date=2022-05-22T01:30:09
-file,ghost/master/dic/games/Gobang/Gobang.dicd27dee0a09132fafc9de849d09091448size=44492date=2022-05-22T01:21:13
+file,ghost/master/dic/games/Gobang/Gobang.dic830ce121cb5b7f6dff3221e7c4e8b6efsize=44491date=2022-05-22T01:21:13
 file,ghost/master/dic/games/Gobang/GobangData.dicdabd4d6991556b11465d06b14f93741dsize=33588date=2022-05-22T01:21:13
 file,ghost/master/dic/games/GoldenFlower.dic9eccace87d6241c68fb65d7fb57f9209size=22657date=2022-05-22T01:21:13
 file,ghost/master/dic/games/HuaRongDao.dicec1de9fc40607564473b4b8deed62f15size=16911date=2022-05-22T01:21:13
