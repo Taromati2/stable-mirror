@@ -2988,7 +2988,7 @@ IsChapterMenu{
 	_result=0
 	_txt=CUTSPACE(_txt)
 	_A=SUBSTR(_txt,0,3)
-	if RE_GREP(_txt,'[一二三四五六七八九十123456789]')&&!RE_GREP(_txt,'[\,\?，。？！!:“”]')&&(STRLEN(_txt)<25&&RE_GREP(_A,'[一二三四五六七八九十123456789]')||RE_GREP(_txt,'[章节部]')&&“第” _in_ _txt)||RE_GREP(TOLOWER(_txt),'chapter')
+	if RE_GREP(_txt,'[一二三四五六七八九十123456789]')&&!RE_GREP(_txt,'[\,\?，。？！!:“”]')&&(STRLEN(_txt)<25&&RE_GREP(_A,'[一二三四五六七八九十123456789]')||RE_GREP(_txt,'[章节部]')&&"第" _in_ _txt)||RE_GREP(TOLOWER(_txt),'chapter')
 		_result=1
 	_result
 }

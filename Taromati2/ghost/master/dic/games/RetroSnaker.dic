@@ -1,3 +1,8 @@
+#define		keyLeft		1
+#define		keyRight	2
+#define		keyUp		3
+#define		keyDown		4
+
 OnRetroSnaker{
 	if QuickStartVersion{
 		NeedUpdate
@@ -10,10 +15,6 @@ OnRetroSnaker{
 	Started = 1
 	GameOver=0
 	Paused=0
-	Left = 1
-	Right = 2
-	Up = 3
-	Down = 4
 	SDirect=Right
 	Score = 0
 	food.yes=1/*1表示需要出现新食物,0表示已经存在食物*/
@@ -55,12 +56,10 @@ RetroSnakerKey{
 	elseif reference0 == 'p'	{	Paused=TOINT(Paused+1)%2			}
 	if !GameOver && Started && !Paused{
 		//SDirect = 0
-		case reference0{
-			if reference0 =='left' && SDirect!=2		{	SDirect=Left	}
-			elseif reference0 =='right' && SDirect!=1	{	SDirect=Right	}
-			elseif reference0 =='up' && SDirect!=4		{	SDirect=Up		}
-			elseif reference0 =='down' && SDirect!=3	{	SDirect=Down	}
-		}
+		if reference0 =='left' && SDirect!=2		{	SDirect=keyLeft	}
+		elseif reference0 =='right' && SDirect!=1	{	SDirect=keyRight	}
+		elseif reference0 =='up' && SDirect!=4		{	SDirect=keyUp		}
+		elseif reference0 =='down' && SDirect!=3	{	SDirect=keyDown	}
 		if SDirect{
 			_txt+=RetroSnaker.Move(SDirect)
 			_txt+=CheckRetroSnakerStatus
@@ -126,17 +125,17 @@ RetroSnaker.Move{
 		x=RetroSnaker.x[0];y=RetroSnaker.y[0]
 	}
 	case SDirect{
-		if SDirect==Left
+		when keyLeft
 			x--
-		elseif SDirect==Right
+		when keyRight
 			x++
-		elseif SDirect==Up
+		when keyUp
 			y--
-		elseif SDirect==Down
+		when keyDown
 			y++
-		RetroSnaker.x[0] = x
-		RetroSnaker.y[0] = y
 	}
+	RetroSnaker.x[0] = x
+	RetroSnaker.y[0] = y
 	for _i=3;_i<RetroSnaker.node;_i++/*从蛇的第四节开始判断是否撞到自己了，因为蛇头为两节，第三节不可能拐过来*/{
 		if RetroSnaker.x[_i]==RetroSnaker.x[0]&&RetroSnaker.y[_i]==RetroSnaker.y[0]{
 			GameOver=1

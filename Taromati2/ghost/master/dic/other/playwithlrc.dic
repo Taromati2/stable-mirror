@@ -1459,8 +1459,8 @@ MusicLoadFolder{
 			MusicLoadFolder(_t)
 		}else{
 			case _fileext {
-				_t = _path +'/'+ _f
 				when '.mid', '.wav', '.mp3',  '.m4a', '.au', '.ogg', '.wma','.ape','.flac','.avi','.wmv','.rm','.rmvb','.mp4','.mkv','.flv','.mpg'{
+					_t = _path +'/'+ _f
 					_t = REPLACE(_t,'/','\')
 					_t = REPLACE(_t,'\\','\')
 					musiclist += _t+'*'

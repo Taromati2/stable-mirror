@@ -2116,20 +2116,18 @@ OnKikkaUvcBegin{
 	if ghostexcount > 0{
 		指定人格 = ghostexlist[RAND(ghostexcount)]
 	}
-	case 指定人格{
-		if 指定人格 != '' && ghostexcount == 1{
-			"准备和人格%(指定人格)进行战斗，接下来应该进行怎样的战斗？\n/
-			\q[◇猜拳大作战,OnInnerHandGameVSMode]\n/
-			\q[◇一对一单挑,OnInnerOneByOneBegin]\n/
-			\q[◇不用了,OnKikkaBattle]"
-		}
-		elseif ghostexcount>=2{
-			'当前人格数量大于3，是否进行人格大乱斗？\n/
-			\q[◇人格大乱斗,OnInner人格大乱斗模式]'
-		}
-		else{
-			'\0\s[0]没有呼叫出任何人格，无法进行战斗。'
-		}
+	if 指定人格 != '' && ghostexcount == 1{
+		"准备和人格%(指定人格)进行战斗，接下来应该进行怎样的战斗？\n/
+		\q[◇猜拳大作战,OnInnerHandGameVSMode]\n/
+		\q[◇一对一单挑,OnInnerOneByOneBegin]\n/
+		\q[◇不用了,OnKikkaBattle]"
+	}
+	elseif ghostexcount>=2{
+		'当前人格数量大于3，是否进行人格大乱斗？\n/
+		\q[◇人格大乱斗,OnInner人格大乱斗模式]'
+	}
+	else{
+		'\0\s[0]没有呼叫出任何人格，无法进行战斗。'
 	}
 }
 OnInnerHandGameVSMode{
