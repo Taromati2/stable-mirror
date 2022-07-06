@@ -966,7 +966,7 @@ wise{
 	elseif fight-defense>=0
 		k1=0.6
 	elseif fight-defense>-5
-		k1=0.5f
+		k1=0.5
 	elseif fight-defense>-8
 		k1=0.45
 	else
