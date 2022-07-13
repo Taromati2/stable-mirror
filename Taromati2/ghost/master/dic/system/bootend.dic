@@ -247,7 +247,6 @@ OnBoot{
 }
 OnBoot.aboutTime{
 	_phase = GetPhase
-	_laststart=0
 	_timeslot = GetTimeSlot
 	if reference0!='return'{
 		if AutoShellChange[0]
