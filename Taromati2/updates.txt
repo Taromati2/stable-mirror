@@ -329,7 +329,7 @@ file,ghost/master/data/weather/XiaoYu.png34c9e1fec47840a5ebdeab4839af6392size=
 file,ghost/master/data/weather/Yin.png69817e1105e92832041f3644741d3be0size=735date=2022-05-05T01:12:15
 file,ghost/master/data/weather/ZhongXue.png7bf25e51f7e88b30da92215221c787c9size=1214date=2022-05-05T01:12:15
 file,ghost/master/data/weather/ZhongYu.png9a3f8e927f57d8973cd928fbdc31c0adsize=943date=2022-05-05T01:12:15
-file,ghost/master/descript.txtfa596499422ef4110e24d2a8336d0b83size=615date=2022-05-05T01:12:15
+file,ghost/master/descript.txtf7cdcc1a254e149dfdf2d3ffcfb7cc21size=742date=2022-05-05T01:12:15
 file,ghost/master/dic/_loading_order.txta82a379333a7e7ae3ac263fea23e1639size=106date=2022-05-22T01:21:13
 file,ghost/master/dic/aya/_loading_order.txt95e3fdd073b158a7479fca3eb50182basize=28date=2022-05-22T01:21:13
 file,ghost/master/dic/aya/base/QuickStart.dicf7a7a5c95bff70284ec5183c29ef3d67size=139date=2022-05-22T01:21:13
@@ -414,6 +414,9 @@ file,ghost/master/dic/system/username.dic512c70a0fec12e704a9aec9b1f727c6fsize=
 file,ghost/master/img/AI_state.png03025fb265f08e664dabc74eccfd8e8dsize=50712date=2022-05-05T01:12:15
 file,ghost/master/img/curs/busy.anid59dfecc384e31f410475f14c33ee1fbsize=29118date=2022-05-05T01:12:15
 file,ghost/master/img/curs/common.ani54a78cfde95ab2e6f6c9e6b2be269dd2size=48474date=2022-05-05T01:12:15
+file,ghost/master/img/curs/hand.curca253e26fc34c0b28a65cc6586b8a52csize=4286date=2012-12-21T00:00:00
+file,ghost/master/img/curs/hand_grip.curf495214ab2d7a90297dee3661b501b0csize=4286date=2012-12-21T00:00:00
+file,ghost/master/img/curs/no_interaction.anifc899c1a2fdf8a68809b067d980636f0size=48474date=2012-12-21T00:00:00
 file,ghost/master/img/curs/text.ani817feb16204f5f073a1d4c819feb3703size=38796date=2022-05-05T01:12:15
 file,ghost/master/img/ico/kikka.ico0dd7ab873ae90cf9d7a9158b94c54930size=270398date=2022-05-05T01:12:15
 file,ghost/master/img/ico/kikka_eye_close.ico2e099fb8195ac57d25989920b7c4c5b1size=270398date=2022-05-05T01:12:15
