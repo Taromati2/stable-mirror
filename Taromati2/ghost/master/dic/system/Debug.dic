@@ -28,7 +28,7 @@ OnshioriLimit{
 	_file=_argv[1]
 	_linenum=_argv[2]
 	_errorinfo_for_copy=''
-	case _argv[0]{
+	case _type{
 		when 'call'
 			_type_txt='递归'
 		when 'loop'

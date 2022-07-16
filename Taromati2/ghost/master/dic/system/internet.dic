@@ -165,8 +165,8 @@ OnChangeCity{
 }
 OnChangeCityComplete{
 	if city != reference0 || !city
-		OnWeatherUpdate.force
-	city = reference0
+		city = reference0
+	OnWeatherUpdate.menu
 }
 OnWeatherUpdate.DosntNeedCheck{
 	if (GETSECCOUNT-weather.lasttime)<13{
