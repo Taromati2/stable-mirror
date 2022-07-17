@@ -1480,7 +1480,8 @@ Onkikkauseitem1{
 		else{
 			"不能对失去战斗能力斗和使用%(道具名称)\x"
 			--
-			Onbattleselect0;rerturn
+			Onbattleselect0
+			return
 		}
 	}
 	--

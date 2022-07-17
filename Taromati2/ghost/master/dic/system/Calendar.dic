@@ -287,6 +287,7 @@ OnAgenda{
 						_mode=1
 				}
 				else{
+					_te=GETSECCOUNT(_lunar[0],_lunar[1],_eventenddate[2],0,hour,minute,0)
 					if _lunar[0]>_eventbegindate[0]&&_lunar[1]==_eventbegindate[1]&&_lunar[2]==_eventbegindate[2]&&_tc<=_td
 						_te=GETSECCOUNT(_lunar[0],_eventenddate[1],_eventenddate[2],0,hour,minute,0)
 					if _tc>_ta&&(_tc>=_t&&_tc<=_t+_tb-_ta||_tc<=_te&&_tc>=_te-_tb+_ta)&&_tc<=_td

@@ -15,7 +15,7 @@ OnRetroSnaker{
 	Started = 1
 	GameOver=0
 	Paused=0
-	SDirect=Right
+	SDirect=keyRight
 	Score = 0
 	food.yes=1/*1表示需要出现新食物,0表示已经存在食物*/
 	RetroSnaker.life=0/*活着*/

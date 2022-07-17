@@ -792,7 +792,8 @@ ShutdownMonitor{
 	}
 	--
 	if shutdownstart > 0{
-		"即将自动关机，请%(username)保存资料"
+		_txt="即将自动关机，请%(username)保存资料"
+		_txt
 		--
 		_trayballoon="\![set,trayballoon,--icon=info,--timeout=10,--title=关机提醒,--text=现在是%(hour)点%(minute)分,--text=%(_txt)！,--text=（点击气泡关闭提醒）]"
 		if InNotify

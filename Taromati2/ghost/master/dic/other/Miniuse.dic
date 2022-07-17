@@ -1086,7 +1086,7 @@ evaluate{//表达式求值主函数
 	_theta=''
 	_i=0.0;_optr_i=0.0;_opnd_i=0.0;_j=0.0;_zpart=0.0;_k=0.0
 	_operand=0.0;_weight=0.0;_a=0.0;_b=0.0;_xpart=0.0
-	//_index=0
+	_index=0
 	_num=1.0
 	_expression=_exp
 	_expression+='\0'
@@ -3073,7 +3073,6 @@ OnKikkaKnowl{
 			_file = _path +'/'+ _file
 			_fileext = TOLOWER(SPLITPATH(_file)[3])
 			_txt+="\__q[OnKikkaKnowl.SelectFile,%(_file)]"+_n+'.'+_filename+_fileext+'\__q\n'
-			_m++
 		}
 		_n++
 	}

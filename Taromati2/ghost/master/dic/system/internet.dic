@@ -443,12 +443,6 @@ OnExecuteHTTPComplete{
 	elseif reference1 == 'weather' {
 		OnWeatherUpdate.Success
 	}
-	elseif reference1 == 'checkip' {
-		OnIpFound
-	}
-	elseif reference1 == 'googlecal' {
-		OnGoogleCalFound
-	}
 	elseif reference1 == 'tulingapi' {
 		OnTuLingFound
 	}

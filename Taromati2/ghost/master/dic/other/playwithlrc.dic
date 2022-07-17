@@ -123,7 +123,6 @@ ShowLrc{
 		}
 	}
 	_txt += '\n \n \n \n \n \n \n \n \n \n \n \n \n'+lrcset + ' \n \n'
-	_txt+=_tmp
 	for _i = 0; lrctime[_i] != ''; _i ++ {
 		_tmp = '\__w[' + (lrctime[_i] - _time) + ']'
 		if _time >= lrctime[_i] {
@@ -576,7 +575,7 @@ OnMusicListPageTxt{
 	_txt=''
 	_id=TOINT(musiclistfile[1])
 	music_listpage[_id]=music_listpage[_id]%(musicfile[0]/100+1)
-	_txt+="\_l[130]\q[%(music_listpage[_id]+1)/%(musicfile[0]/100+1),OnInputMusicPage]"
+	_txt+="\_l[130]\q[%(music_listpage[_id]+1)/%(musicfile[0]/100+1),OnInputMusicPage,%(_id)]"
 	if music_listpage[_id]==0
 		_txt+="\_l[170]\q[一>>,OnMusicListPage,%(music_listpage[_id]+1)]"
 	elseif music_listpage[_id]==book_dexnum-1
@@ -605,6 +604,7 @@ OnMusicListPageTxt{
 	_txt
 }
 OnInputMusicPage{
+	_id=TOINT(_argv[0])
 	"\C\![open,inputbox,OnMusicListPage,-1,%(music_listpage[_id]+1)]"
 	temp='input'
 }

@@ -1934,8 +1934,8 @@ LoadMapSeed{
 			_buff = FREAD(_mapfile)
 		}
 		if _buff == -1 {
-			_mapseed='error'
-			_mapseed;retrun
+			'error'
+			return
 		}
 		else {
 			LinkWndMode=_argv[0]
