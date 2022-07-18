@@ -412,20 +412,10 @@ Select.goodjob{
 	intimacy += 20
 	"\0\s[41]橘花很高兴呢，得到%(username)的称赞，橘花一定会做出更可口的菜式\![set,choicetimeout,0]"
 	"\0\s[41]只要%(username)喜欢，橘花会更加努力的\![set,choicetimeout,0]"
-	--
-	if picnic==1{
-		picnic=NULL
-		"\n\x%(OnPicnic_13)"
-	}
 }
 Select.notgoodjob{
 	"\0\s[1]唔，%(username)不喜欢吗，下次橘花一定会做好的。\![set,choicetimeout,0]"
 	'\0\s[1]呃……，橘花会努力做好的……\![set,choicetimeout,0]'
-	--
-	if picnic==1{
-		picnic=NULL
-		"\n\x%(OnPicnic_13)"
-	}
 }
 //**************************亲密动作**********************************************************************
 Onclosetouch{

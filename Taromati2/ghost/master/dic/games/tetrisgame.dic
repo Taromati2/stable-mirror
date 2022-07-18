@@ -293,7 +293,7 @@ Tetris.CheckUnit{//方块判定
 					if _by>=MapYsize{
 						_v=1//dropped
 					}
-					elseif BlockBuffer[by*MapXsize+bx]{
+					elseif BlockBuffer[_by*MapXsize+_bx]{
 						_v=2//dropped
 					}
 				}

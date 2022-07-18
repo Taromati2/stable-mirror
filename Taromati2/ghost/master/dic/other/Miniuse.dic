@@ -131,8 +131,6 @@ Onlunarbirth{
 	_d=_argv[2]
 	//_m=REPLACE(_m,'腊','十二')
 	_mon=(31,28,31,30,31,30,31,31,30,31,30,31)
-	_mm=1
-	_dd=1
 	for _i = 1;_i <= 12;_i++{
 		//Onlunarbirth(2015,'十一','廿一')
 		for _j = 1;_j <= _mon[_i-1];_j++{
@@ -407,7 +405,6 @@ Ongift{
 	gift
 	_N=ARRAYSIZE(Useritem)-2
 	_G=RAND(_N)
-	_spitemflag=0
 	while _G==19{
 		_G=RAND(_N)
 	}
@@ -520,7 +517,7 @@ OnBackup{
 	_w+='■数据备份■\n\n[half]'
 	_txt=''
 	if !ISDIR('SHIORI_BACKUP_PATH')
-		_temp=MKDIR('SHIORI_BACKUP_PATH')
+		void MKDIR('SHIORI_BACKUP_PATH')
 	if reference0=='mem'{
 		if reference1==NULL
 			_txt+='要对_SAVE_file及profile文件夹进行备份操作吗？\n\n[half]/
@@ -1043,7 +1040,6 @@ Operate2{//二目运算
 todec{
 	_num=TOSTR(_argv[0])
 	_oldcarry=_argv[1]
-	_weight=_oldcarry
 	_l=STRLEN(_num)
 	if _oldcarry==10 || _num==0{_num;return;}
 	_neg=(SUBSTR(_num,0,1)=='-')

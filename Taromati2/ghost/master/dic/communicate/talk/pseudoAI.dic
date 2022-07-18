@@ -298,7 +298,6 @@ AILoad.KeyMatch{
 	if _argc>2
 		_E=_argv[2]
 	_match=0
-	_dexnum=0
 	if '*' _in_ _Q||'%(' _in_ _Q{
 		if '.*' !_in_ _Q
 			_Q=REPLACE(_Q,'*','.*')//将通配符换成正则匹配
@@ -320,29 +319,23 @@ AILoad.KeyMatch{
 			_k+=STRLEN(_Qs[_l])
 		}
 		if _m==1 && _k==_E && _lastm==1{
-			//_dexori,=_buff2[1,'|']
-			//_dexnum++
 			//anum+=_Anum-1
 		}
 		elseif _m==1 && _k>=_E{
 			_lastm=1
 			_E=_k
-			_dexnum=1
 		}
 	}
 	if _Q _in_ _str && STRLEN(_Q)==_E && _lastm==0{
-		_dexori,=_buff2[1,'|']
-		_dexnum++
 		_match=1
 	}
 	elseif _Q _in_ _str && STRLEN(_Q)>=_E{//当上次最大长度匹配＞这次,不管是何种保留都放弃
 		_lastm=0
 		_E=STRLEN(_Q)
 		_match=1
-		_dexnum=1
 	}
-	_match
 	i=_E
+	_match
 }
 AILoad.InfFile{//AILoad.InfFile('PSEUDO_AI_PATH\common.ai','你好')
 	_file=_argv[0]
