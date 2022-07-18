@@ -1,3 +1,7 @@
+#define BLACK 0
+#define WHITE 15
+#define true 1
+#define false 0
 initdat{
 	initdat2
 	initdat3

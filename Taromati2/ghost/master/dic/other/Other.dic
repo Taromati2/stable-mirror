@@ -926,8 +926,8 @@ LoadShortCutCfg{
 			}
 			shortcutlist+='#'
 		}
+		FCLOSE(_file)
 	}
-	FCLOSE(_file)
 	FCHARSET.default
 	if ARRAYSIZE(shortcutlistname)==0{
 		shortcutlistname[0]='常用列表'

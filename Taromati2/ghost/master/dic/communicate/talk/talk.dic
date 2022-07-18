@@ -2142,13 +2142,6 @@ TWO.dicpart{
 			'\0\s[2]很好看的吗?\w9是什么啊?\w9橘花也想知道喔~'
 		}
 	}
-	elseif '橘花' _in_ reference1 && '秘密' _in_ reference1{
-		"\0\s[40]那么我悄悄的告诉%(username)啊，\w9\w9%(ak_6s)"
-	}
-	elseif '斗和' _in_ reference1 && '秘密' _in_ reference1{
-		'\0\s[8]这样对斗和不好吧？'
-		"那橘花告诉%(username)，\w9不要让斗和知道是橘花说的哦。\w9\w9%(at_7s)"
-	}
 	elseif '渴' _in_ reference1 || '喝' _in_ reference1{
 		"%(Select.get_some_tea)"
 	}

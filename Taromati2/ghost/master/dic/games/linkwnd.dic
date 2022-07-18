@@ -621,7 +621,6 @@ OnLinkWndOption{//设定
 					_m_levels[_i]=" ◆%(_i+1) "
 				else
 					_m_levels[_i]=" ◇%(_i+1) "
-				_a=_关卡[_i]
 				_txt += "\_l[%((_i%6)*50)]"
 				if _i<=TOINT(ClearMode[levelsort])
 					_txt+="\f[color,108,129,182]\q[%(_m_levels[_i]),OnLinkWndOption,gk,%(_i),%(levelsort)]\f[color,default]"
@@ -1637,12 +1636,6 @@ ClearTwo{
 			}
 		}
 	}
-	_txt
-}
-OnReputLinkWnd{
-	_txt=''
-	_txt+=ReputLinkWnd
-	_txt+=OnDrawLinkWnd
 	_txt
 }
 //
