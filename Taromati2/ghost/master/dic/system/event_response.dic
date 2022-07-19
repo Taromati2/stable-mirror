@@ -229,6 +229,7 @@ OnOpenDirOrFile{
 }
 //文字拖拽处理 by steve02081504
 OnTextDrop{
+	infomode=0
 	if reference.raw[0]
 		temp = reference.raw[0]
 	if !RE_GREP(temp,"(?!%(CHR(1)))%(CHR(1))(?!%(CHR(1)))")
@@ -302,7 +303,7 @@ OnTextDrop{
 		if SUBSTR(CUTSPACE(temp),0,2) == 'On'
 			"\q[◇查看事件文档,OnUrlOpen,%(Get_UKADOC_ofEvent(CUTSPACE(temp)))]\n"
 		--
-		'\q[◇Sakura Script執行,OnTextDrop.SakuraScript]\n'
+		'\q[◇Sakura Script执行,OnTextDrop.SakuraScript]\n'
 		--
 		if ISEVALUABLE(temp)
 			'\q[◇表达式求值,OnTextDrop.EVAL]\n'
@@ -370,6 +371,23 @@ OnInstallBegin{
 }
 //---- インストール完了メッセージ -------------------------------------------------------
 OnInstallComplete{
+	if reference1 == 'Taromati2 full data pack'{
+		if QuickStartVersion{
+			DiscordCustomSet.CustomDetail('好耶')
+			--
+			'\0\s[6]追加档案包完成，开始修复性更新\n'
+			--
+			OnSilentUpdate
+		}
+		else{
+			DiscordCustomSet.CustomDetail('厘在赣什么')
+			--
+			'\0\s[8].\w9.\w9.\w9\n/
+			已经是完整版了哦？\n/
+			'
+		}
+		return
+	}
 	DiscordCustomSet.CustomDetail('搞了些新东西')
 	--
 	if mode == '0'
@@ -485,25 +503,18 @@ OnInstallFailure{
 	else
 		"\1\s[10]原因是：%(reference0)。"
 }
-OnShioriReloaded{
-	OnSQLLoad.Fixer//非中文环境编码问题再修复
-	SETTAMAHWND(TamaHwnd)
-	if ReloadFromTerminal{
-		ShioriEcho.Special='重载完成'
-		ERASEVAR('ReloadFromTerminal')
-	}
-	if SHIORI_FW.LastBootInEmergencyMode
-		return
-	if mode == '1'{
-		"\1\s[%(specialmode != 'mealtime')10]唔…\n重载完了。"
-		return
-	}
-	if !SHIORI_FW.EmergencyMode{
-		'\0\s[0]重载成功，没有语法错误'
-		'\0\s[0]重载完成'
-		if GetPhase >= 2
-			'\0\s[5]重载成功，没有出错哦'
-	}
+OnInstallRefuse{
+	DiscordCustomSet.CustomDetail('认错人了')
+	--
+	"\0\s[20]这是…\w9\w9\n『%(reference0)收』。\w9\s[0]\n请直接交给本人。"
+	--
+	if IsGhostExist(reference0) || IsSakuraExist(reference0)
+		"\n/
+		\q[◇切换,OnChangeGhost,%(reference0)]\n/
+		\q[◇呼叫,OnCallGhost,%(reference0)]\n/
+		\q[◇无用,Cancel]\n"
+	else
+		'\1\s[11]不\w9\w9\n目前来说根本查无此人。'
 }
 SelfRecoveryFailed{
 	ERASEVAR('InSelfRecovery')
@@ -518,6 +529,15 @@ SelfRecoveryFailed{
 	'
 	--
 	//OpenDocForRuntime('SelfRecoveryFailed')
+}
+OnDDLCend{
+	'\![enter,passivemode]\1\s[-1]\0\s[-1]请不要玩弄我的心，我不会回来的\w[2000]'
+	--
+	SilentVanish = 1
+	topmode=1
+	TopModeChanged
+	--
+	'\![vanishbymyself]'
 }
 OnEmergencyMode{
 	EmergencyBoot++
@@ -581,19 +601,6 @@ OnEmergencyModeEnd{
 				'\1\s[10]可喜可贺可喜可贺'
 		}
 	}
-}
-OnInstallRefuse{
-	DiscordCustomSet.CustomDetail('认错人了')
-	--
-	"\0\s[20]这是…\w9\w9\n『%(reference0)收』。\w9\s[0]\n请直接交给本人。"
-	--
-	if IsGhostExist(reference0) || IsSakuraExist(reference0)
-		"/
-		\q[◇切换,OnChangeGhost,%(reference0)]\n/
-		\q[◇呼叫,OnCallGhost,%(reference0)]\n/
-		\q[◇无用,Cancel]\n"
-	else
-		'\1\s[11]不\w9\w9\n目前来说根本查无此人。'
 }
 //**** 消灭 ***********************************************************************************************************
 OnVanishSelecting{
@@ -1111,15 +1118,18 @@ OnNetworkStatusChange{
 	}else{
 		if reference0 == 'offline'
 			return
-		if mode == '1'
-			"\1\s[%(specialmode != 'mealtime')10]IP改变了\n"
-		else
-			'\0\s[6]IP已变动\n'
+		if setting.IP_ChangeReminder{
+			if mode == '1'
+				"\1\s[%(specialmode != 'mealtime')10]IP改变了\n"
+			else
+				'\0\s[6]IP已变动\n'
+		}
 	}
 	--
-	if reference.raw[1] && NetworkStatus.IP != reference.raw[1]
-		"当前ip：%(REPLACE(reference.raw[1],CHR(1),'以及\n'))"
-	--
+	if setting.IP_ChangeReminder{
+		if reference.raw[1] && NetworkStatus.IP != reference.raw[1]
+			"当前ip：%(REPLACE(reference.raw[1],CHR(1),'以及\n'))\n"
+	}
 	OnUpdateNetworkStatus
 	NetworkStatus = reference0
 }
@@ -1334,6 +1344,7 @@ OnSysResume{
 	if !InMinimize{
 		SHIORI_FW.PushNotifyResult(OnSysResume.base)
 		SHIORI_FW.PushNotifyResult(OnBoot.aboutTime)
+		SHIORI_FW.PushNotifyResult(OnWeatherUpdate.boot)
 	}
 }
 //资源不足
@@ -1346,4 +1357,18 @@ OnNetworkHeavy{
 	DiscordCustomSet.CustomDetail('打发时间')
 	--
 	'\0\s[8]\w9…\w9…\n\w9\w9请耐心等候呢？'
+}
+//使用条款
+OnGhostTermsAccept{
+	if mode == '1'
+		"\1\s[%(specialmode != 'mealtime')10]…\w9…\w9…\w9？"
+	else
+		'\0\s[8]…\w9已经同意过了啊？'
+}
+OnGhostTermsDecline{
+	if mode == '1'
+		"\1\s[%(specialmode != 'mealtime')10]…\w9…\w9…\w9？\n/
+		\s[%(specialmode != 'mealtime')11]要做什么的话\w9，\s[%(specialmode != 'mealtime')10]点击卸载按钮不就好了吗。"
+	else
+		'\0\s[3]…\w9如果需要的话\w9，可以把我卸载掉的。'
 }

@@ -538,10 +538,10 @@ ComputerThink{
 		//wisex=-1
 	if state[wisex*15+wisey]==0 || state[wisex*15+wisey]==15 || wisex<0 || wisex>14 || wisey<0 || wisey>14{
 		while state[wisex*15+wisey]!=6{
-			wisex=rand%15
-			wisey=rand%15
-			//wisex=rand%15
-			//wisey=rand%15
+			wisex=RAND%15
+			wisey=RAND%15
+			//wisex=RAND%15
+			//wisey=RAND%15
 			k1=0.8
 			if fight-defense>12
 				k1=0.8
@@ -966,7 +966,7 @@ wise{
 	elseif fight-defense>=0
 		k1=0.6
 	elseif fight-defense>-5
-		k1=0.5f
+		k1=0.5
 	elseif fight-defense>-8
 		k1=0.45
 	else

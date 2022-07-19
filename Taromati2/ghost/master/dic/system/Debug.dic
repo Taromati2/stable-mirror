@@ -1,15 +1,34 @@
 //by steve02081504
 OnAnchorSelect{
-	BUGNow("AnchorSelect\_q“%(REPLACE(reference0,'\','\\'))”\_q被触发了\w9\w9\n但是目前Taromati并不支持任何AnchorSelect")
+	if IsUrl(reference0)
+		OnUrlOpen(reference0)
+	else
+		BUGNow("AnchorSelect\_q“%(REPLACE(reference0,'\','\\'))”\_q被触发了\w9\w9\n但是目前Taromati并不支持任何除过url外的AnchorSelect")
+}
+IsUrl{
+	if RE_GREP(_argv[0],'^http(s)?://')
+		1
+	else
+		0
+}
+OnShioriMemoryError{
+	_stack=GETCALLSTACK
+	_func=_stack[ARRAYSIZE(_stack)-2]
+	_info=GETFUNCINFO(_func)
+	_errorinfo='内存错误\n调用堆栈：\n'+REPLACE(TOSTR(_stack),',','\n')
+	_errorinfo_for_copy=REPLACE(_errorinfo,'\n',CHR(1))
+	--
+	BUGNow(_errorinfo,_errorinfo_for_copy)
 }
 OnshioriLimit{
 	_stack=GETCALLSTACK
 	_type=_argv[0]
 	_type_txt=''
+	//_argv[1]&_argv[2]只在call或loop时存在
 	_file=_argv[1]
 	_linenum=_argv[2]
 	_errorinfo_for_copy=''
-	case _argv[0]{
+	case _type{
 		when 'call'
 			_type_txt='递归'
 		when 'loop'
@@ -34,7 +53,7 @@ OnReloadShiori{
 	else
 		'\0\s[0]嗯'
 	--
-	'…\n\![reload,shiori]重新讀取SHIORI……'
+	'…\n\![reload,shiori]重新读取SHIORI……'
 }
 SakuraScriptArgConverter{
 	'"'+REPLACE(TOSTR(_argv),'"','""')+'"'
@@ -50,8 +69,10 @@ GETTYPE.to_string{
 			'字串'
 		when 4
 			'泛用阵列'
+		when 5
+			'散列表'
 		others
-			'内部错误'
+			"内部错误（typeid：%(_argv[0])）"
 	}
 }
 ValueTOstring{
@@ -69,6 +90,9 @@ ValueTOstring{
 			"'"+_argv[0]+"'"
 		else
 			REPLACE(RE_REPLACE(RE_REPLACE('"'+REPLACE(_argv[0],'"','"+'+"'"+'"'+"'"+'+"')+'"','^\"\"\+',''),'\+\"\"$',''),'"'+"'+'"+'"','')
+	}
+	elseif GETTYPE(_argv[0])==5{
+		'map'
 	}
 	elseif TOSTR(_argv[0])==''
 		'NULL'
@@ -108,7 +132,7 @@ OnSakuraScript{
 				if ('\!' _in_ reference.raw[0] || '\-' _in_ reference.raw[0]){
 					'\0\s[100]/
 					警告\w9\w9：此Sakura Script可能含有较危险操作\n/
-					\q[◇确认執行,OnSakuraScript,'+SakuraScriptArgConverter(reference.raw[0])+',force_run]\n/
+					\q[◇确认执行,OnSakuraScript,'+SakuraScriptArgConverter(reference.raw[0])+',force_run]\n/
 					\q[◇无用,Cancel]\n/
 					'
 					return
@@ -118,8 +142,8 @@ OnSakuraScript{
 				'\0\s[100]/
 				这段Sakura Script中似乎含有aya转义符\w9\n/
 				需要转义么？\w9\n/
-				\q[◇转义執行,OnSakuraScript.Forment,'+SakuraScriptArgConverter(reference.raw[0])+']\n/
-				\q[◇直接執行,OnSakuraScript,'+SakuraScriptArgConverter(reference.raw[0])+',no_convert]\n/
+				\q[◇转义执行,OnSakuraScript.Forment,'+SakuraScriptArgConverter(reference.raw[0])+']\n/
+				\q[◇直接执行,OnSakuraScript,'+SakuraScriptArgConverter(reference.raw[0])+',no_convert]\n/
 				\q[◇无用,Cancel]\n/
 				'
 				return
@@ -129,8 +153,8 @@ OnSakuraScript{
 			'\0\s[100]/
 			这段Sakura Script中似乎含有全局define\w9\n/
 			需要处理么？\w9\n/
-			\q[◇处理執行,OnSakuraScript,'+SakuraScriptArgConverter(PROCESSGLOBALDEFINE(reference.raw[0]))+',no_defineprocess]\n/
-			\q[◇直接執行,OnSakuraScript,'+SakuraScriptArgConverter(reference.raw[0])+',no_defineprocess]\n/
+			\q[◇处理执行,OnSakuraScript,'+SakuraScriptArgConverter(PROCESSGLOBALDEFINE(reference.raw[0]))+',no_defineprocess]\n/
+			\q[◇直接执行,OnSakuraScript,'+SakuraScriptArgConverter(reference.raw[0])+',no_defineprocess]\n/
 			\q[◇无用,Cancel]\n/
 			'
 			return
@@ -176,15 +200,21 @@ On_ShioriEcho {
 				}
 				elseif RE_GREP(reference0,'^\s*openfunc\s+'){
 					_funcname=RE_REPLACE(reference0,'^\s*openfunc\s+','')
-					_info=GETFUNCINFO(_funcname)
-					_path=SPLITPATH(_info[0])
-					if _path
-						_path=_path[2]+_path[3]
-					else
-						_path=_info[0]
-					if _info!=-1{
-						OnOpenDicWithLineNum(_info[0],_info[1])
-						ShioriEcho.Special="打开%(_path)第%(_info[1])行"
+					if Is_Defened_Event(_funcname)||Is_Defened_Event(_funcname+'Ex'){
+						_EXfunc=!Is_Defened_Event(_funcname)
+						if _EXfunc
+							_funcname=_funcname+'Ex'
+						_funcname=Get_Full_Defened_Event_Name(_funcname)
+						_info=GETFUNCINFO(_funcname)
+						_path=SPLITPATH(_info[0])
+						if _path
+							_path=_path[2]+_path[3]
+						else
+							_path=_info[0]
+						if _info!=-1{
+							OnOpenDicWithLineNum(_info[0],_info[1])
+							ShioriEcho.Special="打开%(_path)第%(_info[1])行"
+						}
 					}
 					else
 						ShioriEcho.Special='不是用户函数'
@@ -288,7 +318,7 @@ OnCalculateVar{
 					--
 					'/
 					\q[◇仍然执行,OnCalculateVar,'+SakuraScriptArgConverter(reference0)+',force_run]\n/
-					\q[◇改作Sakura Script執行,OnCalculateVar.ToSakuraScript,'+SakuraScriptArgConverter(reference0)+']\n/
+					\q[◇改作Sakura Script执行,OnCalculateVar.ToSakuraScript,'+SakuraScriptArgConverter(reference0)+']\n/
 					\q[◇算了,Cancel,with_func,OnCalculateVar.Cancel]\n/
 					'
 					return
@@ -301,8 +331,8 @@ OnCalculateVar{
 					'\0\s[20]处理表达式中的全局define么？\n'
 				--
 				'/
-				\q[◇处理執行,OnCalculateVar,'+SakuraScriptArgConverter(PROCESSGLOBALDEFINE(reference0))+',no_defineprocess]\n/
-				\q[◇直接執行,OnCalculateVar,'+SakuraScriptArgConverter(reference0)+',no_defineprocess]\n/
+				\q[◇处理执行,OnCalculateVar,'+SakuraScriptArgConverter(PROCESSGLOBALDEFINE(reference0))+',no_defineprocess]\n/
+				\q[◇直接执行,OnCalculateVar,'+SakuraScriptArgConverter(reference0)+',no_defineprocess]\n/
 				\q[◇算了,Cancel,with_func,OnCalculateVar.Cancel]\n/
 				'
 				return
@@ -356,7 +386,7 @@ OnCalculateVar{
 		'\_q\n/
 		\q[◇复制结果,OnCopy,'+SakuraScriptArgConverter(_Result)+']\n/
 		\q[◇复制表达式,OnCopy,'+SakuraScriptArgConverter(reference0)+']\n/
-		\q[◇结果作Sakura Script執行,OnSakuraScript,'+SakuraScriptArgConverter(_Result)+']\n/
+		\q[◇结果作Sakura Script执行,OnSakuraScript,'+SakuraScriptArgConverter(_Result)+']\n/
 		'
 		--
 		'\n/
@@ -454,18 +484,15 @@ OnLogModeChange{
 		'中'
 }
 DebugModeChanged{
-	if ISINTSTR(_argv[0]) || ISINTEGER(_argv[0]){
-		/*
-		if TOINT(_argv[0])
-			'\![open,shioridebugmode]'
-		else
-			'\![close,shioridebugmode]'
-		*/
-		SHIORI_FW.DebugMode = TOINT(_argv[0])
-		'\0\s[100]注意：\w9\w9此功能的支持仅处于测试阶段，\w9切换效果持续到下次shiori载入为止\w9\w9\n/
-		如需永久打开调试模式，请按文档进行ssp设置\x'
+	if ISINTSTR(TOSTR(_argv[0])) || ISINTEGER(_argv[0]){
+		'\![set,shioridebugmode,'
 		--
-		OnDebugModeChange
+		if TOINT(_argv[0])
+			'true'
+		else
+			'false'
+		--
+		']'
 	}
 }
 //调试：无对应事件反应by steve02081504
@@ -599,6 +626,18 @@ OnUpdateSHIORICore{
 		'\0\s[0]未找到update_aya.bat，请前往github仓库补全开发文件'
 	}
 }
+OnUpdateTama{
+	_tmpfile='SHIORI_PATH\tama.tmp'
+	_exefile='SHIORI_PATH\tama.exe'
+	void FRENAME(_exefile,_tmpfile)
+	if FMOVE(reference0,'SHIORI_PATH'){
+		void FDEL(_tmpfile)
+		'\0\s[0]成功了'
+	}else{
+		void FRENAME(_tmpfile,_exefile)
+		'\0\s[8]文件移动出错'
+	}
+}
 OnOpenDicWithLineNum{
 	if !_argv[0]
 		_argv[0] = reference0
@@ -612,7 +651,7 @@ OnErrorLog{
 	if mode == '1'
 		"\1\s[%(specialmode != 'mealtime')10]"
 	--
-	_txt='\![set,autoscroll,disable]'
+	_txt='\![set,autoscroll,false]'
 	if mode == '1'
 		_txt+='\b[2]喏，\w9这些：'
 	else
@@ -670,9 +709,9 @@ OnEventAdd.ToDic{
 On_tamaOpen{
 	TamaHwnd=reference0
 	SETTAMAHWND(TamaHwnd)
-	SHIORI_FW.Make_X_SSTP_PassThru('Tittle','tama test: Taromati2')
+	SHIORI_FW.Make_X_SSTP_PassThru('Title','tama test: Taromati2')
 	SHIORI_FW.Make_X_SSTP_PassThru('Icon','IMG_PATH/ico/tama.ico')
-	SHIORI_FW.Make_X_SSTP_PassThru('border.color','626262')
+	SHIORI_FW.Make_X_SSTP_PassThru('darkmode',1)
 	SHIORI_FW.Make_X_SSTP_PassThru('background.color','1e1e1e')
 	SHIORI_FW.Make_X_SSTP_PassThru('dialogbox.color','727272')
 	SHIORI_FW.Make_X_SSTP_PassThru('default.color','4ec9b0')
@@ -695,7 +734,7 @@ On_tamaExit{
 	if SHIORI_FW.DebugMode
 		DiscordCustomSet.SmallImageKey('simple_hollow_red_heart')
 	else
-		DiscordCustomSet.SmallImageKey(' ')
+		DiscordCustomSet.SmallImageKey('')
 	--
 	DiscordCustomSet.CustomDetail('累了')
 	--

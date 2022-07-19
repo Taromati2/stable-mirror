@@ -101,6 +101,7 @@ ClearAyaTempVar {
 	ERASEVAR('sakurablnhwnd')
 	ERASEVAR('keroblnhwnd')
 	ERASEVAR('SHIORI_FW.Path')
+	ERASEVAR('SHIORI_FW.Status')
 	ERASEVAR('SHIORI_FW.LastAITalk')
 	ERASEVAR('SHIORI_FW.LastAITalkTime')
 	ERASEVAR('SHIORI_FW.LastTalk')
@@ -126,11 +127,9 @@ ClearAyaTempVar {
 	ERASEVAR('SHIORI_FW.LastBootInEmergencyMode')
 	ERASEVAR('SHIORI_FW.InVarFileMiss')
 
-	_n = ARRAYSIZE(tempvarname)
-	for _i = 0 ; _i < _n ; _i++ {
-		ERASEVAR(tempvarname[_i])
-	}
-	ERASEVAR('tempvarname')
+	if SHIORI_FW.tempvarname
+		ERASEVAR(SHIORI_FW.tempvarname)
+	ERASEVAR('SHIORI_FW.tempvarname')
 
 	SHIORI_FW.ClearChainVariable
 	SHIORI_FW.ClearReferenceVariable
@@ -188,7 +187,6 @@ load {
 	SHIORI_FW.LastAITalk	= ''
 	SHIORI_FW.LastAITalkTime= _sec
 	SHIORI_FW.TalkEndTime	= _sec
-	SHIORI_FW.IsTalking		= 0
 	SHIORI_FW.LastSurface	= (0,10)
 	SHIORI_FW.IsVisible		= (1,1)
 	SHIORI_FW.HWnd			= (0,0)
@@ -208,7 +206,7 @@ load {
 	S_CHARSET = GETSETTING('charset.output')
 
 	status = ''
-	tempvarname = IARRAY
+	SHIORI_FW.tempvarname = IARRAY
 
 	array_eventtranslate = ASORT('string,ascending',GETFUNCLIST('OnGhostEventTranslate'))
 	array_translateinternal = ASORT('string,ascending',GETFUNCLIST('OnTranslateInternal'))
@@ -241,10 +239,6 @@ load {
 		if SHIORI_FW.LastBootInEmergencyMode
 			SHIORI_FW.PushNotifyResult('\![raise,OnEmergencyModeEnd]')
 	}
-
-	if ShioriReloading
-		SHIORI_FW.PushNotifyResult('\![raise,OnShioriReloaded]')
-	ERASEVAR('ShioriReloading')
 }
 
 //******************************************************************************
@@ -263,10 +257,6 @@ unload {
 	var.req.rawvalue = IARRAY
 
 	ghostupmin_last = MAX(ghostupmin_total,elapsedtimetotal)
-
-	if !OnCloseCalled && !BasewareUpdating
-		ShioriReloading=1
-	ERASEVAR('OnCloseCalled')
 
 	CALLALLFUNCTIONBEGINAS('Fin.')
 
@@ -413,17 +403,10 @@ request {
 
 	OnRequest
 }
+
 SHIORI_FW.NoMatchingEvent{
 	SHIORI_FW.PushNotifyResult(OnNoMatchingEvent)
 	SHIORI_FW.MakeBadResponse
-}
-TOAUTOEX {
-	_v = _argv[0]
-	if TOSTR(TOAUTO(_v)) == _v {
-		TOAUTO(_v)
-		return
-	}
-	_v
 }
 
 SHIORI_FW.PushNotifyResult:void{//Notify返回值积压
@@ -738,7 +721,7 @@ SHIORI_FW.RaiseIDEvent {
 
 //------------------------------------------------------------------------------
 //関数名：SHIORI_FW.MakeEmptyResponse
-//機能　：'204を返してはいけないリクエスト'を判定して、
+//機能　：204を返してはいけないリクエストを判定して、
 //適正な応答文字列を作成します
 //引数　：_argv[0] イベント名
 //------------------------------------------------------------------------------
@@ -1281,17 +1264,15 @@ SHIORI_FW.RequestLib {
 //------------------------------------------------------------------------------
 //関数名：SHIORI_FW.MakeValueexVariable
 //機能　：リクエストヘッダからvalueex*変数を作成します
-//引数　：_argv[0] SAORIファイル名
-//　　　　_argv[1] リクエスト文字列
 //------------------------------------------------------------------------------
 SHIORI_FW.MakeValueexVariable:void {
-	SHIORI_FW.ValueexList	= IARRAY
-	_sz						= ARRAYSIZE(var.lib.key)
+	SHIORI_FW.ClearValueexVariable
+	valueex = IARRAY
+	_sz = ARRAYSIZE(var.lib.key)
 	for _i = 0; _i < _sz; _i++ {
 		if SUBSTR(_keyname = var.lib.key[_i], 0, 5) == 'Value' {
 			_varname = "valueex%(SUBSTR(_keyname, 5, 3))"
 			LETTONAME(_varname, var.lib.value[_i])
-			SHIORI_FW.ValueexList ,= _varname
 			valueex[TOINT(SUBSTR(_keyname, 5, 3))] = var.lib.value[_i]
 		}
 	}
@@ -1302,8 +1283,12 @@ SHIORI_FW.MakeValueexVariable:void {
 //機能　：valueex*変数を削除します
 //------------------------------------------------------------------------------
 SHIORI_FW.ClearValueexVariable {
-	foreach SHIORI_FW.ValueexList; _exname { ERASEVAR(_exname) }
-	ERASEVAR('SHIORI_FW.ValueexList')
+	_valueexList = GETVARLIST('valueex')
+	foreach _valueexList; _exname {
+		if RE_MATCH(_exname, 'valueex[0-9]+') {
+			ERASEVAR(_exname)
+		}
+	}
 	ERASEVAR('valueex')
 }
 
@@ -1323,8 +1308,8 @@ SHIORI_FW.SaoriUnloadAll {
 //------------------------------------------------------------------------------
 SHIORI_FW.RegisterTempVar {
 	for _i = 0 ; _i < _argc ; _i++ {
-		if ASEARCH(_argv[_i],tempvarname) < 0 {
-			tempvarname ,= _argv[_i]
+		if ASEARCH(_argv[_i],SHIORI_FW.tempvarname) < 0 {
+			SHIORI_FW.tempvarname ,= _argv[_i]
 		}
 	}
 }
@@ -1336,7 +1321,7 @@ SHIORI_FW.RegisterTempVar {
 //------------------------------------------------------------------------------
 SHIORI_FW.RemoveAllTags
 {
-	_text = RE_REPLACE(_argv[0],'\\_{0,2}[a-zA-Z0-9*!&](\d|\[("([^"]|\\")+?"|([^\]]|\\\])+?)+?\])?','')
+	_text = RE_REPLACE(_argv[0],'\\_{0,2}[a-zA-Z0-9*!&\-+](\d|\[("([^"]|\\")+?"|([^\]]|\\\])+?)+?\])?','')
 	_text = REPLACE(_text,'\\','\')
 	_text
 }
@@ -1568,11 +1553,28 @@ SHIORI_EV.OnBalloonChange : void {
 Get_Full_Defened_Event_Name{
 	if ISFUNC(_argv[0])
 		_argv[0]
-	else
+	elseif ISFUNC('On_'+_argv[0])
 		'On_'+_argv[0]
+	elseif ISFUNC('SHIORI_FW.'+_argv[0])
+		'SHIORI_FW.'+_argv[0]
+	elseif ISFUNC('SHIORI_EV.'+_argv[0])
+		'SHIORI_EV.'+_argv[0]
+	elseif ISFUNC('SHIORI_EV.On_'+_argv[0])
+		'SHIORI_EV.On_'+_argv[0]
 }
 Is_Defened_Event{
-	ISFUNC(_argv[0])||ISFUNC('On_'+_argv[0])
+	if ISFUNC(_argv[0])
+		1
+	elseif ISFUNC('On_'+_argv[0])
+		1
+	elseif ISFUNC('SHIORI_FW.'+_argv[0])
+		1
+	elseif ISFUNC('SHIORI_EV.'+_argv[0])
+		1
+	elseif ISFUNC('SHIORI_EV.On_'+_argv[0])
+		1
+	else
+		0
 }
 SHIORI_EV.On_Has_Event : void {
 	SHIORI_FW.Make_X_SSTP_PassThru('Result',ISFUNC(reference0)||ISFUNC('On_'+reference0)||ISFUNC('SHIORI_EV.'+reference0)||ISFUNC('SHIORI_EV.On_'+reference0))
@@ -1625,6 +1627,9 @@ SHIORI_EV.On_enable_debug : void {
 	}
 }
 
+shiori.OnMemoryError:void{
+	SHIORI_FW.PushNotifyResult(OnShioriMemoryError)
+}
 shiori.OnLoopLimit:void{
 	SHIORI_FW.PushNotifyResult(OnshioriLimit('loop',_argv))
 }

@@ -6,12 +6,13 @@ BaseGhostStart{//改动于2020 by steve02081504
 	OnOptionSet
 	--
 	FCHARSET(1)
-	lastTalk = '\0\s[20]咦？分明才刚启动的說…\1\s[10]喵，刚才什么都没说'
+	lastTalk = '\0\s[20]咦？分明才刚启动的说…\1\s[10]喵，刚才什么都没说'
 	if TimeErrorCheck
 		InTimeError = 1
 	if !InTimeError
 		BaseGhostStart.aboutTime
 	playingmusic = 0
+	infomode = 0
 	OnSQLLoad
 	OnAILoad
 	--
@@ -34,20 +35,25 @@ BaseGhostStart.aboutTime{
 	elapsetime = GETSECCOUNT - CloseTime
 	CloseTime = GETSECCOUNT
 }
-UpdateFirstBootCount:void{
-	_save_dir=GETENV('USERPROFILE')
-	if _save_dir{
-		_save_dir+='\AppData\Local\Taromati'
-		_save_file=_save_dir+'\FirstBootCount'
-		MKDIR(_save_dir)
-		if FOPEN(_save_file,'r'){
-			_tFirstBootCount=TOINT(FREAD(_save_file))
-			FCLOSE(_save_file)
+OnInitialize{
+	if reference0=='reload'{
+		OnSQLLoad.Fixer//非中文环境编码问题再修复
+		SETTAMAHWND(TamaHwnd)
+		if ReloadFromTerminal{
+			ShioriEcho.Special='重载完成'
+			ERASEVAR('ReloadFromTerminal')
 		}
-		FirstBootCount=MAX(_tFirstBootCount,FirstBootCount)
-		if FOPEN(_save_file,'w'){
-			FWRITE(_save_file,TOSTR(FirstBootCount))
-			FCLOSE(_save_file)
+		if SHIORI_FW.LastBootInEmergencyMode
+			return
+		if mode == '1'{
+			"\1\s[%(specialmode != 'mealtime')10]唔…\n重载完了。"
+			return
+		}
+		if !SHIORI_FW.EmergencyMode{
+			'\0\s[0]重载成功，没有语法错误'
+			'\0\s[0]重载完成'
+			if GetPhase >= 2
+				'\0\s[5]重载成功，没有出错哦'
 		}
 	}
 }
@@ -56,6 +62,7 @@ OnFirstBoot{//改动于2020 by steve02081504
 	MAGICLOCK
 	VERSION_INIT
 	BaseGhostStart
+	CLEARERRORLOG//未进行变量值恢复错误忽略
 	--
 	if !ISVAR('FirstBootCount'){
 		mode = '0'
@@ -76,15 +83,20 @@ OnFirstBoot{//改动于2020 by steve02081504
 		OnKikkaReset
 		InitPassword
 		--
-		'\![open,readme]\v'
-		--
 		if ISINTEGER(reference0)
 			FirstBootCount = reference0
 		elseif ISINTEGER(_argv[0])
 			FirstBootCount = _argv[0]
 		else
 			FirstBootCount = 0
-		UpdateFirstBootCount
+		--
+		if FirstBootCount >= 4{
+			OnDDLCend
+			return
+		}
+		--
+		'\![create,shortcut]\![create,shortcut,startup]\![open,readme]\v'
+		--
 		if FirstBootCount == 0{
 			'\1\s[10]\0\s[26]啊、\w9\w9那个…\w9\w9\w9'
 		}else{
@@ -177,7 +189,6 @@ OnBoot{
 			intimacy -= 3
 		if elapsetime > 172800{//卸载时长超过两天：有效卸载
 			FirstBootCount++
-			UpdateFirstBootCount
 			if FirstBootCount >= 4{//三次有效卸载后惩罚
 				{//自我销毁
 					void DELDIR('PROFILE_PATH')//清除用户数据
@@ -186,13 +197,7 @@ OnBoot{
 					FirstBootCount=13//再也不见
 					MAGICSAVE//永久生效
 				}
-				'\1\s[-1]\0\s[-1]请不要玩弄我的心，我不会回来的'//致敬ddlc
-				--
-				SilentVanish = 1
-				topmode=1
-				TopModeChanged
-				--
-				'\![vanishbymyself]'
+				OnDDLCend
 				return
 			}elseif FirstBootCount == 3{//这是第三次重装警告
 				'\0\s[35]\w9.\w9.\w9.\w9\w9\w9\n\s[8]最后一次了。\w9\w9\w9\w9\n'
@@ -234,21 +239,14 @@ OnBoot{
 		\x"
 	}
 	--
-	/*
-	if TOINT(autoastro)==0
-		temp='autoastro'
-	if TOINT(autoweather)==0
-		OnWeatherFoundAuto
-	elseif TOINT(autoastro)==0
-		OnAstroFoundAuto
-	*/
+	if setting.WeatherReminder
+		OnWeatherUpdate.boot
 	--
 	if AutoUpdate
 		OnSilentUpdate
 }
 OnBoot.aboutTime{
 	_phase = GetPhase
-	_laststart=0
 	_timeslot = GetTimeSlot
 	if reference0!='return'{
 		if AutoShellChange[0]
@@ -428,18 +426,18 @@ OnBoot.aboutTime{
 		intimacy--
 		HolidayRemindFlag = 0
 		birthdaygiftmode = 0
-		"\0\s[21]\w6\s[0]好久不见啊，%(username)。\1\s[10]至少有一个礼拜沒见了吧。\x"
+		"\0\s[21]\w6\s[0]好久不见啊，%(username)。\1\s[10]至少有一个礼拜没见了吧。\x"
 		"\1\s[117]%(username)把我们给忘了吗,\w9这么久才回来。\w9\w9\0\s[0]%(username)，好久不见啊。\x"
-		"\1\s[10]\0\s[21]\w6\s[5]%(username) ，好久不见\1\s[10]至少有一个礼拜沒见了吧。\x"
+		"\1\s[10]\0\s[21]\w6\s[5]%(username) ，好久不见\1\s[10]至少有一个礼拜没见了吧。\x"
 	}
 	//超过一月半小于半年
 	elseif elapsetime >= 3628800 && elapsetime < 15768000{
 		intimacy-=5
 		HolidayRemindFlag = 0
 		birthdaygiftmode = 0
-		"\0\s[21]\w6\s[0]好久不见啊，%(username)。\1\s[10]至少有一个月沒见了吧。\x"
+		"\0\s[21]\w6\s[0]好久不见啊，%(username)。\1\s[10]至少有一个月没见了吧。\x"
 		"\1\s[117]%(username)把我们给忘了吗,\w9这么久才回来。\w9\w9\0\s[0]%(username)，好久不见啊。\x"
-		"\1\s[10]\0\s[21]\w6\s[5]%(username) ，好久不见\1\s[10]至少有一个月沒见了吧。\x"
+		"\1\s[10]\0\s[21]\w6\s[5]%(username) ，好久不见\1\s[10]至少有一个月没见了吧。\x"
 	}
 	//超过半年
 	elseif elapsetime >= 15768000{
@@ -448,9 +446,9 @@ OnBoot.aboutTime{
 		birthdaygiftmode = 0
 		_years = TOINT(FLOOR(elapsetime / 31536000))
 		if _years=0{
-			"\0\s[21]\w6\s[0]好久不见啊，%(username)。\1\s[10]至少有半年沒见了吧。\x"
+			"\0\s[21]\w6\s[0]好久不见啊，%(username)。\1\s[10]至少有半年没见了吧。\x"
 			"\1\s[117]%(username)把我们给忘了吗,\w9这么久才回来。\w9\w9\0\s[0]%(username)，好久不见啊。\x"
-			"\1\s[10]\0\s[21]\w6\s[5]%(username) ，好久不见\1\s[10]至少有半年沒见了吧。\x"
+			"\1\s[10]\0\s[21]\w6\s[5]%(username) ，好久不见\1\s[10]至少有半年没见了吧。\x"
 		}else{
 			"\0\s[3]%(username)\w8，%(_years)年未见\n\1\s[10]过得还好吗？\w6\n小公主可是一直都在等你哦？\x"
 		}
@@ -486,7 +484,7 @@ OnBoot.aboutTime{
 			when 'Day'{
 				if _phase >= 2{
 					if weekday == '0'
-						'\0\s[26]早安。\w9\w9\n…\w9嗯、\w9\s[8]已經中午了喔。\w9\w9\1\s[10]反正是禮拜天嘛。\w9\w9\n有好好休息嗎？\x'
+						'\0\s[26]早安。\w9\w9\n…\w9嗯、\w9\s[8]已经中午了喔。\w9\w9\1\s[10]反正是礼拜天嘛。\w9\w9\n有好好休息吗？\x'
 					else{
 						"\1\s[10]\0\s[2]啊。\w9\w9\s[40]\n午安、\w9%(username)。\x"
 						"\1\s[10]\0\s[40]午安、\w9%(username)。\1\s[10]哟。\x"
@@ -727,7 +725,6 @@ ClearTempVar:void{
 	S_CHARSET = GETSETTING('charset.output')
 }
 OnClose.base:void{
-	OnCloseCalled=1
 	if reference0 == 'system'
 		inshutdown=1
 	if !TimeErrorCheck
@@ -832,7 +829,7 @@ OnWindowStateMinimize{
 	if mode != '1'{
 		'\0\s[3]……'
 		'\0\s[6]……知道了。'
-		if 依赖度 > 50
+		if nurturance.Dependency > 50
 			'\0\s[9]请不要把我忘了哦？'
 	}
 	'\1又要被隐藏了么？'
@@ -890,7 +887,6 @@ MinimizeTime{
 //**** ゴースト/シェル切り替え **********************************************************
 //**** 他のゴーストに交代 *********************************************************************************************
 OnGhostChanging{
-	elapsedtime = TOINT(elapsedtime) + TOINT(ghostuptime)
 	if mode == '1'{
 		OnGhostChanging1
 	}

@@ -2,6 +2,7 @@
 .github
 .gitignore
 .gitmodules
+.vscode
 readme.md
 ReadMe.md
 README.md
@@ -35,6 +36,7 @@ XtraStuf.mac/
 
 /ghost/master/shiori/tama.exe
 /ghost/master/shiori/tama.txt
+/ghost/master/shiori/yayalint_config.lua
 /ghost/master/shiori/update_aya.bat
 /ghost/master/shiori/aya_variable.cfg
 

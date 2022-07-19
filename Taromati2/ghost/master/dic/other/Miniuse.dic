@@ -131,8 +131,6 @@ Onlunarbirth{
 	_d=_argv[2]
 	//_m=REPLACE(_m,'腊','十二')
 	_mon=(31,28,31,30,31,30,31,31,30,31,30,31)
-	_mm=1
-	_dd=1
 	for _i = 1;_i <= 12;_i++{
 		//Onlunarbirth(2015,'十一','廿一')
 		for _j = 1;_j <= _mon[_i-1];_j++{
@@ -407,15 +405,8 @@ Ongift{
 	gift
 	_N=ARRAYSIZE(Useritem)-2
 	_G=RAND(_N)
-	_spitemflag=0
-	if _G==19&&UserspitemNum[1]!=1{
-		UserspitemNum[1]=1
-		_spitemflag=1
-	}
-	else{
-		while _G==19{
-			_G=RAND(_N)
-		}
+	while _G==19{
+		_G=RAND(_N)
 	}
 	UseritemNum[_G]=TOINT(UseritemNum[_G])+1
 	if reference0==0{
@@ -450,8 +441,6 @@ Ongift{
 		Useritemtime[_G]="%(year)年%(month)月%(day)日橘花送的%(year-firstboottime[0])周年相遇礼物"
 		Useriteminfo=("%(year)年%(month)月%(day)日%(hour)时%(minute)分收到%(year-firstboottime[0])周年相遇%(Useritem[_G][1])。" , Useriteminfo)
 	}
-	if _spitemflag==1
-		'红色水晶项链“绯红之眼”获得。'
 	--
 	"\0\s[5]是%(Useritem[_G][1])哦，%(username)喜欢吗？\n\n/
 	\q[◇喜欢,likegift]\n/
@@ -462,7 +451,7 @@ gift{
 	//UseritemNum=(0,0,0,0,0,0,0,0,0,0)
 	//Useritemtime=(0,0,0,0,0,0,0,0,0,0)
 	Useritem=("0,高级腕表,%(UseritemNum[0]),%(Useritemtime[0])","1,瑞士军刀,%(UseritemNum[1]),%(Useritemtime[1])","2,时尚钱包,%(UseritemNum[2]),%(Useritemtime[2])","3,芝宝打火机,%(UseritemNum[3]),%(Useritemtime[3])","4,便携酒壶,%(UseritemNum[4]),%(Useritemtime[4])","5,IPOD4,%(UseritemNum[5]),%(Useritemtime[5])","6,HIFI随身听,%(UseritemNum[6]),%(Useritemtime[6])","7,Iphone7,%(UseritemNum[7]),%(Useritemtime[7])","8,HIFI耳机,%(UseritemNum[8]),%(Useritemtime[8])","9,橘花抱枕,%(UseritemNum[9]),%(Useritemtime[9])","10,钻戒,%(UseritemNum[10]),%(Useritemtime[10])","11,铂金项链,%(UseritemNum[11]),%(Useritemtime[11])","12,星之砂,%(UseritemNum[12]),%(Useritemtime[12])","13,幸运星瓶,%(UseritemNum[13]),%(Useritemtime[13])","14,水晶八音盒,%(UseritemNum[14]),%(Useritemtime[14])","15,星空恋人,%(UseritemNum[15]),%(Useritemtime[15])","16,金色怀表,%(UseritemNum[16]),%(Useritemtime[16])","17,演唱会门票两张,%(UseritemNum[17]),%(Useritemtime[17])","18,音乐厅门票两张,%(UseritemNum[18]),%(Useritemtime[18])",Userspitem[1],"20,电影院门票两张,%(UseritemNum[20]),%(Useritemtime[20])")
-	Userspitem=("0,K.I.K.K.A,%(UserspitemNum[0]),%(Userspitemtime[0]),散发出神秘光茫的红宝石项链，作用未知，红宝石上面刻着五个大写英文字母：K.I.K.K.A","1,绯红之眼,%(UserspitemNum[1]),%(Userspitemtime[1]),橘花特制的红色水晶项链，好像充满能量的样子")
+	Userspitem=("0,K.I.K.K.A,%(UserspitemNum[0]),%(Userspitemtime[0]),散发出神秘光茫的红宝石项链，作用未知，红宝石上面刻着五个大写英文字母：K.I.K.K.A")
 	/*
 	'高级腕表'
 	'瑞士军刀'
@@ -528,7 +517,7 @@ OnBackup{
 	_w+='■数据备份■\n\n[half]'
 	_txt=''
 	if !ISDIR('SHIORI_BACKUP_PATH')
-		_temp=MKDIR('SHIORI_BACKUP_PATH')
+		void MKDIR('SHIORI_BACKUP_PATH')
 	if reference0=='mem'{
 		if reference1==NULL
 			_txt+='要对_SAVE_file及profile文件夹进行备份操作吗？\n\n[half]/
@@ -738,7 +727,7 @@ OnCalculator{
 	_txt+CalculatorShow
 }
 CalculatorShow{
-	_txt='\C\![quicksession,1]\c\b[2]\![set,choicetimeout,0]\![set,autoscroll,disable]'
+	_txt='\C\![quicksession,1]\c\b[2]\![set,choicetimeout,0]\![set,autoscroll,false]'
 	_txt+= "\_l[0,-]%(m_exp)		\_l[100,-]%(m_res)\n/
 	\_l[0,-]\q[◇输入表达式,OnInputExp]	\_l[100,-]\q[◇从剪贴板复制,OnPasteToExp]	\_l[200,-]\q[◇复制结果,OnCopyDat,%(m_res)]\n"
 	_carry=IARRAY
@@ -1051,7 +1040,6 @@ Operate2{//二目运算
 todec{
 	_num=TOSTR(_argv[0])
 	_oldcarry=_argv[1]
-	_weight=_oldcarry
 	_l=STRLEN(_num)
 	if _oldcarry==10 || _num==0{_num;return;}
 	_neg=(SUBSTR(_num,0,1)=='-')
@@ -1094,7 +1082,7 @@ evaluate{//表达式求值主函数
 	_theta=''
 	_i=0.0;_optr_i=0.0;_opnd_i=0.0;_j=0.0;_zpart=0.0;_k=0.0
 	_operand=0.0;_weight=0.0;_a=0.0;_b=0.0;_xpart=0.0
-	//_index=0
+	_index=0
 	_num=1.0
 	_expression=_exp
 	_expression+='\0'
@@ -2996,7 +2984,7 @@ IsChapterMenu{
 	_result=0
 	_txt=CUTSPACE(_txt)
 	_A=SUBSTR(_txt,0,3)
-	if RE_GREP(_txt,'[一二三四五六七八九十123456789]')&&!RE_GREP(_txt,'[\,\?，。？！!:“”]')&&(STRLEN(_txt)<25&&RE_GREP(_A,'[一二三四五六七八九十123456789]')||RE_GREP(_txt,'[章节部]')&&“第” _in_ _txt)||RE_GREP(TOLOWER(_txt),'chapter')
+	if RE_GREP(_txt,'[一二三四五六七八九十123456789]')&&!RE_GREP(_txt,'[\,\?，。？！!:“”]')&&(STRLEN(_txt)<25&&RE_GREP(_A,'[一二三四五六七八九十123456789]')||RE_GREP(_txt,'[章节部]')&&"第" _in_ _txt)||RE_GREP(TOLOWER(_txt),'chapter')
 		_result=1
 	_result
 }
@@ -3081,7 +3069,6 @@ OnKikkaKnowl{
 			_file = _path +'/'+ _file
 			_fileext = TOLOWER(SPLITPATH(_file)[3])
 			_txt+="\__q[OnKikkaKnowl.SelectFile,%(_file)]"+_n+'.'+_filename+_fileext+'\__q\n'
-			_m++
 		}
 		_n++
 	}
@@ -3293,18 +3280,18 @@ OnOtherGhostClosed{
 	else{
 		if mode == '1'{
 			if ghostexcount > 0{
-				'\1\s[11]喵嗚~？'
+				'\1\s[11]喵呜~？'
 			}
 			else{
 				mode = '0'
-				'\1\s[18]哈啊……沒人在的話就好。\n/
-				真是麻煩。'
+				'\1\s[18]哈啊……没人在的话就好。\n/
+				真是麻烦。'
 			}
 		}
 		else{
 			if ghostexcount > 0{
 				mode = '1'
-				'\0\s[11]喵嗚~？'
+				'\0\s[11]喵呜~？'
 			}
 			else{
 				mode = '0'

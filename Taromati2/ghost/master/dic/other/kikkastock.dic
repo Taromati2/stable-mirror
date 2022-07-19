@@ -353,7 +353,6 @@ OnKikkaStockList.Write:void{
 	FCHARSET(1)
 	FOPEN(_file,'w')
 	SETDELIM(_txt,'*')
-	FWRITE(_file,_buff)
 	foreach _txt;_buff{
 		if _buff!=''&&_buff!=-1
 			FWRITE(_file,_buff)
