@@ -1816,7 +1816,7 @@ POSREPLACE{
 	_temp=''
 	_result=''
 	_l=STRLEN(_str)
-	if _l-_start-len+1>0{
+	if _l-_start-_len+1>0{
 		_temp=SUBSTR(_str,0,_start-1)
 		_temp+=_txt+SUBSTR(_str,_start+_len-1,_l)
 	}

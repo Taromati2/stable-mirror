@@ -445,7 +445,7 @@ OnBoot.aboutTime{
 		HolidayRemindFlag = 0
 		birthdaygiftmode = 0
 		_years = TOINT(FLOOR(elapsetime / 31536000))
-		if _years=0{
+		if _years==0{
 			"\0\s[21]\w6\s[0]好久不见啊，%(username)。\1\s[10]至少有半年没见了吧。\x"
 			"\1\s[117]%(username)把我们给忘了吗,\w9这么久才回来。\w9\w9\0\s[0]%(username)，好久不见啊。\x"
 			"\1\s[10]\0\s[21]\w6\s[5]%(username) ，好久不见\1\s[10]至少有半年没见了吧。\x"

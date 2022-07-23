@@ -168,7 +168,7 @@ OnPoesywrite_1{
 		"\0\s[8]%(username),\w9那个..\w9错了哦..\w9\1这很正常吧..\w[1000]\n"
 		"\0\s[6]%(username),\w9没对呢,\w9继续加油哦~\w[1000]\n"
 		--
-		if _n=0 {
+		if _n==0 {
 			OnPoesywrite
 		}
 		else {
