@@ -177,7 +177,7 @@ Onupdatenotebook{
 	_txt
 }
 Ondelnotebook{
-	_t=SQLite("DELETE FROM notes WHERE title='%(reference0)'")
+	void SQLite("DELETE FROM notes WHERE title='%(reference0)'")
 	Onnotebook
 }
 Onclicknotebook{
@@ -200,7 +200,7 @@ Onaddnotebook{
 			_T=addnotebook_T
 			_C=addnotebook_C
 			_D="%(year)-%(month)-%(day)"
-			_temp=SQLite('INSERT INTO notes VALUES ('+SQLite.Size('notes')+",'%(_T)','%(_D)','%(_C)')")
+			void SQLite('INSERT INTO notes VALUES ('+SQLite.Size('notes')+",'%(_T)','%(_D)','%(_C)')")
 			ERASEVAR('addnotebook_T')
 			ERASEVAR('addnotebook_C')
 			"\0\s[26]橘花已经记下了哦~\w9\x%(Onnotebook)"
@@ -362,9 +362,9 @@ OnShortcutMenu{
 		_Path=_file
 		_Ico=TOINT(_s[2,'|'])
 		if _Ico>0
-			_w+="\__q[%(_OSMX),%(_Path),%(_Name),%(_mode),%(_Ref),%(_i),%(        _OSEX)]\_b[%(CHR(34))%(_Icofile),%(_Ico)%(CHR(34)),inline%(ICOMode)]\__q"
+			_w+="\__q[%(_OSMX),%(_Path),%(_Name),%(_mode),%(_Ref),%(_i),%(_OSEX)]\_b[%(CHR(34))%(_Icofile),%(_Ico)%(CHR(34)),inline%(ICOMode)]\__q"
 		else
-			_w+="\__q[%(_OSMX),%(_Path),%(_Name),%(_mode),%(_Ref),%(_i),%(        _OSEX)]\_b[%(CHR(34))%(_Path),0%(CHR(34)),inline%(ICOMode)]\__q"
+			_w+="\__q[%(_OSMX),%(_Path),%(_Name),%(_mode),%(_Ref),%(_i),%(_OSEX)]\_b[%(CHR(34))%(_Path),0%(CHR(34)),inline%(ICOMode)]\__q"
 	}
 	_w+='\n[half]\![*]\q[添加文件,OnShortCutListAdd,file]   \![*]\q[导入配置,OnShortCutListAdd,openlist]   \![*]\q[导出配置,OnShortCutListAdd,savelist]   \![*]\q[导出项目,OnShortCutListAdd,savemenu]\n\![*]\q[新建项目,OnShortCutListAdd,newmenu]   \![*]\q[添加项目,OnShortCutListAdd,addmenu]   \![*]\q[打开项目,OnShortCutListAdd,openmenu]   \![*]\q[文件排序,OnShortCutList,fileorder] \n[150]'
 	if reference0=='ShortcutMenuDel' {
@@ -541,7 +541,6 @@ OnShortCutMenuRename{
 }
 OnShortCutMenuAdd{
 	shortcutlistdat=ARRAYSIZE(shortcutlistname)
-	_i=shortcutlistdat
 	_dat=DATPATH
 	if _argc>0
 		_dat=_argv[0]
@@ -594,7 +593,6 @@ OnShortcutAdd{
 			for _i=0;shortcutdata[_i]!='';_i++ {
 				_s=shortcutdata[_i]
 				if _s[1,'|']==_Name && _s[2,'|']!=_Path {
-					_g=1
 					_a=_s[0,'|']
 					shortcutdata[_i]=IARRAY
 					shortcutdata+="%(_a)|%(_Name)|%(_Path)*"
@@ -1307,7 +1305,6 @@ OnEnglishVocMenu{
 	}
 	_letter=('a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z')
 	_txt=''
-	_x=0
 	for _i=0;_i<26;_i++ {
 		_n=''
 		if (_i+1)%5==0
@@ -2191,12 +2188,11 @@ autojeachday{
 	_txt
 }
 Onacjeachday{
-	if reference0 {
-		_i=reference0
-	}
-	if _i==NULL || !ISINTEGER(_i){
+	_i=reference0
+	if _argv[0]
+		_i=_argv[0]
+	if _i==NULL || !ISINTEGER(_i)
 		_i=1
-	}
 	_str = _i + '.'
 	_next = _i + 1 + '.'
 	_file = 'DATA_PATH\vocabulary\Japanese\动漫日语每天一句.txt'

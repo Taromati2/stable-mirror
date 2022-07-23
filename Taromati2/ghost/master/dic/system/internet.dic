@@ -437,7 +437,7 @@ OnUrl{
 }
 OnExecuteHTTPComplete{
 	if reference1[0,'='] == 'rss' {
-		_tmp = reference1[1,'=']
+		//_tmp = reference1[1,'=']
 		//ReadXml("VAR_PATH\\%(_tmp)")
 	}
 	elseif reference1 == 'weather' {

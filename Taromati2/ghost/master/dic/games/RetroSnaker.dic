@@ -152,7 +152,7 @@ RetroSnaker.Move{
 		RetroSnaker.node++/*蛇的身体长一节*/
 		food.yes=1/*画面上需要出现新的食物*/
 		Score+=TOINT(10*RetroSnaker.speed)
-		PrScore/*输出新得分*/
+		Score/*输出新得分*/
 	}
 }
 CheckRetroSnakerStatus{//游戏状态
@@ -232,7 +232,7 @@ RetroSnakerspeed{
 	if TOINT(_argv[0])==1
 		_RetroSnaker.timespeed=250
 	elseif TOINT(_argv[0])==2
-		_RetroSnaker.speed=168
+		_RetroSnaker.timespeed=168
 	elseif TOINT(_argv[0])==3
 		_RetroSnaker.timespeed=112
 	elseif TOINT(_argv[0])==4
