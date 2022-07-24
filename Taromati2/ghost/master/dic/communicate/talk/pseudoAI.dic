@@ -165,7 +165,6 @@ AILoad{//AILoad('你好','aiml')  AILoad('你好，喜欢什么')
 	qnum=0
 	anum=0
 	_search=''
-	_length=0
 	num=0
 	talkflag=''
 	talkflagid=0
@@ -182,14 +181,11 @@ AILoad{//AILoad('你好','aiml')  AILoad('你好，喜欢什么')
 	//_tfiles='other.ai,'+_tfiles
 	for _a=0;_a<strnum;_a++{
 		_str=string[_a]
-		_g=IARRAY
 		e=0
 		aimode=''
 		_txt=''
 		_t=''
-		_lastm=0
 		foreach _tfiles; _file{
-			_filename=TOUPPER(SPLITPATH(_file)[2])
 			_file = _path +'/'+ _file
 			_fileext = TOLOWER(SPLITPATH(_file)[3])
 			case _fileext{

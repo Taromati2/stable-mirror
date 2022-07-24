@@ -1320,10 +1320,7 @@ OnOtherVocMenu{
 		_booknum=TOINT(_argv[0])
 		_file=TOSTR(_argv[1])
 	}
-	_txt=''
-	_x=0
-	_txt+="\q[%(_file),OnJapaneseWordLoad,1,%(_booknum),1,%(_file)]%(_n)"
-	_txt
+	"\q[%(_file),OnJapaneseWordLoad,1,%(_booknum),1,%(_file)]"
 }
 OnJapaneseWordLoad{
 	_a = reference0
@@ -1341,7 +1338,6 @@ OnJapaneseWordLoad{
 	_j=TOINT(_j)
 	if !ISVAR('japhardword')
 		japhardword=IARRAY
-	_before=''
 	_str ="第%(_a)课"
 	_next = '第'
 	_file = 'DATA_PATH\vocabulary\Japanese\japanese.txt'
@@ -1355,7 +1351,6 @@ OnJapaneseWordLoad{
 		//_booknum=reference0
 		_str=_kana[_a]
 		_next =_kana[_a+1]
-		_before=_kana[_a-1]
 	}
 	if _booknum==6{
 		_file=japworddaymode[3]
@@ -1366,7 +1361,6 @@ OnJapaneseWordLoad{
 		_letter=('a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z')
 		_str=_letter[_a]
 		_next =_letter[_a+1]
-		_before=_letter[_a-1]
 	}
 	if _booknum==7{
 		_str='\n'
@@ -1586,7 +1580,7 @@ JapWordShuffle{
 	_num=RAND(_n)
 	_j=0
 	_word=IARRAY
-	foreach japword;_i{
+	while _j<_n{
 		while _temp[_num]==-1{
 			_num=RAND(_n)
 		}
@@ -1685,7 +1679,6 @@ OnJapWordQuestion{
 			_wordquestion= japword[_i][0,'(']
 		else
 			_wordquestion=japword[_i][0,'〔']
-		_wordsort=TextBetween(japword[_i],'〔','〕')
 		if '〔' _in_ japword[_i]
 			_wordanswer=TextBetween(japword[_i],'〕','')
 		else{
@@ -1705,7 +1698,6 @@ OnJapWordQuestion{
 			_wordanswer=_wordquestion
 			_wordquestion=_temp
 		}
-		_k=0
 		_temp=''
 		if r!=_i||!ISVAR('wordanswer') {
 			wordanswer=WrongAnswerGet(_wrongword,_i,_exlmode,_r)
@@ -1730,7 +1722,7 @@ OnJapWordQuestion{
 				_temp=_t
 			_t=REPLACE(_t,'[','\[')
 			_t=REPLACE(_t,']','\]')
-			_txt+="\__q[OnJapWordAnswer,%(_i),%(_t),%(_wordanswer),%(_n)]◇%(_temp)\__q\n"
+			_txt+="\__q[OnJapWordAnswer,%(_i),%(_t),%(_wordanswer)]◇%(_temp)\__q\n"
 		}
 	}
 	elseif _i==_n{
@@ -1828,7 +1820,6 @@ OnJapWordAnswer{
 	_wordnum=TOINT(reference0)
 	_wronganswer=reference1
 	_rightanswer=reference2
-	_num=reference3
 	if _wronganswer==_rightanswer
 		japwordright[_wordnum]=1
 	else
@@ -1918,7 +1909,6 @@ JapWordDay{
 	_word=IARRAY
 	_misword=''
 	buffnum=0
-	buffnums=0
 	if !ISVAR('japworddaynum')
 		japworddaynum=10
 	_exlmode=0
@@ -1942,13 +1932,11 @@ JapWordDay{
 			if TOINT(japworddaymode[2])==5{
 				_kana=('あ,い,う,え,お,か,き,く,け,こ,さ,し,す,せ,そ,た,ち,つ,て,と,な,に,ぬ,ね,の,は,ひ,ふ,へ,ほ,ま,み,む,め,も,や,　,ゆ,　,よ,ら,り,る,れ,ろ,わ,-1')
 				_str=_kana[_a]
-				_next =_kana[_a+1]
 				_exlmode=1
 			}
 			if TOINT(japworddaymode[2])==6{
 				_letter=('a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z')
 				_str=_letter[_a]
-				_next =_letter[_a+1]
 				_exlmode=2
 			}
 			if TOINT(japworddaymode[2])==7{
@@ -2007,6 +1995,7 @@ JapWordDay{
 		if TOINT(japworddaymode[2])==7{
 			_exlmode=3
 		}
+		_buff=''
 		if FOPEN(_file, 'r'){
 			_buff = FREAD(_file)
 			_t=SUBSTR(_buff[1,'	'],0,1)
@@ -2019,7 +2008,7 @@ JapWordDay{
 					_t=SUBSTR(_buff[0,'	'],0,1)
 			}
 			if TOLOWER(_t)==TOLOWER(_str)&&_exlmode||_str _in_ _buff&&!_exlmode||_exlmode==3{
-				while _buff != -1 &&  (TOLOWER(_t)!=TOLOWER(_nest)&&_exlmode||_next !_in_ _buff&&!_exlmode||_exlmode==3){
+				while _buff != -1 &&  (TOLOWER(_t)!=TOLOWER(_next)&&_exlmode||_next !_in_ _buff&&!_exlmode||_exlmode==3){
 					_buff = FREAD(_file)
 					_t=SUBSTR(_buff[1,'	'],0,1)
 					if _exlmode==2
@@ -2039,6 +2028,7 @@ JapWordDay{
 				_t=SUBSTR(_buff[1,'	'],0,1)
 				if _exlmode==2
 					_t=SUBSTR(_buff[0,'	'],0,1)
+				_temp=0
 				if _temp/japworddaynum==RAND(buffnum/japworddaynum)&&TOLOWER(_t)==TOLOWER(_str){
 					_word,=REPLACE(_buff,'	','|')
 					_temp++
@@ -2046,7 +2036,7 @@ JapWordDay{
 			}
 			if _exlmode||_str _in_ _buff&&!_exlmode{
 				_temp=0
-				while (_buff = FREAD(_file))!= -1 &&  (TOLOWER(_t)!=TOLOWER(_nest)&&_exlmode||_next !_in_ _buff&&!_exlmode||_exlmode==3)&& ARRAYSIZE(_word)<japworddaynum &&ARRAYSIZE(_word)<buffnum{
+				while (_buff = FREAD(_file))!= -1 &&  (TOLOWER(_t)!=TOLOWER(_next)&&_exlmode||_next !_in_ _buff&&!_exlmode||_exlmode==3)&& ARRAYSIZE(_word)<japworddaynum &&ARRAYSIZE(_word)<buffnum{
 					_t=SUBSTR(_buff[1,'	'],0,1)
 					_buff = REPLACE(_buff,'	','|')
 					if _buff!=''&& _temp/japworddaynum==RAND(buffnum/japworddaynum)&&('第' !_in_ _buff && '课' !_in_ _buff&&!_exlmode||'汉字  假名' !_in_ _buff&& _exlmode)&&'-----' !_in_ _buff&& ( '〔' _in_ _buff || '|' _in_ _buff)
