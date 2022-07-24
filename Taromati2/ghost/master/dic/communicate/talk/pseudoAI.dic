@@ -2374,7 +2374,7 @@ WriteSpVoice.vbs{
 }
 CheckProcess{//CheckProcess('wscript.exe')
 	_processname=TOLOWER(_argv[0])
-	_t=CALLSAORI('Process')
+	void CALLSAORI('Process')
 	_ProcessData=TOLOWER(valueex0)
 	_found=0
 	if _processname _in_ _ProcessData
@@ -2451,7 +2451,6 @@ TranslateWithDictionary{//TranslateWithDictionary("%(username)被欺负了")
 	if _argc>0
 		_str=TOSTR(_argv)
 	_found=_str
-	_cha='%'
 	_found=REPLACE(_found,username,'%(username)')
 	if FOPEN(_file,'r'){
 		for _buff = FREAD(_file); _buff != -1; _buff = FREAD(_file){

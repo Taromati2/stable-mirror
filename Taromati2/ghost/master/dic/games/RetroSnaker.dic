@@ -18,7 +18,6 @@ OnRetroSnaker{
 	SDirect=keyRight
 	Score = 0
 	food.yes=1/*1表示需要出现新食物,0表示已经存在食物*/
-	RetroSnaker.life=0/*活着*/
 	//if !RetroSnaker.speed
 		RetroSnaker.speed=1
 	//if RetroSnaker.speed>9
@@ -36,8 +35,6 @@ OnRetroSnaker{
 	RetroSnaker.x[2]=10;RetroSnaker.y[2]=10
 	//RetroSnaker.x[3]=13;RetroSnaker.y[3]=10
 	//RetroSnaker.x[4]=14;RetroSnaker.y[4]=10
-	RetroSnaker=IARRAY
-	RetroSnaker_=IARRAY
 	PaintRetroSnaker
 }
 OnRetroSnakerTimer{
@@ -139,12 +136,10 @@ RetroSnaker.Move{
 	for _i=3;_i<RetroSnaker.node;_i++/*从蛇的第四节开始判断是否撞到自己了，因为蛇头为两节，第三节不可能拐过来*/{
 		if RetroSnaker.x[_i]==RetroSnaker.x[0]&&RetroSnaker.y[_i]==RetroSnaker.y[0]{
 			GameOver=1
-			RetroSnaker.life=1
 		}
 	}
 	if RetroSnaker.x[0]<1||RetroSnaker.x[0]>SMapX-2||RetroSnaker.y[0]<1||RetroSnaker.y[0]>SMapY-2/*蛇是否撞到墙壁*/{
 		GameOver=1/*本次游戏结束*/
-		RetroSnaker.life=1/*蛇死*/
 	}
 	if RetroSnaker.x[0]==food.x&&RetroSnaker.y[0]==food.y/*吃到食物以后*/{
 		RetroSnaker.x[RetroSnaker.node]=-20
@@ -269,11 +264,8 @@ ClearRetroSnakerVar:void{
 	ERASEVAR('RetroSnaker.x')
 	ERASEVAR('RetroSnaker.y')
 	ERASEVAR('node')
-	ERASEVAR('RetroSnaker')
-	ERASEVAR('RetroSnaker_')
 	ERASEVAR('SDirect')
 	ERASEVAR('food.yes')
-	ERASEVAR('RetroSnaker.life')
 	ERASEVAR('RetroSnaker.speed')
 	ERASEVAR('SMapX')
 	ERASEVAR('SMapY')

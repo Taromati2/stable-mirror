@@ -113,7 +113,7 @@ OnLastTalk{
 }
 RandomTalk{
 	if !RAND(5){
-		if _t=RandomTalk.others{
+		if (_t=RandomTalk.others)!=''{
 			_t
 			return
 		}

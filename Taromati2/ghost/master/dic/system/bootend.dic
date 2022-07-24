@@ -627,7 +627,6 @@ ClearVar{
 	ERASEVAR('B')
 	ERASEVAR('b')
 	ERASEVAR('com')
-	ERASEVAR('ball_')
 	ERASEVAR('ball1')
 	ERASEVAR('bs')
 	ERASEVAR('v')

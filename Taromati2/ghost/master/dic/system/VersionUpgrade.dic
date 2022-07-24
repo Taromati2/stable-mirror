@@ -188,4 +188,5 @@ VERSION_UPGRADE_8:void{//building
 	ERASEVAR('Right')
 	ERASEVAR('Up')
 	ERASEVAR('Down')
+	ERASEVAR('closetouchmode')
 }

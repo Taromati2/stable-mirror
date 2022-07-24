@@ -1038,10 +1038,10 @@ OnEventWrite{
 		_s=0
 		_n=0
 		foreach _temp;_j{
+			/*
 			_Y=TOINT(_j[1,'	'])
 			_M=TOINT(_j[2,'	'])
 			_D=TOINT(_j[3,'	'])
-			/*
 			if _i==0{
 				if _year == _Y&&_m == _M&&_d == _D{
 					if _n==_id{

@@ -151,7 +151,6 @@ OnHandGameReset{
 	atk=0
 }
 OninterHandGame{
-	r0=reference0
 	受到伤害=reference1
 	if reference2 {
 		HP0=reference2
@@ -159,8 +158,6 @@ OninterHandGame{
 	if reference3 {
 		HP1=reference3
 	}
-	g0=_argv[0]
-	g1=_argv[1]
 	_i=RAND(3)+1
 	if 受到伤害>0{
 		HP0-=受到伤害
