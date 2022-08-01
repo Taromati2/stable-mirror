@@ -406,7 +406,7 @@ file,ghost/master/dic/system/event_response.dic745de093f6cad413097d4af1868ad0a9
 file,ghost/master/dic/system/hotkey.dicc39d347ccdc92a80c5fe1af7ea6e97d2size=9541date=2022-05-28T17:53:03
 file,ghost/master/dic/system/internet.dicb6a154a824ad36df1a40ee43219a7c9dsize=11974date=2022-06-09T11:48:26
 file,ghost/master/dic/system/lunar.dica4b3284e2c9c7a75ef8a051793aa4965size=7093date=2022-05-22T01:21:13
-file,ghost/master/dic/system/menu.dic3456255cf05711a53f529acede8f297esize=91212date=2022-06-04T22:57:39
+file,ghost/master/dic/system/menu.dic44430cea1c75f71df1516e659ed74a1asize=91201date=2022-06-04T22:57:39
 file,ghost/master/dic/system/mirror.dic5b679637ab4248d97be0dcd650ec8927size=1578date=2022-05-22T01:21:13
 file,ghost/master/dic/system/password.dic13e008d7c433df48a76cb3057bad3649size=2638date=2022-05-22T01:21:13
 file,ghost/master/dic/system/ukagaka_link.dic18c9f8102fc92a825beb01e921042cdcsize=903date=2022-05-22T01:21:13
