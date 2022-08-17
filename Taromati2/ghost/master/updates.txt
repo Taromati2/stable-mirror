@@ -370,7 +370,7 @@ file,ghost/master/dic/games/puzzle.dic6dd5ca94f7c8e10573ee3d43819bad05size=469
 file,ghost/master/dic/games/rpggame.dic595cf68aef84224f45431314add978cdsize=137033date=2022-05-23T13:26:15
 file,ghost/master/dic/games/tetrisgame.dic7556813e6fa3a27220a9525f5caebff2size=10935date=2022-05-22T01:21:13
 file,ghost/master/dic/games/uno.dic2398c3e9b9a1f43f2e836274ee20a14csize=26034date=2022-05-22T01:37:48
-file,ghost/master/dic/nurturance/nurturance.dic904c936e10eb8da91c91d718bae2b601size=27561date=2022-05-28T10:55:11
+file,ghost/master/dic/nurturance/nurturance.dic366b7d585087533948d04112d49a9882size=27241date=2022-05-28T10:55:11
 file,ghost/master/dic/other/Miniuse.dic0dbfd00caf265f99acc2294c3bf55c51size=96270date=2022-05-26T18:32:56
 file,ghost/master/dic/other/Other.dicaadd818a496ac7da753f7d79d5eaaa90size=75765date=2022-05-22T01:21:13
 file,ghost/master/dic/other/Tarro.dice70846109858ef3b4fecd784b903b51dsize=25419date=2022-05-22T01:21:13
@@ -469,7 +469,7 @@ file,ghost/master/saori/mciaudior.dllebe0f19e401c866fc419b3c2a729a0bfsize=9062
 file,ghost/master/saori/textcopy.dllb985beb7de58ae316ce03da9e260416asize=25600date=2022-05-05T00:56:13
 file,ghost/master/saori/tl.lock6cc375438fb76385e58c69193046dd19size=63date=2022-05-05T00:56:13
 file,ghost/master/saori/txtpaste.dlld26df18e46cf845ed073e26be17b3125size=25088date=2022-05-05T00:56:13
-file,ghost/master/shiori/aya.dllfb51a607b940e95ad839f506e791244csize=591872date=2022-06-03T21:31:48
+file,ghost/master/shiori/aya.dll3ca4b7c06c37f7f190ad69b097b87bddsize=596480date=2022-06-03T21:31:48
 file,ghost/master/shiori/aya.txt60e8c47a3dd03166c03a79039acad441size=24date=2022-05-05T00:56:13
 file,ghost/master/shiori/aya_base.txtd8f7b77993ac56cf17e3e9018a4eda3dsize=284date=2022-05-05T00:56:13
 file,ghost/master/shiori/aya_common.txtb81fb67bb2aa395aed114de9320dc6f1size=37date=2022-05-05T00:56:13
