@@ -292,6 +292,7 @@ file,ghost/master/data/other/birthdayflower.txt92c328ee420f6017fef2b15014ddbea0
 file,ghost/master/data/other/happyquest.txt7cbc6c0476a7aa80a2d8769559c7248esize=105040date=2022-05-05T01:12:15
 file,ghost/master/data/other/jumptest.txtc005268cd3f5b874f4c625405ee7edf4size=177600date=2022-05-05T01:12:15
 file,ghost/master/data/other/poem.txt6411b8be6fa1a0d258a92125f86a4597size=313252date=2022-05-05T01:12:15
+file,ghost/master/data/shell/surface_unknown.png7641e18d89d1d575a5e693680edf66afsize=6930date=2012-12-21T00:00:00
 file,ghost/master/data/test/2015年一级建造师机电实务题及答案题库版.txt9842cdb914c462750f63507614dae12esize=43935date=2022-05-05T01:12:15
 file,ghost/master/data/test/会计题库.txtf9fc58baa86287ef64c44832a839951asize=263480date=2022-05-05T01:12:15
 file,ghost/master/data/test/大一计算机考试题库.txt79f0e94907b37e87ea94c5bb53ab633fsize=131731date=2022-05-05T01:12:15
@@ -344,7 +345,7 @@ file,ghost/master/dic/aya/master/baseware.dicf38ecf1ce37a91875f9a1b0e7608058cs
 file,ghost/master/dic/aya/master/cmd.dic3c020d2d3a12d1b40035897f322f7c08size=151date=2022-05-22T01:21:13
 file,ghost/master/dic/aya/master/file.dic62182d1c6031252d88e1e2e0422fdceesize=3669date=2022-05-22T01:21:13
 file,ghost/master/dic/aya/master/ghost.dicb692e47f15c5ad1d102c525c4f280baasize=834date=2022-05-22T01:21:13
-file,ghost/master/dic/aya/master/shiori.dic59497ec12dacf8eb054ab0b5305bc2b6size=48208date=2022-05-30T22:04:00
+file,ghost/master/dic/aya/master/shiori.dic2a2ddd8315c9df4168cb2f3f5f99a5cesize=48514date=2022-05-30T22:04:00
 file,ghost/master/dic/aya/master/string.dic94b78188422d9d86352f0361a083ff95size=2425date=2022-05-22T01:34:46
 file,ghost/master/dic/aya/master/sysex.dicd5823fc8c3d79651eafc584468938ea0size=1229date=2022-06-04T22:57:16
 file,ghost/master/dic/aya/master/url.dic54a88b45e8b8d818b89e2283ab7f838fsize=156date=2022-05-22T01:21:13
@@ -352,7 +353,7 @@ file,ghost/master/dic/communicate/H/H.dic4c73f88638642ef3e159c6cfc630fa46size=
 file,ghost/master/dic/communicate/talk/learn.dic37a87fb48be79913dd90628405ec1320size=16525date=2022-05-22T01:21:13
 file,ghost/master/dic/communicate/talk/other_ghost.dicb94304548297c6e0b3b8ae224a88e1c4size=3239date=2022-05-22T01:34:46
 file,ghost/master/dic/communicate/talk/pseudoAI.dic09eeef289296b30d4a08c274d5e66992size=60116date=2022-05-22T12:29:48
-file,ghost/master/dic/communicate/talk/talk.dic9eca488eab6867560d04a22a38a566ecsize=173243date=2022-05-22T16:59:49
+file,ghost/master/dic/communicate/talk/talk.dicf0b89f3c282fbfd52013b6746afbc3f7size=174059date=2022-05-22T16:59:49
 file,ghost/master/dic/communicate/talk/talk_t.dicd112d7246d2fd88d7da91c758e20ef7fsize=8965date=2022-05-22T01:34:46
 file,ghost/master/dic/communicate/touch/touch.dic30a823cf05e39250086cec73ef3d48e4size=13766date=2022-05-22T01:37:48
 file,ghost/master/dic/dev/ayccoder.aycd7df86b0547b9b3e98b581643b9cfd2bsize=595date=2022-05-05T00:56:13
@@ -398,7 +399,7 @@ file,ghost/master/dic/system/anti_cheat.dic2611e4970303925ef46770da322546a1siz
 file,ghost/master/dic/system/base.dicbd0c5d0740cd648a125e155dbd6b7a60size=1954date=2022-05-22T15:32:56
 file,ghost/master/dic/system/bootend.dic6c328933a8269d184560c4c83f3445b6size=60298date=2022-06-05T20:35:04
 file,ghost/master/dic/system/change_part.dicbc60c6305fb994764be3027ec43633fdsize=568date=2022-05-22T01:21:13
-file,ghost/master/dic/system/changeshell.dic6038023ed7882e9f9e190cc00c79d712size=16095date=2022-06-05T20:43:12
+file,ghost/master/dic/system/changeshell.dic69c80cf11758815b9a78a3a79d80b470size=16397date=2022-06-05T20:43:12
 file,ghost/master/dic/system/clock.dicdd16ece0d3bd0c800d71a87416c5b3c3size=27336date=2022-05-22T17:18:10
 file,ghost/master/dic/system/database_edit.dic6693981fb886649c25ade34bf5664c87size=20839date=2022-05-22T01:21:13
 file,ghost/master/dic/system/discord.dicc85f2278fdd83a2d02b7cd9cc16b88fcsize=1800date=2022-05-22T01:21:13
@@ -428,7 +429,7 @@ file,ghost/master/pseudoAI/biology.ai4840b4eefe3bab74bc87ded17bc477basize=5092
 file,ghost/master/pseudoAI/common.ai8b5c4d10ad04ded3dbab25614bb39804size=98572date=2022-05-05T01:12:15
 file,ghost/master/pseudoAI/cute.ai9bd18d2390c3d82b2882961fc2632187size=21630date=2022-05-05T01:12:15
 file,ghost/master/pseudoAI/discuss.ai949c6b4259f86a2f62b7b29524dcb9absize=1519date=2022-05-05T01:12:15
-file,ghost/master/pseudoAI/language.aif5d3ec09c88a0ce37fda7a22c9635fa9size=18631date=2022-05-05T01:12:15
+file,ghost/master/pseudoAI/language.aid1a4d0329a0f1c8b575009dd39696b9asize=18521date=2022-05-05T01:12:15
 file,ghost/master/pseudoAI/logic.ai17268efee1114325796b7b86eb6db882size=1963date=2022-05-05T01:12:15
 file,ghost/master/pseudoAI/logiclearn.ai.base68b329da9893e34099c7d8ad5cb9c940size=1date=2021-06-10T19:41:53
 file,ghost/master/pseudoAI/math.aif658d2c284ef60ab322ab20c4adec78csize=25076date=2022-05-05T01:12:15
