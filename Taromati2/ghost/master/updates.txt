@@ -389,7 +389,7 @@ file,ghost/master/dic/other/test.dic9a5f7522938288fa2eefacc7862e458fsize=21418
 file,ghost/master/dic/system/Calendar.dicd11991eb24dd419db8e7cbb0f927f2dbsize=39820date=2022-05-22T01:25:00
 file,ghost/master/dic/system/Debug.dic7ddde38fc8b2175b5e005e7271714c51size=19824date=2022-06-03T21:44:58
 file,ghost/master/dic/system/FileDrop.dicee2ebe5ec65dce02813b81a31752113asize=4811date=2022-05-22T01:23:55
-file,ghost/master/dic/system/MAGIC.aycf947298c89c9dd7e174c5917ad3c8b39size=1522date=2022-05-10T10:45:37
+file,ghost/master/dic/system/MAGIC.aycd102dd530d51917c0cca39d98860db10size=1533date=2022-05-10T10:45:37
 file,ghost/master/dic/system/MAGIC.dic617991bbb23a229dd827369574b5e042size=294date=2022-05-22T01:21:13
 file,ghost/master/dic/system/SNTP.dic8c680e4d38f65caa4d893f4a5b14ec39size=3303date=2022-05-22T01:21:13
 file,ghost/master/dic/system/SQL.dic71070341b632bed1634140e5d9ade99asize=9486date=2022-05-22T01:34:46
