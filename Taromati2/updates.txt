@@ -353,7 +353,7 @@ file,ghost/master/dic/communicate/H/H.dic4c73f88638642ef3e159c6cfc630fa46size=
 file,ghost/master/dic/communicate/talk/learn.dic37a87fb48be79913dd90628405ec1320size=16525date=2022-05-22T01:21:13
 file,ghost/master/dic/communicate/talk/other_ghost.dicb94304548297c6e0b3b8ae224a88e1c4size=3239date=2022-05-22T01:34:46
 file,ghost/master/dic/communicate/talk/pseudoAI.dic09eeef289296b30d4a08c274d5e66992size=60116date=2022-05-22T12:29:48
-file,ghost/master/dic/communicate/talk/talk.dicf0b89f3c282fbfd52013b6746afbc3f7size=174059date=2022-05-22T16:59:49
+file,ghost/master/dic/communicate/talk/talk.dic5fe25418752876e40078ad0a4f74f8d1size=174103date=2022-05-22T16:59:49
 file,ghost/master/dic/communicate/talk/talk_t.dicd112d7246d2fd88d7da91c758e20ef7fsize=8965date=2022-05-22T01:34:46
 file,ghost/master/dic/communicate/touch/touch.dic30a823cf05e39250086cec73ef3d48e4size=13766date=2022-05-22T01:37:48
 file,ghost/master/dic/dev/ayccoder.aycd7df86b0547b9b3e98b581643b9cfd2bsize=595date=2022-05-05T00:56:13
@@ -399,7 +399,7 @@ file,ghost/master/dic/system/anti_cheat.dic2611e4970303925ef46770da322546a1siz
 file,ghost/master/dic/system/base.dicbd0c5d0740cd648a125e155dbd6b7a60size=1954date=2022-05-22T15:32:56
 file,ghost/master/dic/system/bootend.dic6c328933a8269d184560c4c83f3445b6size=60298date=2022-06-05T20:35:04
 file,ghost/master/dic/system/change_part.dicbc60c6305fb994764be3027ec43633fdsize=568date=2022-05-22T01:21:13
-file,ghost/master/dic/system/changeshell.dicac402cc2051a4a0c6709759b583ac1acsize=16412date=2022-06-05T20:43:12
+file,ghost/master/dic/system/changeshell.dicdbce115b9910aedd267861278e4dddd2size=16385date=2022-06-05T20:43:12
 file,ghost/master/dic/system/clock.dicdd16ece0d3bd0c800d71a87416c5b3c3size=27336date=2022-05-22T17:18:10
 file,ghost/master/dic/system/database_edit.dic6693981fb886649c25ade34bf5664c87size=20839date=2022-05-22T01:21:13
 file,ghost/master/dic/system/discord.dicc85f2278fdd83a2d02b7cd9cc16b88fcsize=1800date=2022-05-22T01:21:13
