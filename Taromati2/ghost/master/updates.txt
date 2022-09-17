@@ -345,9 +345,9 @@ file,ghost/master/dic/aya/master/baseware.dicf38ecf1ce37a91875f9a1b0e7608058cs
 file,ghost/master/dic/aya/master/cmd.dic3c020d2d3a12d1b40035897f322f7c08size=151date=2022-05-22T01:21:13
 file,ghost/master/dic/aya/master/file.dic62182d1c6031252d88e1e2e0422fdceesize=3669date=2022-05-22T01:21:13
 file,ghost/master/dic/aya/master/ghost.dicb692e47f15c5ad1d102c525c4f280baasize=834date=2022-05-22T01:21:13
-file,ghost/master/dic/aya/master/shiori.dic0c4d0aa95e52e3e63cd2b48cc1a0a9c6size=48514date=2022-05-30T22:04:00
+file,ghost/master/dic/aya/master/shiori.dicf3b8bbbf9d29354b033eb735239d0fecsize=48546date=2022-05-30T22:04:00
 file,ghost/master/dic/aya/master/string.dic94b78188422d9d86352f0361a083ff95size=2425date=2022-05-22T01:34:46
-file,ghost/master/dic/aya/master/sysex.dicd5823fc8c3d79651eafc584468938ea0size=1229date=2022-06-04T22:57:16
+file,ghost/master/dic/aya/master/sysex.dicf7defaf662a0e882160cba5e604b068fsize=1303date=2022-06-04T22:57:16
 file,ghost/master/dic/aya/master/url.dic54a88b45e8b8d818b89e2283ab7f838fsize=156date=2022-05-22T01:21:13
 file,ghost/master/dic/communicate/H/H.dic4c73f88638642ef3e159c6cfc630fa46size=261date=2022-06-05T20:46:10
 file,ghost/master/dic/communicate/talk/learn.dic37a87fb48be79913dd90628405ec1320size=16525date=2022-05-22T01:21:13
@@ -403,7 +403,7 @@ file,ghost/master/dic/system/changeshell.dicac402cc2051a4a0c6709759b583ac1acsi
 file,ghost/master/dic/system/clock.dicdd16ece0d3bd0c800d71a87416c5b3c3size=27336date=2022-05-22T17:18:10
 file,ghost/master/dic/system/database_edit.dic6693981fb886649c25ade34bf5664c87size=20839date=2022-05-22T01:21:13
 file,ghost/master/dic/system/discord.dicc85f2278fdd83a2d02b7cd9cc16b88fcsize=1800date=2022-05-22T01:21:13
-file,ghost/master/dic/system/event_response.dic3cd0d881b5639f45dca432cef3aaa2bdsize=36030date=2022-06-04T22:58:38
+file,ghost/master/dic/system/event_response.dic8218c1ddc7071abb5c45977d6f37a6f0size=36632date=2022-06-04T22:58:38
 file,ghost/master/dic/system/hotkey.dicc39d347ccdc92a80c5fe1af7ea6e97d2size=9541date=2022-05-28T17:53:03
 file,ghost/master/dic/system/internet.dicb6a154a824ad36df1a40ee43219a7c9dsize=11974date=2022-06-09T11:48:26
 file,ghost/master/dic/system/lunar.dica4b3284e2c9c7a75ef8a051793aa4965size=7093date=2022-05-22T01:21:13
