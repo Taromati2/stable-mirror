@@ -1105,10 +1105,30 @@ OnNarCreated{
 //---- ディスプレイ解像度変更 -----------------------------------------------------------
 OnDisplayChange{
 	//---- 変数にディスプレイ解像度と色深度に関する情报を取得
-	//---- 使うかどうかは分からないがとりあえず保持しておく
 	displaybpp = reference0
 	displaywidth = reference1
 	displayheight = reference2
+}
+OnDisplayPowerStatus{
+	//---- 変数にディスプレイの電源状態に関する情报を取得
+	displaypowerstatus = reference0
+	if displaypowerstatus{
+		_displaypowerofftime=GETSECCOUNT-displaypoweroff.starttime
+		if _displaypowerofftime>4*60*60{
+			void OnSysSuspendAsTime(displaypoweroff.starttime)
+			void OnSysResume
+		}
+		elseif _displaypowerofftime>3*60{
+			if mode == '1'
+				SHIORI_FW.PushNotifyResult("\1\s[%(specialmode != 'mealtime')10]呦。\n")
+			else
+				SHIORI_FW.PushNotifyResult('\0\s[26]欢迎回来。\n')
+		}
+		ERASEVAR('displaypoweroff.starttime')
+	}
+	else{
+		displaypoweroff.starttime=GETSECCOUNT
+	}
 }
 OnNetworkStatusChange{
 	if !ISVAR('NetworkStatus')
@@ -1335,9 +1355,12 @@ OnScreenSaverEnd{
 	"\0\s[0]%(username)\w9\w9、欢迎回来。\n\x"
 }
 //待机
-OnSysSuspend{
+OnSysSuspendAsTime{
 	if !TimeErrorCheck
-		CloseTime = GETSECCOUNT
+		CloseTime = _argv[0]
+}
+OnSysSuspend{
+	OnSysSuspendAsTime(GETSECCOUNT)
 }
 //待机中恢复
 OnSysResume.base{
