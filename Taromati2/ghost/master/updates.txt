@@ -489,6 +489,6 @@ file,ghost/master/sound/se_05.wavf927ea3ea5fb4a93f4d821a6bf2c76desize=13428da
 file,ghost/master/sound/shot.wav5e250057d71288d6ee0c7352ca885c5csize=55926date=2022-05-05T00:56:13
 file,ghost/master/sound/tea.mp333dc524916fdceeb55459374eca427a9size=80296date=2022-05-05T00:56:13
 file,ghost/master/sound/tinkle.wavf115303b37f10d103980434f5662f405size=123650date=2022-05-05T00:56:13
-file,ghost/master/thumbnail.pngec04fc0441f18bd5f5e14b7826ce2254size=9014date=2022-05-05T00:56:13
+file,ghost/master/thumbnail.png7f8ea6abc65eb4114b82d44e6ea2fcbasize=28439date=2022-05-05T00:56:13
 file,install.txte2f789a753a12026f59362e5c6856f48size=76date=2022-05-05T00:56:13
 file,terms.txt731ed564a0235cbbcd7439ab649cf8ffsize=3479date=2022-05-05T00:56:25
