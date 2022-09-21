@@ -345,18 +345,17 @@ OnShellChanged{
 	--
 	if Userspitem[0][2]==1||judgehaveshell(_temp)!='-1'||judgeshell(_temp)!='0|'
 		haveshell=1
+	if judgeshell(shellID)=='0|'{
+		SETDELIM(reference2,'/')
+		_p=reference2[ARRAYSIZE(reference2)-2]
+		Haveshellinfo+="%(reference0)|%(_p)*"
+	}
 	if SilentShellChange{
 		ERASEVAR('SilentShellChange')
 		return
 	}
 	if haveshell==1{
-		if judgeshell(shellID)=='0|'{
-			SETDELIM(reference2,'/')
-			_p=reference2[ARRAYSIZE(reference2)-2]
-			Haveshellinfo+="%(reference0)|%(_p)*"
-			'\0\s[0]…嗯、\w9\w9\s[5]这样子如何呢？'
-		}
-		elseif bedroom == '1'{
+		if bedroom == '1'{
 			'\0\s[0]…嗯、\w9\w9\s[5]洗好了吗？\n\n\q[◇洗好了,Choice9]\n\q[◇没事了,Choice2]\x'
 		}
 		else{
