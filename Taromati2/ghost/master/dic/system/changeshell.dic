@@ -14,11 +14,6 @@ OnShellChanging{
 		"\0\s[7]真是的，%(username)都在想些什么？\n我们的关系还没有好到可以做H的事的程度吧\w[1000]"
 		return
 	}
-	if judgeshell(reference0)!=judgehaveshell(reference0)&&judgehaveshell(reference0)!='-1'{
-		SETDELIM(reference2,'/')
-		_p=reference2[ARRAYSIZE(reference2)-2]
-		Haveshellinfo+="%(reference0)|%(_p)*"
-	}
 	if judgeshell(reference0)=='0|'&& Userspitem[0][2]!=1{
 		haveshell=0
 		'\0\s[-1]\b[-1]'
@@ -266,7 +261,6 @@ OnAutoChangeShell{
 		}
 	}
 	if _shellid!=''{
-		SilentShellChange=1
 		SETDELIM(_shellid,'|')
 		_n=ARRAYSIZE(_shellid)-1
 		__shellid=_shellid[RAND(_n)]
@@ -291,7 +285,6 @@ OnBuyShell{
 	if money>=5000{
 		haveshell=1
 		money-=5000
-		crystalnum=TOINT(crystalnum)+1
 		ERASEVAR('SilentShellChange')
 		"\1\s[10]\0\s[0]花费￥5000金钱激活%(reference0)。\w9\w9\x\![change,shell,%(reference0)]]"
 	}
