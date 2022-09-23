@@ -393,7 +393,7 @@ file,ghost/master/dic/system/Debug.dic7ddde38fc8b2175b5e005e7271714c51size=198
 file,ghost/master/dic/system/FileDrop.dicee2ebe5ec65dce02813b81a31752113asize=4811date=2022-08-07T17:56:27
 file,ghost/master/dic/system/MAGIC.aycd102dd530d51917c0cca39d98860db10size=1533date=2022-09-17T15:38:25
 file,ghost/master/dic/system/MAGIC.dic617991bbb23a229dd827369574b5e042size=294date=2022-09-17T15:56:31
-file,ghost/master/dic/system/SNTP.dic8c680e4d38f65caa4d893f4a5b14ec39size=3303date=2022-08-07T17:56:27
+file,ghost/master/dic/system/SNTP.diccf40a87aadc3ca39772e1a74ede4b21dsize=3303date=2022-08-07T17:56:27
 file,ghost/master/dic/system/SQL.dic71070341b632bed1634140e5d9ade99asize=9486date=2022-08-07T17:56:27
 file,ghost/master/dic/system/StateGraph.dice3f1ae25ede3df745a94c3512e269500size=1822date=2022-08-07T17:56:27
 file,ghost/master/dic/system/VersionUpgrade.dic8c880e4907d120674f1a20e6ae7b2839size=4865date=2022-08-07T17:56:27
@@ -406,7 +406,7 @@ file,ghost/master/dic/system/clock.dicffe7b349b173060e33621e31208bc945size=268
 file,ghost/master/dic/system/database_edit.dic6693981fb886649c25ade34bf5664c87size=20839date=2022-08-07T17:56:27
 file,ghost/master/dic/system/discord.dicc85f2278fdd83a2d02b7cd9cc16b88fcsize=1800date=2022-08-07T17:56:27
 file,ghost/master/dic/system/event_response.dic242917cb3ae0078e91cb331660256ae0size=36788date=2022-09-18T20:37:31
-file,ghost/master/dic/system/hotkey.dicc39d347ccdc92a80c5fe1af7ea6e97d2size=9541date=2022-08-07T17:56:27
+file,ghost/master/dic/system/hotkey.dice75a08883dc5b01e1887884b16be3b56size=9623date=2022-08-07T17:56:27
 file,ghost/master/dic/system/internet.dic89d373ddfe2ee970879c2076289a2b17size=12051date=2022-08-07T17:56:27
 file,ghost/master/dic/system/lunar.dica4b3284e2c9c7a75ef8a051793aa4965size=7093date=2022-08-07T17:56:27
 file,ghost/master/dic/system/menu.dic748baeb5ed99549bde8a83d1963edfe6size=90968date=2022-09-11T10:02:10
