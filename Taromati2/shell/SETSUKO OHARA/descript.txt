@@ -2,6 +2,7 @@ charset,UTF-8
 craftman,8　シェル改変道化師
 name,SETSUKO OHARA
 type,shell
+seriko.use_self_alpha,1
 sakura.balloon.alignment,none
 kero.balloon.alignment,none
 shiori.logo.x,0

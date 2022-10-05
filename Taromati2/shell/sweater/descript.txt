@@ -3,6 +3,7 @@ craftman,8
 craftmanw,8　シェル改変zutsu
 id,master
 type,shell
+seriko.use_self_alpha,1
 name,セーター(リメイク)
 mode,material
 sakura.balloon.offsetx,20
