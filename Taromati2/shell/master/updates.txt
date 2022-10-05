@@ -3,7 +3,6 @@ file,background.pngc9ec5858d18c3891b9ca310fff0d414csize=51513date=2022-10-05T
 file,descript.txtd900c2459152f42fa4ca1e1ee2a52e49size=858date=2022-10-04T12:26:13
 file,foreground.pngf438ae84dd11636275d7e27647ed72a2size=85391date=2022-10-05T09:28:50
 file,sidebar.png2c9c837202ad613edbd0e247b3e0c439size=5771date=2022-10-05T09:28:50
-file,surface0.apng5cb5bc9dbca735cb82dff4df28c10a8asize=38049date=2022-08-07T17:56:29
 file,surface0000.png6b57bd22d0e0216ecd7362093a7cc741size=39462date=2022-10-05T09:28:50
 file,surface0001.png06b142726512632a6dc6a5fbb1a2852bsize=38526date=2022-10-05T09:28:50
 file,surface0002.png9226ee3da26d2248af4e4688778d2c49size=39115date=2022-10-05T09:28:50
@@ -43,7 +42,6 @@ file,surface0111.pngbcb1ea8cdc00f56d961499d92bc1da69size=48643date=2022-10-05
 file,surface0117.pngc1c785742c6af1e394a3702aebd65242size=48262date=2022-10-05T09:28:50
 file,surface0150.png66303159f1f97f612013835a8578b4b8size=1941date=2022-10-05T09:28:50
 file,surface0250.pngc50d15957004635ea78f7911b22ab19esize=2028date=2022-10-05T09:28:50
-file,surface10.apnge6e2dd29c7a5da27829426ecab185ec1size=11147date=2022-08-07T17:56:29
 file,surface1001.png31b32966bb9b08d6a65723ccbb800bbdsize=3826date=2022-10-05T09:28:49
 file,surface1002.pngd0a9956a8b44b825cd916ee0838218a2size=3769date=2022-10-05T09:28:50
 file,surface1003.png736cfcaefaf44b84e36f5b53a97a8b04size=391date=2022-10-05T09:28:51
@@ -80,7 +78,7 @@ file,surface1203.png2de1ae02b3b1988a35239da4c203b438size=435date=2022-10-05T0
 file,surface1204.pnge171c4bfeec1604e7d345fb518b5f65asize=454date=2022-10-05T09:28:51
 file,surface1213.png5d6c01dbe02205584578bca651d293e0size=465date=2022-10-05T09:28:51
 file,surface1214.png7ea633d8c3f0e32fa2667b19c6d81003size=459date=2022-10-05T09:28:51
-file,surface1221.png4fc6cf5cdabcb109b7719b151cc2ca3csize=4292date=2022-10-05T09:28:50
+file,surface1221.png0842311ded5f8f2111b0605f7ffb7724size=4219date=2022-10-05T09:28:50
 file,surface1222.png5f628299cb63e6901019b7fde57251dfsize=4185date=2022-10-05T09:28:50
 file,surface1223.pngb17626d39131ef19ac45ea226f37c4aasize=388date=2022-10-05T09:28:51
 file,surface1224.png662a731087b603959c756df48c21fe3csize=422date=2022-10-05T09:28:51
@@ -117,7 +115,7 @@ file,surface1342.png618615d65e24236ab5a59ec94895a2b7size=4220date=2022-10-05T
 file,surface1343.png7fd2fba3b4fd0db9ce4f8416d931b55esize=363date=2022-10-05T09:28:51
 file,surface1344.png7de295f67ac9f7e059b93aae0d039d65size=392date=2022-10-05T09:28:51
 file,surface1351.png02dc7b040b40f8debebd152f974ec38asize=4241date=2022-10-05T09:28:49
-file,surface1352.png727ceb5914d9d8ae471b0c5d35e62f5csize=4239date=2022-10-05T09:28:50
+file,surface1352.pnga6a0deec4aff4daaa5043d9f4d85c907size=4195date=2022-10-05T09:28:50
 file,surface1353.png3a4e1ec708e9a5222e2c563d328530bdsize=375date=2022-10-05T09:28:51
 file,surface1354.png2f5f25734afead32db6eea59f15c5826size=390date=2022-10-05T09:28:51
 file,surface1401.png36d292ae8de13d94dd4c33b88b78da18size=4377date=2022-10-05T09:28:49
