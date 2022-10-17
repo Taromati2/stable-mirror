@@ -21,6 +21,3 @@ __MACOSX/
 XtraStuf.mac/
 
 *.bat
-
-surface0.apng
-surface10.apng
