@@ -347,7 +347,7 @@ file,ghost/master/dic/aya/master/baseware.dicf38ecf1ce37a91875f9a1b0e7608058cs
 file,ghost/master/dic/aya/master/cmd.dic3c020d2d3a12d1b40035897f322f7c08size=151date=2022-08-07T17:56:27
 file,ghost/master/dic/aya/master/file.dic62182d1c6031252d88e1e2e0422fdceesize=3669date=2022-08-07T17:56:27
 file,ghost/master/dic/aya/master/ghost.dicb692e47f15c5ad1d102c525c4f280baasize=834date=2022-08-07T17:56:27
-file,ghost/master/dic/aya/master/shiori.dic8af1e7385e97a8233f7154d2619a5e8dsize=48767date=2022-09-16T16:51:28
+file,ghost/master/dic/aya/master/shiori.dicb1d126ce5683642a02175aba19c97b17size=49127date=2022-09-16T16:51:28
 file,ghost/master/dic/aya/master/string.dic94b78188422d9d86352f0361a083ff95size=2425date=2022-08-07T17:56:27
 file,ghost/master/dic/aya/master/sysex.dicf7defaf662a0e882160cba5e604b068fsize=1303date=2022-09-16T16:58:37
 file,ghost/master/dic/aya/master/url.dic54a88b45e8b8d818b89e2283ab7f838fsize=156date=2022-08-07T17:56:27
@@ -399,7 +399,7 @@ file,ghost/master/dic/system/StateGraph.dice3f1ae25ede3df745a94c3512e269500siz
 file,ghost/master/dic/system/VersionUpgrade.dic8c880e4907d120674f1a20e6ae7b2839size=4865date=2022-09-22T17:43:57
 file,ghost/master/dic/system/anti_cheat.dic44383267d11ed2457c24639b5c65efcbsize=4324date=2022-08-07T17:56:27
 file,ghost/master/dic/system/base.dicce6a70e850a4ea1e12a40bb78f2cecf2size=1961date=2022-09-16T12:21:05
-file,ghost/master/dic/system/bootend.dic23d47f245ccac7b51cba03693c688170size=60418date=2022-09-23T14:10:45
+file,ghost/master/dic/system/bootend.dic034a61246c299dea522852c4c57217edsize=60458date=2022-09-23T14:10:45
 file,ghost/master/dic/system/change_part.dicbc60c6305fb994764be3027ec43633fdsize=568date=2022-08-07T17:56:27
 file,ghost/master/dic/system/changeshell.dic0f026be183685dd4911b39e7c5b19f6asize=16099date=2022-09-23T13:47:43
 file,ghost/master/dic/system/clock.dic62f8c7cee6e4eb3f47fcae2eb767d17fsize=26880date=2022-09-22T17:22:21
