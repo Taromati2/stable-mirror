@@ -332,7 +332,7 @@ file,ghost/master/data/weather/XiaoYu.pnga235efeebe65cccbd6a953473a495cd7size=
 file,ghost/master/data/weather/Yin.pngc37e7735737a403d4e8d43840a1c42cfsize=722date=2022-08-07T17:56:27
 file,ghost/master/data/weather/ZhongXue.pngab0fd2889f4645b72b4a13e60b0a72bbsize=1185date=2022-08-07T17:56:27
 file,ghost/master/data/weather/ZhongYu.pngf58c766085c9dfc49f350e0814717c47size=935date=2022-08-07T17:56:27
-file,ghost/master/descript.txtf7cdcc1a254e149dfdf2d3ffcfb7cc21size=742date=2022-09-17T19:35:02
+file,ghost/master/descript.txt40bc41fb39c5d98bf2808b889a8172e0size=861date=2022-09-17T19:35:02
 file,ghost/master/dic/_loading_order.txta82a379333a7e7ae3ac263fea23e1639size=106date=2022-08-07T17:56:27
 file,ghost/master/dic/aya/_loading_order.txt95e3fdd073b158a7479fca3eb50182basize=28date=2022-08-07T17:56:27
 file,ghost/master/dic/aya/base/QuickStart.dicf7a7a5c95bff70284ec5183c29ef3d67size=139date=2022-08-07T17:56:27
@@ -391,7 +391,7 @@ file,ghost/master/dic/other/test.dic9a5f7522938288fa2eefacc7862e458fsize=21418
 file,ghost/master/dic/system/Calendar.dicd11991eb24dd419db8e7cbb0f927f2dbsize=39820date=2022-08-07T17:56:27
 file,ghost/master/dic/system/Debug.dic7ddde38fc8b2175b5e005e7271714c51size=19824date=2022-08-07T17:56:27
 file,ghost/master/dic/system/FileDrop.dicee2ebe5ec65dce02813b81a31752113asize=4811date=2022-08-07T17:56:27
-file,ghost/master/dic/system/MAGIC.aycd102dd530d51917c0cca39d98860db10size=1533date=2022-09-17T15:38:25
+file,ghost/master/dic/system/MAGIC.ayc008aa47dc0463fa0e4a08119f4bae719size=1539date=2022-09-17T15:38:25
 file,ghost/master/dic/system/MAGIC.dic617991bbb23a229dd827369574b5e042size=294date=2022-09-17T15:56:31
 file,ghost/master/dic/system/SNTP.diccf40a87aadc3ca39772e1a74ede4b21dsize=3303date=2022-09-23T14:18:31
 file,ghost/master/dic/system/SQL.dic71070341b632bed1634140e5d9ade99asize=9486date=2022-08-07T17:56:27
