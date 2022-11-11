@@ -373,8 +373,8 @@ file,ghost/master/dic/games/puzzle.dic6dd5ca94f7c8e10573ee3d43819bad05size=469
 file,ghost/master/dic/games/rpggame.dic595cf68aef84224f45431314add978cdsize=137033date=2022-08-07T17:56:27
 file,ghost/master/dic/games/tetrisgame.dic7556813e6fa3a27220a9525f5caebff2size=10935date=2022-08-07T17:56:27
 file,ghost/master/dic/games/uno.dic16a7c94fa22217ff9545319b2121af64size=26021date=2022-08-07T17:56:27
-file,ghost/master/dic/nurturance/nurturance.dic7858f7c494a874f7a403f436cb9d2dddsize=27389date=2022-09-23T11:38:26
-file,ghost/master/dic/other/Miniuse.dic0dbfd00caf265f99acc2294c3bf55c51size=96270date=2022-10-12T12:33:27
+file,ghost/master/dic/nurturance/nurturance.dic237207814e49028ed30c4fa7a7b36ddcsize=27417date=2022-09-23T11:38:26
+file,ghost/master/dic/other/Miniuse.dic96251937c286300709dd2b0e3a5009ccsize=96489date=2022-10-12T12:33:27
 file,ghost/master/dic/other/Other.dicfc8032ff1e0e202c6f60de1da61c1f3bsize=75767date=2022-10-27T17:24:43
 file,ghost/master/dic/other/Tarro.dice70846109858ef3b4fecd784b903b51dsize=25419date=2022-08-07T17:56:27
 file,ghost/master/dic/other/classtable.dice041e942e4a59fb934a5a9a7d1a83d33size=7096date=2022-08-07T17:56:27
