@@ -1,0 +1,32 @@
+name: time update
+
+on:
+  schedule: # 每月的第一天的0点0分
+    - cron:  '0 0 1 * *'  
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+    - name: disable auto crlf
+      uses: steve02081504/disable-autocrlf@v1
+      with:
+        fuck-auto-CRLF: true
+    - uses: actions/checkout@v2
+    - name: Update file
+      run: |
+        current_year=$(date +%Y)
+        current_month=$(date +%m)
+        sed -i -e "s/LAST_BUILD_TIME.YEAR.*/LAST_BUILD_TIME.YEAR\t\t$current_year/" Taromati2/ghost/master/dic/aya/master/last_time.dic
+        sed -i -e "s/LAST_BUILD_TIME.MOUNTH.*/LAST_BUILD_TIME.MOUNTH\t$current_month/" Taromati2/ghost/master/dic/aya/master/last_time.dic
+    - name: add all
+      run: git add -A
+    - name: push
+      uses: actions-go/push@master
+      with:
+        token: ${{ secrets.BOT_TOKEN }} # 使用bot账号的token来触发其他的workflow
+        author-email: taromati2@foxmail.com
+        author-name: Taromati2
+        commit-message: 'time update~'
+        remote: origin

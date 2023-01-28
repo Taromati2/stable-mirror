@@ -347,6 +347,7 @@ file,ghost/master/dic/aya/master/baseware.dicf38ecf1ce37a91875f9a1b0e7608058cs
 file,ghost/master/dic/aya/master/cmd.dic3c020d2d3a12d1b40035897f322f7c08size=151date=2022-08-07T17:56:27
 file,ghost/master/dic/aya/master/file.dic62182d1c6031252d88e1e2e0422fdceesize=3669date=2022-10-24T14:12:57
 file,ghost/master/dic/aya/master/ghost.dicb692e47f15c5ad1d102c525c4f280baasize=834date=2022-08-07T17:56:27
+file,ghost/master/dic/aya/master/last_time.dicc81798273fad67b153b71d775033401fsize=128date=2012-12-21T00:00:00
 file,ghost/master/dic/aya/master/shiori.dicc555790cba89ff9af98475c429def4c9size=48988date=2022-10-20T23:35:32
 file,ghost/master/dic/aya/master/string.dic94b78188422d9d86352f0361a083ff95size=2425date=2022-08-07T17:56:27
 file,ghost/master/dic/aya/master/sysex.dicf7defaf662a0e882160cba5e604b068fsize=1303date=2022-09-16T16:58:37
@@ -393,7 +394,7 @@ file,ghost/master/dic/system/Debug.dicf7c3d6b118aed3f3ed707445760ed437size=198
 file,ghost/master/dic/system/FileDrop.dicee2ebe5ec65dce02813b81a31752113asize=4811date=2022-08-07T17:56:27
 file,ghost/master/dic/system/MAGIC.ayc008aa47dc0463fa0e4a08119f4bae719size=1539date=2022-10-24T14:13:06
 file,ghost/master/dic/system/MAGIC.dic617991bbb23a229dd827369574b5e042size=294date=2022-10-24T14:13:12
-file,ghost/master/dic/system/SNTP.dic2eae3c19c2e4f3028f12102f00762b60size=3303date=2022-09-23T14:18:31
+file,ghost/master/dic/system/SNTP.dic645508b4dd51d99112cf55e7dbe0250fsize=3429date=2022-09-23T14:18:31
 file,ghost/master/dic/system/SQL.dic71070341b632bed1634140e5d9ade99asize=9486date=2022-08-07T17:56:27
 file,ghost/master/dic/system/StateGraph.dice3f1ae25ede3df745a94c3512e269500size=1822date=2022-08-07T17:56:27
 file,ghost/master/dic/system/VersionUpgrade.dic8c880e4907d120674f1a20e6ae7b2839size=4865date=2022-09-22T17:43:57
