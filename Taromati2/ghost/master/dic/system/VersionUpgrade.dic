@@ -1,6 +1,6 @@
 //by steve
 
-#define VERSION_NOW 9
+#define VERSION_NOW 10
 
 VERSION_INIT:void{
 	VERSION = VERSION_NOW
@@ -204,4 +204,12 @@ VERSION_UPGRADE_9:void{
 			Haveshellinfo+=_i+'*'
 	}
 	ERASEVAR('crystalnum')
+}
+VERSION_UPGRADE_10:void{
+	if !ISVAR('friendID'){
+		ERASEVAR('friendbirthday')
+		FriendBirthDay.IDmax=0
+	}
+	ERASEVAR('模式')
+	ERASEVAR('花式模式')
 }

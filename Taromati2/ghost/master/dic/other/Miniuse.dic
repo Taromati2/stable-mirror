@@ -265,11 +265,11 @@ Onfriendbirthday{
 	\q[◇新建好友,OnFriendBirthDay.Creat]\n/
 	\q[◇查看好友,OnFriendBirthDay.Inform]\n/
 	\n\n\n\n\n\q[◇返回上一层,birthday]     \q[◇结束,Cancel]"
-	if !friendID
-		friendID=0
+	if !FriendBirthDay.IDmax
+		FriendBirthDay.IDmax=0
 }
 OnFriendBirthDay.Creat{
-	if friendID>=20
+	if FriendBirthDay.IDmax>=20
 		'已经存在20位好友记录，如要添加新好友，请从查看好友中修改'
 	else
 		'请输入好友名字\![open,inputbox,OnFriendNameTeach,-1]'
@@ -278,29 +278,29 @@ OnFriendNameTeach{
 	if reference0==''
 		'好友名字不能为空，请输入请输入好友名字\![open,inputbox,OnFriendNameTeach,-1]'
 	else{
-		friendbirthday[friendID*9]=friendID
-		friendbirthday[friendID*9+1]=reference0
+		friendbirthday[FriendBirthDay.IDmax*9]=FriendBirthDay.IDmax
+		friendbirthday[FriendBirthDay.IDmax*9+1]=reference0
 		"您输入的好友名字为%(reference0),请继续输入好友生日\![open,dateinput,OnFriendBirthDayInput,60000,%(year),%(month),%(day)]"
 	}
 }
 OnFriendBirthDayInput{
-	friendbirthday[friendID*9+2]=reference0[0]
-	friendbirthday[friendID*9+3]=reference0[1]
-	friendbirthday[friendID*9+4]=reference0[2]
-	Lunardata(friendbirthday[friendID*9+2],friendbirthday[friendID*9+3],friendbirthday[friendID*9+4])
-	_next_birthday=NextBirthDay(friendbirthday[friendID*9+2],friendbirthday[friendID*9+3],friendbirthday[friendID*9+4])
-	friendbirthday[friendID*9+5]=_next_birthday[0]
-	friendbirthday[friendID*9+6]=_next_birthday[1]
-	friendbirthday[friendID*9+7]=_next_birthday[2]
-	"\0\s[5]橘花已经记下了。%(friendbirthday[friendID*9+1])的出生日期是%(friendbirthday[friendID*9+2])年%(friendbirthday[friendID*9+3])月%(friendbirthday[friendID*9+4])日\n\n\q[◇返回,Onfriendbirthday]"
-	friendID++
+	friendbirthday[FriendBirthDay.IDmax*9+2]=reference0[0]
+	friendbirthday[FriendBirthDay.IDmax*9+3]=reference0[1]
+	friendbirthday[FriendBirthDay.IDmax*9+4]=reference0[2]
+	Lunardata(friendbirthday[FriendBirthDay.IDmax*9+2],friendbirthday[FriendBirthDay.IDmax*9+3],friendbirthday[FriendBirthDay.IDmax*9+4])
+	_next_birthday=NextBirthDay(friendbirthday[FriendBirthDay.IDmax*9+2],friendbirthday[FriendBirthDay.IDmax*9+3],friendbirthday[FriendBirthDay.IDmax*9+4])
+	friendbirthday[FriendBirthDay.IDmax*9+5]=_next_birthday[0]
+	friendbirthday[FriendBirthDay.IDmax*9+6]=_next_birthday[1]
+	friendbirthday[FriendBirthDay.IDmax*9+7]=_next_birthday[2]
+	"\0\s[5]橘花已经记下了。%(friendbirthday[FriendBirthDay.IDmax*9+1])的出生日期是%(friendbirthday[FriendBirthDay.IDmax*9+2])年%(friendbirthday[FriendBirthDay.IDmax*9+3])月%(friendbirthday[FriendBirthDay.IDmax*9+4])日\n\n\q[◇返回,Onfriendbirthday]"
+	FriendBirthDay.IDmax++
 }
 OnFriendBirthDay.Inform{
 	_txt='\b[2]\![quicksession,1]\![set,choicetimeout,0]'
 	_txt+='■好友生日列表：■         \![*]\q[刷新,OnFriendBirthDay.Inform,刷新]\n'
 	_txt+='姓名    出生日期   农历生日  生日日期  生日天数\n[150]'
 	days=IARRAY
-	for _i=0;_i<friendID;_i++{
+	for _i=0;_i<FriendBirthDay.IDmax;_i++{
 		Lunardata(friendbirthday[_i*9+2],friendbirthday[_i*9+3],friendbirthday[_i*9+4])
 		_yy=lunardata[11]
 		_mm=lunardata[5]
@@ -320,32 +320,32 @@ OnFriendBirthDay.Inform{
 		_friendbirthdayinfo[_i]="距离%(friendbirthday[_i*9+1])%(friendbirthday[_i*9+5]-_yy)岁生日还有%(friendbirthday[_i*9+8])天"
 		if BirthdayMode
 			_friendbirthdayinfo[_i]="距离%(friendbirthday[_i*9+1])%(friendbirthday[_i*9+5]-friendbirthday[_i*9+2])岁生日还有%(friendbirthday[_i*9+8])天"
-		_txt+="\__q[OnFriendName.UpdataFirst,%(_i)]%(friendbirthday[_i*9+1])\__q   \_l[35,-]\__q[OnFriendBirthDay.UpdataFirst,%(_i)]%(friendbirthday[_i*9+2])年%(friendbirthday[_i*9+3])月%(friendbirthday[_i*9+4])日\__q \_l[120,-]%(_mm)月%(_dd)  \_l[185,-]%(friendbirthday[_i*9+5])年%(friendbirthday[_i*9+6])月%(friendbirthday[_i*9+7])日 \_l[270,-]\q[%(friendbirthday[_i*9+8]),OnFriendBirthDay.Inform,age,%(_friendbirthdayinfo[_i])]\n"
+		_txt+="\__q[OnFriendName.UpdateFirst,%(_i)]%(friendbirthday[_i*9+1])\__q   \_l[35,-]\__q[OnFriendBirthDay.UpdateFirst,%(_i)]%(friendbirthday[_i*9+2])年%(friendbirthday[_i*9+3])月%(friendbirthday[_i*9+4])日\__q \_l[120,-]%(_mm)月%(_dd)  \_l[185,-]%(friendbirthday[_i*9+5])年%(friendbirthday[_i*9+6])月%(friendbirthday[_i*9+7])日 \_l[270,-]\q[%(friendbirthday[_i*9+8]),OnFriendBirthDay.Inform,age,%(_friendbirthdayinfo[_i])]\n"
 	}
 	birthdayflag=1
 	_txt+='\_l[0,340]\q[◇返回,Onfriendbirthday]     \q[◇结束,Cancel]'
 	_txt
 }
-OnFriendName.UpdataFirst{
+OnFriendName.UpdateFirst{
 	friendID=reference0
-	"将好友名字%(friendbirthday[friendID*9+1])更改为？\![open,inputbox,OnFriendName.Updata,-1]\n\n\q[◇返回,OnFriendBirthDay.Inform]     \q[◇结束,Cancel]"
+	"将好友名字%(friendbirthday[friendID*9+1])更改为？\![open,inputbox,OnFriendName.Update,-1]\n\n\q[◇返回,OnFriendBirthDay.Inform]     \q[◇结束,Cancel]"
 }
-OnFriendName.Updata{
+OnFriendName.Update{
 	if reference0==''
-		'好友名字不为为空，请输入请输入好友名字\![open,inputbox,OnFriendName.Updata,-1]\n\n\q[◇返回,OnFriendBirthDay.Inform]     \q[◇结束,Cancel]'
+		'好友名字不为为空，请输入请输入好友名字\![open,inputbox,OnFriendName.Update,-1]\n\n\q[◇返回,OnFriendBirthDay.Inform]     \q[◇结束,Cancel]'
 	else{
 		friendbirthday[friendID*9+1]=reference0
 		"您输入的好友名字为%(reference0)\n\n\q[◇返回,OnFriendBirthDay.Inform]     \q[◇结束,Cancel]"
 	}
 }
-OnFriendBirthDay.UpdataFirst{
+OnFriendBirthDay.UpdateFirst{
 	friendID=reference0
 	_year=friendbirthday[friendID*9+2]
 	_month=friendbirthday[friendID*9+3]
 	_day=friendbirthday[friendID*9+4]
-	"要把%(friendbirthday[friendID*9+1])的生日改成？\![open,dateinput,OnFriendBirthDay.Updata,60000,%(_year),%(_month),%(_day)]\n\n\q[◇返回,OnFriendBirthDay.Inform]     \q[◇结束,Cancel]"
+	"要把%(friendbirthday[friendID*9+1])的生日改成？\![open,dateinput,OnFriendBirthDay.Update,60000,%(_year),%(_month),%(_day)]\n\n\q[◇返回,OnFriendBirthDay.Inform]     \q[◇结束,Cancel]"
 }
-OnFriendBirthDay.Updata{
+OnFriendBirthDay.Update{
 	friendbirthday[friendID*9+2]=reference0[0]
 	friendbirthday[friendID*9+3]=reference0[1]
 	friendbirthday[friendID*9+4]=reference0[2]
@@ -355,6 +355,45 @@ OnFriendBirthDay.Updata{
 	friendbirthday[friendID*9+6]=_next_birthday[1]
 	friendbirthday[friendID*9+7]=_next_birthday[2]
 	"\0\s[5]橘花已经记下了。%(friendbirthday[friendID*9+1])的出生日期是%(friendbirthday[friendID*9+2])年%(friendbirthday[friendID*9+3])月%(friendbirthday[friendID*9+4])日\n\n\q[◇返回,OnFriendBirthDay.Inform]"
+}
+OnFriendBirthDay.BootRemind{
+	if !friendbirthdaymode{
+		_txt=''
+		for _i=0;_i<friendID;_i++{
+			if year-1==friendbirthday[_i*9+5]||year==friendbirthday[_i*9+5]&&month-1==friendbirthday[_i*9+6]||year==friendbirthday[_i*9+5]&&month==friendbirthday[_i*9+6]&&day-1==friendbirthday[_i*9+7]{
+				_next_birthday=NextBirthDay(friendbirthday[_i*9+2],friendbirthday[_i*9+3],friendbirthday[_i*9+4])
+				friendbirthday[_i*9+5]=_next_birthday[0]
+				friendbirthday[_i*9+6]=_next_birthday[1]
+				friendbirthday[_i*9+7]=_next_birthday[2]
+			}
+			friendbirthday[_i*9+8]=OnFriendNextBirthDay(friendbirthday[_i*9+5],friendbirthday[_i*9+6],friendbirthday[_i*9+7])
+			if friendbirthday[_i*9+8]==10
+				_txt+="\0\s[40]还有10天就是%(username)的好友%(friendbirthday[_i*9+1])的生日\n\x"
+			--
+			if friendbirthday[_i*9+8]==5
+				_txt+="\0\s[40]还有5天就是%(username)的好友%(friendbirthday[_i*9+1])的生日\n\x"
+			--
+			if friendbirthday[_i*9+8]==1
+				_txt+="\0\s[40]明天是%(username)的好友%(friendbirthday[_i*9+1])的生日\n\x"
+			--
+			if year == friendbirthday[_i*9+5] && month == friendbirthday[_i*9+6] && day == friendbirthday[_i*9+7]
+				_txt+="\0\s[40]今天是%(username)的好友%(friendbirthday[_i*9+1])的生日，快送去生日祝福吧！\n\x"
+		}
+		_txt
+	}
+}
+BirthDay.BootRemind{
+	birthdayflag=0
+	if year - 1 == nextbirthday[0]{
+		nextbirthday=NextBirthDay(birthday[0],birthday[1],birthday[2])
+	}
+	if nextbirthday && year == nextbirthday[0] && month == nextbirthday[1] && day == nextbirthday[2] && birthdaygiftmode != 1{
+		"\0\s[28]今天是%(username)%(TOINT(nextbirthday[0]) - birthday[0])岁生日，橘花给%(username)准备了礼物\n\n\n\q[◇打开看看,birthdaygift]"
+		--
+		'\n\x'
+	}
+	--
+	OnFriendBirthDay.BootRemind
 }
 OnFriendNextBirthDay{
 	_days=0
