@@ -368,7 +368,7 @@ file,ghost/master/dic/games/HuaRongDao.dic41c245372843c1575078c53516b97477size
 file,ghost/master/dic/games/RetroSnaker.dicd3f01f8729f8e189b8f2507793b4f193size=7913date=2022-08-07T17:56:27
 file,ghost/master/dic/games/boxgame.dic3cab75c9606a60314f9416fdcdb97514size=5274date=2022-08-07T17:56:27
 file,ghost/master/dic/games/interactive.dicfd9ee0c83f3d3ecec4ebb0c86424f23dsize=23504date=2022-08-07T17:56:27
-file,ghost/master/dic/games/linkwnd.dice41b2c4156d81d2199645690080ee74asize=65127date=2022-08-07T17:56:27
+file,ghost/master/dic/games/linkwnd.dic2525c5413dbe3ced7807744a21b1d8d5size=65146date=2022-08-07T17:56:27
 file,ghost/master/dic/games/other.dic97abca81120f57ad3a62633f1b5ed6b5size=75348date=2022-08-07T17:56:27
 file,ghost/master/dic/games/puzzle.dic6dd5ca94f7c8e10573ee3d43819bad05size=4691date=2022-08-07T17:56:27
 file,ghost/master/dic/games/rpggame.dic595cf68aef84224f45431314add978cdsize=137033date=2022-08-07T17:56:27
