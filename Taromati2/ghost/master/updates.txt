@@ -385,7 +385,7 @@ file,ghost/master/dic/other/happyquest.dicf2986962862dc01ef57d904909cb67cfsize
 file,ghost/master/dic/other/jumptest.dicfd0156a838a76198638cb2983e6f9450size=1928date=2022-08-07T17:56:27
 file,ghost/master/dic/other/kikkastock.dic1157d9512dff50afc6e1b4bdc07f1cc2size=9465date=2022-08-07T17:56:27
 file,ghost/master/dic/other/otherserv.dicda8a04544283802894fe3dc2f7772743size=133745date=2022-08-07T17:56:27
-file,ghost/master/dic/other/playwithlrc.dic3a57ae99001c4cb78d94c4545cc8bed3size=41242date=2022-08-07T17:56:27
+file,ghost/master/dic/other/playwithlrc.dic33566d9952c60966a96f4e441a3934d3size=41249date=2022-08-07T17:56:27
 file,ghost/master/dic/other/poem.dicae859b168cd7fe034cf4539aa71b70efsize=12542date=2022-08-07T17:56:27
 file,ghost/master/dic/other/story.dic3ffac17615a6722e388153585da9583csize=66990date=2022-08-07T17:56:27
 file,ghost/master/dic/other/test.dic9a5f7522938288fa2eefacc7862e458fsize=21418date=2022-08-07T17:56:27
