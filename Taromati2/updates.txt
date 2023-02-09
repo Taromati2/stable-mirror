@@ -87,10 +87,10 @@ file,ghost/master/data/Game/LinkWnd/bg_01.mid7d2d6f6cf857dfdfaacfb891ac5ba9d9s
 file,ghost/master/data/Game/LinkWnd/bg_02.middf2e63b44f5ea68def4ad41692f53d53size=48664date=2022-08-07T17:56:26
 file,ghost/master/data/Game/LinkWnd/bg_03.mid31d22b7730c7ab2f33b851ebaa021979size=25440date=2022-08-07T17:56:26
 file,ghost/master/data/Game/LinkWnd/bg_04.mid170c436a3d3d3d523427cf4d8a7b21f5size=15978date=2022-08-07T17:56:26
-file,ghost/master/data/Game/LinkWnd/bmp130.pngef56588a3c5970a75f0a20d3eb75e3c6size=35256date=2022-10-04T17:33:12
-file,ghost/master/data/Game/LinkWnd/bmp1301.png52c66cdc87b1adb4ebc8b5ef85f5afc9size=34809date=2022-10-04T17:33:15
-file,ghost/master/data/Game/LinkWnd/bmp1302.png6b9912adc536de7701082fd4e4dccccesize=26489date=2022-10-04T17:33:11
-file,ghost/master/data/Game/LinkWnd/bmp1303.png07e5d5b6f7f8c7d403be3280f32750e7size=73101date=2022-10-04T13:49:53
+file,ghost/master/data/Game/LinkWnd/bmp130.png5974e67ff6b1826d42ae000f9902db79size=151326date=2022-10-04T17:33:12
+file,ghost/master/data/Game/LinkWnd/bmp1301.pnge721eabe567dbf40f12d3da8320988fasize=113454date=2022-10-04T17:33:15
+file,ghost/master/data/Game/LinkWnd/bmp1302.png6ec4db19bff37d081d8d11aeae1425dasize=82503date=2022-10-04T17:33:11
+file,ghost/master/data/Game/LinkWnd/bmp1303.png0cd72d9ba6333bec06a4f290178f5e32size=54857date=2022-10-04T13:49:53
 file,ghost/master/data/Game/LinkWnd/bmp141.png306f68c13ce83b96f284e1e554e8c26bsize=28488date=2022-10-04T17:23:16
 file,ghost/master/data/Game/LinkWnd/border.pngc49f1b2674c5a569edeb3bdd68f93b93size=86date=2022-10-04T13:49:53
 file,ghost/master/data/Game/LinkWnd/border_select.png9157d7034d237ba30b6aa5fbca4fb20bsize=86date=2022-10-04T13:49:53
@@ -368,7 +368,7 @@ file,ghost/master/dic/games/HuaRongDao.dic41c245372843c1575078c53516b97477size
 file,ghost/master/dic/games/RetroSnaker.dicd3f01f8729f8e189b8f2507793b4f193size=7913date=2022-08-07T17:56:27
 file,ghost/master/dic/games/boxgame.dic3cab75c9606a60314f9416fdcdb97514size=5274date=2022-08-07T17:56:27
 file,ghost/master/dic/games/interactive.dicfd9ee0c83f3d3ecec4ebb0c86424f23dsize=23504date=2022-08-07T17:56:27
-file,ghost/master/dic/games/linkwnd.dic43700b09ce797954873b2951aa395cb6size=65160date=2022-08-07T17:56:27
+file,ghost/master/dic/games/linkwnd.dic8e273cb6a6fdc7e5a08d3d7e670683cesize=65208date=2022-08-07T17:56:27
 file,ghost/master/dic/games/other.dic97abca81120f57ad3a62633f1b5ed6b5size=75348date=2022-08-07T17:56:27
 file,ghost/master/dic/games/puzzle.dic6dd5ca94f7c8e10573ee3d43819bad05size=4691date=2022-08-07T17:56:27
 file,ghost/master/dic/games/rpggame.dic595cf68aef84224f45431314add978cdsize=137033date=2022-08-07T17:56:27
