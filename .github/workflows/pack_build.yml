@@ -1,0 +1,35 @@
+name: full pack build
+
+on:
+  schedule: # 每月的第2天的0点0分
+    - cron:  '0 0 2 * *'  
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+    - name: disable auto crlf
+      uses: steve02081504/disable-autocrlf@v1
+      with:
+        fuck-auto-CRLF: true
+    - uses: actions/checkout@v2
+    - name: remove unneeded files
+      run: |
+        rm -rf "Taromati2/shell/Entire bare"
+    - name: build 7z pack
+      run: |
+        7z a -t7z "Taromati2_full.7z" -mx=9 -mmt -mtm=off -ms=512m -mhc -mhcf -m0=LZMA2:a=2:d=1536m:mf=bt4:fb=273:lc=4:lp=0:pb=4 "Taromati2"
+    - name: upload
+      uses: actions/upload-artifact@v2
+      with:
+        name: Taromati2_full.7z
+        path: Taromati2_full.7z
+    - name: webdav upload
+      uses: bxb100/action-upload-webdav@v1
+      with:
+        webdav_address: ${{secrets.webdav_address}}
+        webdav_username: ${{secrets.webdav_username}}
+        webdav_password: ${{secrets.webdav_password}}
+        webdav_upload_path: "/Taromati2"
+        files: "Taromati2_full.7z"
