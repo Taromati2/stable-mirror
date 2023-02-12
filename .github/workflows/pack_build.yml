@@ -33,3 +33,11 @@ jobs:
         webdav_password: ${{secrets.webdav_password}}
         webdav_upload_path: "/Taromati2"
         files: "Taromati2_full.7z"
+    - name: webdav upload 2
+      uses: bxb100/action-upload-webdav@v1
+      with:
+        webdav_address: ${{secrets.webdav_address_2}}
+        webdav_username: ${{secrets.webdav_username_2}}
+        webdav_password: ${{secrets.webdav_password_2}}
+        webdav_upload_path: "/Taromati2"
+        files: "Taromati2_full.7z"
