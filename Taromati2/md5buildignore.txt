@@ -8,6 +8,7 @@ ReadMe.md
 README.md
 updates.txt
 updates.dau
+LICENSE
 
 desktop.ini
 thumbs.db
