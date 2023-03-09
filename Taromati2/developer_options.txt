@@ -3,6 +3,7 @@ ghost/.git/,nonar,noupdate
 shell/.git/,nonar,noupdate
 
 README.md,nonar,noupdate
+LICENSE,nonar,noupdate
 updates.dau,nonar,noupdate
 developer_options.txt,nonar,noupdate
 md5buildignore.txt,nonar,noupdate
@@ -18,6 +19,7 @@ ghost/README.md,nonar,noupdate
 shell/README.md,nonar,noupdate
 
 ghost/.github/,nonar,noupdate
+ghost/LICENSE,nonar,noupdate
 
 ghost/master/var/,nonar,noupdate
 ghost/master/profile/,nonar,noupdate
