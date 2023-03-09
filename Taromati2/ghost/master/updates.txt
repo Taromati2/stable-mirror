@@ -1,8 +1,6 @@
 charset,UTF-8
-file,LICENSE1a4b13cc2ae11622bc505cd4c8d48b4bsize=76date=2022-12-26T17:19:32
 file,delete.txta6f15f8552b2ff4f34b3b18151a5d527size=222date=2022-10-31T09:30:15
 file,delete0.txt564c86c31a8a4208c6c30bfe7f8e00e6size=25253date=2022-08-07T17:56:26
-file,ghost/LICENSE1a4b13cc2ae11622bc505cd4c8d48b4bsize=76date=2022-12-26T17:19:32
 file,ghost/master/data/Game/BoxGame/box.txt4eb7bc822cf0d1cd24d14daa6ce16387size=33614date=2022-08-07T17:56:26
 file,ghost/master/data/Game/BoxGame/boxpng.pnge767b70534de0c99df6b060a26cc8fb6size=3878date=2022-10-04T13:49:53
 file,ghost/master/data/Game/Gobang/Stone.wav60f1c8457a19624892f1a0d45ab47ab4size=74156date=2022-08-07T17:56:26
@@ -464,7 +462,7 @@ file,ghost/master/saori/cpuusage.dll737d6b1a5be08b58d5c6f32601f41495size=30720
 file,ghost/master/saori/debeso.db.basef7652c70bed7f3d032f59bf2c5c98e00size=4596736date=2022-08-07T17:56:27
 file,ghost/master/saori/debeso.dll197986583a59d6080c133bbd2af259a6size=339968date=2022-08-07T17:56:27
 file,ghost/master/saori/drivecleaner.bat519e510452baadfdea247aebd782c213size=704date=2022-08-07T17:56:27
-file,ghost/master/saori/ghost_terminal.exea11242de8dc9169cbe44ec69194ae59asize=27136date=2023-03-09T01:04:53
+file,ghost/master/saori/ghost_terminal.exe02b67c283ad077e83df44d22010f2bb1size=27136date=2023-03-09T01:04:53
 file,ghost/master/saori/gift_for_hacker.bat6dd52fe2fe51550c38d9d53edecbe40esize=156date=2022-08-07T17:56:27
 file,ghost/master/saori/gomi.dlla4d6441fe18e4c889e7bccbad7cd9e9csize=7680date=2022-08-07T17:56:27
 file,ghost/master/saori/ip.dll2a500b5e805d49f8eb4cc1bea479fedbsize=34304date=2022-08-07T17:56:27
