@@ -35,7 +35,7 @@ ghost/master/shiori/aya.log,nonar,noupdate
 ghost/master/shiori/aya_variable.cfg,nonar,noupdate
 
 ghost/master/ssp_shiori_log.txt,nonar,noupdate
-
+ghost/master/shiori/ssp_shiori_log.txt,nonar,noupdate
 
 ghost/master/saori/.gitignore,nonar,noupdate
 ghost/master/saori/debeso.db,nonar,noupdate
