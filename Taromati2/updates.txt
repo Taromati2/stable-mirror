@@ -1,5 +1,5 @@
 charset,UTF-8
-file,delete.txta6f15f8552b2ff4f34b3b18151a5d527size=222date=2022-10-31T09:30:15
+file,delete.txt7b556b9b76366a6015f0e65aabaef7acsize=250date=2022-10-31T09:30:15
 file,delete0.txt564c86c31a8a4208c6c30bfe7f8e00e6size=25253date=2022-08-07T17:56:26
 file,ghost/master/data/Game/BoxGame/box.txt4eb7bc822cf0d1cd24d14daa6ce16387size=33614date=2022-08-07T17:56:26
 file,ghost/master/data/Game/BoxGame/boxpng.pnge767b70534de0c99df6b060a26cc8fb6size=3878date=2022-10-04T13:49:53
