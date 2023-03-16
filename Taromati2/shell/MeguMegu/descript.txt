@@ -2,6 +2,7 @@ charset,UTF-8
 craftman,8　シェル改変 钢刈与狂喜
 name,MeguMegu
 type,shell
+seriko.use_self_alpha,1
 sakura.balloon.alignment,none
 kero.balloon.alignment,none
 shiori.logo.x,0

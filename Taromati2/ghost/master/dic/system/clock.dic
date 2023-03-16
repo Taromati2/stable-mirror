@@ -63,13 +63,6 @@ OnMinuteChange{
 		}
 		UsualUserName.Time=GETSECCOUNT+1314871
 	}
-	--
-	if RAND(60)==0 || hitokoto==''
-		OnHitokotoUpdate//更新一言
-	--
-	if RAND(30+60*!setting.WeatherReminder)==0
-		OnWeatherUpdate//更新天气
-	--
 	elapsedtimetotal += 1//计算人格起动总时间/单位分
 	elapsedtime = elapsedtimetotal * 60
 	KikkaGrow
@@ -128,9 +121,15 @@ OnMinuteChange{
 				'\0\v\s[33]电脑卡死了，\w9\w9少开点窗口。\n\q[◇打开任务管理器,OnOpenTaskmgr]\![set,trayballoon,--icon=info,--timeout=10,--title=任务繁忙,--text=电脑卡死了，少开点窗口。]'
 			}
 			elseif minute == 13 && !InUpdate && AutoUpdate == 1{//电脑不卡的情况下每时13分四分之一概率自动更新//选13是因为13不吉利:)
-				if !RAND(4)
+				if QuickStartVersion && !FullDataPackInstalled
+					do_nothing
+				elseif !RAND(4)
 					OnSilentUpdate
 			}
+			elseif RAND(60)==0 || hitokoto==''
+				OnHitokotoUpdate//更新一言
+			elseif setting.WeatherReminder && (RAND(60*3)==0)
+				OnWeatherUpdate//更新天气
 		}
 		elseif specialmode == 'smoking' && _boottime%3600/60 > 4{//最短4
 			if !RAND(4) || _boottime%3600/60 > 20//最多20分
@@ -148,29 +147,8 @@ OnMinuteChange{
 		AgendaMonitor
 		--
 		if AutoShellChange[0]{
-			if TOINT(AutoShellChange[1])==5&&(hour-AutoShellChangeflag[3])%4==0&&minute==0{
-				AutoShellChangeflag[5]=1
-			}
-			elseif TOINT(AutoShellChange[1])==6&&(hour-AutoShellChangeflag[3])%2==0&&minute==0{
-				AutoShellChangeflag[5]=1
-			}
-			elseif TOINT(AutoShellChange[1])==7&&minute==0{
-				AutoShellChangeflag[5]=1
-			}
-			if AutoShellChangeflag[5]==1{
-				if !tshellid {
-					OnAutoChangeShell
-					tshellid=shellID
-				}
-				--
-				if tshellid!=shellID{
-					AutoShellChangeflag[5]=1
-					OnChangeShell(tshellid)
-				}
-				else{
-					tshellid=NULL
-					AutoShellChangeflag[5]=NULL
-				}
+			if TOINT(AutoShellChange[1])==2{
+				OnAutoChangeShell
 			}
 		}
 	}
@@ -395,9 +373,9 @@ Hourlychime.Text{
 Hourlychime.Common{
 	ANY('', '', '', "%(username).", GreetingPhrase + '..' )
 	--
-	"现在时间%(Timejud)%(hour12)点喔"
+	"现在时间%(Timejud)%(hour12ex)点喔"
 	"现在时间已经%(hour)点了喔"
-	"已经%(Timejud)%(hour12)点了"
+	"已经%(Timejud)%(hour12ex)点了"
 	"现在%(hour)点了"
 	--
 	'？'

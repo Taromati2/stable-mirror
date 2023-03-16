@@ -38,23 +38,18 @@ OnBasewareUpdated{
 		'
 }
 //Get自我信息
-OnNotifySelfInfo:void{
+OnNotifySelfInfo{
 	ghostname=reference0
 	selfname=reference1
 	keroname=reference2
+	haveshell = (judgeshell(reference3)!='0|' || Userspitem[0][2]==1)
+	if !haveshell
+		OnSilentChangeShell('预设')
 }
 //缺省信息补全&同步信息更新 by steve02081504
 OnNotifyUserInfo.WhenEmpty.username:void{
-	if _argv[0]{
-		_simplified_name = TOLOWER(TOSIMPLIFIED(_argv[0]))
-		case _simplified_name{
-			when 'administrator','user','guest','system','admin','管理员','root','autobvt','microsoft','test'{
-				do_nothing
-			}
-			others{
-				OnUserName.Set(_argv[0])
-			}
-		}
+	if !IsUserName.Special(_argv[0]){
+		OnUserName.Set(_argv[0])
 	}
 }
 OnNotifyUserInfo.WhenEmpty.birthday:void{
@@ -81,6 +76,8 @@ OnNotifyUserInfo{
 		_username=reference1
 	}
 	_birthday_changed=birthday != reference2 && Baseware.Config.birthday != reference2 && reference2
+	if IsUsername.Empty(_username)
+		_name_changed = 0
 	if _name_changed || _birthday_changed{
 		"同步%Baseware设定中的"
 		--
@@ -90,7 +87,7 @@ OnNotifyUserInfo{
 			else
 				'用户名'
 			--
-			"『%(_username)』"
+			"『%(REPLACE(_username,'\','\\'))』"
 		}
 		--
 		if _birthday_changed{
@@ -241,7 +238,7 @@ OnTextDrop{
 	--
 	_t=CUTSPACE(temp)
 	if SHIORI_FW.DebugMode && RE_GREP(_t,'^[\w.]+$'){
-		if __t=Get_AYA_Function_Info(_t)
+		if (__t=Get_AYA_Function_Info(_t))!=''
 			'aya自带底层函数\n'+__t+'\n/
 			\q[◇打开在线文档,OnUrlOpen,'+Get_AYA_Function_Doc(_t)+']\n/
 			'
@@ -373,6 +370,7 @@ OnInstallBegin{
 OnInstallComplete{
 	if reference1 == 'Taromati2 full data pack'{
 		if QuickStartVersion{
+			FullDataPackInstalled=1
 			DiscordCustomSet.CustomDetail('好耶')
 			--
 			'\0\s[6]追加档案包完成，开始修复性更新\n'
@@ -695,6 +693,20 @@ OnUpdate{
 	--
 	'\![update,ghost+shell+balloon]'
 }
+OnInstallFullDataPack{
+	DiscordCustomSet.CustomDetail('Hello World!')
+	--
+	"\![execute,install,url,%(FullDataPackUrl),nar]"
+}
+OnUpdateProcessExec{
+	if QuickStartVersion
+		OnInstallFullDataPack
+	elseif SHIORI_FW.DebugMode
+		'\0\s[0]当前处于开发者模式，真的需要更新吗？\n/
+		\q[◇是,OnUpdate]\n/
+		\q[◇否,Cancel]\n/
+		'
+}
 OnSilentUpdate{
 	DiscordCustomSet.CustomDetail('眼睛在脉动')
 	--
@@ -781,7 +793,12 @@ OnUpdateCheckFailure{
 	elseif reference0 == 'virusdetect'
 		'\n\w9\w9\s[8]按理说更新档案里不可能有病毒才是\w9.\w9.\w9.'
 	--
-	'\n\n/
+	'\n\n'
+	--
+	if QuickStartVersion && !FullDataPackInstalled
+		"\q[◇手动下载补全数据包,OnUrlOpen,%(FullDataPackUrl)]\n"
+	--
+	'/
 	\q[◇切换更新源,MirrorChange]\n/
 	\q[◇尝试人工更新,OnUrlOpen,https://github.com/Taromati2/Taromati2/blob/master/docs/points_for_attention.md#%E4%B8%80%E5%88%9D%E6%AC%A1%E5%90%AF%E5%8A%A8%E6%9B%B4%E6%96%B0]\n/
 	\q[◇反馈问题,OnUrlOpen,https://github.com/Taromati2/Taromati2#bug%E5%8F%8D%E9%A6%88]\n/
@@ -848,6 +865,8 @@ OnUpdateReady{
 OnUpdateComplete{
 	DiscordCustomSet.CustomDetail('如同洗了个澡一般舒爽')
 	--
+	if !QuickStartVersion
+		ERASEVAR('FullDataPackInstalled')
 	ERASEVAR('InUpdate')
 	if HasUpdate
 		HasUpdate++
@@ -938,10 +957,16 @@ OnUpdateFailure{
 			SelfRecoveryFailed
 	}
 }
+FullDataPackUrl{
+	'https://github.com/Taromati2/package-factory/releases/latest/download/full_data_pack.nar'
+}
 OnURLDropping{
-	"\0\s[0]下载%(reference0)并作为安装包安装\w9\n/
-	\s[6]进行中\n/
-	"
+	if reference0 == FullDataPackUrl
+		'\0\s[0]下载补全数据包并安装\w9\n'
+	else
+		"\0\s[0]下载%(reference0)并作为安装包安装\w9\n"
+	--
+	'\s[6]进行中\n'
 }
 OnURLDropFailure{
 	'\0\s[3]'
@@ -1086,10 +1111,32 @@ OnNarCreated{
 //---- ディスプレイ解像度変更 -----------------------------------------------------------
 OnDisplayChange{
 	//---- 変数にディスプレイ解像度と色深度に関する情报を取得
-	//---- 使うかどうかは分からないがとりあえず保持しておく
 	displaybpp = reference0
 	displaywidth = reference1
 	displayheight = reference2
+}
+OnDisplayPowerStatus{
+	//---- 変数にディスプレイの電源状態に関する情报を取得
+	displaypowerstatus = reference0
+	if displaypowerstatus{
+		if !InSystemSuspend && !InMinimize{
+			_displaypowerofftime=GETSECCOUNT-displaypoweroff.starttime
+			if _displaypowerofftime>4*60*60{
+				void OnSysSuspendAsTime(displaypoweroff.starttime)
+				void OnSysResume
+			}
+			elseif _displaypowerofftime>3*60{
+				if mode == '1'
+					SHIORI_FW.PushNoBreakNotifyResult("\1\s[%(specialmode != 'mealtime')10]呦。\n")
+				else
+					SHIORI_FW.PushNoBreakNotifyResult('\0\s[26]欢迎回来。\n')
+			}
+		}
+		ERASEVAR('displaypoweroff.starttime')
+	}
+	else{
+		displaypoweroff.starttime=GETSECCOUNT
+	}
 }
 OnNetworkStatusChange{
 	if !ISVAR('NetworkStatus')
@@ -1178,20 +1225,26 @@ ClearNetworkStatusVar{
 OnURLQuery{
 	if shortcut==1{
 		temp=reference0
-		"\![excute,http-get,%(reference0),--param-charset=UTF-8,--file=url.html,--timeout=50,--async=OnLoadUrlTitle]"
-	}elseif RE_GREP(reference0,'.nar$'){
-		"\![execute,install,url,%(reference0),nar]"
-	}else{
+		"\![excute,http-get,%(reference0),--param-charset=UTF-8,--file=VAR_PATH/url.html,--timeout=50,--async=OnLoadUrlTitle]"
+		return
+	}
+	elseif reference3=='unknown' || !reference3{
 		"\0\s[6]未知URL，请使用下载器下载\n\n[half]\_qURL:%(reference0)\_q\n"
-		--
-		"\q[◇打开URL,OnUrlOpen,%(reference0)]\n/
-		\q[◇复制URL,OnCopy,%(reference0)]\n/
-		\q[◇无用,Cancel]\n/
+	}
+	else{
+		"\0\s[0]自URL:%(reference0)\n/
+		下载并安装%(reference3)？\n/
+		\q[◇确认,script:""\![execute,install,%(reference0)]""]\n/
 		"
 	}
+	--
+	"\q[◇打开URL,OnUrlOpen,%(reference0)]\n/
+	\q[◇复制URL,OnCopy,%(reference0)]\n/
+	\q[◇无用,Cancel]\n/
+	"
 }
 OnLoadUrlTitle{
-	_file='VAR_PATH\\url.html'
+	_file='VAR_PATH/url.html'
 	_title=''
 	_charset=''
 	_url=temp
@@ -1316,9 +1369,13 @@ OnScreenSaverEnd{
 	"\0\s[0]%(username)\w9\w9、欢迎回来。\n\x"
 }
 //待机
-OnSysSuspend{
+OnSysSuspendAsTime{
+	InSystemSuspend = 1
 	if !TimeErrorCheck
-		CloseTime = GETSECCOUNT
+		CloseTime = _argv[0]
+}
+OnSysSuspend{
+	OnSysSuspendAsTime(GETSECCOUNT)
 }
 //待机中恢复
 OnSysResume.base{
@@ -1340,11 +1397,13 @@ OnSysResume.base{
 	"\0\s[0]%(username)\w9\w9、欢迎回来。\n\x"
 }
 OnSysResume{
+	ERASEVAR('InSystemSuspend')
 	BaseGhostStart.aboutTime
 	if !InMinimize{
-		SHIORI_FW.PushNotifyResult(OnSysResume.base)
-		SHIORI_FW.PushNotifyResult(OnBoot.aboutTime)
-		SHIORI_FW.PushNotifyResult(OnWeatherUpdate.boot)
+		SHIORI_FW.PushNoBreakNotifyResult(OnSysResume.base)
+		SHIORI_FW.PushNoBreakNotifyResult(OnAutoChangeShell.boot)
+		SHIORI_FW.PushNoBreakNotifyResult(OnBoot.aboutTime)
+		SHIORI_FW.PushNoBreakNotifyResult(OnWeatherUpdate.boot)
 	}
 }
 //资源不足

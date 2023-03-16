@@ -161,7 +161,7 @@ OnCheckWeather{
 	}
 }
 OnChangeCity{
-	"请输入你要查询的城市名称（留空以自动推断）：\![open,inputbox,OnChangeCityComplete,-1,%(city)]"
+	"请输入你要查询的城市名称：\![open,inputbox,OnChangeCityComplete,-1,%(city)]"
 }
 OnChangeCityComplete{
 	if city != reference0 || !city
@@ -203,10 +203,17 @@ OnWeatherUpdate.menu{
 	OnWeatherUpdate
 }
 OnWeatherUpdate.boot{
-	FromWeatherUpdate.boot=1
-	OnWeatherUpdate
+	if setting.WeatherReminder{
+		FromWeatherUpdate.boot=1
+		OnWeatherUpdate
+	}
 }
 OnWeatherUpdate.Success.boot.Talk{
+	if mode=='1'
+		'\1'
+	else
+		'\0\s[0]'
+	--
 	"/
 	今天%(weather.lastcity)的天气：\n/
 	白天 %(weather.day)  %(weather.daytemp)℃\n/
@@ -222,9 +229,8 @@ OnWeatherUpdate.Success{
 	_city=TextBetween(_str,'city":"','",',0)
 	if _city{
 		weather.lastcity=_city
-		if !ISVAR('city'){
+		if !ISVAR('city')
 			city=weather.lastcity
-		}
 		//get last update time
 		weather.lasttime=GETSECCOUNT
 		//get weather
@@ -247,10 +253,12 @@ OnWeatherUpdate.Success{
 			OnWeatherUpdate.Success.boot.Talk
 		}
 	}
-	else{
+	elseif city{
 		ERASEVAR('city')
 		OnWeatherUpdate
 	}
+	else
+		OnWeatherUpdate.Failure
 }
 OnWeatherUpdate.Failure.menu.Talk{
 	"\0\s[3]连线失败了……\nError：%(reference4)\n要查看本地信息吗？\n\q[◇确定,OnWeatherUpdate.Success.Talk]"
@@ -319,7 +327,7 @@ OnHitokotoUpdate{
 	'\![execute,http-get,https://v1.hitokoto.cn/,encode=text,--nofile,--async=hitokoto]'//更新一言
 }
 OnHitokotoUpdate.Success{
-	hitokoto=reference3
+	hitokoto=REPLACE(reference3,'\','\\')
 	--
 	DiscordCustomSet.CustomDetail(hitokoto)
 	--
@@ -437,7 +445,7 @@ OnUrl{
 }
 OnExecuteHTTPComplete{
 	if reference1[0,'='] == 'rss' {
-		_tmp = reference1[1,'=']
+		//_tmp = reference1[1,'=']
 		//ReadXml("VAR_PATH\\%(_tmp)")
 	}
 	elseif reference1 == 'weather' {

@@ -20,8 +20,4 @@ var/
 __MACOSX/
 XtraStuf.mac/
 
-*.pna.png
 *.bat
-
-surface0.apng
-surface10.apng

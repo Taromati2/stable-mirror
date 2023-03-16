@@ -8,6 +8,7 @@ ReadMe.md
 README.md
 updates.txt
 updates.dau
+LICENSE
 
 desktop.ini
 thumbs.db
@@ -41,6 +42,7 @@ XtraStuf.mac/
 /ghost/master/shiori/aya_variable.cfg
 
 /ghost/master/ssp_shiori_log.txt
+/ghost/master/shiori/ssp_shiori_log.txt
 
 /ghost/master/data/LearnJapanese/sonido/readme.txt
 /ghost/master/pseudoAI/readme.txt

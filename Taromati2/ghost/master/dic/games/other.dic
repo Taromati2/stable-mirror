@@ -676,7 +676,6 @@ OnGuessNumberInput{
 	}
 	else{
 		gn[0] ++
-		_n = gn[0] + 1
 		gn ,= _tmp
 		if GuessNumberCal == '4A0B'{
 			case gn[0]{
@@ -813,7 +812,6 @@ OnDeluxeBall{
 		_rs=ARRAYSIZE(ball)
 		if _rs<20
 			ball,=TOINT(reference1)
-		ball_=ball
 		_rs=ARRAYSIZE(ball)
 		for _i=0;_i<_rs;_i++{
 			for _j=_i+1;_j<=_rs;_j++{
@@ -1906,7 +1904,6 @@ OnKikkaAIId{
 				_HPMIN=_HPLEFT2
 		}
 		_n=1.0
-		_n2=1.0
 		if SP[0]-_SP[_i]*_n>=0
 			_HPLEFT=_HP0[_i]*_n-HP[1]-6*SP[1]
 		while SP[0]-_SP[_i]*_n>=0&&_HPLEFT<_HPMIN{

@@ -54,14 +54,16 @@ OnTranslate{
 			if running!='chatroom'&&'引擎 (' !_in_ _t&&!CheckProcess('wscript.exe')//&&running!='readbook'&&read!='stop'
 				_txt=TxtToVoice(_t,voicename)+_txt
 		}
-		if musicplayer == 1 && ('OnSurfaceRestore.Music' !_in_ reference2) && mode=='0'{
-			if 'OnMusicPlayerClose' !_in_ _txt{
-				if '\_w' _in_ _txt || '\w' _in_ _txt{
-					_txt=RE_REPLACE(_txt,"(\\(w\S|w\[[^\]]+\]))+$",'')
-					if '\_w' _in_ _txt || '\w' _in_ _txt
-						_txt+='\_w[1000]'
+		if musicplayer == 1 && mode=='0'{
+			if reference2!='OnPlayCmd' && ('OnSurfaceRestore.Music' !_in_ reference2){
+				if 'OnMusicPlayerClose' !_in_ _txt{
+					if '\_w' _in_ _txt || '\w' _in_ _txt{
+						_txt=RE_REPLACE(_txt,"(\\(w\S|w\[[^\]]+\]))+$",'')
+						if '\_w' _in_ _txt || '\w' _in_ _txt
+							_txt+='\_w[1000]'
+					}
+					_txt+="\![raise,OnMusicPlayer,%(',NoSurfaceRestore'['\q' _in_ _txt || '\__q' _in_ _txt])]"
 				}
-				_txt+="\![raise,OnMusicPlayer,%(',NoSurfaceRestore'['\q' _in_ _txt || '\__q' _in_ _txt])]"
 			}
 		}
 	}
@@ -113,7 +115,7 @@ OnLastTalk{
 }
 RandomTalk{
 	if !RAND(5){
-		if _t=RandomTalk.others{
+		if (_t=RandomTalk.others)!=''{
 			_t
 			return
 		}
@@ -413,7 +415,38 @@ RandomTalk.pool : nonoverlap_pool{
 		'\0\s[6]虽然现在有家庭主夫的想法、\w9\s[0]\n我觉得家事\w5应该还是由母亲来做。\w9\w9\1\s[10]还真是意外的保守啊。\w9\w9\0\s[7]\n\n[half]有些东西不想让父亲来洗不是吗。\w9\w9\1\s[13]\n\n[half]呜～哇…'
 		'\0\s[6]『电视的错、电玩的错』\w9虽然那么说…\w9\w9\s[0]\n\n[half]如果被当成『物』来养育的话、\w9\n当然会养育出\w5\n把其他人看作物品的人吧。\w9\w9\1\s[10]所以说萌Figure族、\w9是因为在小时候、经常被穿上各种服装是吧。\w9\w9\0\s[30]\n\n[half]换衣娃娃、\w5算是Figure吗？\w9\w9\1\n\n[half]谁知道。'
 		{
-			'\0\s[6]在人口20万的都市屠杀了30万人、\w9\s[20]\n又在一个月之后\w9人口变成了25万人…\w9\w9\1\s[10]真是三千年历史的神秘啊。\w9\w9\w9\0\s[30]\n\n[half]最近、好像在主张\w9\n有五千年的历史呢。\w9\w9\1\s[10]\n\n[half]'
+			'\0\s[6]在人口20万的都市屠杀了30万人、\w9\s[20]\n又在一个月之后\w9人口变成了25万人…\n\w9\w9'
+			--
+			'\1\s[10]大概是重新统计了吧。\w9\w9\0\s[8]真是的，在确切的数字定下来之前又为什么要夸大呢？\n\w9\w9\s[30]\1\s[10]这样的话、\w9\n摆出一副『我是受害者』的样子、\w9\n就能够让人们产生同情心了吧。\w9\w9\0\s[8]但是确实是受害者哦？'
+			{
+				'\1\s[10]是因为有人'
+				--
+				'逃跑'
+				'死'
+				'被杀'
+				'被抓'
+				'被关'
+				--
+				'了吧。'
+				--
+				'\w9\w9\0\s[8]在胡言乱语些什么呢？'
+			}
+		}
+		{
+			{
+				'\0\s[20]中国的《探索发现》栏目将饮水鸟称为\w4\n/
+				"民间的历史传承"呢。\w9\w9'
+				--
+				'\s[30]\1\s[13]早在几百年前就发明了'
+				--
+				'玻璃的吹制和密封'
+				'乙醚的合成'
+				'卡诺热机理论'
+				--
+				'吗？\n'
+			}
+			--
+			'\w9\w9\1\s[10]真是三千年历史的神秘啊。\w9\w9\w9\0\s[30]\n\n[half]最近、好像在主张\w9\n有五千年的历史呢。\w9\w9\1\s[10]\n\n[half]'
 			--
 			'嗯？\w9\n已经又过了两千年吗。\w9\w9\w9\0\s[8]\n\n[half]呃…'
 			'过了几千年才变成他们的年代吧\w9…\w9也许。'
@@ -883,9 +916,9 @@ RandomTalk.pool : nonoverlap_pool{
 		'\1\s[10]『永远不灭』和\w9『很头痛』同样水准。\w9\w9\n把它当名言的家伙也是同样水准。\w9\w9\0\s[30]反巨人球迷？:chain=Chain21'
 		'\0\s[6]『あんたじゃ役不足だ』\w9\w9\s[0]唔、\w9\n这句子使用法错了呢。\w9\w9\1\s[10]啊啊…\w9\w9\n突然在说什么啊…\w9\w9\0\s[8]\n\n[half]不合适吗？\w9\w9\1\s[10]\n\n[half]唔～。:chain=Chain22'
 		'\0\s[20]把铁球和木球同时往下扔…\w9\n那铁球和氦球呢？\w9\w9\1\s[10]氦球的时候\w9受到可疑的力在作用这样吧…:chain=Chain23'
-		if GetPhase > 1
+		if GetPhase >= 2
 			'\1\s[10]恋人和亲友都遇溺了。\w9\n救生圈只有一个。\w9\w9\s[11]\n然后、怎么办？\w9\w9\0\s[2]嗯…\w9\w9\s[3]这个要…\w9\w9\s[1]\n看情况。\w9\w9\1\s[10]\n\n[half]…\w9真无趣。:chain=Chain24'
-		if daysfromfirstboot > 180
+		if daysfromfirstboot > 180 && elapsetime > 604800 && GetPhase >= 2
 			"\0\s[0]%(username),\w9\w9这些日子以来,\w9\w9多谢你对橘花和斗和的照顾，\w9\w9\1\s[11]小公主，你说这话%(username)会误解哦\0\s[32]\n\n[half]不要插话。听我把话说完\w9\w9\1\s[12]\n\n[half]……\w9\w9\0\s[3]\n\n[half]橘花知道，\w9\w9长期的寄宿在%(username)家中，\w9\w9给%(username)带来了很多麻烦，\w9\w9橘花不想因为自己的关系，\w9\w9给%(username)造成困绕\w9\w9\1\s[12]\n\n[half]小公主，\w9\w9你到底想要说什么……\w9\w9\0\s[1]\n\n[half]橘花希望，\w9\w9能陪%(username)度过快乐的每一天，\w9\w9但是，\w9\w9橘花心中也有些隐隐不安，\w9\w9觉得，\w9觉得有一天我会和%(username)分开\w9\w9\1\s[10]\n\n[half]小公主，\w9你是不是多虑了？\w9\w9\0\s[7]\n\n[half]世上没有不散的宴席，\w9\w9也许有一天，\w9\w9%(username)对我们的热情减退，\w9\w9就不再理我们了\w9\w9\1\n\n[half]唉，你什么时候变得多愁善感起来了。:chain=Chain25"
 		'\0\s[8]‘不卖立省百分百’...\w9\w9\n/
 		\1\s[11]冲动消费是智商税，\w9品牌主义也是。\w9\w9\n/
@@ -1520,7 +1553,7 @@ TWO.dicpart{
 		}
 	}
 	elseif (_t=OnPoemAnswer(reference1))!=''{
-		"%(_t)"
+		_t
 	}
 	elseif RE_GREP(reference1,'被\S*?欺负'){
 		_name=RE_REPLACEEX(reference1,'被(\S*?)欺负','$1')
@@ -1769,7 +1802,6 @@ TWO.dicpart{
 		if scope == '0'{
 			if month == 7 || month == 8 || month == 9{
 				'\0\s[33]是啊，\w8\真热！！真想去海边。'
-				"%(username)带我们去海边好不好？\n\q[◇好啊,gotosea]\n\q[◇算了吧！,nogotosea]"
 				"\0\s[26]天气炎热，\w9注意防暑解渴，\w9%(username)要不要来碗绿豆汤呢。"
 				'\0\s[29]外面实在太热，就在家里陪着橘花嘛。\w9'
 			}
@@ -1785,7 +1817,6 @@ TWO.dicpart{
 	}
 	elseif '晴' _in_ reference1{
 		if scope == '0'{
-			"天气真好啊！！\w9%(OnDoor) "
 			"\0\s[5]%(username)，\w9\w5天气好的话，\w9\w4\n就请出去走走哦。"
 			'\0\s[5]嗯。\w9\w4不要总是坐在电脑前哦。'
 			'\0\s[5]是吗…\w9\w3天气晴朗出去运动运动哦。'
@@ -2162,7 +2193,7 @@ TWO.dicpart{
 		"%(Seasonzone)"
 	}
 	elseif '秘密服务' _in_ reference1 && '忘了' _in_ reference1{
-		"\0\s[40]秘密服务的密码是：“%(password)”"
+		"\0\s[40]秘密服务的密码是：“%(REPLACE(password,'\','\\'))”"
 	}
 	//----------------------------------------橘花关怀------------------------------------------------------------------
 	elseif '辛苦' _in_ reference1 || '麻烦' _in_ reference1{
@@ -2520,14 +2551,6 @@ Select.Usercomm0_yes{
 }
 Select.Usercomm0_no{
 	'\0\s[1]是、\w9是吗？\w9\w9\s[5]\n嗯…'
-}
-Select.gotosea{
-	intimacy += 5
-	OnSummer
-}
-Select.nogotosea{
-	intimacy -= 5
-	'\0\s[29]唔、明明很想去海边的呢。'
 }
 OnSmokingPlace{
 	DiscordCustomSet.CustomDetail('斗和不在家.avi')

@@ -311,7 +311,7 @@ OnKikkaStockFile.Read{
 	_txt=''
 	FCHARSET(1)
 	if FOPEN(_file,'r'){
-		while 	(_buff = FREAD(_file))!= -1{
+		while (_buff = FREAD(_file))!= -1{
 			_L=SPLIT(_buff,'[')
 			_l=ARRAYSIZE(_L)
 			for _j=0;_j<_l;_j++{
@@ -339,7 +339,7 @@ OnKikkaStockList.Read{
 	_txt=''
 	FCHARSET(1)
 	if FOPEN(_file,'r'){
-		while 	(_buff = FREAD(_file))!= -1{
+		while (_buff = FREAD(_file))!= -1{
 			_txt+=_buff+'*'
 		}
 	}
