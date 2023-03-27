@@ -349,9 +349,9 @@ file,ghost/master/dic/aya/master/last_time.dicb81f16b70ef3a9177a37e5b215681941
 file,ghost/master/dic/aya/master/shiori.dica58885db855547ca8e7e44bf397a4d2dsize=51329date=2023-02-08T01:18:41
 file,ghost/master/dic/aya/master/string.dic94b78188422d9d86352f0361a083ff95size=2425date=2022-07-26T01:29:17
 file,ghost/master/dic/aya/master/sysex.dicf7defaf662a0e882160cba5e604b068fsize=1303date=2023-02-05T00:54:00
-file,ghost/master/dic/aya/master/url.dic54a88b45e8b8d818b89e2283ab7f838fsize=156date=2022-07-26T01:29:17
+file,ghost/master/dic/aya/master/url.dic575563bf3e646b8302725c5bd675895bsize=191date=2022-07-26T01:29:17
 file,ghost/master/dic/communicate/H/H.dic4c73f88638642ef3e159c6cfc630fa46size=261date=2022-07-26T01:29:17
-file,ghost/master/dic/communicate/talk/learn.dic977a55804673765086de8552a8147872size=16547date=2022-07-26T01:29:17
+file,ghost/master/dic/communicate/talk/learn.dic9bd8e4deea83150296e7cbe20f99ab5dsize=16604date=2022-07-26T01:29:17
 file,ghost/master/dic/communicate/talk/other_ghost.dicb94304548297c6e0b3b8ae224a88e1c4size=3239date=2022-07-26T01:29:17
 file,ghost/master/dic/communicate/talk/pseudoAI.dic09eeef289296b30d4a08c274d5e66992size=60116date=2023-02-05T00:54:00
 file,ghost/master/dic/communicate/talk/talk.dic5ae8bfe2e2f466d182a951c9596e4416size=174121date=2023-02-05T00:54:00
@@ -388,7 +388,7 @@ file,ghost/master/dic/other/poem.dicae859b168cd7fe034cf4539aa71b70efsize=12542
 file,ghost/master/dic/other/story.dic3ffac17615a6722e388153585da9583csize=66990date=2022-07-26T01:29:17
 file,ghost/master/dic/other/test.dic9a5f7522938288fa2eefacc7862e458fsize=21418date=2022-07-26T01:29:17
 file,ghost/master/dic/system/Calendar.dicd11991eb24dd419db8e7cbb0f927f2dbsize=39820date=2022-07-26T01:29:17
-file,ghost/master/dic/system/Debug.dic3b99b67254127c20318d9dc02e59c031size=19990date=2023-02-05T00:54:00
+file,ghost/master/dic/system/Debug.dic65103cbf8998587dbe944ed88c8c30d4size=19812date=2023-02-05T00:54:00
 file,ghost/master/dic/system/FileDrop.dicd6f0e214f46d06befd25b48961893a8esize=5774date=2023-02-10T23:25:15
 file,ghost/master/dic/system/MAGIC.ayc008aa47dc0463fa0e4a08119f4bae719size=1539date=2023-02-05T00:54:00
 file,ghost/master/dic/system/MAGIC.dic617991bbb23a229dd827369574b5e042size=294date=2022-07-26T01:29:17
@@ -397,7 +397,7 @@ file,ghost/master/dic/system/SQL.dic71070341b632bed1634140e5d9ade99asize=9486
 file,ghost/master/dic/system/StateGraph.dice3f1ae25ede3df745a94c3512e269500size=1822date=2022-07-26T01:29:17
 file,ghost/master/dic/system/VersionUpgrade.dic71c590e342264f2c42488452ad98b486size=5020date=2023-02-05T15:21:38
 file,ghost/master/dic/system/anti_cheat.dic44383267d11ed2457c24639b5c65efcbsize=4324date=2023-02-05T00:54:00
-file,ghost/master/dic/system/base.dicce6a70e850a4ea1e12a40bb78f2cecf2size=1961date=2023-03-06T12:34:34
+file,ghost/master/dic/system/base.dicb5bfa47067b2bdc7b7d6775639a9b0e5size=2123date=2023-03-06T12:34:34
 file,ghost/master/dic/system/bootend.dic67663d5f963f7b53de1bc47faf3cadbdsize=61450date=2023-03-04T20:48:51
 file,ghost/master/dic/system/change_part.dicbc60c6305fb994764be3027ec43633fdsize=568date=2022-07-26T01:29:17
 file,ghost/master/dic/system/changeshell.dicde7ffe436f8410600f3ef27f506adcb9size=16030date=2023-02-05T00:54:00
@@ -410,7 +410,7 @@ file,ghost/master/dic/system/internet.dic176e0c4ecc22839a09dc4e138a27bc07size=
 file,ghost/master/dic/system/lunar.dica4b3284e2c9c7a75ef8a051793aa4965size=7093date=2022-07-26T01:29:17
 file,ghost/master/dic/system/menu.dicb148e443c412a0845e84ff2dc831d596size=91985date=2023-02-05T00:54:00
 file,ghost/master/dic/system/mirror.dic5b679637ab4248d97be0dcd650ec8927size=1578date=2022-07-26T01:29:17
-file,ghost/master/dic/system/password.dicbb858c22822a13ee9f66db99b73853d4size=2671date=2023-02-05T00:54:00
+file,ghost/master/dic/system/password.dice336c37785bce25f284abb497dc17002size=2693date=2023-02-05T00:54:00
 file,ghost/master/dic/system/ukagaka_link.dic18c9f8102fc92a825beb01e921042cdcsize=903date=2022-07-26T01:29:17
 file,ghost/master/dic/system/username.dic650210205fbb9319a952e3e562a6ee0esize=8816date=2023-02-05T00:54:00
 file,ghost/master/img/AI_state.png89165549cb26b1ce533df61cf36df356size=50590date=2022-10-04T13:49:53
