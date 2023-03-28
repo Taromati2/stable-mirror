@@ -316,6 +316,14 @@ OnCalculateVar.ToSakuraScript{
 }
 
 OnCalculateVar{
+	if !SHIORI_FW.DebugMode{
+		ShioriEcho.Special='出于安全考虑，请在调试模式下使用'
+		if mode == '1'
+			'\1\s[10]出于安全考虑\w8，只有在调试模式下才能使用表达式求值功能。'
+		else
+			'\0\s[6]出于安全考虑\w8，只有在调试模式下才能使用表达式求值功能。'
+		return
+	}
 	if _argv[0]
 		reference0 = _argv[0]
 	if _argv[1]
@@ -432,8 +440,9 @@ OnCalculateVar{
 		'\_q\n/
 		\q[◇复制结果,OnCopy,'+SakuraScriptArgConverter(_Result)+']\n/
 		\q[◇复制表达式,OnCopy,'+SakuraScriptArgConverter(reference0)+']\n/
-		\q[◇结果作Sakura Script执行,OnSakuraScript,'+SakuraScriptArgConverter(_Result)+']\n/
 		'
+		if IsSakuraScript(_Result) && GETTYPE(_Result) == 3
+			'\q[◇结果作Sakura Script执行,OnSakuraScript,'+SakuraScriptArgConverter(_Result)+']\n'
 		--
 		'\n/
 		\q[◇求值下一个,OnCalculateVar]\n/
@@ -758,7 +767,7 @@ On_tamaExit{
 	SETTAMAHWND(0)
 	--
 	if SHIORI_FW.DebugMode
-		DiscordCustomSet.SmallImageKey('simple_hollow_red_heart')
+		DiscordCustomSet.SmallImageKey('simple_hollow_red_heart')//这是在恢复tama的小图标设置，别乱删。
 	else
 		DiscordCustomSet.SmallImageKey('')
 	--
