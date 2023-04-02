@@ -417,7 +417,7 @@ request {
 		}
 	}
 
-	if SHIORI_FW.SecurityLevel == 'external'
+	if TOLOWER(SHIORI_FW.SecurityLevel) == 'external'
 		SHIORI_FW.Eventid = 'ExternalEvent.'+SHIORI_FW.Eventid
 
 	SHIORI_FW.EventidTranslate = SHIORI_FW.TranslateEvent(SHIORI_FW.Eventid)
@@ -1234,8 +1234,12 @@ FUNCTIONEX {
 	}
 
 	//リクエスト文字列を作成
-	_reqheader = /
-	"EXECUTE SAORI/1.0%(C_CRLF)Charset: %(CHARSETLIBEX(_argv[0]))%(C_CRLF)Sender: AYA%(C_CRLF)SecurityLevel: Local%(C_CRLF)"
+	_reqheader = "/
+	EXECUTE SAORI/1.0%(C_CRLF)/
+	Charset: %(CHARSETLIBEX(_argv[0]))%(C_CRLF)/
+	Sender: AYA%(C_CRLF)/
+	SecurityLevel: local%(C_CRLF)/
+	"
 	for _i = 1; _i < _argc; _i++ {
 		_reqheader += "Argument%(_i - 1): %(_argv[_i])%(C_CRLF)"
 	}
@@ -1627,6 +1631,12 @@ Get_Full_Defened_Event_Name{
 	elseif ISFUNC('SHIORI_EV.'+_event_name)
 		'SHIORI_EV.'+_event_name
 }
+Get_Func_Or_Full_Defened_Event_Name{
+	if ISFUNC(_argv[0])
+		_argv[0]
+	else
+		Get_Full_Defened_Event_Name(_argv[0])
+}
 Is_Defened_Event{
 	_event_name=_argv[0]
 	if SUBSTR(_event_name,0,2) != 'On'
@@ -1639,6 +1649,9 @@ Is_Defened_Event{
 		1
 	else
 		0
+}
+Is_Defened_Event_Or_Func{
+	ISFUNC(_argv[0]) || Is_Defened_Event(_argv[0])
 }
 SHIORI_EV.On_Has_Event : void {
 	_event_name=reference0
