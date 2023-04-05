@@ -1,5 +1,5 @@
 charset,UTF-8
-file,delete.txt7b556b9b76366a6015f0e65aabaef7acsize=250date=2022-10-31T09:30:15
+file,delete.txtaad4969f54fc2328f7739dfa31448268size=286date=2022-10-31T09:30:15
 file,delete0.txt564c86c31a8a4208c6c30bfe7f8e00e6size=25253date=2022-08-07T17:56:26
 file,ghost/master/data/Game/BoxGame/box.txt4eb7bc822cf0d1cd24d14daa6ce16387size=33614date=2022-08-07T17:56:26
 file,ghost/master/data/Game/BoxGame/boxpng.pnge767b70534de0c99df6b060a26cc8fb6size=3878date=2022-10-04T13:49:53
@@ -373,7 +373,7 @@ file,ghost/master/dic/games/rpggame.dic595cf68aef84224f45431314add978cdsize=13
 file,ghost/master/dic/games/tetrisgame.dic7556813e6fa3a27220a9525f5caebff2size=10935date=2022-07-26T01:29:17
 file,ghost/master/dic/games/uno.dic16a7c94fa22217ff9545319b2121af64size=26021date=2023-02-05T00:54:00
 file,ghost/master/dic/nurturance/nurturance.dic237207814e49028ed30c4fa7a7b36ddcsize=27417date=2023-02-05T00:54:00
-file,ghost/master/dic/other/Miniuse.dic1bcbe5070d0585ccb1c2fbdf12f65bccsize=98526date=2023-02-05T14:51:45
+file,ghost/master/dic/other/Miniuse.dic1e9db8cd6da28c5ba848e5954e88ba59size=98522date=2023-02-05T14:51:45
 file,ghost/master/dic/other/Other.dic7b03a811c45c0654a3664ad521007c12size=75779date=2023-02-05T00:54:00
 file,ghost/master/dic/other/Tarro.dice70846109858ef3b4fecd784b903b51dsize=25419date=2022-07-26T01:29:17
 file,ghost/master/dic/other/classtable.dice041e942e4a59fb934a5a9a7d1a83d33size=7096date=2022-07-26T01:29:17
@@ -408,7 +408,7 @@ file,ghost/master/dic/system/event_response.dic48c0f83bd4d60df45ff6a6fea4909068
 file,ghost/master/dic/system/hotkey.dice75a08883dc5b01e1887884b16be3b56size=9623date=2023-02-05T00:54:00
 file,ghost/master/dic/system/internet.dic176e0c4ecc22839a09dc4e138a27bc07size=12076date=2023-02-05T00:54:00
 file,ghost/master/dic/system/lunar.dica4b3284e2c9c7a75ef8a051793aa4965size=7093date=2022-07-26T01:29:17
-file,ghost/master/dic/system/menu.dicb148e443c412a0845e84ff2dc831d596size=91985date=2023-02-05T00:54:00
+file,ghost/master/dic/system/menu.dic0cad90fb67143353ab73faf8a6140c45size=91990date=2023-02-05T00:54:00
 file,ghost/master/dic/system/mirror.dic5b679637ab4248d97be0dcd650ec8927size=1578date=2022-07-26T01:29:17
 file,ghost/master/dic/system/password.dice336c37785bce25f284abb497dc17002size=2693date=2023-02-05T00:54:00
 file,ghost/master/dic/system/ukagaka_link.dic550b5ea5321e881944786f82f78fe545size=917date=2022-07-26T01:29:17
@@ -461,7 +461,6 @@ file,ghost/master/saori/cpuid.dll552326006fa486ec8dd5d339caaa1cfasize=81920da
 file,ghost/master/saori/cpuusage.dll737d6b1a5be08b58d5c6f32601f41495size=30720date=2022-08-07T17:56:27
 file,ghost/master/saori/debeso.db.basef7652c70bed7f3d032f59bf2c5c98e00size=4596736date=2022-08-07T17:56:27
 file,ghost/master/saori/debeso.dll197986583a59d6080c133bbd2af259a6size=339968date=2022-08-07T17:56:27
-file,ghost/master/saori/drivecleaner.bat519e510452baadfdea247aebd782c213size=704date=2022-08-07T17:56:27
 file,ghost/master/saori/ghost_terminal.exe02b67c283ad077e83df44d22010f2bb1size=27136date=2023-03-09T13:27:52
 file,ghost/master/saori/gift_for_hacker.bat6dd52fe2fe51550c38d9d53edecbe40esize=156date=2022-08-07T17:56:27
 file,ghost/master/saori/ip.dll2a500b5e805d49f8eb4cc1bea479fedbsize=34304date=2022-08-07T17:56:27
