@@ -1,4 +1,5 @@
 ﻿
+ghost/master/saori/drivecleaner.bat
 ghost/master/saori/gomi.dll
 ghost/master/saori/proxy.dll
 ghost/master/saori/set_wall_paper.exe
