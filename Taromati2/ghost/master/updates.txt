@@ -471,7 +471,7 @@ file,ghost/master/saori/tl.lock6cc375438fb76385e58c69193046dd19size=63date=20
 file,ghost/master/saori/txtpaste.dlld26df18e46cf845ed073e26be17b3125size=25088date=2022-08-07T17:56:27
 file,ghost/master/shiori/aya.dllb5e6eac429c35a0cb5cdd74597d9b40fsize=598016date=2022-12-13T14:53:32
 file,ghost/master/shiori/aya.txt60e8c47a3dd03166c03a79039acad441size=24date=2022-08-07T17:56:27
-file,ghost/master/shiori/aya_base.txtd8f7b77993ac56cf17e3e9018a4eda3dsize=284date=2022-09-18T09:52:55
+file,ghost/master/shiori/aya_base.txt29580341eb4e5cc102fd8e8fac027726size=282date=2022-09-18T09:52:55
 file,ghost/master/shiori/aya_common.txtb81fb67bb2aa395aed114de9320dc6f1size=37date=2022-08-07T17:56:27
 file,ghost/master/shiori/aya_emerg.txt740d5aa08e35b078011db5aa2915823esize=60date=2022-08-07T17:56:27
 file,ghost/master/shiori/simplified-chinese.txtf2bfaeb9d9d4f2cf764c71fbbeff3ca2size=6724date=2022-08-07T17:56:27
