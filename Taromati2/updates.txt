@@ -344,9 +344,9 @@ file,ghost/master/dic/aya/master/array.dic4cf845eeab150e57d407fbd11e5542d9size
 file,ghost/master/dic/aya/master/baseware.dicf38ecf1ce37a91875f9a1b0e7608058csize=760date=2022-07-26T01:29:17
 file,ghost/master/dic/aya/master/cmd.dic3c020d2d3a12d1b40035897f322f7c08size=151date=2023-02-05T00:54:00
 file,ghost/master/dic/aya/master/file.dic7e57187833127364836fa74f42d40f1fsize=3964date=2023-02-05T00:54:00
-file,ghost/master/dic/aya/master/ghost.dicb692e47f15c5ad1d102c525c4f280baasize=834date=2022-07-26T01:29:17
+file,ghost/master/dic/aya/master/ghost.dicdf67c945a055fd7347bb906ad2e1954dsize=1135date=2022-07-26T01:29:17
 file,ghost/master/dic/aya/master/last_time.dice300a5c82b494abe38729dd41cc17ac8size=129date=2023-03-04T20:43:33
-file,ghost/master/dic/aya/master/shiori.dic310a8ca8fbbe7ec92cc89be0b118a414size=51486date=2023-02-08T01:18:41
+file,ghost/master/dic/aya/master/shiori.dic7bf1ebcefd2793cab8bbfaffd66290b4size=51780date=2023-02-08T01:18:41
 file,ghost/master/dic/aya/master/string.dic94b78188422d9d86352f0361a083ff95size=2425date=2022-07-26T01:29:17
 file,ghost/master/dic/aya/master/sysex.dicf7defaf662a0e882160cba5e604b068fsize=1303date=2023-02-05T00:54:00
 file,ghost/master/dic/aya/master/url.dic575563bf3e646b8302725c5bd675895bsize=191date=2022-07-26T01:29:17
@@ -379,7 +379,7 @@ file,ghost/master/dic/other/Tarro.dice70846109858ef3b4fecd784b903b51dsize=2541
 file,ghost/master/dic/other/classtable.dice041e942e4a59fb934a5a9a7d1a83d33size=7096date=2022-07-26T01:29:17
 file,ghost/master/dic/other/dictionary.dic0dd0236fb57e6a0aa06ef29f2aa1f5besize=3224date=2022-07-26T01:29:17
 file,ghost/master/dic/other/flower.dic45ed101f3643ff51a6f5ef9a274926e1size=16349date=2022-07-26T01:29:17
-file,ghost/master/dic/other/happyquest.dicf2986962862dc01ef57d904909cb67cfsize=3710date=2022-07-26T01:29:17
+file,ghost/master/dic/other/happyquest.dic4e96333553f9434f4834472c4360230csize=3784date=2022-07-26T01:29:17
 file,ghost/master/dic/other/jumptest.dicfd0156a838a76198638cb2983e6f9450size=1928date=2022-07-26T01:29:17
 file,ghost/master/dic/other/kikkastock.dic1157d9512dff50afc6e1b4bdc07f1cc2size=9465date=2022-07-26T01:29:17
 file,ghost/master/dic/other/otherserv.dicda8a04544283802894fe3dc2f7772743size=133745date=2022-07-26T01:29:17
