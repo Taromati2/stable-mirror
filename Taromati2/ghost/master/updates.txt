@@ -388,7 +388,7 @@ file,ghost/master/dic/other/poem.dicae859b168cd7fe034cf4539aa71b70efsize=12542
 file,ghost/master/dic/other/story.dic3ffac17615a6722e388153585da9583csize=66990date=2022-07-26T01:29:17
 file,ghost/master/dic/other/test.dic9a5f7522938288fa2eefacc7862e458fsize=21418date=2022-07-26T01:29:17
 file,ghost/master/dic/system/Calendar.dicd11991eb24dd419db8e7cbb0f927f2dbsize=39820date=2022-07-26T01:29:17
-file,ghost/master/dic/system/Debug.dica1cc916195468690e86953f0b1f17367size=24317date=2023-02-05T00:54:00
+file,ghost/master/dic/system/Debug.dic451dc0d086867107c8043053b19a52e8size=24381date=2023-02-05T00:54:00
 file,ghost/master/dic/system/FileDrop.dica65e39d83209f6b4523effb973c22487size=5776date=2023-02-10T23:25:15
 file,ghost/master/dic/system/MAGIC.ayc008aa47dc0463fa0e4a08119f4bae719size=1539date=2023-02-05T00:54:00
 file,ghost/master/dic/system/MAGIC.dic617991bbb23a229dd827369574b5e042size=294date=2022-07-26T01:29:17
@@ -461,7 +461,7 @@ file,ghost/master/saori/cpuid.dll552326006fa486ec8dd5d339caaa1cfasize=81920da
 file,ghost/master/saori/cpuusage.dll737d6b1a5be08b58d5c6f32601f41495size=30720date=2022-08-07T17:56:27
 file,ghost/master/saori/debeso.db.basef7652c70bed7f3d032f59bf2c5c98e00size=4596736date=2022-08-07T17:56:27
 file,ghost/master/saori/debeso.dll197986583a59d6080c133bbd2af259a6size=339968date=2022-08-07T17:56:27
-file,ghost/master/saori/ghost_terminal.exe97b78c34211c4536ded8a8dc4a73aadasize=36864date=2023-03-09T13:27:52
+file,ghost/master/saori/ghost_terminal.exef71b612a8cb709d1398175c0227fa21dsize=37376date=2023-03-09T13:27:52
 file,ghost/master/saori/gift_for_hacker.bat6dd52fe2fe51550c38d9d53edecbe40esize=156date=2022-08-07T17:56:27
 file,ghost/master/saori/ip.dll2a500b5e805d49f8eb4cc1bea479fedbsize=34304date=2022-08-07T17:56:27
 file,ghost/master/saori/lunar.dll02124e9ea308deb950e55619794546cbsize=26624date=2022-08-07T17:56:27
