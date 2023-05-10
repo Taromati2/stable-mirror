@@ -368,8 +368,20 @@ OnSakuraScript.Forment{
 
 ShioriEcho.CustomLoginInfo{
 	"\n%(ansi_red)%(Taromati2.asciiArt)/
-	%(ansi_yellow)Taromati2 %(ansi_green)internal ver %(ansi_cyan)%(VERSION) %(ansi_green)build date %(ansi_cyan)LAST_BUILD_TIME.YEAR.LAST_BUILD_TIME.MOUNTH\n/
-	%(ansi_yellow)ghost terminal %(ansi_green)ver %(ansi_cyan)%(_argv[0])\n/
+	%(ansi_yellow)Taromati2 %(ansi_green)internal ver %(ansi_cyan)%(VERSION) /
+	%(ansi_green)build date %(ansi_cyan)LAST_BUILD_TIME.YEAR.LAST_BUILD_TIME.MOUNTH"
+	--
+	if GHOST.IsGitPath{
+		_uuid=RUNCMDEX('git rev-parse --short HEAD')
+		if _uuid!=0
+			" %(ansi_green)git commit %(ansi_cyan)%(_uuid)"
+		else
+			" %(ansi_red)git commit unknown"
+	}
+	--
+	"\n/
+	%(ansi_yellow)ghost terminal %(ansi_green)ver %(ansi_cyan)%(_argv[0]) /
+	%(ansi_yellow)%(Baseware) %(ansi_green)ver %(ansi_cyan)%(Baseware.Version)\n/
 	%(ansi_reset)"
 }
 On_ShioriEcho.Begin {
@@ -412,11 +424,12 @@ On_ShioriEcho {
 				}
 				elseif RE_GREP(reference0,'^\s*openfunc\s+'){
 					_funcname=RE_REPLACE(reference0,'^\s*openfunc\s+','')
-					if Is_Defened_Event(_funcname)||Is_Defened_Event(_funcname+'Ex'){
-						_EXfunc=!Is_Defened_Event(_funcname)
+					if Is_Defened_Event_Or_Func(_funcname)||Is_Defened_Event(_funcname+'Ex'){
+						_EXfunc=!Is_Defened_Event_Or_Func(_funcname)
 						if _EXfunc
 							_funcname=_funcname+'Ex'
-						_funcname=Get_Full_Defened_Event_Name(_funcname)
+						if !ISFUNC(_funcname)
+							_funcname=Get_Full_Defened_Event_Name(_funcname)
 						_info=GETFUNCINFO(_funcname)
 						_path=SPLITPATH(_info[0])
 						if _path
@@ -803,7 +816,7 @@ Get_AYA_Function_Info{
 				if _funcname==FREAD(_data_file){
 					_result=FREAD(_data_file)
 					while RE_GREP(_result,'/$'){
-						_result=SUBSTR(0,STRLEN(_result)-1)
+						_result=SUBSTR(_result,0,STRLEN(_result)-1)
 						_result+=FREAD(_data_file)
 					}
 					break
