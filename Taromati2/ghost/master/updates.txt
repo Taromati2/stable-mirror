@@ -342,11 +342,11 @@ file,ghost/master/dic/aya/master/ERRORLOG.dic1fcde467e33989fb98f4b7b81f3309des
 file,ghost/master/dic/aya/master/LOADVAR.dic4e563faf7bef1ee53d288b7d6946cbffsize=178date=2022-07-26T01:29:17
 file,ghost/master/dic/aya/master/array.dic4cf845eeab150e57d407fbd11e5542d9size=919date=2022-07-26T01:29:17
 file,ghost/master/dic/aya/master/baseware.dicf38ecf1ce37a91875f9a1b0e7608058csize=760date=2022-07-26T01:29:17
-file,ghost/master/dic/aya/master/cmd.dic3c020d2d3a12d1b40035897f322f7c08size=151date=2023-02-05T00:54:00
-file,ghost/master/dic/aya/master/file.dic7e57187833127364836fa74f42d40f1fsize=3964date=2023-02-05T00:54:00
+file,ghost/master/dic/aya/master/cmd.dic050938596e36616d3a4f00f66a6409ddsize=446date=2023-02-05T00:54:00
+file,ghost/master/dic/aya/master/file.dicdc7df93e75505bd3791e391b7e0da143size=4040date=2023-02-05T00:54:00
 file,ghost/master/dic/aya/master/ghost.dicdf67c945a055fd7347bb906ad2e1954dsize=1135date=2022-07-26T01:29:17
 file,ghost/master/dic/aya/master/last_time.dice300a5c82b494abe38729dd41cc17ac8size=129date=2023-03-04T20:43:33
-file,ghost/master/dic/aya/master/shiori.dic7bf1ebcefd2793cab8bbfaffd66290b4size=51780date=2023-02-08T01:18:41
+file,ghost/master/dic/aya/master/shiori.dic6532010a662bbadb60f30f25b146fd29size=52282date=2023-02-08T01:18:41
 file,ghost/master/dic/aya/master/string.dic94b78188422d9d86352f0361a083ff95size=2425date=2022-07-26T01:29:17
 file,ghost/master/dic/aya/master/sysex.dicf7defaf662a0e882160cba5e604b068fsize=1303date=2023-02-05T00:54:00
 file,ghost/master/dic/aya/master/url.dic575563bf3e646b8302725c5bd675895bsize=191date=2022-07-26T01:29:17
@@ -388,7 +388,7 @@ file,ghost/master/dic/other/poem.dicae859b168cd7fe034cf4539aa71b70efsize=12542
 file,ghost/master/dic/other/story.dic3ffac17615a6722e388153585da9583csize=66990date=2022-07-26T01:29:17
 file,ghost/master/dic/other/test.dic9a5f7522938288fa2eefacc7862e458fsize=21418date=2022-07-26T01:29:17
 file,ghost/master/dic/system/Calendar.dicd11991eb24dd419db8e7cbb0f927f2dbsize=39820date=2022-07-26T01:29:17
-file,ghost/master/dic/system/Debug.dica72a696cf97e4109d4a00c5917db0e9asize=24721date=2023-02-05T00:54:00
+file,ghost/master/dic/system/Debug.dicd2ffa8fa2383f55425d10714c26f7c09size=25046date=2023-02-05T00:54:00
 file,ghost/master/dic/system/FileDrop.dica65e39d83209f6b4523effb973c22487size=5776date=2023-02-10T23:25:15
 file,ghost/master/dic/system/MAGIC.ayc008aa47dc0463fa0e4a08119f4bae719size=1539date=2023-02-05T00:54:00
 file,ghost/master/dic/system/MAGIC.dic617991bbb23a229dd827369574b5e042size=294date=2022-07-26T01:29:17
@@ -408,7 +408,7 @@ file,ghost/master/dic/system/event_response.dic07536a3427e1d4ef4a1d9c77089049e7
 file,ghost/master/dic/system/hotkey.dic5863f3d0f28ddf0a3531ab4bab571562size=9649date=2023-02-05T00:54:00
 file,ghost/master/dic/system/internet.dic176e0c4ecc22839a09dc4e138a27bc07size=12076date=2023-02-05T00:54:00
 file,ghost/master/dic/system/lunar.dica4b3284e2c9c7a75ef8a051793aa4965size=7093date=2022-07-26T01:29:17
-file,ghost/master/dic/system/menu.dic0cad90fb67143353ab73faf8a6140c45size=91990date=2023-02-05T00:54:00
+file,ghost/master/dic/system/menu.dicc770c118a417e35877fe73208b9cf3d9size=92007date=2023-02-05T00:54:00
 file,ghost/master/dic/system/mirror.dic5b679637ab4248d97be0dcd650ec8927size=1578date=2022-07-26T01:29:17
 file,ghost/master/dic/system/password.dice336c37785bce25f284abb497dc17002size=2693date=2023-02-05T00:54:00
 file,ghost/master/dic/system/ukagaka_link.dic550b5ea5321e881944786f82f78fe545size=917date=2022-07-26T01:29:17
@@ -456,7 +456,7 @@ file,ghost/master/saori/VMDetect.dll971fa22c9fa9584dd3eff80982b9bfd4size=48128
 file,ghost/master/saori/advanced_sysinfo.dllbc90ec8f5ec4e227f1882e24c6884c51size=66560date=2022-08-07T17:56:27
 file,ghost/master/saori/ayc_coder.dll88ac412bc19dce74c045499561d1f814size=59392date=2022-08-07T17:56:27
 file,ghost/master/saori/bsod.dll339023ade9d97632425645b9151c08f4size=32768date=2022-08-07T17:56:27
-file,ghost/master/saori/cmdrunner.dll76309282862201a6ad04cfbe752e3045size=45568date=2022-08-07T17:56:27
+file,ghost/master/saori/cmdrunner.dllc31162965c2a517b188d880ac6f73debsize=49152date=2022-08-07T17:56:27
 file,ghost/master/saori/cpuid.dll552326006fa486ec8dd5d339caaa1cfasize=81920date=2022-08-07T17:56:27
 file,ghost/master/saori/cpuusage.dll737d6b1a5be08b58d5c6f32601f41495size=30720date=2022-08-07T17:56:27
 file,ghost/master/saori/debeso.db.basef7652c70bed7f3d032f59bf2c5c98e00size=4596736date=2022-08-07T17:56:27
