@@ -3,15 +3,15 @@ RUNCMD{
 	CALLSAORI('cmdrunner',_argv)
 }
 RUNCMD.GetOutput{
-	CALLSAORI('cmdrunner',_argv)
-	valueex
+	void CALLSAORI('cmdrunner',_argv)
+	valueex[0]
 }
 RUNCMD.GetOutput.RemoveLastLineBreak{
-	CALLSAORI('cmdrunner',_argv)
-	if SUBSTR(valueex,STRLEN(valueex)-1,1)==CHR(10){
-		valueex=SUBSTR(valueex,0,STRLEN(valueex)-1)
+	_str=RUNCMD.GetOutput(_argv)
+	if SUBSTR(_str,STRLEN(_str)-1,1)==CHR(10){
+		_str=SUBSTR(_str,0,STRLEN(_str)-1)
 	}
-	valueex
+	_str
 }
 RUNCMDEX{
 	RUNCMD.GetOutput.RemoveLastLineBreak(_argv)

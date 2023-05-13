@@ -205,6 +205,14 @@ GHOST.INtempDir{
 GHOST.IsSelfPath{
 	REPLACE(_argv[0],'/','\') _in_ GETSETTING('coreinfo.path')
 }
+git.GetCommitID{
+	_uuid=RUNCMDEX('git rev-parse --short HEAD')
+	if STRLEN(_uuid)!=7{
+		RUNCMD('git gc')// common fix of the problem
+		_uuid=RUNCMDEX('git rev-parse --short HEAD')
+	}
+	_uuid
+}
 //DUMP
 DUMP_to:void{
 	_file=_argv[0]
