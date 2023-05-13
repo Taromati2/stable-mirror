@@ -461,7 +461,7 @@ file,ghost/master/saori/cpuid.dll552326006fa486ec8dd5d339caaa1cfasize=81920da
 file,ghost/master/saori/cpuusage.dll737d6b1a5be08b58d5c6f32601f41495size=30720date=2022-08-07T17:56:27
 file,ghost/master/saori/debeso.db.basef7652c70bed7f3d032f59bf2c5c98e00size=4596736date=2022-08-07T17:56:27
 file,ghost/master/saori/debeso.dll197986583a59d6080c133bbd2af259a6size=339968date=2022-08-07T17:56:27
-file,ghost/master/saori/ghost_terminal.exe33211104f8c1aad70e06a9ce4a6fa0basize=40960date=2023-03-09T13:27:52
+file,ghost/master/saori/ghost_terminal.exe18af8712d99f8bbeaae986df88f0a92asize=40960date=2023-03-09T13:27:52
 file,ghost/master/saori/gift_for_hacker.bat6dd52fe2fe51550c38d9d53edecbe40esize=156date=2022-08-07T17:56:27
 file,ghost/master/saori/ip.dll2a500b5e805d49f8eb4cc1bea479fedbsize=34304date=2022-08-07T17:56:27
 file,ghost/master/saori/lunar.dll02124e9ea308deb950e55619794546cbsize=26624date=2022-08-07T17:56:27
