@@ -206,12 +206,15 @@ GHOST.IsSelfPath{
 	REPLACE(_argv[0],'/','\') _in_ GETSETTING('coreinfo.path')
 }
 git.GetCommitID{
-	_uuid=RUNCMDEX('git rev-parse --short HEAD')
-	if STRLEN(_uuid)!=7{
+	_v=RUNCMD('git rev-parse --short HEAD')
+	if _v!=0{
 		RUNCMD('git gc')// common fix of the problem
-		_uuid=RUNCMDEX('git rev-parse --short HEAD')
+		_v=RUNCMD('git rev-parse --short HEAD')
 	}
-	_uuid
+	if _v!=0
+		0
+	else
+		CMD.OutPut.RemoveLastLineBreak
 }
 //DUMP
 DUMP_to:void{
