@@ -61,7 +61,7 @@ ERASEALLVARBEGINAS {
 CALLALLFUNCTIONBEGINAS {
 	_L= GETFUNCLIST(_argv[0])
 	foreach _L;_V {
-		EVAL(_V)
+		void EVAL(_V)
 	}
 }
 GETFUNCLISTINRE {
@@ -245,8 +245,6 @@ load {
 	basewarename		 = ''
 	basewarenameex		 = ''
 	sender				 = ''
-	ghostboottime		 = systemuptime
-	ghostbootmin		 = GETSECCOUNT / 60
 
 	S_CHARSET = GETSETTING('charset.output')
 
@@ -268,6 +266,8 @@ load {
 		if !username
 			SHIORI_FW.InVarFileMiss=1
 	}
+	ghostboottime		 = systemuptime
+	ghostbootmin		 = GETSECCOUNT / 60
 
 	SHIORI_FW.InitChain
 
@@ -1679,7 +1679,7 @@ Is_Defened_Event_Or_Func{
 	ISFUNC(_argv[0]) || Is_Defened_Event(_argv[0])
 }
 SHIORI_EV.On_Has_Event : void {
-	_event_name=reference0
+	_event_name=reference.raw[0]
 	if SUBSTR(_event_name,0,2) != 'On'
 		_event_name='On_'+_event_name
 	_result=0
@@ -1791,6 +1791,8 @@ ghostuptime {
 	systemuptime - ghostboottime
 }
 ghostupmin {
+	if !ISVAR('ghostbootmin')
+		ghostbootmin = GETSECCOUNT / 60
 	(GETSECCOUNT / 60) - ghostbootmin
 }
 ghostupmin_total {
