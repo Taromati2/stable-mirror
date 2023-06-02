@@ -392,7 +392,7 @@ file,ghost/master/dic/system/Debug.dic6b84f0949cd0fceca5b499dd253a3d1asize=257
 file,ghost/master/dic/system/FileDrop.dica65e39d83209f6b4523effb973c22487size=5776date=2023-02-10T23:25:15
 file,ghost/master/dic/system/MAGIC.ayc008aa47dc0463fa0e4a08119f4bae719size=1539date=2023-02-05T00:54:00
 file,ghost/master/dic/system/MAGIC.dic617991bbb23a229dd827369574b5e042size=294date=2022-07-26T01:29:17
-file,ghost/master/dic/system/SNTP.dic645508b4dd51d99112cf55e7dbe0250fsize=3429date=2023-02-05T00:54:00
+file,ghost/master/dic/system/SNTP.dic06cf374ced421ee1dbc8b147ebc66878size=3422date=2023-02-05T00:54:00
 file,ghost/master/dic/system/SQL.dic71070341b632bed1634140e5d9ade99asize=9486date=2022-07-26T01:29:17
 file,ghost/master/dic/system/StateGraph.dice3f1ae25ede3df745a94c3512e269500size=1822date=2022-07-26T01:29:17
 file,ghost/master/dic/system/VersionUpgrade.dicf0dd2732d8fad97d896f9cc4bf468d69size=6648date=2023-02-05T15:21:38
