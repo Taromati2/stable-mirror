@@ -1680,15 +1680,57 @@ Is_Defened_Event_Or_Func{
 }
 SHIORI_EV.On_Has_Event : void {
 	_event_name=reference.raw[0]
+	_SecurityLevel=reference.raw[1]
+	if !_SecurityLevel
+		_SecurityLevel=SHIORI_FW.SecurityLevel
 	if SUBSTR(_event_name,0,2) != 'On'
 		_event_name='On_'+_event_name
 	_result=0
-	if TOLOWER(SHIORI_FW.SecurityLevel) == 'external'
+	if TOLOWER(_SecurityLevel) == 'external'
 		_event_name='ExternalEvent.'+_event_name
 	_result=ISFUNC(_event_name)
 	if !_result
 		_result=ISFUNC('SHIORI_EV.'+_event_name)
 	SHIORI_FW.Make_X_SSTP_PassThru('Result',_result)
+}
+SHIORI_EV.ExternalEvent.On_Has_Event{
+	SHIORI_EV.On_Has_Event
+}
+SHIORI_EV.On_Get_Supported_Events: void {
+	_L=GETFUNCLIST('On')
+	_base_local_event_funcs=IARRAY
+	foreach _L;_func{
+		if SUBSTR(_func,2,1) == '_'
+			_func=SUBSTR(_func,3,STRLEN(_func))
+		_base_local_event_funcs,=_func
+	}
+	_L=GETFUNCLIST('SHIORI_EV.On')
+	foreach _L;_func{
+		_func=SUBSTR(_func,10,STRLEN(_func))
+		if SUBSTR(_func,2,1) == '_'
+			_func=SUBSTR(_func,3,STRLEN(_func))
+		_base_local_event_funcs,=_func
+	}
+	SHIORI_FW.Make_X_SSTP_PassThru('local',ARRAYDEDUP(_base_local_event_funcs))
+	_L=GETFUNCLIST('ExternalEvent.On')
+	_base_external_event_funcs=IARRAY
+	foreach _L;_func{
+		_func=SUBSTR(_func,14,STRLEN(_func))
+		if SUBSTR(_func,2,1) == '_'
+			_func=SUBSTR(_func,3,STRLEN(_func))
+		_base_external_event_funcs,=_func
+	}
+	_L=GETFUNCLIST('SHIORI_EV.ExternalEvent.On')
+	foreach _L;_func{
+		_func=SUBSTR(_func,24,STRLEN(_func))
+		if SUBSTR(_func,2,1) == '_'
+			_func=SUBSTR(_func,3,STRLEN(_func))
+		_base_external_event_funcs,=_func
+	}
+	SHIORI_FW.Make_X_SSTP_PassThru('external',ARRAYDEDUP(_base_external_event_funcs))
+}
+SHIORI_EV.ExternalEvent.On_Get_Supported_Events{
+	SHIORI_EV.On_Get_Supported_Events
 }
 
 //---- SHIORI 関連情報 ------------------------------------------------------------------
