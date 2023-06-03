@@ -356,7 +356,7 @@ file,ghost/master/dic/communicate/talk/other_ghost.dicb94304548297c6e0b3b8ae224
 file,ghost/master/dic/communicate/talk/pseudoAI.dic97859d2f23b7c644800202f4b0571501size=60147date=2023-02-05T00:54:00
 file,ghost/master/dic/communicate/talk/talk.dic44a21ea9c7aada9d1f5b1532d82a1782size=174219date=2023-02-05T00:54:00
 file,ghost/master/dic/communicate/talk/talk_t.dicd112d7246d2fd88d7da91c758e20ef7fsize=8965date=2022-07-26T01:29:17
-file,ghost/master/dic/communicate/touch/touch.dic30a823cf05e39250086cec73ef3d48e4size=13766date=2022-07-26T01:29:17
+file,ghost/master/dic/communicate/touch/touch.dicf1ee14c62b1c6c393d8201428b54f4a2size=13809date=2022-07-26T01:29:17
 file,ghost/master/dic/dev/ayccoder.aycd7df86b0547b9b3e98b581643b9cfd2bsize=595date=2022-07-26T01:29:17
 file,ghost/master/dic/dev/dicforma.dicfc0876c6cfc131265cf98c7d80f4a38csize=8220date=2022-07-26T01:29:17
 file,ghost/master/dic/games/Gobang/Gobang.dice16a159754af725edf8cf3db8edf1a95size=44447date=2022-07-26T01:29:17
@@ -392,7 +392,7 @@ file,ghost/master/dic/system/Debug.dic4a243f3b9ed42cfd074cd37f9c20bfddsize=258
 file,ghost/master/dic/system/FileDrop.dica65e39d83209f6b4523effb973c22487size=5776date=2023-02-10T23:25:15
 file,ghost/master/dic/system/MAGIC.ayc008aa47dc0463fa0e4a08119f4bae719size=1539date=2023-02-05T00:54:00
 file,ghost/master/dic/system/MAGIC.dic617991bbb23a229dd827369574b5e042size=294date=2022-07-26T01:29:17
-file,ghost/master/dic/system/SNTP.dicffdae86870079c6939eaeec4ccffec74size=3429date=2023-02-05T00:54:00
+file,ghost/master/dic/system/SNTP.diccbf454b25ae31a9d5b41e27cdded14a4size=3505date=2023-02-05T00:54:00
 file,ghost/master/dic/system/SQL.dic71070341b632bed1634140e5d9ade99asize=9486date=2022-07-26T01:29:17
 file,ghost/master/dic/system/StateGraph.dice3f1ae25ede3df745a94c3512e269500size=1822date=2022-07-26T01:29:17
 file,ghost/master/dic/system/VersionUpgrade.dicf0dd2732d8fad97d896f9cc4bf468d69size=6648date=2023-02-05T15:21:38
@@ -408,7 +408,7 @@ file,ghost/master/dic/system/event_response.dic7a9fa968bc672f616f441dc2cecd4f16
 file,ghost/master/dic/system/hotkey.dic5863f3d0f28ddf0a3531ab4bab571562size=9649date=2023-02-05T00:54:00
 file,ghost/master/dic/system/internet.dic176e0c4ecc22839a09dc4e138a27bc07size=12076date=2023-02-05T00:54:00
 file,ghost/master/dic/system/lunar.dica4b3284e2c9c7a75ef8a051793aa4965size=7093date=2022-07-26T01:29:17
-file,ghost/master/dic/system/menu.dicc770c118a417e35877fe73208b9cf3d9size=92007date=2023-02-05T00:54:00
+file,ghost/master/dic/system/menu.dic6799f67bb329479318623db557b01678size=92003date=2023-02-05T00:54:00
 file,ghost/master/dic/system/mirror.dic5b679637ab4248d97be0dcd650ec8927size=1578date=2022-07-26T01:29:17
 file,ghost/master/dic/system/password.dice336c37785bce25f284abb497dc17002size=2693date=2023-02-05T00:54:00
 file,ghost/master/dic/system/ukagaka_link.dic550b5ea5321e881944786f82f78fe545size=917date=2022-07-26T01:29:17
