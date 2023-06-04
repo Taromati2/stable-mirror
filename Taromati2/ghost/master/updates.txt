@@ -404,7 +404,7 @@ file,ghost/master/dic/system/changeshell.dic7fac27cf7c7d3a3bd03afbad432c8e07si
 file,ghost/master/dic/system/clock.dic7aad2793ac1a0b73d2ebef61304edfa1size=26983date=2023-02-05T00:54:00
 file,ghost/master/dic/system/database_edit.dic68f7ae3538c5e0c8db2fff74d279fbecsize=20854date=2022-07-26T01:29:17
 file,ghost/master/dic/system/discord.dicc85f2278fdd83a2d02b7cd9cc16b88fcsize=1800date=2022-07-26T01:29:17
-file,ghost/master/dic/system/event_response.dic7a9fa968bc672f616f441dc2cecd4f16size=37312date=2023-02-20T00:26:12
+file,ghost/master/dic/system/event_response.dicdff1db7ecb5c2c5577cd39c000a402cbsize=37429date=2023-02-20T00:26:12
 file,ghost/master/dic/system/hotkey.dic5863f3d0f28ddf0a3531ab4bab571562size=9649date=2023-02-05T00:54:00
 file,ghost/master/dic/system/internet.dic176e0c4ecc22839a09dc4e138a27bc07size=12076date=2023-02-05T00:54:00
 file,ghost/master/dic/system/lunar.dica4b3284e2c9c7a75ef8a051793aa4965size=7093date=2022-07-26T01:29:17
@@ -412,7 +412,7 @@ file,ghost/master/dic/system/menu.dic6799f67bb329479318623db557b01678size=9200
 file,ghost/master/dic/system/mirror.dic5b679637ab4248d97be0dcd650ec8927size=1578date=2022-07-26T01:29:17
 file,ghost/master/dic/system/password.dice336c37785bce25f284abb497dc17002size=2693date=2023-02-05T00:54:00
 file,ghost/master/dic/system/ukagaka_link.dic550b5ea5321e881944786f82f78fe545size=917date=2022-07-26T01:29:17
-file,ghost/master/dic/system/username.dic650210205fbb9319a952e3e562a6ee0esize=8816date=2023-02-05T00:54:00
+file,ghost/master/dic/system/username.dicf9ae4d64159ead870153cb72ad6b9a50size=10978date=2023-02-05T00:54:00
 file,ghost/master/img/AI_state.png89165549cb26b1ce533df61cf36df356size=50590date=2022-10-04T13:49:53
 file,ghost/master/img/curs/busy.anid59dfecc384e31f410475f14c33ee1fbsize=29118date=2022-08-07T17:56:27
 file,ghost/master/img/curs/common.ani54a78cfde95ab2e6f6c9e6b2be269dd2size=48474date=2022-08-07T17:56:27
@@ -466,6 +466,7 @@ file,ghost/master/saori/gift_for_hacker.bat6dd52fe2fe51550c38d9d53edecbe40esiz
 file,ghost/master/saori/ip.dll2a500b5e805d49f8eb4cc1bea479fedbsize=34304date=2022-08-07T17:56:27
 file,ghost/master/saori/lunar.dll02124e9ea308deb950e55619794546cbsize=26624date=2022-08-07T17:56:27
 file,ghost/master/saori/mciaudior.dllebe0f19e401c866fc419b3c2a729a0bfsize=90624date=2023-02-05T09:21:07
+file,ghost/master/saori/steam_api.dllbe751ceae93beed830ceda090aceedcasize=47104date=2012-12-21T00:00:00
 file,ghost/master/saori/textcopy.dllb985beb7de58ae316ce03da9e260416asize=25600date=2022-08-07T17:56:27
 file,ghost/master/saori/tl.lock6cc375438fb76385e58c69193046dd19size=63date=2022-08-07T17:56:27
 file,ghost/master/saori/txtpaste.dlld26df18e46cf845ed073e26be17b3125size=25088date=2022-08-07T17:56:27
