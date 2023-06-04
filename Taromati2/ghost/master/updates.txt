@@ -412,7 +412,7 @@ file,ghost/master/dic/system/menu.dic6799f67bb329479318623db557b01678size=9200
 file,ghost/master/dic/system/mirror.dic5b679637ab4248d97be0dcd650ec8927size=1578date=2022-07-26T01:29:17
 file,ghost/master/dic/system/password.dice336c37785bce25f284abb497dc17002size=2693date=2023-02-05T00:54:00
 file,ghost/master/dic/system/ukagaka_link.dic550b5ea5321e881944786f82f78fe545size=917date=2022-07-26T01:29:17
-file,ghost/master/dic/system/username.dicf9ae4d64159ead870153cb72ad6b9a50size=10978date=2023-02-05T00:54:00
+file,ghost/master/dic/system/username.dic7ea0cfb8653f0404db697e3656fbd6c4size=11145date=2023-02-05T00:54:00
 file,ghost/master/img/AI_state.png89165549cb26b1ce533df61cf36df356size=50590date=2022-10-04T13:49:53
 file,ghost/master/img/curs/busy.anid59dfecc384e31f410475f14c33ee1fbsize=29118date=2022-08-07T17:56:27
 file,ghost/master/img/curs/common.ani54a78cfde95ab2e6f6c9e6b2be269dd2size=48474date=2022-08-07T17:56:27
