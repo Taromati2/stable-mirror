@@ -1,0 +1,5 @@
+charset,UTF-8
+type,shell
+name,Remilia Scarlet
+accept,橘花
+directory,Remilia Scarlet

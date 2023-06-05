@@ -1,0 +1,2 @@
+include, aya_base.txt
+dicdir, ../dic

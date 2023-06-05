@@ -1,0 +1,8 @@
+//by steve02081504
+#globaldefine	QuickStartVersion	0
+NeedUpdate{
+	BUGNow('已更新版本')
+}
+NeedUpdateText{
+	BUGNow('已更新版本')
+}

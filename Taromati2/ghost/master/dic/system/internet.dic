@@ -1,0 +1,484 @@
+//////////////////////////////////////////////////
+//Internet相关辞书
+//written by forjane, 2009.12.03
+//////////////////////////////////////////////////
+TextBetween{
+	_s = _argv[0]
+	_begin = _argv[1]
+	_end = _argv[2]
+	_idx = 0
+	if _argc > 3 {
+		_idx = _argv[3]
+	}
+	_d = _s[_idx + 1,_begin]
+	_d = _d[0,_end]
+	_d
+}
+/*
+TextBetween2{
+	_s = _argv[0]
+	_begin = _argv[1]
+	_end = _argv[2]
+	_idx = 0
+	if _argc > 3 {
+		_idx = _argv[3]
+	}
+	_d = _s[_idx,_end]
+	_d = _d[1,_begin]
+	_d
+}
+*/
+TextToEnd{//TextToEnd('a=b=1234','=',0)=='b=1234'得到字符串'a=b=1234'中从第1个'='到字符串结束的文本'b=1234'
+	_s=TOSTR(_argv[0])
+	_begin=_argv[1]
+	_idx = 0
+	if _argc > 2 {
+		_idx = TOINT(_argv[2])
+	}
+	_d = _s[_idx,_begin]
+	while _s[_idx+1,_begin]!=''{
+		_d+=_begin+_s[_idx+1,_begin]
+		_idx++
+	}
+	if SUBSTR(_s,STRLEN(_s)-1,1)==_begin
+		_d+=_begin
+	_d
+}
+BeginToEnd{//BeginToEnd('君不见，黄河之水天上来，奔流到海不复回。','，',1,2)得到第一个'，'到第二个'，'之间的文本
+	_s=_argv[0]
+	_txt=_argv[1]
+	_begin=TOINT(_argv[2])
+	_end=0
+	if _argc > 2 {
+		_end=TOINT(_argv[3])
+	}
+	_d = _s[_begin,_txt]
+	_idx=_begin+1
+	while _s[_idx,_txt]&&(_idx<_end&&_end!=0||_end==0){
+		_d+=_txt+_s[_idx,_txt]
+		_idx++
+	}
+	_d
+}
+//图灵api
+////////////////////////////////////////////////////////////////////////////////
+OntulingApi{
+	callingtulingapi=1
+	tulingapi.in=_argv[0]
+	"\![excute,http-get,http://www.tuling123.com/openapi/api?key=5b56e59d852489bb6c40289223619a28&info=%(tulingapi.in),--param-charset=UTF-8,--nofile,--timeout=200,--async=tulingapi]"
+}
+/*
+code  说明
+100000  文本类数据  text   {"code":100000,"text":"你也好啊"}
+200000  网址类数据  text+url
+301000  小说
+302000  新闻
+304000  应用、软件、下载
+305000  列车
+306000  航班
+307000  团购
+308000  优惠
+309000  酒店
+310000  彩票
+311000  价格
+312000  餐厅
+*/
+OnTuLingFound.Failure{
+	_txt=KikkaTalkToUser(tulingapi.in)
+	ERASEVAR('tulingapi.in')
+	if chatroom{
+		chatroomtxt+="%(_txt)#"
+		OnChatRoom(j)+WriteChatroom
+		return
+	}
+	_txt
+}
+OnTuLingFound{
+	_txt='\b[2]\_q'
+	{
+		_buff = reference3
+		_code=TextBetween(_buff,':',',',0)
+		case _code{
+			when '100000'
+				_txt+=TextBetween(_buff,'":"','"}',0)
+			when '200000'
+				_txt+=TextBetween(_buff,'":"','",',0)+"   \j["+TextBetween(_buff,'":"','"}',1)+"]"+"\_a[OnUrl,"+TextBetween(_buff,'":"','"}',1)+"]"+TextBetween(_buff,'":"','"}',1)+"\_a"
+			when '304000'{
+				_txt+=TextBetween(_buff,'":"','",',0)+'\n'
+				_t=TextBetween(_buff,'"list":',']')
+				SETDELIM(_t,',')
+				foreach _t;_temp{
+					_txt+=TextBetween(_temp,'"name":','","',0)+TextBetween(_temp,'count":"','","',0)+"\_a[OnUrl,"+TextBetween(_temp,'"icon":','","',0)+"]"+TextBetween(_temp,'"icon":','","',0)+"\_a"+"\_a[OnUrl,"+TextBetween(_temp,'detailurl":"','"}',0)+"]"+TextBetween(_temp,'detailurl":"','"}',0)+"\_a"+'\n'
+				}
+			}
+			when '40004'
+				_txt=''
+			others
+				_txt+=TextBetween(_buff,'":"','"}',0)
+		}
+	}
+	if _txt && tulingapi.in{
+		_txt=REPLACE(_txt,'\b[2]\_q','')
+		AITalkAdd('PSEUDO_AI_PATH\tuling.ai',tulingapi.in+'*'+_txt+'§')
+		void FCOPY('PSEUDO_AI_PATH\tuling.ai','PROFILE_PATH')
+	}
+	if !_txt
+		_txt=KikkaTalkToUser(tulingapi.in)
+	ERASEVAR('tulingapi.in')
+	if chatroom{
+		chatroomtxt+="%(_txt)#"
+		OnChatRoom(j)+WriteChatroom
+		return
+	}
+	'\'+mode
+	--
+	_txt
+}
+//天气查询
+////////////////////////////////////////////////////////////////////////////////
+OnCheckWeather{
+	if ISVAR('weather.lastcity') {
+		OnWeatherUpdate.menu
+		--
+		"\b[1]『\_a[OnChangeCity]◇%(weather.lastcity)\_a』的天气：\n/
+		今天的天气：\n/
+		白天 %(weather.day)  %(weather.daytemp)℃\n/
+		夜间 %(weather.night)  %(weather.nighttemp)℃\n/
+		\n/
+		明天的天气：\n/
+		白天 %(weather.tomorrow.day)  %(weather.tomorrow.daytemp)℃\n/
+		夜间 %(weather.tomorrow.night)  %(weather.tomorrow.nighttemp)℃\n/
+		\n/
+		"
+		--
+		'\q[◇返回,OnOpenMenu]    \q[◇取消,Cancel]\_q'
+	}
+	elseif ISVAR('city'){
+		OnWeatherUpdate.menu
+	}
+	else{
+		OnChangeCity
+	}
+}
+OnChangeCity{
+	"请输入你要查询的城市名称：\![open,inputbox,OnChangeCityComplete,-1,%(city)]"
+}
+OnChangeCityComplete{
+	if city != reference0 || !city
+		city = reference0
+	OnWeatherUpdate.menu
+}
+OnWeatherUpdate.DosntNeedCheck{
+	if (GETSECCOUNT-weather.lasttime)<13{
+		1
+		return
+	}
+	if city && city!=weather.lastcity{
+		0
+		return
+	}
+	if weather.lasttime{
+		if (GETSECCOUNT-weather.lasttime)<10800{
+			1
+			return
+		}
+	}
+	0
+}
+OnWeatherUpdate{
+	if !OnWeatherUpdate.DosntNeedCheck
+		OnWeatherUpdate.force
+	elseif FromWeatherUpdate.boot{
+		ERASEVAR('FromWeatherUpdate.boot')
+		OnWeatherUpdate.Success.boot.Talk
+	}
+	elseif FromWeatherUpdate.menu
+		ERASEVAR('FromWeatherUpdate.menu')
+}
+OnWeatherUpdate.force{
+	"\![execute,http-get,https://query.asilu.com/weather/gaode,--param=city=%(city),--param-charset=UTF-8,--nofile,--async=weather]"
+}
+OnWeatherUpdate.menu{
+	FromWeatherUpdate.menu=1
+	OnWeatherUpdate
+}
+OnWeatherUpdate.boot{
+	if setting.WeatherReminder{
+		FromWeatherUpdate.boot=1
+		OnWeatherUpdate
+	}
+}
+OnWeatherUpdate.Success.boot.Talk{
+	if mode=='1'
+		'\1'
+	else
+		'\0\s[0]'
+	--
+	"/
+	今天%(weather.lastcity)的天气：\n/
+	白天 %(weather.day)  %(weather.daytemp)℃\n/
+	夜间 %(weather.night)  %(weather.nighttemp)℃\n/
+	\n/
+	"
+	--
+	Weather.Talks
+}
+OnWeatherUpdate.Success{
+	_str=reference3
+	//get city
+	_city=TextBetween(_str,'city":"','",',0)
+	if _city{
+		weather.lastcity=_city
+		if !ISVAR('city')
+			city=weather.lastcity
+		//get last update time
+		weather.lasttime=GETSECCOUNT
+		//get weather
+		weather.day=TextBetween(_str,'dayweather":"','",',0)
+		weather.night=TextBetween(_str,'nightweather":"','",',0)
+		weather.daytemp=TextBetween(_str,'daytemp":"','",',0)
+		weather.nighttemp=TextBetween(_str,'nighttemp":"','",',0)
+		//get tomorrow weather
+		weather.tomorrow.day=TextBetween(_str,'dayweather":"','",',1)
+		weather.tomorrow.night=TextBetween(_str,'nightweather":"','",',1)
+		weather.tomorrow.daytemp=TextBetween(_str,'daytemp":"','",',1)
+		weather.tomorrow.nighttemp=TextBetween(_str,'nighttemp":"','",',1)
+
+		if FromWeatherUpdate.menu{
+			ERASEVAR('FromWeatherUpdate.menu')
+			OnCheckWeather
+		}
+		elseif FromWeatherUpdate.boot{
+			ERASEVAR('FromWeatherUpdate.boot')
+			OnWeatherUpdate.Success.boot.Talk
+		}
+	}
+	elseif city{
+		ERASEVAR('city')
+		OnWeatherUpdate
+	}
+	else
+		OnWeatherUpdate.Failure
+}
+OnWeatherUpdate.Failure.menu.Talk{
+	"\0\s[3]连线失败了……\nError：%(reference4)\n要查看本地信息吗？\n\q[◇确定,OnWeatherUpdate.Success.Talk]"
+	--
+	'\n\n\q[◇返回,OnOpenMenu]    \q[◇终了,Cancel]'
+}
+OnWeatherUpdate.Failure{
+	if FromWeatherUpdate.menu{
+		ERASEVAR('FromWeatherUpdate.menu')
+		OnWeatherUpdate.Failure.menu.Talk
+	}
+	elseif FromWeatherUpdate.boot{
+		ERASEVAR('FromWeatherUpdate.boot')
+	}
+}
+Weather.Talks{
+	if hour>=8&&hour<18{
+		if '晴' _in_ weather.day{
+			'\0\s[0]天晴的话\w9\s[26]出去走走比较好哦。'
+			'\0\s[5]今天天气还好啦，\w9因为是晴天呢。'
+		}
+		elseif '雨' _in_ weather.day{
+			'\0\s[8]今天下雨了吗？\w9\s[26]下雨出门记得带伞哦。'
+			'\0\s[8]今天是雨天\w9\1，\c天气不好啊\0'
+		}
+		elseif '雪' _in_ weather.day{
+			"\0\s[0]%(username)，\w9\s[20]外面下雪了吗？"
+			'\0\s[0]今天下雪了吗，\w9\s[5]来打雪仗吧？'
+		}
+		if TOINT(weather.daytemp)<16
+			'\0\s[0]今天天气比较冷，\w9\s[26]要注意保重身体哦。'
+		elseif TOINT(weather.daytemp)>38
+			'\0\s[8]天气太热了，\w9还是少呆在外面比较好。'
+		elseif TOINT(weather.daytemp)>33
+			'\0\s[0]今天天气比较热，\w9\s[26]要注意降温解暑哦。'
+	}
+	else{
+		if '雨' _in_ weather.night
+			'\0\s[0]晚上可能有雨，\w9\s[26]记得收衣服关好门窗哦。'
+		elseif '雪' _in_ weather.night
+			'\0\s[20]外面应该很冷吧，\w9\s[0]还是呆在家里比较好。'
+		if TOINT(weather.nighttemp)<10
+			'\0\s[26]晚上睡觉要注意保暖哦，\w9\s[0]不要冻着身子。'
+	}
+}
+Weather.EmbeddingString1{
+	if weather.day{
+		if hour>=8&&hour<18
+			"天气：%(weather.day)  温度：%(weather.daytemp)℃"
+		else
+			"天气：%(weather.night)  温度：%(weather.nighttemp)℃"
+	}
+}
+Weather.EmbeddingString2{
+	if weather.day{
+		if hour>=8&&hour<18
+			"%(weather.lastcity) %(weather.day) "
+		else
+			"%(weather.lastcity) %(weather.night) "
+		--
+		"%(weather.daytemp)℃～%(weather.nighttemp)℃"
+	}
+}
+//Hitokoto
+OnHitokotoUpdate{
+	'\![execute,http-get,https://v1.hitokoto.cn/,encode=text,--nofile,--async=hitokoto]'//更新一言
+}
+OnHitokotoUpdate.Success{
+	hitokoto=REPLACE(reference3,'\','\\')
+	--
+	DiscordCustomSet.CustomDetail(hitokoto)
+	--
+	DiscordCustomSet.CustomState('')
+}
+OnHitokotoUpdate.Failure{
+	//hitokoto=''
+}
+//RSS读取
+//////////////////////////////////////////////////////////////////////
+/*
+GetHeadlineList{
+	_txt = ''
+	_count = 0
+	_list = IARRAY
+	_path = FENUM('BASE_PATH\\..\\..\\..\\..\\headline')
+	_path = REPLACE(_path,'\','\\')
+	foreach _path; _i {
+		_list[_count] = 'BASE_PATH\\..\\..\\..\\..\\headline' + _i + '\\'
+		_count ++
+	}
+	TOSTR(_list)
+}
+ReadXml{
+	_file = _argv[0]
+	_buff = ''
+	_txt = '\_q\b[2]'
+	_title = ''
+	_url = ''
+	if FOPEN(_file,'r') {
+		for _buff = FREAD(_file); _buff != -1; _buff = FREAD(_file) {
+			if '<item' _in_ _buff {
+				_title = ''
+				_url = ''
+				_endofitem = 0
+				while _endofitem != 1 {
+					if '<title>' _in_ _buff {
+						while '</title>' !_in_ _buff {
+							_buff += FREAD(_file)
+						}
+						_tmp = _buff[1,'<title>']
+						_tmp = _tmp[0,'</title>']
+						_title = _tmp
+					}
+					if '<link>' _in_ _buff {
+						while '</link>' !_in_ _buff {
+							_buff += FREAD(_file)
+						}
+						_tmp = _buff[1,'<link>']
+						_tmp = _tmp[0,'</link>']
+						_url = _tmp
+					}
+					if '</item>' _in_ _buff {
+						_endofitem = 1
+						if _url != '' {
+							_txt += '\_a[OnUrl,' + _url + ']' + _title + '\_a\n'
+						}
+						else {
+							_txt += _title + '\n'
+						}
+					}
+					else {
+						_buff = FREAD(_file)
+					}
+				}
+			}
+		}
+	}
+	FCLOSE(_file)
+	_txt = REPLACE(_txt,'&quot;','"')
+	_txt = REPLACE(_txt,'&amp;','&')
+	_txt = REPLACE(_txt,'&nbsp;',' ')
+	_txt = REPLACE(_txt,'&lt;','<')
+	_txt = REPLACE(_txt,'&gt;','>')
+	_txt = REPLACE(_txt,'<br />',' ')
+	_txt
+}
+SendTweet{
+	_username = 'forjanezz'
+	_password = '111111'
+	_message = 'http://aaa.bbb.ccc'
+	_url = "http://%(_username):%(_password)@twitter.com/statuses/update.xml"
+	"\_q%(_url)\![execute,http-post,%(_url),--param=status=%(_message),--param-charset=UTF-8,--file=twitter.xml,--timeout=200,--async=twitterpost]"
+}
+*/
+OnWikiPedia{
+	'\C\![quicksession,true]\c\0\b[2]\![set,choicetimeout,0]/
+	■维基百科■\n[150]/
+	\q[◇搜索词条,OnInputPediaWord]\n'
+	--
+	ShowBaiduBaike
+	--
+	'\n\q[◇返回,OnOpenMenu,0]'
+}
+OnInputPediaWord{
+	"\C\![open,inputbox,OnDownLoadWikiPedia,-1,%(word)]"
+}
+OnDownLoadWikiPedia{
+	word=reference0
+	"正在连接网站，请稍等……\![excute,http-get,http://zh.wikipedia.org/wiki/%(word),--param-charset=UTF-8,--file=wiki-pedia.html,--timeout=200,--async=OnWikiPedia]"
+}
+ShowBaiduBaike{
+	UnFinished
+	/*
+	_file = 'VAR_PATH\\baidu-baike.html'
+	if FOPEN(_file,'r'){
+		for _buff = FREAD(_file); _buff != -1; _buff = FREAD(_file){
+		}
+	}
+	*/
+}
+/////////////////////////////////////////////////////////////////////////////
+OnUrl{
+	"\C\j[%(reference0)]"
+}
+OnExecuteHTTPComplete{
+	if reference1[0,'='] == 'rss' {
+		//_tmp = reference1[1,'=']
+		//ReadXml("VAR_PATH\\%(_tmp)")
+	}
+	elseif reference1 == 'weather' {
+		OnWeatherUpdate.Success
+	}
+	elseif reference1 == 'tulingapi' {
+		OnTuLingFound
+	}
+	elseif reference1 == 'kikkastock' {
+		if kikkastock==1
+			OnKikkaStockMenu
+		elseif kikkastock==2
+			OnKikkaStockSelect
+		elseif kikkastock==3
+			OnKikkaStockFound
+	}
+	elseif reference1 == 'hitokoto' {
+		OnHitokotoUpdate.Success
+	}
+	else {
+		BUGNow('OnExecuteHTTPComplete的未定义async id: '+reference1)
+	}
+}
+OnExecuteHTTPFailure{
+	if reference1 == 'weather'
+		OnWeatherUpdate.Failure
+	elseif reference1 == 'tulingapi' {
+		OnTuLingFound.Failure
+	}
+	elseif reference1 == 'hitokoto' {
+		OnHitokotoUpdate.Failure
+	}
+	else{
+		"\0\s[3]连线失败了……\nError：%(reference4)"
+	}
+}

@@ -1,0 +1,5 @@
+charset,UTF-8
+type,shell
+name,アクセサリ（フリーダムウォーズ）
+accept,橘花
+directory,accessory(FREEDOM_WARS)

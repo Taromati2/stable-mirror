@@ -1,0 +1,119 @@
+/////////
+/////////沟通
+/////////KikkaAIdb
+//**** 人格主动对话 *************************************************************
+StartCommunicate{
+	//---- 决定对话的对象人格
+	if ghostexcount > 0{
+		//从人格列表中取得对话人格名字
+		res_reference0 = ghostexlist[RAND(ghostexcount)]
+		//---- 对话开始
+		if res_reference0 == '凉璃'{
+			//---- 与凉璃的对话
+			'\0\s[0]凉璃、好吗?'
+		}
+		elseif res_reference0 == 'さくら'{
+			//---- 与さくら（樱花）的对话
+			'\0\s[0]どもー。'
+		}
+		_varname_NumOfTry='OtherGhostTalk.'+STRDIGEST(res_reference0)+'.NumOfTry'
+		if EVAL(_varname_NumOfTry)<4 {
+			if EVAL(_varname_NumOfTry)==3
+				'\0\s[0]...'
+			else
+				"\0\s[0]你好、%(res_reference0)。"
+			EVAL(_varname_NumOfTry+'++')
+		}
+		elseif RAND(MIN(EVAL(_varname_NumOfTry),100))==0{
+			"\0\s[0]你好、%(res_reference0)。"
+			EVAL(_varname_NumOfTry+'++')
+		}
+		else{
+			ERASEVAR('res_reference0')
+			RandomTalk
+		}
+	}
+	else{
+		//---- 没有其他人格存在情况进行random对话
+		RandomTalk
+	}
+}
+//**** 人格被动对话 *******************************************************************************
+//其他人格销毁
+OnOtherGhostVanished{
+	"\0\s[3]再见\w9\w9，%(reference0)\w9.\w9.\w9.\w9.\w9.\w9.\n"
+	--
+	if reference0 == '橘花'
+		'\s[5]这就是冒牌货该有的下场呢\n/
+		\1\s[10]?\w9\w9\n\s[11]给我等一下\n'
+}
+//其他人格销毁后被动交替
+OnVanished{
+	"啊\w9\w9，%(reference0)已经走了么？\n"
+	"\1\s[10]\0\s[6]对不起…\w9\w9\w5\n让%(username)费事了。\n"
+	--
+	if reference0 == '橘花'
+		'\s[5]这就是冒牌货该有的下场呢\n/
+		\1\s[10]?\w9\w9\n\s[11]给我等一下\n'
+}
+//---- 与其他人格对话 -----------------------------------------------------------------------
+ReplyToGhost{
+	if ghostname _in_ reference1 || selfname _in_ reference1 || keroname _in_ reference1{
+		_varname_NumOfTry='OtherGhostTalk.'+STRDIGEST(reference0)+'.NumOfTry'
+		_varname_LastTalk='OtherGhostTalk.'+STRDIGEST(reference0)+'.LastTalk'
+		if EVAL(_varname_LastTalk)==reference1
+			EVAL(_varname_NumOfTry+'++')
+		else{
+			EVAL(_varname_LastTalk+'=reference1')
+			ERASEVAR(_varname_NumOfTry)
+		}
+	}
+	_t=1
+	res_reference0 = reference0
+	if reference0 == '凉璃'{
+		_t=0
+		if '好' _in_ reference1{
+			'\0\s[0]好啊，凉璃呢？'
+		}
+		elseif '明天见' _in_ reference1{
+			"\0\s[0]\w8嗯嗯，%(username)和橘花晚安喔~\w8\w8\-"
+		}
+		else{
+			_t=1
+		}
+	}
+	elseif reference0 == '橘花'{
+		_t=0
+		if '你好' _in_ reference1 || '你也好' _in_ reference1{
+			'\0\s[0]你是哪位？'
+			'\0\s[0]你也好啊。。'
+			'\0\s[22]发现可疑物体接近中'
+		}
+		elseif '你是哪位' _in_ reference1{
+			'\0\s[0]我是橘花啊。'
+		}
+		elseif '我是橘花' _in_ reference1{
+			'\0\s[0]你是橘花，\w9\w9那么我又是谁？'
+		}
+		elseif '我又是谁' _in_ reference1{
+			'\0\s[0]你是冒牌的吧？'
+		}
+		elseif '才是冒牌的' _in_ reference1{
+			'\0\s[22]你想吃枪子儿吗？'
+		}
+		elseif '你是冒牌的' _in_ reference1{
+			'\0\s[0]你才是冒牌的吧？'
+		}
+		else{
+			_t=1
+		}
+	}
+	if _t
+		REPLACE(OnAIGhostReply,username,'你')
+}
+OnAIGhostReply{
+	InAIGhostReply = 1
+	ONE+TWO
+	--
+	ERASEVAR('InAIGhostReply')
+}

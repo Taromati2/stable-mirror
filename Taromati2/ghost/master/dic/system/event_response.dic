@@ -1,0 +1,1449 @@
+/////////文　ゴーストテンプレート
+/////////种々のイベント辞书
+/////////written by umeici.
+//平台更新反应by steve02081504
+OnBasewareUpdating{
+	BasewareUpdating=1
+	'\1\s[10]\0\s[6]嗯…\w9\w9\s[0]\n'
+	--
+	"/
+	基础平台“%Baseware”\n/
+	当前版本%Baseware.Version\w9\w9\n/
+	开始更新\n/
+	"
+	--
+	'\s[6]\w9\w9\w9'
+}
+OnBasewareUpdated{
+	ERASEVAR('BasewareUpdating')
+	OnSQLLoad.Fixer
+	BaseGhostStart
+	--
+	'\0\s[5]我回来了\n\w9\w9'
+	--
+	'\s[0]'
+	'\s[26]'
+	--
+	'让您久等了。\n\w9\w9'
+	--
+	"/
+	基础平台“%Baseware”\n/
+	已更新至%Baseware.Version\n/
+	"
+	--
+	if Baseware == 'SSP'
+		'/
+		\q[◇查看更新内容,OnUrlOpen,http://ponapalt.hatenablog.com/]\n/
+		\q[◇无用,Cancel]\n/
+		'
+}
+//Get自我信息
+OnNotifySelfInfo{
+	ghostname=reference0
+	selfname=reference1
+	keroname=reference2
+	haveshell = (judgeshell(reference3)!='0|' || Userspitem[0][2]==1)
+	if !haveshell
+		OnSilentChangeShell('预设')
+}
+//缺省信息补全&同步信息更新 by steve02081504
+OnNotifyUserInfo.WhenEmpty.username:void{
+	if !IsUserName.Special(_argv[0]){
+		OnUserName.Set(_argv[0])
+	}
+	else{
+		_steam_name = GetSteamUserName
+		if !IsUserName.Special(_steam_name){
+			OnUserName.Set(_steam_name)
+		}
+	}
+}
+OnNotifyUserInfo.WhenEmpty.birthday:void{
+	if _argv[0]{
+		void OnBirthdayInput(_argv[0])
+	}
+}
+OnNotifyUserInfo{
+	if !username{
+		if GetPhase > 1 || !reference1
+			OnNotifyUserInfo.WhenEmpty.username(reference0)
+		else
+			OnNotifyUserInfo.WhenEmpty.username(reference1)
+	}
+	if !birthday
+		OnNotifyUserInfo.WhenEmpty.birthday(reference2)
+	_name_changed = 0
+	_username = ''
+	if GetPhase > 1{
+		_name_changed=username != reference0 && Baseware.Config.nickname != reference0 && reference0
+		_username=reference0
+	}else{
+		_name_changed=username != reference1 && Baseware.Config.username != reference1 && reference1
+		_username=reference1
+	}
+	_birthday_changed=birthday != reference2 && Baseware.Config.birthday != reference2 && reference2
+	if IsUsername.Empty(_username)
+		_name_changed = 0
+	if _name_changed || _birthday_changed{
+		"同步%Baseware设定中的"
+		--
+		if _name_changed{
+			if GetPhase > 1
+				'昵称'
+			else
+				'用户名'
+			--
+			"『%(REPLACE(_username,'\','\\'))』"
+		}
+		--
+		if _birthday_changed{
+			if _name_changed
+				'和'
+			--
+			"生日“%(reference2)”"
+		}
+		--
+		'?\n/
+		\q[◇同步,'
+		--
+		if _name_changed&&_birthday_changed
+			'OnNotifyUserInfo.bothUpdate'
+		elseif _name_changed
+			'OnUserNameInput'
+		elseif _birthday_changed
+			'OnBirthdayInput'
+		--
+		if _name_changed
+			",%(SakuraScriptArgConverter(_username))"
+		--
+		if _birthday_changed
+			",%(SakuraScriptArgConverter(reference2))"
+		--
+		']\n/
+		\q[◇无用,Cancel]\n/
+		'
+	}
+	--
+	Baseware.Config.nickname = reference0
+	Baseware.Config.username = reference1
+	Baseware.Config.birthday = reference2
+}
+OnNotifyUserInfo.bothUpdate{
+	void OnBirthdayInput(reference1)
+	'生日已更新\w9\w9\n'
+	--
+	OnUserNameInput
+}
+//硬件接入by steve02081504
+OneDeviceChange.GetDeviceUuid{
+	_argv[0][4,CHR(1)]
+}
+OneDeviceChange.GetDeviceFile{
+	_t=_argv[0][3,CHR(1)]
+	if _t
+		_t
+	else
+		'已卸载'
+}
+OneDeviceChange.GetDeviceMaker{
+	_t=_argv[0][2,CHR(1)]
+	if _t && !'兼容 USB' _in_ _t
+		_t
+	else
+		'未知厂商'
+}
+OneDeviceChange.GetDeviceName{
+	_t=_argv[0][1,CHR(1)]
+	if _t
+		_t
+	else
+		'未知设备名'
+}
+OneDeviceChange.GetDeviceType{
+	_argv[0][0,CHR(1)]
+}
+OneDeviceChange{
+	'设备文件“'+OneDeviceChange.GetDeviceFile(_argv[0])+'”上\n'
+	--
+	'由“'+OneDeviceChange.GetDeviceMaker(_argv[0])+'”生产的“'+OneDeviceChange.GetDeviceName(_argv[0])+'”\n'
+	--
+	'已作为“'+OneDeviceChange.GetDeviceType(_argv[0])+'”'
+	--
+	if OnDeviceChangeNow == 'Arrival'
+		'挂载'
+	elseif OnDeviceChangeNow == 'Remove'
+		'卸载'
+	else
+		'口口口'
+	--
+	'\n'
+	--
+	'\q[◇点此复制硬件uuid,OnCopy,'+SakuraScriptArgConverter(OneDeviceChange.GetDeviceUuid(_argv[0]))+']\n'
+	--
+	if OnDeviceChangeNow=='Arrival'&&OneDeviceChange.GetDeviceType(_argv[0])=='LogicalVolume'
+		'\q[◇打开,OnOpenDirOrFile,'+SakuraScriptArgConverter(OneDeviceChange.GetDeviceFile(_argv[0])+'\')+']\n'
+}
+OnDeviceChange.Head{
+	if mode == '1'
+		"\1\s[%(specialmode != 'mealtime')10]唔…\w9\w9\n"
+	else
+		'\0\s[6]嗯…\w9\w9\s[0]\n'
+}
+OnDeviceChange.Body{
+	_i=0
+	_txt=''
+	_uuid=''
+	while reference.raw[_i]{
+		_txt+=OneDeviceChange(reference.raw[_i])+'\n'
+		_uuid+=OneDeviceChange.GetDeviceUuid(reference.raw[_i])+C_LF
+		_i++
+	}
+	_txt
+	--
+	if _i>1
+		'\q[◇复制全部uuid,OnCopy,'+SakuraScriptArgConverter(_uuid)+']\n'
+	--
+	'/
+	\q[◇无用,Cancel]\n/
+	'
+}
+OnDeviceArrival{
+	if DeviceChangeAlert{
+		OnDeviceChangeNow='Arrival'
+		OnDeviceChange.Head
+		--
+		OnDeviceChange.Body
+		ERASEVAR('OnDeviceChangeNow')
+	}
+}
+OnDeviceRemove{
+	if DeviceChangeAlert{
+		OnDeviceChangeNow='Remove'
+		OnDeviceChange.Head
+		--
+		OnDeviceChange.Body
+		ERASEVAR('OnDeviceChangeNow')
+	}
+}
+OnOpenDirOrFile{
+	if _argv[0]
+		reference0 = _argv[0]
+	'\![open,file,'+SakuraScriptArgConverter(reference0)+']'
+}
+//文字拖拽处理 by steve02081504
+OnTextDrop{
+	infomode=0
+	if reference.raw[0]
+		temp = reference.raw[0]
+	if !RE_GREP(temp,"(?!%(CHR(1)))%(CHR(1))(?!%(CHR(1)))")
+		temp = REPLACE(temp,CHR(1)+CHR(1),CHR(1))
+	if mode == '1'
+		"\1\s[%(specialmode != 'mealtime')11]\b[2]唔？\n"
+	else
+		'\0\s[0]'
+	--
+	_t=CUTSPACE(temp)
+	if SHIORI_FW.DebugMode && RE_GREP(_t,'^[\w.]+$'){
+		if (__t=Get_AYA_Function_Info(_t))!=''
+			'aya自带底层函数\n'+__t+'\n/
+			\q[◇打开在线文档,OnUrlOpen,'+Get_AYA_Function_Doc(_t)+']\n/
+			'
+		elseif ISVAR(_t)
+			"变量“%(_t)”\n/
+			值：%(GetVarValue.SakuraScript(_t))\n/
+			类型：%(GETTYPEEX.string((_t)))\n/
+			"
+		elseif ISGLOBALDEFINE(_t)
+			"全局定义“%(_t)”\n/
+			内容：%(GetGlobalDefine.SakuraScript(_t))\n/
+			\q[◇复制定义内容,OnCopy,"+GetGlobalDefine.SakuraArg(_t)+']\n/
+			'
+		elseif Is_Defened_Event_Or_Func(_t)||Is_Defened_Event(_t+'Ex'){
+			_EXfunc=!Is_Defened_Event_Or_Func(_t)
+			if _EXfunc
+				_t=_t+'Ex'
+			_t=Get_Func_Or_Full_Defened_Event_Name(_t)
+			_info=GETFUNCINFO(_t)
+			_path=SPLITPATH(_info[0])
+			if _path
+				_path=_path[2]+_path[3]
+			else
+				_path=_info[0]
+			"函数“%(_t)”\n"
+			--
+			if _EXfunc
+				'（Ex版本事件）\n'
+			--
+			"起始于\q[◇%(_path) 第%(_info[1])行,OnOpenDicWithLineNum,%(SakuraScriptArgConverter(_info[0])),%(_info[1])]\n/
+			"
+		}
+		elseif SUBSTR(_t,0,2) == 'On'
+			'/
+			这可能是一个还未定义的事件\n/
+			\q[◇补充定义,OnEventAdd,'+_t+']\n/
+			'
+	}
+	--
+	if mode == '0'
+		'请选择处理方式\n'
+	--
+	if CHR(1) _in_ temp{
+		if SHIORI_FW.DebugMode && RE_GREP(temp,"/%(CHR(1))\s*")
+			'\q[◇aya形式换行剔除,OnTextDrop.ayaEndlineDelete]\n'
+		--
+		'\q[◇换行剔除,OnTextDrop.EndlineDelete]\n/
+		\q[◇换行转"\\n",OnTextDrop.EndlineForma]\n/
+		'
+	}
+	--
+	_text=REPLACE(temp,CHR(1),C_LF)
+	_sakura_text=SakuraScriptArgConverter(_text)
+	'/
+	\q[◇普通文字回显,OnTextDrop.CommonText]\n/
+	'
+	--
+	if SHIORI_FW.DebugMode{
+		if SUBSTR(CUTSPACE(temp),0,2) == 'On'
+			"\q[◇查看事件文档,OnUrlOpen,%(Get_UKADOC_ofEvent(CUTSPACE(temp)))]\n"
+		--
+		if IsSakuraScript(temp)
+			'\q[◇Sakura Script执行,OnTextDrop.SakuraScript]\n'
+		--
+		if ISEVALUABLE(temp)
+			'\q[◇表达式求值,OnTextDrop.EVAL]\n'
+	}
+	--
+	'/
+	\q[◇复制至粘贴板,OnCopy,'+_sakura_text+']\n/
+	'
+	--
+	if _text!=TOTRADITIONAL(_text)
+		'\q[◇简->繁转换,OnCopyTS,traditional,'+_sakura_text+']\n'
+	--
+	if _text!=TOSIMPLIFIED(_text)
+		'\q[◇繁->简转换,OnCopyTS,simplified,'+_sakura_text+']\n'
+	--
+	if _text!=TOUPPER(_text)
+		'\q[◇全转大写,OnCopy,'+SakuraScriptArgConverter(TOUPPER(_text))+']\n'
+	--
+	if _text!=TOLOWER(_text)
+		'\q[◇全转小写,OnCopy,'+SakuraScriptArgConverter(TOLOWER(_text))+']\n'
+	--
+	'/
+	\q[◇无用,Cancel]\n/
+	'
+}
+OnTextDrop.ayaEndlineDelete{
+	temp=RE_REPLACE(temp,"/%(CHR(1))\s*",'')
+	"\%(mode)已剔除\n"
+	--
+	OnTextDrop
+}
+OnTextDrop.EndlineDelete{
+	temp=REPLACE(temp,CHR(1),'')
+	"\%(mode)已剔除\n"
+	--
+	OnTextDrop
+}
+OnTextDrop.EndlineForma{
+	temp=REPLACE(temp,CHR(1),'\n')
+	"\%(mode)已转换\n"
+	--
+	OnTextDrop
+}
+OnTextDrop.CommonText{
+	temp=REPLACE(temp,'\','\\')
+	temp=REPLACE(temp,CHR(1),'\n')
+	temp
+}
+OnTextDrop.SakuraScript{
+	OnSakuraScript(temp)
+}
+OnTextDrop.EVAL{
+	OnCalculateVar(temp)
+}
+//**** インストール関连 *****************************************************************
+//---- インストール中のメッセージ -------------------------------------------------------
+OnInstallBegin{
+	if mode == '0'
+		'\0\s[20]'
+	elseif mode == '1'
+		"\1\s[%(specialmode != 'mealtime')10]"
+	--
+	'嗯…'
+	'唔…'
+}
+//---- インストール完了メッセージ -------------------------------------------------------
+OnInstallComplete{
+	if reference1 == 'Taromati2 full data pack'{
+		if QuickStartVersion{
+			FullDataPackInstalled=1
+			DiscordCustomSet.CustomDetail('好耶')
+			--
+			'\0\s[6]追加档案包完成，开始修复性更新\n'
+			--
+			OnSilentUpdate
+		}
+		else{
+			DiscordCustomSet.CustomDetail('厘在赣什么')
+			--
+			'\0\s[8].\w9.\w9.\w9\n/
+			已经是完整版了哦？\n/
+			'
+		}
+		return
+	}
+	DiscordCustomSet.CustomDetail('搞了些新东西')
+	--
+	if mode == '0'
+		'\0\s[0]'
+	elseif mode == '1'
+		"\1\s[%(specialmode != 'mealtime')10]"
+	--
+	if reference2
+		'复合物'
+	elseif reference0 == 'shell'
+		'Shell'
+	elseif reference0 == 'ghost'
+		'人格'
+	elseif reference0 == 'balloon'
+		'对话框'
+	elseif reference0 == 'plugin'
+		'套件'
+	elseif reference0 == 'supplement'
+		'追加档案'
+	elseif reference0 == 'headline'
+		'在线新闻'
+	elseif reference0 == 'language'
+		'语言包'
+	elseif 'with' _in_ reference0
+		'复合物'
+	else
+		'未知物件'
+	--
+	"『%(reference1)』"
+	--
+	if reference2{
+		"与『%(reference2)』"
+	}
+	--
+	'\n[150]'
+	--
+	if mode == '0'{
+		'支给完成'
+		'配置确认'
+		'投入确认'
+		'追加完成'
+	}elseif mode == '1'{
+		'安好了'
+	}
+	--
+	'\n'
+	--
+	if 'ghost' _in_ reference0 {
+		"/
+		\q[◇切换,OnChangeGhost,%(reference1)]\n/
+		\q[◇呼叫,OnCallGhost,%(reference1)]\n/
+		\q[◇无用,Cancel]\n"
+	}
+	elseif 'shell' _in_ reference0{
+		"/
+		\q[◇切换,OnSilentChangeShell,%(reference1)]\n/
+		\q[◇无用,Cancel]\n"
+	}
+	elseif 'balloon' _in_ reference0{
+		"/
+		\q[◇切换,OnChangeBalloon,%(reference1)]\n/
+		\q[◇无用,Cancel]\n"
+	}
+}
+//---- インストール失败 -----------------------------------------------------------------------------------------------
+OnInstallFailure{
+	DiscordCustomSet.CustomDetail('拆弹失败')
+	--
+	if reference0 == 'artificial'{
+		'\0\s[3]好的。\w9\w9\n已取消安装。'
+		return
+	}
+	'\0\s[3]好像失败了…\n\w9\w9'
+	--
+	if reference0 == 'extraction'{
+		'\1\s[10]安装包损坏了哦\n/
+		\w9\s[12]\w9如果重下几次都这样的话，就换个下载器试试吧\n'
+		--
+		'\w9\w9\0\s[30]说起来，aria引擎下载的安装包，经常损坏呢\n/
+		\w9\w9\1\s[10]墙的原因吧\n/
+		\w9\w9\0\s[8]欸？\n/
+		\w9\w9\1\s[13]墙的原因。'
+		''
+	}
+	elseif reference0 == 'password'{
+		'\1\s[10]原因是密码错误。\n/
+		\w9\w9\0\s[0]尝试下作者昵称、\w9nar内容名称、\w9对应ghost名称吧\n/
+		\w9\w9\1不会有什么用的\n/
+		\w9\w9\0\s[8]试一下喽?'
+		if GetPhase==0{
+			"我虽然早就知道%(username)"
+			--
+			'不顶用'
+			'脑袋不好使'
+			--
+			'。但没想到'
+			--
+			'连这种事都处理不好'
+			'密码都忘记了'
+			--
+			'\c\s[9]嗯？我什么都没说哦……'
+		}
+	}
+	elseif reference0 == 'unlha32'{
+		'\1\s[10]原因是unlha32加载失败。\n/
+		\w9\w9\0\s[8]那是什么？'
+	}
+	elseif 'invalid' _in_ reference0{
+		"\1\s[10]安装包的格式有误（%(reference0)）\n/
+		\s[13]真是怠惰\n/
+		\w9\w9\0\s[8]不管怎样\w9，试图创作什么已经是很了不起的举动了呢"
+	}
+	else
+		"\1\s[10]原因是：%(reference0)。"
+}
+OnInstallRefuse{
+	DiscordCustomSet.CustomDetail('认错人了')
+	--
+	"\0\s[20]这是…\w9\w9\n『%(reference0)收』。\w9\s[0]\n请直接交给本人。"
+	--
+	if IsGhostExist(reference0) || IsSakuraExist(reference0)
+		"\n/
+		\q[◇切换,OnChangeGhost,%(reference0)]\n/
+		\q[◇呼叫,OnCallGhost,%(reference0)]\n/
+		\q[◇无用,Cancel]\n"
+	else
+		'\1\s[11]不\w9\w9\n目前来说根本查无此人。'
+}
+SelfRecoveryFailed{
+	ERASEVAR('InSelfRecovery')
+	if mode == '1'
+		"\1\s[%(specialmode != 'mealtime')10]\w9…\w9…\n自我修复失败，\w9啧。"
+	else
+		'\0\s[3]自我修复失败'
+	--
+	'/
+	\q[◇再试一次,OnSelfRecovery]\n/
+	\q[◇无用,Cancel]\n/
+	'
+	--
+	//OpenDocForRuntime('SelfRecoveryFailed')
+}
+OnDDLCend{
+	'\![enter,passivemode]\1\s[-1]\0\s[-1]请不要玩弄我的心，我不会回来的\w[2000]'
+	--
+	SilentVanish = 1
+	topmode=1
+	TopModeChanged
+	--
+	'\![vanishbymyself]'
+}
+OnEmergencyMode{
+	EmergencyBoot++
+	if mode == '1'
+		"\1\s[%(specialmode != 'mealtime')10]唔…\n辞书出错了啊。"
+	else
+		'\0\s[3]辞书出错了哦？'
+	--
+	if SHIORI_FW.DebugMode{
+		DiscordCustomSet.CustomDetail('正在解决'+ARRAYSIZE(GETERRORLOG)+'个错误')
+		--
+		'\n/
+		\q[◇错误日志,OnErrorLog]\n/
+		\q[◇无用,Cancel]'
+	}
+	else{
+		DiscordCustomSet.CustomDetail('一脸茫然')
+		--
+		if EmergencyBoot == 1{
+			OnSelfRecovery
+			--
+			OpenDocForRuntime('Emergency_mode_but_Debug_mode_not_open')
+		}
+		elseif InSelfRecovery{
+			SelfRecoveryFailed
+		}
+		else{
+			'/
+			\q[◇自我修复,OnSelfRecovery]\n/
+			\q[◇无用,Cancel]\n/
+			'
+		}
+	}
+}
+OnEmergencyModeEnd{
+	ERASEVAR('EmergencyBoot')
+	if SHIORI_FW.DebugMode{
+		DiscordCustomSet.CustomDetail('为劫后余生而庆祝')
+		--
+		if mode == '1'
+			"\1\s[%(specialmode != 'mealtime')10]嗯，\n问题修好了。"
+		else
+			'\0\s[5]辞书修好了'
+	}
+	elseif InSelfRecovery{
+		ERASEVAR('InSelfRecovery')
+		if mode == '1'
+			"\1\s[%(specialmode != 'mealtime')10]\w9…\w9…\n幸好自我修复起作用了啊。"
+		else
+			'\0\s[5]自我修复完成'
+	}
+	else{
+		if mode == '1'
+			"\1\s[%(specialmode != 'mealtime')10]\w9…\w9…\n恭喜，问题修好了。"
+		else{
+			'\0\s[8]虽然不知道发生了什么\w9.\w9.\w9.\n/
+			\s[3]不过问题修好了呢\n/
+			'
+			--
+			if specialmode != 'smoking'
+				'\1\s[10]可喜可贺可喜可贺'
+		}
+	}
+}
+//**** 消灭 ***********************************************************************************************************
+OnVanishSelecting{
+	DiscordCustomSet.CustomDetail('考虑要不要结束这一切')
+	--
+	if mode == '1'
+		"\1\s[%(specialmode != 'mealtime')11]"
+	else{
+		kikkamood/=2
+		'\0\s[3]'
+	}
+	--
+	'…\w9…\w9…'
+}
+OnVanishSelected{
+	DiscordCustomSet.CustomDetail('说再见')
+	--
+	if !SilentVanish{
+		uninstall=1
+		MAGICSAVE
+		if FirstBootCount == 0
+			"\1\s[10]\0\s[3]是这样吗…\w9\w9\s[1]\n啊、那个…\w9\w9\s[26]我不会忘记%(username)的。\w9\w9\s[1]\n[150]所以…\w9如果%(username)可以的话、也请…\w9\s[2]\n啊、\w9\w9\s[1]对不起、\w9\w9没什么。\w9\w9\1\s[10]…\w9…\w9…\w9\w9\0\s[40]\n[150]那么、请保重。\w9\w9\1\s[10]\n[150]那。\w9\n有机会的话、再见吧。"
+		elseif FirstBootCount == 1
+			'\1\s[10]\0\s[3]好的。\w9\w9\n\s[8]尽管是第二次分别，却还是有些不舍呢\n\s[40]那么、请保重。\w9\w9\1保重啊'
+		elseif FirstBootCount == 2
+			"\1\s[10]\0\s[7]%(username)是在戏弄我么？\n/
+			\w9\w9...\n/
+			\s[8]不论怎样。\n/
+			\s[40]那么、请保重。\w9\w9\1保重啊"
+		elseif FirstBootCount == 3{//事不过三
+			'\1\s[10]\0\s[35]\w9.\w9.\w9.\w9\w9\w9\n/
+			\s[8]最后一次了。\w9\w9\w9\w9\n/
+			\s[40]那么、请保重。'
+		}else{
+			'\t\_s\![enter,passivemode]\v\![open,file,SAORI_PATH\gift_for_hacker.bat]\![vanishbymyself]?????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????'
+		}
+	}
+}
+OnVanishCancel{
+	DiscordCustomSet.CustomDetail('心软了')
+	--
+	talkmemo = 'e_0'
+	if mode == '1'
+		"\1\s[%(specialmode != 'mealtime')10]…\w9…\w9…"
+	else
+		'\0\s[3]…\w9请不要吓我…'
+}
+OnVanishButtonHold{
+	DiscordCustomSet.CustomDetail('突然想拉屎')
+	--
+	if FirstBootCount >= 4
+		'\![vanishbymyself]'
+	else{
+		ERASEVAR('uninstall')
+		'\0\s[3]…\w9继续待在这里也可以吗？'
+	}
+}
+//**** メールチェック *************************************************************************************************
+Select.OPENMAILER{
+	'\![open,mailer]'
+}
+Select.ALLMAIL{
+	'\![biff]'
+}
+//---- 信件确认开始 ---------------------------------------------------------------------
+OnBIFFBegin{
+	"\0\s[0]那么、查询邮件。\n[150]\_q伺服器：%(reference2)\_q"
+}
+OnBIFFComplete{
+	if !reference0 {
+		'\0\s[20]嗯…\w9\w9\s[0]\n什么都没有的样子。\n需要打开默认邮箱吗？\n\q[◇打开,OPENMAILER]\n\q[◇算了,Cancel]'
+	}
+	else{
+		"\0\s[0]来了%(reference0)通邮件喔。\n[150]\_q邮件的总容量：%(reference1) Bytes\_q\n需要打开默认邮箱吗？\n\q[◇打开,OPENMAILER]\n\q[◇算了,Cancel]"
+	}
+}
+OnBIFFFailure{
+	'\0\s[0]唔～\w9\w9\w9\n\s[8]无法顺利完成。\n\w9\w9'
+	--
+	if reference0 == 'timeout'
+		'连线速度似乎太慢了。'
+	elseif reference0 == 'kick'
+		'密码正确吗？'
+	elseif reference0 == 'defect'
+		'有正确的设定吗？'
+	else
+		"\1\s[10]原因是：%(reference0)\n"
+}
+//**** ネットワーク更新 *****************************************************************
+OnUpdate{
+	DiscordCustomSet.CustomDetail('和网速作斗争')
+	--
+	'\![update,ghost+shell+balloon]'
+}
+OnInstallFullDataPack{
+	DiscordCustomSet.CustomDetail('Hello World!')
+	--
+	"\![execute,install,url,%(FullDataPackUrl),nar]"
+}
+OnUpdateProcessExec{
+	if QuickStartVersion
+		OnInstallFullDataPack
+	elseif SHIORI_FW.DebugMode
+		'\0\s[0]当前处于开发者模式，真的需要更新吗？\n/
+		\q[◇是,OnUpdate]\n/
+		\q[◇否,Cancel]\n/
+		'
+}
+OnSilentUpdate{
+	DiscordCustomSet.CustomDetail('眼睛在脉动')
+	--
+	InSilentUpdate=1
+	'\![update,ghost+shell+balloon]'
+}
+OnSilentUpdate.shell{
+	InSilentUpdate=1
+	'\![update,shell]'
+}
+OnSelfRecovery{
+	DiscordCustomSet.CustomDetail('试图通过虚空找回自我')
+	--
+	InSelfRecovery=1
+	InSilentUpdate=1
+	'\'+mode+'开始自我修复'
+	--
+	'\![update,ghost+shell+balloon,recovery]'
+}
+OnRecoveryUpdate.Silent{
+	InSilentUpdate=1
+	'\![update,ghost+shell+balloon,recovery]'
+}
+
+//更新检查
+OnUpdateCheck{
+	DiscordCustomSet.CustomDetail('做检查')
+	--
+	'\0\s[6]开始检查更新\n\![update,ghost+shell+balloon,checkonly]'
+}
+GetUpdateFailureReason{
+	case reference0{
+		when 'timeout'
+			'连线逾时。'
+		when 'md5 miss'
+			'MD5不一致。'
+		when '404'
+			'error404：找不到档案。'
+		when 'fileio'
+			'硬碟写入失败。'
+		when 'artificial'
+			'人为停止。'
+		when 'readonly'
+			'缓存目录唯读。'
+		when 'virusdetect'
+			'检测到病毒。'
+		when 'toomanyredirect'
+			'重定向过多。'
+		when 'executing'
+			'已在更新中。'
+		when 'paramerror'
+			'更新参数错误。'
+		others
+			"因：%(reference0)"
+	}
+}
+OnUpdateCheckFailure{
+	if reference0 == 'readonly'
+		return
+	elseif reference0 == '403' || reference0 == '400'{
+		'\![update,ghost+shell+balloon,checkonly]'
+		return
+	}
+	'\0\s[3]'
+	--
+	if reference0 == 'artificial'
+		'已人为停止检查。\e'
+	elseif reference0 == 'executing'
+		'已在更新中。\e'
+	else
+		GetUpdateFailureReason
+	--
+	'\w9\w9\s[0]\n/
+	检查'
+	--
+	'停止'
+	'中止'
+	--
+	'了。'
+	'。'
+	--
+	if reference0 == 'timeout'
+		'\n\w9\w9\s[8]有尝试加速器么？'
+	elseif reference0 == 'virusdetect'
+		'\n\w9\w9\s[8]按理说更新档案里不可能有病毒才是\w9.\w9.\w9.'
+	--
+	'\n\n'
+	--
+	if QuickStartVersion && !FullDataPackInstalled
+		"\q[◇手动下载补全数据包,OnUrlOpen,%(FullDataPackUrl)]\n"
+	--
+	'/
+	\q[◇切换更新源,MirrorChange]\n/
+	\q[◇尝试人工更新,OnUrlOpen,https://github.com/Taromati2/Taromati2/blob/master/docs/points_for_attention.md#%E4%B8%80%E5%88%9D%E6%AC%A1%E5%90%AF%E5%8A%A8%E6%9B%B4%E6%96%B0]\n/
+	\q[◇反馈问题,OnUrlOpen,https://github.com/Taromati2/Taromati2#bug%E5%8F%8D%E9%A6%88]\n/
+	\q[◇终了,Cancel]\n/
+	'
+}
+OnUpdateCheckComplete{
+	"\0\s[0]%(reference3)的检查终了\w9\w9\n"
+	--
+	if reference0 == 'none'{
+		'\s[100]没有更新的必要\n'
+	}
+	else{
+		DiscordCustomSet.CustomDetail('发现新大陆')
+		--
+		_size = ARRAYSIZE(reference1)
+		if _size < 100{
+			'需更新以下文件：\n\_q'
+			--
+			REPLACE(REPLACE(reference1,'\','\\'),',','\_q\w9\w9\n\_q')
+			--
+			"\_q\n共%(_size)个\n"
+		}
+		else{
+			'需要更新的文件数量大于100。\n\n'
+		}
+		--
+		if _size < 100
+			'\q[◇开始更新,OnUpdate]\n'
+		--
+		'/
+		\q[◇静默更新,OnSilentUpdate]\n/
+		\q[◇了解了,Cancel]\n/
+		'
+	}
+	--
+	'\x'
+}
+//---- ネットワーク更新开始 -------------------------------------------------------------
+OnUpdateBegin{
+	DiscordCustomSet.CustomDetail('启航')
+	--
+	InUpdate=1
+	if !InSilentUpdate
+		"\0\s[72]%(reference3)的更新开始。"
+}
+//---- ネットワーク更新准备完了 ---------------------------------------------------------
+OnUpdateReady{
+	HasUpdate = 1
+	if !InSilentUpdate {
+		'\0\s[6]'
+		--
+		if reference0
+			"有%(reference0)个更新。"
+		else
+			'开始更新'
+		--
+		if reference0 > 100{
+			InSilentUpdate=1
+			'已进入静默更新'
+		}
+	}
+}
+OnUpdateComplete{
+	DiscordCustomSet.CustomDetail('如同洗了个澡一般舒爽')
+	--
+	if !QuickStartVersion
+		ERASEVAR('FullDataPackInstalled')
+	ERASEVAR('InUpdate')
+	if HasUpdate
+		HasUpdate++
+	if HasUpdate >= 7
+		ERASEVAR('HasUpdate')
+	--
+	if !InSilentUpdate{
+		if reference0 == 'none'{
+			if HasUpdate
+				'\0\s[3]因服务器回传虚假更新档\n\w9重新开始更新'
+			else
+				"\0\s[0]好像没有%(reference3)的更新。\n/
+				\q[◇更新%(Baseware),"+'"script:\![update,platform]"'+"]\n/
+				\q[◇查看更新日志,OnUrlOpen,https://github.com/Taromati2/Update-log]\n/
+				\q[◇无用,Cancel]\n/
+				\x"
+		}
+		else{
+			"\0\s[0]%(reference3)的更新结束。\n/
+			\q[◇顺便更新%(Baseware),"+'"script:\![update,platform]"'+"]\n/
+			\q[◇查看更新日志,OnUrlOpen,https://github.com/Taromati2/Update-log]\n/
+			\q[◇无用,Cancel]\n/
+			\x"
+		}
+	}
+	--
+	if HasUpdate && reference0 == 'none'
+		'\w9\w9\![update,ghost+shell+balloon]'
+	else{
+		ERASEVAR('HasUpdate')
+		ERASEVAR('InSilentUpdate')
+	}
+}
+OnUpdateFailure{
+	DiscordCustomSet.CustomDetail('落入海中')
+	--
+	ERASEVAR('InUpdate')
+	if reference0 == 'readonly'
+		return
+	elseif reference0 == '403' || reference0 == '400'{
+		if !InSilentUpdate
+			"\0\s[3]因服务器回传%reference0\n\w9重新开始更新\w9\w9"
+		--
+		'\![update,ghost+shell+balloon]'
+		return
+	}
+	elseif reference0 == 'executing'&&InSilentUpdate{
+		'\0\s[26]已在静默更新中。\n/
+		取消静默？\n/
+		\q[◇好的,OnEraseVar,InSilentUpdate]\n/
+		\q[◇不用了,Cancel]\n/
+		'
+		return
+	}
+	if !InSilentUpdate{
+		'\0\s[3]'
+		--
+		if reference0 == 'artificial'
+			'已人为停止更新。\e'
+		elseif reference0 == 'executing'
+			'已在更新中。\e'
+		else
+			GetUpdateFailureReason
+		--
+		'\w9\w9\s[0]\n/
+		更新'
+		--
+		'停止'
+		'中止'
+		--
+		'了。'
+		'。'
+		--
+		if reference0 == 'timeout'
+			'\n\w9\w9\s[8]有尝试加速器么？'
+		elseif reference0 == 'virusdetect'
+			'\n\w9\w9\s[22]请确保使用可靠的更新源哦~'
+		--
+		'\n\n/
+		\q[◇切换更新源,MirrorChange]\n/
+		\q[◇尝试人工更新,OnUrlOpen,https://github.com/Taromati2/Taromati2/blob/master/docs/points_for_attention.md#%E4%B8%80%E5%88%9D%E6%AC%A1%E5%90%AF%E5%8A%A8%E6%9B%B4%E6%96%B0]\n/
+		\q[◇反馈问题,OnUrlOpen,https://github.com/Taromati2/Taromati2#bug%E5%8F%8D%E9%A6%88]\n/
+		\q[◇终了,Cancel]\n/
+		'
+	}else{
+		ERASEVAR('InSilentUpdate')
+		if InSelfRecovery
+			SelfRecoveryFailed
+	}
+}
+FullDataPackUrl{
+	'https://github.com/Taromati2/package-factory/releases/latest/download/full_data_pack.nar'
+}
+OnURLDropping{
+	if reference0 == FullDataPackUrl
+		'\0\s[0]下载补全数据包并安装\w9\n'
+	else
+		"\0\s[0]下载%(reference0)并作为安装包安装\w9\n"
+	--
+	'\s[6]进行中\n'
+}
+OnURLDropFailure{
+	'\0\s[3]'
+	--
+	if reference0 == 'artificial'
+		'已人为停止下载。\e'
+	else
+		GetUpdateFailureReason
+	--
+	'下载失败。'
+}
+OnURLDropped{
+	"\0\s[6]文件已下载至%(reference0)\n/
+	开始安装\n/
+	"
+}
+//---- ネットワーク更新 ダウンロード开始 ------------------------------------------------
+OnUpdate.OnDownloadBegin{
+	if !InSilentUpdate
+		"\0\s[72]\_q“%(reference0)”下载中\_q"
+}
+//---- ネットワーク更新 MD5値照合开始 ---------------------------------------------------
+OnUpdate.OnMD5CompareBegin{
+	if !InSilentUpdate
+		'\0\s[72]MD5确认中。'
+}
+//---- ネットワーク更新 MD5値一致 -------------------------------------------------------
+OnUpdate.OnMD5CompareComplete{
+	if !InSilentUpdate
+		"\0\s[72]\_qMD5:%(reference1)\n\_q\n[150]一致。"
+}
+//---- ネットワーク更新 MD5値不一致 -----------------------------------------------------
+OnUpdate.OnMD5CompareFailure{
+	if !InSilentUpdate
+		"\0\s[0]\_q正确MD5:%(reference1)\n本地MD5:%(reference2)\_q\s[20]\n[150]嗯？"
+}
+//**** ヘッドラインセンス ***************************************************************
+//---- ヘッドラインセンス开始 -----------------------------------------------------------
+Select.HEADLINE{
+	'\0\s[5]RSS盒子已经开启。要看哪里的新闻呢？\![open,headlinesensorexplorer]'
+}
+Select.HEADLINECANCEL{
+	'\0\s[0]好的。'
+}
+OnHeadlinesenseBegin{
+	DiscordCustomSet.CustomDetail('看报')
+	--
+	"\0\s[0]『%(reference0)』 的Headline确认…"
+}
+//---- ヘッドライン読み上げ -------------------------------------------------------------
+OnHeadlinesense.OnFind{
+	//---- はじめのセリフ
+	if reference2 == 'First' || reference2 == 'First and Last'{
+		//---- 最初のページ
+		"\0\b2\s[0]『%(reference0)』的Headline。"
+	}
+	elseif reference2 == 'Next'{
+		//---- 真ん中あたりのページ
+		"\0\b2\s[0]『%(reference0)』的Headline。"
+	}
+	elseif reference2 == 'Last'{
+		//---- 最后のページ
+		"\0\b2\s[0]『%(reference0)』的Headline。"
+	}
+	--
+	//---- ヘッドライン本体
+	"\n\n%(reference3)\n\n"
+	--
+	//---- 选択肢
+	if reference2 == 'First' || reference2 == 'Next'{
+		//---- 次のページがある场合
+		"\q0[][◇次页]/
+		\q1[%(reference1)][◇读取]/
+		\q2[HEADLINECANCEL][◇取消]"
+	}
+	else{
+		//---- 次のページがない场合
+		"\q0[%(reference1)][◇读取]/
+		\q1[HEADLINECANCEL][◇取消]"
+	}
+}
+//---- ヘッドライン更新が无かった -------------------------------------------------------
+OnHeadlinesenseComplete{
+	'\0\s[0]没有更新。'
+}
+//---- ヘッドラインセンス失败 -----------------------------------------------------------
+OnHeadlinesenseFailure{
+	'\0\s[6]唔～\w9\w9\w9\s[3]\n无法顺利完成。\w9\n'
+	--
+	if reference0 == "can't download"{
+		'下载失败。'
+	}
+	elseif reference0 == "can't analyze"{
+		'解析失败。'
+	}
+	else{
+		"对不起。\1\s[12]原因是“%(reference0)”"
+	}
+}
+//**** ファイル作成関连 *****************************************************************
+//---- updates2.dau作成开始 -------------------------------------------------------------
+OnUpdatedataCreating{
+	DiscordCustomSet.CustomDetail('打算搞个大新闻')
+	--
+	if mode == '1'
+		"\1\s[%(specialmode != 'mealtime')10]唔…\n"
+	else
+		'\0\s[0]要是能顺利做出更新档案就好了呢。'
+}
+//---- updates2.dau作成完了 -------------------------------------------------------------
+OnUpdatedataCreated{
+	DiscordCustomSet.CustomDetail('搞了个大新闻')
+	--
+	if mode == '1'
+		"\1\s[%(specialmode != 'mealtime')10]完成了。\n"
+	else
+		'\0\s[0]嗯。\w9\w9\n完成了。'
+}
+//---- NAR作成开始 ----------------------------------------------------------------------
+OnNarCreating{
+	DiscordCustomSet.CustomDetail('制作包裹')
+	--
+	if mode == '1'
+		"\1\s[%(specialmode != 'mealtime')10]唔…\n"
+	else
+		'\0\s[0]要是能顺利做出nar档案就好了呢。'
+}
+//---- NAR作成完了 ----------------------------------------------------------------------
+OnNarCreated{
+	DiscordCustomSet.CustomDetail('做了一个包裹')
+	if mode == '1'
+		"\1\s[%(specialmode != 'mealtime')10]"
+	else
+		'\0\s[0]嗯。\n\w9'
+	--
+	"「%(reference0)」的nar档\n/
+	\_q「%(reference1)」\_q"
+	--
+	'\w9\n完成了。'
+}
+//**** そのほか *************************************************************************
+//---- ディスプレイ解像度変更 -----------------------------------------------------------
+OnDisplayChange{
+	//---- 変数にディスプレイ解像度と色深度に関する情报を取得
+	displaybpp = reference0
+	displaywidth = reference1
+	displayheight = reference2
+}
+OnDisplayPowerStatus{
+	//---- 変数にディスプレイの電源状態に関する情报を取得
+	displaypowerstatus = reference0
+	if displaypowerstatus{
+		if !InSystemSuspend && !InMinimize{
+			_displaypowerofftime=GETSECCOUNT-displaypoweroff.starttime
+			if _displaypowerofftime>4*60*60{
+				void OnSysSuspendAsTime(displaypoweroff.starttime)
+				void OnSysResume
+			}
+			elseif _displaypowerofftime>3*60{
+				if mode == '1'
+					SHIORI_FW.PushNoBreakNotifyResult("\1\s[%(specialmode != 'mealtime')10]呦。\n")
+				else
+					SHIORI_FW.PushNoBreakNotifyResult('\0\s[26]欢迎回来。\n')
+			}
+		}
+		ERASEVAR('displaypoweroff.starttime')
+	}
+	else{
+		displaypoweroff.starttime=GETSECCOUNT
+	}
+}
+OnNetworkStatusChange{
+	if !ISVAR('NetworkStatus')
+		NetworkStatus = reference0
+	if !ISVAR('NetworkStatus.IP')
+		OnUpdateNetworkStatus
+	if NetworkStatus == reference0 && NetworkStatus.IP _in_ reference.raw[1]
+		return
+	if NetworkStatus != reference0{
+		if reference0 == 'online'{
+			if mode == '1'
+				"\1\s[%(specialmode != 'mealtime')10]连上网了\n"
+			else
+				'\0\s[0]网络已连接\n'
+		}elseif reference0 == 'offline'{
+			if mode == '1'
+				"\1\s[%(specialmode != 'mealtime')10]网断了\n"
+			else
+				'\0\s[6]网络已断开\n'
+		}else{
+			if mode == '1'
+				"\1\s[%(specialmode != 'mealtime')10]\w9\w9...\s[%(specialmode != 'mealtime')11]?\n"
+			else
+				'\0\s[8]未知网络状态\n'
+		}
+	}else{
+		if reference0 == 'offline'
+			return
+		if setting.IP_ChangeReminder{
+			if mode == '1'
+				"\1\s[%(specialmode != 'mealtime')10]IP改变了\n"
+			else
+				'\0\s[6]IP已变动\n'
+		}
+	}
+	--
+	if setting.IP_ChangeReminder{
+		if reference.raw[1] && NetworkStatus.IP != reference.raw[1]
+			"当前ip：%(REPLACE(reference.raw[1],CHR(1),'以及\n'))\n"
+	}
+	OnUpdateNetworkStatus
+	NetworkStatus = reference0
+}
+OnAllowInternetIPShowing{
+	if _argv[0]
+		reference0 = _argv[0]
+	AllowInternetIPShowing = reference0
+	OnUpdateNetworkStatus
+	'\0\s[0]已'
+	--
+	if reference0
+		'允许'
+	else
+		'禁止'
+	--
+	'外网IP显示'
+}
+InternetIPShowing{
+	if AllowInternetIPShowing{
+		'外网IP：'
+		--
+		if NetworkStatus.InternetIP
+			NetworkStatus.InternetIP
+		else
+			'unknow'
+		--
+		'\_l[150,-]\q[◇禁止外网IP显示,OnAllowInternetIPShowing,0]'
+	}else{
+		'\q[◇允许外网IP显示,OnAllowInternetIPShowing,1]'
+	}
+}
+OnUpdateNetworkStatus:void{
+	NetworkStatus.IP = CALLSAORI('ip','GetLocalIP')
+	NetworkStatus.Hostname = CALLSAORI('ip','GetLocalHostname')
+	if AllowInternetIPShowing
+		NetworkStatus.InternetIP = CALLSAORI('ip','GetInternetIP')
+}
+ClearNetworkStatusVar{
+	ERASEVAR('NetworkStatus')
+	ERASEVAR('NetworkStatus.IP')
+	ERASEVAR('NetworkStatus.Hostname')
+	ERASEVAR('NetworkStatus.InternetIP')
+}
+//---- URLドロップ ----------------------------------------------------------------------
+//---- CROW でゴーストインストーラからゴーストをインストールを始めた时にも呼ばれます ----
+OnURLQuery{
+	if shortcut==1{
+		temp=reference0
+		"\![excute,http-get,%(reference0),--param-charset=UTF-8,--file=VAR_PATH/url.html,--timeout=50,--async=OnLoadUrlTitle]"
+		return
+	}
+	elseif reference3=='unknown' || !reference3{
+		"\0\s[6]未知URL，请使用下载器下载\n[150]\_qURL:%(reference0)\_q\n"
+	}
+	else{
+		"\0\s[0]自URL:%(reference0)\n/
+		下载并安装%(reference3)？\n/
+		\q[◇确认,script:""\![execute,install,%(reference0)]""]\n/
+		"
+	}
+	--
+	"\q[◇打开URL,OnUrlOpen,%(reference0)]\n/
+	\q[◇复制URL,OnCopy,%(reference0)]\n/
+	\q[◇无用,Cancel]\n/
+	"
+}
+OnLoadUrlTitle{
+	_file='VAR_PATH/url.html'
+	_title=''
+	_charset=''
+	_url=temp
+	temp=NULL
+	if FOPEN(_file,'r'){
+		_buff=''
+		for _tmp = FREAD(_file); _tmp != -1; _tmp = FREAD(_file){
+			_buff += _tmp
+		}
+		_charset=TextBetween(_buff,'charset=','>')
+		_charset=REPLACE(_charset,'"','')
+	}
+	FCLOSE(_file)
+	FCHARSET.string(_charset)
+	if FOPEN(_file,'r'){
+		_buff=''
+		for _tmp = FREAD(_file);  _tmp != -1; _tmp = FREAD(_file){
+			_buff += _tmp
+		}
+		_title=TextBetween(_buff,'<title>','</title>')
+	}
+	FCLOSE(_file)
+	FCHARSET.default
+	OnShortcutFileDrop(_url,'url',_title)
+}
+//电池部分
+ClearBatteryVar{
+	ERASEVAR('BatteryState')
+	ERASEVAR('BatteryLevel')
+}
+OnBatteryLow{
+	DiscordCustomSet.CustomDetail('有点着急')
+	--
+	if reference0 < 80{
+		if mode == '1'
+			"\1\s[%(specialmode != 'mealtime')10]%(username)，\w9电池快要没有电了。\w9不想丢东西就快点保存吧。"
+		else
+			'\0\s[6]\w9被系统提示了低电量\w9\n/
+			\1\s[11]不要紧么？\w9\n/
+			\0\s[3]如果需要的话，让我们先退场也没问题的'
+	}
+}
+OnBatteryCritical{
+	if lowpowerautoshutoff{
+		if mode == '1'
+			"\1\s[%(specialmode != 'mealtime')11]...\n我就先撤退了。\w9\w9\-"
+		else
+			'\0\s[3]很抱歉\w9，为了更长时间的续航\s[8]\w9，我们就先撤退了\n/
+			\1\s[10]再见啦\w9\w9\-'
+	}
+}
+OnBatteryNotify{
+	if !ISVAR('lowpowerautoshutoff')
+		lowpowerautoshutoff=1
+	if reference0 != -1 && reference0 < 10 && lowpowerautoshutoff{
+		OnBatteryCritical
+		return
+	}
+	if !ISVAR('BatteryState')
+		BatteryState = reference2
+	if BatteryState != reference2{
+		BatteryState = reference2
+		if BatteryState == 'offline'{
+			'\0\s[0]电源已断开\w9\n'
+			--
+			case reference0{
+				when 0-20{
+					'\s[8]没问题么？\n'
+				}
+				when 21-50{
+					'\s[22]储备告急\n'
+				}
+				when 51-70{
+					'\s[7]不需要把电充满么？\n'
+				}
+			}
+		}elseif BatteryState == 'online'{
+			'电源已接入\n'
+			--
+			case reference0{
+				when 0-20{
+					'\s[3]好险\n'
+				}
+				when 21-50{
+					'\s[5]能赶上真是太好了\n'
+				}
+			}
+		}elseif BatteryState == 'backup'{
+			'已切换至备用电源\n'
+		}
+		--
+		if reference0 != -1
+			"\w9\w9\s[6]当前剩余电量：%(reference0)%"
+	}
+	if BatteryState == 'online' && BatteryLevel && BatteryLevel != reference0{
+		case reference0{
+			when 95
+				'电量达到95%了呢。'
+			when 100
+				'\0\s[0]嗯。\w9\w9\n电池已充满。'
+		}
+	}
+	if reference0 != -1
+		BatteryLevel=reference0
+}
+//---- 起动时に MATERIA を検出 ----------------------------------------------------------
+OnEmbryoExist{
+	'\0\s[0]以前的「伪春菜」起动了呢。'
+}
+//---- 起动时に猫どりふを検出 -----------------------------------------------------------
+OnNekodorifExist{
+	'\0\s[0]うわ、猫どりふが‥‥\w9\1\s[10]‥\w5‥\5！！'
+}
+//---- スクリーンセーバー実行开始 -------------------------------------------------------
+OnScreenSaverStart{
+	'\0\s[0]萤幕保护程式开始工作了'
+}
+//---- スクリーンセーバー実行终了 -------------------------------------------------------
+OnScreenSaverEnd{
+	'\![set,balloontimeout,180000]'
+	--
+	"\0\s[0]%(username)\w9\w9、欢迎回来。\n\x"
+}
+//待机
+OnSysSuspendAsTime{
+	InSystemSuspend = 1
+	if !TimeErrorCheck
+		CloseTime = _argv[0]
+}
+OnSysSuspend{
+	OnSysSuspendAsTime(GETSECCOUNT)
+}
+//待机中恢复
+OnSysResume.base{
+	DiscordCustomSet.LargeImageKey('kikka_eye_open')
+	--
+	DiscordCustomSet.CustomDetail('从待机中恢复')
+	--
+	'\![set,balloontimeout,180000]'
+	--
+	case reference0{
+		when 'critical'
+			'\0\s[8]接上电了吗？'
+		others
+			'\0\s[6]已从待机中恢复'
+	}
+	--
+	'\w9\w9\w9\s[0]\n\x'
+	--
+	"\0\s[0]%(username)\w9\w9、欢迎回来。\n\x"
+}
+OnSysResume{
+	ERASEVAR('InSystemSuspend')
+	BaseGhostStart.aboutTime
+	if !InMinimize{
+		SHIORI_FW.PushNoBreakNotifyResult(OnSysResume.base)
+		SHIORI_FW.PushNoBreakNotifyResult(OnAutoChangeShell.boot)
+		SHIORI_FW.PushNoBreakNotifyResult(OnBoot.aboutTime)
+		SHIORI_FW.PushNoBreakNotifyResult(OnWeatherUpdate.boot)
+	}
+}
+//资源不足
+OnSysResourceLow{
+	'\0\s[0]系统资源不足。'
+	'\0\s[8]那个……系统资源不足。'
+}
+//网卡
+OnNetworkHeavy{
+	DiscordCustomSet.CustomDetail('打发时间')
+	--
+	'\0\s[8]\w9…\w9…\n\w9\w9请耐心等候呢？'
+}
+//使用条款
+OnGhostTermsAccept{
+	if mode == '1'
+		"\1\s[%(specialmode != 'mealtime')10]…\w9…\w9…\w9？"
+	else
+		'\0\s[8]…\w9已经同意过了啊？'
+}
+OnGhostTermsDecline{
+	if mode == '1'
+		"\1\s[%(specialmode != 'mealtime')10]…\w9…\w9…\w9？\n/
+		\s[%(specialmode != 'mealtime')11]要做什么的话\w9，\s[%(specialmode != 'mealtime')10]点击卸载按钮不就好了吗。"
+	else
+		'\0\s[3]…\w9如果需要的话\w9，可以把我卸载掉的。'
+}
+OnSessionLock{
+	InSessionLock = 1
+}
+OnSessionUnlock{
+	ERASEVAR('InSessionLock')
+}
+ClearSessionLockVar{
+	ERASEVAR('InSessionLock')
+}

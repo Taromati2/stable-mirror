@@ -1,0 +1,10 @@
+﻿
+ghost/master/saori/drivecleaner.bat
+ghost/master/saori/gomi.dll
+ghost/master/saori/proxy.dll
+ghost/master/saori/set_wall_paper.exe
+shell/Christmas/surface111.png
+shell/Christmas/surface1233.png
+shell/Christmas/surface1234.png
+shell/nurse/surface1233.png
+shell/nurse/surface1234.png

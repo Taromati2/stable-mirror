@@ -1,0 +1,47 @@
+//by steve02081504
+GetConfingFromGhostDescript{//GetConfingFromGhostDescript('Taromati2','icon')
+	_descript="BASE_PATH\..\\..\\..\\%(_argv[0])\\ghost\\master\\descript.txt"
+	FCHARSET(0)
+	_result=''
+	if FOPEN(_descript,'rb'){
+		_line=FREAD(_descript)
+		_flag= _line != -1
+		//若以BOM开头
+		if !_flag
+			do_nothing
+		elseif SUBSTR(_line, 0, 3) == BOM_UTF8{
+			_line = SUBSTR(_line, 3, STRLEN(_line))
+			FCHARSET(1)
+			void FREOPEN(_descript,'rb')
+		}
+		while _flag{
+			if CUTSPACE(_line[0])==_argv[1]{
+				_result=CUTSPACE(_line[1])
+				break
+			}
+			elseif CUTSPACE(_line[0])=='charset'{
+				FCHARSET.string(CUTSPACE(_line[1]))
+				void FREOPEN(_descript,'rb')
+			}
+			_line=FREAD(_descript)
+			if _line==-1
+				break
+		}
+		FCLOSE(_descript)
+	}
+	FCHARSET.default
+	_result
+}
+GetIconNameFromGhostDir{//GetIconNameFromGhostDir('Taromati2')
+	_t="BASE_PATH\..\\..\\..\\%(_argv[0])\\ghost\\master\\"
+	_t+=GetConfingFromGhostDescript(_argv[0],'icon')
+	_t=REPLACE(_t,'/','\')
+	_t=REPLACE(_t,'\\','\')
+	_t
+}
+IsGhostExist{//IsGhostExist('SSPER')
+	INARRAY(installedghostlist,_argv[0])
+}
+IsSakuraExist{
+	INARRAY(installedsakuralist,_argv[0])
+}

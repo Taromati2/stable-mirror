@@ -1,0 +1,5 @@
+charset,UTF-8
+type,shell
+name,冬服
+accept,橘花
+directory,winter

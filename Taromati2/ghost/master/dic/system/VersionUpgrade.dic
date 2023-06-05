@@ -1,0 +1,303 @@
+//by steve
+
+#define VERSION_NOW 11
+
+VERSION_INIT:void{
+	VERSION = VERSION_NOW
+}
+//向后不兼容内容升级用
+VERSION_UPGRADE{
+	if SHIORI_FW.InVarFileMiss{
+		VERSION_INIT
+		return
+	}
+	if !ISVAR('VERSION'){
+		if !ISVAR('FirstBootCount'){
+			'\1\s[10]\0\s[26]啊、\w9\w9那个…\w9\w9\w9暂时、\w9要在此处打扰您了。\n\w[3000]\s[5]开玩笑的啦\x'
+		}
+		--
+		VERSION = 0
+		VERSION_UPGRADE_0
+	}
+	--
+	if VERSION != VERSION_NOW{
+		while VERSION_NOW > VERSION {
+			VERSION++
+			void EVAL('VERSION_UPGRADE_'+VERSION)
+		}
+		_t=LOADED_FROM_MAGIC
+		MAGICSAVE
+		LOADED_FROM_MAGIC=_t
+	}
+	--
+	if VERSION_UPGRADE.NeedRec{
+		ERASEVAR('VERSION_UPGRADE.NeedRec')
+		OnRecoveryUpdate.Silent
+	}
+}
+VERSION_UPGRADE_0:void{
+	void Select.Option
+	FirstBootCount = 1
+	mirror_url=default_mirror_url
+	DELDIR('PROFILE_PATH')
+
+	ERASEALLVARBEGINAS('SHIORI3FW')
+	ERASEALLVARBEGINAS('ninni')
+	ERASEALLVARBEGINAS('minihouse')
+	ERASEALLVARBEGINAS('nanika')
+	ERASEVAR('BombGoldFlowerBoot')
+	ERASEVAR('message')
+	ERASEVAR('ascii')
+	ERASEVAR('is_translate')
+	ERASEVAR('e')
+	ERASEVAR('E')
+	ERASEVAR('smoking')
+	ERASEVAR('Scope')
+	ERASEVAR('kikkatitle')
+	ERASEVAR('firstboot')
+	ERASEVAR('idnum')
+	ERASEVAR('layerfree')
+	ERASEVAR('teachusername')
+	ERASEVAR('battlepclick')
+	ERASEVAR('a.x')
+	ERASEVAR('a.y')
+	ERASEVAR('b.x')
+	ERASEVAR('b.y')
+	ERASEVAR('c.x')
+	ERASEVAR('c.y')
+	ERASEVAR('d.x')
+	ERASEVAR('d.y')
+	ERASEVAR('user_x')
+	ERASEVAR('user_y')
+	ERASEVAR('N')
+	ERASEVAR('aigo.x')
+	ERASEVAR('aigo.y')
+	ERASEVAR('wzq.twinner.winner')
+	ERASEVAR('wzq.nowd2')
+	ERASEVAR('ans.Num.2')
+	ERASEVAR('ans.Num')
+	ERASEVAR('ans.bExist')
+	ERASEVAR('ans.Points')
+	ERASEVAR('d')
+	ERASEVAR('fjswitch')
+	ERASEVAR('txt')
+	ERASEVAR('G')
+	RENAME_VAR('kikkamoney','money')
+	RENAME_VAR('autobakeup','autobackup')
+	RENAME_VAR('yuyinshibie','Speech_Recognition')
+	for _i=0;_i<30;_i++{
+		ERASEVAR('t'+_i)
+	}
+	for _i=0;_i!=250;_i++{
+		ERASEVAR('valueex'+_i)
+	}
+	VERSION_UPGRADE.NeedRec=1
+}
+VERSION_UPGRADE_1:void{
+	if !QuickStartVersion{
+		DELDIR('pseudoAI')
+		VERSION_UPGRADE.NeedRec=1
+	}
+
+	RENAME_VAR('rmmode','HolidayRemindFlag')
+	RENAME_VAR('Birthdayrmmode','BirthdayMode')
+	RENAME_VAR('autoshell','AutoShellChange')
+	RENAME_VAR('qp','Gobang.chessboard')
+	RENAME_VAR('qz','Gobang.piece')
+	RENAME_VAR('duanwei','Gobang.Rank')
+	RENAME_VAR('player.baseparam.duanwei','Gobang.player.baseparam.rank')
+	RENAME_VAR('speed','Tetris.speed')
+	RENAME_VAR('timespeed','Tetris.timespeed')
+	ERASEVAR('ts')
+}
+VERSION_UPGRADE_2:void{
+	ERASEVAR('playHuanRongDao')
+	ERASEVAR('游戏界面')
+	RENAME_VAR('DrawHuanRongBG','HuaRongDao.BackGroundConfing')
+}
+VERSION_UPGRADE_3:void{
+	ERASEVAR('SHIORI_FW.NotifyResults')
+	ERASEVAR('ontest')
+	ERASEVAR('page')
+	ERASEVAR('IN')
+	ERASEVAR('Gobang.player.baseparam.rank')
+	ERASEVAR('LoveGomode')
+	ERASEVAR('Intimacymode')
+	ERASEVAR('tulingapi')
+	ERASEVAR('tulingfound')
+	if !SHIORI_FW.DebugMode || GHOST.INgit{
+		_l=FENUM('SHIORI_BACKUP_PATH')
+		foreach _l;_i{
+			_i='SHIORI_BACKUP_PATH'+_i
+			DELDIR(_i+'/aya')
+			DELDIR(_i+'/dic')
+			FDEL(_i+'/SHIORI_NAME.txt')
+			FDEL(_i+'/yaya.txt')
+		}
+	}
+}
+VERSION_UPGRADE_4:void{
+	ERASEVAR('lastboottime')
+	ERASEVAR('dmry')
+	ERASEVAR('mon')
+	RENAME_VAR('SlowTime','CloseTime')
+}
+VERSION_UPGRADE_5:void{
+	RENAME_VAR('showkikka','MenuMode')
+	ERASEVAR('ct')
+	ERASEVAR('CT')
+	ERASEVAR('Onset')
+	_save_dir=GETENV('USERPROFILE')
+	DELDIR(GETENV('LOCALAPPDATA')+'Taromati')
+	DELDIR(_save_dir+'\K_I_K_K_A')
+	FDEL(_save_dir+'\K_confing.cfg')
+	RENAME_VAR('依赖度','nurturance.Dependency')
+	RENAME_VAR('腹黑度','nurturance.Darkness')
+	RENAME_VAR('萌度','nurturance.Moeness')
+	RENAME_VAR('亲密度','nurturance.Closeness')
+	RENAME_VAR('幸福度','nurturance.Happiness')
+	RENAME_VAR('力量','nurturance.subvar.Strength')
+	RENAME_VAR('智力','nurturance.subvar.Intelligence')
+	RENAME_VAR('意志','nurturance.subvar.Willpower')
+	RENAME_VAR('敏捷','nurturance.subvar.Agile')
+	RENAME_VAR('幸运','nurturance.subvar.Luck')
+}
+VERSION_UPGRADE_6:void{
+	setting.WeatherReminder=!autoweather
+	ERASEVAR('weather')
+	ERASEVAR('weatherfoundauto')
+	FDEL('VAR_PATH/astro-sina.html')
+	ERASEVAR('date')
+	ERASEVAR('astro')
+	ERASEVAR('autoastro')
+	ERASEVAR('autoweather')
+}
+VERSION_UPGRADE_7:void{
+	UserspitemNum=(UserspitemNum[0])
+	Userspitemtime=(Userspitemtime[0])
+	void gift
+	money+=crystalnum*25000
+}
+VERSION_UPGRADE_8:void{
+	ERASEVAR('ShioriReloading')
+	ERASEVAR('SHIORI_FW.IsTalking')
+	ERASEVAR('btmLeft')
+	ERASEVAR('btmRight')
+	ERASEVAR('btmDown')
+	ERASEVAR('btmCW')
+	ERASEVAR('btmCCW')
+	ERASEVAR('Left')
+	ERASEVAR('Right')
+	ERASEVAR('Up')
+	ERASEVAR('Down')
+	ERASEVAR('closetouchmode')
+	ERASEVAR('tshellid')
+	ERASEVAR('shellori')
+	AutoShellChangeflag=(month,day,hour)
+	AutoShellChange=(1,0)
+}
+VERSION_UPGRADE_9:void{
+	_tmp=ARRAYDEDUP(SPLIT(Haveshellinfo,'*'))
+	Haveshellinfo=''
+	foreach _tmp;_i{
+		if _i
+			Haveshellinfo+=_i+'*'
+	}
+	ERASEVAR('crystalnum')
+}
+VERSION_UPGRADE_10:void{
+	if !ISVAR('friendID'){
+		ERASEVAR('friendbirthday')
+		FriendBirthDay.IDmax=0
+	}
+	ERASEVAR('模式')
+	ERASEVAR('花式模式')
+}
+VERSION_UPGRADE_11:void{
+	ghostupmin_last=elapsedtimetotal
+	RENAME_VAR('shelllistcount','shellcount')
+	ERASEVAR('ChangingShell')
+	ERASEVAR('txt')
+	ERASEVAR('files')
+	ERASEVAR('path')
+	ERASEVAR('id')
+	ERASEVAR('res')
+	ERASEVAR('ix')
+	ERASEVAR('jd')
+	ERASEVAR('jx')
+	ERASEVAR('jj')
+	ERASEVAR('ll')
+	ERASEVAR('kk')
+	ERASEVAR('iy')
+	ERASEVAR('im')
+	ERASEVAR('fx')
+	ERASEVAR('fy')
+	ERASEVAR('Sta')
+	ERASEVAR('dw')
+	ERASEVAR('color')
+	ERASEVAR('found')
+	ERASEVAR('wzq.aitype2')
+	ERASEVAR('mm')
+	ERASEVAR('dd')
+	ERASEVAR('str')
+	ERASEVAR('summb')
+	ERASEVAR('sumtel')
+	ERASEVAR('sumID_')
+	ERASEVAR('sumID')
+	ERASEVAR('sss')
+	ERASEVAR('l')
+	ERASEVAR('t6')
+	ERASEVAR('t2')
+	ERASEVAR('operand')
+	ERASEVAR('file')
+	ERASEVAR('tempright')
+	ERASEVAR('WND')
+	ERASEVAR('bb')
+	ERASEVAR('comball')
+	ERASEVAR('c1')
+	ERASEVAR('c2')
+	ERASEVAR('c3')
+	ERASEVAR('c4')
+	ERASEVAR('c5')
+	ERASEVAR('A')
+	ERASEVAR('B')
+	ERASEVAR('com')
+	ERASEVAR('ball1')
+	ERASEVAR('bs')
+	ERASEVAR('v')
+	ERASEVAR('tab')
+	ERASEVAR('faceshow')
+	ERASEVAR('redball')
+	ERASEVAR('m_carry')
+	ERASEVAR('zero')
+	ERASEVAR('testid')
+	ERASEVAR('mov_')
+	ERASEVAR('n')
+	ERASEVAR('wzq.dcseted')
+	ERASEVAR('st')
+	ERASEVAR('base')
+	ERASEVAR('layerreset')
+	ERASEVAR('shellID_')
+	ERASEVAR('p')
+	ERASEVAR('oxnum')
+	ERASEVAR('t3_1')
+	ERASEVAR('expression')
+	ERASEVAR('exp')
+	ERASEVAR('mem')
+	ERASEVAR('m_error')
+	ERASEVAR('Name')
+	ERASEVAR('Path')
+	ERASEVAR('gh')
+	ERASEVAR('tempan')
+	ERASEVAR('lunartimenl')
+	ERASEVAR('nextbirthday_')
+	ERASEVAR('say')
+	ERASEVAR('Acount')
+	ERASEVAR('runjr')
+	ERASEVAR('ttt')
+	ERASEVAR('s')
+	ERASEVAR('ss')
+	ERASEVAR('sss')
+	ERASEVAR('ssss')
+	ERASEVAR('sssss')
+}

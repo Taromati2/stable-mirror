@@ -1,0 +1,14 @@
+//by steve02081504
+OnUrlOpen{
+	if !_argc
+		_argv=reference
+	'\![open,browser,'+_argv[0]+']'
+	--
+	case _argv[1]{
+		when 'with_copy'
+			OnCopy(_argv[2])
+	}
+}
+ToUrlParam{
+	STRENCODE(_argv[0])
+}

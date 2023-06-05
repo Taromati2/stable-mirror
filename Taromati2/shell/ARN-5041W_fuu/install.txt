@@ -1,0 +1,5 @@
+charset,UTF-8
+type,shell
+name,ARN-5041W風
+accept,橘花
+directory,ARN-5041W_fuu

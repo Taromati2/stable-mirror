@@ -1,0 +1,95 @@
+///////////////////////////////////////////
+//////////心理测试辞书V2.0
+//////////written by fancyang 2013.2.1
+///////////////////////////////////////////
+Ontestmenu{
+	if QuickStartVersion{
+		NeedUpdate
+		return
+	}
+	_test=LoadTestNum
+	_k=1
+	_j=1
+	_l=0
+	if reference0
+		_k=TOINT(reference0)
+	while _test[_j, '◇'] != ''{
+		_j++
+	}
+	_txt='\b[2]\_q'
+	if _k+20<=_j
+		_l=_k+20
+	else
+		_l=_j
+	for _i =_k; _i<_l; _i++ {
+		_txt += '\__q[OnTestSelect,◇'+_i+']◇' + _test[_i, '◇']+'\__q\n'
+	}
+	_Page=''
+	if _k!=1
+		_Page+="\_l[0,320]\q[<<上一页,Ontestmenu,%(_k-20)]"
+	if _k+20<_j
+		_Page+="\_l[60,320]\q[下一页>>,Ontestmenu,%(_k+20)]"
+	_txt+=_Page+'\n'
+	_txt+='\q[◇返回上一层,OnOpenMenu,1]'
+	_txt += '\![set,choicetimeout,0]'
+	_txt
+}
+OnTestSelect{
+	_testid=reference0
+	if _argc>0
+		_testid=_argv[0]
+	_temp=LoadTest(_testid)
+	_quest =_temp[0,'#']
+	_txt += '\_q'+_quest
+	for _i = 1; _temp[_i, '#'] != ''; _i++ {
+		_testid=_temp[_i, '#'][1]
+		_testid=REPLACE(_testid,'\n','')
+		_testid=REPLACE(_testid,' ','')
+		_txt += "\__q[OnTestSelect,@%(_testid)]%(_temp[_i, '#'][0])\__q\n"
+	}
+	_txt += '\n\![set,choicetimeout,0]\q[◇返回上一层,Ontestmenu]    \q[◇结束,OnOpenMenu,1]'
+	_txt
+}
+LoadTestNum{
+	_file = 'DATA_PATH\other\jumptest.txt'
+	_testnum = 0
+	_test=''
+	_buff = ''
+	if FOPEN(_file,'r') {
+		_buff = FREAD(_file)
+		while _buff != -1  {
+			if '◇' _in_ _buff{
+				_testnum++
+				_test+=_buff
+			}
+			_buff = FREAD(_file)
+		}
+	}
+	FCLOSE(_file)
+	_test
+}
+LoadTest{
+	_testid=''
+	_file = 'DATA_PATH\other\jumptest.txt'
+	_testid =reference0
+	if _argc>0
+		_testid=_argv[0]
+	_test=''
+	_buff = ''
+	_testid=''+_testid+''
+	if FOPEN(_file,'r') {
+		_buff = FREAD(_file)
+		while _buff != -1 && _testid !_in_ _buff  {
+			_buff = FREAD(_file)
+		}
+		if _testid _in_ _buff{
+			_buff = FREAD(_file)
+			while _buff != -1 && _buff != '' {
+				_test += _buff + '\n'
+				_buff = FREAD(_file)
+			}
+		}
+	}
+	FCLOSE(_file)
+	_test
+}

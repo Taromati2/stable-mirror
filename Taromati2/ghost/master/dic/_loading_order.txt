@@ -1,0 +1,7 @@
+dicdir, aya
+dicdir, system
+dicdir, dev
+dicdir, nurturance
+dicdir, communicate
+dicdir, games
+dicdir, other
