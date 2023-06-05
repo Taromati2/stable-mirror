@@ -4,7 +4,7 @@
 //**************************************************************************************************
 OnResearchPoesy{
 	"\0\s[9]请问%(username)是要查找诗歌吗？橘花可以帮助查找哦～/
-	\n\n[half]\q[◇按标题查找诗歌,OnResP_1,标题]\n/
+	\n[150]\q[◇按标题查找诗歌,OnResP_1,标题]\n/
 	\q[◇按内容查找诗歌,OnResP_1,正文]\n/
 	\q[◇按作者查找诗歌,OnResP_1,作者]\n[130]/
 	\q[◇诗歌全列表,OnResP,全_标题〓]\n/
@@ -183,7 +183,7 @@ OnverPoesywrite{
 	if Poesywriteerror==10 {
 		intimacy--
 		Poesywriteerror=0
-		"\0\s[1]\n[150]\n[150]\w9清空累计放弃次数, \w9%(username)请继续加油~"
+		"\0\s[1]\n[300]\w9清空累计放弃次数, \w9%(username)请继续加油~"
 	}
 }
 OnlatPoesywrite{
@@ -202,7 +202,7 @@ OnPoemMenu{
 	LoadPoemTitle
 	_txt = '\0\s[26]想要怎样阅读诗歌呢？\n\n'
 	_txt += '\_q\q[◇诗歌列表,OnPoemList]\n[150]诗歌查询：\n\q[◇按作者,OnSearchPoem,0]      \q[◇按标题,OnSearchPoem,1]      \q[◇按内容,OnSearchPoem,2]'
-	_txt += '\n\n\n\q[◇返回上一层,OnOpenMenu,1]\n\q[◇终了,OnPoemEnd]'
+	_txt += '\n[300]\q[◇返回上一层,OnOpenMenu,1]\n\q[◇终了,OnPoemEnd]'
 	_txt
 }
 OnPoemList{
@@ -224,7 +224,7 @@ OnPoemList{
 		_line ++
 		_txt += '\q[◇' + _title + ',OnPoemTitle,' + _i + ',OnPoemList]' + SUBSTR(_blank, 0, 8 - _len)
 	}
-	_txt += "\n[150]\n\n共%(poemnum)首诗"
+	_txt += "\n[350]共%(poemnum)首诗"
 	_txt += '\n[150]\q[◇返回上一层,OnPoemMenu]\n\q[◇终了,OnPoemEnd]'
 	_txt
 }
@@ -276,7 +276,7 @@ OnPoemTitle{
 		_txt += '作者：' + _poemtitle[2,':'] + '\n[150]\w9'
 	}
 	_txt += _poem + '\_q\n\n' + _poemtips
-	_txt += "\n\n\n\q[◇返回上一层,%(reference1)]\n\q[◇终了,OnPoemEnd]"
+	_txt += "\n[300]\q[◇返回上一层,%(reference1)]\n\q[◇终了,OnPoemEnd]"
 	_txt
 }
 OnSearchPoem{
@@ -333,8 +333,8 @@ OnPoemSearchDetail{
 			}
 		}
 	}
-	_txt += "\n[150]\n\n共找到%(_count)首符合条件的诗喔～"
-	_txt += '\n[150]\n\q[◇返回上一层,OnPoemMenu]\n\q[◇终了,OnPoemEnd]'
+	_txt += "\n[350]共找到%(_count)首符合条件的诗喔～"
+	_txt += '\n[250]\q[◇返回上一层,OnPoemMenu]\n\q[◇终了,OnPoemEnd]'
 	_txt
 	FCLOSE(_poemfile)
 }
@@ -362,8 +362,8 @@ OnPoemSearch{
 			_txt += '\q[◇' + _title + ',OnPoemTitle,' + _i + ',OnPoemSearch]' + SUBSTR(_blank, 0, 8 - _len)
 		}
 	}
-	_txt += "\n[150]\n\n共找到%(_count)首符合条件的诗喔～"
-	_txt += '\n[150]\n\q[◇返回上一层,OnPoemMenu]\n\q[◇终了,OnPoemEnd]'
+	_txt += "\n[350]共找到%(_count)首符合条件的诗喔～"
+	_txt += '\n[250]\q[◇返回上一层,OnPoemMenu]\n\q[◇终了,OnPoemEnd]'
 	_txt
 }
 OnPoemAnswer{//OnPoemAnswer('床前明月光')=='疑是地上霜'
