@@ -19,6 +19,7 @@ ghost/README.md,nonar,noupdate
 shell/README.md,nonar,noupdate
 
 ghost/.github/,nonar,noupdate
+ghost/.vscode/,nonar,noupdate
 ghost/LICENSE,nonar,noupdate
 
 ghost/master/var/,nonar,noupdate
