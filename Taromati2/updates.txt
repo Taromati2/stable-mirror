@@ -379,7 +379,7 @@ file,ghost/master/dic/other/Tarro.dice70846109858ef3b4fecd784b903b51dsize=2541
 file,ghost/master/dic/other/classtable.dic8597b6ac433c02de1c3fc149249cf778size=7088date=2023-06-05T18:58:55
 file,ghost/master/dic/other/dictionary.dic0dd0236fb57e6a0aa06ef29f2aa1f5besize=3224date=2022-07-26T01:29:17
 file,ghost/master/dic/other/flower.dica3dc7c5354fc4f91b258a85a91199fd1size=16318date=2023-06-05T18:58:55
-file,ghost/master/dic/other/happyquest.dic4d678318220d77cf54918337689b941dsize=3785date=2023-06-05T18:58:55
+file,ghost/master/dic/other/happyquest.dic15a87c158b6df6974d96eebd273c5c1bsize=3778date=2023-06-05T18:58:55
 file,ghost/master/dic/other/jumptest.dicfd0156a838a76198638cb2983e6f9450size=1928date=2023-06-05T18:58:55
 file,ghost/master/dic/other/kikkastock.dic1157d9512dff50afc6e1b4bdc07f1cc2size=9465date=2023-06-05T18:58:55
 file,ghost/master/dic/other/otherserv.dice99547815abe31e27821462c8e1d5de1size=133704date=2023-06-05T18:58:55
