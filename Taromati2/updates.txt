@@ -404,7 +404,7 @@ file,ghost/master/dic/system/changeshell.dicbd079b6e1ca9cc2ea1080900a64d3a80si
 file,ghost/master/dic/system/clock.dica5ad335b806bb125be6df354c0ac241esize=26959date=2023-06-05T18:58:55
 file,ghost/master/dic/system/database_edit.diccc24a087da0e03054cf196778edc3cb7size=20469date=2023-06-05T18:58:55
 file,ghost/master/dic/system/discord.dicc85f2278fdd83a2d02b7cd9cc16b88fcsize=1800date=2023-06-05T18:58:55
-file,ghost/master/dic/system/event_response.dic9ae948a7b84ab87d73e796dc15322088size=37552date=2023-06-05T18:58:55
+file,ghost/master/dic/system/event_response.dic6542b2a5ac893876b87b10044e72f87esize=37578date=2023-06-05T18:58:55
 file,ghost/master/dic/system/hotkey.dic5863f3d0f28ddf0a3531ab4bab571562size=9649date=2023-06-05T18:58:55
 file,ghost/master/dic/system/internet.dic176e0c4ecc22839a09dc4e138a27bc07size=12076date=2023-06-05T18:58:55
 file,ghost/master/dic/system/lunar.dica4b3284e2c9c7a75ef8a051793aa4965size=7093date=2023-06-05T18:58:55
