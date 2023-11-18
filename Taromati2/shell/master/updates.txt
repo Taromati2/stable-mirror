@@ -2,6 +2,7 @@ charset,UTF-8
 file,background.png4fb5d7bc6e93964a9d4733d465790a3csize=42204date=2022-10-05T11:01:04
 file,descript.txtd900c2459152f42fa4ca1e1ee2a52e49size=858date=2022-10-04T12:26:13
 file,foreground.png542e85eec98e4df5f0de617617fa16e1size=53420date=2022-10-06T10:26:21
+file,install.txtf41b07456c3d272801ff4a319632d798size=54date=2012-12-21T00:00:00
 file,sidebar.png14dc5b535f162c3e31ed9d2bed3e43dbsize=7333date=2022-10-05T11:01:04
 file,surface0000.png6b3e0dc47052d1597bb2e03a7128edfasize=46049date=2022-10-05T09:28:50
 file,surface0001.png0f73bf55be0f60d95ed0beb2f6add7b3size=45106date=2022-10-05T09:28:50
