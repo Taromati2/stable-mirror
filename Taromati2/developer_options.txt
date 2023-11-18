@@ -59,10 +59,8 @@ ghost/master/pseudoAI/logiclearn.ai,nonar,noupdate
 ghost/master/pseudoAI/userteach.ai,nonar,noupdate
 ghost/master/pseudoAI/tuling.ai,nonar,noupdate
 
-shell/.gitignore,nonar,noupdate
+shell/.vscode/,nonar,noupdate
 shell/Entire bare/,nonar,noupdate
-shell/*/*.pna.png,nonar,noupdate
 shell/*.bat,nonar,noupdate
-
-shell/master/surface0.apng,nonar,noupdate
-shell/master/surface10.apng,nonar,noupdate
+shell/*.py,nonar,noupdate
+shell/*.ps1,nonar,noupdate
