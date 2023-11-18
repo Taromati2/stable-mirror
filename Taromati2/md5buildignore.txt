@@ -63,5 +63,6 @@ XtraStuf.mac/
 /ghost/master/pseudoAI/tuling.ai
 
 /shell/Entire bare/
-/shell/*/*.pna.png
 /shell/*.bat
+/shell/*.py
+/shell/*.ps1
