@@ -348,7 +348,7 @@ file,ghost/master/dic/aya/master/ghost.dicdf67c945a055fd7347bb906ad2e1954dsize
 file,ghost/master/dic/aya/master/last_time.dic09ac99179234521aa68bc2ca7c57d899size=129date=2023-12-02T16:46:20
 file,ghost/master/dic/aya/master/shiori.dic4be1a8d34dca15eb096c2c83d361ea11size=54284date=2023-12-02T16:45:14
 file,ghost/master/dic/aya/master/string.dic94b78188422d9d86352f0361a083ff95size=2425date=2023-12-02T16:45:14
-file,ghost/master/dic/aya/master/sysex.dice39fe0538addc0f622d315f2c97d2da0size=1305date=2023-12-02T16:45:14
+file,ghost/master/dic/aya/master/sysex.dic21de2065de4b84d69983dc39cbf31e32size=1421date=2023-12-02T16:45:14
 file,ghost/master/dic/aya/master/url.dic575563bf3e646b8302725c5bd675895bsize=191date=2023-12-02T16:45:14
 file,ghost/master/dic/communicate/H/H.dic4c73f88638642ef3e159c6cfc630fa46size=261date=2023-12-02T16:45:14
 file,ghost/master/dic/communicate/talk/learn.dic67d682ebc314b4ddb216f02fde0cbbb3size=16601date=2023-12-02T16:45:14
@@ -407,7 +407,7 @@ file,ghost/master/dic/system/event_response.dic7d879afe3665034237638c5efe6e5f8a
 file,ghost/master/dic/system/hotkey.dic5863f3d0f28ddf0a3531ab4bab571562size=9649date=2023-12-02T16:45:14
 file,ghost/master/dic/system/internet.dic176e0c4ecc22839a09dc4e138a27bc07size=12076date=2023-12-02T16:45:14
 file,ghost/master/dic/system/lunar.dica4b3284e2c9c7a75ef8a051793aa4965size=7093date=2023-12-02T16:45:14
-file,ghost/master/dic/system/menu.dic33e5b713c0adb53d0c4c61d59c335e9fsize=91772date=2023-12-02T16:45:14
+file,ghost/master/dic/system/menu.dic83657b29ceba77abc560d2de35680330size=91717date=2023-12-02T16:45:14
 file,ghost/master/dic/system/mirror.dic5b679637ab4248d97be0dcd650ec8927size=1578date=2023-12-02T16:45:14
 file,ghost/master/dic/system/password.dicd8f49b1dd8c0f3a11798093676409bdasize=2688date=2023-12-02T16:45:14
 file,ghost/master/dic/system/ukagaka_link.dic550b5ea5321e881944786f82f78fe545size=917date=2023-12-02T16:45:14
