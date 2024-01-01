@@ -345,7 +345,7 @@ file,ghost/master/dic/aya/master/baseware.dicf38ecf1ce37a91875f9a1b0e7608058cs
 file,ghost/master/dic/aya/master/cmd.dicdf3d1094c662c8b0d0d0375d5e2104acsize=520date=2023-12-02T16:45:14
 file,ghost/master/dic/aya/master/file.dic36ff3b088205888e2aa86202ed1eafffsize=4565date=2023-12-02T16:45:14
 file,ghost/master/dic/aya/master/ghost.dicb5f1a69854bea5e501d160bd5597dd4esize=1337date=2023-12-02T16:45:14
-file,ghost/master/dic/aya/master/last_time.dic09ac99179234521aa68bc2ca7c57d899size=129date=2023-12-02T16:46:20
+file,ghost/master/dic/aya/master/last_time.dicbc1c3cc40f244aae3db94a814e8e7522size=129date=2023-12-02T16:46:20
 file,ghost/master/dic/aya/master/shiori.dic4be1a8d34dca15eb096c2c83d361ea11size=54284date=2023-12-02T16:45:14
 file,ghost/master/dic/aya/master/string.dic94b78188422d9d86352f0361a083ff95size=2425date=2023-12-02T16:45:14
 file,ghost/master/dic/aya/master/sysex.dic21de2065de4b84d69983dc39cbf31e32size=1421date=2023-12-02T16:45:14
