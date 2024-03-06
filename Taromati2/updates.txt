@@ -1,4 +1,10 @@
 charset,UTF-8
+file,.esh/commands/eval.ps12ebc3370b8b17f505efdcf423e7cb005size=115date=2012-12-21T00:00:00
+file,.esh/commands/ghost-terminal.ps117dbaf6613b9d938d1031fcca13f0232size=418date=2012-12-21T00:00:00
+file,.esh/commands/help.ps1d41d8cd98f00b204e9800998ecf8427esize=0date=2012-12-21T00:00:00
+file,.esh/commands/reload.ps1e22875f67d339c52ab5fec6a07692373size=27date=2012-12-21T00:00:00
+file,.esh/commands/runss.ps17d101982625764510de06061ec8bc816size=115date=2012-12-21T00:00:00
+file,.esh/commands/start.ps1ff4e230d3f419835988845e3cb5b0b5dsize=24date=2012-12-21T00:00:00
 file,delete.txtf3ea7777ed740379656d70dd9bede981size=325date=2023-12-02T16:45:14
 file,delete0.txt564c86c31a8a4208c6c30bfe7f8e00e6size=25253date=2023-12-02T16:45:14
 file,ghost/master/data/Game/BoxGame/box.txt4eb7bc822cf0d1cd24d14daa6ce16387size=33614date=2023-12-02T16:45:14
@@ -372,7 +378,7 @@ file,ghost/master/dic/games/rpggame.dic54bb40a5991542a1873de79603b8b597size=13
 file,ghost/master/dic/games/tetrisgame.dic55555caa335a018f9e5ee582bea2ef51size=10916date=2023-12-02T16:45:14
 file,ghost/master/dic/games/uno.dic16a7c94fa22217ff9545319b2121af64size=26021date=2023-12-02T16:45:14
 file,ghost/master/dic/nurturance/nurturance.dic2821078afab5e49e6e2ab69f25ca206asize=27401date=2023-12-02T16:45:14
-file,ghost/master/dic/other/Miniuse.dic85f39f94a0546f8ca85be1f14cbed5cbsize=98058date=2023-12-02T16:45:14
+file,ghost/master/dic/other/Miniuse.dic0e1bacafe6e2d285127941c73e886858size=98521date=2023-12-02T16:45:14
 file,ghost/master/dic/other/Other.dic1e37818be227464f6877f982f8da79a9size=75781date=2023-12-02T16:45:14
 file,ghost/master/dic/other/Tarro.dice70846109858ef3b4fecd784b903b51dsize=25419date=2023-12-02T16:45:14
 file,ghost/master/dic/other/classtable.dic8597b6ac433c02de1c3fc149249cf778size=7088date=2023-12-02T16:45:14
@@ -387,7 +393,7 @@ file,ghost/master/dic/other/poem.dicd60a82c4659c608f5d2910fef5d7e40esize=12518
 file,ghost/master/dic/other/story.dic3ffac17615a6722e388153585da9583csize=66990date=2023-12-02T16:45:14
 file,ghost/master/dic/other/test.dic9a5f7522938288fa2eefacc7862e458fsize=21418date=2023-12-02T16:45:14
 file,ghost/master/dic/system/Calendar.dicd11991eb24dd419db8e7cbb0f927f2dbsize=39820date=2023-12-02T16:45:14
-file,ghost/master/dic/system/Debug.dicf7d87bcede7245d03cc20abbc006eb08size=28258date=2023-12-02T16:45:14
+file,ghost/master/dic/system/Debug.dic0c265e442b1073771549ce19083d505fsize=28276date=2023-12-02T16:45:14
 file,ghost/master/dic/system/FileDrop.dicee627af47485eaa2f4980d53f6f8de61size=5767date=2023-12-02T16:45:14
 file,ghost/master/dic/system/MAGIC.aycaacd9cc9f96a5a55b915c94140b24c52size=1595date=2023-12-02T16:46:08
 file,ghost/master/dic/system/MAGIC.dic617991bbb23a229dd827369574b5e042size=294date=2023-12-02T16:45:14
@@ -460,7 +466,7 @@ file,ghost/master/saori/cpuid.dll552326006fa486ec8dd5d339caaa1cfasize=81920da
 file,ghost/master/saori/cpuusage.dll737d6b1a5be08b58d5c6f32601f41495size=30720date=2023-12-02T16:45:14
 file,ghost/master/saori/debeso.db.basef7652c70bed7f3d032f59bf2c5c98e00size=4596736date=2023-12-02T16:45:14
 file,ghost/master/saori/debeso.dll197986583a59d6080c133bbd2af259a6size=339968date=2023-12-02T16:45:14
-file,ghost/master/saori/ghost_terminal.exea203ad7d3a5a72d298e9bbcb9f781a5asize=43520date=2023-12-02T16:45:14
+file,ghost/master/saori/ghost_terminal.exec66e2c730673b09fccc671531200c4cdsize=43520date=2023-12-02T16:45:14
 file,ghost/master/saori/gift_for_hacker.bat6dd52fe2fe51550c38d9d53edecbe40esize=156date=2023-12-02T16:45:14
 file,ghost/master/saori/ip.dll2a500b5e805d49f8eb4cc1bea479fedbsize=34304date=2023-12-02T16:45:14
 file,ghost/master/saori/lunar.dll02124e9ea308deb950e55619794546cbsize=26624date=2023-12-02T16:45:14
