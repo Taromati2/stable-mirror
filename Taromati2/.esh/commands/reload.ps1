@@ -1,0 +1,1 @@
+ghost-terminal -c "reload"

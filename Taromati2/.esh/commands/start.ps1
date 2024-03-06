@@ -1,0 +1,1 @@
+ghost-terminal -r -c ""

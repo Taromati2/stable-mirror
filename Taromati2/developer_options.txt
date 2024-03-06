@@ -1,6 +1,9 @@
 .git/,nonar,noupdate
 ghost/.git/,nonar,noupdate
 shell/.git/,nonar,noupdate
+.esh/,nonar,noupdate
+ghost/.esh/,nonar,noupdate
+shell/.esh/,nonar,noupdate
 
 README.md,nonar,noupdate
 LICENSE,nonar,noupdate
